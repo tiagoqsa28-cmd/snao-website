@@ -365,3 +365,243 @@ document
         });
 
     });
+
+    /* ============================
+   HERO VIDEO CINEMATIC SYSTEM
+============================ */
+
+const heroVideos = [
+    "assets/videos/v1.mp4",
+    "assets/videos/v2.mp4",
+    "assets/videos/v3.mp4",
+    "assets/videos/v4.mp4"
+];
+
+let currentHeroVideo = 0;
+
+const heroVideoA = document.getElementById("heroVideoA");
+const heroVideoB = document.getElementById("heroVideoB");
+
+let activeVideo = heroVideoA;
+let hiddenVideo = heroVideoB;
+
+function startHeroVideoSystem() {
+
+    activeVideo.src = heroVideos[currentHeroVideo];
+
+    activeVideo.load();
+
+    activeVideo.play();
+
+    activeVideo.onended = nextHeroVideo;
+
+}
+
+function nextHeroVideo(){
+
+    currentHeroVideo++;
+
+    if(currentHeroVideo >= heroVideos.length){
+        currentHeroVideo = 0;
+    }
+
+    hiddenVideo.src = heroVideos[currentHeroVideo];
+
+    hiddenVideo.load();
+
+    hiddenVideo.play();
+
+    hiddenVideo.classList.add("hero-video-active");
+
+    activeVideo.classList.remove("hero-video-active");
+
+    const temp = activeVideo;
+
+    activeVideo = hiddenVideo;
+
+    hiddenVideo = temp;
+
+    activeVideo.onended = nextHeroVideo;
+
+}
+
+window.addEventListener("load", startHeroVideoSystem);
+
+/* =====================================================
+   SNAO — OCEAN PARTICLES
+===================================================== */
+
+const oceanCanvas = document.getElementById("oceanParticleCanvas");
+
+if (oceanCanvas) {
+    const oceanContext = oceanCanvas.getContext("2d");
+
+    let oceanParticles = [];
+    let oceanAnimationFrame;
+
+    function resizeOceanCanvas() {
+        const pixelRatio = Math.min(window.devicePixelRatio || 1, 2);
+        const bounds = oceanCanvas.getBoundingClientRect();
+
+        oceanCanvas.width = bounds.width * pixelRatio;
+        oceanCanvas.height = bounds.height * pixelRatio;
+
+        oceanContext.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
+
+        createOceanParticles(bounds.width, bounds.height);
+    }
+
+    function createOceanParticles(width, height) {
+        const particleCount = Math.min(
+            95,
+            Math.max(40, Math.floor(width / 15))
+        );
+
+        oceanParticles = Array.from(
+            { length: particleCount },
+            () => ({
+                x: Math.random() * width,
+                y: Math.random() * height,
+                radius: Math.random() * 1.8 + 0.4,
+                speedY: Math.random() * 0.25 + 0.08,
+                speedX: Math.random() * 0.14 - 0.07,
+                opacity: Math.random() * 0.42 + 0.08,
+                pulse: Math.random() * Math.PI * 2
+            })
+        );
+    }
+
+    function animateOceanParticles() {
+        const width = oceanCanvas.clientWidth;
+        const height = oceanCanvas.clientHeight;
+
+        oceanContext.clearRect(0, 0, width, height);
+
+        oceanParticles.forEach((particle) => {
+            particle.y -= particle.speedY;
+            particle.x += particle.speedX;
+            particle.pulse += 0.015;
+
+            if (particle.y < -10) {
+                particle.y = height + 10;
+                particle.x = Math.random() * width;
+            }
+
+            if (particle.x < -10) {
+                particle.x = width + 10;
+            }
+
+            if (particle.x > width + 10) {
+                particle.x = -10;
+            }
+
+            const currentOpacity =
+                particle.opacity +
+                Math.sin(particle.pulse) * 0.08;
+
+            oceanContext.beginPath();
+
+            oceanContext.arc(
+                particle.x,
+                particle.y,
+                particle.radius,
+                0,
+                Math.PI * 2
+            );
+
+            oceanContext.fillStyle =
+                `rgba(60, 220, 255, ${Math.max(0.03, currentOpacity)})`;
+
+            oceanContext.shadowBlur = 8;
+            oceanContext.shadowColor = "rgba(0, 207, 255, 0.45)";
+
+            oceanContext.fill();
+        });
+
+        oceanContext.shadowBlur = 0;
+
+        oceanAnimationFrame =
+            requestAnimationFrame(animateOceanParticles);
+    }
+
+    resizeOceanCanvas();
+    animateOceanParticles();
+
+    window.addEventListener("resize", resizeOceanCanvas);
+
+    document.addEventListener("visibilitychange", () => {
+        if (document.hidden) {
+            cancelAnimationFrame(oceanAnimationFrame);
+        } else {
+            animateOceanParticles();
+        }
+    });
+}
+
+/* =====================================================
+   HERO — INTERACTIVE DEPTH EFFECT
+===================================================== */
+
+const heroSection = document.querySelector(".hero-cinematic");
+const heroVisual = document.querySelector(".hero-intelligence-visual");
+const oceanScene = document.querySelector(".hero-ocean-scene");
+
+if (heroSection && heroVisual && oceanScene) {
+
+    let targetX = 0;
+    let targetY = 0;
+
+    let currentX = 0;
+    let currentY = 0;
+
+    heroSection.addEventListener("mousemove", (event) => {
+
+        const rect = heroSection.getBoundingClientRect();
+
+        const mouseX =
+            (event.clientX - rect.left) / rect.width - 0.5;
+
+        const mouseY =
+            (event.clientY - rect.top) / rect.height - 0.5;
+
+        targetX = mouseX;
+        targetY = mouseY;
+
+    });
+
+    heroSection.addEventListener("mouseleave", () => {
+        targetX = 0;
+        targetY = 0;
+    });
+
+    function animateHeroDepth() {
+
+        currentX += (targetX - currentX) * 0.045;
+        currentY += (targetY - currentY) * 0.045;
+
+        heroVisual.style.setProperty(
+            "--hero-depth-x",
+            `${currentX * 16}px`
+        );
+
+        heroVisual.style.setProperty(
+            "--hero-depth-y",
+            `${currentY * 12}px`
+        );
+
+        oceanScene.style.setProperty(
+            "--ocean-depth-x",
+            `${currentX * -10}px`
+        );
+
+        oceanScene.style.setProperty(
+            "--ocean-depth-y",
+            `${currentY * -7}px`
+        );
+
+        requestAnimationFrame(animateHeroDepth);
+
+    }
+
+    animateHeroDepth();
+}

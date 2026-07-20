@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
 
     <meta
@@ -9,14 +10,85 @@
         content="width=device-width, initial-scale=1.0"
     >
 
+    <title>
+        SNAO.world — Ocean Intelligence for Crypto
+    </title>
+
     <meta
         name="description"
-        content="SNAO is an Ocean Intelligence ecosystem combining artificial intelligence, blockchain analytics and community signals."
+        content="SNAO is an Ocean Intelligence ecosystem powered by artificial intelligence, blockchain analytics and community signals."
     >
 
-    <title>SNAO.world — Ocean Intelligence</title>
+    <meta
+        name="keywords"
+        content="SNAO, Ocean Intelligence, crypto AI, whale tracking, smart money, blockchain analytics, market sentiment"
+    >
+
+    <meta name="author" content="SNAO">
+
+    <meta name="robots" content="index, follow">
+
+    <link rel="canonical" href="https://snao.world">
+
+    <!-- Open Graph -->
+
+    <meta
+        property="og:title"
+        content="SNAO.world — Ocean Intelligence"
+    >
+
+    <meta
+        property="og:description"
+        content="Track whale activity, smart money, liquidity and market sentiment through the SNAO Ocean Intelligence ecosystem."
+    >
+
+    <meta
+        property="og:type"
+        content="website"
+    >
+
+    <meta
+        property="og:url"
+        content="https://snao.world"
+    >
+
+    <meta
+        property="og:image"
+        content="https://snao.world/assets/snao-preview.png"
+    >
+
+    <!-- X / Twitter -->
+
+    <meta
+        name="twitter:card"
+        content="summary_large_image"
+    >
+
+    <meta
+        name="twitter:title"
+        content="SNAO.world — Ocean Intelligence"
+    >
+
+    <meta
+        name="twitter:description"
+        content="AI, blockchain analytics and community intelligence for the crypto ocean."
+    >
+
+    <meta
+        name="twitter:image"
+        content="https://snao.world/assets/snao-preview.png"
+    >
+
+    <!-- Favicon -->
+
+    <link
+        rel="icon"
+        type="image/png"
+        href="assets/favicon.png"
+    >
 
     <link rel="stylesheet" href="style.css">
+
 </head>
 
 <body>
@@ -86,119 +158,284 @@
              HERO
         ========================================== -->
 
-        <section class="hero" id="home">
+        <section class="hero hero-cinematic" id="home">
 
-            <div class="hero-background">
-                <div class="hero-light hero-light-one"></div>
-                <div class="hero-light hero-light-two"></div>
-                <div class="hero-grid"></div>
+    <!-- =========================================
+         OCEAN BACKGROUND
+    ========================================== -->
+
+    <div class="hero-ocean-scene" aria-hidden="true">
+
+        <div class="ocean-depth ocean-depth-back"></div>
+        <div class="ocean-depth ocean-depth-middle"></div>
+
+        <div class="ocean-light-ray light-ray-one"></div>
+        <div class="ocean-light-ray light-ray-two"></div>
+        <div class="ocean-light-ray light-ray-three"></div>
+
+        <div class="ocean-glow ocean-glow-one"></div>
+        <div class="ocean-glow ocean-glow-two"></div>
+
+        <div class="ocean-bubbles">
+            <span class="bubble bubble-1"></span>
+            <span class="bubble bubble-2"></span>
+            <span class="bubble bubble-3"></span>
+            <span class="bubble bubble-4"></span>
+            <span class="bubble bubble-5"></span>
+            <span class="bubble bubble-6"></span>
+            <span class="bubble bubble-7"></span>
+            <span class="bubble bubble-8"></span>
+        </div>
+
+        <canvas
+            class="ocean-particle-canvas"
+            id="oceanParticleCanvas"
+        ></canvas>
+
+        <!-- Área reservada para baleias 3D realistas -->
+        <div
+            class="whale-3d-stage"
+            id="whale3dStage"
+        ></div>
+
+    </div>
+
+
+    <!-- =========================================
+         HERO CONTENT
+    ========================================== -->
+
+    <div class="hero-cinematic-content">
+
+        <!-- Conteúdo esquerdo -->
+
+        <div class="hero-cinematic-copy">
+
+            <span class="eyebrow">
+                <i class="eyebrow-pulse"></i>
+                The Ocean Never Sleeps
+            </span>
+
+            <h1>
+                Ocean Intelligence
+
+                <span>
+                    for the next generation
+                    of crypto investors.
+                </span>
+            </h1>
+
+            <p>
+                AI-powered insights, on-chain intelligence and real-time
+                market signals working together to reveal what the crypto
+                market tries to hide.
+            </p>
+
+            <div class="hero-actions">
+
+                <a
+                    class="button button-primary"
+                    href="https://t.me/SystemSardine_bot"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Launch App
+                    <span>↗</span>
+                </a>
+
+                <a
+                    class="button button-secondary"
+                    href="#features"
+                >
+                    Explore Intelligence
+                </a>
+
             </div>
 
-            <div class="hero-content">
+            <div class="hero-trust">
 
-                <div class="hero-copy">
+                <div class="trust-dot"></div>
 
-                    <span class="eyebrow">
-                        🌊 The Ocean Never Sleeps
-                    </span>
+                <span>
+                    Building a more transparent crypto ocean.
+                </span>
 
-                    <h1>
-                        Ocean Intelligence
-                        <span>for the next generation of crypto investors.</span>
-                    </h1>
+            </div>
 
-                    <p class="hero-description">
-                        Powered by artificial intelligence, blockchain analytics
-                        and community intelligence. Track whale movements,
-                        smart money, liquidity and market sentiment before they
-                        become obvious.
-                    </p>
+        </div>
 
-                    <div class="hero-actions">
 
-    <a
-        class="button button-primary"
-        href="https://t.me/SystemSardine_bot"
-        target="_blank"
-        rel="noopener noreferrer"
-    >
-        Launch App
-        <span>↗</span>
-    </a>
+        <!-- =========================================
+             OCEAN INTELLIGENCE CORE
+        ========================================== -->
 
-    <a
-        class="button button-secondary"
-        href="#features"
-    >
-        Explore Intelligence
-    </a>
+        <div
+            class="hero-intelligence-visual"
+            aria-hidden="true"
+        >
+
+            <div class="core-energy-field"></div>
+
+            <div class="intelligence-orbit orbit-a">
+                <span class="orbit-node"></span>
+            </div>
+
+            <div class="intelligence-orbit orbit-b">
+                <span class="orbit-node"></span>
+            </div>
+
+            <div class="intelligence-orbit orbit-c">
+                <span class="orbit-node"></span>
+            </div>
+
+
+            <div class="intelligence-core">
+
+                <div class="core-inner-ring"></div>
+
+                <span>SNAO</span>
+
+                <strong>Ocean Core</strong>
+
+                <small>
+                    AI Intelligence Online
+                </small>
+
+                <div class="core-status">
+                    <i></i>
+                    System Active
+                </div>
+
+            </div>
+
+
+            <!-- Linhas de conexão -->
+
+            <div class="intelligence-line line-whale"></div>
+            <div class="intelligence-line line-ai"></div>
+            <div class="intelligence-line line-money"></div>
+            <div class="intelligence-line line-sentiment"></div>
+            <div class="intelligence-line line-liquidity"></div>
+            <div class="intelligence-line line-risk"></div>
+
+
+            <!-- Cards -->
+
+            <div class="intelligence-card card-whale">
+
+                <span class="card-symbol">◉</span>
+
+                <div>
+                    <strong>Whale Activity</strong>
+                    <small>Large movement detected</small>
+                </div>
+
+            </div>
+
+            <div class="intelligence-card card-ai">
+
+                <span class="card-symbol">✦</span>
+
+                <div>
+                    <strong>AI Intelligence</strong>
+                    <small>Analysis running</small>
+                </div>
+
+            </div>
+
+            <div class="intelligence-card card-money">
+
+                <span class="card-symbol">⌁</span>
+
+                <div>
+                    <strong>Smart Money</strong>
+                    <small>Capital flow monitored</small>
+                </div>
+
+            </div>
+
+            <div class="intelligence-card card-sentiment">
+
+                <span class="card-symbol">↗</span>
+
+                <div>
+                    <strong>Market Sentiment</strong>
+                    <small>Moderately positive</small>
+                </div>
+
+            </div>
+
+            <div class="intelligence-card card-liquidity">
+
+                <span class="card-symbol">≈</span>
+
+                <div>
+                    <strong>Liquidity Flow</strong>
+                    <small>Movement increasing</small>
+                </div>
+
+            </div>
+
+            <div class="intelligence-card card-risk">
+
+                <span class="card-symbol">◇</span>
+
+                <div>
+                    <strong>Risk Monitor</strong>
+                    <small>Conditions controlled</small>
+                </div>
+
+            </div>
+
+
+            <!-- Mini dashboard -->
+
+            <div class="hero-mini-dashboard">
+
+    <div class="dashboard-map">
+
+        <strong class="dashboard-title">
+            GLOBAL OCEAN FLOW
+        </strong>
+
+        <div class="map-grid"></div>
+
+        <div class="ocean-map-shape"></div>
+
+        <span class="map-dot map-dot-one"></span>
+        <span class="map-dot map-dot-two"></span>
+        <span class="map-dot map-dot-three"></span>
+        <span class="map-dot map-dot-four"></span>
+        <span class="map-dot map-dot-five"></span>
+
+    </div>
+
+    <div class="dashboard-side">
+
+        <div class="dashboard-metric">
+            <span>Whale Activity</span>
+            <strong>Monitoring</strong>
+        </div>
+
+        <div class="dashboard-metric">
+            <span>Market Sentiment</span>
+            <strong class="positive">Positive</strong>
+        </div>
+
+        <div class="dashboard-metric">
+            <span>Liquidity Flow</span>
+            <strong class="active-status">Active</strong>
+        </div>
+
+    </div>
 
 </div>
 
-                    <div class="hero-trust">
+        </div>
 
-                        <div class="trust-dot"></div>
+    </div>
 
-                        <span>
-                            Building a more transparent crypto ocean.
-                        </span>
-
-                    </div>
-
-                </div>
-
-                <div class="hero-visual" aria-hidden="true">
-
-                    <div class="ocean-core">
-
-                        <div class="core-aura"></div>
-
-                        <div class="orbit orbit-one">
-                            <span class="orbit-particle"></span>
-                        </div>
-
-                        <div class="orbit orbit-two">
-                            <span class="orbit-particle"></span>
-                        </div>
-
-                        <div class="orbit orbit-three">
-                            <span class="orbit-particle"></span>
-                        </div>
-
-                        <div class="core-sphere">
-
-                            <span class="core-node node-one"></span>
-                            <span class="core-node node-two"></span>
-                            <span class="core-node node-three"></span>
-                            <span class="core-node node-four"></span>
-                            <span class="core-node node-five"></span>
-                            <span class="core-node node-six"></span>
-
-                            <div class="core-center">
-                                <small>SNAO</small>
-                                <strong>Ocean Core</strong>
-                                <span>AI Intelligence Online</span>
-                            </div>
-
-                        </div>
-
-                        <div class="floating-signal signal-one">
-                            <span>🐋</span>
-                            Whale movement
-                        </div>
-
-                        <div class="floating-signal signal-two">
-                            <span>📡</span>
-                            Smart money
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>
+</section>
 
 
         <!-- =========================================
