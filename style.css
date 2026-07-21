@@ -6007,3 +6007,480 @@ section {
         align-items: flex-start;
     }
 }
+
+/* =====================================================
+   MOBILE FIX — HERO OCEAN CORE + GLOBAL OCEAN FLOW
+===================================================== */
+
+@media (max-width: 760px) {
+
+    /* HERO MOBILE */
+
+    .hero.hero-cinematic {
+        min-height: auto !important;
+        padding: 105px 16px 70px !important;
+        overflow: hidden !important;
+    }
+
+    .hero-cinematic-content {
+        display: block !important;
+        width: 100% !important;
+    }
+
+    .hero-cinematic-copy {
+        width: 100% !important;
+        max-width: none !important;
+        text-align: center !important;
+    }
+
+    .hero-cinematic-copy h1 {
+        font-size: clamp(38px, 11vw, 54px) !important;
+        line-height: 1 !important;
+        letter-spacing: -2px !important;
+    }
+
+    .hero-cinematic-copy > p {
+        max-width: 100% !important;
+        font-size: 16px !important;
+        line-height: 1.65 !important;
+    }
+
+    .hero-actions {
+        display: grid !important;
+        grid-template-columns: 1fr !important;
+        gap: 12px !important;
+        width: 100% !important;
+    }
+
+    .hero-actions .button {
+        width: 100% !important;
+        min-width: 0 !important;
+    }
+
+    /* VISUAL MOBILE */
+
+    .hero-intelligence-visual {
+        position: relative !important;
+
+        width: 100% !important;
+        min-height: 900px !important;
+        margin-top: 55px !important;
+
+        transform: none !important;
+        translate: none !important;
+        scale: 1 !important;
+    }
+
+    .core-energy-field {
+        width: 340px !important;
+        height: 340px !important;
+    }
+
+    .orbit-a {
+        width: 260px !important;
+        height: 260px !important;
+    }
+
+    .orbit-b {
+        width: 330px !important;
+        height: 330px !important;
+    }
+
+    .orbit-c {
+        width: 400px !important;
+        height: 400px !important;
+    }
+
+    .intelligence-core {
+        width: 205px !important;
+        height: 205px !important;
+    }
+
+    .intelligence-core > strong {
+        font-size: 24px !important;
+    }
+
+    /* CARDS MOBILE */
+
+    .intelligence-card {
+        min-width: 0 !important;
+        width: 150px !important;
+        padding: 11px 12px !important;
+    }
+
+    .intelligence-card strong {
+        font-size: 12px !important;
+    }
+
+    .intelligence-card small {
+        font-size: 9px !important;
+        line-height: 1.25 !important;
+    }
+
+    .card-symbol {
+        width: 30px !important;
+        height: 30px !important;
+        font-size: 15px !important;
+    }
+
+    .card-whale {
+        top: 15px !important;
+        left: 50% !important;
+        right: auto !important;
+        bottom: auto !important;
+
+        transform: translateX(-50%) !important;
+    }
+
+    .card-ai {
+        top: 115px !important;
+        right: 0 !important;
+        left: auto !important;
+        bottom: auto !important;
+    }
+
+    .card-money {
+        top: 285px !important;
+        left: 0 !important;
+        right: auto !important;
+        bottom: auto !important;
+    }
+
+    .card-sentiment {
+        top: 305px !important;
+        right: 0 !important;
+        left: auto !important;
+        bottom: auto !important;
+    }
+
+    .card-liquidity {
+        top: 500px !important;
+        left: 12px !important;
+        right: auto !important;
+        bottom: auto !important;
+    }
+
+    .card-risk {
+        top: 500px !important;
+        right: 12px !important;
+        left: auto !important;
+        bottom: auto !important;
+    }
+
+    /* CONEXÕES */
+
+    .intelligence-line {
+        opacity: 0.35 !important;
+    }
+
+    /* GLOBAL OCEAN FLOW MOBILE */
+
+    .hero-mini-dashboard {
+        position: absolute !important;
+
+        left: 50% !important;
+        right: auto !important;
+        bottom: 5px !important;
+
+        width: calc(100% - 12px) !important;
+        height: auto !important;
+        min-height: 245px !important;
+
+        padding: 10px !important;
+
+        display: grid !important;
+        grid-template-columns: 1fr !important;
+        gap: 10px !important;
+
+        transform: translateX(-50%) !important;
+
+        overflow: visible !important;
+    }
+
+    .dashboard-map {
+        width: 100% !important;
+        height: 145px !important;
+        min-height: 145px !important;
+    }
+
+    .dashboard-side {
+        width: 100% !important;
+        height: auto !important;
+
+        display: grid !important;
+        grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+        grid-template-rows: 1fr !important;
+        gap: 7px !important;
+    }
+
+    .dashboard-side > div,
+    .dashboard-metric {
+        width: 100% !important;
+        height: 62px !important;
+        min-height: 62px !important;
+
+        padding: 8px !important;
+
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        justify-content: center !important;
+
+        overflow: hidden !important;
+    }
+
+    .dashboard-side span {
+        margin: 0 0 4px !important;
+
+        font-size: 7px !important;
+        line-height: 1.1 !important;
+    }
+
+    .dashboard-side strong {
+        margin: 0 !important;
+
+        font-size: 10px !important;
+        line-height: 1.15 !important;
+    }
+
+    /* ESTATÍSTICAS */
+
+    .stats-section {
+        margin-top: 0 !important;
+    }
+
+    .stats {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 14px !important;
+    }
+
+    .stat-item:not(:last-child)::after {
+        display: none !important;
+    }
+}
+
+
+/* TELAS MUITO PEQUENAS */
+
+@media (max-width: 430px) {
+
+    .hero-intelligence-visual {
+        min-height: 850px !important;
+    }
+
+    .intelligence-card {
+        width: 138px !important;
+        padding: 9px !important;
+    }
+
+    .intelligence-card strong {
+        font-size: 11px !important;
+    }
+
+    .intelligence-card small {
+        font-size: 8px !important;
+    }
+
+    .orbit-c {
+        width: 370px !important;
+        height: 370px !important;
+    }
+
+    .dashboard-side > div,
+    .dashboard-metric {
+        padding: 6px !important;
+    }
+
+    .dashboard-side strong {
+        font-size: 9px !important;
+    }
+}
+
+/* =====================================================
+   MOBILE FIX 2 — ORGANIZAÇÃO DOS CARDS DO OCEAN CORE
+===================================================== */
+
+@media (max-width: 760px) {
+
+    .hero-intelligence-visual {
+        min-height: 930px !important;
+        padding-top: 35px !important;
+    }
+
+    .intelligence-core {
+        position: absolute !important;
+        top: 340px !important;
+        left: 50% !important;
+
+        transform: translateX(-50%) !important;
+    }
+
+    .core-energy-field,
+    .intelligence-orbit {
+        top: 235px !important;
+        left: 50% !important;
+    }
+
+    .core-energy-field {
+        transform: translateX(-50%) !important;
+    }
+
+    .orbit-a,
+    .orbit-b,
+    .orbit-c {
+        transform-origin: center !important;
+    }
+
+    .card-whale {
+        top: 15px !important;
+        left: 50% !important;
+        right: auto !important;
+
+        transform: translateX(-50%) !important;
+    }
+
+    .card-ai {
+        top: 115px !important;
+        right: 8px !important;
+        left: auto !important;
+    }
+
+    .card-money {
+        top: 235px !important;
+        left: 8px !important;
+        right: auto !important;
+    }
+
+    .card-sentiment {
+        top: 255px !important;
+        right: 8px !important;
+        left: auto !important;
+    }
+
+    .card-liquidity {
+        top: 545px !important;
+        left: 8px !important;
+        right: auto !important;
+    }
+
+    .card-risk {
+        top: 545px !important;
+        right: 8px !important;
+        left: auto !important;
+    }
+
+    .hero-mini-dashboard {
+        bottom: 0 !important;
+    }
+}
+
+@media (max-width: 430px) {
+
+    .intelligence-card {
+        width: 142px !important;
+    }
+
+    .card-ai,
+    .card-sentiment,
+    .card-risk {
+        right: 3px !important;
+    }
+
+    .card-money,
+    .card-liquidity {
+        left: 3px !important;
+    }
+}
+
+/* =====================================================
+   MOBILE FIX 3 — COMPOSIÇÃO FINAL DO OCEAN CORE
+===================================================== */
+
+@media (max-width: 760px) {
+
+    .hero-intelligence-visual {
+        min-height: 790px !important;
+        padding-top: 0 !important;
+        margin-top: 35px !important;
+    }
+
+    .intelligence-core {
+        top: 285px !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+    }
+
+    .core-energy-field,
+    .intelligence-orbit {
+        top: 180px !important;
+        left: 50% !important;
+    }
+
+    .core-energy-field {
+        transform: translateX(-50%) !important;
+    }
+
+    .card-whale {
+        top: 10px !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+    }
+
+    .card-ai {
+        top: 105px !important;
+        right: 4px !important;
+    }
+
+    .card-money {
+        top: 205px !important;
+        left: 4px !important;
+    }
+
+    .card-sentiment {
+        top: 225px !important;
+        right: 4px !important;
+    }
+
+    .card-liquidity {
+        top: 485px !important;
+        left: 4px !important;
+    }
+
+    .card-risk {
+        top: 485px !important;
+        right: 4px !important;
+    }
+
+    .hero-mini-dashboard {
+        bottom: 0 !important;
+        min-height: 235px !important;
+    }
+}
+
+@media (max-width: 430px) {
+
+    .hero-intelligence-visual {
+        min-height: 760px !important;
+    }
+
+    .intelligence-core {
+        top: 275px !important;
+    }
+
+    .card-ai {
+        top: 95px !important;
+    }
+
+    .card-money {
+        top: 195px !important;
+    }
+
+    .card-sentiment {
+        top: 215px !important;
+    }
+
+    .card-liquidity,
+    .card-risk {
+        top: 470px !important;
+    }
+}
