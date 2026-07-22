@@ -605,3 +605,394 @@ if (heroSection && heroVisual && oceanScene) {
 
     animateHeroDepth();
 }
+
+/* =====================================================
+   OCEAN TERMINAL — DEMONSTRATION INTERACTIONS
+===================================================== */
+
+const terminalAiSummary =
+    document.getElementById("terminalAiSummary");
+
+const terminalPromptButtons =
+    document.querySelectorAll("[data-terminal-prompt]");
+
+const terminalSummaries = {
+    market:
+        "The market is showing moderately bullish conditions. " +
+        "Liquidity has improved, Bitcoin remains dominant and " +
+        "risk appetite is increasing without reaching extreme levels.",
+
+    whales:
+        "Large-wallet activity is above the recent average. " +
+        "Most detected movements are concentrated in Bitcoin, " +
+        "Ethereum and major stablecoins.",
+
+    risk:
+        "Current market risk is moderate. Short-term volatility " +
+        "may increase, but liquidity and sentiment conditions " +
+        "remain controlled."
+};
+
+terminalPromptButtons.forEach((button) => {
+
+    button.addEventListener("click", () => {
+
+        const prompt =
+            button.dataset.terminalPrompt;
+
+        if (
+            terminalAiSummary &&
+            terminalSummaries[prompt]
+        ) {
+            terminalAiSummary.style.opacity = "0";
+
+            setTimeout(() => {
+                terminalAiSummary.textContent =
+                    terminalSummaries[prompt];
+
+                terminalAiSummary.style.opacity = "1";
+            }, 220);
+        }
+
+    });
+
+});
+
+
+/* Pequena variação visual dos preços demonstrativos */
+
+const terminalPriceElements = [
+    document.getElementById("terminalBtcPrice"),
+    document.getElementById("terminalEthPrice"),
+    document.getElementById("terminalBnbPrice")
+];
+
+const terminalBasePrices = [
+    68420,
+    3780,
+    612
+];
+
+function updateTerminalDemoPrices() {
+
+    terminalPriceElements.forEach(
+        (element, index) => {
+
+            if (!element) {
+                return;
+            }
+
+            const variation =
+                (Math.random() - 0.5) *
+                terminalBasePrices[index] *
+                0.0012;
+
+            const updatedPrice =
+                terminalBasePrices[index] +
+                variation;
+
+            element.textContent =
+                "$" +
+                updatedPrice.toLocaleString(
+                    "en-US",
+                    {
+                        maximumFractionDigits:
+                            index === 2 ? 2 : 0
+                    }
+                );
+        }
+    );
+
+}
+
+setInterval(
+    updateTerminalDemoPrices,
+    4500
+);
+
+/* =====================================================
+   SNAO FAQ ACCORDION
+===================================================== */
+
+const snaoFaqItems =
+    document.querySelectorAll(".snao-faq-item");
+
+function openSnaoFaqItem(item) {
+
+    const question =
+        item.querySelector(".snao-faq-question");
+
+    const answer =
+        item.querySelector(".snao-faq-answer");
+
+    item.classList.add("active");
+
+    if (question) {
+        question.setAttribute(
+            "aria-expanded",
+            "true"
+        );
+    }
+
+    if (answer) {
+        answer.style.maxHeight =
+            answer.scrollHeight + "px";
+    }
+
+}
+
+function closeSnaoFaqItem(item) {
+
+    const question =
+        item.querySelector(".snao-faq-question");
+
+    const answer =
+        item.querySelector(".snao-faq-answer");
+
+    item.classList.remove("active");
+
+    if (question) {
+        question.setAttribute(
+            "aria-expanded",
+            "false"
+        );
+    }
+
+    if (answer) {
+        answer.style.maxHeight = "0px";
+    }
+
+}
+
+snaoFaqItems.forEach((item) => {
+
+    const question =
+        item.querySelector(".snao-faq-question");
+
+    if (!question) {
+        return;
+    }
+
+    question.addEventListener("click", () => {
+
+        const isActive =
+            item.classList.contains("active");
+
+        snaoFaqItems.forEach(
+            closeSnaoFaqItem
+        );
+
+        if (!isActive) {
+            openSnaoFaqItem(item);
+        }
+
+    });
+
+});
+
+
+const initialOpenFaq =
+    document.querySelector(
+        ".snao-faq-item.active"
+    );
+
+if (initialOpenFaq) {
+    openSnaoFaqItem(initialOpenFaq);
+}
+
+
+window.addEventListener("resize", () => {
+
+    const activeFaq =
+        document.querySelector(
+            ".snao-faq-item.active"
+        );
+
+    if (activeFaq) {
+        openSnaoFaqItem(activeFaq);
+    }
+
+});
+
+/* =====================================================
+   FOOTER LEGAL MODAL
+===================================================== */
+
+const footerLegalModal =
+    document.getElementById("footerLegalModal");
+
+const footerLegalTitle =
+    document.getElementById("footerLegalTitle");
+
+const footerLegalContent =
+    document.getElementById("footerLegalContent");
+
+const footerLegalButtons =
+    document.querySelectorAll("[data-footer-modal]");
+
+const footerLegalClose =
+    document.querySelector(".footer-legal-close");
+
+const footerLegalBackdrop =
+    document.querySelector(".footer-legal-backdrop");
+
+
+const footerLegalInformation = {
+
+    risk: {
+        title: "Risk Disclaimer",
+
+        content: `
+            <p>
+                Cryptocurrency assets involve substantial risk, including
+                price volatility, liquidity risk and possible loss of capital.
+                Information presented on SNAO.world is educational and
+                informational and should not be interpreted as financial advice.
+            </p>
+
+            <p>
+                Demonstration dashboards, simulated metrics and future product
+                descriptions do not guarantee market performance, token value
+                or investment returns.
+            </p>
+
+            <p>
+                Always conduct independent research and consult qualified
+                professionals before making financial decisions.
+            </p>
+        `
+    },
+
+
+    privacy: {
+        title: "Privacy",
+
+        content: `
+            <p>
+                SNAO.world currently operates primarily as an informational
+                website. The project may collect limited technical information
+                required for website security, performance and functionality.
+            </p>
+
+            <p>
+                Future platform services, accounts, wallet connections and
+                subscriptions will be accompanied by a complete privacy policy
+                describing how information is collected, stored and used.
+            </p>
+        `
+    },
+
+
+    terms: {
+        title: "Terms of Use",
+
+        content: `
+            <p>
+                By using SNAO.world, users acknowledge that the ecosystem is
+                under active development and that planned features, tokenomics,
+                launch dates and utilities may change before official release.
+            </p>
+
+            <p>
+                No unofficial contract, purchase offer or private message should
+                be considered authorized unless confirmed through SNAO.world
+                and the official SNAO communication channels.
+            </p>
+        `
+    }
+
+};
+
+
+function openFooterLegalModal(type) {
+
+    const information =
+        footerLegalInformation[type];
+
+    if (
+        !footerLegalModal ||
+        !footerLegalTitle ||
+        !footerLegalContent ||
+        !information
+    ) {
+        return;
+    }
+
+    footerLegalTitle.textContent =
+        information.title;
+
+    footerLegalContent.innerHTML =
+        information.content;
+
+    footerLegalModal.classList.add("active");
+
+    footerLegalModal.setAttribute(
+        "aria-hidden",
+        "false"
+    );
+
+    document.body.style.overflow =
+        "hidden";
+
+}
+
+
+function closeFooterLegalModal() {
+
+    if (!footerLegalModal) {
+        return;
+    }
+
+    footerLegalModal.classList.remove("active");
+
+    footerLegalModal.setAttribute(
+        "aria-hidden",
+        "true"
+    );
+
+    document.body.style.overflow =
+        "";
+
+}
+
+
+footerLegalButtons.forEach((button) => {
+
+    button.addEventListener("click", () => {
+
+        openFooterLegalModal(
+            button.dataset.footerModal
+        );
+
+    });
+
+});
+
+
+if (footerLegalClose) {
+    footerLegalClose.addEventListener(
+        "click",
+        closeFooterLegalModal
+    );
+}
+
+
+if (footerLegalBackdrop) {
+    footerLegalBackdrop.addEventListener(
+        "click",
+        closeFooterLegalModal
+    );
+}
+
+
+document.addEventListener("keydown", (event) => {
+
+    if (
+        event.key === "Escape" &&
+        footerLegalModal &&
+        footerLegalModal.classList.contains("active")
+    ) {
+        closeFooterLegalModal();
+    }
+
+});
