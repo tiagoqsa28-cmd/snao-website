@@ -1,0 +1,1257 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        SNAO Ocean Terminal
+    </title>
+
+    <meta
+        name="description"
+        content="SNAO Ocean Intelligence Terminal for crypto market analysis, whale activity, liquidity, sentiment and risk monitoring."
+    >
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="terminal.css"
+    >
+
+</head>
+
+<body class="terminal-page">
+
+    <!-- =========================================
+         TERMINAL HEADER
+    ========================================== -->
+
+    <header class="terminal-header">
+
+        <a
+            class="terminal-brand"
+            href="index.html"
+        >
+
+            <span class="terminal-brand-symbol">
+                ◉
+            </span>
+
+            <span class="terminal-brand-copy">
+
+                <strong>
+                    SNAO
+                </strong>
+
+                <small>
+                    Ocean Terminal
+                </small>
+
+            </span>
+
+        </a>
+
+
+        <nav class="terminal-top-navigation">
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a
+                class="active"
+                href="terminal.html"
+            >
+                Terminal
+            </a>
+
+            <a href="index.html#ecosystem">
+                Ecosystem
+            </a>
+
+            <a href="index.html#tokenomics">
+                Token
+            </a>
+
+            <a href="index.html#community">
+                Community
+            </a>
+
+        </nav>
+
+
+        <div class="terminal-header-actions">
+
+            <span class="terminal-system-status">
+
+                <i></i>
+
+                System Online
+
+            </span>
+
+            <a
+                class="terminal-launch-button"
+                href="https://t.me/SystemSardine_bot"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                Launch App
+                <span>↗</span>
+            </a>
+
+        </div>
+
+
+        <button
+            class="terminal-menu-button"
+            id="terminalMenuButton"
+            type="button"
+            aria-label="Open terminal menu"
+            aria-expanded="false"
+        >
+
+            <span></span>
+            <span></span>
+            <span></span>
+
+        </button>
+
+    </header>
+
+
+    <!-- =========================================
+         TERMINAL APPLICATION
+    ========================================== -->
+
+    <div class="terminal-application">
+
+
+        <!-- =========================================
+             SIDEBAR
+        ========================================== -->
+
+        <aside
+            class="terminal-sidebar"
+            id="terminalSidebar"
+        >
+
+            <div class="terminal-sidebar-label">
+                Intelligence
+            </div>
+
+            <nav class="terminal-sidebar-navigation">
+
+                <a
+                    class="active"
+                    href="#overview"
+                >
+                    <span>◉</span>
+                    Overview
+                </a>
+
+                <a href="#market">
+                    <span>⌁</span>
+                    Market
+                </a>
+
+                <a href="#whales">
+                    <span>🐋</span>
+                    Whale Radar
+                </a>
+
+                <a href="#sentiment">
+                    <span>✦</span>
+                    Sentiment
+                </a>
+
+                <a href="#liquidity">
+                    <span>≈</span>
+                    Liquidity
+                </a>
+
+                <a href="#risk">
+                    <span>◇</span>
+                    Risk Monitor
+                </a>
+
+            </nav>
+
+
+            <div class="terminal-sidebar-label">
+                Ecosystem
+            </div>
+
+            <nav class="terminal-sidebar-navigation">
+
+                <a href="#sardine-ai">
+                    <span>AI</span>
+                    Sardine AI
+                </a>
+
+                <a href="#heatmap">
+                    <span>▦</span>
+                    Heatmap
+                </a>
+
+                <a href="#news">
+                    <span>▤</span>
+                    Intelligence News
+                </a>
+
+                <a href="index.html#products">
+                    <span>▣</span>
+                    Products
+                </a>
+
+            </nav>
+
+
+            <div class="terminal-sidebar-footer">
+
+                <div class="sidebar-network">
+
+                    <span>
+                        Network
+                    </span>
+
+                    <strong>
+                        BNB Smart Chain
+                    </strong>
+
+                </div>
+
+                <div class="sidebar-version">
+                    Terminal Concept v1.0
+                </div>
+
+            </div>
+
+        </aside>
+
+        <div
+    class="terminal-sidebar-backdrop"
+    id="terminalSidebarBackdrop"
+></div>
+
+
+        <!-- =========================================
+             MAIN CONTENT
+        ========================================== -->
+
+        <main class="terminal-main">
+
+            <section
+                class="terminal-page-heading"
+                id="overview"
+            >
+
+                <div>
+
+                    <span class="terminal-eyebrow">
+                        Ocean Intelligence Terminal
+                    </span>
+
+                    <h1>
+                        Market Overview
+                    </h1>
+
+                    <p>
+                        Whale activity, liquidity, sentiment and risk
+                        in one connected intelligence interface.
+                    </p>
+
+                </div>
+
+
+                <div class="terminal-page-heading-actions">
+
+                    <div class="terminal-last-update">
+
+                        <span>
+                            Last update
+                        </span>
+
+                        <strong id="terminalCurrentTime">
+                            --:--
+                        </strong>
+
+                    </div>
+
+                    <button
+                        class="terminal-refresh-button"
+                        id="terminalRefreshButton"
+                        type="button"
+                    >
+                        ↻ Refresh
+                    </button>
+
+                </div>
+
+            </section>
+
+
+            <!-- =========================================
+     MARKET TICKER
+========================================== -->
+
+<section
+    class="terminal-market-ticker"
+    id="market"
+>
+
+    <article class="ticker-card">
+
+        <div class="ticker-asset">
+
+            <span class="ticker-symbol">
+                ₿
+            </span>
+
+            <div>
+                <strong>Bitcoin</strong>
+                <small>BTC / USDT</small>
+            </div>
+
+        </div>
+
+        <strong
+            class="ticker-price"
+            id="btcTerminalPrice"
+        >
+            $68,420
+        </strong>
+
+        <span class="ticker-change positive">
+            +2.18%
+        </span>
+
+    </article>
+
+
+    <article class="ticker-card">
+
+        <div class="ticker-asset">
+
+            <span class="ticker-symbol">
+                Ξ
+            </span>
+
+            <div>
+                <strong>Ethereum</strong>
+                <small>ETH / USDT</small>
+            </div>
+
+        </div>
+
+        <strong
+            class="ticker-price"
+            id="ethTerminalPrice"
+        >
+            $3,780
+        </strong>
+
+        <span class="ticker-change positive">
+            +1.46%
+        </span>
+
+    </article>
+
+
+    <article class="ticker-card">
+
+        <div class="ticker-asset">
+
+            <span class="ticker-symbol">
+                B
+            </span>
+
+            <div>
+                <strong>BNB</strong>
+                <small>BNB / USDT</small>
+            </div>
+
+        </div>
+
+        <strong
+            class="ticker-price"
+            id="bnbTerminalPrice"
+        >
+            $612
+        </strong>
+
+        <span class="ticker-change negative">
+            -0.37%
+        </span>
+
+    </article>
+
+
+    <article class="ticker-card">
+
+        <div class="ticker-asset">
+
+            <span class="ticker-symbol">
+                ◈
+            </span>
+
+            <div>
+                <strong>Total Market</strong>
+                <small>Crypto Market Cap</small>
+            </div>
+
+        </div>
+
+        <strong class="ticker-price">
+            $2.51T
+        </strong>
+
+        <span class="ticker-change positive">
+            +1.82%
+        </span>
+
+    </article>
+
+</section>
+
+
+<!-- =========================================
+     MAIN DASHBOARD
+========================================== -->
+
+<section class="terminal-dashboard-grid">
+
+    <article class="terminal-panel terminal-chart-panel">
+
+        <div class="terminal-panel-header">
+
+            <div>
+
+                <span>
+                    Ocean Market Flow
+                </span>
+
+                <strong>
+                    Global Crypto Intelligence
+                </strong>
+
+            </div>
+
+
+            <div class="chart-time-buttons">
+
+                <button type="button">
+                    1H
+                </button>
+
+                <button
+                    class="active"
+                    type="button"
+                >
+                    24H
+                </button>
+
+                <button type="button">
+                    7D
+                </button>
+
+                <button type="button">
+                    30D
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <div class="terminal-chart-summary">
+
+            <div>
+
+                <span>
+                    Ocean Index
+                </span>
+
+                <strong>
+                    74.38
+                </strong>
+
+            </div>
+
+            <span class="terminal-chart-positive">
+                +12.4%
+            </span>
+
+        </div>
+
+
+        <div class="terminal-large-chart">
+
+            <div class="terminal-chart-grid-lines"></div>
+
+            <svg
+                viewBox="0 0 1000 350"
+                preserveAspectRatio="none"
+                aria-hidden="true"
+            >
+
+                <defs>
+
+                    <linearGradient
+                        id="terminalMainChartGradient"
+                        x1="0"
+                        x2="0"
+                        y1="0"
+                        y2="1"
+                    >
+
+                        <stop
+                            offset="0%"
+                            stop-color="#00cfff"
+                            stop-opacity="0.36"
+                        />
+
+                        <stop
+                            offset="100%"
+                            stop-color="#00cfff"
+                            stop-opacity="0"
+                        />
+
+                    </linearGradient>
+
+                </defs>
+
+
+                <path
+                    class="terminal-chart-area-fill"
+                    d="
+                        M 0 280
+                        C 80 270, 120 310, 190 250
+                        C 260 190, 315 245, 380 180
+                        C 445 115, 500 180, 560 125
+                        C 620 70, 670 120, 730 82
+                        C 800 38, 850 95, 910 50
+                        C 945 25, 970 36, 1000 22
+                        L 1000 350
+                        L 0 350
+                        Z
+                    "
+                ></path>
+
+
+                <path
+                    class="terminal-chart-main-line"
+                    d="
+                        M 0 280
+                        C 80 270, 120 310, 190 250
+                        C 260 190, 315 245, 380 180
+                        C 445 115, 500 180, 560 125
+                        C 620 70, 670 120, 730 82
+                        C 800 38, 850 95, 910 50
+                        C 945 25, 970 36, 1000 22
+                    "
+                ></path>
+
+            </svg>
+
+
+            <div class="chart-axis-labels">
+
+                <span>00:00</span>
+                <span>04:00</span>
+                <span>08:00</span>
+                <span>12:00</span>
+                <span>16:00</span>
+                <span>20:00</span>
+                <span>Now</span>
+
+            </div>
+
+        </div>
+
+    </article>
+
+
+    <article class="terminal-panel ocean-score-panel">
+
+        <div class="terminal-panel-header">
+
+            <div>
+                <span>Ocean Status</span>
+                <strong>Market Condition</strong>
+            </div>
+
+            <span class="terminal-live-badge">
+                Live Demo
+            </span>
+
+        </div>
+
+
+        <div class="terminal-ocean-score">
+
+            <div class="terminal-ocean-score-ring">
+
+                <div>
+
+                    <strong>
+                        74
+                    </strong>
+
+                    <span>
+                        Ocean Score
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="ocean-condition">
+
+            <span>
+                Current condition
+            </span>
+
+            <strong>
+                Moderate Bullish
+            </strong>
+
+            <p>
+                Liquidity and whale activity remain elevated
+                while overall market risk is controlled.
+            </p>
+
+        </div>
+
+
+        <div class="ocean-condition-tags">
+
+            <span>Liquidity Active</span>
+            <span>Sentiment Positive</span>
+            <span>Risk Moderate</span>
+
+        </div>
+
+    </article>
+
+</section>
+
+<!-- =========================================
+     INTELLIGENCE METRICS
+========================================== -->
+
+<section class="terminal-metrics-grid">
+
+    <article
+        class="terminal-intelligence-card"
+        id="sentiment"
+    >
+
+        <div class="intelligence-card-heading">
+
+            <span>◉</span>
+
+            <small>
+                Greed
+            </small>
+
+        </div>
+
+        <span class="intelligence-card-label">
+            Fear & Greed
+        </span>
+
+        <strong>
+            72
+        </strong>
+
+        <div class="intelligence-progress">
+            <span style="--value: 72%"></span>
+        </div>
+
+        <p>
+            Investor appetite remains elevated.
+        </p>
+
+    </article>
+
+
+    <article
+        class="terminal-intelligence-card"
+        id="whales"
+    >
+
+        <div class="intelligence-card-heading">
+
+            <span>🐋</span>
+
+            <small>
+                High
+            </small>
+
+        </div>
+
+        <span class="intelligence-card-label">
+            Whale Activity
+        </span>
+
+        <strong>
+            87%
+        </strong>
+
+        <div class="intelligence-progress">
+            <span style="--value: 87%"></span>
+        </div>
+
+        <p>
+            Large-wallet movement above average.
+        </p>
+
+    </article>
+
+
+    <article
+        class="terminal-intelligence-card"
+        id="liquidity"
+    >
+
+        <div class="intelligence-card-heading">
+
+            <span>≈</span>
+
+            <small>
+                Positive
+            </small>
+
+        </div>
+
+        <span class="intelligence-card-label">
+            Stablecoin Flow
+        </span>
+
+        <strong>
+            +$183M
+        </strong>
+
+        <div class="intelligence-progress">
+            <span style="--value: 68%"></span>
+        </div>
+
+        <p>
+            Capital inflow supports market liquidity.
+        </p>
+
+    </article>
+
+
+    <article
+        class="terminal-intelligence-card"
+        id="risk"
+    >
+
+        <div class="intelligence-card-heading">
+
+            <span>◇</span>
+
+            <small class="risk">
+                Medium
+            </small>
+
+        </div>
+
+        <span class="intelligence-card-label">
+            Ocean Risk
+        </span>
+
+        <strong>
+            34%
+        </strong>
+
+        <div class="intelligence-progress risk-progress">
+            <span style="--value: 34%"></span>
+        </div>
+
+        <p>
+            Conditions remain controlled but monitored.
+        </p>
+
+    </article>
+
+</section>
+
+
+<!-- =========================================
+     WHALE RADAR + SARDINE AI
+========================================== -->
+
+<section class="terminal-secondary-grid">
+
+    <article class="terminal-panel whale-feed-panel">
+
+        <div class="terminal-panel-header">
+
+            <div>
+                <span>Whale Radar</span>
+                <strong>Latest Large Movements</strong>
+            </div>
+
+            <a href="#whales">
+                View all
+                <span>↗</span>
+            </a>
+
+        </div>
+
+
+        <div class="whale-activity-list">
+
+            <div class="whale-activity-row">
+
+                <span class="whale-activity-type buy">
+                    Buy
+                </span>
+
+                <div class="whale-activity-asset">
+
+                    <strong>
+                        BTC
+                    </strong>
+
+                    <small>
+                        Whale #018
+                    </small>
+
+                </div>
+
+                <strong class="whale-activity-value">
+                    $4.2M
+                </strong>
+
+                <span class="whale-activity-time">
+                    2 min
+                </span>
+
+            </div>
+
+
+            <div class="whale-activity-row">
+
+                <span class="whale-activity-type sell">
+                    Sell
+                </span>
+
+                <div class="whale-activity-asset">
+
+                    <strong>
+                        ETH
+                    </strong>
+
+                    <small>
+                        Whale #042
+                    </small>
+
+                </div>
+
+                <strong class="whale-activity-value">
+                    $2.8M
+                </strong>
+
+                <span class="whale-activity-time">
+                    8 min
+                </span>
+
+            </div>
+
+
+            <div class="whale-activity-row">
+
+                <span class="whale-activity-type transfer">
+                    Move
+                </span>
+
+                <div class="whale-activity-asset">
+
+                    <strong>
+                        USDT
+                    </strong>
+
+                    <small>
+                        Unknown wallet
+                    </small>
+
+                </div>
+
+                <strong class="whale-activity-value">
+                    $15M
+                </strong>
+
+                <span class="whale-activity-time">
+                    12 min
+                </span>
+
+            </div>
+
+
+            <div class="whale-activity-row">
+
+                <span class="whale-activity-type buy">
+                    Buy
+                </span>
+
+                <div class="whale-activity-asset">
+
+                    <strong>
+                        SOL
+                    </strong>
+
+                    <small>
+                        Whale #027
+                    </small>
+
+                </div>
+
+                <strong class="whale-activity-value">
+                    $1.7M
+                </strong>
+
+                <span class="whale-activity-time">
+                    21 min
+                </span>
+
+            </div>
+
+        </div>
+
+    </article>
+
+
+    <article
+        class="terminal-panel sardine-ai-panel"
+        id="sardine-ai"
+    >
+
+        <div class="terminal-panel-header">
+
+            <div>
+                <span>Sardine AI</span>
+                <strong>Intelligence Summary</strong>
+            </div>
+
+            <span class="terminal-ai-status">
+                Analysis Active
+            </span>
+
+        </div>
+
+
+        <div class="terminal-ai-response">
+
+            <div class="terminal-ai-avatar">
+                AI
+            </div>
+
+            <div>
+
+                <strong>
+                    Market Summary
+                </strong>
+
+                <p id="terminalAiText">
+                    Smart money remains concentrated in large-cap assets.
+                    Liquidity conditions are improving, but short-term
+                    volatility may increase.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="terminal-ai-actions">
+
+            <button
+                type="button"
+                data-ai-message="market"
+            >
+                Market today
+            </button>
+
+            <button
+                type="button"
+                data-ai-message="whales"
+            >
+                Whale activity
+            </button>
+
+            <button
+                type="button"
+                data-ai-message="risk"
+            >
+                Market risk
+            </button>
+
+        </div>
+
+    </article>
+
+</section>
+
+<!-- =========================================
+     OCEAN HEATMAP
+========================================== -->
+
+<section
+    class="terminal-panel terminal-heatmap-panel"
+    id="heatmap"
+>
+
+    <div class="terminal-panel-header">
+
+        <div>
+            <span>Ocean Heatmap</span>
+            <strong>Market Performance</strong>
+        </div>
+
+        <span class="terminal-demo-label">
+            Demonstration Data
+        </span>
+
+    </div>
+
+
+    <div class="terminal-heatmap">
+
+        <div class="heatmap-asset heatmap-large positive">
+
+            <strong>
+                BTC
+            </strong>
+
+            <span>
+                +2.18%
+            </span>
+
+        </div>
+
+
+        <div class="heatmap-asset heatmap-medium positive">
+
+            <strong>
+                ETH
+            </strong>
+
+            <span>
+                +1.46%
+            </span>
+
+        </div>
+
+
+        <div class="heatmap-asset heatmap-medium strong-positive">
+
+            <strong>
+                SOL
+            </strong>
+
+            <span>
+                +4.72%
+            </span>
+
+        </div>
+
+
+        <div class="heatmap-asset negative">
+
+            <strong>
+                BNB
+            </strong>
+
+            <span>
+                -0.37%
+            </span>
+
+        </div>
+
+
+        <div class="heatmap-asset positive">
+
+            <strong>
+                XRP
+            </strong>
+
+            <span>
+                +0.84%
+            </span>
+
+        </div>
+
+
+        <div class="heatmap-asset negative">
+
+            <strong>
+                DOGE
+            </strong>
+
+            <span>
+                -1.21%
+            </span>
+
+        </div>
+
+
+        <div class="heatmap-asset strong-positive">
+
+            <strong>
+                LINK
+            </strong>
+
+            <span>
+                +5.38%
+            </span>
+
+        </div>
+
+
+        <div class="heatmap-asset positive">
+
+            <strong>
+                AVAX
+            </strong>
+
+            <span>
+                +1.92%
+            </span>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================
+     INTELLIGENCE NEWS
+========================================== -->
+
+<section
+    class="terminal-panel terminal-news-panel"
+    id="news"
+>
+
+    <div class="terminal-panel-header">
+
+        <div>
+            <span>Intelligence News</span>
+            <strong>AI-Summarized Market Events</strong>
+        </div>
+
+        <span class="terminal-demo-label">
+            Coming Soon
+        </span>
+
+    </div>
+
+
+    <div class="terminal-news-grid">
+
+        <article>
+
+            <span>
+                Bitcoin
+            </span>
+
+            <strong>
+                Institutional demand remains elevated.
+            </strong>
+
+            <p>
+                Sardine AI identifies continued accumulation
+                in large-cap crypto assets.
+            </p>
+
+        </article>
+
+
+        <article>
+
+            <span>
+                Stablecoins
+            </span>
+
+            <strong>
+                Capital inflows support market liquidity.
+            </strong>
+
+            <p>
+                Stablecoin reserves indicate growing purchasing
+                capacity across major exchanges.
+            </p>
+
+        </article>
+
+
+        <article>
+
+            <span>
+                Narrative
+            </span>
+
+            <strong>
+                Artificial intelligence remains dominant.
+            </strong>
+
+            <p>
+                AI-related assets continue to attract attention
+                from retail and institutional participants.
+            </p>
+
+        </article>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================
+     DATA NOTICE
+========================================== -->
+
+<div class="terminal-data-notice">
+
+    <span>
+        !
+    </span>
+
+    <p>
+        This terminal currently displays demonstration data.
+        Real-time market APIs and Sardine AI integrations will
+        be connected during the next development phase.
+    </p>
+
+</div>
+
+
+        </main>
+
+    </div>
+
+
+    <script src="terminal.js"></script>
+
+</body>
+
+</html>
