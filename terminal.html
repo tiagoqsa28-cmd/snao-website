@@ -153,40 +153,70 @@
 
             <nav class="terminal-sidebar-navigation">
 
-                <a
-                    class="active"
-                    href="#overview"
-                >
-                    <span>◉</span>
-                    Overview
-                </a>
+    <a
+        class="active"
+        href="#overview"
+    >
+        <span>◉</span>
+        Overview
+    </a>
 
-                <a href="#market">
-                    <span>⌁</span>
-                    Market
-                </a>
+    <a href="#ocean-score-breakdown">
+        <span>◎</span>
+        Ocean Score
+    </a>
 
-                <a href="#whales">
-                    <span>🐋</span>
-                    Whale Radar
-                </a>
+    <a href="#market">
+        <span>⌁</span>
+        Market
+    </a>
 
-                <a href="#sentiment">
-                    <span>✦</span>
-                    Sentiment
-                </a>
+    <a href="#top-movers">
+        <span>↕</span>
+        Market Movers
+    </a>
 
-                <a href="#liquidity">
-                    <span>≈</span>
-                    Liquidity
-                </a>
+    <a href="#fear-greed">
+        <span>◔</span>
+        Fear & Greed
+    </a>
 
-                <a href="#risk">
-                    <span>◇</span>
-                    Risk Monitor
-                </a>
+    <a href="#narratives">
+        <span>✦</span>
+        Narratives
+    </a>
 
-            </nav>
+    <a href="#ocean-flow">
+        <span>≈</span>
+        Ocean Flow
+    </a>
+
+    <a href="#whale-intelligence">
+        <span>🐋</span>
+        Whale Monitor
+    </a>
+
+    <a href="#smart-money">
+        <span>◆</span>
+        Smart Money
+    </a>
+
+    <a href="#liquidity-pressure">
+        <span>◫</span>
+        Liquidity Index
+    </a>
+
+    <a href="#whale-confidence-index">
+        <span>W</span>
+        Whale Confidence
+    </a>
+
+    <a href="#risk">
+        <span>◇</span>
+        Risk Monitor
+    </a>
+
+</nav>
 
 
             <div class="terminal-sidebar-label">
@@ -195,27 +225,37 @@
 
             <nav class="terminal-sidebar-navigation">
 
-                <a href="#sardine-ai">
-                    <span>AI</span>
-                    Sardine AI
-                </a>
+    <a href="#sardine-ai">
+        <span>AI</span>
+        Sardine AI
+    </a>
 
-                <a href="#heatmap">
-                    <span>▦</span>
-                    Heatmap
-                </a>
+    <a href="#heatmap">
+        <span>▦</span>
+        Heatmap
+    </a>
 
-                <a href="#news">
-                    <span>▤</span>
-                    Intelligence News
-                </a>
+    <a href="#news">
+        <span>▤</span>
+        Intelligence News
+    </a>
 
-                <a href="index.html#products">
-                    <span>▣</span>
-                    Products
-                </a>
+    <a href="index.html#products">
+        <span>▣</span>
+        Products
+    </a>
 
-            </nav>
+    <a href="index.html#tokenomics">
+        <span>$</span>
+        Tokenomics
+    </a>
+
+    <a href="index.html">
+        <span>←</span>
+        SNAO Website
+    </a>
+
+</nav>
 
 
             <div class="terminal-sidebar-footer">
@@ -252,54 +292,2444 @@
 
         <main class="terminal-main">
 
-            <section
-                class="terminal-page-heading"
-                id="overview"
+            <!-- =========================================
+     PAGE HEADING
+========================================== -->
+
+<section
+    class="terminal-page-heading"
+    id="overview"
+>
+
+    <div>
+
+        <span class="terminal-eyebrow">
+            Ocean Intelligence Terminal
+        </span>
+
+        <h1>
+            Market Overview
+        </h1>
+
+        <p>
+            Whale activity, liquidity, sentiment and risk
+            in one connected intelligence interface.
+        </p>
+
+    </div>
+
+
+    <div class="terminal-page-heading-actions">
+
+        <div class="terminal-last-update">
+
+            <span>
+                Last update
+            </span>
+
+            <strong id="terminalCurrentTime">
+                --:--
+            </strong>
+
+        </div>
+
+        <button
+            class="terminal-refresh-button"
+            id="terminalRefreshButton"
+            type="button"
+        >
+            ↻ Refresh
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================
+     LIVE BAR
+========================================== -->
+
+<section class="terminal-live-bar">
+
+    <div class="live-item">
+
+        <span>
+            BTC Dominance
+        </span>
+
+        <strong id="liveBtcDominance">
+            Loading...
+        </strong>
+
+    </div>
+
+
+    <div class="live-item">
+
+        <span>
+            Total Market Cap
+        </span>
+
+        <strong id="liveTotalMarketCap">
+            Loading...
+        </strong>
+
+    </div>
+
+
+    <div class="live-item">
+
+        <span>
+            Market Change 24h
+        </span>
+
+        <strong
+            id="liveMarketChange"
+            class="live-market-neutral"
+        >
+            Loading...
+        </strong>
+
+    </div>
+
+
+    <div class="live-item">
+
+        <span>
+            Active Cryptocurrencies
+        </span>
+
+        <strong id="liveActiveCryptocurrencies">
+            Loading...
+        </strong>
+
+    </div>
+
+
+    <div class="live-item">
+
+        <span>
+            Ocean Score
+        </span>
+
+        <strong id="liveOceanScore">
+            74
+        </strong>
+
+        <small>
+            SNAO indicator
+        </small>
+
+    </div>
+
+</section>
+
+<!-- =========================================
+     OCEAN SCORE BREAKDOWN
+========================================== -->
+
+<section
+    class="terminal-panel ocean-score-breakdown-panel"
+    id="ocean-score-breakdown"
+>
+
+    <div class="terminal-panel-header">
+
+        <div>
+            <span>Ocean Score Intelligence</span>
+            <strong>SNAO Market Condition Index</strong>
+        </div>
+
+        <span class="terminal-demo-label">
+            Experimental Indicator
+        </span>
+
+    </div>
+
+
+    <div class="ocean-score-breakdown-layout">
+
+        <div class="ocean-score-main">
+
+            <div
+                class="ocean-score-main-ring"
+                id="oceanScoreMainRing"
+                style="--ocean-score-value: 74%;"
             >
 
                 <div>
 
-                    <span class="terminal-eyebrow">
-                        Ocean Intelligence Terminal
+                    <strong id="oceanScoreMainValue">
+                        74
+                    </strong>
+
+                    <span>
+                        Ocean Score
                     </span>
 
-                    <h1>
-                        Market Overview
-                    </h1>
+                </div>
 
-                    <p>
-                        Whale activity, liquidity, sentiment and risk
-                        in one connected intelligence interface.
-                    </p>
+            </div>
+
+
+            <div class="ocean-score-condition">
+
+                <span>
+                    Current market condition
+                </span>
+
+                <strong id="oceanScoreCondition">
+                    Moderate Bullish
+                </strong>
+
+                <p id="oceanScoreDescription">
+                    Market conditions show positive momentum, improving
+                    liquidity and controlled risk.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="ocean-score-components">
+
+            <article class="ocean-score-component">
+
+                <div>
+
+                    <span>
+                        Global Trend
+                    </span>
+
+                    <strong id="oceanTrendValue">
+                        70
+                    </strong>
+
+                </div>
+
+                <div class="ocean-component-progress">
+
+                    <span
+                        id="oceanTrendProgress"
+                        style="--component-value: 70%;"
+                    ></span>
+
+                </div>
+
+                <small>
+                    Global market-cap momentum
+                </small>
+
+            </article>
+
+
+            <article class="ocean-score-component">
+
+                <div>
+
+                    <span>
+                        Market Sentiment
+                    </span>
+
+                    <strong id="oceanSentimentValue">
+                        72
+                    </strong>
+
+                </div>
+
+                <div class="ocean-component-progress">
+
+                    <span
+                        id="oceanSentimentProgress"
+                        style="--component-value: 72%;"
+                    ></span>
+
+                </div>
+
+                <small>
+                    Fear & Greed market psychology
+                </small>
+
+            </article>
+
+
+            <article class="ocean-score-component">
+
+                <div>
+
+                    <span>
+                        Bitcoin Structure
+                    </span>
+
+                    <strong id="oceanBitcoinValue">
+                        68
+                    </strong>
+
+                </div>
+
+                <div class="ocean-component-progress">
+
+                    <span
+                        id="oceanBitcoinProgress"
+                        style="--component-value: 68%;"
+                    ></span>
+
+                </div>
+
+                <small>
+                    BTC dominance and market stability
+                </small>
+
+            </article>
+
+
+            <article class="ocean-score-component">
+
+                <div>
+
+                    <span>
+                        Liquidity Pressure
+                    </span>
+
+                    <strong id="oceanLiquidityValue">
+                        76
+                    </strong>
+
+                </div>
+
+                <div class="ocean-component-progress">
+
+                    <span
+                        id="oceanLiquidityProgress"
+                        style="--component-value: 76%;"
+                    ></span>
+
+                </div>
+
+                <small>
+                    Estimated capital availability
+                </small>
+
+            </article>
+
+
+            <article class="ocean-score-component ocean-risk-component">
+
+                <div>
+
+                    <span>
+                        Risk Control
+                    </span>
+
+                    <strong id="oceanRiskValue">
+                        66
+                    </strong>
+
+                </div>
+
+                <div class="ocean-component-progress">
+
+                    <span
+                        id="oceanRiskProgress"
+                        style="--component-value: 66%;"
+                    ></span>
+
+                </div>
+
+                <small>
+                    Volatility and overheating protection
+                </small>
+
+            </article>
+
+        </div>
+
+
+        <aside class="ocean-score-ai-analysis">
+
+            <span>
+                Sardine AI Interpretation
+            </span>
+
+            <h3 id="oceanScoreAiTitle">
+                The market remains constructive.
+            </h3>
+
+            <p id="oceanScoreAiText">
+                Positive global momentum and improving sentiment support
+                risk assets. Bitcoin dominance remains elevated, while
+                liquidity and volatility conditions remain controlled.
+            </p>
+
+
+            <div class="ocean-score-ai-signals">
+
+                <div>
+
+                    <span>
+                        Direction
+                    </span>
+
+                    <strong id="oceanScoreDirection">
+                        Positive
+                    </strong>
 
                 </div>
 
 
-                <div class="terminal-page-heading-actions">
+                <div>
 
-                    <div class="terminal-last-update">
+                    <span>
+                        Confidence
+                    </span>
 
-                        <span>
-                            Last update
-                        </span>
+                    <strong id="oceanScoreConfidence">
+                        74%
+                    </strong>
 
-                        <strong id="terminalCurrentTime">
-                            --:--
-                        </strong>
+                </div>
 
+
+                <div>
+
+                    <span>
+                        Risk Level
+                    </span>
+
+                    <strong id="oceanScoreRiskLevel">
+                        Medium
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <button
+                id="oceanScoreRefresh"
+                type="button"
+            >
+                ↻ Recalculate Ocean Score
+            </button>
+
+        </aside>
+
+    </div>
+
+
+    <div class="ocean-score-disclaimer">
+
+        <strong>
+            Experimental SNAO indicator.
+        </strong>
+
+        <span>
+            Ocean Score is an analytical market-condition estimate and
+            must not be interpreted as financial advice or a guaranteed signal.
+        </span>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================
+     SEARCH INTELLIGENCE
+========================================== -->
+
+<section class="terminal-search-section">
+
+    <div class="terminal-search-box">
+
+        <span class="terminal-search-icon">
+            ⌕
+        </span>
+
+        <input
+            id="terminalAssetSearch"
+            type="search"
+            placeholder="Search any cryptocurrency..."
+            autocomplete="off"
+            aria-label="Search cryptocurrency"
+        >
+
+        <button
+            id="terminalAssetSearchButton"
+            type="button"
+        >
+            Analyze
+        </button>
+
+    </div>
+
+
+    <div class="terminal-popular-assets">
+
+        <span>
+            Popular assets
+        </span>
+
+        <div>
+
+            <button
+                class="terminal-asset-button active"
+                type="button"
+                data-terminal-asset="BTC"
+            >
+                BTC
+            </button>
+
+            <button
+                class="terminal-asset-button"
+                type="button"
+                data-terminal-asset="ETH"
+            >
+                ETH
+            </button>
+
+            <button
+                class="terminal-asset-button"
+                type="button"
+                data-terminal-asset="SOL"
+            >
+                SOL
+            </button>
+
+            <button
+                class="terminal-asset-button"
+                type="button"
+                data-terminal-asset="XRP"
+            >
+                XRP
+            </button>
+
+            <button
+                class="terminal-asset-button"
+                type="button"
+                data-terminal-asset="BNB"
+            >
+                BNB
+            </button>
+
+            <button
+                class="terminal-asset-button"
+                type="button"
+                data-terminal-asset="DOGE"
+            >
+                DOGE
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <article class="terminal-asset-analysis-panel">
+
+        <div class="terminal-asset-analysis-header">
+
+            <div class="terminal-selected-asset">
+
+                <span
+                    class="terminal-selected-symbol"
+                    id="selectedAssetSymbol"
+                >
+                    ₿
+                </span>
+
+                <div>
+
+                    <span id="selectedAssetName">
+                        Bitcoin
+                    </span>
+
+                    <strong id="selectedAssetTicker">
+                        BTC
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <span
+                class="terminal-asset-market-state"
+                id="selectedAssetState"
+            >
+                Bullish
+            </span>
+
+        </div>
+
+
+        <div class="terminal-asset-analysis-grid">
+
+            <div>
+
+                <span>
+                    Price
+                </span>
+
+                <strong id="selectedAssetPrice">
+                    $68,420
+                </strong>
+
+            </div>
+
+
+            <div>
+
+                <span>
+                    24h Change
+                </span>
+
+                <strong
+                    class="terminal-analysis-positive"
+                    id="selectedAssetChange"
+                >
+                    +2.18%
+                </strong>
+
+            </div>
+
+
+            <div>
+
+                <span>
+                    Market Cap
+                </span>
+
+                <strong id="selectedAssetMarketCap">
+                    $1.35T
+                </strong>
+
+            </div>
+
+
+            <div>
+
+                <span>
+                    Volume 24h
+                </span>
+
+                <strong id="selectedAssetVolume">
+                    $31.8B
+                </strong>
+
+            </div>
+
+
+            <div>
+
+                <span>
+                    AI Score
+                </span>
+
+                <strong id="selectedAssetAiScore">
+                    84
+                </strong>
+
+            </div>
+
+
+            <div>
+
+                <span>
+                    Whale Activity
+                </span>
+
+                <strong id="selectedAssetWhales">
+                    High
+                </strong>
+
+            </div>
+
+
+            <div>
+
+                <span>
+                    Risk
+                </span>
+
+                <strong id="selectedAssetRisk">
+                    Medium
+                </strong>
+
+            </div>
+
+
+            <div>
+
+                <span>
+                    Sentiment
+                </span>
+
+                <strong id="selectedAssetSentiment">
+                    Positive
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <div class="terminal-asset-ai-summary">
+
+            <span>
+                Sardine AI analysis
+            </span>
+
+            <p id="selectedAssetSummary">
+                Bitcoin shows strong institutional demand, elevated whale
+                activity and improving liquidity. Short-term volatility
+                remains possible, but the broader structure is positive.
+            </p>
+
+        </div>
+
+    </article>
+
+</section>
+
+
+<!-- =========================================
+     TRENDING NARRATIVES
+========================================== -->
+
+<section
+    class="terminal-panel terminal-narratives-panel"
+    id="narratives"
+>
+
+    <div class="terminal-panel-header">
+
+        <div>
+            <span>Trending Narratives</span>
+            <strong>Market Attention Index</strong>
+        </div>
+
+        <span class="terminal-demo-label">
+            Demo Intelligence
+        </span>
+
+    </div>
+
+
+    <div class="terminal-narratives-layout">
+
+        <div class="terminal-narratives-list">
+
+            <article
+                class="terminal-narrative-item active"
+                data-narrative="ai"
+            >
+
+                <div class="narrative-rank">
+                    01
+                </div>
+
+                <div class="narrative-information">
+
+                    <div>
+                        <strong>Artificial Intelligence</strong>
+                        <span>AI infrastructure and agents</span>
                     </div>
 
-                    <button
-                        class="terminal-refresh-button"
-                        id="terminalRefreshButton"
-                        type="button"
-                    >
-                        ↻ Refresh
-                    </button>
+                    <b>95%</b>
 
                 </div>
 
-            </section>
+                <div class="narrative-progress">
+                    <span style="--narrative-value: 95%"></span>
+                </div>
+
+            </article>
+
+
+            <article
+                class="terminal-narrative-item"
+                data-narrative="rwa"
+            >
+
+                <div class="narrative-rank">
+                    02
+                </div>
+
+                <div class="narrative-information">
+
+                    <div>
+                        <strong>Real World Assets</strong>
+                        <span>Tokenized financial assets</span>
+                    </div>
+
+                    <b>78%</b>
+
+                </div>
+
+                <div class="narrative-progress">
+                    <span style="--narrative-value: 78%"></span>
+                </div>
+
+            </article>
+
+
+            <article
+                class="terminal-narrative-item"
+                data-narrative="defi"
+            >
+
+                <div class="narrative-rank">
+                    03
+                </div>
+
+                <div class="narrative-information">
+
+                    <div>
+                        <strong>DeFi</strong>
+                        <span>Lending, liquidity and yield</span>
+                    </div>
+
+                    <b>69%</b>
+
+                </div>
+
+                <div class="narrative-progress">
+                    <span style="--narrative-value: 69%"></span>
+                </div>
+
+            </article>
+
+
+            <article
+                class="terminal-narrative-item"
+                data-narrative="gaming"
+            >
+
+                <div class="narrative-rank">
+                    04
+                </div>
+
+                <div class="narrative-information">
+
+                    <div>
+                        <strong>Gaming</strong>
+                        <span>Web3 gaming ecosystems</span>
+                    </div>
+
+                    <b>61%</b>
+
+                </div>
+
+                <div class="narrative-progress">
+                    <span style="--narrative-value: 61%"></span>
+                </div>
+
+            </article>
+
+
+            <article
+                class="terminal-narrative-item"
+                data-narrative="memes"
+            >
+
+                <div class="narrative-rank">
+                    05
+                </div>
+
+                <div class="narrative-information">
+
+                    <div>
+                        <strong>Memecoins</strong>
+                        <span>High-risk speculative activity</span>
+                    </div>
+
+                    <b>54%</b>
+
+                </div>
+
+                <div class="narrative-progress">
+                    <span style="--narrative-value: 54%"></span>
+                </div>
+
+            </article>
+
+
+            <article
+                class="terminal-narrative-item"
+                data-narrative="layer2"
+            >
+
+                <div class="narrative-rank">
+                    06
+                </div>
+
+                <div class="narrative-information">
+
+                    <div>
+                        <strong>Layer 2</strong>
+                        <span>Blockchain scalability</span>
+                    </div>
+
+                    <b>47%</b>
+
+                </div>
+
+                <div class="narrative-progress">
+                    <span style="--narrative-value: 47%"></span>
+                </div>
+
+            </article>
+
+        </div>
+
+
+        <aside class="terminal-narrative-analysis">
+
+            <span class="narrative-analysis-label">
+                Sardine AI Analysis
+            </span>
+
+            <div class="narrative-analysis-symbol">
+                AI
+            </div>
+
+            <h3 id="narrativeAnalysisTitle">
+                Artificial Intelligence
+            </h3>
+
+            <strong id="narrativeAnalysisScore">
+                95% Attention Score
+            </strong>
+
+            <p id="narrativeAnalysisText">
+                Artificial intelligence remains the strongest market
+                narrative. Capital is concentrated in AI infrastructure,
+                autonomous agents and data-focused blockchain projects.
+            </p>
+
+
+            <div class="narrative-analysis-stats">
+
+                <div>
+
+                    <span>
+                        Momentum
+                    </span>
+
+                    <strong id="narrativeMomentum">
+                        Strong
+                    </strong>
+
+                </div>
+
+
+                <div>
+
+                    <span>
+                        Whale Interest
+                    </span>
+
+                    <strong id="narrativeWhaleInterest">
+                        High
+                    </strong>
+
+                </div>
+
+
+                <div>
+
+                    <span>
+                        Risk
+                    </span>
+
+                    <strong id="narrativeRisk">
+                        Medium
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </aside>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================
+     OCEAN FLOW MAP
+========================================== -->
+
+<section
+    class="terminal-panel terminal-flow-panel"
+    id="ocean-flow"
+>
+
+    <div class="terminal-panel-header">
+
+        <div>
+            <span>Ocean Flow Map</span>
+            <strong>Capital Movement Between Exchanges</strong>
+        </div>
+
+        <span class="terminal-demo-label">
+            Live Simulation
+        </span>
+
+    </div>
+
+
+    <div class="terminal-flow-layout">
+
+        <div class="terminal-flow-map">
+
+            <div class="flow-map-grid"></div>
+            <div class="flow-map-glow"></div>
+
+
+            <div class="flow-connection flow-connection-one">
+                <span></span>
+            </div>
+
+            <div class="flow-connection flow-connection-two">
+                <span></span>
+            </div>
+
+            <div class="flow-connection flow-connection-three">
+                <span></span>
+            </div>
+
+            <div class="flow-connection flow-connection-four">
+                <span></span>
+            </div>
+
+            <div class="flow-connection flow-connection-five">
+                <span></span>
+            </div>
+
+
+            <article class="flow-exchange flow-exchange-binance">
+
+                <span class="flow-exchange-icon">
+                    B
+                </span>
+
+                <strong>
+                    Binance
+                </strong>
+
+                <small>
+                    Highest activity
+                </small>
+
+                <b>
+                    +$184M
+                </b>
+
+            </article>
+
+
+            <article class="flow-exchange flow-exchange-coinbase">
+
+                <span class="flow-exchange-icon">
+                    C
+                </span>
+
+                <strong>
+                    Coinbase
+                </strong>
+
+                <small>
+                    Institutional flow
+                </small>
+
+                <b>
+                    +$96M
+                </b>
+
+            </article>
+
+
+            <article class="flow-exchange flow-exchange-okx">
+
+                <span class="flow-exchange-icon">
+                    O
+                </span>
+
+                <strong>
+                    OKX
+                </strong>
+
+                <small>
+                    Derivatives activity
+                </small>
+
+                <b class="flow-negative">
+                    -$42M
+                </b>
+
+            </article>
+
+
+            <article class="flow-exchange flow-exchange-bybit">
+
+                <span class="flow-exchange-icon">
+                    Y
+                </span>
+
+                <strong>
+                    Bybit
+                </strong>
+
+                <small>
+                    Futures liquidity
+                </small>
+
+                <b>
+                    +$71M
+                </b>
+
+            </article>
+
+
+            <article class="flow-exchange flow-exchange-kraken">
+
+                <span class="flow-exchange-icon">
+                    K
+                </span>
+
+                <strong>
+                    Kraken
+                </strong>
+
+                <small>
+                    Stable activity
+                </small>
+
+                <b>
+                    +$24M
+                </b>
+
+            </article>
+
+
+            <div class="flow-map-core">
+
+                <span>
+                    SNAO
+                </span>
+
+                <strong>
+                    Ocean Flow
+                </strong>
+
+                <small>
+                    Global liquidity network
+                </small>
+
+                <div class="flow-core-status">
+
+                    <i></i>
+
+                    Monitoring
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <aside class="terminal-flow-analysis">
+
+            <span class="flow-analysis-label">
+                Sardine AI Flow Analysis
+            </span>
+
+            <h3>
+                Capital is moving toward major exchanges.
+            </h3>
+
+            <p>
+                Positive inflows are concentrated in Binance,
+                Coinbase and Bybit. OKX currently shows a moderate
+                net outflow, while Kraken remains stable.
+            </p>
+
+
+            <div class="flow-analysis-metrics">
+
+                <div>
+
+                    <span>
+                        Total Inflow
+                    </span>
+
+                    <strong>
+                        +$375M
+                    </strong>
+
+                </div>
+
+
+                <div>
+
+                    <span>
+                        Total Outflow
+                    </span>
+
+                    <strong class="flow-analysis-negative">
+                        -$42M
+                    </strong>
+
+                </div>
+
+
+                <div>
+
+                    <span>
+                        Net Flow
+                    </span>
+
+                    <strong>
+                        +$333M
+                    </strong>
+
+                </div>
+
+
+                <div>
+
+                    <span>
+                        Flow Condition
+                    </span>
+
+                    <strong>
+                        Positive
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="flow-dominant-route">
+
+                <span>
+                    Dominant Route
+                </span>
+
+                <div>
+
+                    <strong>
+                        Coinbase
+                    </strong>
+
+                    <b>
+                        →
+                    </b>
+
+                    <strong>
+                        Binance
+                    </strong>
+
+                </div>
+
+                <small>
+                    Estimated institutional transfer concentration
+                </small>
+
+            </div>
+
+
+            <button
+                class="flow-analysis-button"
+                id="flowAnalysisButton"
+                type="button"
+            >
+                Refresh Flow Analysis
+            </button>
+
+        </aside>
+
+    </div>
+
+</section>
+
+<!-- =========================================
+     WHALE INTELLIGENCE TABLE
+========================================== -->
+
+<section
+    class="terminal-panel whale-intelligence-panel"
+    id="whale-intelligence"
+>
+
+    <div class="terminal-panel-header">
+
+        <div>
+            <span>Whale Intelligence</span>
+            <strong>Large Wallet Activity Monitor</strong>
+        </div>
+
+        <div class="whale-table-header-actions">
+
+            <span class="terminal-demo-label">
+                Live Simulation
+            </span>
+
+            <button
+                class="whale-table-refresh"
+                id="whaleTableRefresh"
+                type="button"
+            >
+                ↻ Refresh
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <div class="whale-table-summary">
+
+        <div>
+
+            <span>
+                Transactions monitored
+            </span>
+
+            <strong>
+                1,284
+            </strong>
+
+        </div>
+
+
+        <div>
+
+            <span>
+                Accumulation volume
+            </span>
+
+            <strong class="whale-summary-positive">
+                +$248M
+            </strong>
+
+        </div>
+
+
+        <div>
+
+            <span>
+                Distribution volume
+            </span>
+
+            <strong class="whale-summary-negative">
+                -$94M
+            </strong>
+
+        </div>
+
+
+        <div>
+
+            <span>
+                Dominant behavior
+            </span>
+
+            <strong>
+                Accumulation
+            </strong>
+
+        </div>
+
+    </div>
+
+
+    <div class="whale-table-scroll">
+
+        <div class="whale-intelligence-table">
+
+            <div class="whale-table-row whale-table-heading">
+
+                <span>Time</span>
+                <span>Wallet</span>
+                <span>Action</span>
+                <span>Asset</span>
+                <span>Value</span>
+                <span>Exchange</span>
+                <span>Confidence</span>
+                <span>AI Signal</span>
+
+            </div>
+
+
+            <div class="whale-table-row">
+
+                <span class="whale-table-time">
+                    2 min
+                </span>
+
+                <span class="whale-wallet">
+
+                    <i>W</i>
+
+                    <span>
+                        0x8A4F...91D2
+                    </span>
+
+                </span>
+
+                <span class="whale-action whale-action-buy">
+                    Buy
+                </span>
+
+                <strong>
+                    BTC
+                </strong>
+
+                <span class="whale-table-value">
+                    $4.28M
+                </span>
+
+                <span>
+                    Binance
+                </span>
+
+                <span class="whale-confidence">
+
+                    <span>
+                        96%
+                    </span>
+
+                    <i>
+                        <b style="--confidence: 96%"></b>
+                    </i>
+
+                </span>
+
+                <span class="whale-ai-signal positive">
+                    Accumulation
+                </span>
+
+            </div>
+
+
+            <div class="whale-table-row">
+
+                <span class="whale-table-time">
+                    7 min
+                </span>
+
+                <span class="whale-wallet">
+
+                    <i>W</i>
+
+                    <span>
+                        0x31B9...2F70
+                    </span>
+
+                </span>
+
+                <span class="whale-action whale-action-sell">
+                    Sell
+                </span>
+
+                <strong>
+                    ETH
+                </strong>
+
+                <span class="whale-table-value">
+                    $2.84M
+                </span>
+
+                <span>
+                    Coinbase
+                </span>
+
+                <span class="whale-confidence">
+
+                    <span>
+                        89%
+                    </span>
+
+                    <i>
+                        <b style="--confidence: 89%"></b>
+                    </i>
+
+                </span>
+
+                <span class="whale-ai-signal negative">
+                    Distribution
+                </span>
+
+            </div>
+
+
+            <div class="whale-table-row">
+
+                <span class="whale-table-time">
+                    12 min
+                </span>
+
+                <span class="whale-wallet">
+
+                    <i>W</i>
+
+                    <span>
+                        0x72C1...A814
+                    </span>
+
+                </span>
+
+                <span class="whale-action whale-action-move">
+                    Move
+                </span>
+
+                <strong>
+                    USDT
+                </strong>
+
+                <span class="whale-table-value">
+                    $15.2M
+                </span>
+
+                <span>
+                    Unknown
+                </span>
+
+                <span class="whale-confidence">
+
+                    <span>
+                        82%
+                    </span>
+
+                    <i>
+                        <b style="--confidence: 82%"></b>
+                    </i>
+
+                </span>
+
+                <span class="whale-ai-signal neutral">
+                    Monitoring
+                </span>
+
+            </div>
+
+
+            <div class="whale-table-row">
+
+                <span class="whale-table-time">
+                    19 min
+                </span>
+
+                <span class="whale-wallet">
+
+                    <i>W</i>
+
+                    <span>
+                        0x59E3...44C1
+                    </span>
+
+                </span>
+
+                <span class="whale-action whale-action-buy">
+                    Buy
+                </span>
+
+                <strong>
+                    SOL
+                </strong>
+
+                <span class="whale-table-value">
+                    $1.76M
+                </span>
+
+                <span>
+                    Bybit
+                </span>
+
+                <span class="whale-confidence">
+
+                    <span>
+                        91%
+                    </span>
+
+                    <i>
+                        <b style="--confidence: 91%"></b>
+                    </i>
+
+                </span>
+
+                <span class="whale-ai-signal positive">
+                    Accumulation
+                </span>
+
+            </div>
+
+
+            <div class="whale-table-row">
+
+                <span class="whale-table-time">
+                    31 min
+                </span>
+
+                <span class="whale-wallet">
+
+                    <i>W</i>
+
+                    <span>
+                        0xA213...6B90
+                    </span>
+
+                </span>
+
+                <span class="whale-action whale-action-buy">
+                    Buy
+                </span>
+
+                <strong>
+                    LINK
+                </strong>
+
+                <span class="whale-table-value">
+                    $980K
+                </span>
+
+                <span>
+                    OKX
+                </span>
+
+                <span class="whale-confidence">
+
+                    <span>
+                        78%
+                    </span>
+
+                    <i>
+                        <b style="--confidence: 78%"></b>
+                    </i>
+
+                </span>
+
+                <span class="whale-ai-signal positive">
+                    Early Entry
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="whale-table-ai-summary">
+
+        <div class="whale-table-ai-icon">
+            AI
+        </div>
+
+        <div>
+
+            <span>
+                Sardine AI Whale Summary
+            </span>
+
+            <strong id="whaleTableSummaryTitle">
+                Large wallets are showing net accumulation.
+            </strong>
+
+            <p id="whaleTableSummaryText">
+                Bitcoin and Solana currently show the strongest buying
+                concentration. Ethereum has moderate distribution pressure,
+                while stablecoin transfers indicate available market liquidity.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =========================================
+     TOP MOVERS
+========================================== -->
+
+<section
+    class="terminal-panel terminal-top-movers"
+    id="top-movers"
+>
+
+    <div class="terminal-panel-header">
+
+        <div>
+
+            <span>
+                Market Movers
+            </span>
+
+            <strong>
+                Top Gainers & Top Losers
+            </strong>
+
+        </div>
+
+        <span class="terminal-demo-label">
+            Live Market
+        </span>
+
+    </div>
+
+
+    <div class="top-movers-grid">
+
+        <div class="top-movers-column">
+
+            <h3>
+                🚀 Top Gainers
+            </h3>
+
+            <div id="topGainersList"></div>
+
+        </div>
+
+
+        <div class="top-movers-column">
+
+            <h3>
+                🔻 Top Losers
+            </h3>
+
+            <div id="topLosersList"></div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =========================================
+     SMART MONEY RADAR
+========================================== -->
+
+<section
+    class="terminal-panel smart-money-panel"
+    id="smart-money"
+>
+
+    <div class="terminal-panel-header">
+
+        <div>
+
+            <span>
+                Smart Money Radar
+            </span>
+
+            <strong>
+                Institutional Capital Monitor
+            </strong>
+
+        </div>
+
+        <span class="terminal-demo-label">
+            Sardine Intelligence
+        </span>
+
+    </div>
+
+
+    <div class="smart-money-layout">
+
+        <div class="smart-money-score">
+
+            <div class="smart-money-circle">
+
+                <strong id="smartMoneyValue">
+                    81
+                </strong>
+
+                <span>
+                    Smart Money
+                </span>
+
+            </div>
+
+            <p>
+                Institutional participation
+                estimated by Sardine AI.
+            </p>
+
+        </div>
+
+
+        <div class="smart-money-signals">
+
+            <div class="smart-signal">
+
+                <span>
+                    Whale Accumulation
+                </span>
+
+                <strong id="smartWhaleSignal">
+                    High
+                </strong>
+
+            </div>
+
+            <div class="smart-signal">
+
+                <span>
+                    Exchange Outflow
+                </span>
+
+                <strong id="smartExchangeSignal">
+                    Positive
+                </strong>
+
+            </div>
+
+            <div class="smart-signal">
+
+                <span>
+                    Liquidity
+                </span>
+
+                <strong id="smartLiquiditySignal">
+                    Increasing
+                </strong>
+
+            </div>
+
+            <div class="smart-signal">
+
+                <span>
+                    Institutional Bias
+                </span>
+
+                <strong id="smartBiasSignal">
+                    Bullish
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <aside class="smart-money-analysis">
+
+            <span>
+                Sardine AI
+            </span>
+
+            <h3 id="smartMoneyTitle">
+                Institutions remain active.
+            </h3>
+
+            <p id="smartMoneyText">
+                Whale accumulation and exchange withdrawals
+                continue supporting long-term positive market
+                structure.
+            </p>
+
+            <button
+                id="smartMoneyRefresh"
+                type="button"
+            >
+                Refresh Radar
+            </button>
+
+        </aside>
+
+    </div>
+
+</section>
+
+<!-- =========================================
+     LIQUIDITY PRESSURE INDEX
+========================================== -->
+
+<section
+    class="terminal-panel liquidity-pressure-panel"
+    id="liquidity-pressure"
+>
+
+    <div class="terminal-panel-header">
+
+        <div>
+
+            <span>
+                Liquidity Pressure Index
+            </span>
+
+            <strong>
+                SNAO Capital Availability Monitor
+            </strong>
+
+        </div>
+
+        <span class="terminal-demo-label">
+            Experimental Indicator
+        </span>
+
+    </div>
+
+
+    <div class="liquidity-pressure-layout">
+
+        <!-- INDICADOR PRINCIPAL -->
+
+        <div class="liquidity-pressure-main">
+
+            <div
+                class="liquidity-pressure-ring"
+                id="liquidityPressureRing"
+                style="--liquidity-pressure-value: 76%;"
+            >
+
+                <div>
+
+                    <strong id="liquidityPressureValue">
+                        76
+                    </strong>
+
+                    <span>
+                        LPI
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="liquidity-pressure-condition">
+
+                <span>
+                    Current condition
+                </span>
+
+                <strong id="liquidityPressureCondition">
+                    Positive Inflow
+                </strong>
+
+                <p id="liquidityPressureDescription">
+                    Capital availability is increasing and liquidity
+                    conditions remain supportive for risk assets.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- COMPONENTES -->
+
+        <div class="liquidity-pressure-components">
+
+            <article class="liquidity-component">
+
+                <div>
+
+                    <span>
+                        Global Market Flow
+                    </span>
+
+                    <strong id="liquidityGlobalValue">
+                        72
+                    </strong>
+
+                </div>
+
+                <div class="liquidity-component-progress">
+
+                    <span
+                        id="liquidityGlobalProgress"
+                        style="--liquidity-component-value: 72%;"
+                    ></span>
+
+                </div>
+
+                <small>
+                    Market-cap expansion and contraction
+                </small>
+
+            </article>
+
+
+            <article class="liquidity-component">
+
+                <div>
+
+                    <span>
+                        Stablecoin Capacity
+                    </span>
+
+                    <strong id="liquidityStablecoinValue">
+                        78
+                    </strong>
+
+                </div>
+
+                <div class="liquidity-component-progress">
+
+                    <span
+                        id="liquidityStablecoinProgress"
+                        style="--liquidity-component-value: 78%;"
+                    ></span>
+
+                </div>
+
+                <small>
+                    Estimated available purchasing power
+                </small>
+
+            </article>
+
+
+            <article class="liquidity-component">
+
+                <div>
+
+                    <span>
+                        Exchange Flow
+                    </span>
+
+                    <strong id="liquidityExchangeValue">
+                        69
+                    </strong>
+
+                </div>
+
+                <div class="liquidity-component-progress">
+
+                    <span
+                        id="liquidityExchangeProgress"
+                        style="--liquidity-component-value: 69%;"
+                    ></span>
+
+                </div>
+
+                <small>
+                    Capital movement between major exchanges
+                </small>
+
+            </article>
+
+
+            <article class="liquidity-component">
+
+                <div>
+
+                    <span>
+                        Market Participation
+                    </span>
+
+                    <strong id="liquidityParticipationValue">
+                        74
+                    </strong>
+
+                </div>
+
+                <div class="liquidity-component-progress">
+
+                    <span
+                        id="liquidityParticipationProgress"
+                        style="--liquidity-component-value: 74%;"
+                    ></span>
+
+                </div>
+
+                <small>
+                    Breadth of active market participation
+                </small>
+
+            </article>
+
+        </div>
+
+
+        <!-- ANÁLISE -->
+
+        <aside class="liquidity-pressure-analysis">
+
+            <span>
+                Sardine AI Liquidity Analysis
+            </span>
+
+            <h3 id="liquidityPressureTitle">
+                Liquidity conditions remain supportive.
+            </h3>
+
+            <p id="liquidityPressureText">
+                Positive capital flow and available purchasing capacity
+                continue supporting the broader market. Short-term volatility
+                may occur, but liquidity pressure remains constructive.
+            </p>
+
+
+            <div class="liquidity-pressure-signals">
+
+                <div>
+
+                    <span>
+                        Direction
+                    </span>
+
+                    <strong id="liquidityPressureDirection">
+                        Inflow
+                    </strong>
+
+                </div>
+
+
+                <div>
+
+                    <span>
+                        Strength
+                    </span>
+
+                    <strong id="liquidityPressureStrength">
+                        High
+                    </strong>
+
+                </div>
+
+
+                <div>
+
+                    <span>
+                        Market Impact
+                    </span>
+
+                    <strong id="liquidityPressureImpact">
+                        Positive
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <button
+                id="liquidityPressureRefresh"
+                type="button"
+            >
+                ↻ Recalculate LPI
+            </button>
+
+        </aside>
+
+    </div>
+
+
+    <div class="liquidity-pressure-disclaimer">
+
+        <strong>
+            Experimental SNAO indicator.
+        </strong>
+
+        <span>
+            The Liquidity Pressure Index is an analytical estimate and
+            must not be interpreted as financial advice.
+        </span>
+
+    </div>
+
+</section>
+
+<!-- =========================================
+     WHALE CONFIDENCE INDEX
+========================================== -->
+
+<section
+    class="terminal-panel whale-confidence-panel"
+    id="whale-confidence-index"
+>
+
+    <div class="terminal-panel-header">
+
+        <div>
+
+            <span>
+                Whale Confidence Index
+            </span>
+
+            <strong>
+                Large Wallet Conviction Monitor
+            </strong>
+
+        </div>
+
+        <span class="terminal-demo-label">
+            Experimental Indicator
+        </span>
+
+    </div>
+
+
+    <div class="whale-confidence-layout">
+
+        <!-- INDICADOR PRINCIPAL -->
+
+        <div class="whale-confidence-main">
+
+            <div
+                class="whale-confidence-ring"
+                id="whaleConfidenceRing"
+                style="--whale-confidence-value: 82%;"
+            >
+
+                <div>
+
+                    <strong id="whaleConfidenceValue">
+                        82
+                    </strong>
+
+                    <span>
+                        WCI
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="whale-confidence-condition">
+
+                <span>
+                    Current conviction
+                </span>
+
+                <strong id="whaleConfidenceCondition">
+                    High Confidence
+                </strong>
+
+                <p id="whaleConfidenceDescription">
+                    Large-wallet activity currently suggests persistent
+                    accumulation and positive institutional positioning.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- COMPONENTES -->
+
+        <div class="whale-confidence-components">
+
+            <article class="whale-confidence-component">
+
+                <div>
+
+                    <span>
+                        Accumulation Strength
+                    </span>
+
+                    <strong id="whaleAccumulationValue">
+                        86
+                    </strong>
+
+                </div>
+
+                <div class="whale-confidence-progress">
+
+                    <span
+                        id="whaleAccumulationProgress"
+                        style="--whale-component-value: 86%;"
+                    ></span>
+
+                </div>
+
+                <small>
+                    Estimated concentration of large-wallet buying
+                </small>
+
+            </article>
+
+
+            <article class="whale-confidence-component">
+
+                <div>
+
+                    <span>
+                        Transaction Quality
+                    </span>
+
+                    <strong id="whaleTransactionQualityValue">
+                        79
+                    </strong>
+
+                </div>
+
+                <div class="whale-confidence-progress">
+
+                    <span
+                        id="whaleTransactionQualityProgress"
+                        style="--whale-component-value: 79%;"
+                    ></span>
+
+                </div>
+
+                <small>
+                    Confidence level of monitored whale activity
+                </small>
+
+            </article>
+
+
+            <article class="whale-confidence-component">
+
+                <div>
+
+                    <span>
+                        Exchange Behavior
+                    </span>
+
+                    <strong id="whaleExchangeBehaviorValue">
+                        74
+                    </strong>
+
+                </div>
+
+                <div class="whale-confidence-progress">
+
+                    <span
+                        id="whaleExchangeBehaviorProgress"
+                        style="--whale-component-value: 74%;"
+                    ></span>
+
+                </div>
+
+                <small>
+                    Estimated deposit and withdrawal pressure
+                </small>
+
+            </article>
+
+
+            <article class="whale-confidence-component">
+
+                <div>
+
+                    <span>
+                        Market Alignment
+                    </span>
+
+                    <strong id="whaleMarketAlignmentValue">
+                        81
+                    </strong>
+
+                </div>
+
+                <div class="whale-confidence-progress">
+
+                    <span
+                        id="whaleMarketAlignmentProgress"
+                        style="--whale-component-value: 81%;"
+                    ></span>
+
+                </div>
+
+                <small>
+                    Alignment between whales, liquidity and sentiment
+                </small>
+
+            </article>
+
+        </div>
+
+
+        <!-- ANÁLISE -->
+
+        <aside class="whale-confidence-analysis">
+
+            <span>
+                Sardine AI Whale Interpretation
+            </span>
+
+            <h3 id="whaleConfidenceTitle">
+                Large wallets show strong conviction.
+            </h3>
+
+            <p id="whaleConfidenceText">
+                Accumulation behavior, transaction quality and market
+                alignment currently indicate elevated whale confidence.
+            </p>
+
+
+            <div class="whale-confidence-signals">
+
+                <div>
+
+                    <span>
+                        Dominant Action
+                    </span>
+
+                    <strong id="whaleDominantAction">
+                        Accumulation
+                    </strong>
+
+                </div>
+
+
+                <div>
+
+                    <span>
+                        Confidence
+                    </span>
+
+                    <strong id="whaleSignalConfidence">
+                        High
+                    </strong>
+
+                </div>
+
+
+                <div>
+
+                    <span>
+                        Market Effect
+                    </span>
+
+                    <strong id="whaleMarketEffect">
+                        Positive
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <button
+                id="whaleConfidenceRefresh"
+                type="button"
+            >
+                ↻ Recalculate WCI
+            </button>
+
+        </aside>
+
+    </div>
+
+
+    <div class="whale-confidence-disclaimer">
+
+        <strong>
+            Experimental SNAO indicator.
+        </strong>
+
+        <span>
+            The Whale Confidence Index estimates large-wallet conviction
+            and must not be interpreted as financial advice.
+        </span>
+
+    </div>
+
+</section>
 
 
             <!-- =========================================
@@ -333,9 +2763,12 @@
             $68,420
         </strong>
 
-        <span class="ticker-change positive">
-            +2.18%
-        </span>
+        <span
+    class="ticker-change positive"
+    id="btcTerminalChange"
+>
+    Loading...
+</span>
 
     </article>
 
@@ -362,9 +2795,12 @@
             $3,780
         </strong>
 
-        <span class="ticker-change positive">
-            +1.46%
-        </span>
+        <span
+    class="ticker-change positive"
+    id="ethTerminalChange"
+>
+    Loading...
+</span>
 
     </article>
 
@@ -391,9 +2827,12 @@
             $612
         </strong>
 
-        <span class="ticker-change negative">
-            -0.37%
-        </span>
+        <span
+    class="ticker-change"
+    id="bnbTerminalChange"
+>
+    Loading...
+</span>
 
     </article>
 
@@ -790,6 +3229,185 @@
         </p>
 
     </article>
+
+</section>
+
+<!-- =========================================
+     FEAR & GREED INTELLIGENCE
+========================================== -->
+
+<section
+    class="terminal-panel fear-greed-panel"
+    id="fear-greed"
+>
+
+    <div class="terminal-panel-header">
+
+        <div>
+            <span>Fear & Greed Intelligence</span>
+            <strong>Investor Psychology Monitor</strong>
+        </div>
+
+        <span class="terminal-demo-label">
+            Live Market Data
+        </span>
+
+    </div>
+
+
+    <div class="fear-greed-layout">
+
+        <!-- VELOCÍMETRO -->
+
+        <div class="fear-greed-gauge-area">
+
+            <div
+                class="fear-greed-gauge"
+                id="fearGreedGauge"
+                style="--fear-greed-position: 72%;"
+            >
+
+                <div class="fear-greed-gauge-mask"></div>
+
+                <div
+                    class="fear-greed-needle"
+                    id="fearGreedNeedle"
+                ></div>
+
+                <div class="fear-greed-gauge-center">
+
+                    <strong id="fearGreedValue">
+                        72
+                    </strong>
+
+                    <span id="fearGreedState">
+                        Greed
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="fear-greed-scale">
+
+                <span>Extreme Fear</span>
+                <span>Fear</span>
+                <span>Neutral</span>
+                <span>Greed</span>
+                <span>Extreme Greed</span>
+
+            </div>
+
+        </div>
+
+
+        <!-- ANÁLISE -->
+
+        <aside class="fear-greed-analysis">
+
+            <span class="fear-greed-analysis-label">
+                Sardine AI Sentiment Analysis
+            </span>
+
+            <h3 id="fearGreedTitle">
+                Risk appetite is elevated.
+            </h3>
+
+            <p id="fearGreedText">
+                Investors are demonstrating increased confidence and stronger
+                demand for risk assets. Market momentum remains positive, but
+                excessive optimism can increase short-term volatility.
+            </p>
+
+
+            <div class="fear-greed-metrics">
+
+                <div>
+
+                    <span>
+                        Retail Sentiment
+                    </span>
+
+                    <strong id="fearGreedRetail">
+                        Positive
+                    </strong>
+
+                </div>
+
+
+                <div>
+
+                    <span>
+                        Institutional Sentiment
+                    </span>
+
+                    <strong id="fearGreedInstitutional">
+                        Accumulating
+                    </strong>
+
+                </div>
+
+
+                <div>
+
+                    <span>
+                        Volatility Risk
+                    </span>
+
+                    <strong id="fearGreedVolatility">
+                        Medium
+                    </strong>
+
+                </div>
+
+
+                <div>
+
+                    <span>
+                        Market Regime
+                    </span>
+
+                    <strong id="fearGreedRegime">
+                        Risk-On
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="fear-greed-live-controls">
+
+    <div class="fear-greed-source">
+
+        <span>
+            Data source
+        </span>
+
+        <a
+            href="https://alternative.me/crypto/fear-and-greed-index/"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+            Alternative.me
+            <b>↗</b>
+        </a>
+
+    </div>
+
+    <button
+        id="fearGreedLiveRefresh"
+        type="button"
+    >
+        ↻ Refresh Live Index
+    </button>
+
+</div>
+
+        </aside>
+
+    </div>
 
 </section>
 
