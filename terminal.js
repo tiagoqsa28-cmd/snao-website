@@ -93,42 +93,13 @@ if (
     terminalSidebar
 ) {
 
-    terminalMenuButton.addEventListener(
-        "click",
-        () => {
-
-            const isOpen =
-                terminalSidebar.classList.toggle(
-                    "open"
-                );
-
-            terminalMenuButton.setAttribute(
-                "aria-expanded",
-                String(isOpen)
-            );
-
-        }
-    );
-
-
     terminalSidebar
         .querySelectorAll("a")
         .forEach((link) => {
 
             link.addEventListener(
                 "click",
-                () => {
-
-                    terminalSidebar.classList.remove(
-                        "open"
-                    );
-
-                    terminalMenuButton.setAttribute(
-                        "aria-expanded",
-                        "false"
-                    );
-
-                }
+                closeTerminalSidebar
             );
 
         });
@@ -681,44 +652,6 @@ function formatGlobalMarketCap(value) {
 }
 
 
-function calculateOceanScore(
-    marketChange,
-    btcDominance
-) {
-
-    let score = 50;
-
-    if (
-        typeof marketChange === "number"
-    ) {
-        score += marketChange * 4;
-    }
-
-    if (
-        typeof btcDominance === "number"
-    ) {
-
-        if (btcDominance >= 45) {
-            score += 8;
-        }
-
-        if (btcDominance >= 55) {
-            score += 5;
-        }
-
-    }
-
-    return Math.max(
-        0,
-        Math.min(
-            100,
-            Math.round(score)
-        )
-    );
-
-}
-
-
 async function loadGlobalMarketData() {
 
     try {
@@ -882,16 +815,6 @@ renderWhaleConfidence();
 
         }
 
-
-        if (liveOceanScore) {
-
-            liveOceanScore.textContent =
-                calculateOceanScore(
-                    marketChange,
-                    btcDominance
-                );
-
-        }
 
     } catch (error) {
 
@@ -1751,26 +1674,31 @@ if (
 ) {
 
     terminalMenuButton.addEventListener(
-        "click",
-        () => {
+    "click",
+    () => {
 
-            const isOpen =
-                terminalSidebar.classList.contains(
-                    "open"
-                );
-
-            terminalSidebarBackdrop.classList.toggle(
-                "active",
-                isOpen
+        const isOpen =
+            terminalSidebar.classList.toggle(
+                "open"
             );
 
-            document.body.classList.toggle(
-                "terminal-menu-open",
-                isOpen
-            );
+        terminalMenuButton.setAttribute(
+            "aria-expanded",
+            String(isOpen)
+        );
 
-        }
-    );
+        terminalSidebarBackdrop.classList.toggle(
+            "active",
+            isOpen
+        );
+
+        document.body.classList.toggle(
+            "terminal-menu-open",
+            isOpen
+        );
+
+    }
+);
 
 
     terminalSidebarBackdrop.addEventListener(

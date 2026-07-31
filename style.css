@@ -383,11 +383,7 @@ section {
 .hero-copy h1 span {
     display: block;
     margin-top: 9px;
-    color: linear-gradient(
-            135deg,
-            #ffffff,
-            #9cefff
-        );
+    
     background: linear-gradient(
             135deg,
             #ffffff 10%,

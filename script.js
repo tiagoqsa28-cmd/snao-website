@@ -82,12 +82,18 @@ if (menuToggle && mainNav) {
 const revealElements = document.querySelectorAll(
     [
         ".section-heading",
-        ".feature-card",
-        ".terminal",
-        ".network-map",
-        ".roadmap-card",
+        ".intelligence-module-card",
+        ".ocean-terminal",
+        ".ecosystem-network",
+        ".roadmap-phase",
         ".product-card",
-        ".final-cta .cta-content"
+        ".token-quick-nav",
+        ".snao-purchase-panel",
+        ".snao-token-status-panel",
+        ".tokenomics-layout",
+        ".snao-faq-layout",
+        ".final-cta .community-content",
+        ".premium-footer"
     ].join(",")
 );
 
@@ -96,6 +102,12 @@ revealElements.forEach((element) => {
     element.classList.add("reveal");
 
 });
+
+if (!("IntersectionObserver" in window)) {
+    revealElements.forEach((element) => {
+        element.classList.add("visible");
+    });
+} else {
 
 const revealObserver = new IntersectionObserver(
     (entries, observer) => {
@@ -125,14 +137,16 @@ revealElements.forEach((element) => {
 
 });
 
+}
+
 
 // =====================================================
 // STAGGERED CARD DELAYS
 // =====================================================
 
 const staggerGroups = [
-    ".feature-card",
-    ".roadmap-card",
+    ".intelligence-module-card",
+    ".roadmap-phase",
     ".product-card"
 ];
 
@@ -291,41 +305,6 @@ if (cursorGlow) {
 
 
 // =====================================================
-// SUBTLE HERO PARALLAX
-// =====================================================
-
-const heroVisual = document.querySelector(
-    ".hero-visual"
-);
-
-if (heroVisual) {
-
-    window.addEventListener(
-        "mousemove",
-        (event) => {
-
-            if (window.innerWidth <= 1080) {
-                heroVisual.style.transform = "";
-                return;
-            }
-
-            const x =
-                (event.clientX / window.innerWidth - 0.5) * 12;
-
-            const y =
-                (event.clientY / window.innerHeight - 0.5) * 12;
-
-            heroVisual.style.transform =
-                `translate3d(${x}px, ${y}px, 0)`;
-
-        },
-        { passive: true }
-    );
-
-}
-
-
-// =====================================================
 // ACCESSIBILITY: ESC CLOSES MOBILE MENU
 // =====================================================
 
@@ -366,66 +345,6 @@ document
 
     });
 
-    /* ============================
-   HERO VIDEO CINEMATIC SYSTEM
-============================ */
-
-const heroVideos = [
-    "assets/videos/v1.mp4",
-    "assets/videos/v2.mp4",
-    "assets/videos/v3.mp4",
-    "assets/videos/v4.mp4"
-];
-
-let currentHeroVideo = 0;
-
-const heroVideoA = document.getElementById("heroVideoA");
-const heroVideoB = document.getElementById("heroVideoB");
-
-let activeVideo = heroVideoA;
-let hiddenVideo = heroVideoB;
-
-function startHeroVideoSystem() {
-
-    activeVideo.src = heroVideos[currentHeroVideo];
-
-    activeVideo.load();
-
-    activeVideo.play();
-
-    activeVideo.onended = nextHeroVideo;
-
-}
-
-function nextHeroVideo(){
-
-    currentHeroVideo++;
-
-    if(currentHeroVideo >= heroVideos.length){
-        currentHeroVideo = 0;
-    }
-
-    hiddenVideo.src = heroVideos[currentHeroVideo];
-
-    hiddenVideo.load();
-
-    hiddenVideo.play();
-
-    hiddenVideo.classList.add("hero-video-active");
-
-    activeVideo.classList.remove("hero-video-active");
-
-    const temp = activeVideo;
-
-    activeVideo = hiddenVideo;
-
-    hiddenVideo = temp;
-
-    activeVideo.onended = nextHeroVideo;
-
-}
-
-window.addEventListener("load", startHeroVideoSystem);
 
 /* =====================================================
    SNAO — OCEAN PARTICLES

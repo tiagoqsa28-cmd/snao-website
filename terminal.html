@@ -11,23 +11,34 @@
     >
 
     <title>
-        SNAO Ocean Terminal
-    </title>
+    SNAO Ocean Terminal
+</title>
 
-    <meta
-        name="description"
-        content="SNAO Ocean Intelligence Terminal for crypto market analysis, whale activity, liquidity, sentiment and risk monitoring."
-    >
+<link rel="icon" href="favicon.ico">
 
-    <link
-        rel="stylesheet"
-        href="style.css"
-    >
+<meta
+    name="description"
+    content="SNAO Ocean Intelligence Terminal for crypto market analysis, whale activity, liquidity, sentiment and risk monitoring."
+>
 
-    <link
-        rel="stylesheet"
-        href="terminal.css"
-    >
+<meta property="og:title" content="SNAO Ocean Terminal">
+<meta property="og:description" content="Ocean Intelligence Terminal">
+<meta property="og:image" content="https://snao.world/og-image.png">
+<meta property="og:type" content="website">
+
+<meta name="twitter:card" content="summary_large_image">
+
+   <link rel="canonical" href="https://snao.world/terminal.html">
+
+<link
+    rel="stylesheet"
+    href="style.css"
+>
+
+<link
+    rel="stylesheet"
+    href="terminal.css"
+>
 
 </head>
 
@@ -334,10 +345,11 @@
         </div>
 
         <button
-            class="terminal-refresh-button"
-            id="terminalRefreshButton"
-            type="button"
-        >
+    class="terminal-refresh-button"
+    id="terminalRefreshButton"
+    type="button"
+    aria-label="Refresh market data"
+>
             ↻ Refresh
         </button>
 
@@ -1547,7 +1559,7 @@
 
             <button
                 class="flow-analysis-button"
-                id="flowAnalysisButton"
+                aria-label="Refresh flow analysis"
                 type="button"
             >
                 Refresh Flow Analysis
@@ -2136,7 +2148,7 @@
             </p>
 
             <button
-                id="smartMoneyRefresh"
+                aria-label="Refresh Smart Money analysis"
                 type="button"
             >
                 Refresh Radar

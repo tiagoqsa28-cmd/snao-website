@@ -3289,3 +3289,32 @@
     }
 
 }
+
+/* =====================================================
+   ACCESSIBILITY
+===================================================== */
+
+.token-primary-button:focus-visible,
+.token-secondary-button:focus-visible,
+.token-community-button:focus-visible,
+.token-menu-button:focus-visible,
+.token-allocation-item:focus-visible,
+.token-vesting-step:focus-visible {
+
+    outline: 2px solid var(--cyan);
+    outline-offset: 4px;
+
+}
+
+@media (prefers-reduced-motion: reduce){
+
+    *,
+    *::before,
+    *::after{
+
+        animation:none !important;
+        transition:none !important;
+
+    }
+
+}

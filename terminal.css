@@ -5557,3 +5557,36 @@ grid-template-columns:1fr;
     }
 
 }
+
+/* =====================================================
+   ACCESSIBILITY
+===================================================== */
+
+.terminal-page a:focus-visible,
+.terminal-page button:focus-visible,
+.terminal-page input:focus-visible {
+    outline: 2px solid var(--cyan);
+    outline-offset: 3px;
+}
+
+::selection {
+    background: var(--cyan);
+    color: #00111a;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #04111f;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--cyan);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #54e6ff;
+}
