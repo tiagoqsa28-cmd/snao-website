@@ -1,17 +1,31 @@
+import { createClient } from "redis";
+
 const VISITORS_KEY = "snao:ocean:visitors";
 const ONLINE_KEY = "snao:ocean:online";
 const ONLINE_WINDOW_MS = 2 * 60 * 1000;
 
-function getRedisCredentials() {
-    const url =
-        process.env.STORAGE_REDIS_REST_URL ||
-        process.env.UPSTASH_REDIS_REST_URL;
+let redisClient;
 
-    const token =
-        process.env.STORAGE_REDIS_REST_TOKEN ||
-        process.env.UPSTASH_REDIS_REST_TOKEN;
+async function getRedisClient() {
+    if (!process.env.REDIS_URL) {
+        throw new Error("REDIS_URL is missing");
+    }
 
-    return { url, token };
+    if (!redisClient) {
+        redisClient = createClient({
+            url: process.env.REDIS_URL
+        });
+
+        redisClient.on("error", (error) => {
+            console.error("Redis error:", error);
+        });
+    }
+
+    if (!redisClient.isOpen) {
+        await redisClient.connect();
+    }
+
+    return redisClient;
 }
 
 export default {
@@ -24,7 +38,8 @@ export default {
         }
 
         try {
-            const { visitorId } = await request.json();
+            const body = await request.json();
+            const visitorId = body?.visitorId;
 
             if (
                 typeof visitorId !== "string" ||
@@ -37,46 +52,49 @@ export default {
                 );
             }
 
-            const { url, token } = getRedisCredentials();
-
-            if (!url || !token) {
-                return Response.json(
-                    { error: "Redis environment variables are missing" },
-                    { status: 500 }
-                );
-            }
+            const redis = await getRedisClient();
 
             const now = Date.now();
-            const onlineLimit = now - ONLINE_WINDOW_MS;
+            const onlineLimit =
+                now - ONLINE_WINDOW_MS;
 
-            const redisResponse = await fetch(`${url}/pipeline`, {
-                method: "POST",
-                headers: {
-                    Authorization: `Bearer ${token}`,
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify([
-                    ["SADD", VISITORS_KEY, visitorId],
-                    ["ZADD", ONLINE_KEY, now, visitorId],
-                    ["ZREMRANGEBYSCORE", ONLINE_KEY, 0, onlineLimit],
-                    ["SCARD", VISITORS_KEY],
-                    ["ZCARD", ONLINE_KEY]
-                ])
-            });
+            const transaction = redis.multi();
 
-            if (!redisResponse.ok) {
-                throw new Error(
-                    `Redis request failed: ${redisResponse.status}`
-                );
-            }
+            transaction.sAdd(
+                VISITORS_KEY,
+                visitorId
+            );
 
-            const results = await redisResponse.json();
+            transaction.zAdd(
+                ONLINE_KEY,
+                {
+                    score: now,
+                    value: visitorId
+                }
+            );
+
+            transaction.zRemRangeByScore(
+                ONLINE_KEY,
+                0,
+                onlineLimit
+            );
+
+            transaction.sCard(
+                VISITORS_KEY
+            );
+
+            transaction.zCard(
+                ONLINE_KEY
+            );
+
+            const results =
+                await transaction.exec();
 
             const totalVisitors =
-                Number(results?.[3]?.result) || 0;
+                Number(results[3]) || 0;
 
             const onlineNow =
-                Number(results?.[4]?.result) || 0;
+                Number(results[4]) || 0;
 
             return Response.json(
                 {
@@ -91,11 +109,19 @@ export default {
                 }
             );
         } catch (error) {
-            console.error("Ocean activity error:", error);
+            console.error(
+                "Ocean activity error:",
+                error
+            );
 
             return Response.json(
-                { error: "Unable to load Ocean activity" },
-                { status: 500 }
+                {
+                    error:
+                        "Unable to load Ocean activity"
+                },
+                {
+                    status: 500
+                }
             );
         }
     }
