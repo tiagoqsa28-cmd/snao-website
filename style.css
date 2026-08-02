@@ -11721,3 +11721,415 @@ section {
     }
 
 }
+
+/* =====================================================
+   LIVE OCEAN ACTIVITY
+===================================================== */
+
+.ocean-activity-section {
+    position: relative;
+    z-index: 10;
+
+    width: min(1180px, 88%);
+    margin: -46px auto 0;
+    padding: 30px;
+
+    border:
+        1px solid rgba(0, 207, 255, 0.16);
+
+    border-radius: 24px;
+
+    background:
+        radial-gradient(
+            circle at 85% 15%,
+            rgba(0, 207, 255, 0.1),
+            transparent 35%
+        ),
+        rgba(4, 15, 31, 0.96);
+
+    box-shadow:
+        0 30px 80px rgba(0, 0, 0, 0.4);
+
+    backdrop-filter: blur(20px);
+}
+
+.ocean-activity-heading {
+    text-align: center;
+}
+
+.ocean-activity-heading > span {
+    color: var(--cyan);
+    font-size: 9px;
+    font-weight: 900;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+}
+
+.ocean-activity-heading h2 {
+    margin-top: 12px;
+
+    color: #ffffff;
+    font-size: clamp(28px, 4vw, 45px);
+    line-height: 1.05;
+}
+
+.ocean-activity-heading p {
+    margin-top: 10px;
+
+    color: #718399;
+    font-size: 11px;
+}
+
+.ocean-activity-grid {
+    margin-top: 26px;
+
+    display: grid;
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 14px;
+}
+
+.ocean-activity-card {
+    min-height: 165px;
+    padding: 22px;
+
+    display: grid;
+    grid-template-columns: 54px 1fr;
+    align-items: center;
+    gap: 17px;
+
+    border:
+        1px solid rgba(255, 255, 255, 0.06);
+
+    border-radius: 17px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(10, 27, 47, 0.95),
+            rgba(3, 11, 22, 0.98)
+        );
+
+    transition:
+        transform 0.3s ease,
+        border-color 0.3s ease;
+}
+
+.ocean-activity-card:hover {
+    transform: translateY(-5px);
+
+    border-color:
+        rgba(0, 207, 255, 0.28);
+}
+
+.ocean-activity-icon {
+    width: 54px;
+    height: 54px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: var(--cyan);
+    font-size: 21px;
+
+    border:
+        1px solid rgba(0, 207, 255, 0.25);
+
+    border-radius: 16px;
+
+    background:
+        rgba(0, 207, 255, 0.05);
+
+    box-shadow:
+        0 0 24px rgba(0, 207, 255, 0.1);
+}
+
+.ocean-online-icon {
+    color: #00f2a9;
+
+    border-color:
+        rgba(0, 242, 169, 0.25);
+
+    background:
+        rgba(0, 242, 169, 0.05);
+
+    animation:
+        oceanOnlinePulse 2s ease-in-out infinite;
+}
+
+.ocean-activity-card small {
+    color: #718399;
+    font-size: 8px;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+}
+
+.ocean-activity-card strong {
+    display: block;
+    margin-top: 7px;
+
+    color: #ffffff;
+    font-size: 33px;
+    line-height: 1;
+}
+
+.ocean-activity-card p {
+    margin-top: 9px;
+
+    color: #61768c;
+    font-size: 9px;
+    line-height: 1.55;
+}
+
+.ocean-activity-status {
+    margin-top: 18px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    color: #61768c;
+    font-size: 8px;
+    text-transform: uppercase;
+}
+
+.ocean-activity-status i {
+    width: 7px;
+    height: 7px;
+
+    border-radius: 50%;
+
+    background: #00f2a9;
+
+    box-shadow:
+        0 0 10px #00f2a9;
+}
+
+@keyframes oceanOnlinePulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+        opacity: 0.75;
+    }
+
+    50% {
+        transform: scale(1.08);
+        opacity: 1;
+    }
+
+}
+
+@media (max-width: 720px) {
+
+    .ocean-activity-section {
+        width: calc(100% - 28px);
+        margin-top: -22px;
+        padding: 23px 17px;
+    }
+
+    .ocean-activity-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .ocean-activity-card {
+        min-height: 145px;
+    }
+
+}
+
+/* =====================================================
+   LIVE OCEAN ACTIVITY
+===================================================== */
+
+.ocean-activity-section {
+    position: relative;
+    z-index: 10;
+
+    width: min(1180px, 88%);
+    margin: -46px auto 0;
+    padding: 30px;
+
+    border: 1px solid rgba(0, 207, 255, 0.16);
+    border-radius: 24px;
+
+    background:
+        radial-gradient(
+            circle at 85% 15%,
+            rgba(0, 207, 255, 0.1),
+            transparent 35%
+        ),
+        rgba(4, 15, 31, 0.96);
+
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(20px);
+}
+
+.ocean-activity-heading {
+    text-align: center;
+}
+
+.ocean-activity-heading > span {
+    color: var(--cyan);
+    font-size: 9px;
+    font-weight: 900;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+}
+
+.ocean-activity-heading h2 {
+    margin-top: 12px;
+
+    color: #ffffff;
+    font-size: clamp(28px, 4vw, 45px);
+    line-height: 1.05;
+}
+
+.ocean-activity-heading p {
+    margin-top: 10px;
+
+    color: #718399;
+    font-size: 11px;
+}
+
+.ocean-activity-grid {
+    margin-top: 26px;
+
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+}
+
+.ocean-activity-card {
+    min-height: 165px;
+    padding: 22px;
+
+    display: grid;
+    grid-template-columns: 54px 1fr;
+    align-items: center;
+    gap: 17px;
+
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 17px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(10, 27, 47, 0.95),
+            rgba(3, 11, 22, 0.98)
+        );
+
+    transition:
+        transform 0.3s ease,
+        border-color 0.3s ease;
+}
+
+.ocean-activity-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(0, 207, 255, 0.28);
+}
+
+.ocean-activity-icon {
+    width: 54px;
+    height: 54px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: var(--cyan);
+    font-size: 21px;
+
+    border: 1px solid rgba(0, 207, 255, 0.25);
+    border-radius: 16px;
+
+    background: rgba(0, 207, 255, 0.05);
+    box-shadow: 0 0 24px rgba(0, 207, 255, 0.1);
+}
+
+.ocean-online-icon {
+    color: #00f2a9;
+    border-color: rgba(0, 242, 169, 0.25);
+    background: rgba(0, 242, 169, 0.05);
+
+    animation: oceanOnlinePulse 2s ease-in-out infinite;
+}
+
+.ocean-activity-card small {
+    color: #718399;
+    font-size: 8px;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+}
+
+.ocean-activity-card strong {
+    display: block;
+    margin-top: 7px;
+
+    color: #ffffff;
+    font-size: 33px;
+    line-height: 1;
+}
+
+.ocean-activity-card p {
+    margin-top: 9px;
+
+    color: #61768c;
+    font-size: 9px;
+    line-height: 1.55;
+}
+
+.ocean-activity-status {
+    margin-top: 18px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    color: #61768c;
+    font-size: 8px;
+    text-transform: uppercase;
+}
+
+.ocean-activity-status i {
+    width: 7px;
+    height: 7px;
+
+    border-radius: 50%;
+
+    background: #00f2a9;
+    box-shadow: 0 0 10px #00f2a9;
+}
+
+@keyframes oceanOnlinePulse {
+    0%,
+    100% {
+        transform: scale(1);
+        opacity: 0.75;
+    }
+
+    50% {
+        transform: scale(1.08);
+        opacity: 1;
+    }
+}
+
+@media (max-width: 720px) {
+    .ocean-activity-section {
+        width: calc(100% - 28px);
+        margin-top: -22px;
+        padding: 23px 17px;
+    }
+
+    .ocean-activity-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .ocean-activity-card {
+        min-height: 145px;
+    }
+}

@@ -915,3 +915,120 @@ document.addEventListener("keydown", (event) => {
     }
 
 });
+
+/* =====================================================
+   LIVE OCEAN ACTIVITY
+===================================================== */
+
+const oceanTotalVisitors =
+    document.getElementById("oceanTotalVisitors");
+
+const oceanOnlineNow =
+    document.getElementById("oceanOnlineNow");
+
+const oceanActivityStatus =
+    document.getElementById("oceanActivityStatus");
+
+
+function getOceanVisitorId() {
+
+    const storageKey = "snao_ocean_visitor_id";
+
+    let visitorId =
+        localStorage.getItem(storageKey);
+
+    if (!visitorId) {
+
+        visitorId =
+            crypto.randomUUID
+                ? crypto.randomUUID()
+                : `visitor-${Date.now()}-${Math.random()
+                    .toString(36)
+                    .slice(2)}`;
+
+        localStorage.setItem(
+            storageKey,
+            visitorId
+        );
+
+    }
+
+    return visitorId;
+
+}
+
+
+async function updateOceanActivity() {
+
+    if (
+        !oceanTotalVisitors ||
+        !oceanOnlineNow
+    ) {
+        return;
+    }
+
+    try {
+
+        const response = await fetch(
+            "/api/ocean-activity",
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type":
+                        "application/json"
+                },
+                body: JSON.stringify({
+                    visitorId:
+                        getOceanVisitorId()
+                }),
+                cache: "no-store"
+            }
+        );
+
+        if (!response.ok) {
+            throw new Error(
+                `Ocean activity request failed: ${response.status}`
+            );
+        }
+
+        const data =
+            await response.json();
+
+        oceanTotalVisitors.textContent =
+            Number(
+                data.totalVisitors || 0
+            ).toLocaleString("en-US");
+
+        oceanOnlineNow.textContent =
+            Number(
+                data.onlineNow || 0
+            ).toLocaleString("en-US");
+
+        if (oceanActivityStatus) {
+            oceanActivityStatus.textContent =
+                "Ocean activity connected";
+        }
+
+    } catch (error) {
+
+        console.error(
+            "Unable to update Ocean activity:",
+            error
+        );
+
+        if (oceanActivityStatus) {
+            oceanActivityStatus.textContent =
+                "Activity temporarily unavailable";
+        }
+
+    }
+
+}
+
+
+updateOceanActivity();
+
+setInterval(
+    updateOceanActivity,
+    60 * 1000
+);
