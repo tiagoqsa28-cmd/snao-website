@@ -114,6 +114,10 @@
         Home
     </a>
 
+            <a href="#sale">
+    Public Sale
+</a>
+
     <a href="about.html">
     About
 </a>
@@ -138,7 +142,7 @@
     Whitepaper
 </a>
 
-<a href="#roadmap"
+<a href="#roadmap">
     Roadmap
 </a>
 
@@ -158,8 +162,8 @@
 
 </nav>
 
-        <a class="header-cta" href="token.html#buy">
-    Get $SNAO
+        <a class="header-cta" href="#sale">
+    Public Sale
 </a>
 
         <button
@@ -177,6 +181,696 @@
 
 
     <main>
+
+        <!-- =========================================
+     SNAO PUBLIC SALE
+========================================== -->
+
+<section class="snao-public-sale" id="sale">
+
+    <div class="sale-glow sale-glow-one"></div>
+    <div class="sale-glow sale-glow-two"></div>
+
+    <div class="sale-shell">
+
+        <div class="sale-intro">
+
+            <span class="sale-status">
+                <i></i>
+                PUBLIC SALE • NOVEMBER 1, 2026
+            </span>
+
+            <h1>
+                The Ocean
+                <span>Is Moving.</span>
+            </h1>
+
+            <p class="sale-lead">
+                Join the SNAO Ocean Intelligence ecosystem.
+                Public sale opens November 1 with a progressive
+                pricing model across 1,800 lots.
+            </p>
+
+            <div class="sale-countdown">
+
+                <div>
+                    <strong id="saleDays">--</strong>
+                    <span>Days</span>
+                </div>
+
+                <div>
+                    <strong id="saleHours">--</strong>
+                    <span>Hours</span>
+                </div>
+
+                <div>
+                    <strong id="saleMinutes">--</strong>
+                    <span>Minutes</span>
+                </div>
+
+                <div>
+                    <strong id="saleSeconds">--</strong>
+                    <span>Seconds</span>
+                </div>
+
+            </div>
+
+            <div class="sale-highlights">
+
+                <div>
+                    <span>Initial Price</span>
+                    <strong>$0.001</strong>
+                </div>
+
+                <div>
+                    <span>Public Allocation</span>
+                    <strong>45M SNAO</strong>
+                </div>
+
+                <div>
+                    <span>Soft Cap</span>
+                    <strong>$250K</strong>
+                </div>
+
+                <div>
+                    <span>Hard Cap</span>
+                    <strong>$5M</strong>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="sale-panel">
+
+            <div class="sale-panel-header">
+
+                <div>
+                    <span class="sale-label">
+                        SNAO PUBLIC SALE
+                    </span>
+
+                    <h2>
+                        Buy $SNAO
+                    </h2>
+                </div>
+
+                <span class="sale-network">
+                    BNB CHAIN
+                </span>
+
+            </div>
+
+
+            <div class="sale-progress-copy">
+
+                <span>Sale Progress</span>
+
+                <strong id="saleProgressText">
+                    Opens November 1
+                </strong>
+
+            </div>
+
+            <div class="sale-progress-track">
+                <div
+                    class="sale-progress-fill"
+                    id="saleProgressFill"
+                    style="width: 0%;"
+                ></div>
+            </div>
+
+
+            <div class="sale-data-grid">
+
+                <div>
+                    <span>Current Price</span>
+                    <strong id="saleCurrentPrice">
+                        $0.001
+                    </strong>
+                </div>
+
+                <div>
+                    <span>SNAO Sold</span>
+                    <strong id="saleTokensSold">
+                        0 / 45M
+                    </strong>
+                </div>
+
+                <div>
+                    <span>Raised</span>
+                    <strong id="saleRaised">
+                        $0
+                    </strong>
+                </div>
+
+                <div>
+                    <span>Payment</span>
+                    <strong>
+                        USDT
+                    </strong>
+                </div>
+
+            </div>
+
+
+            <div class="sale-buy-box">
+
+                <label for="saleUsdtAmount">
+                    You pay
+                </label>
+
+                <div class="sale-input-wrap">
+
+                    <input
+                        id="saleUsdtAmount"
+                        type="number"
+                        min="0"
+                        step="0.01"
+                        placeholder="0.00"
+                        disabled
+                    >
+
+                    <span>
+                        USDT
+                    </span>
+
+                </div>
+
+                <div class="sale-conversion">
+
+                    <span>You receive</span>
+
+                    <strong id="saleReceiveAmount">
+                        -- SNAO
+                    </strong>
+
+                </div>
+
+                <button
+                    class="sale-connect-button"
+                    id="saleConnectWallet"
+                    type="button"
+                    disabled
+                >
+                    SALE OPENS NOVEMBER 1
+                </button>
+
+            </div>
+
+
+            <div class="sale-security">
+
+                <span>◈</span>
+
+                <p>
+                    Smart-contract purchase on BNB Chain.
+                    Wallet connection will activate when the
+                    mainnet sale contract is deployed.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="sale-footer-strip">
+
+        <span>
+            25,000 SNAO PER LOT
+        </span>
+
+        <i></i>
+
+        <span>
+            1,800 PROGRESSIVE LOTS
+        </span>
+
+        <i></i>
+
+        <span>
+            MAX 2.5M SNAO PER TRANSACTION
+        </span>
+
+        <i></i>
+
+        <span>
+            USDT PAYMENT
+        </span>
+
+    </div>
+
+</section>
+
+
+<style>
+
+.snao-public-sale {
+    position: relative;
+    overflow: hidden;
+    padding: 150px 6% 80px;
+    background:
+        radial-gradient(circle at 20% 20%, rgba(0, 210, 255, .13), transparent 35%),
+        radial-gradient(circle at 85% 40%, rgba(0, 119, 255, .12), transparent 32%),
+        linear-gradient(180deg, #020914 0%, #03111d 55%, #020914 100%);
+    color: #fff;
+}
+
+.sale-shell {
+    position: relative;
+    z-index: 2;
+    max-width: 1240px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.05fr .95fr;
+    gap: 70px;
+    align-items: center;
+}
+
+.sale-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    padding: 8px 13px;
+    border: 1px solid rgba(55, 220, 255, .25);
+    border-radius: 30px;
+    background: rgba(4, 27, 43, .7);
+    color: #78e8ff;
+    font-size: 12px;
+    letter-spacing: 1.5px;
+    font-weight: 700;
+}
+
+.sale-status i {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #33e5ff;
+    box-shadow: 0 0 14px #33e5ff;
+}
+
+.sale-intro h1 {
+    margin: 24px 0 18px;
+    font-size: clamp(52px, 7vw, 92px);
+    line-height: .9;
+    letter-spacing: -4px;
+}
+
+.sale-intro h1 span {
+    display: block;
+    color: #42dfff;
+}
+
+.sale-lead {
+    max-width: 610px;
+    color: #9db1c2;
+    font-size: 17px;
+    line-height: 1.75;
+}
+
+.sale-countdown {
+    display: flex;
+    gap: 12px;
+    margin-top: 34px;
+}
+
+.sale-countdown div {
+    min-width: 83px;
+    padding: 15px 12px;
+    text-align: center;
+    border: 1px solid rgba(92, 215, 255, .16);
+    background: rgba(5, 24, 39, .7);
+    border-radius: 12px;
+}
+
+.sale-countdown strong {
+    display: block;
+    color: #fff;
+    font-size: 25px;
+}
+
+.sale-countdown span {
+    color: #6f899e;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1.3px;
+}
+
+.sale-highlights {
+    margin-top: 35px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border-top: 1px solid rgba(255,255,255,.08);
+    padding-top: 25px;
+}
+
+.sale-highlights span,
+.sale-data-grid span {
+    display: block;
+    color: #6f899e;
+    font-size: 11px;
+    margin-bottom: 6px;
+}
+
+.sale-highlights strong {
+    font-size: 17px;
+}
+
+.sale-panel {
+    padding: 30px;
+    border-radius: 24px;
+    border: 1px solid rgba(68, 220, 255, .22);
+    background:
+        linear-gradient(145deg, rgba(8, 30, 47, .94), rgba(3, 15, 26, .96));
+    box-shadow:
+        0 30px 80px rgba(0,0,0,.35),
+        0 0 80px rgba(0, 183, 255, .07);
+    backdrop-filter: blur(18px);
+}
+
+.sale-panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.sale-label {
+    color: #46dcff;
+    font-size: 10px;
+    letter-spacing: 2px;
+}
+
+.sale-panel h2 {
+    margin: 6px 0 0;
+    font-size: 31px;
+}
+
+.sale-network {
+    padding: 7px 10px;
+    border-radius: 7px;
+    background: rgba(240, 185, 11, .1);
+    color: #f0b90b;
+    font-size: 10px;
+    font-weight: 700;
+}
+
+.sale-progress-copy {
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-between;
+    color: #7890a3;
+    font-size: 12px;
+}
+
+.sale-progress-copy strong {
+    color: #d9f7ff;
+}
+
+.sale-progress-track {
+    height: 8px;
+    margin-top: 10px;
+    border-radius: 20px;
+    overflow: hidden;
+    background: rgba(255,255,255,.07);
+}
+
+.sale-progress-fill {
+    height: 100%;
+    border-radius: inherit;
+    background: linear-gradient(90deg, #00a9e8, #46e5ff);
+}
+
+.sale-data-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    margin-top: 25px;
+    background: rgba(255,255,255,.07);
+    border: 1px solid rgba(255,255,255,.07);
+    border-radius: 14px;
+    overflow: hidden;
+}
+
+.sale-data-grid div {
+    padding: 17px;
+    background: #071827;
+}
+
+.sale-data-grid strong {
+    font-size: 15px;
+}
+
+.sale-buy-box {
+    margin-top: 25px;
+}
+
+.sale-buy-box label {
+    display: block;
+    margin-bottom: 8px;
+    color: #8298aa;
+    font-size: 12px;
+}
+
+.sale-input-wrap {
+    display: flex;
+    align-items: center;
+    border: 1px solid rgba(74, 215, 255, .18);
+    border-radius: 12px;
+    background: #04111d;
+}
+
+.sale-input-wrap input {
+    width: 100%;
+    padding: 17px;
+    border: 0;
+    outline: 0;
+    background: transparent;
+    color: #fff;
+    font-size: 19px;
+}
+
+.sale-input-wrap span {
+    padding-right: 17px;
+    color: #67dff9;
+    font-weight: 700;
+}
+
+.sale-conversion {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 2px 18px;
+    color: #71899d;
+    font-size: 12px;
+}
+
+.sale-conversion strong {
+    color: #fff;
+}
+
+.sale-connect-button {
+    width: 100%;
+    padding: 17px;
+    border: 0;
+    border-radius: 12px;
+    background: linear-gradient(90deg, #0cb8e8, #53e4ff);
+    color: #021018;
+    font-weight: 800;
+    letter-spacing: .5px;
+    cursor: not-allowed;
+    opacity: .72;
+}
+
+.sale-security {
+    display: flex;
+    gap: 10px;
+    margin-top: 18px;
+    padding-top: 18px;
+    border-top: 1px solid rgba(255,255,255,.07);
+    color: #657e92;
+    font-size: 11px;
+    line-height: 1.55;
+}
+
+.sale-security p {
+    margin: 0;
+}
+
+.sale-security span {
+    color: #36d9fa;
+}
+
+.sale-footer-strip {
+    position: relative;
+    z-index: 2;
+    max-width: 1240px;
+    margin: 65px auto 0;
+    padding-top: 24px;
+    border-top: 1px solid rgba(255,255,255,.08);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    color: #607b90;
+    font-size: 10px;
+    letter-spacing: 1.3px;
+}
+
+.sale-footer-strip i {
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: #28dfff;
+}
+
+@media (max-width: 900px) {
+
+    .snao-public-sale {
+        padding: 120px 20px 60px;
+    }
+
+    .sale-shell {
+        grid-template-columns: 1fr;
+        gap: 45px;
+    }
+
+    .sale-intro h1 {
+        letter-spacing: -2px;
+    }
+
+    .sale-highlights {
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+    }
+
+}
+
+@media (max-width: 520px) {
+
+    .sale-countdown {
+        gap: 6px;
+    }
+
+    .sale-countdown div {
+        min-width: 0;
+        flex: 1;
+        padding: 12px 5px;
+    }
+
+    .sale-countdown strong {
+        font-size: 20px;
+    }
+
+    .sale-panel {
+        padding: 21px;
+    }
+
+}
+
+</style>
+
+
+<script>
+
+(function () {
+
+    const saleStart =
+        new Date("2026-11-01T15:00:00Z").getTime();
+
+    function updateSaleCountdown() {
+
+        const now =
+            new Date().getTime();
+
+        let distance =
+            saleStart - now;
+
+        if (distance <= 0) {
+
+            distance = 0;
+
+            const button =
+                document.getElementById(
+                    "saleConnectWallet"
+                );
+
+            if (button) {
+                button.textContent =
+                    "CONNECT WALLET";
+            }
+
+        }
+
+        const days =
+            Math.floor(
+                distance /
+                (1000 * 60 * 60 * 24)
+            );
+
+        const hours =
+            Math.floor(
+                (distance %
+                (1000 * 60 * 60 * 24)) /
+                (1000 * 60 * 60)
+            );
+
+        const minutes =
+            Math.floor(
+                (distance %
+                (1000 * 60 * 60)) /
+                (1000 * 60)
+            );
+
+        const seconds =
+            Math.floor(
+                (distance %
+                (1000 * 60)) /
+                1000
+            );
+
+        const d =
+            document.getElementById(
+                "saleDays"
+            );
+
+        const h =
+            document.getElementById(
+                "saleHours"
+            );
+
+        const m =
+            document.getElementById(
+                "saleMinutes"
+            );
+
+        const s =
+            document.getElementById(
+                "saleSeconds"
+            );
+
+        if (d) d.textContent = days;
+        if (h) h.textContent =
+            String(hours).padStart(2, "0");
+        if (m) m.textContent =
+            String(minutes).padStart(2, "0");
+        if (s) s.textContent =
+            String(seconds).padStart(2, "0");
+
+    }
+
+    updateSaleCountdown();
+
+    setInterval(
+        updateSaleCountdown,
+        1000
+    );
+
+})();
+
+</script>
 
         <!-- =========================================
              HERO
