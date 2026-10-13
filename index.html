@@ -869,6 +869,142 @@
 
 }
 
+        /* =========================================
+   GLOBAL EXCHANGE AMBITION
+========================================= */
+
+.exchange-ambition {
+    position: relative;
+    overflow: hidden;
+    padding: 110px 6%;
+    background:
+        radial-gradient(circle at 50% 0%,
+        rgba(0, 207, 255, 0.10),
+        transparent 42%),
+        #020d18;
+    border-top: 1px solid rgba(80, 210, 255, 0.08);
+}
+
+.exchange-ambition-inner {
+    width: 100%;
+    max-width: 1180px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.exchange-ambition .section-tag {
+    display: inline-block;
+    margin-bottom: 20px;
+    color: #27d8ff;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+}
+
+.exchange-ambition h2 {
+    margin: 0 auto;
+    max-width: 760px;
+    color: #ffffff;
+    font-size: clamp(42px, 5vw, 68px);
+    line-height: 1;
+    letter-spacing: -0.04em;
+}
+
+.exchange-ambition h2 span {
+    display: block;
+    color: #27d8ff;
+}
+
+.exchange-intro {
+    max-width: 720px;
+    margin: 26px auto 0;
+    color: #9eb2c3;
+    font-size: 17px;
+    line-height: 1.7;
+}
+
+.exchange-targets {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin-top: 48px;
+}
+
+.exchange-target {
+    position: relative;
+    padding: 25px 18px;
+    border: 1px solid rgba(39, 216, 255, 0.20);
+    border-radius: 14px;
+    background: rgba(5, 23, 37, 0.76);
+    transition:
+        transform 0.25s ease,
+        border-color 0.25s ease,
+        background 0.25s ease;
+}
+
+.exchange-target:hover {
+    transform: translateY(-4px);
+    border-color: rgba(39, 216, 255, 0.55);
+    background: rgba(7, 31, 48, 0.94);
+}
+
+.exchange-target strong {
+    display: block;
+    color: #ffffff;
+    font-size: 20px;
+    letter-spacing: 0.04em;
+}
+
+.exchange-target span {
+    display: block;
+    margin-top: 7px;
+    color: #27d8ff;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+}
+
+.exchange-disclaimer {
+    max-width: 850px;
+    margin: 36px auto 0;
+    padding: 18px 22px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    color: #72899b;
+    font-size: 12px;
+    line-height: 1.7;
+}
+
+.exchange-disclaimer strong {
+    color: #a9bdcb;
+}
+
+/* Mobile */
+@media (max-width: 800px) {
+
+    .exchange-ambition {
+        padding: 80px 22px;
+    }
+
+    .exchange-targets {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .exchange-ambition h2 {
+        font-size: 42px;
+    }
+}
+
+@media (max-width: 520px) {
+
+    .exchange-targets {
+        grid-template-columns: 1fr;
+    }
+
+    .exchange-target {
+        padding: 20px 16px;
+    }
+}
+
 </style>
 
 
@@ -2284,6 +2420,74 @@
             </div>
 
         </article>
+
+    </div>
+
+</section>
+
+        <!-- =========================
+     GLOBAL EXCHANGE AMBITION
+========================= -->
+
+<section class="section exchange-ambition">
+
+    <div class="exchange-ambition-inner">
+
+        <span class="section-tag">
+            GLOBAL EXCHANGE AMBITION
+        </span>
+
+        <h2>
+            Built to Go
+            <span>Beyond the Launch.</span>
+        </h2>
+
+        <p class="exchange-intro">
+            If the SNAO public sale reaches its key milestones,
+            the project intends to pursue listing opportunities
+            with leading global cryptocurrency exchanges.
+        </p>
+
+        <div class="exchange-targets">
+
+            <div class="exchange-target">
+                <strong>BINANCE</strong>
+                <span>LISTING TARGET</span>
+            </div>
+
+            <div class="exchange-target">
+                <strong>BITGET</strong>
+                <span>LISTING TARGET</span>
+            </div>
+
+            <div class="exchange-target">
+                <strong>BYBIT</strong>
+                <span>LISTING TARGET</span>
+            </div>
+
+            <div class="exchange-target">
+                <strong>OKX</strong>
+                <span>LISTING TARGET</span>
+            </div>
+
+            <div class="exchange-target">
+                <strong>GATE.IO</strong>
+                <span>LISTING TARGET</span>
+            </div>
+
+            <div class="exchange-target">
+                <strong>MEXC</strong>
+                <span>LISTING TARGET</span>
+            </div>
+
+        </div>
+
+        <div class="exchange-disclaimer">
+            <strong>Our ambition, not a guarantee.</strong>
+            Exchange names above represent future listing targets only.
+            No listing, partnership, approval or affiliation with any
+            exchange is confirmed unless officially announced.
+        </div>
 
     </div>
 
