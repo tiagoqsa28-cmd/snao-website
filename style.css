@@ -12169,20 +12169,3 @@ section {
     }
 }
 
-/* =====================================================
-   HERO DESKTOP — CLEAR GLOBAL OCEAN FLOW
-===================================================== */
-
-@media (min-width: 1081px) {
-
-    .card-liquidity {
-        top: 58% !important;
-        left: -8% !important;
-    }
-
-    .card-risk {
-        top: 58% !important;
-        right: -8% !important;
-    }
-}
-
