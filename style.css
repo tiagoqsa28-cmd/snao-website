@@ -12151,7 +12151,7 @@ section {
     }
 
    .intelligence-core {
-    transform: translateY(-100px) !important;
+    transform: translateY(-15px) !important;
 }
 
     .hero-mini-dashboard {
@@ -12165,9 +12165,10 @@ section {
         height: 190px !important;
 
         transform:
-            translateX(-50%)
-            perspective(800px)
-            rotateX(15deg) !important;
+    translateX(-50%)
+    translateY(140px)
+    perspective(800px)
+    rotateX(15deg) !important;
 
         z-index: 7 !important;
     }
