@@ -537,19 +537,16 @@ const terminalPromptButtons =
 
 const terminalSummaries = {
     market:
-        "The market is showing moderately bullish conditions. " +
-        "Liquidity has improved, Bitcoin remains dominant and " +
-        "risk appetite is increasing without reaching extreme levels.",
+        "Illustrative market analysis generated for interface demonstration. " +
+        "Live market intelligence will be connected as the SNAO platform develops.",
 
     whales:
-        "Large-wallet activity is above the recent average. " +
-        "Most detected movements are concentrated in Bitcoin, " +
-        "Ethereum and major stablecoins.",
+        "Illustrative whale activity analysis for interface demonstration. " +
+        "Live on-chain monitoring will be connected in a future platform release.",
 
     risk:
-        "Current market risk is moderate. Short-term volatility " +
-        "may increase, but liquidity and sentiment conditions " +
-        "remain controlled."
+        "Illustrative market risk analysis for interface demonstration. " +
+        "Live risk intelligence will be connected as the SNAO platform develops."
 };
 
 terminalPromptButtons.forEach((button) => {
@@ -578,56 +575,17 @@ terminalPromptButtons.forEach((button) => {
 });
 
 
-/* Pequena variação visual dos preços demonstrativos */
+/* =====================================================
+   OCEAN TERMINAL — STATIC DEMONSTRATION DATA
+===================================================== */
 
-const terminalPriceElements = [
-    document.getElementById("terminalBtcPrice"),
-    document.getElementById("terminalEthPrice"),
-    document.getElementById("terminalBnbPrice")
-];
+/*
+    Market values displayed in the Ocean Terminal are
+    illustrative interface data only.
 
-const terminalBasePrices = [
-    68420,
-    3780,
-    612
-];
-
-function updateTerminalDemoPrices() {
-
-    terminalPriceElements.forEach(
-        (element, index) => {
-
-            if (!element) {
-                return;
-            }
-
-            const variation =
-                (Math.random() - 0.5) *
-                terminalBasePrices[index] *
-                0.0012;
-
-            const updatedPrice =
-                terminalBasePrices[index] +
-                variation;
-
-            element.textContent =
-                "$" +
-                updatedPrice.toLocaleString(
-                    "en-US",
-                    {
-                        maximumFractionDigits:
-                            index === 2 ? 2 : 0
-                    }
-                );
-        }
-    );
-
-}
-
-setInterval(
-    updateTerminalDemoPrices,
-    4500
-);
+    Live market APIs will be connected in a future
+    production version of the intelligence platform.
+*/
 
 /* =====================================================
    SNAO FAQ ACCORDION
