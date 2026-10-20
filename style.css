@@ -2442,9 +2442,9 @@ section {
     }
 
     .hero-mini-dashboard {
-        width: 520px;
-        bottom: -40px;
-    }
+    width: 520px;
+    bottom: -100px;
+}
 
     .whale-large {
         width: 330px;
