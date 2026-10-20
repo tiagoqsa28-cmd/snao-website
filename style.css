@@ -12215,7 +12215,7 @@ section {
     }
 
     .card-sentiment {
-    top: 205px !important;
+    top: 175px !important;
     left: 50% !important;
     right: auto !important;
     transform: translateX(-50%) !important;
