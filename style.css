@@ -12133,13 +12133,3 @@ section {
         min-height: 145px;
     }
 }
-
-/* =========================================
-   HERO DESKTOP POSITION FIX
-========================================= */
-
-@media (min-width: 1081px) {
-    .hero-copy {
-        transform: translateY(70px);
-    }
-}
