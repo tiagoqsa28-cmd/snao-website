@@ -12134,3 +12134,38 @@ section {
     }
 }
 
+/* =====================================================
+   HERO DESKTOP — FINAL POSITION FIX
+===================================================== */
+
+@media (min-width: 1081px) {
+
+    .hero.hero-cinematic {
+        min-height: 100vh !important;
+        padding-bottom: 150px !important;
+    }
+
+    .hero-intelligence-visual {
+        min-height: 720px !important;
+        transform: translateY(-15px) !important;
+    }
+
+    .hero-mini-dashboard {
+        position: absolute !important;
+        left: 50% !important;
+        right: auto !important;
+
+        bottom: -115px !important;
+
+        width: 620px !important;
+        height: 190px !important;
+
+        transform:
+            translateX(-50%)
+            perspective(800px)
+            rotateX(15deg) !important;
+
+        z-index: 7 !important;
+    }
+}
+
