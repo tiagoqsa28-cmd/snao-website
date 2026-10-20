@@ -2,6 +2,11 @@
    SNAO TOKEN PAGE
 ===================================================== */
 
+
+/* =====================================================
+   MOBILE MENU
+===================================================== */
+
 const tokenMenuButton =
     document.getElementById(
         "tokenMenuButton"
@@ -60,6 +65,7 @@ if (
 
 }
 
+
 /* =====================================================
    TOKEN ALLOCATION
 ===================================================== */
@@ -100,158 +106,220 @@ const allocationPurpose =
     );
 
 
+/* =====================================================
+   OFFICIAL SNAO TOKEN ALLOCATION
+   TOTAL SUPPLY: 200,000,000 SNAO
+===================================================== */
+
 const tokenAllocationDatabase = {
 
     founder: {
         title:
-            "Founder & Core Development",
+            "Founder",
 
         percentage:
-            "25% · 50,000,000 $SNAO",
+            "13% · 26,000,000 $SNAO",
 
         text:
-            "Reserved for the founder and the continuous development " +
-            "of the SNAO ecosystem. Most of this allocation will follow " +
-            "long-term locking and gradual vesting rules.",
+            "Founder allocation subject to long-term vesting, " +
+            "with no tokens unlocked at TGE.",
 
         unlock:
-            "Limited",
+            "0% at TGE",
 
         vesting:
-            "Long Term",
+            "180-day cliff + 900-day linear",
 
         purpose:
-            "Development"
+            "Founder Alignment"
     },
 
-    treasury: {
-        title:
-            "Ecosystem Treasury",
-
-        percentage:
-            "20% · 40,000,000 $SNAO",
-
-        text:
-            "Reserved for future ecosystem operations, platform expansion, " +
-            "new products, infrastructure and strategic opportunities.",
-
-        unlock:
-            "Controlled",
-
-        vesting:
-            "Progressive",
-
-        purpose:
-            "Ecosystem Growth"
-    },
 
     public: {
         title:
             "Public Sale",
 
         percentage:
-            "20% · 40,000,000 $SNAO",
+            "22.5% · 45,000,000 $SNAO",
 
         text:
-            "Allocated for public access through initial and future sales. " +
-            "Distribution may occur in controlled phases to protect liquidity.",
+            "Allocated to the SNAO Public Sale through 1,800 progressive " +
+            "lots of 25,000 SNAO, with buyer vesting determined by the " +
+            "applicable sale phase.",
 
         unlock:
-            "Phased",
+            "Phase Based",
 
         vesting:
-            "Sale Based",
+            "Sale Phase Vesting",
 
         purpose:
             "Public Distribution"
     },
 
+
     liquidity: {
         title:
-            "Liquidity",
+            "Liquidity & Market Making",
 
         percentage:
-            "15% · 30,000,000 $SNAO",
+            "20% · 40,000,000 $SNAO",
 
         text:
-            "Dedicated to decentralized exchange liquidity, future listings " +
-            "and maintaining healthier trading conditions.",
-
-        unlock:
-            "Launch Based",
-
-        vesting:
-            "Operational",
-
-        purpose:
-            "Market Liquidity"
-    },
-
-    marketing: {
-        title:
-            "Marketing & Community Growth",
-
-        percentage:
-            "10% · 20,000,000 $SNAO",
-
-        text:
-            "Used for global promotion, campaigns, community expansion, " +
-            "content production and user acquisition.",
+            "10,000,000 SNAO reserved for initial liquidity and " +
+            "30,000,000 SNAO reserved for long-term liquidity " +
+            "and market-making operations.",
 
         unlock:
             "Controlled",
 
         vesting:
-            "Campaign Based",
+            "Reserve Controlled",
 
         purpose:
-            "Growth"
+            "Market Liquidity"
     },
+
+
+    treasury: {
+        title:
+            "Treasury",
+
+        percentage:
+            "20% · 40,000,000 $SNAO",
+
+        text:
+            "Reserved for project operations, infrastructure and " +
+            "long-term ecosystem development through a controlled " +
+            "release schedule.",
+
+        unlock:
+            "Controlled",
+
+        vesting:
+            "48-month linear",
+
+        purpose:
+            "Project Treasury"
+    },
+
+
+    team: {
+        title:
+            "Team & Development",
+
+        percentage:
+            "7.5% · 15,000,000 $SNAO",
+
+        text:
+            "Long-term team and development allocation with no " +
+            "tokens unlocked at TGE.",
+
+        unlock:
+            "0% at TGE",
+
+        vesting:
+            "360-day cliff + 1,080-day linear",
+
+        purpose:
+            "Development"
+    },
+
 
     partnerships: {
         title:
-            "Partnerships",
+            "Partnerships & Ecosystem",
 
         percentage:
             "5% · 10,000,000 $SNAO",
 
         text:
-            "Reserved for integrations, exchanges, strategic collaborations " +
-            "and future ecosystem partnerships.",
+            "Reserved for integrations, strategic collaborations " +
+            "and long-term ecosystem development.",
 
         unlock:
-            "Milestone Based",
+            "6-month cliff",
 
         vesting:
-            "Agreement Based",
+            "30-month linear",
 
         purpose:
-            "Partnerships"
+            "Ecosystem Growth"
     },
 
-    advisors: {
+
+    community: {
         title:
-            "Advisors & Specialists",
+            "Community & Rewards",
 
         percentage:
-            "5% · 10,000,000 $SNAO",
+            "4% · 8,000,000 $SNAO",
 
         text:
-            "Reserved for technical, legal, financial and strategic specialists " +
-            "who support the long-term development of the project.",
+            "Reserved for community participation, ecosystem rewards " +
+            "and future community programs.",
 
         unlock:
-            "Limited",
+            "Controlled",
 
         vesting:
-            "Milestone Based",
+            "36-month linear",
 
         purpose:
-            "Specialist Support"
+            "Community"
+    },
+
+
+    unsold: {
+        title:
+            "Unsold Sale Reserve",
+
+        percentage:
+            "2.5% · 5,000,000 $SNAO",
+
+        text:
+            "Reserved from the original sale allocation and locked " +
+            "for 24 months. After the lock period, this allocation " +
+            "is burn-only.",
+
+        unlock:
+            "24-month lock",
+
+        vesting:
+            "Burn-only after lock",
+
+        purpose:
+            "Supply Control"
+    },
+
+
+    strategic: {
+        title:
+            "Strategic Reserve",
+
+        percentage:
+            "5.5% · 11,000,000 $SNAO",
+
+        text:
+            "Long-term strategic reserve for future ecosystem " +
+            "requirements and project development.",
+
+        unlock:
+            "12-month cliff",
+
+        vesting:
+            "36-month linear",
+
+        purpose:
+            "Strategic Reserve"
     }
 
 };
 
+
+/* =====================================================
+   TOKEN ALLOCATION INTERACTION
+===================================================== */
 
 function selectTokenAllocation(allocationId) {
 
@@ -342,6 +410,7 @@ tokenAllocationItems.forEach((item) => {
 
 });
 
+
 /* =====================================================
    VESTING & UNLOCK SCHEDULE
 ===================================================== */
@@ -387,100 +456,109 @@ const vestingVisualLine =
     );
 
 
+/* =====================================================
+   FOUNDER VESTING
+   0% TGE
+   180-DAY CLIFF
+   900-DAY LINEAR VESTING
+===================================================== */
+
 const tokenVestingDatabase = {
 
     launch: {
         title:
-            "Controlled Initial Circulation",
+            "Founder Unlock at TGE",
 
         period:
-            "Launch Phase",
+            "TGE",
 
         text:
-            "Initial circulation remains limited to support liquidity, " +
-            "public access and essential market operations without releasing " +
-            "the majority of long-term allocations.",
+            "No founder tokens are unlocked at TGE. The full " +
+            "26,000,000 SNAO founder allocation begins locked.",
 
         release:
-            "Controlled",
+            "0% Founder",
 
         impact:
-            "Limited",
-
-        goal:
-            "Market Stability",
-
-        position:
-            "8%"
-    },
-
-    cliff: {
-        title:
-            "Founder Allocation Cliff",
-
-        period:
-            "Initial Locking Period",
-
-        text:
-            "Most founder tokens remain locked during the initial project " +
-            "development and market-building phase to reduce sudden supply pressure.",
-
-        release:
-            "Locked",
-
-        impact:
-            "Minimal",
+            "No Founder Unlock",
 
         goal:
             "Long-Term Alignment",
 
         position:
-            "34%"
+            "0%"
     },
+
+
+    cliff: {
+        title:
+            "Founder Cliff",
+
+        period:
+            "Day 0 → Day 180",
+
+        text:
+            "The entire founder allocation remains locked during " +
+            "the 180-day cliff following TGE.",
+
+        release:
+            "Locked",
+
+        impact:
+            "0 Founder Release",
+
+        goal:
+            "Founder Alignment",
+
+        position:
+            "17%"
+    },
+
 
     unlock: {
         title:
-            "Monthly Vesting",
+            "Founder Linear Vesting",
 
         period:
-            "Progressive Unlock Phase",
+            "Day 180 → Day 1,080",
 
         text:
-            "Eligible allocations may be released gradually through monthly " +
-            "vesting schedules, milestone conditions and transparent unlock events.",
+            "After the 180-day cliff, the founder allocation enters " +
+            "900 days of linear vesting.",
 
         release:
-            "Gradual",
+            "Linear",
 
         impact:
-            "Controlled",
+            "Gradual",
 
         goal:
-            "Predictable Supply",
+            "Controlled Release",
 
         position:
-            "67%"
+            "60%"
     },
+
 
     maturity: {
         title:
-            "Full Ecosystem Maturity",
+            "Founder Vesting Complete",
 
         period:
-            "Long-Term Completion",
+            "Day 1,080",
 
         text:
-            "The token supply becomes progressively available as the ecosystem, " +
-            "liquidity, products, partnerships and revenue infrastructure mature.",
+            "The founder vesting schedule reaches completion " +
+            "1,080 days after TGE.",
 
         release:
             "Complete",
 
         impact:
-            "Market Dependent",
+            "Fully Vested",
 
         goal:
-            "Ecosystem Expansion",
+            "Schedule Completion",
 
         position:
             "100%"
@@ -488,6 +566,10 @@ const tokenVestingDatabase = {
 
 };
 
+
+/* =====================================================
+   VESTING INTERACTION
+===================================================== */
 
 function selectTokenVestingStep(stepId) {
 
@@ -585,6 +667,7 @@ tokenVestingSteps.forEach((item) => {
     );
 
 });
+
 
 /* =====================================================
    TOKEN FAQ
