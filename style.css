@@ -12215,9 +12215,11 @@ section {
     }
 
     .card-sentiment {
-        top: 205px !important;
-        right: 8px !important;
-    }
+    top: 205px !important;
+    left: 50% !important;
+    right: auto !important;
+    transform: translateX(-50%) !important;
+}
 
     .card-liquidity {
         top: 500px !important;
