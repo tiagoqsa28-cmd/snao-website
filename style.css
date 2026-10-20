@@ -12134,12 +12134,3 @@ section {
     }
 }
 
-/* =========================================
-   GLOBAL OCEAN FLOW — DESKTOP POSITION
-========================================= */
-
-@media (min-width: 1081px) {
-    .hero-mini-dashboard {
-        bottom: -220px !important;
-    }
-}
