@@ -274,9 +274,9 @@ section {
 .hero {
     position: relative;
     min-height: 100vh;
-    padding: 210px 7% 100px;
+    padding: 150px 7% 100px;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     overflow: hidden;
 }
 
