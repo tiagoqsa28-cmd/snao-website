@@ -12174,3 +12174,75 @@ section {
     }
 }
 
+/* =====================================================
+   HERO MOBILE — FINAL COMPACT LAYOUT
+===================================================== */
+
+@media (max-width: 760px) {
+
+    .hero-intelligence-visual {
+        min-height: 720px !important;
+        margin-top: 20px !important;
+        padding-top: 0 !important;
+        transform: none !important;
+    }
+
+    .intelligence-core {
+        top: 245px !important;
+        width: 230px !important;
+        height: 230px !important;
+    }
+
+    .intelligence-card {
+        width: 145px !important;
+        padding: 9px 10px !important;
+    }
+
+    .card-whale {
+        top: 0 !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+    }
+
+    .card-ai {
+        top: 100px !important;
+        right: 8px !important;
+    }
+
+    .card-money {
+        top: 100px !important;
+        left: 8px !important;
+    }
+
+    .card-sentiment {
+        top: 205px !important;
+        right: 8px !important;
+    }
+
+    .card-liquidity {
+        top: 500px !important;
+        left: 8px !important;
+    }
+
+    .card-risk {
+        top: 500px !important;
+        right: 8px !important;
+    }
+
+    .hero-mini-dashboard {
+        top: 600px !important;
+        bottom: auto !important;
+
+        left: 50% !important;
+        right: auto !important;
+
+        width: calc(100% - 20px) !important;
+        height: 210px !important;
+        min-height: 210px !important;
+
+        transform: translateX(-50%) !important;
+
+        padding: 10px !important;
+    }
+}
+
