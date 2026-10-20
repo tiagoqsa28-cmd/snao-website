@@ -12147,8 +12147,12 @@ section {
 
     .hero-intelligence-visual {
         min-height: 720px !important;
-        transform: translateY(-90px) !important;
+        transform: translateY(-20px) !important;
     }
+
+   .intelligence-core {
+    transform: translateY(-100px) !important;
+}
 
     .hero-mini-dashboard {
         position: absolute !important;
