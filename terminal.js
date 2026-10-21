@@ -1,608 +1,499 @@
 /* =====================================================
-   SNAO OCEAN TERMINAL — BASE
+   SNAO OCEAN TERMINAL
+   terminal.js
+
+   DATA POLICY
+   -----------------------------------------------------
+   - Market price data: CoinGecko public API
+   - Global market data: CoinGecko public API
+   - Top movers: CoinGecko public API
+   - Ocean Score: Experimental SNAO indicator
+   - Liquidity Pressure: Experimental SNAO indicator
+   - Whale Confidence: Preview / experimental indicator
+   - Narratives: Demonstration intelligence
+   - Ocean Flow: Demonstration data
+   - Whale Intelligence: Demonstration data
+   - Sardine AI: Preview / interface concept
+
+   Experimental or demonstration indicators must never
+   be presented as verified on-chain intelligence.
 ===================================================== */
-
-const terminalCurrentTime =
-    document.getElementById("terminalCurrentTime");
-
-const terminalRefreshButton =
-    document.getElementById("terminalRefreshButton");
-
-const terminalMenuButton =
-    document.getElementById("terminalMenuButton");
-
-const terminalSidebar =
-    document.getElementById("terminalSidebar");
 
 
 /* =====================================================
-   CLOCK
+   BASIC HELPERS
 ===================================================== */
 
-function updateTerminalClock() {
+function terminalClamp(value, min = 0, max = 100) {
+    return Math.max(
+        min,
+        Math.min(
+            max,
+            Number(value) || 0
+        )
+    );
+}
+
+
+function terminalSafeNumber(value, fallback = 0) {
+
+    const number =
+        Number(value);
+
+    return Number.isFinite(number)
+        ? number
+        : fallback;
+}
+
+
+function terminalFormatPercent(
+    value,
+    digits = 2
+) {
+
+    const number =
+        Number(value);
+
+    if (!Number.isFinite(number)) {
+        return "--";
+    }
+
+    const prefix =
+        number > 0
+            ? "+"
+            : "";
+
+    return (
+        prefix +
+        number.toFixed(digits) +
+        "%"
+    );
+}
+
+
+function terminalFormatCurrency(
+    value,
+    maximumFractionDigits = 2
+) {
+
+    const number =
+        Number(value);
+
+    if (!Number.isFinite(number)) {
+        return "--";
+    }
+
+    if (number >= 1000) {
+
+        return new Intl.NumberFormat(
+            "en-US",
+            {
+                style: "currency",
+                currency: "USD",
+                notation: "compact",
+                maximumFractionDigits: 2
+            }
+        ).format(number);
+
+    }
+
+    if (number >= 1) {
+
+        return new Intl.NumberFormat(
+            "en-US",
+            {
+                style: "currency",
+                currency: "USD",
+                maximumFractionDigits
+            }
+        ).format(number);
+
+    }
+
+    if (number >= 0.01) {
+        return `$${number.toFixed(4)}`;
+    }
+
+    return `$${number.toFixed(8)}`;
+}
+
+
+function terminalFormatCompactNumber(
+    value
+) {
+
+    const number =
+        Number(value);
+
+    if (!Number.isFinite(number)) {
+        return "--";
+    }
+
+    return new Intl.NumberFormat(
+        "en-US",
+        {
+            notation: "compact",
+            maximumFractionDigits: 2
+        }
+    ).format(number);
+}
+
+
+function terminalSetText(
+    element,
+    value
+) {
+
+    if (!element) {
+        return;
+    }
+
+    element.textContent =
+        value;
+}
+
+
+function terminalSetLoading(
+    element
+) {
+
+    if (!element) {
+        return;
+    }
+
+    element.textContent =
+        "Loading...";
+}
+
+
+function terminalSetUnavailable(
+    element
+) {
+
+    if (!element) {
+        return;
+    }
+
+    element.textContent =
+        "--";
+}
+
+
+/* =====================================================
+   CURRENT TIME
+===================================================== */
+
+const terminalCurrentTime =
+    document.getElementById(
+        "terminalCurrentTime"
+    );
+
+
+function updateTerminalCurrentTime() {
 
     if (!terminalCurrentTime) {
         return;
     }
 
-    const now = new Date();
+    const now =
+        new Date();
 
     terminalCurrentTime.textContent =
         now.toLocaleTimeString(
-            "en-US",
+            [],
             {
                 hour: "2-digit",
-                minute: "2-digit",
-                second: "2-digit"
+                minute: "2-digit"
             }
         );
-
 }
 
-updateTerminalClock();
+
+updateTerminalCurrentTime();
 
 setInterval(
-    updateTerminalClock,
-    1000
+    updateTerminalCurrentTime,
+    30000
 );
-
-
-/* =====================================================
-   REFRESH BUTTON
-===================================================== */
-
-if (terminalRefreshButton) {
-
-    terminalRefreshButton.addEventListener(
-    "click",
-    async () => {
-
-            terminalRefreshButton.textContent =
-                "↻ Updating...";
-
-            updateTerminalClock();
-
-            await loadTerminalMarketData();
-
-            setTimeout(() => {
-
-                terminalRefreshButton.textContent =
-                    "✓ Updated";
-
-            }, 500);
-
-            setTimeout(() => {
-
-                terminalRefreshButton.textContent =
-                    "↻ Refresh";
-
-            }, 1400);
-
-        }
-    );
-
-}
 
 
 /* =====================================================
    MOBILE SIDEBAR
 ===================================================== */
 
+const terminalMenuButton =
+    document.getElementById(
+        "terminalMenuButton"
+    );
+
+const terminalSidebar =
+    document.querySelector(
+        ".terminal-sidebar"
+    );
+
+const terminalSidebarBackdrop =
+    document.getElementById(
+        "terminalSidebarBackdrop"
+    );
+
+
+function closeTerminalSidebar() {
+
+    if (terminalSidebar) {
+        terminalSidebar.classList.remove(
+            "open"
+        );
+    }
+
+    if (terminalMenuButton) {
+
+        terminalMenuButton.setAttribute(
+            "aria-expanded",
+            "false"
+        );
+
+    }
+
+    if (terminalSidebarBackdrop) {
+
+        terminalSidebarBackdrop.classList.remove(
+            "active"
+        );
+
+    }
+
+    document.body.classList.remove(
+        "terminal-menu-open"
+    );
+}
+
+
+function openTerminalSidebar() {
+
+    if (!terminalSidebar) {
+        return;
+    }
+
+    terminalSidebar.classList.add(
+        "open"
+    );
+
+    if (terminalMenuButton) {
+
+        terminalMenuButton.setAttribute(
+            "aria-expanded",
+            "true"
+        );
+
+    }
+
+    if (terminalSidebarBackdrop) {
+
+        terminalSidebarBackdrop.classList.add(
+            "active"
+        );
+
+    }
+
+    document.body.classList.add(
+        "terminal-menu-open"
+    );
+}
+
+
 if (
     terminalMenuButton &&
     terminalSidebar
 ) {
 
-    terminalSidebar
-        .querySelectorAll("a")
-        .forEach((link) => {
-
-            link.addEventListener(
-                "click",
-                closeTerminalSidebar
-            );
-
-        });
-
-}
-
-/* =====================================================
-   OCEAN SCORE BREAKDOWN
-===================================================== */
-
-let latestOceanMarketChange = 0;
-let latestOceanBtcDominance = 50;
-let latestOceanFearGreed = 50;
-
-
-const oceanScoreMainRing =
-    document.getElementById(
-        "oceanScoreMainRing"
-    );
-
-const oceanScoreMainValue =
-    document.getElementById(
-        "oceanScoreMainValue"
-    );
-
-const oceanScoreCondition =
-    document.getElementById(
-        "oceanScoreCondition"
-    );
-
-const oceanScoreDescription =
-    document.getElementById(
-        "oceanScoreDescription"
-    );
-
-const oceanTrendValue =
-    document.getElementById(
-        "oceanTrendValue"
-    );
-
-const oceanTrendProgress =
-    document.getElementById(
-        "oceanTrendProgress"
-    );
-
-const oceanSentimentValue =
-    document.getElementById(
-        "oceanSentimentValue"
-    );
-
-const oceanSentimentProgress =
-    document.getElementById(
-        "oceanSentimentProgress"
-    );
-
-const oceanBitcoinValue =
-    document.getElementById(
-        "oceanBitcoinValue"
-    );
-
-const oceanBitcoinProgress =
-    document.getElementById(
-        "oceanBitcoinProgress"
-    );
-
-const oceanLiquidityValue =
-    document.getElementById(
-        "oceanLiquidityValue"
-    );
-
-const oceanLiquidityProgress =
-    document.getElementById(
-        "oceanLiquidityProgress"
-    );
-
-const oceanRiskValue =
-    document.getElementById(
-        "oceanRiskValue"
-    );
-
-const oceanRiskProgress =
-    document.getElementById(
-        "oceanRiskProgress"
-    );
-
-const oceanScoreAiTitle =
-    document.getElementById(
-        "oceanScoreAiTitle"
-    );
-
-const oceanScoreAiText =
-    document.getElementById(
-        "oceanScoreAiText"
-    );
-
-const oceanScoreDirection =
-    document.getElementById(
-        "oceanScoreDirection"
-    );
-
-const oceanScoreConfidence =
-    document.getElementById(
-        "oceanScoreConfidence"
-    );
-
-const oceanScoreRiskLevel =
-    document.getElementById(
-        "oceanScoreRiskLevel"
-    );
-
-const oceanScoreRefresh =
-    document.getElementById(
-        "oceanScoreRefresh"
-    );
-
-
-function clampOceanValue(value) {
-
-    return Math.max(
-        0,
-        Math.min(
-            100,
-            Math.round(value)
-        )
-    );
-
-}
-
-
-function updateOceanComponent(
-    valueElement,
-    progressElement,
-    value
-) {
-
-    const safeValue =
-        clampOceanValue(value);
-
-
-    if (valueElement) {
-        valueElement.textContent =
-            safeValue;
-    }
-
-
-    if (progressElement) {
-
-        progressElement.style.setProperty(
-            "--component-value",
-            `${safeValue}%`
-        );
-
-    }
-
-}
-
-
-function calculateOceanScoreBreakdown() {
-
-    const trendScore =
-        clampOceanValue(
-            50 +
-            latestOceanMarketChange * 9
-        );
-
-
-    const sentimentScore =
-        clampOceanValue(
-            latestOceanFearGreed
-        );
-
-
-    const bitcoinScore =
-        clampOceanValue(
-            45 +
-            latestOceanBtcDominance * 0.45
-        );
-
-
-    const liquidityScore =
-        clampOceanValue(
-            48 +
-            Math.max(
-                latestOceanMarketChange,
-                0
-            ) * 8 +
-            latestOceanFearGreed * 0.22
-        );
-
-
-    const overheatingPenalty =
-        Math.max(
-            latestOceanFearGreed - 75,
-            0
-        );
-
-
-    const riskControlScore =
-        clampOceanValue(
-            82 -
-            Math.abs(
-                latestOceanMarketChange
-            ) * 6 -
-            overheatingPenalty * 1.3
-        );
-
-
-    const totalScore =
-        clampOceanValue(
-            trendScore * 0.25 +
-            sentimentScore * 0.2 +
-            bitcoinScore * 0.15 +
-            liquidityScore * 0.2 +
-            riskControlScore * 0.2
-        );
-
-
-    return {
-        trendScore,
-        sentimentScore,
-        bitcoinScore,
-        liquidityScore,
-        riskControlScore,
-        totalScore
-    };
-
-}
-
-
-function getOceanScoreInterpretation(score) {
-
-    if (score >= 80) {
-
-        return {
-            condition:
-                "Strong Bullish",
-
-            title:
-                "Market conditions show strong expansion.",
-
-            description:
-                "Momentum, sentiment and liquidity are aligned positively, " +
-                "although overheating risk should be monitored.",
-
-            direction:
-                "Strong Positive",
-
-            risk:
-                "Elevated"
-        };
-
-    }
-
-
-    if (score >= 65) {
-
-        return {
-            condition:
-                "Moderate Bullish",
-
-            title:
-                "The market remains constructive.",
-
-            description:
-                "Positive momentum and improving liquidity support risk assets, " +
-                "while overall market risk remains manageable.",
-
-            direction:
-                "Positive",
-
-            risk:
-                "Medium"
-        };
-
-    }
-
-
-    if (score >= 45) {
-
-        return {
-            condition:
-                "Neutral",
-
-            title:
-                "The market lacks strong directional confirmation.",
-
-            description:
-                "Sentiment and liquidity conditions are mixed. " +
-                "Investors may wait for stronger confirmation.",
-
-            direction:
-                "Neutral",
-
-            risk:
-                "Medium"
-        };
-
-    }
-
-
-    if (score >= 25) {
-
-        return {
-            condition:
-                "Moderate Bearish",
-
-            title:
-                "Market pressure is increasing.",
-
-            description:
-                "Weak sentiment and reduced momentum indicate defensive " +
-                "conditions and higher downside sensitivity.",
-
-            direction:
-                "Negative",
-
-            risk:
-                "High"
-        };
-
-    }
-
-
-    return {
-        condition:
-            "Strong Bearish",
-
-        title:
-            "Market conditions show severe weakness.",
-
-        description:
-            "Fear, declining liquidity and negative momentum dominate " +
-            "the current market environment.",
-
-        direction:
-            "Strong Negative",
-
-        risk:
-            "Very High"
-    };
-
-}
-
-
-function renderOceanScoreBreakdown() {
-
-    const breakdown =
-        calculateOceanScoreBreakdown();
-
-
-    const interpretation =
-        getOceanScoreInterpretation(
-            breakdown.totalScore
-        );
-
-
-    if (oceanScoreMainRing) {
-
-        oceanScoreMainRing.style.setProperty(
-            "--ocean-score-value",
-            `${breakdown.totalScore}%`
-        );
-
-    }
-
-
-    if (oceanScoreMainValue) {
-        oceanScoreMainValue.textContent =
-            breakdown.totalScore;
-    }
-
-
-    updateOceanComponent(
-        oceanTrendValue,
-        oceanTrendProgress,
-        breakdown.trendScore
-    );
-
-
-    updateOceanComponent(
-        oceanSentimentValue,
-        oceanSentimentProgress,
-        breakdown.sentimentScore
-    );
-
-
-    updateOceanComponent(
-        oceanBitcoinValue,
-        oceanBitcoinProgress,
-        breakdown.bitcoinScore
-    );
-
-
-    updateOceanComponent(
-        oceanLiquidityValue,
-        oceanLiquidityProgress,
-        breakdown.liquidityScore
-    );
-
-
-    updateOceanComponent(
-        oceanRiskValue,
-        oceanRiskProgress,
-        breakdown.riskControlScore
-    );
-
-
-    if (oceanScoreCondition) {
-        oceanScoreCondition.textContent =
-            interpretation.condition;
-    }
-
-
-    if (oceanScoreDescription) {
-        oceanScoreDescription.textContent =
-            interpretation.description;
-    }
-
-
-    if (oceanScoreAiTitle) {
-        oceanScoreAiTitle.textContent =
-            interpretation.title;
-    }
-
-
-    if (oceanScoreAiText) {
-        oceanScoreAiText.textContent =
-            interpretation.description;
-    }
-
-
-    if (oceanScoreDirection) {
-        oceanScoreDirection.textContent =
-            interpretation.direction;
-    }
-
-
-    if (oceanScoreConfidence) {
-        oceanScoreConfidence.textContent =
-            `${breakdown.totalScore}%`;
-    }
-
-
-    if (oceanScoreRiskLevel) {
-        oceanScoreRiskLevel.textContent =
-            interpretation.risk;
-    }
-
-
-    if (liveOceanScore) {
-        liveOceanScore.textContent =
-            breakdown.totalScore;
-    }
-
-}
-
-
-if (oceanScoreRefresh) {
-
-    oceanScoreRefresh.addEventListener(
+    terminalMenuButton.addEventListener(
         "click",
         () => {
 
-            oceanScoreRefresh.disabled =
-                true;
+            const isOpen =
+                terminalSidebar.classList.contains(
+                    "open"
+                );
 
-            oceanScoreRefresh.textContent =
-                "↻ Calculating...";
-
-
-            renderOceanScoreBreakdown();
-
-
-            setTimeout(() => {
-
-                oceanScoreRefresh.textContent =
-                    "✓ Score Updated";
-
-            }, 550);
-
-
-            setTimeout(() => {
-
-                oceanScoreRefresh.textContent =
-                    "↻ Recalculate Ocean Score";
-
-                oceanScoreRefresh.disabled =
-                    false;
-
-            }, 1500);
+            if (isOpen) {
+                closeTerminalSidebar();
+            } else {
+                openTerminalSidebar();
+            }
 
         }
     );
 
 }
 
+
+if (terminalSidebarBackdrop) {
+
+    terminalSidebarBackdrop.addEventListener(
+        "click",
+        closeTerminalSidebar
+    );
+
+}
+
+
+document.addEventListener(
+    "keydown",
+    (event) => {
+
+        if (event.key === "Escape") {
+            closeTerminalSidebar();
+        }
+
+    }
+);
+
+
+document
+    .querySelectorAll(
+        ".terminal-sidebar-navigation a"
+    )
+    .forEach((link) => {
+
+        link.addEventListener(
+            "click",
+            closeTerminalSidebar
+        );
+
+    });
+
+
 /* =====================================================
-   GLOBAL MARKET DATA — LIVE BAR
+   ACTIVE SIDEBAR SECTION
 ===================================================== */
 
-const terminalGlobalMarketUrl =
-    "https://api.coingecko.com/api/v3/global";
+const terminalObservedSections =
+    document.querySelectorAll(
+        ".terminal-main section[id]"
+    );
 
+const terminalNavigationLinks =
+    document.querySelectorAll(
+        ".terminal-sidebar-navigation a[href^='#']"
+    );
+
+
+if (
+    terminalObservedSections.length &&
+    terminalNavigationLinks.length
+) {
+
+    const terminalSectionObserver =
+        new IntersectionObserver(
+            (entries) => {
+
+                entries.forEach(
+                    (entry) => {
+
+                        if (
+                            !entry.isIntersecting
+                        ) {
+                            return;
+                        }
+
+                        terminalNavigationLinks.forEach(
+                            (link) => {
+
+                                const isCurrent =
+                                    link.getAttribute(
+                                        "href"
+                                    ) ===
+                                    `#${entry.target.id}`;
+
+                                link.classList.toggle(
+                                    "active",
+                                    isCurrent
+                                );
+
+                            }
+                        );
+
+                    }
+                );
+
+            },
+            {
+                rootMargin:
+                    "-25% 0px -65% 0px"
+            }
+        );
+
+
+    terminalObservedSections.forEach(
+        (section) => {
+
+            terminalSectionObserver.observe(
+                section
+            );
+
+        }
+    );
+
+}
+
+
+/* =====================================================
+   MARKET API CONFIGURATION
+===================================================== */
+
+const TERMINAL_API = {
+
+    global:
+        "https://api.coingecko.com/api/v3/global",
+
+    markets:
+        "https://api.coingecko.com/api/v3/coins/markets",
+
+    simplePrice:
+        "https://api.coingecko.com/api/v3/simple/price"
+
+};
+
+
+const terminalFetchOptions = {
+
+    headers: {
+        accept:
+            "application/json"
+    },
+
+    cache:
+        "no-store"
+
+};
+
+
+/* =====================================================
+   GLOBAL MARKET STATE
+===================================================== */
+
+const terminalMarketState = {
+
+    btcDominance: null,
+
+    totalMarketCap: null,
+
+    marketChange24h: null,
+
+    activeCryptocurrencies: null,
+
+    selectedAsset:
+        "BTC",
+
+    lastSuccessfulUpdate:
+        null
+
+};
+
+
+/* =====================================================
+   LIVE GLOBAL MARKET ELEMENTS
+===================================================== */
 
 const liveBtcDominance =
     document.getElementById(
@@ -630,27 +521,10 @@ const liveOceanScore =
     );
 
 
-function formatGlobalMarketCap(value) {
-
-    if (
-        typeof value !== "number" ||
-        !Number.isFinite(value)
-    ) {
-        return "--";
-    }
-
-    return new Intl.NumberFormat(
-        "en-US",
-        {
-            style: "currency",
-            currency: "USD",
-            notation: "compact",
-            maximumFractionDigits: 2
-        }
-    ).format(value);
-
-}
-
+/* =====================================================
+   GLOBAL MARKET DATA
+   REAL DATA — COINGECKO
+===================================================== */
 
 async function loadGlobalMarketData() {
 
@@ -658,16 +532,8 @@ async function loadGlobalMarketData() {
 
         const response =
             await fetch(
-                terminalGlobalMarketUrl,
-                {
-                    headers: {
-                        accept:
-                            "application/json"
-                    },
-
-                    cache:
-                        "no-store"
-                }
+                TERMINAL_API.global,
+                terminalFetchOptions
             );
 
 
@@ -683,1110 +549,317 @@ async function loadGlobalMarketData() {
         const result =
             await response.json();
 
-
-        const globalData =
+        const data =
             result?.data;
 
 
-        if (!globalData) {
+        if (!data) {
 
             throw new Error(
-                "Global market data was not returned."
+                "Global market data unavailable."
             );
 
         }
 
 
         const btcDominance =
-            globalData
-                .market_cap_percentage
-                ?.btc;
+            terminalSafeNumber(
+                data
+                    .market_cap_percentage
+                    ?.btc,
+                NaN
+            );
 
 
         const totalMarketCap =
-            globalData
-                .total_market_cap
-                ?.usd;
+            terminalSafeNumber(
+                data
+                    .total_market_cap
+                    ?.usd,
+                NaN
+            );
 
 
         const marketChange =
-            globalData
-                .market_cap_change_percentage_24h_usd;
-
-        latestOceanMarketChange =
-    typeof marketChange === "number"
-        ? marketChange
-        : 0;
-
-latestOceanBtcDominance =
-    typeof btcDominance === "number"
-        ? btcDominance
-        : 50;
-
-renderOceanScoreBreakdown();
-
-renderLiquidityPressure();
-
-renderWhaleConfidence();
+            terminalSafeNumber(
+                data
+                    .market_cap_change_percentage_24h_usd,
+                NaN
+            );
 
 
         const activeCryptocurrencies =
-            globalData
-                .active_cryptocurrencies;
-
-
-        if (
-            liveBtcDominance &&
-            typeof btcDominance === "number"
-        ) {
-
-            liveBtcDominance.textContent =
-                `${btcDominance.toFixed(2)}%`;
-
-        }
-
-
-        if (liveTotalMarketCap) {
-
-            liveTotalMarketCap.textContent =
-                formatGlobalMarketCap(
-                    totalMarketCap
-                );
-
-        }
-
-
-        if (
-            liveActiveCryptocurrencies &&
-            typeof activeCryptocurrencies ===
-                "number"
-        ) {
-
-            liveActiveCryptocurrencies
-                .textContent =
-                    activeCryptocurrencies
-                        .toLocaleString(
-                            "en-US"
-                        );
-
-        }
-
-
-        if (
-            liveMarketChange &&
-            typeof marketChange === "number"
-        ) {
-
-            const prefix =
-                marketChange > 0
-                    ? "+"
-                    : "";
-
-            liveMarketChange.textContent =
-                `${prefix}${marketChange.toFixed(2)}%`;
-
-
-            liveMarketChange.classList.remove(
-                "live-market-positive",
-                "live-market-negative",
-                "live-market-neutral"
+            terminalSafeNumber(
+                data
+                    .active_cryptocurrencies,
+                NaN
             );
 
 
-            if (marketChange > 0) {
+        if (
+            Number.isFinite(
+                btcDominance
+            )
+        ) {
 
-                liveMarketChange.classList.add(
-                    "live-market-positive"
-                );
+            terminalMarketState.btcDominance =
+                btcDominance;
 
-            } else if (marketChange < 0) {
+            terminalSetText(
+                liveBtcDominance,
+                `${btcDominance.toFixed(2)}%`
+            );
 
-                liveMarketChange.classList.add(
-                    "live-market-negative"
-                );
+        }
 
-            } else {
 
-                liveMarketChange.classList.add(
+        if (
+            Number.isFinite(
+                totalMarketCap
+            )
+        ) {
+
+            terminalMarketState.totalMarketCap =
+                totalMarketCap;
+
+            terminalSetText(
+                liveTotalMarketCap,
+                terminalFormatCurrency(
+                    totalMarketCap
+                )
+            );
+
+        }
+
+
+        if (
+            Number.isFinite(
+                marketChange
+            )
+        ) {
+
+            terminalMarketState.marketChange24h =
+                marketChange;
+
+            terminalSetText(
+                liveMarketChange,
+                terminalFormatPercent(
+                    marketChange
+                )
+            );
+
+
+            if (liveMarketChange) {
+
+                liveMarketChange.classList.remove(
+                    "live-market-positive",
+                    "live-market-negative",
                     "live-market-neutral"
                 );
 
-            }
 
-        }
+                if (marketChange > 0) {
 
-
-    } catch (error) {
-
-        console.error(
-            "Unable to load global market data:",
-            error
-        );
-
-
-        [
-            liveBtcDominance,
-            liveTotalMarketCap,
-            liveMarketChange,
-            liveActiveCryptocurrencies
-        ].forEach((element) => {
-
-            if (element) {
-                element.textContent =
-                    "Unavailable";
-            }
-
-        });
-
-    }
-
-}
-
-
-loadGlobalMarketData();
-
-
-setInterval(
-    loadGlobalMarketData,
-    120000
-);
-
-/* =====================================================
-   REAL MARKET DATA — COINGECKO
-===================================================== */
-
-const coinGeckoPriceUrl =
-    "https://api.coingecko.com/api/v3/simple/price" +
-    "?ids=bitcoin,ethereum,binancecoin" +
-    "&vs_currencies=usd" +
-    "&include_24hr_change=true" +
-    "&include_last_updated_at=true";
-
-
-const terminalMarketElements = {
-
-    bitcoin: {
-        price:
-            document.getElementById(
-                "btcTerminalPrice"
-            ),
-
-        change:
-            document.getElementById(
-                "btcTerminalChange"
-            ),
-
-        maximumDecimals: 0
-    },
-
-    ethereum: {
-        price:
-            document.getElementById(
-                "ethTerminalPrice"
-            ),
-
-        change:
-            document.getElementById(
-                "ethTerminalChange"
-            ),
-
-        maximumDecimals: 0
-    },
-
-    binancecoin: {
-        price:
-            document.getElementById(
-                "bnbTerminalPrice"
-            ),
-
-        change:
-            document.getElementById(
-                "bnbTerminalChange"
-            ),
-
-        maximumDecimals: 2
-    }
-
-};
-
-
-/* Formata valores em dólar */
-
-function formatTerminalUsd(
-    value,
-    maximumDecimals = 2
-) {
-
-    if (
-        typeof value !== "number" ||
-        !Number.isFinite(value)
-    ) {
-        return "--";
-    }
-
-    return value.toLocaleString(
-        "en-US",
-        {
-            style: "currency",
-            currency: "USD",
-            minimumFractionDigits: 0,
-            maximumFractionDigits:
-                maximumDecimals
-        }
-    );
-
-}
-
-
-/* Atualiza cor e valor percentual */
-
-function updateTerminalChange(
-    element,
-    value
-) {
-
-    if (!element) {
-        return;
-    }
-
-    element.classList.remove(
-        "positive",
-        "negative",
-        "neutral"
-    );
-
-    if (
-        typeof value !== "number" ||
-        !Number.isFinite(value)
-    ) {
-        element.textContent = "--";
-        element.classList.add("neutral");
-        return;
-    }
-
-    const prefix =
-        value > 0 ? "+" : "";
-
-    element.textContent =
-        `${prefix}${value.toFixed(2)}%`;
-
-    if (value > 0) {
-        element.classList.add("positive");
-    } else if (value < 0) {
-        element.classList.add("negative");
-    } else {
-        element.classList.add("neutral");
-    }
-
-}
-
-
-/* Busca os dados da CoinGecko */
-
-async function loadTerminalMarketData() {
-
-    if (terminalRefreshButton) {
-        terminalRefreshButton.disabled = true;
-    }
-
-    try {
-
-        const response = await fetch(
-            coinGeckoPriceUrl,
-            {
-                headers: {
-                    accept: "application/json"
-                },
-
-                cache: "no-store"
-            }
-        );
-
-
-        if (!response.ok) {
-            throw new Error(
-                `CoinGecko request failed: ${response.status}`
-            );
-        }
-
-
-        const marketData =
-            await response.json();
-
-
-        Object.entries(
-            terminalMarketElements
-        ).forEach(
-            ([coinId, elements]) => {
-
-                const coinData =
-                    marketData[coinId];
-
-                if (!coinData) {
-                    return;
-                }
-
-
-                if (elements.price) {
-
-                    elements.price.textContent =
-                        formatTerminalUsd(
-                            coinData.usd,
-                            elements.maximumDecimals
-                        );
-
-                }
-
-
-                updateTerminalChange(
-                    elements.change,
-                    coinData.usd_24h_change
-                );
-
-            }
-        );
-
-
-        updateTerminalClock();
-
-    } catch (error) {
-
-        console.error(
-            "Unable to load CoinGecko data:",
-            error
-        );
-
-
-        Object.values(
-            terminalMarketElements
-        ).forEach((elements) => {
-
-            if (elements.change) {
-                elements.change.textContent =
-                    "Unavailable";
-
-                elements.change.classList.remove(
-                    "positive",
-                    "negative"
-                );
-
-                elements.change.classList.add(
-                    "neutral"
-                );
-            }
-
-        });
-
-    } finally {
-
-        if (terminalRefreshButton) {
-            terminalRefreshButton.disabled = false;
-        }
-
-    }
-
-}
-
-
-/* Primeira atualização */
-
-loadTerminalMarketData();
-
-
-/* Atualização automática a cada 60 segundos */
-
-const terminalMarketInterval =
-    setInterval(
-        loadTerminalMarketData,
-        60000
-    );
-
-/* =====================================================
-   FEAR & GREED INTELLIGENCE — REAL DATA
-===================================================== */
-
-const fearGreedApiUrl =
-    "https://api.alternative.me/fng/?limit=1&format=json";
-
-
-const fearGreedGauge =
-    document.getElementById(
-        "fearGreedGauge"
-    );
-
-const fearGreedValue =
-    document.getElementById(
-        "fearGreedValue"
-    );
-
-const fearGreedState =
-    document.getElementById(
-        "fearGreedState"
-    );
-
-const fearGreedTitle =
-    document.getElementById(
-        "fearGreedTitle"
-    );
-
-const fearGreedText =
-    document.getElementById(
-        "fearGreedText"
-    );
-
-const fearGreedRetail =
-    document.getElementById(
-        "fearGreedRetail"
-    );
-
-const fearGreedInstitutional =
-    document.getElementById(
-        "fearGreedInstitutional"
-    );
-
-const fearGreedVolatility =
-    document.getElementById(
-        "fearGreedVolatility"
-    );
-
-const fearGreedRegime =
-    document.getElementById(
-        "fearGreedRegime"
-    );
-
-const fearGreedLiveRefresh =
-    document.getElementById(
-        "fearGreedLiveRefresh"
-    );
-
-
-/* Define a análise exibida para cada faixa */
-
-function getFearGreedAnalysis(value) {
-
-    if (value <= 24) {
-
-        return {
-            title:
-                "Market confidence is severely reduced.",
-
-            text:
-                "Investors are prioritizing capital protection. " +
-                "Selling pressure and uncertainty dominate current behavior.",
-
-            retail:
-                "Fearful",
-
-            institutional:
-                "Selective",
-
-            volatility:
-                "High",
-
-            regime:
-                "Risk-Off"
-        };
-
-    }
-
-
-    if (value <= 44) {
-
-        return {
-            title:
-                "Fear continues to influence the market.",
-
-            text:
-                "Risk appetite remains limited. Investors are cautious, " +
-                "while stronger participants may begin evaluating opportunities.",
-
-            retail:
-                "Cautious",
-
-            institutional:
-                "Observing",
-
-            volatility:
-                "Elevated",
-
-            regime:
-                "Defensive"
-        };
-
-    }
-
-
-    if (value <= 55) {
-
-        return {
-            title:
-                "Market sentiment is balanced.",
-
-            text:
-                "Neither fear nor greed currently dominates. " +
-                "The market is waiting for stronger directional confirmation.",
-
-            retail:
-                "Neutral",
-
-            institutional:
-                "Balanced",
-
-            volatility:
-                "Medium",
-
-            regime:
-                "Neutral"
-        };
-
-    }
-
-
-    if (value <= 74) {
-
-        return {
-            title:
-                "Risk appetite is elevated.",
-
-            text:
-                "Investor confidence and demand for risk assets are growing. " +
-                "Momentum is positive, although volatility may also increase.",
-
-            retail:
-                "Positive",
-
-            institutional:
-                "Accumulating",
-
-            volatility:
-                "Medium",
-
-            regime:
-                "Risk-On"
-        };
-
-    }
-
-
-    return {
-        title:
-            "Market optimism is approaching extreme levels.",
-
-        text:
-            "Strong momentum and speculative demand dominate the market. " +
-            "The trend remains positive, but correction risk is higher.",
-
-        retail:
-            "Euphoric",
-
-        institutional:
-            "Profit Taking",
-
-        volatility:
-            "Elevated",
-
-        regime:
-            "Overheated"
-    };
-
-}
-
-
-/* Atualiza todos os elementos do painel */
-
-function renderFearGreedData(
-    value,
-    classification
-) {
-
-latestOceanFearGreed =
-    Number.isFinite(value)
-        ? value
-        : 50;
-
-renderOceanScoreBreakdown();
-
-renderLiquidityPressure();
-
-renderWhaleConfidence();
-
-    const analysis =
-        getFearGreedAnalysis(value);
-
-
-    if (fearGreedGauge) {
-
-        fearGreedGauge.style.setProperty(
-            "--fear-greed-position",
-            `${value}%`
-        );
-
-    }
-
-
-    if (fearGreedValue) {
-        fearGreedValue.textContent =
-            value;
-    }
-
-
-    if (fearGreedState) {
-        fearGreedState.textContent =
-            classification;
-    }
-
-
-    if (fearGreedText) {
-        fearGreedText.style.opacity =
-            "0";
-    }
-
-
-    setTimeout(() => {
-
-        if (fearGreedTitle) {
-            fearGreedTitle.textContent =
-                analysis.title;
-        }
-
-        if (fearGreedText) {
-
-            fearGreedText.textContent =
-                analysis.text;
-
-            fearGreedText.style.opacity =
-                "1";
-        }
-
-        if (fearGreedRetail) {
-            fearGreedRetail.textContent =
-                analysis.retail;
-        }
-
-        if (fearGreedInstitutional) {
-            fearGreedInstitutional.textContent =
-                analysis.institutional;
-        }
-
-        if (fearGreedVolatility) {
-            fearGreedVolatility.textContent =
-                analysis.volatility;
-        }
-
-        if (fearGreedRegime) {
-            fearGreedRegime.textContent =
-                analysis.regime;
-        }
-
-    }, 180);
-
-}
-
-
-/* Busca o índice real */
-
-async function loadFearGreedData() {
-
-    if (fearGreedLiveRefresh) {
-
-        fearGreedLiveRefresh.disabled =
-            true;
-
-        fearGreedLiveRefresh.textContent =
-            "↻ Loading...";
-    }
-
-
-    try {
-
-        const response =
-            await fetch(
-                fearGreedApiUrl,
-                {
-                    headers: {
-                        accept:
-                            "application/json"
-                    },
-
-                    cache:
-                        "no-store"
-                }
-            );
-
-
-        if (!response.ok) {
-
-            throw new Error(
-                `Fear and Greed request failed: ${response.status}`
-            );
-
-        }
-
-
-        const result =
-            await response.json();
-
-
-        const latestData =
-            result?.data?.[0];
-
-
-        if (!latestData) {
-
-            throw new Error(
-                "Fear and Greed data was not returned."
-            );
-
-        }
-
-
-        const currentValue =
-            Number(latestData.value);
-
-
-        if (!Number.isFinite(currentValue)) {
-
-            throw new Error(
-                "Invalid Fear and Greed value."
-            );
-
-        }
-
-
-        renderFearGreedData(
-            currentValue,
-            latestData.value_classification
-        );
-
-
-        if (fearGreedLiveRefresh) {
-
-            fearGreedLiveRefresh.textContent =
-                "✓ Live Data Updated";
-
-        }
-
-    } catch (error) {
-
-        console.error(
-            "Unable to load Fear and Greed data:",
-            error
-        );
-
-
-        if (fearGreedLiveRefresh) {
-
-            fearGreedLiveRefresh.textContent =
-                "Unable to Update";
-
-        }
-
-    } finally {
-
-        setTimeout(() => {
-
-            if (fearGreedLiveRefresh) {
-
-                fearGreedLiveRefresh.textContent =
-                    "↻ Refresh Live Index";
-
-                fearGreedLiveRefresh.disabled =
-                    false;
-            }
-
-        }, 1500);
-
-    }
-
-}
-
-
-/* Atualização manual */
-
-if (fearGreedLiveRefresh) {
-
-    fearGreedLiveRefresh.addEventListener(
-        "click",
-        loadFearGreedData
-    );
-
-}
-
-
-/* Primeira atualização */
-
-loadFearGreedData();
-
-
-/* Atualiza automaticamente a cada 5 minutos */
-
-setInterval(
-    loadFearGreedData,
-    300000
-);    
-
-/* =====================================================
-   SARDINE AI DEMONSTRATION
-===================================================== */
-
-const terminalAiText =
-    document.getElementById("terminalAiText");
-
-const terminalAiMessages = {
-
-    market:
-        "The market is moderately bullish. Liquidity is improving, " +
-        "Bitcoin remains dominant and risk appetite is increasing " +
-        "without reaching extreme levels.",
-
-    whales:
-        "Large-wallet activity is above the recent average. " +
-        "The strongest movements are concentrated in Bitcoin, " +
-        "Ethereum and major stablecoins.",
-
-    risk:
-        "Current market risk is moderate. Short-term volatility " +
-        "may increase, but liquidity and sentiment remain controlled."
-
-};
-
-document
-    .querySelectorAll("[data-ai-message]")
-    .forEach((button) => {
-
-        button.addEventListener(
-            "click",
-            () => {
-
-                const messageType =
-                    button.dataset.aiMessage;
-
-                const message =
-                    terminalAiMessages[
-                        messageType
-                    ];
-
-                if (
-                    !terminalAiText ||
-                    !message
-                ) {
-                    return;
-                }
-
-                terminalAiText.style.opacity =
-                    "0";
-
-                setTimeout(() => {
-
-                    terminalAiText.textContent =
-                        message;
-
-                    terminalAiText.style.opacity =
-                        "1";
-
-                }, 210);
-
-            }
-        );
-
-    });
-
-    /* =====================================================
-   CHART TIME BUTTONS
-===================================================== */
-
-const terminalChartTimeButtons =
-    document.querySelectorAll(
-        ".chart-time-buttons button"
-    );
-
-terminalChartTimeButtons.forEach((button) => {
-
-    button.addEventListener("click", () => {
-
-        terminalChartTimeButtons.forEach(
-            (currentButton) => {
-                currentButton.classList.remove("active");
-            }
-        );
-
-        button.classList.add("active");
-
-        const chartLine =
-            document.querySelector(
-                ".terminal-chart-main-line"
-            );
-
-        if (chartLine) {
-
-            chartLine.style.animation = "none";
-
-            void chartLine.offsetWidth;
-
-            chartLine.style.animation =
-                "terminalChartDraw 1.8s ease forwards";
-
-        }
-
-    });
-
-});
-
-/* =====================================================
-   MOBILE SIDEBAR BACKDROP
-===================================================== */
-
-const terminalSidebarBackdrop =
-    document.getElementById(
-        "terminalSidebarBackdrop"
-    );
-
-function closeTerminalSidebar() {
-
-    if (!terminalSidebar || !terminalMenuButton) {
-        return;
-    }
-
-    terminalSidebar.classList.remove("open");
-
-    terminalMenuButton.setAttribute(
-        "aria-expanded",
-        "false"
-    );
-
-    if (terminalSidebarBackdrop) {
-        terminalSidebarBackdrop.classList.remove(
-            "active"
-        );
-    }
-
-    document.body.classList.remove(
-        "terminal-menu-open"
-    );
-
-}
-
-
-if (
-    terminalMenuButton &&
-    terminalSidebar &&
-    terminalSidebarBackdrop
-) {
-
-    terminalMenuButton.addEventListener(
-    "click",
-    () => {
-
-        const isOpen =
-            terminalSidebar.classList.toggle(
-                "open"
-            );
-
-        terminalMenuButton.setAttribute(
-            "aria-expanded",
-            String(isOpen)
-        );
-
-        terminalSidebarBackdrop.classList.toggle(
-            "active",
-            isOpen
-        );
-
-        document.body.classList.toggle(
-            "terminal-menu-open",
-            isOpen
-        );
-
-    }
-);
-
-
-    terminalSidebarBackdrop.addEventListener(
-        "click",
-        closeTerminalSidebar
-    );
-
-
-    document.addEventListener(
-        "keydown",
-        (event) => {
-
-            if (event.key === "Escape") {
-                closeTerminalSidebar();
-            }
-
-        }
-    );
-
-}
-
-/* =====================================================
-   ACTIVE SIDEBAR SECTION
-===================================================== */
-
-const terminalObservedSections =
-    document.querySelectorAll(
-        ".terminal-main section[id]"
-    );
-
-const terminalNavigationLinks =
-    document.querySelectorAll(
-        ".terminal-sidebar-navigation a[href^='#']"
-    );
-
-if (
-    terminalObservedSections.length &&
-    terminalNavigationLinks.length
-) {
-
-    const terminalSectionObserver =
-        new IntersectionObserver(
-            (entries) => {
-
-                entries.forEach((entry) => {
-
-                    if (!entry.isIntersecting) {
-                        return;
-                    }
-
-                    terminalNavigationLinks.forEach(
-                        (link) => {
-
-                            const isCurrentSection =
-                                link.getAttribute("href") ===
-                                `#${entry.target.id}`;
-
-                            link.classList.toggle(
-                                "active",
-                                isCurrentSection
-                            );
-
-                        }
+                    liveMarketChange.classList.add(
+                        "live-market-positive"
                     );
 
-                });
+                } else if (
+                    marketChange < 0
+                ) {
 
-            },
-            {
-                rootMargin:
-                    "-25% 0px -65% 0px"
+                    liveMarketChange.classList.add(
+                        "live-market-negative"
+                    );
+
+                } else {
+
+                    liveMarketChange.classList.add(
+                        "live-market-neutral"
+                    );
+
+                }
+
             }
+
+        }
+
+
+        if (
+            Number.isFinite(
+                activeCryptocurrencies
+            )
+        ) {
+
+            terminalMarketState.activeCryptocurrencies =
+                activeCryptocurrencies;
+
+            terminalSetText(
+                liveActiveCryptocurrencies,
+                Math.round(
+                    activeCryptocurrencies
+                ).toLocaleString(
+                    "en-US"
+                )
+            );
+
+        }
+
+
+        terminalMarketState.lastSuccessfulUpdate =
+            Date.now();
+
+
+        /*
+         * These indicators use real global
+         * market inputs, but the resulting
+         * scores remain experimental SNAO
+         * analytical estimates.
+         */
+
+        renderOceanScoreBreakdown();
+
+        renderLiquidityPressure();
+
+        renderWhaleConfidence();
+
+
+        return true;
+
+    } catch (error) {
+
+        console.warn(
+            "SNAO Terminal: global market data unavailable.",
+            error
         );
 
-    terminalObservedSections.forEach(
-        (section) => {
-            terminalSectionObserver.observe(section);
+
+        if (
+            terminalMarketState.btcDominance ===
+            null
+        ) {
+
+            terminalSetUnavailable(
+                liveBtcDominance
+            );
+
         }
-    );
+
+
+        if (
+            terminalMarketState.totalMarketCap ===
+            null
+        ) {
+
+            terminalSetUnavailable(
+                liveTotalMarketCap
+            );
+
+        }
+
+
+        if (
+            terminalMarketState.marketChange24h ===
+            null
+        ) {
+
+            terminalSetUnavailable(
+                liveMarketChange
+            );
+
+        }
+
+
+        if (
+            terminalMarketState.activeCryptocurrencies ===
+            null
+        ) {
+
+            terminalSetUnavailable(
+                liveActiveCryptocurrencies
+            );
+
+        }
+
+
+        return false;
+
+    }
 
 }
 
+
 /* =====================================================
-   SEARCH INTELLIGENCE
+   ASSET DATABASE
+
+   IMPORTANT:
+   Only identity / CoinGecko mapping is stored here.
+
+   Price, market cap, volume and 24h change are loaded
+   from CoinGecko.
+
+   Preview intelligence is generated separately and is
+   explicitly treated as experimental / demonstration.
+===================================================== */
+
+const terminalAssetDatabase = {
+
+    BTC: {
+        coinGeckoId:
+            "bitcoin",
+        name:
+            "Bitcoin",
+        symbol:
+            "₿"
+    },
+
+    ETH: {
+        coinGeckoId:
+            "ethereum",
+        name:
+            "Ethereum",
+        symbol:
+            "Ξ"
+    },
+
+    SOL: {
+        coinGeckoId:
+            "solana",
+        name:
+            "Solana",
+        symbol:
+            "S"
+    },
+
+    BNB: {
+        coinGeckoId:
+            "binancecoin",
+        name:
+            "BNB",
+        symbol:
+            "B"
+    },
+
+    XRP: {
+        coinGeckoId:
+            "ripple",
+        name:
+            "XRP",
+        symbol:
+            "X"
+    }
+
+};
+
+
+/* =====================================================
+   SELECTED ASSET ELEMENTS
 ===================================================== */
 
 const terminalAssetSearch =
-    document.getElementById("terminalAssetSearch");
+    document.getElementById(
+        "terminalAssetSearch"
+    );
 
 const terminalAssetSearchButton =
     document.getElementById(
@@ -1799,133 +872,7 @@ const terminalAssetButtons =
     );
 
 
-const terminalAssetDatabase = {
-
-    BTC: {
-        coinGeckoId: "bitcoin",
-        name: "Bitcoin",
-        symbol: "₿",
-        price: "--",
-        change: "--",
-        marketCap: "--",
-        volume: "--",
-        aiScore: "84",
-        whales: "High",
-        risk: "Medium",
-        sentiment: "Positive",
-        state: "Bullish",
-        positive: true,
-        summary:
-            "Bitcoin shows strong institutional demand, elevated whale " +
-            "activity and improving liquidity. Short-term volatility " +
-            "remains possible, but the broader structure is positive."
-    },
-
-    ETH: {
-        coinGeckoId: "ethereum",
-        name: "Ethereum",
-        symbol: "Ξ",
-        price: "--",
-        change: "--",
-        marketCap: "--",
-        volume: "--",
-        aiScore: "78",
-        whales: "Moderate",
-        risk: "Medium",
-        sentiment: "Positive",
-        state: "Bullish",
-        positive: true,
-        summary:
-            "Ethereum maintains positive sentiment with steady institutional " +
-            "interest. Network activity is stable and whale accumulation " +
-            "remains moderate."
-    },
-
-    SOL: {
-        coinGeckoId: "solana",
-        name: "Solana",
-        symbol: "S",
-        price: "--",
-        change: "--",
-        marketCap: "--",
-        volume: "--",
-        aiScore: "88",
-        whales: "High",
-        risk: "Elevated",
-        sentiment: "Strong",
-        state: "Strong Bullish",
-        positive: true,
-        summary:
-            "Solana displays strong momentum, elevated trading volume and " +
-            "high whale participation. Risk is higher due to recent rapid gains."
-    },
-
-    XRP: {
-        coinGeckoId: "ripple",
-        name: "XRP",
-        symbol: "X",
-        price: "--",
-        change: "--",
-        marketCap: "--",
-        volume: "--",
-        aiScore: "66",
-        whales: "Moderate",
-        risk: "Medium",
-        sentiment: "Neutral",
-        state: "Neutral",
-        positive: true,
-        summary:
-            "XRP is trading with moderate activity and balanced sentiment. " +
-            "Liquidity remains stable, but momentum is weaker than leading assets."
-    },
-
-    BNB: {
-        coinGeckoId: "binancecoin",
-        name: "BNB",
-        symbol: "B",
-        price: "--",
-        change: "--",
-        marketCap: "--",
-        volume: "--",
-        aiScore: "62",
-        whales: "Low",
-        risk: "Medium",
-        sentiment: "Neutral",
-        state: "Neutral",
-        positive: true,
-        summary:
-            "BNB remains structurally stable while market momentum changes. " +
-            "Whale activity and sentiment are being monitored."
-    },
-
-    DOGE: {
-        coinGeckoId: "dogecoin",
-        name: "Dogecoin",
-        symbol: "D",
-        price: "--",
-        change: "--",
-        marketCap: "--",
-        volume: "--",
-        aiScore: "54",
-        whales: "Moderate",
-        risk: "High",
-        sentiment: "Weak",
-        state: "Bearish",
-        positive: false,
-        summary:
-            "Dogecoin carries elevated speculative risk. Whale participation " +
-            "remains present, but momentum can change rapidly."
-    }
-
-};
-
-
 const terminalAssetElements = {
-
-    symbol:
-        document.getElementById(
-            "selectedAssetSymbol"
-        ),
 
     name:
         document.getElementById(
@@ -1937,9 +884,9 @@ const terminalAssetElements = {
             "selectedAssetTicker"
         ),
 
-    state:
+    symbol:
         document.getElementById(
-            "selectedAssetState"
+            "selectedAssetSymbol"
         ),
 
     price:
@@ -1964,7 +911,7 @@ const terminalAssetElements = {
 
     aiScore:
         document.getElementById(
-            "selectedAssetAiScore"
+            "selectedAssetAIScore"
         ),
 
     whales:
@@ -1982,6 +929,11 @@ const terminalAssetElements = {
             "selectedAssetSentiment"
         ),
 
+    state:
+        document.getElementById(
+            "selectedAssetState"
+        ),
+
     summary:
         document.getElementById(
             "selectedAssetSummary"
@@ -1989,118 +941,241 @@ const terminalAssetElements = {
 
 };
 
-/* =====================================================
-   SEARCH INTELLIGENCE — FORMATTERS
-===================================================== */
-
-function formatTerminalCompactUsd(value) {
-
-    if (
-        typeof value !== "number" ||
-        !Number.isFinite(value)
-    ) {
-        return "--";
-    }
-
-    return new Intl.NumberFormat(
-        "en-US",
-        {
-            style: "currency",
-            currency: "USD",
-            notation: "compact",
-            maximumFractionDigits: 2
-        }
-    ).format(value);
-
-}
-
-
-function formatTerminalAssetPrice(value) {
-
-    if (
-        typeof value !== "number" ||
-        !Number.isFinite(value)
-    ) {
-        return "--";
-    }
-
-    let maximumFractionDigits = 2;
-
-    if (value < 1) {
-        maximumFractionDigits = 5;
-    }
-
-    if (value >= 1000) {
-        maximumFractionDigits = 0;
-    }
-
-    return value.toLocaleString(
-        "en-US",
-        {
-            style: "currency",
-            currency: "USD",
-            minimumFractionDigits: 0,
-            maximumFractionDigits
-        }
-    );
-
-}
-
-
-function formatTerminalPercentage(value) {
-
-    if (
-        typeof value !== "number" ||
-        !Number.isFinite(value)
-    ) {
-        return "--";
-    }
-
-    const prefix =
-        value > 0 ? "+" : "";
-
-    return `${prefix}${value.toFixed(2)}%`;
-
-}
 
 /* =====================================================
-   SEARCH INTELLIGENCE — REAL MARKET DATA
+   ASSET MARKET CACHE
 ===================================================== */
 
-const terminalAssetMarketUrl =
-    "https://api.coingecko.com/api/v3/coins/markets" +
-    "?vs_currency=usd" +
-    "&ids=bitcoin,ethereum,solana,ripple,binancecoin,dogecoin" +
-    "&order=market_cap_desc" +
-    "&per_page=6" +
-    "&page=1" +
-    "&sparkline=false" +
-    "&price_change_percentage=24h";
+const terminalAssetMarketCache = {};
 
 
-let selectedTerminalAssetTicker = "BTC";
+/* =====================================================
+   ASSET PREVIEW INTELLIGENCE
 
+   This is NOT verified whale/on-chain intelligence.
+
+   It converts public price/volume movement into a
+   simple experimental interface preview.
+===================================================== */
+
+function calculateAssetPreviewIntelligence(
+    marketData
+) {
+
+    if (!marketData) {
+
+        return {
+            score: "--",
+            whales: "Preview",
+            risk: "Unavailable",
+            sentiment: "Unavailable",
+            state: "No Data",
+            positive: true,
+            summary:
+                "Market data is currently unavailable. " +
+                "Experimental SNAO intelligence cannot be calculated."
+        };
+
+    }
+
+
+    const change =
+        terminalSafeNumber(
+            marketData
+                .price_change_percentage_24h,
+            0
+        );
+
+
+    const volume =
+        terminalSafeNumber(
+            marketData.total_volume,
+            0
+        );
+
+
+    const marketCap =
+        terminalSafeNumber(
+            marketData.market_cap,
+            0
+        );
+
+
+    const volumeRatio =
+        marketCap > 0
+            ? volume / marketCap
+            : 0;
+
+
+    let score =
+        50;
+
+
+    score +=
+        terminalClamp(
+            change * 3,
+            -20,
+            20
+        );
+
+
+    score +=
+        terminalClamp(
+            volumeRatio * 100,
+            0,
+            15
+        );
+
+
+    score =
+        Math.round(
+            terminalClamp(
+                score,
+                0,
+                100
+            )
+        );
+
+
+    let sentiment =
+        "Neutral";
+
+    let state =
+        "Neutral";
+
+    let risk =
+        "Medium";
+
+
+    if (change >= 5) {
+
+        sentiment =
+            "Positive";
+
+        state =
+            "Strong Momentum";
+
+        risk =
+            "Elevated";
+
+    } else if (
+        change >= 1
+    ) {
+
+        sentiment =
+            "Positive";
+
+        state =
+            "Positive Momentum";
+
+    } else if (
+        change <= -5
+    ) {
+
+        sentiment =
+            "Negative";
+
+        state =
+            "Strong Downside";
+
+        risk =
+            "Elevated";
+
+    } else if (
+        change <= -1
+    ) {
+
+        sentiment =
+            "Negative";
+
+        state =
+            "Negative Momentum";
+
+    }
+
+
+    /*
+     * We intentionally do NOT claim
+     * verified whale activity here.
+     */
+
+    const whales =
+        "Demo";
+
+
+    const directionText =
+        change > 1
+            ? "positive"
+            : change < -1
+                ? "negative"
+                : "mixed";
+
+
+    const summary =
+        `Experimental SNAO preview based on public market data. ` +
+        `The asset currently shows ${directionText} 24-hour price momentum ` +
+        `with a ${terminalFormatPercent(change)} change. ` +
+        `Whale activity and on-chain behavior are not verified by this preview.`;
+
+
+    return {
+        score,
+        whales,
+        risk,
+        sentiment,
+        state,
+        positive:
+            change >= 0,
+        summary
+    };
+
+}
+
+
+/* =====================================================
+   LOAD ASSET MARKET DATA
+   REAL DATA — COINGECKO
+===================================================== */
 
 async function loadTerminalAssetMarketData() {
 
+    const assets =
+        Object.entries(
+            terminalAssetDatabase
+        );
+
+
+    const ids =
+        assets
+            .map(
+                ([, asset]) =>
+                    asset.coinGeckoId
+            )
+            .join(",");
+
+
+    const url =
+        `${TERMINAL_API.markets}` +
+        `?vs_currency=usd` +
+        `&ids=${encodeURIComponent(ids)}` +
+        `&order=market_cap_desc` +
+        `&sparkline=false` +
+        `&price_change_percentage=24h`;
+
+
     try {
 
-        const response = await fetch(
-            terminalAssetMarketUrl,
-            {
-                headers: {
-                    accept: "application/json"
-                },
-
-                cache: "no-store"
-            }
-        );
+        const response =
+            await fetch(
+                url,
+                terminalFetchOptions
+            );
 
 
         if (!response.ok) {
 
             throw new Error(
-                `Market request failed: ${response.status}`
+                `Asset market request failed: ${response.status}`
             );
 
         }
@@ -2110,154 +1185,269 @@ async function loadTerminalAssetMarketData() {
             await response.json();
 
 
-        coins.forEach((coin) => {
+        if (
+            !Array.isArray(coins)
+        ) {
 
-            const matchingEntry =
-                Object.entries(
-                    terminalAssetDatabase
-                ).find(
-                    ([, asset]) =>
-                        asset.coinGeckoId === coin.id
-                );
-
-
-            if (!matchingEntry) {
-                return;
-            }
-
-
-            const [
-                ticker,
-                asset
-            ] = matchingEntry;
-
-
-            asset.price =
-                formatTerminalAssetPrice(
-                    coin.current_price
-                );
-
-            asset.change =
-                formatTerminalPercentage(
-                    coin.price_change_percentage_24h
-                );
-
-            asset.marketCap =
-                formatTerminalCompactUsd(
-                    coin.market_cap
-                );
-
-            asset.volume =
-                formatTerminalCompactUsd(
-                    coin.total_volume
-                );
-
-
-            const change =
-                coin.price_change_percentage_24h;
-
-
-            asset.positive =
-                typeof change === "number"
-                    ? change >= 0
-                    : true;
-
-
-            if (
-                typeof change === "number"
-            ) {
-
-                if (change >= 3) {
-                    asset.state =
-                        "Strong Bullish";
-                    asset.sentiment =
-                        "Strong";
-                } else if (change > 0) {
-                    asset.state =
-                        "Bullish";
-                    asset.sentiment =
-                        "Positive";
-                } else if (change <= -3) {
-                    asset.state =
-                        "Bearish";
-                    asset.sentiment =
-                        "Weak";
-                } else if (change < 0) {
-                    asset.state =
-                        "Under Pressure";
-                    asset.sentiment =
-                        "Negative";
-                }
-
-            }
-
-
-            terminalAssetDatabase[ticker] =
-                asset;
-
-        });
-
-
-        selectTerminalAsset(
-            selectedTerminalAssetTicker
-        );
-
-
-        if (terminalAssetSearchButton) {
-
-            terminalAssetSearchButton.textContent =
-                "Analyze";
-
-            terminalAssetSearchButton.disabled =
-                false;
+            throw new Error(
+                "Invalid asset market response."
+            );
 
         }
 
+
+        coins.forEach(
+            (coin) => {
+
+                const tickerEntry =
+                    assets.find(
+                        ([, asset]) =>
+                            asset.coinGeckoId ===
+                            coin.id
+                    );
+
+
+                if (!tickerEntry) {
+                    return;
+                }
+
+
+                const [
+                    ticker
+                ] =
+                    tickerEntry;
+
+
+                terminalAssetMarketCache[
+                    ticker
+                ] =
+                    coin;
+
+            }
+        );
+
+
+        renderSelectedTerminalAsset(
+            terminalMarketState.selectedAsset
+        );
+
+
+        return true;
+
     } catch (error) {
 
-        console.error(
-            "Unable to load asset market data:",
+        console.warn(
+            "SNAO Terminal: asset market data unavailable.",
             error
         );
 
 
-        if (terminalAssetSearchButton) {
+        renderSelectedTerminalAsset(
+            terminalMarketState.selectedAsset
+        );
 
-            terminalAssetSearchButton.textContent =
-                "Try Again";
 
-            terminalAssetSearchButton.disabled =
-                false;
-
-        }
+        return false;
 
     }
 
 }
 
 
-function selectTerminalAsset(assetTicker) {
+/* =====================================================
+   RENDER SELECTED ASSET
+===================================================== */
+
+function renderSelectedTerminalAsset(
+    ticker
+) {
 
     const normalizedTicker =
-        assetTicker.trim().toUpperCase();
+        String(
+            ticker || "BTC"
+        )
+            .trim()
+            .toUpperCase();
 
-    selectedTerminalAssetTicker =
-    normalizedTicker;    
 
     const asset =
         terminalAssetDatabase[
             normalizedTicker
         ];
 
+
     if (!asset) {
+        return false;
+    }
 
-        if (terminalAssetSearch) {
-            terminalAssetSearch.value = "";
-            terminalAssetSearch.placeholder =
-                "Asset not available in demo";
-        }
 
-        return;
+    terminalMarketState.selectedAsset =
+        normalizedTicker;
+
+
+    const marketData =
+        terminalAssetMarketCache[
+            normalizedTicker
+        ];
+
+
+    const preview =
+        calculateAssetPreviewIntelligence(
+            marketData
+        );
+
+
+    terminalSetText(
+        terminalAssetElements.name,
+        asset.name
+    );
+
+
+    terminalSetText(
+        terminalAssetElements.ticker,
+        normalizedTicker
+    );
+
+
+    terminalSetText(
+        terminalAssetElements.symbol,
+        asset.symbol
+    );
+
+
+    if (marketData) {
+
+        terminalSetText(
+            terminalAssetElements.price,
+            terminalFormatCurrency(
+                marketData.current_price
+            )
+        );
+
+
+        terminalSetText(
+            terminalAssetElements.change,
+            terminalFormatPercent(
+                marketData
+                    .price_change_percentage_24h
+            )
+        );
+
+
+        terminalSetText(
+            terminalAssetElements.marketCap,
+            terminalFormatCurrency(
+                marketData.market_cap
+            )
+        );
+
+
+        terminalSetText(
+            terminalAssetElements.volume,
+            terminalFormatCurrency(
+                marketData.total_volume
+            )
+        );
+
+    } else {
+
+        terminalSetUnavailable(
+            terminalAssetElements.price
+        );
+
+        terminalSetUnavailable(
+            terminalAssetElements.change
+        );
+
+        terminalSetUnavailable(
+            terminalAssetElements.marketCap
+        );
+
+        terminalSetUnavailable(
+            terminalAssetElements.volume
+        );
+
+    }
+
+
+    terminalSetText(
+        terminalAssetElements.aiScore,
+        preview.score === "--"
+            ? "--"
+            : `${preview.score}`
+    );
+
+
+    terminalSetText(
+        terminalAssetElements.whales,
+        preview.whales
+    );
+
+
+    terminalSetText(
+        terminalAssetElements.risk,
+        preview.risk
+    );
+
+
+    terminalSetText(
+        terminalAssetElements.sentiment,
+        preview.sentiment
+    );
+
+
+    terminalSetText(
+        terminalAssetElements.state,
+        preview.state
+    );
+
+
+    terminalSetText(
+        terminalAssetElements.summary,
+        preview.summary
+    );
+
+
+    if (
+        terminalAssetElements.change
+    ) {
+
+        const change =
+            marketData
+                ? terminalSafeNumber(
+                    marketData
+                        .price_change_percentage_24h,
+                    0
+                )
+                : 0;
+
+
+        terminalAssetElements.change
+            .classList.toggle(
+                "terminal-analysis-positive",
+                change >= 0
+            );
+
+
+        terminalAssetElements.change
+            .classList.toggle(
+                "terminal-analysis-negative",
+                change < 0
+            );
+
+    }
+
+
+    if (
+        terminalAssetElements.state
+    ) {
+
+        terminalAssetElements.state
+            .classList.toggle(
+                "negative",
+                !preview.positive
+            );
+
     }
 
 
@@ -2266,7 +1456,8 @@ function selectTerminalAsset(assetTicker) {
 
             button.classList.toggle(
                 "active",
-                button.dataset.terminalAsset ===
+                button.dataset
+                    .terminalAsset ===
                     normalizedTicker
             );
 
@@ -2274,156 +1465,150 @@ function selectTerminalAsset(assetTicker) {
     );
 
 
-    if (terminalAssetElements.symbol) {
-    terminalAssetElements.symbol.textContent =
-        asset.symbol;
-}
-
-if (terminalAssetElements.name) {
-    terminalAssetElements.name.textContent =
-        asset.name;
-}
-
-if (terminalAssetElements.ticker) {
-    terminalAssetElements.ticker.textContent =
-        normalizedTicker;
-}
-
-if (terminalAssetElements.price) {
-    terminalAssetElements.price.textContent =
-        asset.price;
-}
-
-if (terminalAssetElements.marketCap) {
-    terminalAssetElements.marketCap.textContent =
-        asset.marketCap;
-}
-
-if (terminalAssetElements.volume) {
-    terminalAssetElements.volume.textContent =
-        asset.volume;
-}
-
-if (terminalAssetElements.aiScore) {
-    terminalAssetElements.aiScore.textContent =
-        asset.aiScore;
-}
-
-if (terminalAssetElements.whales) {
-    terminalAssetElements.whales.textContent =
-        asset.whales;
-}
-
-if (terminalAssetElements.risk) {
-    terminalAssetElements.risk.textContent =
-        asset.risk;
-}
-
-if (terminalAssetElements.sentiment) {
-    terminalAssetElements.sentiment.textContent =
-        asset.sentiment;
-}
-
-
-    terminalAssetElements.change.textContent =
-        asset.change;
-
-    terminalAssetElements.change.classList.toggle(
-        "terminal-analysis-positive",
-        asset.positive
-    );
-
-    terminalAssetElements.change.classList.toggle(
-        "terminal-analysis-negative",
-        !asset.positive
-    );
-
-
-    terminalAssetElements.state.textContent =
-        asset.state;
-
-    terminalAssetElements.state.classList.toggle(
-        "negative",
-        !asset.positive
-    );
-
-
-    terminalAssetElements.summary.style.opacity =
-        "0";
-
-    setTimeout(() => {
-
-        terminalAssetElements.summary.textContent =
-            asset.summary;
-
-        terminalAssetElements.summary.style.opacity =
-            "1";
-
-    }, 180);
-
-
     if (terminalAssetSearch) {
+
         terminalAssetSearch.value =
             normalizedTicker;
+
     }
+
+
+    return true;
 
 }
 
 
-terminalAssetButtons.forEach((button) => {
+/* =====================================================
+   SELECT ASSET
+===================================================== */
 
-    button.addEventListener("click", () => {
+function selectTerminalAsset(
+    ticker
+) {
 
-        selectTerminalAsset(
-            button.dataset.terminalAsset
-        );
+    const normalizedTicker =
+        String(
+            ticker || ""
+        )
+            .trim()
+            .toUpperCase();
 
-    });
 
-});
+    if (
+        !terminalAssetDatabase[
+            normalizedTicker
+        ]
+    ) {
 
+        if (terminalAssetSearch) {
 
-if (terminalAssetSearchButton) {
+            terminalAssetSearch.value =
+                terminalMarketState
+                    .selectedAsset;
 
-    terminalAssetSearchButton.addEventListener(
-    "click",
-    async () => {
-
-        if (!terminalAssetSearch) {
-            return;
         }
 
-        terminalAssetSearchButton.disabled =
-            true;
 
-        terminalAssetSearchButton.textContent =
-            "Analyzing...";
+        if (
+            terminalAssetElements.summary
+        ) {
+
+            terminalAssetElements
+                .summary
+                .textContent =
+                "This preview currently supports BTC, ETH, SOL, BNB and XRP.";
+
+        }
 
 
-        selectTerminalAsset(
-            terminalAssetSearch.value
+        return false;
+    }
+
+
+    renderSelectedTerminalAsset(
+        normalizedTicker
+    );
+
+
+    return true;
+
+}
+
+
+/* =====================================================
+   ASSET BUTTON EVENTS
+===================================================== */
+
+terminalAssetButtons.forEach(
+    (button) => {
+
+        button.addEventListener(
+            "click",
+            () => {
+
+                selectTerminalAsset(
+                    button.dataset
+                        .terminalAsset
+                );
+
+            }
         );
-
-
-        await loadTerminalAssetMarketData();
-
-
-        terminalAssetSearchButton.textContent =
-            "Analysis Ready";
-
-
-        setTimeout(() => {
-
-            terminalAssetSearchButton.textContent =
-                "Analyze";
-
-            terminalAssetSearchButton.disabled =
-                false;
-
-        }, 1200);
 
     }
 );
+
+
+/* =====================================================
+   ASSET SEARCH EVENTS
+===================================================== */
+
+if (
+    terminalAssetSearchButton
+) {
+
+    terminalAssetSearchButton.addEventListener(
+        "click",
+        async () => {
+
+            if (!terminalAssetSearch) {
+                return;
+            }
+
+
+            terminalAssetSearchButton.disabled =
+                true;
+
+            terminalAssetSearchButton.textContent =
+                "Analyzing...";
+
+
+            selectTerminalAsset(
+                terminalAssetSearch.value
+            );
+
+
+            await loadTerminalAssetMarketData();
+
+
+            terminalAssetSearchButton.textContent =
+                "Analysis Ready";
+
+
+            setTimeout(
+                () => {
+
+                    terminalAssetSearchButton.textContent =
+                        "Analyze";
+
+                    terminalAssetSearchButton.disabled =
+                        false;
+
+                },
+                900
+            );
+
+        }
+    );
 
 }
 
@@ -2432,1398 +1617,292 @@ if (terminalAssetSearch) {
 
     terminalAssetSearch.addEventListener(
         "keydown",
-        (event) => {
+        async (event) => {
 
-            if (event.key === "Enter") {
-
-                event.preventDefault();
-
-                selectTerminalAsset(
-                    terminalAssetSearch.value
-                );
-
+            if (
+                event.key !==
+                "Enter"
+            ) {
+                return;
             }
+
+
+            event.preventDefault();
+
+
+            selectTerminalAsset(
+                terminalAssetSearch.value
+            );
+
+
+            await loadTerminalAssetMarketData();
 
         }
     );
 
 }
 
-loadTerminalAssetMarketData();
-
-
-setInterval(
-    loadTerminalAssetMarketData,
-    90000
-);
 
 /* =====================================================
-   TRENDING NARRATIVES
+   END OF PART 01
+
+   CONTINUE DIRECTLY WITH PART 02 BELOW THIS LINE.
+   DO NOT CLOSE OR ADD ANYTHING AFTER THIS SECTION YET.
 ===================================================== */
 
-const narrativeDatabase = {
+/* =====================================================
+   OCEAN SCORE
+   EXPERIMENTAL SNAO INDICATOR
 
-    ai: {
-        title: "Artificial Intelligence",
-        score: "95% Attention Score",
-        momentum: "Strong",
-        whales: "High",
-        risk: "Medium",
-        text:
-            "Artificial intelligence remains the strongest market " +
-            "narrative. Capital is concentrated in AI infrastructure, " +
-            "autonomous agents and data-focused blockchain projects."
+   The score may use selected public market inputs,
+   but the methodology and resulting score are an
+   experimental SNAO analytical model.
+
+   It is NOT a verified trading signal.
+===================================================== */
+
+const oceanScoreElements = {
+
+    score:
+        document.getElementById(
+            "oceanScoreValue"
+        ),
+
+    condition:
+        document.getElementById(
+            "oceanScoreCondition"
+        ),
+
+    confidence:
+        document.getElementById(
+            "oceanScoreConfidence"
+        ),
+
+    risk:
+        document.getElementById(
+            "oceanScoreRiskLevel"
+        ),
+
+    summary:
+        document.getElementById(
+            "oceanScoreSummary"
+        ),
+
+    ring:
+        document.getElementById(
+            "oceanScoreRing"
+        ),
+
+    refresh:
+        document.getElementById(
+            "oceanScoreRefresh"
+        )
+
+};
+
+
+/* =====================================================
+   OCEAN SCORE COMPONENTS
+===================================================== */
+
+const oceanScoreComponents = {
+
+    momentum: {
+        value:
+            document.getElementById(
+                "oceanScoreMomentumValue"
+            ),
+        bar:
+            document.getElementById(
+                "oceanScoreMomentumBar"
+            )
     },
 
-    rwa: {
-        title: "Real World Assets",
-        score: "78% Attention Score",
-        momentum: "Growing",
-        whales: "High",
-        risk: "Medium",
-        text:
-            "Real World Assets continue gaining institutional interest. " +
-            "Tokenized credit, treasuries and financial infrastructure " +
-            "remain the leading areas of growth."
+    liquidity: {
+        value:
+            document.getElementById(
+                "oceanScoreLiquidityValue"
+            ),
+        bar:
+            document.getElementById(
+                "oceanScoreLiquidityBar"
+            )
     },
 
-    defi: {
-        title: "Decentralized Finance",
-        score: "69% Attention Score",
-        momentum: "Stable",
-        whales: "Moderate",
-        risk: "Medium",
-        text:
-            "DeFi activity remains stable, supported by lending, " +
-            "liquidity and yield protocols. Capital rotation is gradual."
+    sentiment: {
+        value:
+            document.getElementById(
+                "oceanScoreSentimentValue"
+            ),
+        bar:
+            document.getElementById(
+                "oceanScoreSentimentBar"
+            )
     },
 
-    gaming: {
-        title: "Web3 Gaming",
-        score: "61% Attention Score",
-        momentum: "Recovering",
-        whales: "Moderate",
-        risk: "High",
-        text:
-            "Gaming projects are recovering attention, particularly " +
-            "those combining digital ownership, economies and AI systems."
-    },
-
-    memes: {
-        title: "Memecoins",
-        score: "54% Attention Score",
-        momentum: "Volatile",
-        whales: "High",
-        risk: "Very High",
-        text:
-            "Memecoins show active speculative demand but carry elevated " +
-            "volatility and liquidity risk. Momentum can reverse quickly."
-    },
-
-    layer2: {
-        title: "Layer 2",
-        score: "47% Attention Score",
-        momentum: "Moderate",
-        whales: "Low",
-        risk: "Medium",
-        text:
-            "Layer 2 networks maintain long-term relevance, although " +
-            "current market attention is lower than AI, RWA and DeFi."
+    stability: {
+        value:
+            document.getElementById(
+                "oceanScoreStabilityValue"
+            ),
+        bar:
+            document.getElementById(
+                "oceanScoreStabilityBar"
+            )
     }
 
 };
 
 
-const narrativeItems =
-    document.querySelectorAll(
-        "[data-narrative]"
-    );
-
-const narrativeAnalysisTitle =
-    document.getElementById(
-        "narrativeAnalysisTitle"
-    );
-
-const narrativeAnalysisScore =
-    document.getElementById(
-        "narrativeAnalysisScore"
-    );
-
-const narrativeAnalysisText =
-    document.getElementById(
-        "narrativeAnalysisText"
-    );
-
-const narrativeMomentum =
-    document.getElementById(
-        "narrativeMomentum"
-    );
-
-const narrativeWhaleInterest =
-    document.getElementById(
-        "narrativeWhaleInterest"
-    );
-
-const narrativeRisk =
-    document.getElementById(
-        "narrativeRisk"
-    );
-
-
-function selectNarrative(narrativeId) {
-
-    const narrative =
-        narrativeDatabase[narrativeId];
-
-    if (!narrative) {
-        return;
-    }
-
-
-    narrativeItems.forEach((item) => {
-
-        item.classList.toggle(
-            "active",
-            item.dataset.narrative ===
-                narrativeId
-        );
-
-    });
-
-
-    if (narrativeAnalysisText) {
-        narrativeAnalysisText.style.opacity =
-            "0";
-    }
-
-
-    setTimeout(() => {
-
-        if (narrativeAnalysisTitle) {
-            narrativeAnalysisTitle.textContent =
-                narrative.title;
-        }
-
-        if (narrativeAnalysisScore) {
-            narrativeAnalysisScore.textContent =
-                narrative.score;
-        }
-
-        if (narrativeMomentum) {
-            narrativeMomentum.textContent =
-                narrative.momentum;
-        }
-
-        if (narrativeWhaleInterest) {
-            narrativeWhaleInterest.textContent =
-                narrative.whales;
-        }
-
-        if (narrativeRisk) {
-            narrativeRisk.textContent =
-                narrative.risk;
-        }
-
-        if (narrativeAnalysisText) {
-
-            narrativeAnalysisText.textContent =
-                narrative.text;
-
-            narrativeAnalysisText.style.opacity =
-                "1";
-        }
-
-    }, 180);
-
-}
-
-
-narrativeItems.forEach((item) => {
-
-    item.addEventListener("click", () => {
-
-        selectNarrative(
-            item.dataset.narrative
-        );
-
-    });
-
-});
-
 /* =====================================================
-   OCEAN FLOW MAP — DEMONSTRATION
+   OCEAN SCORE CALCULATION
 ===================================================== */
 
-const flowAnalysisButton =
-    document.getElementById(
-        "flowAnalysisButton"
-    );
+function calculateOceanScore() {
 
-const flowAmounts =
-    document.querySelectorAll(
-        ".flow-exchange b"
-    );
-
-const flowBaseValues = [
-    184,
-    96,
-    -42,
-    71,
-    24
-];
+    const marketChange =
+        terminalMarketState
+            .marketChange24h;
 
 
-function updateFlowSimulation() {
+    const btcDominance =
+        terminalMarketState
+            .btcDominance;
 
-    flowAmounts.forEach(
-        (element, index) => {
 
-            const baseValue =
-                flowBaseValues[index];
+    /*
+     * Neutral values are used when live
+     * global market data is unavailable.
+     */
 
-            const variation =
-                Math.floor(
-                    Math.random() * 17
-                ) - 8;
+    let momentum =
+        50;
 
-            const updatedValue =
-                baseValue + variation;
+    let liquidity =
+        50;
 
-            const prefix =
-                updatedValue >= 0
-                    ? "+"
-                    : "-";
+    let sentiment =
+        50;
 
-            element.textContent =
-                `${prefix}$${Math.abs(updatedValue)}M`;
+    let stability =
+        50;
 
-            element.classList.toggle(
-                "flow-negative",
-                updatedValue < 0
+
+    if (
+        Number.isFinite(
+            marketChange
+        )
+    ) {
+
+        momentum =
+            terminalClamp(
+                50 +
+                marketChange * 5
             );
 
-        }
-    );
 
-}
-
-
-if (flowAnalysisButton) {
-
-    flowAnalysisButton.addEventListener(
-        "click",
-        () => {
-
-            flowAnalysisButton.textContent =
-                "Updating flow...";
-
-            flowAnalysisButton.disabled =
-                true;
-
-            updateFlowSimulation();
-
-            setTimeout(() => {
-
-                flowAnalysisButton.textContent =
-                    "Flow Analysis Updated";
-
-            }, 550);
-
-            setTimeout(() => {
-
-                flowAnalysisButton.textContent =
-                    "Refresh Flow Analysis";
-
-                flowAnalysisButton.disabled =
-                    false;
-
-            }, 1500);
-
-        }
-    );
-
-}
+        sentiment =
+            terminalClamp(
+                50 +
+                marketChange * 4
+            );
 
 
-setInterval(
-    updateFlowSimulation,
-    9000
-);
+        stability =
+            terminalClamp(
+                70 -
+                Math.abs(
+                    marketChange
+                ) * 4
+            );
 
-/* =====================================================
-   WHALE INTELLIGENCE TABLE
-===================================================== */
-
-const whaleTableRefresh =
-    document.getElementById(
-        "whaleTableRefresh"
-    );
-
-const whaleTableSummaryTitle =
-    document.getElementById(
-        "whaleTableSummaryTitle"
-    );
-
-const whaleTableSummaryText =
-    document.getElementById(
-        "whaleTableSummaryText"
-    );
-
-
-const whaleSummaryScenarios = [
-
-    {
-        title:
-            "Large wallets are showing net accumulation.",
-
-        text:
-            "Bitcoin and Solana currently show the strongest buying " +
-            "concentration. Ethereum has moderate distribution pressure, " +
-            "while stablecoin transfers indicate available market liquidity."
-    },
-
-    {
-        title:
-            "Institutional activity remains concentrated in Bitcoin.",
-
-        text:
-            "High-confidence wallets continue moving capital toward Bitcoin. " +
-            "Altcoin activity remains selective, with Solana and Chainlink " +
-            "showing the strongest secondary accumulation."
-    },
-
-    {
-        title:
-            "Stablecoin movement suggests increased buying capacity.",
-
-        text:
-            "Large USDT transfers are entering exchange-connected wallets. " +
-            "Sardine AI classifies this behavior as possible preparation " +
-            "for future market purchases."
     }
 
-];
 
-
-if (whaleTableRefresh) {
-
-    whaleTableRefresh.addEventListener(
-        "click",
-        () => {
-
-            whaleTableRefresh.disabled = true;
-
-            whaleTableRefresh.textContent =
-                "↻ Updating...";
-
-            const selectedScenario =
-                whaleSummaryScenarios[
-                    Math.floor(
-                        Math.random() *
-                        whaleSummaryScenarios.length
-                    )
-                ];
-
-
-            if (
-                whaleTableSummaryTitle &&
-                whaleTableSummaryText
-            ) {
-
-                whaleTableSummaryTitle.style.opacity =
-                    "0";
-
-                whaleTableSummaryText.style.opacity =
-                    "0";
-
-
-                setTimeout(() => {
-
-                    whaleTableSummaryTitle.textContent =
-                        selectedScenario.title;
-
-                    whaleTableSummaryText.textContent =
-                        selectedScenario.text;
-
-                    whaleTableSummaryTitle.style.opacity =
-                        "1";
-
-                    whaleTableSummaryText.style.opacity =
-                        "1";
-
-                }, 220);
-
-            }
-
-
-            setTimeout(() => {
-
-                whaleTableRefresh.textContent =
-                    "✓ Updated";
-
-            }, 600);
-
-
-            setTimeout(() => {
-
-                whaleTableRefresh.textContent =
-                    "↻ Refresh";
-
-                whaleTableRefresh.disabled =
-                    false;
-
-            }, 1500);
-
-        }
-    );
-
-}
-
-/* =====================================================
-   WHALE CONFIDENCE INDEX
-===================================================== */
-
-const whaleConfidenceRing =
-    document.getElementById(
-        "whaleConfidenceRing"
-    );
-
-const whaleConfidenceValue =
-    document.getElementById(
-        "whaleConfidenceValue"
-    );
-
-const whaleConfidenceCondition =
-    document.getElementById(
-        "whaleConfidenceCondition"
-    );
-
-const whaleConfidenceDescription =
-    document.getElementById(
-        "whaleConfidenceDescription"
-    );
-
-const whaleAccumulationValue =
-    document.getElementById(
-        "whaleAccumulationValue"
-    );
-
-const whaleAccumulationProgress =
-    document.getElementById(
-        "whaleAccumulationProgress"
-    );
-
-const whaleTransactionQualityValue =
-    document.getElementById(
-        "whaleTransactionQualityValue"
-    );
-
-const whaleTransactionQualityProgress =
-    document.getElementById(
-        "whaleTransactionQualityProgress"
-    );
-
-const whaleExchangeBehaviorValue =
-    document.getElementById(
-        "whaleExchangeBehaviorValue"
-    );
-
-const whaleExchangeBehaviorProgress =
-    document.getElementById(
-        "whaleExchangeBehaviorProgress"
-    );
-
-const whaleMarketAlignmentValue =
-    document.getElementById(
-        "whaleMarketAlignmentValue"
-    );
-
-const whaleMarketAlignmentProgress =
-    document.getElementById(
-        "whaleMarketAlignmentProgress"
-    );
-
-const whaleConfidenceTitle =
-    document.getElementById(
-        "whaleConfidenceTitle"
-    );
-
-const whaleConfidenceText =
-    document.getElementById(
-        "whaleConfidenceText"
-    );
-
-const whaleDominantAction =
-    document.getElementById(
-        "whaleDominantAction"
-    );
-
-const whaleSignalConfidence =
-    document.getElementById(
-        "whaleSignalConfidence"
-    );
-
-const whaleMarketEffect =
-    document.getElementById(
-        "whaleMarketEffect"
-    );
-
-const whaleConfidenceRefresh =
-    document.getElementById(
-        "whaleConfidenceRefresh"
-    );
-
-
-function clampWhaleConfidence(value) {
-
-    return Math.max(
-        0,
-        Math.min(
-            100,
-            Math.round(value)
+    if (
+        Number.isFinite(
+            btcDominance
         )
-    );
+    ) {
 
-}
+        /*
+         * This is an experimental weighting.
+         * BTC dominance is not equivalent to
+         * liquidity by itself.
+         */
 
-
-function updateWhaleConfidenceComponent(
-    valueElement,
-    progressElement,
-    value
-) {
-
-    const safeValue =
-        clampWhaleConfidence(value);
-
-
-    if (valueElement) {
-        valueElement.textContent =
-            safeValue;
-    }
-
-
-    if (progressElement) {
-
-        progressElement.style.setProperty(
-            "--whale-component-value",
-            `${safeValue}%`
-        );
+        liquidity =
+            terminalClamp(
+                50 +
+                (
+                    btcDominance -
+                    50
+                ) * 0.8
+            );
 
     }
 
-}
 
-
-function calculateWhaleConfidence() {
-
-    const sentiment =
-        typeof latestOceanFearGreed === "number"
-            ? latestOceanFearGreed
-            : 50;
-
-
-    const marketChange =
-        typeof latestOceanMarketChange === "number"
-            ? latestOceanMarketChange
-            : 0;
-
-
-    const liquidity =
-        calculateLiquidityPressure();
-
-
-    const accumulation =
-        clampWhaleConfidence(
-            55 +
-            sentiment * 0.25 +
-            Math.max(
-                marketChange,
-                0
-            ) * 5
-        );
-
-
-    const transactionQuality =
-        clampWhaleConfidence(
-            62 +
-            sentiment * 0.18
-        );
-
-
-    const exchangeBehavior =
-        clampWhaleConfidence(
-            45 +
-            liquidity.total * 0.4
-        );
-
-
-    const marketAlignment =
-        clampWhaleConfidence(
-            sentiment * 0.4 +
-            liquidity.total * 0.4 +
-            20
-        );
-
-
-    const total =
-        clampWhaleConfidence(
-            accumulation * 0.3 +
-            transactionQuality * 0.2 +
-            exchangeBehavior * 0.25 +
-            marketAlignment * 0.25
+    const score =
+        Math.round(
+            (
+                momentum * 0.30 +
+                liquidity * 0.25 +
+                sentiment * 0.25 +
+                stability * 0.20
+            )
         );
 
 
     return {
-        accumulation,
-        transactionQuality,
-        exchangeBehavior,
-        marketAlignment,
-        total
+
+        score:
+            terminalClamp(
+                score
+            ),
+
+        momentum:
+            Math.round(
+                momentum
+            ),
+
+        liquidity:
+            Math.round(
+                liquidity
+            ),
+
+        sentiment:
+            Math.round(
+                sentiment
+            ),
+
+        stability:
+            Math.round(
+                stability
+            )
+
     };
 
 }
 
 
-function getWhaleConfidenceInterpretation(score) {
+/* =====================================================
+   OCEAN SCORE CLASSIFICATION
+===================================================== */
+
+function getOceanScoreClassification(
+    score
+) {
 
     if (score >= 80) {
 
         return {
             condition:
-                "High Confidence",
-
-            title:
-                "Large wallets show strong conviction.",
-
-            text:
-                "Accumulation behavior, transaction quality and market " +
-                "alignment indicate elevated whale confidence.",
-
-            action:
-                "Accumulation",
-
-            confidence:
-                "High",
-
-            effect:
-                "Positive"
-        };
-
-    }
-
-
-    if (score >= 60) {
-
-        return {
-            condition:
-                "Moderate Confidence",
-
-            title:
-                "Large wallets remain selectively active.",
-
-            text:
-                "Whale participation remains constructive, although " +
-                "positioning is not yet strongly directional.",
-
-            action:
-                "Selective Buying",
-
-            confidence:
-                "Moderate",
-
-            effect:
-                "Slight Positive"
-        };
-
-    }
-
-
-    if (score >= 40) {
-
-        return {
-            condition:
-                "Neutral Confidence",
-
-            title:
-                "Whale behavior lacks clear conviction.",
-
-            text:
-                "Large-wallet activity remains mixed, with no dominant " +
-                "accumulation or distribution pattern.",
-
-            action:
-                "Mixed",
-
-            confidence:
-                "Neutral",
-
-            effect:
-                "Neutral"
-        };
-
-    }
-
-
-    return {
-        condition:
-            "Low Confidence",
-
-        title:
-            "Large wallets are reducing market exposure.",
-
-        text:
-            "Distribution pressure and weaker market alignment indicate " +
-            "lower whale conviction.",
-
-        action:
-            "Distribution",
-
-        confidence:
-            "Low",
-
-        effect:
-            "Negative"
-    };
-
-}
-
-
-function renderWhaleConfidence() {
-
-    const whaleData =
-        calculateWhaleConfidence();
-
-
-    const interpretation =
-        getWhaleConfidenceInterpretation(
-            whaleData.total
-        );
-
-
-    if (whaleConfidenceRing) {
-
-        whaleConfidenceRing.style.setProperty(
-            "--whale-confidence-value",
-            `${whaleData.total}%`
-        );
-
-    }
-
-
-    if (whaleConfidenceValue) {
-        whaleConfidenceValue.textContent =
-            whaleData.total;
-    }
-
-
-    updateWhaleConfidenceComponent(
-        whaleAccumulationValue,
-        whaleAccumulationProgress,
-        whaleData.accumulation
-    );
-
-
-    updateWhaleConfidenceComponent(
-        whaleTransactionQualityValue,
-        whaleTransactionQualityProgress,
-        whaleData.transactionQuality
-    );
-
-
-    updateWhaleConfidenceComponent(
-        whaleExchangeBehaviorValue,
-        whaleExchangeBehaviorProgress,
-        whaleData.exchangeBehavior
-    );
-
-
-    updateWhaleConfidenceComponent(
-        whaleMarketAlignmentValue,
-        whaleMarketAlignmentProgress,
-        whaleData.marketAlignment
-    );
-
-
-    if (whaleConfidenceCondition) {
-        whaleConfidenceCondition.textContent =
-            interpretation.condition;
-    }
-
-
-    if (whaleConfidenceDescription) {
-        whaleConfidenceDescription.textContent =
-            interpretation.text;
-    }
-
-
-    if (whaleConfidenceTitle) {
-        whaleConfidenceTitle.textContent =
-            interpretation.title;
-    }
-
-
-    if (whaleConfidenceText) {
-        whaleConfidenceText.textContent =
-            interpretation.text;
-    }
-
-
-    if (whaleDominantAction) {
-        whaleDominantAction.textContent =
-            interpretation.action;
-    }
-
-
-    if (whaleSignalConfidence) {
-        whaleSignalConfidence.textContent =
-            interpretation.confidence;
-    }
-
-
-    if (whaleMarketEffect) {
-        whaleMarketEffect.textContent =
-            interpretation.effect;
-    }
-
-}
-
-
-if (whaleConfidenceRefresh) {
-
-    whaleConfidenceRefresh.addEventListener(
-        "click",
-        () => {
-
-            whaleConfidenceRefresh.disabled =
-                true;
-
-            whaleConfidenceRefresh.textContent =
-                "↻ Calculating...";
-
-
-            renderWhaleConfidence();
-
-
-            setTimeout(() => {
-
-                whaleConfidenceRefresh.textContent =
-                    "✓ WCI Updated";
-
-            }, 550);
-
-
-            setTimeout(() => {
-
-                whaleConfidenceRefresh.textContent =
-                    "↻ Recalculate WCI";
-
-                whaleConfidenceRefresh.disabled =
-                    false;
-
-            }, 1500);
-
-        }
-    );
-
-}
-
-/* =====================================================
-   TOP MOVERS
-===================================================== */
-
-const topGainersList =
-document.getElementById(
-"topGainersList"
-);
-
-const topLosersList =
-document.getElementById(
-"topLosersList"
-);
-
-
-async function loadTopMovers(){
-
-try{
-
-const response=
-await fetch(
-
-"https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false&price_change_percentage=24h"
-
-);
-
-const coins=
-await response.json();
-
-
-coins.sort(
-
-(a,b)=>
-
-b.price_change_percentage_24h-
-
-a.price_change_percentage_24h
-
-);
-
-
-const gainers=
-coins.slice(0,5);
-
-
-const losers=
-[...coins]
-
-.sort(
-
-(a,b)=>
-
-a.price_change_percentage_24h-
-
-b.price_change_percentage_24h
-
-)
-
-.slice(0,5);
-
-
-topGainersList.innerHTML="";
-
-topLosersList.innerHTML="";
-
-
-gainers.forEach(
-
-coin=>{
-
-topGainersList.innerHTML+=`
-
-<div class="market-mover">
-
-<div>
-
-<strong>${coin.symbol.toUpperCase()}</strong>
-
-<span>${coin.name}</span>
-
-</div>
-
-<div class="market-positive">
-
-+${coin.price_change_percentage_24h.toFixed(2)}%
-
-</div>
-
-</div>
-
-`;
-
-}
-
-);
-
-
-losers.forEach(
-
-coin=>{
-
-topLosersList.innerHTML+=`
-
-<div class="market-mover">
-
-<div>
-
-<strong>${coin.symbol.toUpperCase()}</strong>
-
-<span>${coin.name}</span>
-
-</div>
-
-<div class="market-negative">
-
-${coin.price_change_percentage_24h.toFixed(2)}%
-
-</div>
-
-</div>
-
-`;
-
-}
-
-);
-
-}catch(error){
-
-console.error(error);
-
-}
-
-}
-
-
-loadTopMovers();
-
-setInterval(
-
-loadTopMovers,
-
-120000
-
-);
-
-/* =====================================================
-   SMART MONEY RADAR
-===================================================== */
-
-const smartMoneyRefresh =
-document.getElementById(
-"smartMoneyRefresh"
-);
-
-const smartMoneyValue =
-document.getElementById(
-"smartMoneyValue"
-);
-
-const smartMoneyTitle =
-document.getElementById(
-"smartMoneyTitle"
-);
-
-const smartMoneyText =
-document.getElementById(
-"smartMoneyText"
-);
-
-
-const smartMoneyScenarios=[
-
-{
-
-score:81,
-
-title:
-"Institutions remain active.",
-
-text:
-"Whale accumulation and exchange withdrawals continue supporting long-term positive market structure."
-
-},
-
-{
-
-score:63,
-
-title:
-"Institutional activity is neutral.",
-
-text:
-"Large investors remain active but without aggressive positioning."
-
-},
-
-{
-
-score:42,
-
-title:
-"Institutions are reducing exposure.",
-
-text:
-"Capital preservation behavior is increasing while liquidity slows."
-
-}
-
-];
-
-
-if(smartMoneyRefresh){
-
-smartMoneyRefresh.addEventListener(
-
-"click",
-
-()=>{
-
-const scenario=
-
-smartMoneyScenarios[
-
-Math.floor(
-
-Math.random()*
-
-smartMoneyScenarios.length
-
-)
-
-];
-
-smartMoneyValue.textContent=
-
-scenario.score;
-
-smartMoneyTitle.textContent=
-
-scenario.title;
-
-smartMoneyText.textContent=
-
-scenario.text;
-
-smartMoneyRefresh.disabled=true;
-
-smartMoneyRefresh.textContent=
-
-"Updating...";
-
-setTimeout(()=>{
-
-smartMoneyRefresh.disabled=false;
-
-smartMoneyRefresh.textContent=
-
-"Refresh Radar";
-
-},1200);
-
-}
-
-);
-
-}
-
-/* =====================================================
-   LIQUIDITY PRESSURE INDEX
-===================================================== */
-
-const liquidityPressureRing =
-    document.getElementById(
-        "liquidityPressureRing"
-    );
-
-const liquidityPressureValue =
-    document.getElementById(
-        "liquidityPressureValue"
-    );
-
-const liquidityPressureCondition =
-    document.getElementById(
-        "liquidityPressureCondition"
-    );
-
-const liquidityPressureDescription =
-    document.getElementById(
-        "liquidityPressureDescription"
-    );
-
-const liquidityGlobalValue =
-    document.getElementById(
-        "liquidityGlobalValue"
-    );
-
-const liquidityGlobalProgress =
-    document.getElementById(
-        "liquidityGlobalProgress"
-    );
-
-const liquidityStablecoinValue =
-    document.getElementById(
-        "liquidityStablecoinValue"
-    );
-
-const liquidityStablecoinProgress =
-    document.getElementById(
-        "liquidityStablecoinProgress"
-    );
-
-const liquidityExchangeValue =
-    document.getElementById(
-        "liquidityExchangeValue"
-    );
-
-const liquidityExchangeProgress =
-    document.getElementById(
-        "liquidityExchangeProgress"
-    );
-
-const liquidityParticipationValue =
-    document.getElementById(
-        "liquidityParticipationValue"
-    );
-
-const liquidityParticipationProgress =
-    document.getElementById(
-        "liquidityParticipationProgress"
-    );
-
-const liquidityPressureTitle =
-    document.getElementById(
-        "liquidityPressureTitle"
-    );
-
-const liquidityPressureText =
-    document.getElementById(
-        "liquidityPressureText"
-    );
-
-const liquidityPressureDirection =
-    document.getElementById(
-        "liquidityPressureDirection"
-    );
-
-const liquidityPressureStrength =
-    document.getElementById(
-        "liquidityPressureStrength"
-    );
-
-const liquidityPressureImpact =
-    document.getElementById(
-        "liquidityPressureImpact"
-    );
-
-const liquidityPressureRefresh =
-    document.getElementById(
-        "liquidityPressureRefresh"
-    );
-
-
-function clampLiquidityValue(value) {
-
-    return Math.max(
-        0,
-        Math.min(
-            100,
-            Math.round(value)
-        )
-    );
-
-}
-
-
-function updateLiquidityComponent(
-    valueElement,
-    progressElement,
-    value
-) {
-
-    const safeValue =
-        clampLiquidityValue(value);
-
-
-    if (valueElement) {
-        valueElement.textContent =
-            safeValue;
-    }
-
-
-    if (progressElement) {
-
-        progressElement.style.setProperty(
-            "--liquidity-component-value",
-            `${safeValue}%`
-        );
-
-    }
-
-}
-
-
-function calculateLiquidityPressure() {
-
-    const marketChange =
-        typeof latestOceanMarketChange === "number"
-            ? latestOceanMarketChange
-            : 0;
-
-
-    const sentiment =
-        typeof latestOceanFearGreed === "number"
-            ? latestOceanFearGreed
-            : 50;
-
-
-    const globalFlow =
-        clampLiquidityValue(
-            50 +
-            marketChange * 10
-        );
-
-
-    const stablecoinCapacity =
-        clampLiquidityValue(
-            42 +
-            sentiment * 0.45
-        );
-
-
-    const exchangeFlow =
-        clampLiquidityValue(
-            55 +
-            marketChange * 6 +
-            sentiment * 0.12
-        );
-
-
-    const participation =
-        clampLiquidityValue(
-            45 +
-            sentiment * 0.35 +
-            Math.max(
-                marketChange,
-                0
-            ) * 5
-        );
-
-
-    const total =
-        clampLiquidityValue(
-            globalFlow * 0.3 +
-            stablecoinCapacity * 0.25 +
-            exchangeFlow * 0.25 +
-            participation * 0.2
-        );
-
-
-    return {
-        globalFlow,
-        stablecoinCapacity,
-        exchangeFlow,
-        participation,
-        total
-    };
-
-}
-
-
-function getLiquidityInterpretation(score) {
-
-    if (score >= 80) {
-
-        return {
-            condition:
-                "Strong Inflow",
-
-            title:
-                "Liquidity pressure is strongly positive.",
-
-            text:
-                "Capital availability, market participation and exchange " +
-                "flow are aligned positively. Risk assets may benefit from " +
-                "stronger purchasing capacity.",
-
-            direction:
-                "Inflow",
-
-            strength:
-                "Very High",
-
-            impact:
-                "Strong Positive"
+                "Strong Positive",
+            risk:
+                "Medium",
+            summary:
+                "Experimental SNAO model currently shows strong positive market momentum. This is an analytical estimate, not a verified trading signal."
         };
 
     }
@@ -3833,23 +1912,11 @@ function getLiquidityInterpretation(score) {
 
         return {
             condition:
-                "Positive Inflow",
-
-            title:
-                "Liquidity conditions remain supportive.",
-
-            text:
-                "Capital availability and market participation remain positive. " +
-                "Liquidity pressure supports the broader market structure.",
-
-            direction:
-                "Inflow",
-
-            strength:
-                "High",
-
-            impact:
-                "Positive"
+                "Moderately Positive",
+            risk:
+                "Medium",
+            summary:
+                "Experimental SNAO model currently indicates moderately positive market conditions. The score should be treated as research-oriented information only."
         };
 
     }
@@ -3859,49 +1926,25 @@ function getLiquidityInterpretation(score) {
 
         return {
             condition:
-                "Balanced",
-
-            title:
-                "Liquidity pressure is currently balanced.",
-
-            text:
-                "Capital inflows and outflows remain relatively neutral. " +
-                "The market lacks a strong liquidity direction.",
-
-            direction:
-                "Neutral",
-
-            strength:
-                "Moderate",
-
-            impact:
-                "Neutral"
+                "Neutral / Mixed",
+            risk:
+                "Medium",
+            summary:
+                "Experimental SNAO model currently shows mixed market conditions without a strong directional conclusion."
         };
 
     }
 
 
-    if (score >= 25) {
+    if (score >= 30) {
 
         return {
             condition:
-                "Negative Outflow",
-
-            title:
-                "Liquidity pressure is weakening.",
-
-            text:
-                "Capital availability and market participation are declining. " +
-                "Risk assets may face increased selling sensitivity.",
-
-            direction:
-                "Outflow",
-
-            strength:
-                "High",
-
-            impact:
-                "Negative"
+                "Moderately Negative",
+            risk:
+                "Elevated",
+            summary:
+                "Experimental SNAO model currently indicates weaker market conditions and elevated uncertainty."
         };
 
     }
@@ -3909,163 +1952,3762 @@ function getLiquidityInterpretation(score) {
 
     return {
         condition:
-            "Severe Outflow",
-
-        title:
-            "Liquidity conditions show severe contraction.",
-
-        text:
-            "Capital is leaving risk markets while purchasing capacity and " +
-            "participation continue declining.",
-
-        direction:
-            "Outflow",
-
-        strength:
-            "Very High",
-
-        impact:
-            "Strong Negative"
+            "Strong Negative",
+        risk:
+            "High",
+        summary:
+            "Experimental SNAO model currently indicates significant downside pressure. This does not predict future market performance."
     };
 
 }
 
 
-function renderLiquidityPressure() {
+/* =====================================================
+   OCEAN SCORE COMPONENT RENDER
+===================================================== */
 
-    const liquidity =
-        calculateLiquidityPressure();
+function renderOceanScoreComponent(
+    component,
+    value
+) {
+
+    if (!component) {
+        return;
+    }
 
 
-    const interpretation =
-        getLiquidityInterpretation(
-            liquidity.total
+    if (component.value) {
+
+        component.value.textContent =
+            `${Math.round(value)}%`;
+
+    }
+
+
+    if (component.bar) {
+
+        component.bar.style.setProperty(
+            "--score-value",
+            `${terminalClamp(value)}%`
         );
 
 
-    if (liquidityPressureRing) {
+        component.bar.style.width =
+            `${terminalClamp(value)}%`;
 
-        liquidityPressureRing.style.setProperty(
-            "--liquidity-pressure-value",
-            `${liquidity.total}%`
-        );
-
-    }
-
-
-    if (liquidityPressureValue) {
-        liquidityPressureValue.textContent =
-            liquidity.total;
-    }
-
-
-    updateLiquidityComponent(
-        liquidityGlobalValue,
-        liquidityGlobalProgress,
-        liquidity.globalFlow
-    );
-
-
-    updateLiquidityComponent(
-        liquidityStablecoinValue,
-        liquidityStablecoinProgress,
-        liquidity.stablecoinCapacity
-    );
-
-
-    updateLiquidityComponent(
-        liquidityExchangeValue,
-        liquidityExchangeProgress,
-        liquidity.exchangeFlow
-    );
-
-
-    updateLiquidityComponent(
-        liquidityParticipationValue,
-        liquidityParticipationProgress,
-        liquidity.participation
-    );
-
-
-    if (liquidityPressureCondition) {
-        liquidityPressureCondition.textContent =
-            interpretation.condition;
-    }
-
-
-    if (liquidityPressureDescription) {
-        liquidityPressureDescription.textContent =
-            interpretation.text;
-    }
-
-
-    if (liquidityPressureTitle) {
-        liquidityPressureTitle.textContent =
-            interpretation.title;
-    }
-
-
-    if (liquidityPressureText) {
-        liquidityPressureText.textContent =
-            interpretation.text;
-    }
-
-
-    if (liquidityPressureDirection) {
-        liquidityPressureDirection.textContent =
-            interpretation.direction;
-    }
-
-
-    if (liquidityPressureStrength) {
-        liquidityPressureStrength.textContent =
-            interpretation.strength;
-    }
-
-
-    if (liquidityPressureImpact) {
-        liquidityPressureImpact.textContent =
-            interpretation.impact;
     }
 
 }
 
 
-if (liquidityPressureRefresh) {
+/* =====================================================
+   RENDER OCEAN SCORE
+===================================================== */
 
-    liquidityPressureRefresh.addEventListener(
+function renderOceanScoreBreakdown() {
+
+    const result =
+        calculateOceanScore();
+
+
+    const classification =
+        getOceanScoreClassification(
+            result.score
+        );
+
+
+    terminalSetText(
+        oceanScoreElements.score,
+        result.score
+    );
+
+
+    terminalSetText(
+        liveOceanScore,
+        result.score
+    );
+
+
+    terminalSetText(
+        oceanScoreElements.condition,
+        classification.condition
+    );
+
+
+    terminalSetText(
+        oceanScoreElements.risk,
+        classification.risk
+    );
+
+
+    terminalSetText(
+        oceanScoreElements.summary,
+        classification.summary
+    );
+
+
+    /*
+     * Confidence here means model confidence
+     * inside this experimental interface.
+     * It is NOT probability of future return.
+     */
+
+    const confidence =
+        Math.round(
+            terminalClamp(
+                55 +
+                Math.abs(
+                    result.score -
+                    50
+                ) * 0.55,
+                55,
+                82
+            )
+        );
+
+
+    terminalSetText(
+        oceanScoreElements.confidence,
+        `${confidence}%`
+    );
+
+
+    if (
+        oceanScoreElements.ring
+    ) {
+
+        oceanScoreElements.ring
+            .style
+            .setProperty(
+                "--ocean-score",
+                `${result.score}%`
+            );
+
+    }
+
+
+    renderOceanScoreComponent(
+        oceanScoreComponents.momentum,
+        result.momentum
+    );
+
+
+    renderOceanScoreComponent(
+        oceanScoreComponents.liquidity,
+        result.liquidity
+    );
+
+
+    renderOceanScoreComponent(
+        oceanScoreComponents.sentiment,
+        result.sentiment
+    );
+
+
+    renderOceanScoreComponent(
+        oceanScoreComponents.stability,
+        result.stability
+    );
+
+
+    return result;
+
+}
+
+
+/* =====================================================
+   OCEAN SCORE REFRESH
+===================================================== */
+
+if (
+    oceanScoreElements.refresh
+) {
+
+    oceanScoreElements
+        .refresh
+        .addEventListener(
+            "click",
+            async () => {
+
+                oceanScoreElements
+                    .refresh
+                    .disabled =
+                    true;
+
+
+                oceanScoreElements
+                    .refresh
+                    .textContent =
+                    "↻ Recalculating...";
+
+
+                await loadGlobalMarketData();
+
+
+                renderOceanScoreBreakdown();
+
+
+                setTimeout(
+                    () => {
+
+                        oceanScoreElements
+                            .refresh
+                            .textContent =
+                            "↻ Recalculate Ocean Score";
+
+
+                        oceanScoreElements
+                            .refresh
+                            .disabled =
+                            false;
+
+                    },
+                    700
+                );
+
+            }
+        );
+
+}
+
+
+/* =====================================================
+   TRENDING NARRATIVES
+   DEMONSTRATION INTELLIGENCE
+
+   These values are illustrative.
+   They are NOT a live narrative-ranking feed.
+===================================================== */
+
+const terminalNarrativeDatabase = {
+
+    ai: {
+
+        title:
+            "Artificial Intelligence",
+
+        score:
+            95,
+
+        state:
+            "Demo Leader",
+
+        summary:
+            "Illustrative narrative preview showing how the SNAO Terminal may organize AI-related market attention. This score is demonstration data, not a verified live ranking."
+
+    },
+
+
+    rwa: {
+
+        title:
+            "Real World Assets",
+
+        score:
+            88,
+
+        state:
+            "Demo Strong",
+
+        summary:
+            "Illustrative preview of how tokenized real-world-asset narratives may be ranked inside the future intelligence layer."
+
+    },
+
+
+    defi: {
+
+        title:
+            "DeFi",
+
+        score:
+            82,
+
+        state:
+            "Demo Active",
+
+        summary:
+            "Demonstration intelligence showing a possible DeFi narrative ranking. It does not represent verified current market attention."
+
+    },
+
+
+    gaming: {
+
+        title:
+            "Gaming",
+
+        score:
+            74,
+
+        state:
+            "Demo Moderate",
+
+        summary:
+            "Illustrative gaming-market narrative used to demonstrate the planned attention-ranking interface."
+
+    },
+
+
+    memes: {
+
+        title:
+            "Memecoins",
+
+        score:
+            69,
+
+        state:
+            "Demo Speculative",
+
+        summary:
+            "Demonstration narrative showing how speculative market attention may eventually be organized by Sardine AI."
+
+    }
+
+};
+
+
+/* =====================================================
+   NARRATIVE ELEMENTS
+===================================================== */
+
+const terminalNarrativeItems =
+    document.querySelectorAll(
+        "[data-narrative]"
+    );
+
+
+const terminalNarrativeTitle =
+    document.getElementById(
+        "narrativeAnalysisTitle"
+    );
+
+
+const terminalNarrativeScore =
+    document.getElementById(
+        "narrativeAnalysisScore"
+    );
+
+
+const terminalNarrativeState =
+    document.getElementById(
+        "narrativeAnalysisState"
+    );
+
+
+const terminalNarrativeSummary =
+    document.getElementById(
+        "narrativeAnalysisText"
+    );
+
+
+/* =====================================================
+   RENDER NARRATIVE
+===================================================== */
+
+function renderTerminalNarrative(
+    key
+) {
+
+    const narrative =
+        terminalNarrativeDatabase[
+            key
+        ];
+
+
+    if (!narrative) {
+        return;
+    }
+
+
+    terminalNarrativeItems.forEach(
+        (item) => {
+
+            item.classList.toggle(
+                "active",
+                item.dataset.narrative ===
+                    key
+            );
+
+        }
+    );
+
+
+    terminalSetText(
+        terminalNarrativeTitle,
+        narrative.title
+    );
+
+
+    terminalSetText(
+        terminalNarrativeScore,
+        `${narrative.score}%`
+    );
+
+
+    terminalSetText(
+        terminalNarrativeState,
+        narrative.state
+    );
+
+
+    terminalSetText(
+        terminalNarrativeSummary,
+        narrative.summary
+    );
+
+}
+
+
+/* =====================================================
+   NARRATIVE EVENTS
+===================================================== */
+
+terminalNarrativeItems.forEach(
+    (item) => {
+
+        item.addEventListener(
+            "click",
+            () => {
+
+                renderTerminalNarrative(
+                    item.dataset
+                        .narrative
+                );
+
+            }
+        );
+
+    }
+);
+
+
+/* =====================================================
+   OCEAN FLOW
+   DEMONSTRATION DATA
+
+   IMPORTANT:
+   This section does NOT claim verified exchange
+   transfers or institutional wallet movements.
+===================================================== */
+
+const terminalFlowDatabase = [
+
+    {
+        exchange:
+            "Binance",
+        flow:
+            184,
+        direction:
+            "inflow"
+    },
+
+    {
+        exchange:
+            "Coinbase",
+        flow:
+            96,
+        direction:
+            "inflow"
+    },
+
+    {
+        exchange:
+            "OKX",
+        flow:
+            -42,
+        direction:
+            "outflow"
+    },
+
+    {
+        exchange:
+            "Bybit",
+        flow:
+            71,
+        direction:
+            "inflow"
+    },
+
+    {
+        exchange:
+            "Kraken",
+        flow:
+            24,
+        direction:
+            "inflow"
+    }
+
+];
+
+
+/* =====================================================
+   OCEAN FLOW ELEMENTS
+===================================================== */
+
+const oceanFlowElements = {
+
+    totalInflow:
+        document.getElementById(
+            "flowTotalInflow"
+        ),
+
+    totalOutflow:
+        document.getElementById(
+            "flowTotalOutflow"
+        ),
+
+    netFlow:
+        document.getElementById(
+            "flowNetFlow"
+        ),
+
+    status:
+        document.getElementById(
+            "flowCoreStatus"
+        ),
+
+    title:
+        document.getElementById(
+            "flowAnalysisTitle"
+        ),
+
+    text:
+        document.getElementById(
+            "flowAnalysisText"
+        ),
+
+    confidence:
+        document.getElementById(
+            "flowConfidence"
+        ),
+
+    risk:
+        document.getElementById(
+            "flowRisk"
+        ),
+
+    signal:
+        document.getElementById(
+            "flowSignal"
+        ),
+
+    refresh:
+        document.querySelector(
+            ".flow-analysis-button"
+        )
+
+};
+
+
+/* =====================================================
+   FLOW CALCULATION
+===================================================== */
+
+function calculateDemoOceanFlow() {
+
+    const inflows =
+        terminalFlowDatabase
+            .filter(
+                (item) =>
+                    item.flow > 0
+            )
+            .reduce(
+                (
+                    total,
+                    item
+                ) =>
+                    total +
+                    item.flow,
+                0
+            );
+
+
+    const outflows =
+        terminalFlowDatabase
+            .filter(
+                (item) =>
+                    item.flow < 0
+            )
+            .reduce(
+                (
+                    total,
+                    item
+                ) =>
+                    total +
+                    Math.abs(
+                        item.flow
+                    ),
+                0
+            );
+
+
+    const net =
+        inflows -
+        outflows;
+
+
+    return {
+        inflows,
+        outflows,
+        net
+    };
+
+}
+
+
+/* =====================================================
+   RENDER OCEAN FLOW
+===================================================== */
+
+function renderDemoOceanFlow() {
+
+    const result =
+        calculateDemoOceanFlow();
+
+
+    terminalSetText(
+        oceanFlowElements.totalInflow,
+        `+$${result.inflows}M`
+    );
+
+
+    terminalSetText(
+        oceanFlowElements.totalOutflow,
+        `-$${result.outflows}M`
+    );
+
+
+    terminalSetText(
+        oceanFlowElements.netFlow,
+        `${result.net >= 0 ? "+" : "-"}$${Math.abs(result.net)}M`
+    );
+
+
+    terminalSetText(
+        oceanFlowElements.status,
+        "Simulation"
+    );
+
+
+    terminalSetText(
+        oceanFlowElements.title,
+        "Illustrative exchange-flow scenario."
+    );
+
+
+    terminalSetText(
+        oceanFlowElements.text,
+        "This demonstration uses predefined exchange-flow values to preview the planned Ocean Flow interface. It does not represent verified transfers, exchange reserves or institutional activity."
+    );
+
+
+    terminalSetText(
+        oceanFlowElements.confidence,
+        "Demo"
+    );
+
+
+    terminalSetText(
+        oceanFlowElements.risk,
+        "Preview"
+    );
+
+
+    terminalSetText(
+        oceanFlowElements.signal,
+        "Simulation"
+    );
+
+}
+
+
+/* =====================================================
+   REFRESH OCEAN FLOW DEMO
+===================================================== */
+
+if (
+    oceanFlowElements.refresh
+) {
+
+    oceanFlowElements
+        .refresh
+        .addEventListener(
+            "click",
+            () => {
+
+                oceanFlowElements
+                    .refresh
+                    .disabled =
+                    true;
+
+
+                oceanFlowElements
+                    .refresh
+                    .textContent =
+                    "Refreshing Demo...";
+
+
+                renderDemoOceanFlow();
+
+
+                setTimeout(
+                    () => {
+
+                        oceanFlowElements
+                            .refresh
+                            .textContent =
+                            "Refresh Demo Analysis";
+
+
+                        oceanFlowElements
+                            .refresh
+                            .disabled =
+                            false;
+
+                    },
+                    650
+                );
+
+            }
+        );
+
+}
+
+
+/* =====================================================
+   WHALE INTELLIGENCE
+   DEMONSTRATION DATA
+
+   The table in terminal.html is a visual preview.
+   No address shown in the preview should be treated
+   as a verified tracked wallet.
+===================================================== */
+
+const whaleIntelligenceElements = {
+
+    summaryTitle:
+        document.getElementById(
+            "whaleTableSummaryTitle"
+        ),
+
+    summaryText:
+        document.getElementById(
+            "whaleTableSummaryText"
+        ),
+
+    refresh:
+        document.querySelector(
+            ".whale-table-refresh"
+        )
+
+};
+
+
+/* =====================================================
+   WHALE PREVIEW STATES
+===================================================== */
+
+const whalePreviewStates = [
+
+    {
+        title:
+            "Demonstration scenario: net accumulation.",
+
+        text:
+            "Illustrative wallet activity is being used to demonstrate the planned Whale Intelligence interface. These values are not verified live wallet transactions."
+    },
+
+    {
+        title:
+            "Demonstration scenario: mixed whale activity.",
+
+        text:
+            "This preview illustrates how accumulation and distribution signals may eventually appear after verified on-chain integrations are connected."
+    },
+
+    {
+        title:
+            "Demonstration scenario: elevated transfer activity.",
+
+        text:
+            "The current table is interface demonstration data only. SNAO does not currently claim verified institutional or whale-wallet tracking from this section."
+    }
+
+];
+
+
+let whalePreviewIndex =
+    0;
+
+
+/* =====================================================
+   RENDER WHALE PREVIEW
+===================================================== */
+
+function renderWhalePreview() {
+
+    const preview =
+        whalePreviewStates[
+            whalePreviewIndex
+        ];
+
+
+    terminalSetText(
+        whaleIntelligenceElements
+            .summaryTitle,
+        preview.title
+    );
+
+
+    terminalSetText(
+        whaleIntelligenceElements
+            .summaryText,
+        preview.text
+    );
+
+}
+
+
+/* =====================================================
+   WHALE PREVIEW REFRESH
+===================================================== */
+
+if (
+    whaleIntelligenceElements.refresh
+) {
+
+    whaleIntelligenceElements
+        .refresh
+        .addEventListener(
+            "click",
+            () => {
+
+                whaleIntelligenceElements
+                    .refresh
+                    .disabled =
+                    true;
+
+
+                whaleIntelligenceElements
+                    .refresh
+                    .textContent =
+                    "Refreshing Demo...";
+
+
+                whalePreviewIndex =
+                    (
+                        whalePreviewIndex +
+                        1
+                    ) %
+                    whalePreviewStates.length;
+
+
+                renderWhalePreview();
+
+
+                setTimeout(
+                    () => {
+
+                        whaleIntelligenceElements
+                            .refresh
+                            .textContent =
+                            "Refresh Demo";
+
+
+                        whaleIntelligenceElements
+                            .refresh
+                            .disabled =
+                            false;
+
+                    },
+                    650
+                );
+
+            }
+        );
+
+}
+
+
+/* =====================================================
+   TOP MOVERS
+   REAL MARKET DATA — COINGECKO
+===================================================== */
+
+const topGainersContainer =
+    document.getElementById(
+        "topGainers"
+    );
+
+
+const topLosersContainer =
+    document.getElementById(
+        "topLosers"
+    );
+
+
+const topMoversRefreshButton =
+    document.getElementById(
+        "topMoversRefresh"
+    );
+
+
+/* =====================================================
+   CREATE TOP MOVER CARD
+===================================================== */
+
+function createTopMoverCard(
+    coin,
+    type
+) {
+
+    const article =
+        document.createElement(
+            "article"
+        );
+
+
+    article.className =
+        `top-mover-item ${type}`;
+
+
+    const change =
+        terminalSafeNumber(
+            coin
+                .price_change_percentage_24h,
+            0
+        );
+
+
+    const symbol =
+        String(
+            coin.symbol || ""
+        ).toUpperCase();
+
+
+    const name =
+        String(
+            coin.name || symbol
+        );
+
+
+    const image =
+        coin.image
+            ? `<img src="${coin.image}" alt="" loading="lazy">`
+            : "";
+
+
+    article.innerHTML = `
+        <div class="top-mover-asset">
+            ${image}
+            <div>
+                <strong>${name}</strong>
+                <span>${symbol}</span>
+            </div>
+        </div>
+
+        <div class="top-mover-price">
+            <strong>
+                ${terminalFormatCurrency(
+                    coin.current_price
+                )}
+            </strong>
+
+            <span class="${
+                change >= 0
+                    ? "positive"
+                    : "negative"
+            }">
+                ${terminalFormatPercent(
+                    change
+                )}
+            </span>
+        </div>
+    `;
+
+
+    return article;
+
+}
+
+
+/* =====================================================
+   RENDER TOP MOVERS
+===================================================== */
+
+function renderTopMovers(
+    coins
+) {
+
+    if (
+        !Array.isArray(coins) ||
+        !coins.length
+    ) {
+        return;
+    }
+
+
+    const validCoins =
+        coins.filter(
+            (coin) =>
+                Number.isFinite(
+                    Number(
+                        coin
+                            .price_change_percentage_24h
+                    )
+                )
+        );
+
+
+    const gainers =
+        [...validCoins]
+            .sort(
+                (a, b) =>
+                    Number(
+                        b
+                            .price_change_percentage_24h
+                    ) -
+                    Number(
+                        a
+                            .price_change_percentage_24h
+                    )
+            )
+            .slice(
+                0,
+                5
+            );
+
+
+    const losers =
+        [...validCoins]
+            .sort(
+                (a, b) =>
+                    Number(
+                        a
+                            .price_change_percentage_24h
+                    ) -
+                    Number(
+                        b
+                            .price_change_percentage_24h
+                    )
+            )
+            .slice(
+                0,
+                5
+            );
+
+
+    if (topGainersContainer) {
+
+        topGainersContainer.innerHTML =
+            "";
+
+
+        gainers.forEach(
+            (coin) => {
+
+                topGainersContainer
+                    .appendChild(
+                        createTopMoverCard(
+                            coin,
+                            "gainer"
+                        )
+                    );
+
+            }
+        );
+
+    }
+
+
+    if (topLosersContainer) {
+
+        topLosersContainer.innerHTML =
+            "";
+
+
+        losers.forEach(
+            (coin) => {
+
+                topLosersContainer
+                    .appendChild(
+                        createTopMoverCard(
+                            coin,
+                            "loser"
+                        )
+                    );
+
+            }
+        );
+
+    }
+
+}
+
+
+/* =====================================================
+   LOAD TOP MOVERS
+===================================================== */
+
+async function loadTopMovers() {
+
+    const url =
+        `${TERMINAL_API.markets}` +
+        `?vs_currency=usd` +
+        `&order=market_cap_desc` +
+        `&per_page=100` +
+        `&page=1` +
+        `&sparkline=false` +
+        `&price_change_percentage=24h`;
+
+
+    try {
+
+        const response =
+            await fetch(
+                url,
+                terminalFetchOptions
+            );
+
+
+        if (!response.ok) {
+
+            throw new Error(
+                `Top movers request failed: ${response.status}`
+            );
+
+        }
+
+
+        const coins =
+            await response.json();
+
+
+        if (
+            !Array.isArray(coins)
+        ) {
+
+            throw new Error(
+                "Invalid top movers response."
+            );
+
+        }
+
+
+        renderTopMovers(
+            coins
+        );
+
+
+        return true;
+
+    } catch (error) {
+
+        console.warn(
+            "SNAO Terminal: top movers unavailable.",
+            error
+        );
+
+
+        if (topGainersContainer) {
+
+            topGainersContainer.innerHTML =
+                `<p class="terminal-data-error">
+                    Live market data temporarily unavailable.
+                </p>`;
+
+        }
+
+
+        if (topLosersContainer) {
+
+            topLosersContainer.innerHTML =
+                `<p class="terminal-data-error">
+                    Live market data temporarily unavailable.
+                </p>`;
+
+        }
+
+
+        return false;
+
+    }
+
+}
+
+
+/* =====================================================
+   TOP MOVERS REFRESH
+===================================================== */
+
+if (
+    topMoversRefreshButton
+) {
+
+    topMoversRefreshButton.addEventListener(
         "click",
-        () => {
+        async () => {
 
-            liquidityPressureRefresh.disabled =
+            topMoversRefreshButton.disabled =
                 true;
 
-            liquidityPressureRefresh.textContent =
-                "↻ Calculating...";
+
+            topMoversRefreshButton.textContent =
+                "Refreshing...";
 
 
-            renderLiquidityPressure();
+            await loadTopMovers();
 
 
-            setTimeout(() => {
-
-                liquidityPressureRefresh.textContent =
-                    "✓ LPI Updated";
-
-            }, 550);
+            topMoversRefreshButton.textContent =
+                "Updated";
 
 
-            setTimeout(() => {
+            setTimeout(
+                () => {
 
-                liquidityPressureRefresh.textContent =
-                    "↻ Recalculate LPI";
+                    topMoversRefreshButton.textContent =
+                        "Refresh";
 
-                liquidityPressureRefresh.disabled =
-                    false;
+                    topMoversRefreshButton.disabled =
+                        false;
 
-            }, 1500);
+                },
+                800
+            );
 
         }
     );
 
 }
+
+
+/* =====================================================
+   END OF PART 02
+
+   CONTINUE DIRECTLY WITH PART 03 BELOW THIS LINE.
+   DO NOT CLOSE THE FILE YET.
+===================================================== */
+
+/* =====================================================
+   FEAR & GREED
+   EXTERNAL MARKET DATA + SNAO PREVIEW
+
+   The index value may come from Alternative.me.
+   Additional SNAO interpretations remain experimental.
+===================================================== */
+
+const fearGreedElements = {
+
+    value:
+        document.getElementById(
+            "fearGreedValue"
+        ),
+
+    state:
+        document.getElementById(
+            "fearGreedState"
+        ),
+
+    gauge:
+        document.getElementById(
+            "fearGreedGauge"
+        ),
+
+    needle:
+        document.getElementById(
+            "fearGreedNeedle"
+        ),
+
+    title:
+        document.getElementById(
+            "fearGreedTitle"
+        ),
+
+    text:
+        document.getElementById(
+            "fearGreedText"
+        ),
+
+    retail:
+        document.getElementById(
+            "fearGreedRetail"
+        ),
+
+    institutional:
+        document.getElementById(
+            "fearGreedInstitutional"
+        ),
+
+    volatility:
+        document.getElementById(
+            "fearGreedVolatility"
+        ),
+
+    regime:
+        document.getElementById(
+            "fearGreedRegime"
+        ),
+
+    refresh:
+        document.getElementById(
+            "fearGreedLiveRefresh"
+        ),
+
+    metric:
+        document.getElementById(
+            "terminalFearGreedMetric"
+        ),
+
+    metricProgress:
+        document.getElementById(
+            "terminalFearGreedMetricProgress"
+        )
+
+};
+
+
+/* =====================================================
+   FEAR & GREED STATE
+===================================================== */
+
+let terminalFearGreedState = {
+
+    value: null,
+
+    classification: null,
+
+    lastUpdated: null
+
+};
+
+
+/* =====================================================
+   FEAR & GREED CLASSIFICATION
+===================================================== */
+
+function getFearGreedClassification(
+    value
+) {
+
+    const score =
+        terminalClamp(
+            value
+        );
+
+
+    if (score <= 24) {
+
+        return {
+            label:
+                "Extreme Fear",
+
+            title:
+                "Extreme Fear",
+
+            retail:
+                "Very Defensive",
+
+            volatility:
+                "Elevated",
+
+            regime:
+                "Risk-Off",
+
+            text:
+                "The external sentiment index currently indicates Extreme Fear. SNAO interpretations shown alongside the index are experimental and do not predict a market reversal."
+        };
+
+    }
+
+
+    if (score <= 44) {
+
+        return {
+            label:
+                "Fear",
+
+            title:
+                "Fear",
+
+            retail:
+                "Defensive",
+
+            volatility:
+                "Elevated",
+
+            regime:
+                "Cautious",
+
+            text:
+                "The external sentiment index currently indicates Fear. This reflects market psychology and should not be interpreted as a buy or sell signal."
+        };
+
+    }
+
+
+    if (score <= 55) {
+
+        return {
+            label:
+                "Neutral",
+
+            title:
+                "Neutral Sentiment",
+
+            retail:
+                "Balanced",
+
+            volatility:
+                "Moderate",
+
+            regime:
+                "Mixed",
+
+            text:
+                "The external sentiment index currently indicates broadly neutral market psychology."
+        };
+
+    }
+
+
+    if (score <= 74) {
+
+        return {
+            label:
+                "Greed",
+
+            title:
+                "Greed",
+
+            retail:
+                "Optimistic",
+
+            volatility:
+                "Moderate",
+
+            regime:
+                "Risk-On",
+
+            text:
+                "The external sentiment index currently indicates Greed. Stronger optimism can coexist with elevated market risk."
+        };
+
+    }
+
+
+    return {
+        label:
+            "Extreme Greed",
+
+        title:
+            "Extreme Greed",
+
+        retail:
+            "Highly Optimistic",
+
+        volatility:
+            "Elevated",
+
+        regime:
+            "Risk-On",
+
+        text:
+            "The external sentiment index currently indicates Extreme Greed. This does not guarantee continued price appreciation and may coincide with increased market risk."
+    };
+
+}
+
+
+/* =====================================================
+   RENDER FEAR & GREED
+===================================================== */
+
+function renderFearGreed(
+    value
+) {
+
+    const score =
+        Math.round(
+            terminalClamp(
+                value
+            )
+        );
+
+
+    const classification =
+        getFearGreedClassification(
+            score
+        );
+
+
+    terminalFearGreedState.value =
+        score;
+
+
+    terminalFearGreedState.classification =
+        classification.label;
+
+
+    terminalFearGreedState.lastUpdated =
+        Date.now();
+
+
+    terminalSetText(
+        fearGreedElements.value,
+        score
+    );
+
+
+    terminalSetText(
+        fearGreedElements.state,
+        classification.label
+    );
+
+
+    terminalSetText(
+        fearGreedElements.title,
+        classification.title
+    );
+
+
+    terminalSetText(
+        fearGreedElements.text,
+        classification.text
+    );
+
+
+    terminalSetText(
+        fearGreedElements.retail,
+        classification.retail
+    );
+
+
+    /*
+     * We do not have a verified institutional
+     * sentiment data source connected here.
+     */
+
+    terminalSetText(
+        fearGreedElements.institutional,
+        "Preview"
+    );
+
+
+    terminalSetText(
+        fearGreedElements.volatility,
+        classification.volatility
+    );
+
+
+    terminalSetText(
+        fearGreedElements.regime,
+        classification.regime
+    );
+
+
+    terminalSetText(
+        fearGreedElements.metric,
+        score
+    );
+
+
+    if (
+        fearGreedElements.metricProgress
+    ) {
+
+        fearGreedElements
+            .metricProgress
+            .style
+            .setProperty(
+                "--value",
+                `${score}%`
+            );
+
+        fearGreedElements
+            .metricProgress
+            .style
+            .width =
+            `${score}%`;
+
+    }
+
+
+    if (
+        fearGreedElements.gauge
+    ) {
+
+        fearGreedElements
+            .gauge
+            .style
+            .setProperty(
+                "--fear-greed-position",
+                `${score}%`
+            );
+
+    }
+
+
+    if (
+        fearGreedElements.needle
+    ) {
+
+        const angle =
+            -90 +
+            (
+                score / 100
+            ) * 180;
+
+
+        fearGreedElements
+            .needle
+            .style
+            .transform =
+            `rotate(${angle}deg)`;
+
+    }
+
+}
+
+
+/* =====================================================
+   LOAD FEAR & GREED
+   EXTERNAL DATA — ALTERNATIVE.ME
+===================================================== */
+
+async function loadFearGreed() {
+
+    try {
+
+        const response =
+            await fetch(
+                "https://api.alternative.me/fng/?limit=1&format=json",
+                {
+                    cache:
+                        "no-store"
+                }
+            );
+
+
+        if (!response.ok) {
+
+            throw new Error(
+                `Fear & Greed request failed: ${response.status}`
+            );
+
+        }
+
+
+        const result =
+            await response.json();
+
+
+        const value =
+            Number(
+                result
+                    ?.data
+                    ?.[0]
+                    ?.value
+            );
+
+
+        if (
+            !Number.isFinite(
+                value
+            )
+        ) {
+
+            throw new Error(
+                "Invalid Fear & Greed response."
+            );
+
+        }
+
+
+        renderFearGreed(
+            value
+        );
+
+
+        return true;
+
+    } catch (error) {
+
+        console.warn(
+            "SNAO Terminal: Fear & Greed data unavailable.",
+            error
+        );
+
+
+        terminalFearGreedState.value =
+            null;
+
+
+        terminalSetText(
+            fearGreedElements.value,
+            "--"
+        );
+
+
+        terminalSetText(
+            fearGreedElements.state,
+            "Unavailable"
+        );
+
+
+        terminalSetText(
+            fearGreedElements.title,
+            "Market sentiment unavailable"
+        );
+
+
+        terminalSetText(
+            fearGreedElements.text,
+            "The external Fear & Greed data source is temporarily unavailable."
+        );
+
+
+        terminalSetText(
+            fearGreedElements.retail,
+            "--"
+        );
+
+
+        terminalSetText(
+            fearGreedElements.institutional,
+            "Preview"
+        );
+
+
+        terminalSetText(
+            fearGreedElements.volatility,
+            "--"
+        );
+
+
+        terminalSetText(
+            fearGreedElements.regime,
+            "--"
+        );
+
+
+        terminalSetText(
+            fearGreedElements.metric,
+            "--"
+        );
+
+
+        return false;
+
+    }
+
+}
+
+
+/* =====================================================
+   FEAR & GREED REFRESH
+===================================================== */
+
+if (
+    fearGreedElements.refresh
+) {
+
+    fearGreedElements
+        .refresh
+        .addEventListener(
+            "click",
+            async () => {
+
+                fearGreedElements
+                    .refresh
+                    .disabled =
+                    true;
+
+
+                fearGreedElements
+                    .refresh
+                    .textContent =
+                    "↻ Refreshing...";
+
+
+                await loadFearGreed();
+
+
+                fearGreedElements
+                    .refresh
+                    .textContent =
+                    "Updated";
+
+
+                setTimeout(
+                    () => {
+
+                        fearGreedElements
+                            .refresh
+                            .textContent =
+                            "↻ Refresh Index";
+
+
+                        fearGreedElements
+                            .refresh
+                            .disabled =
+                            false;
+
+                    },
+                    800
+                );
+
+            }
+        );
+
+}
+
+
+/* =====================================================
+   SMART MONEY RADAR
+   EXPERIMENTAL / DEMONSTRATION
+
+   No verified institutional wallet feed is connected.
+===================================================== */
+
+const smartMoneyElements = {
+
+    score:
+        document.getElementById(
+            "smartMoneyScore"
+        ),
+
+    ring:
+        document.getElementById(
+            "smartMoneyRing"
+        ),
+
+    accumulation:
+        document.getElementById(
+            "smartAccumulationSignal"
+        ),
+
+    exchangeFlow:
+        document.getElementById(
+            "smartExchangeFlowSignal"
+        ),
+
+    stablecoin:
+        document.getElementById(
+            "smartStablecoinSignal"
+        ),
+
+    bias:
+        document.getElementById(
+            "smartBiasSignal"
+        ),
+
+    title:
+        document.getElementById(
+            "smartMoneyTitle"
+        ),
+
+    text:
+        document.getElementById(
+            "smartMoneyText"
+        ),
+
+    refresh:
+        document.querySelector(
+            "#smart-money button"
+        )
+
+};
+
+
+/* =====================================================
+   SMART MONEY DEMO STATES
+===================================================== */
+
+const smartMoneyPreviewStates = [
+
+    {
+        score:
+            72,
+
+        accumulation:
+            "Demo Positive",
+
+        exchangeFlow:
+            "Demo Mixed",
+
+        stablecoin:
+            "Demo Stable",
+
+        bias:
+            "Preview Positive",
+
+        title:
+            "Smart Money preview scenario.",
+
+        text:
+            "This demonstration illustrates how future verified on-chain and liquidity inputs could be combined into a Smart Money score. No institutional activity is being claimed."
+    },
+
+    {
+        score:
+            58,
+
+        accumulation:
+            "Demo Neutral",
+
+        exchangeFlow:
+            "Demo Balanced",
+
+        stablecoin:
+            "Demo Stable",
+
+        bias:
+            "Preview Neutral",
+
+        title:
+            "Mixed Smart Money preview.",
+
+        text:
+            "This scenario demonstrates a balanced analytical state. Values are illustrative and are not derived from verified institutional wallets."
+    },
+
+    {
+        score:
+            43,
+
+        accumulation:
+            "Demo Weak",
+
+        exchangeFlow:
+            "Demo Outflow",
+
+        stablecoin:
+            "Demo Mixed",
+
+        bias:
+            "Preview Cautious",
+
+        title:
+            "Cautious Smart Money preview.",
+
+        text:
+            "This demonstration shows how a weaker future Smart Money reading could appear. It is not a live institutional-flow signal."
+    }
+
+];
+
+
+let smartMoneyPreviewIndex =
+    0;
+
+
+/* =====================================================
+   RENDER SMART MONEY
+===================================================== */
+
+function renderSmartMoneyPreview() {
+
+    const preview =
+        smartMoneyPreviewStates[
+            smartMoneyPreviewIndex
+        ];
+
+
+    terminalSetText(
+        smartMoneyElements.score,
+        preview.score
+    );
+
+
+    terminalSetText(
+        smartMoneyElements.accumulation,
+        preview.accumulation
+    );
+
+
+    terminalSetText(
+        smartMoneyElements.exchangeFlow,
+        preview.exchangeFlow
+    );
+
+
+    terminalSetText(
+        smartMoneyElements.stablecoin,
+        preview.stablecoin
+    );
+
+
+    terminalSetText(
+        smartMoneyElements.bias,
+        preview.bias
+    );
+
+
+    terminalSetText(
+        smartMoneyElements.title,
+        preview.title
+    );
+
+
+    terminalSetText(
+        smartMoneyElements.text,
+        preview.text
+    );
+
+
+    if (
+        smartMoneyElements.ring
+    ) {
+
+        smartMoneyElements
+            .ring
+            .style
+            .setProperty(
+                "--smart-money-score",
+                `${preview.score}%`
+            );
+
+    }
+
+}
+
+
+/* =====================================================
+   SMART MONEY REFRESH
+===================================================== */
+
+if (
+    smartMoneyElements.refresh
+) {
+
+    smartMoneyElements
+        .refresh
+        .addEventListener(
+            "click",
+            () => {
+
+                smartMoneyElements
+                    .refresh
+                    .disabled =
+                    true;
+
+
+                smartMoneyElements
+                    .refresh
+                    .textContent =
+                    "Refreshing Preview...";
+
+
+                smartMoneyPreviewIndex =
+                    (
+                        smartMoneyPreviewIndex +
+                        1
+                    ) %
+                    smartMoneyPreviewStates.length;
+
+
+                renderSmartMoneyPreview();
+
+
+                setTimeout(
+                    () => {
+
+                        smartMoneyElements
+                            .refresh
+                            .textContent =
+                            "Refresh Preview";
+
+
+                        smartMoneyElements
+                            .refresh
+                            .disabled =
+                            false;
+
+                    },
+                    650
+                );
+
+            }
+        );
+
+}
+
+
+/* =====================================================
+   LIQUIDITY PRESSURE INDEX
+   EXPERIMENTAL SNAO INDICATOR
+
+   This indicator uses selected public market inputs.
+   It is NOT direct proof of capital inflow/outflow.
+===================================================== */
+
+const liquidityPressureElements = {
+
+    value:
+        document.getElementById(
+            "liquidityPressureValue"
+        ),
+
+    ring:
+        document.getElementById(
+            "liquidityPressureRing"
+        ),
+
+    state:
+        document.getElementById(
+            "liquidityPressureState"
+        ),
+
+    marketCap:
+        document.getElementById(
+            "liquidityPressureMarketCap"
+        ),
+
+    marketChange:
+        document.getElementById(
+            "liquidityPressureMarketChange"
+        ),
+
+    btcDominance:
+        document.getElementById(
+            "liquidityPressureBtcDominance"
+        ),
+
+    title:
+        document.getElementById(
+            "liquidityPressureTitle"
+        ),
+
+    text:
+        document.getElementById(
+            "liquidityPressureText"
+        ),
+
+    refresh:
+        document.querySelector(
+            "#liquidity-pressure button"
+        )
+
+};
+
+
+/* =====================================================
+   CALCULATE LIQUIDITY PRESSURE
+===================================================== */
+
+function calculateLiquidityPressure() {
+
+    const marketChange =
+        terminalMarketState
+            .marketChange24h;
+
+
+    const btcDominance =
+        terminalMarketState
+            .btcDominance;
+
+
+    let score =
+        50;
+
+
+    if (
+        Number.isFinite(
+            marketChange
+        )
+    ) {
+
+        score +=
+            terminalClamp(
+                marketChange * 4,
+                -20,
+                20
+            );
+
+    }
+
+
+    if (
+        Number.isFinite(
+            btcDominance
+        )
+    ) {
+
+        score +=
+            terminalClamp(
+                (
+                    btcDominance -
+                    50
+                ) * 0.35,
+                -8,
+                8
+            );
+
+    }
+
+
+    return Math.round(
+        terminalClamp(
+            score,
+            15,
+            85
+        )
+    );
+
+}
+
+
+/* =====================================================
+   LIQUIDITY PRESSURE CLASSIFICATION
+===================================================== */
+
+function getLiquidityPressureState(
+    score
+) {
+
+    if (score >= 70) {
+
+        return {
+            state:
+                "High Experimental Reading",
+
+            title:
+                "Higher modeled liquidity pressure.",
+
+            text:
+                "The experimental model currently produces a higher liquidity-pressure reading from selected public market inputs. It does not confirm actual stablecoin inflows or institutional capital deployment."
+        };
+
+    }
+
+
+    if (score >= 55) {
+
+        return {
+            state:
+                "Moderate Positive",
+
+            title:
+                "Moderately positive modeled pressure.",
+
+            text:
+                "The experimental SNAO model currently indicates moderately positive liquidity conditions based on limited public market inputs."
+        };
+
+    }
+
+
+    if (score >= 40) {
+
+        return {
+            state:
+                "Neutral",
+
+            title:
+                "Balanced modeled liquidity pressure.",
+
+            text:
+                "The current experimental reading is broadly neutral and should not be interpreted as verified capital-flow data."
+        };
+
+    }
+
+
+    return {
+        state:
+            "Moderate Negative",
+
+        title:
+            "Weaker modeled liquidity pressure.",
+
+        text:
+            "The experimental model currently produces a weaker liquidity reading. This does not verify exchange outflows, stablecoin contraction or future price direction."
+    };
+
+}
+
+
+/* =====================================================
+   RENDER LIQUIDITY PRESSURE
+===================================================== */
+
+function renderLiquidityPressure() {
+
+    const score =
+        calculateLiquidityPressure();
+
+
+    const classification =
+        getLiquidityPressureState(
+            score
+        );
+
+
+    terminalSetText(
+        liquidityPressureElements.value,
+        score
+    );
+
+
+    terminalSetText(
+        liquidityPressureElements.state,
+        classification.state
+    );
+
+
+    terminalSetText(
+        liquidityPressureElements.title,
+        classification.title
+    );
+
+
+    terminalSetText(
+        liquidityPressureElements.text,
+        classification.text
+    );
+
+
+    terminalSetText(
+        liquidityPressureElements.marketCap,
+        Number.isFinite(
+            terminalMarketState
+                .totalMarketCap
+        )
+            ? terminalFormatCurrency(
+                terminalMarketState
+                    .totalMarketCap
+            )
+            : "--"
+    );
+
+
+    terminalSetText(
+        liquidityPressureElements.marketChange,
+        Number.isFinite(
+            terminalMarketState
+                .marketChange24h
+        )
+            ? terminalFormatPercent(
+                terminalMarketState
+                    .marketChange24h
+            )
+            : "--"
+    );
+
+
+    terminalSetText(
+        liquidityPressureElements.btcDominance,
+        Number.isFinite(
+            terminalMarketState
+                .btcDominance
+        )
+            ? `${terminalMarketState.btcDominance.toFixed(2)}%`
+            : "--"
+    );
+
+
+    if (
+        liquidityPressureElements.ring
+    ) {
+
+        liquidityPressureElements
+            .ring
+            .style
+            .setProperty(
+                "--liquidity-pressure-value",
+                `${score}%`
+            );
+
+    }
+
+
+    return score;
+
+}
+
+
+/* =====================================================
+   LIQUIDITY PRESSURE REFRESH
+===================================================== */
+
+if (
+    liquidityPressureElements.refresh
+) {
+
+    liquidityPressureElements
+        .refresh
+        .addEventListener(
+            "click",
+            async () => {
+
+                liquidityPressureElements
+                    .refresh
+                    .disabled =
+                    true;
+
+
+                liquidityPressureElements
+                    .refresh
+                    .textContent =
+                    "Recalculating...";
+
+
+                await loadGlobalMarketData();
+
+
+                renderLiquidityPressure();
+
+
+                setTimeout(
+                    () => {
+
+                        liquidityPressureElements
+                            .refresh
+                            .textContent =
+                            "Recalculate Index";
+
+
+                        liquidityPressureElements
+                            .refresh
+                            .disabled =
+                            false;
+
+                    },
+                    700
+                );
+
+            }
+        );
+
+}
+
+
+/* =====================================================
+   WHALE CONFIDENCE INDEX
+   EXPERIMENTAL / PREVIEW
+
+   No verified whale-wallet feed is connected.
+===================================================== */
+
+const whaleConfidenceElements = {
+
+    value:
+        document.getElementById(
+            "whaleConfidenceValue"
+        ),
+
+    ring:
+        document.getElementById(
+            "whaleConfidenceRing"
+        ),
+
+    state:
+        document.getElementById(
+            "whaleConfidenceState"
+        ),
+
+    accumulation:
+        document.getElementById(
+            "whaleConfidenceAccumulation"
+        ),
+
+    distribution:
+        document.getElementById(
+            "whaleConfidenceDistribution"
+        ),
+
+    activity:
+        document.getElementById(
+            "whaleConfidenceActivity"
+        ),
+
+    title:
+        document.getElementById(
+            "whaleConfidenceTitle"
+        ),
+
+    text:
+        document.getElementById(
+            "whaleConfidenceText"
+        ),
+
+    refresh:
+        document.querySelector(
+            "#whale-confidence-index button"
+        )
+
+};
+
+
+/* =====================================================
+   WHALE CONFIDENCE PREVIEW
+===================================================== */
+
+function calculateWhaleConfidencePreview() {
+
+    /*
+     * Because verified whale data is not connected,
+     * this score is intentionally bounded and should
+     * only be treated as a UI / model preview.
+     */
+
+    const marketChange =
+        terminalMarketState
+            .marketChange24h;
+
+
+    let score =
+        55;
+
+
+    if (
+        Number.isFinite(
+            marketChange
+        )
+    ) {
+
+        score +=
+            terminalClamp(
+                marketChange * 2,
+                -10,
+                10
+            );
+
+    }
+
+
+    return Math.round(
+        terminalClamp(
+            score,
+            35,
+            70
+        )
+    );
+
+}
+
+
+/* =====================================================
+   RENDER WHALE CONFIDENCE
+===================================================== */
+
+function renderWhaleConfidence() {
+
+    const score =
+        calculateWhaleConfidencePreview();
+
+
+    let state =
+        "Neutral Preview";
+
+
+    if (score >= 62) {
+
+        state =
+            "Positive Preview";
+
+    } else if (
+        score <= 45
+    ) {
+
+        state =
+            "Cautious Preview";
+
+    }
+
+
+    terminalSetText(
+        whaleConfidenceElements.value,
+        score
+    );
+
+
+    terminalSetText(
+        whaleConfidenceElements.state,
+        state
+    );
+
+
+    terminalSetText(
+        whaleConfidenceElements.accumulation,
+        "Demo"
+    );
+
+
+    terminalSetText(
+        whaleConfidenceElements.distribution,
+        "Demo"
+    );
+
+
+    terminalSetText(
+        whaleConfidenceElements.activity,
+        "Not Verified"
+    );
+
+
+    terminalSetText(
+        whaleConfidenceElements.title,
+        "Whale Confidence preview."
+    );
+
+
+    terminalSetText(
+        whaleConfidenceElements.text,
+        "This experimental preview does not use a verified live whale-wallet feed. Future on-chain integrations are intended to replace demonstration inputs."
+    );
+
+
+    if (
+        whaleConfidenceElements.ring
+    ) {
+
+        whaleConfidenceElements
+            .ring
+            .style
+            .setProperty(
+                "--whale-confidence",
+                `${score}%`
+            );
+
+    }
+
+
+    return score;
+
+}
+
+
+/* =====================================================
+   WHALE CONFIDENCE REFRESH
+===================================================== */
+
+if (
+    whaleConfidenceElements.refresh
+) {
+
+    whaleConfidenceElements
+        .refresh
+        .addEventListener(
+            "click",
+            async () => {
+
+                whaleConfidenceElements
+                    .refresh
+                    .disabled =
+                    true;
+
+
+                whaleConfidenceElements
+                    .refresh
+                    .textContent =
+                    "Refreshing Preview...";
+
+
+                await loadGlobalMarketData();
+
+
+                renderWhaleConfidence();
+
+
+                setTimeout(
+                    () => {
+
+                        whaleConfidenceElements
+                            .refresh
+                            .textContent =
+                            "Refresh Preview";
+
+
+                        whaleConfidenceElements
+                            .refresh
+                            .disabled =
+                            false;
+
+                    },
+                    700
+                );
+
+            }
+        );
+
+}
+
+
+/* =====================================================
+   SARDINE AI
+   PRODUCT PREVIEW
+
+   The current interface does not claim a live
+   autonomous investment-advice system.
+===================================================== */
+
+const sardineAiText =
+    document.getElementById(
+        "terminalAiText"
+    );
+
+
+const sardineAiButtons =
+    document.querySelectorAll(
+        "[data-ai-message]"
+    );
+
+
+const sardineAiPreviewMessages = {
+
+    market:
+        "Sardine AI is being designed to combine public market data, liquidity conditions, sentiment and future SNAO indicators into concise analytical summaries. Current outputs are product previews.",
+
+    whales:
+        "Future Sardine AI whale analysis is intended to use verified on-chain integrations. The current Terminal does not claim live institutional or whale-wallet intelligence.",
+
+    risk:
+        "The future risk layer is designed to combine volatility, liquidity, market structure and additional verified inputs. Current risk outputs remain experimental and are not investment recommendations."
+
+};
+
+
+/* =====================================================
+   SARDINE AI BUTTONS
+===================================================== */
+
+sardineAiButtons.forEach(
+    (button) => {
+
+        button.addEventListener(
+            "click",
+            () => {
+
+                const key =
+                    button.dataset
+                        .aiMessage;
+
+
+                const message =
+                    sardineAiPreviewMessages[
+                        key
+                    ];
+
+
+                if (
+                    !message ||
+                    !sardineAiText
+                ) {
+                    return;
+                }
+
+
+                sardineAiButtons.forEach(
+                    (item) => {
+
+                        item.classList.remove(
+                            "active"
+                        );
+
+                    }
+                );
+
+
+                button.classList.add(
+                    "active"
+                );
+
+
+                sardineAiText.textContent =
+                    "Analyzing preview...";
+
+
+                setTimeout(
+                    () => {
+
+                        sardineAiText.textContent =
+                            message;
+
+                    },
+                    350
+                );
+
+            }
+        );
+
+    }
+);
+
+
+/* =====================================================
+   END OF PART 03
+
+   CONTINUE DIRECTLY WITH PART 04 BELOW THIS LINE.
+   PART 04 WILL INITIALIZE THE TERMINAL AND CLOSE THE FILE.
+===================================================== */
+
+/* =====================================================
+   MARKET TICKER
+   REAL MARKET DATA — COINGECKO
+===================================================== */
+
+const terminalTickerElements = {
+
+    btcPrice:
+        document.getElementById(
+            "terminalBtcPrice"
+        ),
+
+    btcChange:
+        document.getElementById(
+            "terminalBtcChange"
+        ),
+
+    ethPrice:
+        document.getElementById(
+            "terminalEthPrice"
+        ),
+
+    ethChange:
+        document.getElementById(
+            "terminalEthChange"
+        ),
+
+    bnbPrice:
+        document.getElementById(
+            "terminalBnbPrice"
+        ),
+
+    bnbChange:
+        document.getElementById(
+            "terminalBnbChange"
+        ),
+
+    totalMarketCap:
+        document.getElementById(
+            "terminalTotalMarketCap"
+        ),
+
+    totalMarketChange:
+        document.getElementById(
+            "terminalTotalMarketChange"
+        )
+
+};
+
+
+/* =====================================================
+   TICKER STYLE HELPER
+===================================================== */
+
+function updateTickerChangeElement(
+    element,
+    value
+) {
+
+    if (!element) {
+        return;
+    }
+
+
+    if (
+        !Number.isFinite(
+            Number(value)
+        )
+    ) {
+
+        element.textContent =
+            "--";
+
+        element.classList.remove(
+            "positive",
+            "negative"
+        );
+
+        return;
+
+    }
+
+
+    const number =
+        Number(value);
+
+
+    element.textContent =
+        terminalFormatPercent(
+            number
+        );
+
+
+    element.classList.toggle(
+        "positive",
+        number >= 0
+    );
+
+
+    element.classList.toggle(
+        "negative",
+        number < 0
+    );
+
+}
+
+
+/* =====================================================
+   RENDER MARKET TICKER
+===================================================== */
+
+function renderMarketTicker() {
+
+    const btc =
+        terminalAssetMarketCache.BTC;
+
+    const eth =
+        terminalAssetMarketCache.ETH;
+
+    const bnb =
+        terminalAssetMarketCache.BNB;
+
+
+    if (btc) {
+
+        terminalSetText(
+            terminalTickerElements.btcPrice,
+            terminalFormatCurrency(
+                btc.current_price
+            )
+        );
+
+
+        updateTickerChangeElement(
+            terminalTickerElements.btcChange,
+            btc.price_change_percentage_24h
+        );
+
+    } else {
+
+        terminalSetUnavailable(
+            terminalTickerElements.btcPrice
+        );
+
+        terminalSetUnavailable(
+            terminalTickerElements.btcChange
+        );
+
+    }
+
+
+    if (eth) {
+
+        terminalSetText(
+            terminalTickerElements.ethPrice,
+            terminalFormatCurrency(
+                eth.current_price
+            )
+        );
+
+
+        updateTickerChangeElement(
+            terminalTickerElements.ethChange,
+            eth.price_change_percentage_24h
+        );
+
+    } else {
+
+        terminalSetUnavailable(
+            terminalTickerElements.ethPrice
+        );
+
+        terminalSetUnavailable(
+            terminalTickerElements.ethChange
+        );
+
+    }
+
+
+    if (bnb) {
+
+        terminalSetText(
+            terminalTickerElements.bnbPrice,
+            terminalFormatCurrency(
+                bnb.current_price
+            )
+        );
+
+
+        updateTickerChangeElement(
+            terminalTickerElements.bnbChange,
+            bnb.price_change_percentage_24h
+        );
+
+    } else {
+
+        terminalSetUnavailable(
+            terminalTickerElements.bnbPrice
+        );
+
+        terminalSetUnavailable(
+            terminalTickerElements.bnbChange
+        );
+
+    }
+
+
+    if (
+        Number.isFinite(
+            terminalMarketState.totalMarketCap
+        )
+    ) {
+
+        terminalSetText(
+            terminalTickerElements.totalMarketCap,
+            terminalFormatCurrency(
+                terminalMarketState.totalMarketCap
+            )
+        );
+
+    } else {
+
+        terminalSetUnavailable(
+            terminalTickerElements.totalMarketCap
+        );
+
+    }
+
+
+    if (
+        Number.isFinite(
+            terminalMarketState.marketChange24h
+        )
+    ) {
+
+        updateTickerChangeElement(
+            terminalTickerElements.totalMarketChange,
+            terminalMarketState.marketChange24h
+        );
+
+    } else {
+
+        terminalSetUnavailable(
+            terminalTickerElements.totalMarketChange
+        );
+
+    }
+
+}
+
+
+/* =====================================================
+   MAIN DASHBOARD OCEAN INDEX
+
+   EXPERIMENTAL SNAO VALUE.
+   Reuses the Ocean Score model so the interface does
+   not show conflicting analytical values.
+===================================================== */
+
+const terminalOceanIndexElements = {
+
+    value:
+        document.getElementById(
+            "terminalOceanIndex"
+        ),
+
+    change:
+        document.getElementById(
+            "terminalOceanIndexChange"
+        ),
+
+    status:
+        document.getElementById(
+            "terminalOceanStatus"
+        ),
+
+    condition:
+        document.getElementById(
+            "terminalMarketCondition"
+        )
+
+};
+
+
+function renderTerminalOceanIndex() {
+
+    const result =
+        calculateOceanScore();
+
+
+    const classification =
+        getOceanScoreClassification(
+            result.score
+        );
+
+
+    terminalSetText(
+        terminalOceanIndexElements.value,
+        result.score
+    );
+
+
+    terminalSetText(
+        terminalOceanIndexElements.change,
+        "Experimental"
+    );
+
+
+    terminalSetText(
+        terminalOceanIndexElements.status,
+        "Preview"
+    );
+
+
+    terminalSetText(
+        terminalOceanIndexElements.condition,
+        classification.condition
+    );
+
+}
+
+
+/* =====================================================
+   DASHBOARD METRICS
+
+   Only Fear & Greed is external live sentiment data.
+   Whale Activity, Stablecoin Flow and Ocean Risk remain
+   demonstration / experimental interface values.
+===================================================== */
+
+const terminalDashboardMetrics = {
+
+    whale:
+        document.getElementById(
+            "terminalWhaleMetric"
+        ),
+
+    whaleProgress:
+        document.getElementById(
+            "terminalWhaleMetricProgress"
+        ),
+
+    stablecoin:
+        document.getElementById(
+            "terminalStablecoinMetric"
+        ),
+
+    stablecoinProgress:
+        document.getElementById(
+            "terminalStablecoinMetricProgress"
+        ),
+
+    risk:
+        document.getElementById(
+            "terminalRiskMetric"
+        ),
+
+    riskProgress:
+        document.getElementById(
+            "terminalRiskMetricProgress"
+        )
+
+};
+
+
+function renderDashboardPreviewMetrics() {
+
+    /*
+     * These are intentionally marked by the HTML
+     * as Demo / Experimental.
+     */
+
+    const whalePreview =
+        58;
+
+
+    const stablecoinPreview =
+        52;
+
+
+    const oceanScore =
+        calculateOceanScore()
+            .score;
+
+
+    const riskPreview =
+        Math.round(
+            terminalClamp(
+                100 -
+                oceanScore,
+                20,
+                80
+            )
+        );
+
+
+    terminalSetText(
+        terminalDashboardMetrics.whale,
+        `${whalePreview}%`
+    );
+
+
+    terminalSetText(
+        terminalDashboardMetrics.stablecoin,
+        "Demo"
+    );
+
+
+    terminalSetText(
+        terminalDashboardMetrics.risk,
+        `${riskPreview}%`
+    );
+
+
+    if (
+        terminalDashboardMetrics
+            .whaleProgress
+    ) {
+
+        terminalDashboardMetrics
+            .whaleProgress
+            .style
+            .width =
+            `${whalePreview}%`;
+
+    }
+
+
+    if (
+        terminalDashboardMetrics
+            .stablecoinProgress
+    ) {
+
+        terminalDashboardMetrics
+            .stablecoinProgress
+            .style
+            .width =
+            `${stablecoinPreview}%`;
+
+    }
+
+
+    if (
+        terminalDashboardMetrics
+            .riskProgress
+    ) {
+
+        terminalDashboardMetrics
+            .riskProgress
+            .style
+            .width =
+            `${riskPreview}%`;
+
+    }
+
+}
+
+
+/* =====================================================
+   WHALE RADAR
+   DEMONSTRATION ONLY
+===================================================== */
+
+const whaleRadarRows =
+    document.querySelectorAll(
+        "#whale-radar [data-whale-row]"
+    );
+
+
+function initializeWhaleRadarPreview() {
+
+    whaleRadarRows.forEach(
+        (row) => {
+
+            row.setAttribute(
+                "data-preview",
+                "true"
+            );
+
+        }
+    );
+
+}
+
+
+/* =====================================================
+   HEATMAP
+   DEMONSTRATION DATA
+
+   Percentages are intentionally left as HTML preview
+   values until a verified real-time heatmap integration
+   is connected.
+===================================================== */
+
+function initializeHeatmapPreview() {
+
+    const heatmap =
+        document.getElementById(
+            "heatmap"
+        );
+
+
+    if (!heatmap) {
+        return;
+    }
+
+
+    heatmap.setAttribute(
+        "data-terminal-source",
+        "demonstration"
+    );
+
+}
+
+
+/* =====================================================
+   INTELLIGENCE NEWS
+   COMING SOON
+
+   No fake news generation or fabricated live headlines.
+===================================================== */
+
+function initializeIntelligenceNewsPreview() {
+
+    const newsSection =
+        document.getElementById(
+            "news"
+        );
+
+
+    if (!newsSection) {
+        return;
+    }
+
+
+    newsSection.setAttribute(
+        "data-terminal-status",
+        "coming-soon"
+    );
+
+}
+
+
+/* =====================================================
+   MAIN REFRESH BUTTON
+===================================================== */
+
+const terminalRefreshButton =
+    document.getElementById(
+        "terminalRefreshButton"
+    );
+
+
+/* =====================================================
+   REFRESH ALL REAL MARKET DATA
+===================================================== */
+
+async function refreshTerminalMarketData() {
+
+    /*
+     * Requests are intentionally grouped to reduce
+     * unnecessary API traffic.
+     */
+
+    const results =
+        await Promise.allSettled(
+            [
+                loadGlobalMarketData(),
+                loadTerminalAssetMarketData(),
+                loadTopMovers(),
+                loadFearGreed()
+            ]
+        );
+
+
+    renderMarketTicker();
+
+    renderOceanScoreBreakdown();
+
+    renderTerminalOceanIndex();
+
+    renderLiquidityPressure();
+
+    renderWhaleConfidence();
+
+    renderDashboardPreviewMetrics();
+
+
+    updateTerminalCurrentTime();
+
+
+    return results;
+
+}
+
+
+/* =====================================================
+   MAIN REFRESH EVENT
+===================================================== */
+
+if (
+    terminalRefreshButton
+) {
+
+    terminalRefreshButton.addEventListener(
+        "click",
+        async () => {
+
+            if (
+                terminalRefreshButton.disabled
+            ) {
+                return;
+            }
+
+
+            terminalRefreshButton.disabled =
+                true;
+
+
+            terminalRefreshButton.textContent =
+                "↻ Refreshing";
+
+
+            await refreshTerminalMarketData();
+
+
+            terminalRefreshButton.textContent =
+                "✓ Updated";
+
+
+            setTimeout(
+                () => {
+
+                    terminalRefreshButton.textContent =
+                        "↻ Refresh";
+
+                    terminalRefreshButton.disabled =
+                        false;
+
+                },
+                900
+            );
+
+        }
+    );
+
+}
+
+
+/* =====================================================
+   SAFE AUTOMATIC MARKET REFRESH
+
+   CoinGecko's public API should not be hammered with
+   frequent requests. The terminal refreshes selected
+   market data every 5 minutes while the page is open.
+===================================================== */
+
+const TERMINAL_AUTO_REFRESH_INTERVAL =
+    5 * 60 * 1000;
+
+
+let terminalAutoRefreshTimer =
+    null;
+
+
+function startTerminalAutoRefresh() {
+
+    if (
+        terminalAutoRefreshTimer
+    ) {
+
+        clearInterval(
+            terminalAutoRefreshTimer
+        );
+
+    }
+
+
+    terminalAutoRefreshTimer =
+        setInterval(
+            async () => {
+
+                /*
+                 * Avoid unnecessary requests while the
+                 * browser tab is not visible.
+                 */
+
+                if (
+                    document.hidden
+                ) {
+                    return;
+                }
+
+
+                await refreshTerminalMarketData();
+
+            },
+            TERMINAL_AUTO_REFRESH_INTERVAL
+        );
+
+}
+
+
+/* =====================================================
+   PAGE VISIBILITY
+
+   When the user returns after a long inactive period,
+   refresh public market data.
+===================================================== */
+
+let terminalHiddenAt =
+    null;
+
+
+document.addEventListener(
+    "visibilitychange",
+    async () => {
+
+        if (
+            document.hidden
+        ) {
+
+            terminalHiddenAt =
+                Date.now();
+
+            return;
+
+        }
+
+
+        if (
+            !terminalHiddenAt
+        ) {
+            return;
+        }
+
+
+        const inactiveTime =
+            Date.now() -
+            terminalHiddenAt;
+
+
+        terminalHiddenAt =
+            null;
+
+
+        if (
+            inactiveTime >
+            TERMINAL_AUTO_REFRESH_INTERVAL
+        ) {
+
+            await refreshTerminalMarketData();
+
+        }
+
+    }
+);
+
+
+/* =====================================================
+   INITIAL DEMONSTRATION SECTIONS
+===================================================== */
+
+function initializeTerminalPreviewSections() {
+
+    renderTerminalNarrative(
+        "ai"
+    );
+
+
+    renderDemoOceanFlow();
+
+
+    renderWhalePreview();
+
+
+    renderSmartMoneyPreview();
+
+
+    initializeWhaleRadarPreview();
+
+
+    initializeHeatmapPreview();
+
+
+    initializeIntelligenceNewsPreview();
+
+
+    /*
+     * Sardine AI initial text.
+     */
+
+    if (
+        sardineAiText
+    ) {
+
+        sardineAiText.textContent =
+            sardineAiPreviewMessages.market;
+
+    }
+
+}
+
+
+/* =====================================================
+   INITIAL EXPERIMENTAL INDICATORS
+
+   These render immediately with neutral/fallback inputs.
+   They are recalculated after real public market data
+   finishes loading.
+===================================================== */
+
+function initializeExperimentalIndicators() {
+
+    renderOceanScoreBreakdown();
+
+
+    renderTerminalOceanIndex();
+
+
+    renderLiquidityPressure();
+
+
+    renderWhaleConfidence();
+
+
+    renderDashboardPreviewMetrics();
+
+}
+
+
+/* =====================================================
+   INITIAL LOADING STATE
+===================================================== */
+
+function initializeTerminalLoadingState() {
+
+    terminalSetLoading(
+        liveBtcDominance
+    );
+
+
+    terminalSetLoading(
+        liveTotalMarketCap
+    );
+
+
+    terminalSetLoading(
+        liveMarketChange
+    );
+
+
+    terminalSetLoading(
+        liveActiveCryptocurrencies
+    );
+
+
+    terminalSetLoading(
+        terminalTickerElements.btcPrice
+    );
+
+
+    terminalSetLoading(
+        terminalTickerElements.ethPrice
+    );
+
+
+    terminalSetLoading(
+        terminalTickerElements.bnbPrice
+    );
+
+
+    terminalSetLoading(
+        terminalTickerElements.totalMarketCap
+    );
+
+
+    terminalSetLoading(
+        fearGreedElements.value
+    );
+
+
+    terminalSetLoading(
+        fearGreedElements.metric
+    );
+
+}
+
+
+/* =====================================================
+   INITIAL TERMINAL LOAD
+===================================================== */
+
+async function initializeSnaoTerminal() {
+
+    initializeTerminalLoadingState();
+
+
+    initializeTerminalPreviewSections();
+
+
+    initializeExperimentalIndicators();
+
+
+    /*
+     * Load real public market data.
+     */
+
+    await refreshTerminalMarketData();
+
+
+    /*
+     * Begin conservative automatic refresh.
+     */
+
+    startTerminalAutoRefresh();
+
+}
+
+
+/* =====================================================
+   DOM READY
+===================================================== */
+
+if (
+    document.readyState ===
+    "loading"
+) {
+
+    document.addEventListener(
+        "DOMContentLoaded",
+        initializeSnaoTerminal,
+        {
+            once:
+                true
+        }
+    );
+
+} else {
+
+    initializeSnaoTerminal();
+
+}
+
+
+/* =====================================================
+   TERMINAL ERROR SAFETY
+===================================================== */
+
+window.addEventListener(
+    "unhandledrejection",
+    (event) => {
+
+        console.warn(
+            "SNAO Terminal: an asynchronous request failed.",
+            event.reason
+        );
+
+    }
+);
+
+
+/* =====================================================
+   SNAO OCEAN TERMINAL
+   END OF FILE
+===================================================== */
