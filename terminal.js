@@ -4830,19 +4830,19 @@ const whaleConfidenceElements = {
         ),
 
     direction:
-        terminalGetElement(
-            "whaleConfidenceDirection"
-        ),
+    terminalGetElement(
+        "whaleSignalDirection"
+    ),
 
-    confidence:
-        terminalGetElement(
-            "whaleConfidenceConfidence"
-        ),
+confidence:
+    terminalGetElement(
+        "whaleSignalConfidence"
+    ),
 
-    risk:
-        terminalGetElement(
-            "whaleConfidenceRisk"
-        ),
+risk:
+    terminalGetElement(
+        "whaleMarketEffect"
+    ),
 
     refresh:
         terminalGetElement(
