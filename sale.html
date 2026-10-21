@@ -611,59 +611,96 @@
 
                     <div class="sale-progress-header">
 
-                        <span>
-                            Sale Progress
-                        </span>
+    <span>
+        Sale Progress
+    </span>
 
-                        <strong>
-                            Opens November 1
-                        </strong>
+    <strong id="saleLiveStatus">
+        Opens November 1
+    </strong>
 
-                    </div>
+</div>
 
 
                     <div class="sale-progress-track">
 
-                        <div
-                            class="sale-progress-fill"
-                            style="width: 0%;"
-                        ></div>
+    <div
+        class="sale-progress-fill"
+        id="saleProgressFill"
+        style="width: 0%;"
+    ></div>
 
-                    </div>
+</div>
 
 
                     <div class="sale-progress-labels">
 
-                        <span>
-                            0 SNAO
-                        </span>
+    <span id="saleTokensSold">
+        0 SNAO
+    </span>
 
-                        <span>
-                            45M SNAO
-                        </span>
+    <span>
+        45M SNAO
+    </span>
 
-                    </div>
+</div>
 
                 </div>
 
 
                 <div class="sale-current-price">
 
-                    <span>
-                        STARTING PRICE
-                    </span>
+    <span>
+        CURRENT PRICE
+    </span>
 
-                    <strong>
-                        $0.001
-                    </strong>
+    <strong id="saleLivePrice">
+        $0.001
+    </strong>
 
-                    <small>
-                        USDT per SNAO
-                    </small>
+    <small>
+        USDT per SNAO
+    </small>
 
-                </div>
+</div>
 
+                <div class="sale-live-data">
 
+    <div>
+        <span>Current Lot</span>
+
+        <strong id="saleCurrentLot">
+            1 / 1,800
+        </strong>
+    </div>
+
+    <div>
+        <span>Total Raised</span>
+
+        <strong id="saleTotalRaised">
+            $0
+        </strong>
+    </div>
+
+    <div>
+        <span>Remaining</span>
+
+        <strong id="saleRemainingTokens">
+            45,000,000 SNAO
+        </strong>
+    </div>
+
+    <div>
+        <span>Your Contribution</span>
+
+        <strong id="saleUserContribution">
+            Connect Wallet
+        </strong>
+    </div>
+
+</div>
+
+                
                 <div class="sale-input-group">
 
                     <label for="saleUsdtInput">
@@ -720,13 +757,31 @@
 
 
                 <button
-                    id="saleConnectButton"
-                    class="sale-connect-button"
-                    type="button"
-                    disabled
-                >
-                    SALE NOT LIVE
-                </button>
+    id="saleConnectButton"
+    class="sale-connect-button"
+    type="button"
+>
+    CONNECT WALLET
+</button>
+
+
+<button
+    id="saleBuyButton"
+    class="sale-connect-button"
+    type="button"
+    disabled
+>
+    BUY SNAO
+</button>
+
+
+<div
+    class="sale-transaction-status"
+    id="saleTransactionStatus"
+>
+    Pre-launch — transactions remain disabled until
+    the official mainnet contracts are configured.
+</div>
 
 
                 <p class="sale-wallet-notice">
@@ -1793,6 +1848,10 @@
 
 </footer>
 
+
+<script
+    src="https://cdn.jsdelivr.net/npm/ethers@6.13.5/dist/ethers.min.js"
+></script>
 
 <script src="sale.js"></script>
 
