@@ -2500,6 +2500,88 @@ img {
 
 
 /* =====================================================
+   LIVE SALE DATA
+===================================================== */
+
+.sale-live-data {
+    margin: 22px 0;
+
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    gap: 10px;
+}
+
+.sale-live-data > div {
+    padding: 15px;
+
+    display: flex;
+    flex-direction: column;
+
+    border: 1px solid var(--line);
+    border-radius: 12px;
+
+    background: rgba(255, 255, 255, 0.018);
+}
+
+.sale-live-data span {
+    color: var(--muted-2);
+
+    font-size: 9px;
+    font-weight: 800;
+
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.sale-live-data strong {
+    margin-top: 5px;
+
+    color: var(--white);
+
+    font-size: 13px;
+}
+
+#saleBuyButton {
+    margin-top: 10px;
+}
+
+.sale-transaction-status {
+    margin-top: 14px;
+
+    padding: 12px 14px;
+
+    border: 1px solid var(--line);
+    border-radius: 10px;
+
+    background: rgba(255, 255, 255, 0.018);
+
+    color: var(--muted);
+
+    font-size: 10px;
+
+    text-align: center;
+}
+
+.sale-transaction-status.success {
+    border-color: rgba(0, 242, 169, 0.22);
+    color: var(--green);
+}
+
+.sale-transaction-status.error {
+    border-color: rgba(255, 200, 87, 0.22);
+    color: var(--warning);
+}
+
+@media (max-width: 600px) {
+
+    .sale-live-data {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+/* =====================================================
    ACCESSIBILITY / REDUCED MOTION
 ===================================================== */
 
