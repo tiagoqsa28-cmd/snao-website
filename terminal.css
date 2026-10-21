@@ -4185,11 +4185,13 @@ grid-template-columns:1fr;
 
     border-radius: 50%;
 
+    --ocean-score: 50%;
+
     background:
         conic-gradient(
-            var(--cyan) 0 var(--ocean-score-value),
+            var(--cyan) 0 var(--ocean-score),
             rgba(255, 255, 255, 0.055)
-            var(--ocean-score-value) 100%
+            var(--ocean-score) 100%
         );
 
     box-shadow:
@@ -4581,32 +4583,39 @@ text-align:center;
 
 }
 
-.smart-money-circle{
+.smart-money-circle {
+    width: 170px;
+    height: 170px;
+    padding: 9px;
 
-width:170px;
+    --smart-money-score: 50%;
 
-height:170px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 
-border-radius:50%;
+    border-radius: 50%;
 
-display:flex;
+    background:
+        radial-gradient(
+            circle at center,
+            #071426 0 64%,
+            transparent 65%
+        ),
+        conic-gradient(
+            var(--cyan) 0 var(--smart-money-score),
+            rgba(255, 255, 255, 0.055)
+            var(--smart-money-score) 100%
+        );
 
-flex-direction:column;
+    border: 1px solid rgba(0, 207, 255, 0.18);
 
-justify-content:center;
+    box-shadow:
+        0 0 35px rgba(0, 207, 255, 0.15);
 
-align-items:center;
-
-background:
-radial-gradient(circle,
-rgba(0,207,255,.18),
-#071426 70%);
-
-border:2px solid rgba(0,207,255,.18);
-
-box-shadow:
-0 0 35px rgba(0,207,255,.15);
-
+    transition:
+        background 0.6s ease;
 }
 
 .smart-money-circle strong{
@@ -5228,15 +5237,20 @@ grid-template-columns:1fr;
 
     border-radius: 50%;
 
+    --whale-confidence: 50%;
+
     background:
         conic-gradient(
-            #54e6ff 0 var(--whale-confidence-value),
+            #54e6ff 0 var(--whale-confidence),
             rgba(255, 255, 255, 0.055)
-            var(--whale-confidence-value) 100%
+            var(--whale-confidence) 100%
         );
 
     box-shadow:
         0 0 48px rgba(0, 207, 255, 0.15);
+
+    transition:
+        background 0.6s ease;
 }
 
 .whale-confidence-ring > div {
@@ -5589,4 +5603,345 @@ grid-template-columns:1fr;
 
 ::-webkit-scrollbar-thumb:hover {
     background: #54e6ff;
+}
+
+/* =====================================================
+   SNAO TERMINAL — DATA STATUS SYSTEM
+   Preview / Demo / Experimental / Market Data
+===================================================== */
+
+.terminal-status-badge,
+.terminal-preview-badge,
+.terminal-demo-badge,
+.terminal-experimental-badge,
+.terminal-market-data-badge,
+.terminal-coming-soon-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 24px;
+    padding: 5px 9px;
+
+    border-radius: 999px;
+
+    font-size: 7px;
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+
+    white-space: nowrap;
+}
+
+
+/* =====================================================
+   PREVIEW
+===================================================== */
+
+.terminal-preview-badge {
+    color: #69e9ff;
+
+    border:
+        1px solid rgba(84, 230, 255, 0.2);
+
+    background:
+        rgba(84, 230, 255, 0.055);
+}
+
+
+/* =====================================================
+   DEMONSTRATION
+===================================================== */
+
+.terminal-demo-badge {
+    color: #ffca68;
+
+    border:
+        1px solid rgba(255, 202, 104, 0.2);
+
+    background:
+        rgba(255, 202, 104, 0.055);
+}
+
+
+/* =====================================================
+   EXPERIMENTAL
+===================================================== */
+
+.terminal-experimental-badge {
+    color: #b9a5ff;
+
+    border:
+        1px solid rgba(185, 165, 255, 0.22);
+
+    background:
+        rgba(185, 165, 255, 0.055);
+}
+
+
+/* =====================================================
+   MARKET DATA
+===================================================== */
+
+.terminal-market-data-badge {
+    color: #00f2a9;
+
+    border:
+        1px solid rgba(0, 242, 169, 0.2);
+
+    background:
+        rgba(0, 242, 169, 0.05);
+}
+
+
+/* =====================================================
+   COMING SOON
+===================================================== */
+
+.terminal-coming-soon-badge {
+    color: #8b9caf;
+
+    border:
+        1px solid rgba(139, 156, 175, 0.16);
+
+    background:
+        rgba(139, 156, 175, 0.04);
+}
+
+
+/* =====================================================
+   GENERIC DATA NOTICE
+===================================================== */
+
+.terminal-data-notice {
+    margin-top: 18px;
+    padding: 14px 16px;
+
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: flex-start;
+    gap: 11px;
+
+    border:
+        1px solid rgba(0, 207, 255, 0.1);
+
+    border-radius: 12px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(0, 207, 255, 0.025),
+            rgba(255, 255, 255, 0.008)
+        );
+}
+
+.terminal-data-notice strong {
+    color: #69e9ff;
+
+    font-size: 7px;
+    font-weight: 900;
+
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.terminal-data-notice span,
+.terminal-data-notice p {
+    margin: 0;
+
+    color: #718399;
+
+    font-size: 8px;
+    line-height: 1.6;
+}
+
+
+/* =====================================================
+   DEMO / PREVIEW PANELS
+===================================================== */
+
+.terminal-demo-panel,
+.terminal-preview-panel,
+.terminal-experimental-panel {
+    position: relative;
+}
+
+.terminal-demo-panel::before,
+.terminal-preview-panel::before,
+.terminal-experimental-panel::before {
+    content: "";
+
+    position: absolute;
+    top: 0;
+    left: 18px;
+    right: 18px;
+
+    height: 1px;
+
+    opacity: 0.7;
+}
+
+.terminal-demo-panel::before {
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255, 202, 104, 0.5),
+            transparent
+        );
+}
+
+.terminal-preview-panel::before {
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(84, 230, 255, 0.5),
+            transparent
+        );
+}
+
+.terminal-experimental-panel::before {
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(185, 165, 255, 0.5),
+            transparent
+        );
+}
+
+
+/* =====================================================
+   LOADING / UNAVAILABLE STATES
+===================================================== */
+
+.terminal-loading {
+    opacity: 0.62;
+}
+
+.terminal-unavailable {
+    color: #718399 !important;
+}
+
+.terminal-loading,
+.terminal-unavailable {
+    transition:
+        opacity 0.25s ease,
+        color 0.25s ease;
+}
+
+
+/* =====================================================
+   REFRESH BUTTON STATES
+===================================================== */
+
+.terminal-refresh-button:disabled,
+[data-terminal-refresh]:disabled {
+    opacity: 0.55;
+
+    cursor: wait;
+
+    transform: none !important;
+}
+
+
+/* =====================================================
+   DEMO VALUES
+===================================================== */
+
+.terminal-demo-value {
+    position: relative;
+}
+
+.terminal-demo-value::after {
+    content: "DEMO";
+
+    margin-left: 6px;
+
+    color: #ffca68;
+
+    font-size: 5px;
+    font-weight: 900;
+
+    letter-spacing: 0.08em;
+    vertical-align: middle;
+}
+
+
+/* =====================================================
+   EXPERIMENTAL VALUES
+===================================================== */
+
+.terminal-experimental-value {
+    position: relative;
+}
+
+.terminal-experimental-value::after {
+    content: "EXP";
+
+    margin-left: 6px;
+
+    color: #b9a5ff;
+
+    font-size: 5px;
+    font-weight: 900;
+
+    letter-spacing: 0.08em;
+    vertical-align: middle;
+}
+
+
+/* =====================================================
+   REAL MARKET DATA VALUES
+===================================================== */
+
+.terminal-market-value {
+    transition:
+        color 0.25s ease,
+        opacity 0.25s ease;
+}
+
+.terminal-market-value.is-positive {
+    color: #00f2a9;
+}
+
+.terminal-market-value.is-negative {
+    color: #ff738d;
+}
+
+.terminal-market-value.is-neutral {
+    color: #ffffff;
+}
+
+
+/* =====================================================
+   FINAL MOBILE ADJUSTMENTS
+===================================================== */
+
+@media (max-width: 620px) {
+
+    .terminal-status-badge,
+    .terminal-preview-badge,
+    .terminal-demo-badge,
+    .terminal-experimental-badge,
+    .terminal-market-data-badge,
+    .terminal-coming-soon-badge {
+        min-height: 22px;
+
+        padding: 5px 8px;
+
+        font-size: 6px;
+    }
+
+    .terminal-data-notice {
+        grid-template-columns: 1fr;
+
+        padding: 13px;
+    }
+
+    .terminal-data-notice strong {
+        white-space: normal;
+    }
 }
