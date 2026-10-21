@@ -2269,15 +2269,17 @@ html {
     border-radius: 50%;
 
     background:
-        conic-gradient(
-            #00cfff 0% 25%,
-            #008cff 25% 45%,
-            #00f2a9 45% 65%,
-            #8e7dff 65% 80%,
-            #ffca68 80% 90%,
-            #ff7fb5 90% 95%,
-            #72869c 95% 100%
-        );
+    conic-gradient(
+        #00cfff 0% 13%,
+        #008cff 13% 35.5%,
+        #00f2a9 35.5% 55.5%,
+        #7c6cff 55.5% 75.5%,
+        #ffca68 75.5% 83%,
+        #ff738d 83% 88%,
+        #57d38c 88% 92%,
+        #9aa8b8 92% 94.5%,
+        #b56cff 94.5% 100%
+    );
 
     box-shadow:
         0 0 45px rgba(0, 207, 255, 0.16);
