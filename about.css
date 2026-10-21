@@ -306,14 +306,13 @@ body {
 .about-header nav a:nth-child(4) {
     display: none;
 }
-    }
 
-    .about-hero {
-        min-height: 660px;
-        padding:
-            120px 22px
-            70px;
-    }
+.about-hero {
+    min-height: 660px;
+    padding:
+        120px 22px
+        70px;
+}
 
     .about-hero h1 {
         font-size: 48px;
@@ -799,8 +798,8 @@ body {
     }
 
     .about-vision-map {
-        min-height: 1020px;
-    }
+    min-height: 1120px;
+}
 
     .about-vision-map::before,
     .about-vision-map::after {
@@ -842,9 +841,17 @@ body {
     }
 
     .about-vision-core {
-        width: 175px;
-        height: 175px;
-    }
+    width: 155px;
+    height: 155px;
+}
+
+.about-vision-core strong {
+    font-size: 19px;
+}
+
+.about-vision-core small {
+    font-size: 7px;
+}
 
 }
 
@@ -2168,4 +2175,49 @@ body {
 ::selection {
     background: var(--about-cyan);
     color: #00111a;
+}
+
+/* =====================================================
+   ABOUT — DEVELOPMENT NOTICE
+===================================================== */
+
+.about-future-grid + .about-community-banner {
+    margin-top: 24px;
+    padding: 30px 34px;
+
+    border-color: rgba(0, 207, 255, 0.14);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(0, 207, 255, 0.045),
+            rgba(255, 255, 255, 0.012)
+        );
+}
+
+.about-future-grid + .about-community-banner span {
+    font-size: 8px;
+    letter-spacing: 1.2px;
+}
+
+.about-future-grid + .about-community-banner strong {
+    max-width: 760px;
+    margin-top: 14px;
+
+    color: #9aadc0;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1.7;
+}
+
+@media (max-width: 600px) {
+
+    .about-future-grid + .about-community-banner {
+        padding: 25px 20px;
+    }
+
+    .about-future-grid + .about-community-banner strong {
+        font-size: 11px;
+    }
+
 }
