@@ -91,10 +91,13 @@ const SALE_CONFIG = {
      */
 
     saleContract:
-        null,
+    null,
 
-    paymentToken:
-        null
+vestingContract:
+    null,
+
+paymentToken:
+    null
 
 };
 
@@ -170,6 +173,30 @@ const ERC20_ABI = [
 
 ];
 
+const SNAO_VESTING_ABI = [
+
+    "function tgeTimestamp() view returns (uint256)",
+
+    "function saleContract() view returns (address)",
+
+    "function totalAllocated() view returns (uint256)",
+
+    "function totalReleased() view returns (uint256)",
+
+    "function getVestingCount(address beneficiary) view returns (uint256)",
+
+    "function getVesting(address beneficiary,uint256 index) view returns (uint256 totalAmount,uint256 releasedAmount,uint256 duration,uint256 tgePercent)",
+
+    "function releasableAmount(address beneficiary,uint256 index) view returns (uint256)",
+
+    "function release(uint256 index)",
+
+    "event VestingCreated(address indexed beneficiary,uint256 amount,uint8 phase)",
+
+    "event TokensReleased(address indexed beneficiary,uint256 amount)"
+
+];
+
 
 /* =====================================================
    STATE
@@ -185,6 +212,9 @@ let connectedAccount =
     null;
 
 let saleContract =
+    null;
+
+let vestingContract =
     null;
 
 let paymentContract =
@@ -369,6 +399,41 @@ const saleCurrentYear =
         "saleCurrentYear"
     );
 
+const vestingTotalAllocated =
+    saleGetElement(
+        "vestingTotalAllocated"
+    );
+
+
+const vestingTotalReleased =
+    saleGetElement(
+        "vestingTotalReleased"
+    );
+
+
+const vestingTotalClaimable =
+    saleGetElement(
+        "vestingTotalClaimable"
+    );
+
+
+const vestingTgeStatus =
+    saleGetElement(
+        "vestingTgeStatus"
+    );
+
+
+const vestingStatusMessage =
+    saleGetElement(
+        "vestingStatusMessage"
+    );
+
+
+const vestingPositions =
+    saleGetElement(
+        "vestingPositions"
+    );
+
 
 /* =====================================================
    FORMATTERS
@@ -510,6 +575,19 @@ function saleContractsConfigured() {
 
 }
 
+function vestingContractConfigured() {
+
+    return Boolean(
+
+        SALE_CONFIG.vestingContract &&
+
+        ethers.isAddress(
+            SALE_CONFIG.vestingContract
+        )
+
+    );
+
+}
 
 /* =====================================================
    MOBILE MENU
@@ -866,11 +944,13 @@ async function connectSaleWallet() {
 
         await refreshSaleData();
 
+await refreshVestingData();
 
-        saleSetStatus(
-            "Wallet connected to BNB Smart Chain.",
-            "success"
-        );
+
+saleSetStatus(
+    "Wallet connected to BNB Smart Chain.",
+    "success"
+);
 
     } catch (error) {
 
@@ -960,12 +1040,48 @@ async function initializeContracts() {
 
         );
 
+   if (
+    vestingContractConfigured()
+) {
+
+    vestingContract =
+        new ethers.Contract(
+
+            SALE_CONFIG.vestingContract,
+
+            SNAO_VESTING_ABI,
+
+            signer
+
+        );
+
+}
+
 
     paymentDecimals =
         Number(
             await paymentContract
                 .decimals()
         );
+
+   if (
+    saleUsdtInput
+) {
+
+    saleUsdtInput.disabled =
+        false;
+
+}
+
+
+if (
+    saleSnaoOutput
+) {
+
+    saleSnaoOutput.disabled =
+        true;
+
+}
 
 }
 
@@ -1224,12 +1340,14 @@ async function refreshSaleData() {
 
 
         if (
-            connectedAccount
-        ) {
+    connectedAccount
+) {
 
-            await refreshUserContribution();
+    await refreshUserContribution();
 
-        }
+    await refreshVestingData();
+
+}
 
 
         updatePurchaseAvailability(
@@ -2366,6 +2484,802 @@ async function buySnao() {
 
 }
 
+/* =====================================================
+   VESTING / MY SNAO POSITION
+===================================================== */
+
+function vestingPhaseFromPercent(
+    tgePercent
+) {
+
+    const percent =
+        Number(tgePercent);
+
+
+    if (percent === 5) {
+        return "Genesis";
+    }
+
+
+    if (percent === 10) {
+        return "Early";
+    }
+
+
+    if (percent === 15) {
+        return "Growth";
+    }
+
+
+    if (percent === 20) {
+        return "Expansion";
+    }
+
+
+    if (percent === 25) {
+        return "Final";
+    }
+
+
+    return "Sale";
+}
+
+
+function vestingFormatDuration(
+    durationSeconds
+) {
+
+    const days =
+        Math.round(
+            Number(durationSeconds) /
+            86400
+        );
+
+
+    const months =
+        Math.round(
+            days / 30
+        );
+
+
+    return (
+        months +
+        (months === 1
+            ? " month"
+            : " months")
+    );
+
+}
+
+
+function vestingFormatDate(
+    timestamp
+) {
+
+    const value =
+        Number(timestamp);
+
+
+    if (
+        !value ||
+        value <= 0
+    ) {
+
+        return "Not Configured";
+    }
+
+
+    return new Date(
+        value * 1000
+    ).toLocaleString(
+        "en-US",
+        {
+            year:
+                "numeric",
+
+            month:
+                "short",
+
+            day:
+                "2-digit",
+
+            hour:
+                "2-digit",
+
+            minute:
+                "2-digit",
+
+            timeZone:
+                "UTC",
+
+            timeZoneName:
+                "short"
+        }
+    );
+
+}
+
+
+function renderEmptyVesting(
+    message
+) {
+
+    saleSetText(
+        vestingTotalAllocated,
+        connectedAccount
+            ? "0 SNAO"
+            : "Connect Wallet"
+    );
+
+
+    saleSetText(
+        vestingTotalReleased,
+        connectedAccount
+            ? "0 SNAO"
+            : "—"
+    );
+
+
+    saleSetText(
+        vestingTotalClaimable,
+        connectedAccount
+            ? "0 SNAO"
+            : "—"
+    );
+
+
+    if (
+        vestingPositions
+    ) {
+
+        vestingPositions.innerHTML =
+            `
+                <div class="sale-empty-position">
+                    ${
+                        message ||
+                        "No vesting positions found."
+                    }
+                </div>
+            `;
+
+    }
+
+}
+
+
+async function refreshVestingData() {
+
+    if (
+        !connectedAccount
+    ) {
+
+        renderEmptyVesting(
+            "Connect your wallet to view your SNAO allocation and vesting positions."
+        );
+
+
+        saleSetText(
+            vestingTgeStatus,
+            "Not Configured"
+        );
+
+
+        return;
+
+    }
+
+
+    if (
+        !vestingContractConfigured() ||
+        !vestingContract
+    ) {
+
+        renderEmptyVesting(
+            "The official mainnet vesting contract has not been configured yet."
+        );
+
+
+        saleSetText(
+            vestingTgeStatus,
+            "Pending Mainnet"
+        );
+
+
+        if (
+            vestingStatusMessage
+        ) {
+
+            vestingStatusMessage.textContent =
+                "Wallet connected. Vesting information will activate after the verified mainnet vesting contract is configured.";
+
+        }
+
+
+        return;
+
+    }
+
+
+    try {
+
+        const [
+            countRaw,
+            tgeRaw
+        ] =
+            await Promise.all([
+
+                vestingContract
+                    .getVestingCount(
+                        connectedAccount
+                    ),
+
+                vestingContract
+                    .tgeTimestamp()
+
+            ]);
+
+
+        const count =
+            Number(
+                countRaw
+            );
+
+
+        const tgeTimestamp =
+            Number(
+                tgeRaw
+            );
+
+
+        saleSetText(
+            vestingTgeStatus,
+            vestingFormatDate(
+                tgeTimestamp
+            )
+        );
+
+
+        if (
+            count === 0
+        ) {
+
+            renderEmptyVesting(
+                "No SNAO public-sale vesting position was found for this wallet."
+            );
+
+
+            if (
+                vestingStatusMessage
+            ) {
+
+                vestingStatusMessage.textContent =
+                    "No public-sale allocation is currently registered for this wallet.";
+
+            }
+
+
+            return;
+
+        }
+
+
+        let totalAllocated =
+            0n;
+
+        let totalReleased =
+            0n;
+
+        let totalClaimable =
+            0n;
+
+
+        const positions =
+            [];
+
+
+        for (
+            let index = 0;
+            index < count;
+            index++
+        ) {
+
+            const vesting =
+                await vestingContract
+                    .getVesting(
+                        connectedAccount,
+                        index
+                    );
+
+
+            const totalAmount =
+                BigInt(
+                    vesting.totalAmount
+                );
+
+
+            const releasedAmount =
+                BigInt(
+                    vesting.releasedAmount
+                );
+
+
+            const duration =
+                BigInt(
+                    vesting.duration
+                );
+
+
+            const tgePercent =
+                BigInt(
+                    vesting.tgePercent
+                );
+
+
+            let claimable =
+                0n;
+
+
+            /*
+             * releasableAmount() intentionally reverts
+             * before TGE is configured.
+             *
+             * That is expected during pre-TGE.
+             */
+
+            if (
+                tgeTimestamp > 0
+            ) {
+
+                try {
+
+                    claimable =
+                        await vestingContract
+                            .releasableAmount(
+                                connectedAccount,
+                                index
+                            );
+
+                } catch (error) {
+
+                    claimable =
+                        0n;
+
+                }
+
+            }
+
+
+            totalAllocated +=
+                totalAmount;
+
+
+            totalReleased +=
+                releasedAmount;
+
+
+            totalClaimable +=
+                claimable;
+
+
+            positions.push(
+                {
+                    index,
+                    totalAmount,
+                    releasedAmount,
+                    duration,
+                    tgePercent,
+                    claimable
+                }
+            );
+
+        }
+
+
+        saleSetText(
+            vestingTotalAllocated,
+
+            saleFormatNumber(
+                ethers.formatUnits(
+                    totalAllocated,
+                    18
+                ),
+                2
+            ) +
+            " SNAO"
+        );
+
+
+        saleSetText(
+            vestingTotalReleased,
+
+            saleFormatNumber(
+                ethers.formatUnits(
+                    totalReleased,
+                    18
+                ),
+                2
+            ) +
+            " SNAO"
+        );
+
+
+        saleSetText(
+            vestingTotalClaimable,
+
+            saleFormatNumber(
+                ethers.formatUnits(
+                    totalClaimable,
+                    18
+                ),
+                2
+            ) +
+            " SNAO"
+        );
+
+
+        renderVestingPositions(
+            positions,
+            tgeTimestamp
+        );
+
+
+        if (
+            vestingStatusMessage
+        ) {
+
+            vestingStatusMessage.textContent =
+                count +
+                (
+                    count === 1
+                        ? " vesting position found for this wallet."
+                        : " vesting positions found for this wallet."
+                );
+
+        }
+
+    } catch (error) {
+
+        console.error(
+            "Vesting refresh error:",
+            error
+        );
+
+
+        renderEmptyVesting(
+            "Unable to load vesting information."
+        );
+
+
+        if (
+            vestingStatusMessage
+        ) {
+
+            vestingStatusMessage.textContent =
+                "Unable to read the vesting contract.";
+
+        }
+
+    }
+
+}
+
+
+function renderVestingPositions(
+    positions,
+    tgeTimestamp
+) {
+
+    if (
+        !vestingPositions
+    ) {
+
+        return;
+
+    }
+
+
+    vestingPositions.innerHTML =
+        "";
+
+
+    positions.forEach(
+        (position) => {
+
+            const phase =
+                vestingPhaseFromPercent(
+                    position.tgePercent
+                );
+
+
+            const total =
+                ethers.formatUnits(
+                    position.totalAmount,
+                    18
+                );
+
+
+            const released =
+                ethers.formatUnits(
+                    position.releasedAmount,
+                    18
+                );
+
+
+            const claimable =
+                ethers.formatUnits(
+                    position.claimable,
+                    18
+                );
+
+
+            const tgePercent =
+                Number(
+                    position.tgePercent
+                );
+
+
+            const duration =
+                vestingFormatDuration(
+                    position.duration
+                );
+
+
+            const card =
+                document.createElement(
+                    "div"
+                );
+
+
+            card.className =
+                "sale-vesting-position";
+
+
+            card.innerHTML =
+                `
+                    <div class="sale-vesting-position-header">
+
+                        <strong>
+                            Position #${position.index + 1}
+                        </strong>
+
+                        <span class="sale-vesting-phase">
+                            ${phase}
+                        </span>
+
+                    </div>
+
+
+                    <div class="sale-vesting-position-grid">
+
+                        <div>
+                            <span>Allocated</span>
+
+                            <strong>
+                                ${saleFormatNumber(total, 2)} SNAO
+                            </strong>
+                        </div>
+
+
+                        <div>
+                            <span>TGE Unlock</span>
+
+                            <strong>
+                                ${tgePercent}%
+                            </strong>
+                        </div>
+
+
+                        <div>
+                            <span>Vesting</span>
+
+                            <strong>
+                                ${duration}
+                            </strong>
+                        </div>
+
+
+                        <div>
+                            <span>Released</span>
+
+                            <strong>
+                                ${saleFormatNumber(released, 2)} SNAO
+                            </strong>
+                        </div>
+
+
+                        <div>
+                            <span>Claimable Now</span>
+
+                            <strong>
+                                ${saleFormatNumber(claimable, 2)} SNAO
+                            </strong>
+                        </div>
+
+
+                        <div>
+                            <span>TGE</span>
+
+                            <strong>
+                                ${
+                                    tgeTimestamp > 0
+                                        ? vestingFormatDate(tgeTimestamp)
+                                        : "Not Configured"
+                                }
+                            </strong>
+                        </div>
+
+                    </div>
+
+
+                    <button
+                        class="sale-claim-button"
+                        type="button"
+                        data-vesting-index="${position.index}"
+                        ${
+                            position.claimable > 0n
+                                ? ""
+                                : "disabled"
+                        }
+                    >
+                        ${
+                            position.claimable > 0n
+                                ? "CLAIM SNAO"
+                                : "NOTHING TO CLAIM"
+                        }
+                    </button>
+                `;
+
+
+            const claimButton =
+                card.querySelector(
+                    ".sale-claim-button"
+                );
+
+
+            if (
+                claimButton &&
+                position.claimable > 0n
+            ) {
+
+                claimButton
+                    .addEventListener(
+                        "click",
+                        () => {
+
+                            claimVestedSnao(
+                                position.index,
+                                claimButton
+                            );
+
+                        }
+                    );
+
+            }
+
+
+            vestingPositions
+                .appendChild(
+                    card
+                );
+
+        }
+    );
+
+}
+
+
+async function claimVestedSnao(
+    index,
+    button
+) {
+
+    if (
+        !vestingContract ||
+        !connectedAccount
+    ) {
+
+        return;
+
+    }
+
+
+    try {
+
+        button.disabled =
+            true;
+
+
+        button.textContent =
+            "CLAIMING...";
+
+
+        if (
+            vestingStatusMessage
+        ) {
+
+            vestingStatusMessage.textContent =
+                "Confirm the SNAO claim in your wallet.";
+
+        }
+
+
+        const transaction =
+            await vestingContract
+                .release(
+                    index
+                );
+
+
+        if (
+            vestingStatusMessage
+        ) {
+
+            vestingStatusMessage.textContent =
+                "Claim submitted. Waiting for blockchain confirmation...";
+
+        }
+
+
+        const receipt =
+            await transaction
+                .wait();
+
+
+        if (
+            !receipt ||
+            receipt.status !== 1
+        ) {
+
+            throw new Error(
+                "Claim transaction failed."
+            );
+
+        }
+
+
+        if (
+            vestingStatusMessage
+        ) {
+
+            vestingStatusMessage.textContent =
+                "SNAO successfully released to your wallet.";
+
+        }
+
+
+        await refreshVestingData();
+
+    } catch (error) {
+
+        console.error(
+            "Vesting claim error:",
+            error
+        );
+
+
+        if (
+            vestingStatusMessage
+        ) {
+
+            vestingStatusMessage.textContent =
+                saleReadableError(
+                    error
+                );
+
+        }
+
+
+        button.disabled =
+            false;
+
+
+        button.textContent =
+            "CLAIM SNAO";
+
+    }
+
+}
+
 
 /* =====================================================
    READABLE ERRORS
@@ -2536,6 +3450,20 @@ if (
                     saleUserContribution,
                     "Connect Wallet"
                 );
+
+               vestingContract =
+    null;
+
+
+renderEmptyVesting(
+    "Connect your wallet to view your SNAO allocation and vesting positions."
+);
+
+
+saleSetText(
+    vestingTgeStatus,
+    "Not Configured"
+);
 
 
                 await updatePurchaseAvailability();
