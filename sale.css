@@ -2607,3 +2607,227 @@ img {
     }
 
 }
+
+/* =====================================================
+   MY SNAO POSITION / VESTING
+===================================================== */
+
+.sale-vesting-section {
+    margin-top: 70px;
+}
+
+.sale-position-summary {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, minmax(0, 1fr));
+
+    gap: 10px;
+
+    margin-top: 28px;
+}
+
+.sale-position-summary > div {
+    padding: 18px;
+
+    border: 1px solid var(--line);
+    border-radius: 14px;
+
+    background:
+        rgba(255, 255, 255, 0.018);
+}
+
+.sale-position-summary span {
+    display: block;
+
+    color: var(--muted-2);
+
+    font-size: 9px;
+    font-weight: 800;
+
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.sale-position-summary strong {
+    display: block;
+
+    margin-top: 7px;
+
+    color: var(--white);
+
+    font-size: 14px;
+}
+
+.sale-vesting-message {
+    margin-top: 15px;
+
+    padding: 14px 16px;
+
+    border: 1px solid var(--line);
+    border-radius: 12px;
+
+    color: var(--muted);
+
+    font-size: 11px;
+
+    background:
+        rgba(255, 255, 255, 0.018);
+}
+
+.sale-vesting-list {
+    display: grid;
+
+    gap: 12px;
+
+    margin-top: 18px;
+}
+
+.sale-vesting-position {
+    padding: 20px;
+
+    border: 1px solid var(--line);
+    border-radius: 15px;
+
+    background:
+        rgba(255, 255, 255, 0.02);
+}
+
+.sale-vesting-position-header {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 15px;
+
+    margin-bottom: 16px;
+}
+
+.sale-vesting-position-header strong {
+    color: var(--white);
+
+    font-size: 14px;
+}
+
+.sale-vesting-phase {
+    padding: 6px 9px;
+
+    border: 1px solid
+        rgba(0, 207, 255, 0.22);
+
+    border-radius: 20px;
+
+    color: var(--cyan);
+
+    font-size: 9px;
+    font-weight: 800;
+
+    text-transform: uppercase;
+}
+
+.sale-vesting-position-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, minmax(0, 1fr));
+
+    gap: 10px;
+}
+
+.sale-vesting-position-grid div {
+    padding: 12px;
+
+    border-radius: 10px;
+
+    background:
+        rgba(255, 255, 255, 0.025);
+}
+
+.sale-vesting-position-grid span {
+    display: block;
+
+    color: var(--muted-2);
+
+    font-size: 8px;
+
+    text-transform: uppercase;
+}
+
+.sale-vesting-position-grid strong {
+    display: block;
+
+    margin-top: 5px;
+
+    color: var(--white);
+
+    font-size: 11px;
+}
+
+.sale-claim-button {
+    width: 100%;
+
+    margin-top: 14px;
+
+    padding: 12px;
+
+    border: 1px solid
+        rgba(0, 242, 169, 0.24);
+
+    border-radius: 10px;
+
+    background:
+        rgba(0, 242, 169, 0.07);
+
+    color: var(--green);
+
+    font-size: 10px;
+    font-weight: 900;
+
+    cursor: pointer;
+
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+}
+
+.sale-claim-button:disabled {
+    cursor: not-allowed;
+
+    opacity: 0.45;
+}
+
+.sale-empty-position {
+    padding: 22px;
+
+    border: 1px dashed var(--line);
+    border-radius: 13px;
+
+    color: var(--muted-2);
+
+    text-align: center;
+
+    font-size: 11px;
+}
+
+@media (max-width: 850px) {
+
+    .sale-position-summary {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+
+    .sale-vesting-position-grid {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+
+}
+
+@media (max-width: 520px) {
+
+    .sale-position-summary,
+    .sale-vesting-position-grid {
+        grid-template-columns: 1fr;
+    }
+
+}
