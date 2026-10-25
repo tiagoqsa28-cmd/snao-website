@@ -2561,12 +2561,12 @@ function vestingFormatDate(
 
 
     if (
-        !value ||
-        value <= 0
-    ) {
+  !value ||
+  value <= 0
+) {
 
-        return "Not Configured";
-    }
+  return "Not Active";
+}
 
 
     return new Date(
@@ -2659,9 +2659,9 @@ async function refreshVestingData() {
 
 
         saleSetText(
-            vestingTgeStatus,
-            "Not Configured"
-        );
+  vestingTgeStatus,
+  "Not Active"
+);
 
 
         return;
@@ -3103,7 +3103,7 @@ function renderVestingPositions(
                                 ${
                                     tgeTimestamp > 0
                                         ? vestingFormatDate(tgeTimestamp)
-                                        : "Not Configured"
+                                        : : "Not Active"
                                 }
                             </strong>
                         </div>
@@ -3461,8 +3461,8 @@ renderEmptyVesting(
 
 
 saleSetText(
-    vestingTgeStatus,
-    "Not Configured"
+  vestingTgeStatus,
+  "Not Active"
 );
 
 
