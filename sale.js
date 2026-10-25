@@ -2132,18 +2132,18 @@ async function updateSaleQuote() {
 
 
         saleSetStatus(
-            "Contract quote: " +
-            saleFormatNumber(
-                tokenDisplay,
-                0
-            ) +
-            " SNAO for " +
-            saleFormatUSD(
-                actualCost,
-                6
-            ) +
-            "."
-        );
+    "Contract quote: " +
+    saleFormatNumber(
+        tokensDisplay,
+        0
+    ) +
+    " SNAO — actual cost " +
+    saleFormatUSD(
+        actualCost,
+        6
+    ) +
+    ". Max 2,500,000 SNAO per transaction."
+);
 
 
         await updatePurchaseAvailability();
