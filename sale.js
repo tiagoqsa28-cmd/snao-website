@@ -91,13 +91,13 @@ const SALE_CONFIG = {
      */
 
     saleContract:
-    null,
+    "0x34d584CA40813816F87530bf826cC6A8e2A44c09",
 
 vestingContract:
-    null,
+    "0xd0fd8bf663e73351d853ee2e32de61da0340156a",
 
 paymentToken:
-    null
+    "0x55d398326f99059fF775485246999027B3197955"
 
 };
 
