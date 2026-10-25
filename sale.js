@@ -2088,20 +2088,10 @@ async function updateSaleQuote() {
 
 
         if (
-            quotedTokenAmount <= 0n
-        ) {
-
-            saleSetStatus(
-                "The entered amount is too small for a SNAO purchase.",
-                "error"
-            );
-
-
-            await updatePurchaseAvailability();
-
-            return;
-
-        }
+    saleSnaoOutput
+) {
+    saleSnaoOutput.value = "0";
+}   
 
 
         const tokenDisplay =
