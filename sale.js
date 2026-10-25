@@ -3103,7 +3103,7 @@ function renderVestingPositions(
                                 ${
                                     tgeTimestamp > 0
                                         ? vestingFormatDate(tgeTimestamp)
-                                        : : "Not Active"
+                                        : "Not Active"
                                 }
                             </strong>
                         </div>
