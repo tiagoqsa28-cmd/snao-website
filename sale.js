@@ -2134,7 +2134,7 @@ async function updateSaleQuote() {
         saleSetStatus(
     "Contract quote: " +
     saleFormatNumber(
-        tokensDisplay,
+        tokenDisplay,
         0
     ) +
     " SNAO — actual cost " +
