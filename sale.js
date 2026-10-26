@@ -2088,9 +2088,23 @@ async function updateSaleQuote() {
 
 
         if (
-    saleSnaoOutput
+    quotedTokenAmount <= 0n
 ) {
-    saleSnaoOutput.value = "0";
+
+    if (
+        saleSnaoOutput
+    ) {
+        saleSnaoOutput.value = "0";
+    }
+
+    saleSetStatus(
+        "The entered amount is too small for a SNAO purchase.",
+        "error"
+    );
+
+    await updatePurchaseAvailability();
+
+    return;
 }   
 
 
