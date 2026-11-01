@@ -190,20 +190,19 @@
         <div class="sale-intro">
 
             <span class="sale-status">
-                <i></i>
-                PUBLIC SALE • NOVEMBER 1, 2026
-            </span>
+    <i></i>
+    PUBLIC SALE • LIVE NOW
+</span>
 
-            <h1>
-                The Ocean
-                <span>Is Moving.</span>
-            </h1>
+<h1>
+    The Ocean
+    <span>Is Moving.</span>
+</h1>
 
-            <p class="sale-lead">
-                Join the SNAO Ocean Intelligence ecosystem.
-                Public sale opens November 1 with a progressive
-                pricing model across 1,800 lots.
-            </p>
+<p class="sale-lead">
+    The SNAO Public Sale is now live on BNB Smart Chain
+    with progressive pricing across 1,800 lots.
+</p>
 
             <div class="sale-countdown">
 
@@ -277,13 +276,12 @@
 
             <div class="sale-panel-header">
 
-                <div>
-                    <span class="sale-label">
-                        SNAO PUBLIC SALE
-                    </span>
+                <span class="sale-label">
+    SNAO PUBLIC SALE
+</span>
 
-                    <h2>
-    Prepare for the $SNAO Sale
+<h2>
+    $SNAO Public Sale Is Live
 </h2>
                 </div>
 
@@ -392,15 +390,15 @@
 
             <div class="sale-security">
 
-                <span>◈</span>
+    <span>◈</span>
 
-                <p>
-                    Smart-contract purchase on BNB Chain.
-                    Wallet connection will activate when the
-                    mainnet sale contract is deployed.
-                </p>
+    <p>
+        Public Sale is live on BNB Smart Chain.
+        Purchases are completed through the official
+        SNAO sale page.
+    </p>
 
-            </div>
+</div>
 
         </div>
 
@@ -681,6 +679,7 @@
 }
 
 .sale-connect-button {
+    display: block;
     width: 100%;
     padding: 17px;
     border: 0;
@@ -689,8 +688,10 @@
     color: #021018;
     font-weight: 800;
     letter-spacing: .5px;
-    cursor: not-allowed;
-    opacity: .72;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    opacity: 1;
 }
 
 .sale-security {
@@ -1162,7 +1163,6 @@
             saleStart - now;
 
         if (distance <= 0) {
-
     distance = 0;
 
     const button =
@@ -1170,11 +1170,19 @@
             "saleConnectWallet"
         );
 
+    const countdown =
+        document.querySelector(
+            ".sale-countdown"
+        );
+
     if (button) {
         button.textContent = "BUY SNAO NOW";
         button.href = "sale.html";
     }
 
+    if (countdown) {
+        countdown.style.display = "none";
+    }
 }
 
         const days =
@@ -6425,19 +6433,17 @@ the development of a new Ocean Intelligence layer for crypto.
             </span>
 
             <strong>
-                The official SNAO contract has not been released.
-            </strong>
-
-            <p>
-                Never trust unofficial contracts, direct messages or private
-                purchase offers. Official announcements will only be published
-                through SNAO.world and verified community channels.
-            </p>
-
-            <a href="token.html#buy">
-                View token status
-                <b>↗</b>
-            </a>
+    The official SNAO contracts are live on BNB Smart Chain.
+</strong>
+<p>
+    Always verify contract addresses through SNAO.world and official
+    verified community channels. Never trust unofficial contracts,
+    direct messages or private purchase offers.
+</p>
+<a href="sale.html">
+    View Public Sale
+    <b>↗</b>
+</a>
 
         </div>
 
@@ -6585,7 +6591,8 @@ the development of a new Ocean Intelligence layer for crypto.
 
     <div class="cursor-glow" aria-hidden="true"></div>
 
-    <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/ethers@6.13.5/dist/ethers.umd.min.js"></script>
+<script src="script.js"></script>
 
 </body>
 
