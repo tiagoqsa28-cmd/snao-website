@@ -1,12 +1,24 @@
 import { createClient } from "redis";
+import { ethers } from "ethers";
+
 
 const SALE_CONTRACT =
     "0x34d584CA40813816F87530bf826cC6A8e2A44c09";
 
-const CHAIN_ID = 56;
+const CHAIN_ID =
+    56;
+
+const BSC_RPC_URL =
+    "https://bsc-dataseed.binance.org/";
 
 const REFERRAL_PURCHASES_KEY =
     "snao:referrals:purchases";
+
+
+const SALE_ABI = [
+    "event TokensPurchased(address indexed buyer,uint256 tokenAmount,uint256 paymentAmount)"
+];
+
 
 let redisClient;
 
@@ -14,10 +26,13 @@ let redisClient;
 async function getRedisClient() {
 
     if (!process.env.REDIS_URL) {
+
         throw new Error(
             "REDIS_URL is missing"
         );
+
     }
+
 
     if (!redisClient) {
 
@@ -27,21 +42,28 @@ async function getRedisClient() {
                     process.env.REDIS_URL
             });
 
+
         redisClient.on(
             "error",
             (error) => {
+
                 console.error(
                     "Redis error:",
                     error
                 );
+
             }
         );
 
     }
 
+
     if (!redisClient.isOpen) {
+
         await redisClient.connect();
+
     }
+
 
     return redisClient;
 
@@ -55,8 +77,11 @@ function sanitizeReferralCode(
     if (
         typeof value !== "string"
     ) {
+
         return null;
+
     }
+
 
     const cleaned =
         value
@@ -70,6 +95,7 @@ function sanitizeReferralCode(
                 0,
                 40
             );
+
 
     return cleaned || null;
 
@@ -100,6 +126,161 @@ function isValidTransactionHash(
             value
         )
     );
+
+}
+
+
+async function verifyPurchaseOnChain({
+    transactionHash,
+    buyer
+}) {
+
+    const provider =
+        new ethers.JsonRpcProvider(
+            BSC_RPC_URL,
+            CHAIN_ID
+        );
+
+
+    const receipt =
+        await provider.getTransactionReceipt(
+            transactionHash
+        );
+
+
+    if (!receipt) {
+
+        throw new Error(
+            "Transaction receipt not found"
+        );
+
+    }
+
+
+    if (Number(receipt.status) !== 1) {
+
+        throw new Error(
+            "Transaction was not successful"
+        );
+
+    }
+
+
+    if (
+        !receipt.to ||
+        receipt.to.toLowerCase() !==
+            SALE_CONTRACT.toLowerCase()
+    ) {
+
+        throw new Error(
+            "Transaction was not sent to the official sale contract"
+        );
+
+    }
+
+
+    const saleInterface =
+        new ethers.Interface(
+            SALE_ABI
+        );
+
+
+    let confirmedPurchase =
+        null;
+
+
+    for (
+        const log
+        of receipt.logs
+    ) {
+
+        if (
+            !log.address ||
+            log.address.toLowerCase() !==
+                SALE_CONTRACT.toLowerCase()
+        ) {
+
+            continue;
+
+        }
+
+
+        try {
+
+            const parsed =
+                saleInterface.parseLog(
+                    log
+                );
+
+
+            if (
+                parsed &&
+                parsed.name ===
+                    "TokensPurchased"
+            ) {
+
+                const eventBuyer =
+                    String(
+                        parsed.args.buyer
+                    ).toLowerCase();
+
+
+                if (
+                    eventBuyer !==
+                    buyer.toLowerCase()
+                ) {
+
+                    continue;
+
+                }
+
+
+                confirmedPurchase = {
+
+                    buyer:
+                        eventBuyer,
+
+                    tokenAmount:
+                        parsed.args
+                            .tokenAmount
+                            .toString(),
+
+                    paymentAmount:
+                        parsed.args
+                            .paymentAmount
+                            .toString(),
+
+                    blockNumber:
+                        Number(
+                            receipt.blockNumber
+                        )
+
+                };
+
+
+                break;
+
+            }
+
+        } catch (error) {
+
+            // Ignore unrelated logs.
+
+        }
+
+    }
+
+
+    if (!confirmedPurchase) {
+
+        throw new Error(
+            "Valid TokensPurchased event not found"
+        );
+
+    }
+
+
+    return confirmedPurchase;
 
 }
 
@@ -139,7 +320,7 @@ export default {
 
             const buyer =
                 typeof body?.buyer ===
-                "string"
+                    "string"
                     ? body.buyer
                         .toLowerCase()
                     : null;
@@ -216,7 +397,8 @@ export default {
 
             if (
                 saleContract !==
-                SALE_CONTRACT.toLowerCase()
+                    SALE_CONTRACT
+                        .toLowerCase()
             ) {
 
                 return Response.json(
@@ -233,8 +415,9 @@ export default {
 
 
             if (
-                Number(body?.chainId) !==
-                CHAIN_ID
+                Number(
+                    body?.chainId
+                ) !== CHAIN_ID
             ) {
 
                 return Response.json(
@@ -266,21 +449,59 @@ export default {
 
             if (alreadyRecorded) {
 
+                const existingRecord =
+                    await redis.get(
+                        transactionKey
+                    );
+
+
                 return Response.json(
                     {
-                        success: true,
-                        duplicate: true
+                        success:
+                            true,
+
+                        duplicate:
+                            true,
+
+                        verified:
+                            true,
+
+                        purchase:
+                            existingRecord
+                                ? JSON.parse(
+                                    existingRecord
+                                )
+                                : null
                     }
                 );
 
             }
 
 
+            /*
+             * IMPORTANT:
+             *
+             * Values sent by the browser are NOT trusted.
+             *
+             * The authoritative buyer, SNAO amount and
+             * payment amount are extracted directly from
+             * the TokensPurchased event on BNB Smart Chain.
+             */
+
+            const confirmedPurchase =
+                await verifyPurchaseOnChain({
+                    transactionHash,
+                    buyer
+                });
+
+
             const record = {
 
                 referralCode,
 
-                buyer,
+                buyer:
+                    confirmedPurchase
+                        .buyer,
 
                 transactionHash,
 
@@ -288,26 +509,27 @@ export default {
                     CHAIN_ID,
 
                 saleContract:
-                    SALE_CONTRACT.toLowerCase(),
+                    SALE_CONTRACT
+                        .toLowerCase(),
 
                 paymentAmount:
-                    String(
-                        body?.paymentAmount ??
-                        ""
-                    ),
+                    confirmedPurchase
+                        .paymentAmount,
 
                 tokenAmount:
-                    String(
-                        body?.tokenAmount ??
-                        ""
-                    ),
+                    confirmedPurchase
+                        .tokenAmount,
+
+                blockNumber:
+                    confirmedPurchase
+                        .blockNumber,
 
                 createdAt:
                     new Date()
                         .toISOString(),
 
                 verified:
-                    false
+                    true
 
             };
 
@@ -337,9 +559,17 @@ export default {
 
             return Response.json(
                 {
-                    success: true,
-                    duplicate: false,
-                    verified: false
+                    success:
+                        true,
+
+                    duplicate:
+                        false,
+
+                    verified:
+                        true,
+
+                    purchase:
+                        record
                 },
                 {
                     headers: {
@@ -361,10 +591,10 @@ export default {
             return Response.json(
                 {
                     error:
-                        "Unable to record referral purchase"
+                        "Unable to verify referral purchase"
                 },
                 {
-                    status: 500
+                    status: 400
                 }
             );
 
