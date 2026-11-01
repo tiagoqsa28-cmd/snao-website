@@ -381,6 +381,67 @@ function buildReferralPurchaseRecord({
 
 }
 
+async function submitReferralPurchase(
+    record
+) {
+
+    if (!record) {
+        return;
+    }
+
+    try {
+
+        const response =
+            await fetch(
+                "/api/referral-purchase",
+                {
+                    method:
+                        "POST",
+
+                    headers: {
+                        "Content-Type":
+                            "application/json"
+                    },
+
+                    body:
+                        JSON.stringify(
+                            record
+                        )
+                }
+            );
+
+
+        const result =
+            await response.json();
+
+
+        if (!response.ok) {
+
+            throw new Error(
+                result?.error ||
+                "Referral purchase could not be recorded."
+            );
+
+        }
+
+
+        console.log(
+            "SNAO referral recorded:",
+            result
+        );
+
+
+    } catch (error) {
+
+        console.error(
+            "Referral tracking error:",
+            error
+        );
+
+    }
+
+}
+
 
 /* =====================================================
    ELEMENT HELPERS
@@ -2622,8 +2683,7 @@ if (
     referralPurchaseRecord
 ) {
 
-    console.log(
-        "SNAO referral purchase:",
+    await submitReferralPurchase(
         referralPurchaseRecord
     );
 
