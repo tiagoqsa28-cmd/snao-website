@@ -900,11 +900,11 @@ function getOceanVisitorId() {
     if (!visitorId) {
 
         visitorId =
-            crypto.randomUUID
-                ? crypto.randomUUID()
-                : `visitor-${Date.now()}-${Math.random()
-                    .toString(36)
-                    .slice(2)}`;
+    crypto.randomUUID
+        ? crypto.randomUUID()
+        : `visitor-${Date.now()}-${Math.random()
+            .toString(36)
+            .slice(2)}`;
 
         localStorage.setItem(
             storageKey,
