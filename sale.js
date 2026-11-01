@@ -2679,6 +2679,151 @@ saleSetStatus(
     "success"
 );
 
+       // =====================================================
+// RECORD VERIFIED REFERRAL PURCHASE
+// =====================================================
+
+try {
+
+    if (activeReferralCode) {
+
+        let purchaseEvent =
+            null;
+
+        for (
+            const log
+            of receipt.logs || []
+        ) {
+
+            try {
+
+                const parsedLog =
+                    saleContract
+                        .interface
+                        .parseLog(log);
+
+                if (
+                    parsedLog &&
+                    parsedLog.name ===
+                        "TokensPurchased"
+                ) {
+
+                    purchaseEvent =
+                        parsedLog;
+
+                    break;
+
+                }
+
+            } catch (
+                parseError
+            ) {
+
+                // Ignore logs from other contracts.
+
+            }
+
+        }
+
+
+        if (purchaseEvent) {
+
+            const referralResponse =
+                await fetch(
+                    "/api/referral-purchase",
+                    {
+                        method:
+                            "POST",
+
+                        headers: {
+                            "Content-Type":
+                                "application/json"
+                        },
+
+                        body:
+                            JSON.stringify({
+                                referralCode:
+                                    activeReferralCode,
+
+                                buyer:
+                                    purchaseEvent
+                                        .args
+                                        .buyer,
+
+                                transactionHash:
+                                    receipt.hash ||
+                                    purchaseTransaction.hash,
+
+                                chainId:
+                                    56,
+
+                                saleContract:
+                                    SALE_CONTRACT_ADDRESS,
+
+                                paymentAmount:
+                                    purchaseEvent
+                                        .args
+                                        .paymentAmount
+                                        .toString(),
+
+                                tokenAmount:
+                                    purchaseEvent
+                                        .args
+                                        .tokenAmount
+                                        .toString()
+                            })
+                    }
+                );
+
+
+            if (
+                !referralResponse.ok
+            ) {
+
+                console.warn(
+                    "Referral purchase was not recorded:",
+                    referralResponse.status
+                );
+
+            } else {
+
+                const referralResult =
+                    await referralResponse
+                        .json();
+
+                console.log(
+                    "Referral purchase recorded:",
+                    referralResult
+                );
+
+            }
+
+        } else {
+
+            console.warn(
+                "TokensPurchased event not found in confirmed transaction."
+            );
+
+        }
+
+    }
+
+} catch (
+    referralError
+) {
+
+    /*
+     * Referral tracking must NEVER
+     * interrupt a successful purchase.
+     */
+
+    console.warn(
+        "Referral tracking error:",
+        referralError
+    );
+
+}
+
 
         if (
             saleUsdtInput
