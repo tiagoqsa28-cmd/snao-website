@@ -238,6 +238,91 @@ let quoteTimer =
 let transactionRunning =
     false;
 
+// =====================================================
+// REFERRAL / ATTRIBUTION
+// =====================================================
+
+const SNAO_REFERRAL_STORAGE_KEY =
+    "snao_referral_code";
+
+let activeReferralCode =
+    null;
+
+
+function sanitizeReferralCode(
+    value
+) {
+
+    if (!value) {
+        return null;
+    }
+
+    const cleaned =
+        String(value)
+            .trim()
+            .toLowerCase()
+            .replace(
+                /[^a-z0-9_-]/g,
+                ""
+            )
+            .slice(
+                0,
+                40
+            );
+
+    return cleaned || null;
+
+}
+
+
+function loadReferralCode() {
+
+    const params =
+        new URLSearchParams(
+            window.location.search
+        );
+
+    const urlReferral =
+        sanitizeReferralCode(
+            params.get("ref")
+        );
+
+
+    if (urlReferral) {
+
+        activeReferralCode =
+            urlReferral;
+
+        localStorage.setItem(
+            SNAO_REFERRAL_STORAGE_KEY,
+            activeReferralCode
+        );
+
+        return activeReferralCode;
+
+    }
+
+
+    const savedReferral =
+        sanitizeReferralCode(
+            localStorage.getItem(
+                SNAO_REFERRAL_STORAGE_KEY
+            )
+        );
+
+
+    if (savedReferral) {
+
+        activeReferralCode =
+            savedReferral;
+
+    }
+
+
+    return activeReferralCode;
+
+}
+
 
 /* =====================================================
    ELEMENT HELPERS
@@ -2446,21 +2531,51 @@ async function buySnao() {
 
 
         if (
-            !receipt ||
-            receipt.status !== 1
-        ) {
+    !receipt ||
+    receipt.status !== 1
+) {
 
-            throw new Error(
-                "Transaction was not confirmed successfully."
-            );
+    throw new Error(
+        "Transaction was not confirmed successfully."
+    );
 
-        }
+}
 
 
-        saleSetStatus(
-            "Purchase confirmed on BNB Smart Chain.",
-            "success"
-        );
+const referralPurchaseRecord =
+    buildReferralPurchaseRecord({
+
+        transactionHash:
+            purchaseTransaction.hash,
+
+        buyer:
+            connectedAccount,
+
+        paymentAmount:
+            freshCost,
+
+        tokenAmount:
+            quotedTokenAmount
+
+    });
+
+
+if (
+    referralPurchaseRecord
+) {
+
+    console.log(
+        "SNAO referral purchase:",
+        referralPurchaseRecord
+    );
+
+}
+
+
+saleSetStatus(
+    "Purchase confirmed on BNB Smart Chain.",
+    "success"
+);
 
 
         if (
@@ -3668,6 +3783,8 @@ document
 ===================================================== */
 
 async function initializeSnaoSalePage() {
+
+    loadReferralCode();
 
     if (
         !saleContractsConfigured()
