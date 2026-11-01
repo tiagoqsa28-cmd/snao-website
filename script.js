@@ -760,23 +760,22 @@ const footerLegalInformation = {
     },
 
 
-    terms: {
+        terms: {
         title: "Terms of Use",
 
         content: `
-    <p>
-        By using SNAO.world, users acknowledge that the SNAO ecosystem
-        is under active development and that planned features, utilities
-        and future roadmap items may evolve as development continues.
-    </p>
+            <p>
+                By using SNAO.world, users acknowledge that the SNAO ecosystem
+                is under active development and that planned features, utilities
+                and future roadmap items may evolve as development continues.
+            </p>
 
-    <p>
-        Official contract addresses and purchase paths should always be
-        verified through SNAO.world and the official SNAO communication
-        channels. Never trust unofficial contracts, private purchase
-        offers or unsolicited direct messages.
-    </p>
-`
+            <p>
+                Official contract addresses and purchase paths should always be
+                verified through SNAO.world and the official SNAO communication
+                channels. Never trust unofficial contracts, private purchase
+                offers or unsolicited direct messages.
+            </p>
         `
     }
 
