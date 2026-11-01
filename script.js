@@ -1139,3 +1139,119 @@ setInterval(
     updateSnaoSaleData,
     30 * 1000
 );
+
+// =====================================================
+// HOME SALE — USDT / SNAO ESTIMATE
+// =====================================================
+
+const homeSaleUsdtInput =
+    document.getElementById("saleUsdtAmount");
+
+const homeSaleReceive =
+    document.getElementById("saleReceiveAmount");
+
+const homeSaleButton =
+    document.getElementById("saleConnectWallet");
+
+let homeCurrentSnaoPrice = 0.001;
+
+async function updateHomeSaleEstimate() {
+
+    if (!homeSaleUsdtInput || !homeSaleReceive) {
+        return;
+    }
+
+    const usdtAmount =
+        Number(homeSaleUsdtInput.value);
+
+    if (!usdtAmount || usdtAmount <= 0) {
+        homeSaleReceive.textContent = "-- SNAO";
+        return;
+    }
+
+    try {
+
+        const provider =
+            new ethers.JsonRpcProvider(BSC_RPC_URL);
+
+        const saleContract =
+            new ethers.Contract(
+                SNAO_SALE_ADDRESS,
+                SNAO_SALE_ABI,
+                provider
+            );
+
+        const currentPriceRaw =
+            await saleContract.currentPrice();
+
+        homeCurrentSnaoPrice =
+            Number(
+                ethers.formatUnits(
+                    currentPriceRaw,
+                    18
+                )
+            );
+
+        const estimatedSnao =
+            usdtAmount / homeCurrentSnaoPrice;
+
+        homeSaleReceive.textContent =
+            `≈ ${estimatedSnao.toLocaleString(
+                "en-US",
+                {
+                    maximumFractionDigits: 2
+                }
+            )} SNAO`;
+
+    } catch (error) {
+
+        console.error(
+            "Unable to calculate Home sale estimate:",
+            error
+        );
+
+        homeSaleReceive.textContent =
+            "-- SNAO";
+    }
+}
+
+if (homeSaleUsdtInput) {
+
+    homeSaleUsdtInput.addEventListener(
+        "input",
+        updateHomeSaleEstimate
+    );
+
+}
+
+if (homeSaleButton) {
+
+    homeSaleButton.addEventListener(
+        "click",
+        () => {
+
+            if (!homeSaleUsdtInput) {
+                return;
+            }
+
+            const usdtAmount =
+                Number(homeSaleUsdtInput.value);
+
+            if (usdtAmount > 0) {
+
+                homeSaleButton.href =
+                    `sale.html?amount=${encodeURIComponent(
+                        usdtAmount
+                    )}`;
+
+            } else {
+
+                homeSaleButton.href =
+                    "sale.html";
+
+            }
+
+        }
+    );
+
+}
