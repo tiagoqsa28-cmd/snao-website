@@ -3762,3 +3762,34 @@ if (
 /* =====================================================
    END
 ===================================================== */
+
+// =====================================================
+// PREFILL PURCHASE AMOUNT FROM HOME
+// =====================================================
+
+function loadPurchaseAmountFromUrl() {
+
+    const params =
+        new URLSearchParams(window.location.search);
+
+    const amount =
+        Number(params.get("amount"));
+
+    if (
+        !saleUsdtInput ||
+        !Number.isFinite(amount) ||
+        amount <= 0
+    ) {
+        return;
+    }
+
+    saleUsdtInput.value =
+        amount.toString();
+
+    updateSaleQuote();
+}
+
+window.addEventListener(
+    "load",
+    loadPurchaseAmountFromUrl
+);
