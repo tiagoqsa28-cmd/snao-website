@@ -379,14 +379,13 @@
 
                 </div>
 
-                <button
-                    class="sale-connect-button"
-                    id="saleConnectWallet"
-                    type="button"
-                    disabled
-                >
-                    SALE OPENS NOVEMBER 1
-                </button>
+                <a
+    class="sale-connect-button"
+    id="saleConnectWallet"
+    href="sale.html"
+>
+    BUY SNAO NOW
+</a>
 
             </div>
 
@@ -1172,8 +1171,8 @@
         );
 
     if (button) {
-        button.textContent =
-            "SALE ACTIVATION PENDING";
+        button.textContent = "BUY SNAO NOW";
+        button.href = "sale.html";
     }
 
 }
