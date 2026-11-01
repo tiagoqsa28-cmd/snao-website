@@ -323,6 +323,49 @@ function loadReferralCode() {
 
 }
 
+function buildReferralPurchaseRecord({
+    transactionHash,
+    buyer,
+    paymentAmount,
+    tokenAmount
+}) {
+
+    if (
+        !activeReferralCode ||
+        !transactionHash ||
+        !buyer
+    ) {
+        return null;
+    }
+
+    return {
+        referralCode:
+            activeReferralCode,
+
+        buyer:
+            buyer.toLowerCase(),
+
+        transactionHash:
+            transactionHash.toLowerCase(),
+
+        paymentAmount:
+            paymentAmount.toString(),
+
+        tokenAmount:
+            tokenAmount.toString(),
+
+        chainId:
+            SALE_CONFIG.chainId,
+
+        saleContract:
+            SALE_CONFIG.saleContract.toLowerCase(),
+
+        recordedAt:
+            new Date().toISOString()
+    };
+
+}
+
 
 /* =====================================================
    ELEMENT HELPERS
