@@ -318,22 +318,6 @@ if (urlReferral) {
 }
 
 
-    const savedReferral =
-        sanitizeReferralCode(
-            localStorage.getItem(
-                SNAO_REFERRAL_STORAGE_KEY
-            )
-        );
-
-
-    if (savedReferral) {
-
-        activeReferralCode =
-            savedReferral;
-
-    }
-
-
     return activeReferralCode;
 
 }
