@@ -14,6 +14,13 @@ const BSC_RPC_URL =
 const REFERRAL_PURCHASES_KEY =
     "snao:referrals:purchases";
 
+const APPROVED_REFERRALS = {
+    trixie: {
+        name: "Trixie",
+        active: true
+    }
+};
+
 
 const SALE_ABI = [
     "event TokensPurchased(address indexed buyer,uint256 tokenAmount,uint256 paymentAmount)"
@@ -355,6 +362,29 @@ export default {
                 );
 
             }
+
+            const approvedReferral =
+    APPROVED_REFERRALS[
+        referralCode
+    ];
+
+
+if (
+    !approvedReferral ||
+    approvedReferral.active !== true
+) {
+
+    return Response.json(
+        {
+            error:
+                "Referral code is not approved"
+        },
+        {
+            status: 403
+        }
+    );
+
+}
 
 
             if (
