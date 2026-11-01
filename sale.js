@@ -1466,18 +1466,27 @@ async function renderSaleStatus(
 
 
     if (
-        now < start
-    ) {
+    now < start
+) {
 
-        saleSetText(
-    saleProgressText,
-    "SALE LIVE"
-);
+    saleSetText(
+        saleProgressText,
+        "SALE NOT STARTED"
+    );
 
+    saleSetText(
+        saleMainStatus,
+        "NOT STARTED"
+    );
 
-        return;
+    saleSetText(
+        saleMainStatusPill,
+        "WAITING"
+    );
 
-    }
+    return;
+
+}
 
 
     if (
@@ -3660,21 +3669,69 @@ document
 
 async function initializeSnaoSalePage() {
 
-    renderPreLaunchState();
-
-
-    /*
-     * Contract addresses are intentionally null until
-     * verified MAINNET deployment.
-     */
-
     if (
         !saleContractsConfigured()
     ) {
 
+        renderPreLaunchState();
+
         saleSetStatus(
-            "Pre-launch — wallet connection is available, but purchasing remains disabled until the official mainnet contracts are configured."
+            "Official Public Sale contracts are not configured.",
+            "error"
         );
+
+        await updatePurchaseAvailability();
+
+        return;
+    }
+
+
+    /*
+     * Public read-only connection.
+     *
+     * This allows visitors to see the real sale data
+     * without connecting a wallet.
+     */
+
+    try {
+
+        const publicProvider =
+            new ethers.JsonRpcProvider(
+                SALE_CONFIG.rpcUrl
+            );
+
+
+        saleContract =
+            new ethers.Contract(
+                SALE_CONFIG.saleContract,
+                SNAO_SALE_ABI,
+                publicProvider
+            );
+
+
+        const publicPaymentContract =
+            new ethers.Contract(
+                SALE_CONFIG.paymentToken,
+                ERC20_ABI,
+                publicProvider
+            );
+
+
+        paymentDecimals =
+            Number(
+                await publicPaymentContract
+                    .decimals()
+            );
+
+
+        if (
+            saleUsdtInput
+        ) {
+
+            saleUsdtInput.disabled =
+                false;
+
+        }
 
 
         if (
@@ -3690,30 +3747,42 @@ async function initializeSnaoSalePage() {
         }
 
 
-        await updatePurchaseAvailability();
+        await refreshSaleData();
 
-        return;
+
+        if (
+            saleUsdtInput &&
+            Number(saleUsdtInput.value) > 0
+        ) {
+
+            await updateSaleQuote();
+
+        } else {
+
+            saleSetStatus(
+                "Public Sale is live. Connect your wallet when you are ready to purchase.",
+                "success"
+            );
+
+        }
+
+    } catch (error) {
+
+        console.error(
+            "Public sale initialization error:",
+            error
+        );
+
+        saleSetStatus(
+            "Unable to load live sale data. Please try again.",
+            "error"
+        );
 
     }
 
 
     /*
-     * If contracts are configured, the page can read
-     * the blockchain after wallet connection.
-     */
-
-    if (
-        saleConnectButton
-    ) {
-
-        saleConnectButton.disabled =
-            false;
-
-    }
-
-
-    /*
-     * Refresh periodically after a wallet has connected.
+     * Keep public sale information synchronized.
      */
 
     clearInterval(
@@ -3738,7 +3807,6 @@ async function initializeSnaoSalePage() {
         );
 
 }
-
 
 /* =====================================================
    START
