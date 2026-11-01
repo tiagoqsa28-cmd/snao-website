@@ -278,29 +278,44 @@ function sanitizeReferralCode(
 function loadReferralCode() {
 
     const params =
-        new URLSearchParams(
-            window.location.search
-        );
+    new URLSearchParams(
+        window.location.search
+    );
 
-    const urlReferral =
-        sanitizeReferralCode(
-            params.get("ref")
-        );
+const savedReferral =
+    sanitizeReferralCode(
+        localStorage.getItem(
+            SNAO_REFERRAL_STORAGE_KEY
+        )
+    );
 
+if (savedReferral) {
 
-    if (urlReferral) {
+    activeReferralCode =
+        savedReferral;
 
-        activeReferralCode =
-            urlReferral;
+    return activeReferralCode;
 
-        localStorage.setItem(
-            SNAO_REFERRAL_STORAGE_KEY,
-            activeReferralCode
-        );
+}
 
-        return activeReferralCode;
+const urlReferral =
+    sanitizeReferralCode(
+        params.get("ref")
+    );
 
-    }
+if (urlReferral) {
+
+    activeReferralCode =
+        urlReferral;
+
+    localStorage.setItem(
+        SNAO_REFERRAL_STORAGE_KEY,
+        activeReferralCode
+    );
+
+    return activeReferralCode;
+
+}
 
 
     const savedReferral =
