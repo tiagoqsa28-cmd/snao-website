@@ -990,3 +990,151 @@ setInterval(
     updateOceanActivity,
     60 * 1000
 );
+
+// =====================================================
+// SNAO PUBLIC SALE — LIVE ON-CHAIN DATA
+// =====================================================
+
+const SNAO_SALE_ADDRESS =
+    "0x34d584CA40813816F87530bf826cC6A8e2A44c09";
+
+const BSC_RPC_URL =
+    "https://bsc-dataseed.binance.org/";
+
+const SNAO_TOTAL_SALE =
+    45000000;
+
+const SNAO_SALE_ABI = [
+    "function totalTokensSold() view returns (uint256)",
+    "function totalRaised() view returns (uint256)",
+    "function currentPrice() view returns (uint256)"
+];
+
+async function updateSnaoSaleData() {
+
+    const progressText =
+        document.getElementById("saleProgressText");
+
+    const progressFill =
+        document.getElementById("saleProgressFill");
+
+    const tokensSoldElement =
+        document.getElementById("saleTokensSold");
+
+    const raisedElement =
+        document.getElementById("saleRaised");
+
+    const priceElement =
+        document.getElementById("saleCurrentPrice");
+
+    if (
+        !tokensSoldElement ||
+        !raisedElement ||
+        !priceElement
+    ) {
+        return;
+    }
+
+    try {
+
+        if (typeof ethers === "undefined") {
+            throw new Error("Ethers library not loaded");
+        }
+
+        const provider =
+            new ethers.JsonRpcProvider(BSC_RPC_URL);
+
+        const saleContract =
+            new ethers.Contract(
+                SNAO_SALE_ADDRESS,
+                SNAO_SALE_ABI,
+                provider
+            );
+
+        const [
+            totalTokensSold,
+            totalRaised,
+            currentPrice
+        ] = await Promise.all([
+            saleContract.totalTokensSold(),
+            saleContract.totalRaised(),
+            saleContract.currentPrice()
+        ]);
+
+        const sold =
+            Number(
+                ethers.formatUnits(
+                    totalTokensSold,
+                    18
+                )
+            );
+
+        const raised =
+            Number(
+                ethers.formatUnits(
+                    totalRaised,
+                    18
+                )
+            );
+
+        const price =
+            Number(
+                ethers.formatUnits(
+                    currentPrice,
+                    18
+                )
+            );
+
+        const progress =
+            Math.min(
+                (sold / SNAO_TOTAL_SALE) * 100,
+                100
+            );
+
+        tokensSoldElement.textContent =
+            `${sold.toLocaleString("en-US")} / 45M`;
+
+        raisedElement.textContent =
+            `$${raised.toLocaleString(
+                "en-US",
+                {
+                    maximumFractionDigits: 2
+                }
+            )}`;
+
+        priceElement.textContent =
+            `$${price.toLocaleString(
+                "en-US",
+                {
+                    minimumFractionDigits: 3,
+                    maximumFractionDigits: 8
+                }
+            )}`;
+
+        if (progressText) {
+            progressText.textContent =
+                "SALE LIVE";
+        }
+
+        if (progressFill) {
+            progressFill.style.width =
+                `${progress}%`;
+        }
+
+    } catch (error) {
+
+        console.error(
+            "Unable to load SNAO sale data:",
+            error
+        );
+
+    }
+
+}
+
+updateSnaoSaleData();
+
+setInterval(
+    updateSnaoSaleData,
+    30 * 1000
+);
