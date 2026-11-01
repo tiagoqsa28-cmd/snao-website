@@ -356,6 +356,16 @@ const saleProgressText =
         "saleProgressText"
     );
 
+const saleMainStatus =
+    saleGetElement(
+        "saleMainStatus"
+    );
+
+const saleMainStatusPill =
+    saleGetElement(
+        "saleMainStatusPill"
+    );
+
 
 const saleCurrentPrice =
     saleGetFirstElement(
@@ -1481,9 +1491,19 @@ async function renderSaleStatus(
 
 
     saleSetText(
-        saleProgressText,
-        "SALE LIVE"
-    );
+    saleProgressText,
+    "SALE LIVE"
+);
+
+saleSetText(
+    saleMainStatus,
+    "SALE LIVE"
+);
+
+saleSetText(
+    saleMainStatusPill,
+    "LIVE"
+);
 
 }
 
