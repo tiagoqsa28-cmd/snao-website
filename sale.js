@@ -951,16 +951,21 @@ async function connectSaleWallet() {
 
         await initializeContracts();
 
-
-        await refreshSaleData();
+await refreshSaleData();
 
 await refreshVestingData();
 
-
-saleSetStatus(
-    "Wallet connected to BNB Smart Chain.",
-    "success"
-);
+if (
+    saleUsdtInput &&
+    Number(saleUsdtInput.value) > 0
+) {
+    await updateSaleQuote();
+} else {
+    saleSetStatus(
+        "Wallet connected to BNB Smart Chain.",
+        "success"
+    );
+}
 
     } catch (error) {
 
@@ -1465,9 +1470,9 @@ async function renderSaleStatus(
     ) {
 
         saleSetText(
-            saleProgressText,
-            "Opens November 1"
-        );
+    saleProgressText,
+    "SALE LIVE"
+);
 
 
         return;
