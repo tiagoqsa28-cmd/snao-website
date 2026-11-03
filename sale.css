@@ -1227,16 +1227,41 @@ img {
     border-radius: 12px;
 
     background:
-        rgba(255, 255, 255, 0.055);
+        linear-gradient(
+            135deg,
+            var(--cyan),
+            #00a8dc
+        );
 
-    color: #6d8291;
+    color: #001018;
 
     font-size: 12px;
     font-weight: 850;
 
     letter-spacing: 0.06em;
 
+    cursor: pointer;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        opacity 0.2s ease;
+
+    box-shadow:
+        0 10px 30px rgba(0, 207, 255, 0.16);
+}
+
+.sale-connect-button:hover {
+    transform: translateY(-1px);
+
+    box-shadow:
+        0 14px 35px rgba(0, 207, 255, 0.24);
+}
+
+.sale-connect-button:disabled {
+    opacity: 0.55;
     cursor: not-allowed;
+    transform: none;
 }
 
 .sale-wallet-notice {
