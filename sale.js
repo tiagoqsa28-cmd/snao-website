@@ -2561,13 +2561,24 @@ async function buySnao() {
 ) {
 
     saleSetStatus(
-        "Connect your wallet to continue with the purchase.",
-        "error"
+        "Connecting wallet...",
+        ""
     );
 
     await connectSaleWallet();
 
-    return;
+    if (
+        !connectedAccount ||
+        !paymentContract
+    ) {
+
+        saleSetStatus(
+            "Wallet connection is required to continue.",
+            "error"
+        );
+
+        return;
+    }
 }
 
 
