@@ -1936,55 +1936,47 @@ async function updatePurchaseAvailability(
     providedState = null
 ) {
 
-    if (
-        !saleBuyButton
-    ) {
-
+    if (!saleBuyButton) {
         return;
-
     }
 
 
-    if (
-        transactionRunning
-    ) {
+    /*
+     * Only lock the button while an actual
+     * blockchain transaction is being processed.
+     */
+    if (transactionRunning) {
 
-        saleBuyButton.disabled =
-            true;
+        saleBuyButton.disabled = true;
+        saleBuyButton.textContent = "PROCESSING...";
 
         return;
-
     }
 
 
-    if (
-        !saleContractsConfigured()
-    ) {
+    /*
+     * Keep the button clickable at all other times.
+     * buySnao() will validate wallet, sale state
+     * and purchase amount when clicked.
+     */
+    saleBuyButton.disabled = false;
 
-        saleBuyButton.disabled =
-            true;
+
+    if (!saleContractsConfigured()) {
 
         saleBuyButton.textContent =
             "SALE NOT LIVE";
 
         return;
-
     }
 
 
-    if (
-        !connectedAccount ||
-        !saleContract
-    ) {
-
-        saleBuyButton.disabled =
-            true;
+    if (!connectedAccount) {
 
         saleBuyButton.textContent =
             "CONNECT WALLET FIRST";
 
         return;
-
     }
 
 
@@ -2001,28 +1993,21 @@ async function updatePurchaseAvailability(
 
         } catch (error) {
 
-            saleBuyButton.disabled =
-                true;
+            saleBuyButton.textContent =
+                "BUY SNAO";
 
             return;
-
         }
 
     }
 
 
-    if (
-        !isSaleActive(state)
-    ) {
-
-        saleBuyButton.disabled =
-            true;
+    if (!isSaleActive(state)) {
 
         saleBuyButton.textContent =
             "SALE NOT LIVE";
 
         return;
-
     }
 
 
@@ -2031,25 +2016,16 @@ async function updatePurchaseAvailability(
         quotedPaymentAmount <= 0n
     ) {
 
-        saleBuyButton.disabled =
-            true;
-
         saleBuyButton.textContent =
             "ENTER USDT AMOUNT";
 
         return;
-
     }
 
 
-    saleBuyButton.disabled =
-        false;
-
     saleBuyButton.textContent =
         "BUY SNAO";
-
 }
-
 
 /* =====================================================
    FIND SNAO AMOUNT FOR USDT BUDGET
@@ -2580,19 +2556,19 @@ async function buySnao() {
 
 
     if (
-        !connectedAccount ||
-        !saleContract ||
-        !paymentContract
-    ) {
+    !connectedAccount ||
+    !paymentContract
+) {
 
-        saleSetStatus(
-            "Connect your wallet first.",
-            "error"
-        );
+    saleSetStatus(
+        "Connect your wallet to continue with the purchase.",
+        "error"
+    );
 
-        return;
+    await connectSaleWallet();
 
-    }
+    return;
+}
 
 
     if (
