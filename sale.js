@@ -2599,30 +2599,88 @@ async function buySnao() {
 
     try {
 
-        transactionRunning =
+    transactionRunning =
+        true;
+
+
+    if (
+        saleBuyButton
+    ) {
+
+        saleBuyButton.disabled =
             true;
 
-
-        if (
-            saleBuyButton
-        ) {
-
-            saleBuyButton.disabled =
-                true;
-
-            saleBuyButton.textContent =
-                "PROCESSING...";
-        }
+        saleBuyButton.textContent =
+            "PROCESSING...";
+    }
 
 
-        /*
-         * Recalculate immediately before the purchase.
-         *
-         * Another buyer may have completed a lot since
-         * the user's previous quote.
-         */
+    /*
+     * Always rebuild the wallet provider, signer and
+     * contracts immediately before a purchase.
+     *
+     * The page also uses public read-only contracts,
+     * so we must guarantee that BUY uses MetaMask.
+     */
 
-        const freshCost =
+    if (!window.ethereum) {
+
+        throw new Error(
+            "MetaMask was not detected."
+        );
+    }
+
+
+    browserProvider =
+        new ethers.BrowserProvider(
+            window.ethereum
+        );
+
+
+    const accounts =
+        await browserProvider.send(
+            "eth_requestAccounts",
+            []
+        );
+
+
+    if (
+        !accounts ||
+        accounts.length === 0
+    ) {
+
+        throw new Error(
+            "No wallet account is connected."
+        );
+    }
+
+
+    signer =
+        await browserProvider
+            .getSigner();
+
+
+    connectedAccount =
+        await signer
+            .getAddress();
+
+
+    await initializeContracts();
+
+
+    saleSetStatus(
+        "Wallet ready. Preparing transaction..."
+    );
+
+
+    /*
+     * Recalculate immediately before the purchase.
+     *
+     * Another buyer may have completed a lot since
+     * the user's previous quote.
+     */
+
+    const freshCost =
             await saleContract
                 .quoteCost(
                     quotedTokenAmount
