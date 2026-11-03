@@ -1860,16 +1860,16 @@ function renderPreLaunchState() {
 
 
     if (
-        saleBuyButton
-    ) {
+    saleBuyButton
+) {
 
-        saleBuyButton.disabled =
-            true;
+    saleBuyButton.disabled =
+        false;
 
-        saleBuyButton.textContent =
-            "BUY SNAO";
+    saleBuyButton.textContent =
+        "BUY SNAO";
 
-    }
+}
 
 }
 
