@@ -1045,20 +1045,60 @@ async function ensureBscNetwork() {
    CONNECT WALLET
 ===================================================== */
 
+function isMobileDevice() {
+
+    return /Android|iPhone|iPad|iPod/i.test(
+        navigator.userAgent
+    );
+
+}
+
+
+function openSnaoInMetaMaskMobile() {
+
+    const currentUrl =
+        window.location.href
+            .replace(/^https?:\/\//, "");
+
+    const metamaskUrl =
+        "https://metamask.app.link/dapp/" +
+        currentUrl;
+
+    window.location.href =
+        metamaskUrl;
+
+}
+
+
 async function connectSaleWallet() {
 
     if (
-        !window.ethereum
+    !window.ethereum
+) {
+
+    if (
+        isMobileDevice()
     ) {
 
         saleSetStatus(
-            "No compatible Web3 wallet was detected.",
-            "error"
+            "Opening SNAO in MetaMask Mobile...",
+            "success"
         );
 
-        return;
+        openSnaoInMetaMaskMobile();
 
+        return;
     }
+
+
+    saleSetStatus(
+        "No compatible Web3 wallet was detected. Please open the SNAO Public Sale in MetaMask or another Web3-compatible wallet.",
+        "error"
+    );
+
+    return;
+
+}
 
 
     try {
