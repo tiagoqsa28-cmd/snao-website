@@ -1,1628 +1,2217 @@
+
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#030b16">
+<meta name="robots" content="index, follow">
 
-    <meta charset="UTF-8">
+<title>About SNAO World | Intelligence Beyond Boundaries</title>
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+<meta name="description" content="Discover SNAO World, an evolving technology ecosystem developing ATLAS enterprise intelligence, SNAO Ocean mobile experiences and Ocean Intelligence.">
 
-    <title>
-        About SNAO | Ocean Intelligence
-    </title>
+<link rel="canonical" href="https://snao.world/about.html">
+<link rel="icon" type="image/png" href="assets/favicon.png">
 
-    <meta
-        name="description"
-        content="Discover the mission, vision and evolving ecosystem behind SNAO Ocean Intelligence."
-    >
+<meta property="og:type" content="website">
+<meta property="og:title" content="About SNAO World">
+<meta property="og:description" content="Building intelligence beyond boundaries. Discover our mission, platforms and technology vision.">
+<meta property="og:url" content="https://snao.world/about.html">
+<meta property="og:image" content="https://snao.world/assets/snao-preview.png">
 
-    <link
-        rel="stylesheet"
-        href="about.css"
-    >
+<style>
+:root {
+  --background: #030b16;
+  --background-secondary: #061626;
+  --surface: #091d30;
+  --surface-light: #0d2941;
+  --cyan: #3bdcf6;
+  --blue: #008bfa;
+  --text: #f4f9ff;
+  --muted: #95acc0;
+  --border: rgba(85,207,255,.16);
+  --max-width: 1200px;
+}
 
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 95px;
+}
+
+body {
+  margin: 0;
+  overflow-x: hidden;
+  background: var(--background);
+  color: var(--text);
+  font-family: Inter, "Segoe UI", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--cyan);
+  outline-offset: 4px;
+}
+
+.container {
+  width: min(var(--max-width), calc(100% - 48px));
+  margin: auto;
+}
+
+.gradient-text {
+  background: linear-gradient(110deg,#f3fdff,#4ce7ff,#168bfa);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 11px;
+  color: #67dff8;
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 2.3px;
+}
+
+.eyebrow::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  background: var(--cyan);
+  border-radius: 50%;
+  box-shadow: 0 0 15px var(--cyan);
+}
+
+.section {
+  position: relative;
+  padding: 105px 0;
+}
+
+.section-heading {
+  max-width: 780px;
+  margin: 0 auto 50px;
+  text-align: center;
+}
+
+.section-heading h2 {
+  margin: 19px 0;
+  font-size: clamp(35px,4.7vw,61px);
+  line-height: 1.09;
+  letter-spacing: -2px;
+}
+
+.section-heading p {
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 1.85;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 51px;
+  padding: 15px 24px;
+  border: 1px solid transparent;
+  border-radius: 11px;
+  font-size: 13px;
+  font-weight: 800;
+  transition: .25s;
+}
+
+.button-primary {
+  background: linear-gradient(110deg,#0ab3ea,#58eaff);
+  color: #02121c;
+  box-shadow: 0 12px 35px rgba(0,190,255,.16);
+}
+
+.button-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 40px rgba(0,190,255,.27);
+}
+
+.button-secondary {
+  background: rgba(8,27,44,.72);
+  border-color: rgba(107,218,255,.25);
+  color: #e7f8ff;
+}
+
+.button-secondary:hover {
+  border-color: var(--cyan);
+  background: #0d3049;
+}
+
+/* HEADER */
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 78px;
+  z-index: 100;
+  border-bottom: 1px solid var(--border);
+  background: rgba(3,11,22,.88);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+.header-inner {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.brand-symbol {
+  display: grid;
+  place-items: center;
+  width: 43px;
+  height: 43px;
+  border-radius: 13px;
+  border: 1px solid rgba(65,218,255,.47);
+  background: radial-gradient(circle,rgba(0,195,255,.23),transparent);
+  color: var(--cyan);
+  font-size: 29px;
+  font-weight: 900;
+  font-style: italic;
+}
+
+.brand-text strong {
+  display: block;
+  font-size: 17px;
+  letter-spacing: 3px;
+}
+
+.brand-text small {
+  display: block;
+  margin-top: 3px;
+  color: var(--muted);
+  font-size: 9px;
+  letter-spacing: 3px;
+}
+
+.navigation {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+}
+
+.navigation a {
+  color: #b5cbdc;
+  font-size: 12px;
+  transition: color .2s;
+}
+
+.navigation a:hover,
+.navigation a.active {
+  color: var(--cyan);
+}
+
+.navigation .buy-button {
+  padding: 12px 18px;
+  border-radius: 9px;
+  background: var(--cyan);
+  color: #02121c;
+  font-weight: 800;
+}
+
+.menu-toggle {
+  display: none;
+  padding: 10px 13px;
+  color: white;
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  background: var(--surface);
+  font-size: 22px;
+}
+
+/* HERO */
+
+.about-hero {
+  position: relative;
+  min-height: 690px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  padding: 175px 0 110px;
+  text-align: center;
+  isolation: isolate;
+  background:
+    radial-gradient(ellipse at 50% 28%,rgba(0,157,255,.20),transparent 52%),
+    radial-gradient(ellipse at 80% 80%,rgba(0,95,210,.12),transparent 42%),
+    linear-gradient(180deg,#030a15,#06172a,#030c17);
+}
+
+.about-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  opacity: .17;
+  background-image:
+    linear-gradient(rgba(95,192,255,.13) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(95,192,255,.13) 1px,transparent 1px);
+  background-size: 65px 65px;
+  mask-image: linear-gradient(180deg,transparent,#000 30%,transparent);
+}
+
+.hero-orbit {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 570px;
+  height: 570px;
+  border: 1px solid rgba(47,208,255,.12);
+  border-radius: 50%;
+  transform: translate(-50%,-50%);
+  pointer-events: none;
+}
+
+.hero-orbit::before,
+.hero-orbit::after {
+  content: "";
+  position: absolute;
+  inset: 68px;
+  border-radius: 50%;
+  border: 1px dashed rgba(40,210,255,.14);
+}
+
+.hero-orbit::after {
+  inset: 140px;
+  border-style: solid;
+}
+
+.about-hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 950px;
+  margin: auto;
+}
+
+.about-hero h1 {
+  margin: 24px 0;
+  font-size: clamp(49px,7vw,92px);
+  line-height: .99;
+  letter-spacing: -4px;
+}
+
+.about-hero h1 span {
+  display: block;
+}
+
+.about-hero p {
+  max-width: 710px;
+  margin: 27px auto 35px;
+  color: #a2b9cc;
+  font-size: 18px;
+  line-height: 1.85;
+}
+
+.hero-actions {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 13px;
+}
+
+.hero-note {
+  display: block;
+  margin-top: 28px;
+  color: #718da3;
+  font-size: 12px;
+}
+
+/* IDENTITY STRIP */
+
+.identity-strip {
+  padding: 27px 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  background: #061526;
+}
+
+.identity-items {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 20px;
+}
+
+.identity-item {
+  text-align: center;
+}
+
+.identity-item strong {
+  display: block;
+  color: #f5fdff;
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+.identity-item span {
+  color: #7293aa;
+  font-size: 11px;
+  letter-spacing: 1px;
+}
+
+/* MISSION */
+
+.mission-section {
+  background: #04101c;
+}
+
+.mission-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 45px;
+  align-items: center;
+}
+
+.mission-copy h2 {
+  margin: 21px 0;
+  font-size: clamp(38px,4.7vw,62px);
+  line-height: 1.1;
+  letter-spacing: -2px;
+}
+
+.mission-copy p {
+  color: var(--muted);
+  line-height: 1.9;
+  font-size: 15px;
+}
+
+.mission-panel {
+  padding: 32px;
+  border: 1px solid rgba(61,208,255,.24);
+  border-radius: 21px;
+  background: linear-gradient(145deg,#0a2239,#061525);
+  box-shadow: 0 30px 80px rgba(0,0,0,.24);
+}
+
+.panel-label {
+  color: var(--cyan);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+.mission-panel h3 {
+  font-size: 28px;
+  letter-spacing: -.5px;
+  margin: 15px 0 26px;
+}
+
+.principle {
+  display: flex;
+  gap: 16px;
+  padding: 18px 0;
+  border-top: 1px solid var(--border);
+}
+
+.principle-number {
+  color: var(--cyan);
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.principle strong {
+  display: block;
+  margin-bottom: 7px;
+  font-size: 14px;
+}
+
+.principle p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+/* PLATFORMS */
+
+.platforms-section {
+  background:
+    radial-gradient(circle at 50% 0,rgba(0,155,255,.08),transparent 40%),
+    #030c18;
+}
+
+.platform-grid {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 20px;
+}
+
+.platform-card {
+  position: relative;
+  padding: 33px 29px 30px;
+  min-height: 420px;
+  border: 1px solid var(--border);
+  border-radius: 22px;
+  background: linear-gradient(145deg,#0a233a,#061423);
+  overflow: hidden;
+  transition: transform .3s,border-color .3s;
+}
+
+.platform-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(53,220,250,.48);
+}
+
+.platform-card.featured {
+  border-color: rgba(68,224,255,.43);
+  box-shadow: 0 0 65px rgba(0,180,255,.06);
+}
+
+.platform-card::before {
+  content: "";
+  position: absolute;
+  width: 220px;
+  height: 220px;
+  right: -90px;
+  top: -100px;
+  background: rgba(0,180,255,.1);
+  border-radius: 50%;
+  filter: blur(32px);
+}
+
+.platform-icon {
+  width: 61px;
+  height: 61px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(70,214,255,.28);
+  border-radius: 16px;
+  background: rgba(0,159,255,.1);
+  color: var(--cyan);
+  font-size: 30px;
+}
+
+.platform-status {
+  display: inline-block;
+  margin-top: 26px;
+  color: var(--cyan);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1.2px;
+}
+
+.platform-card h3 {
+  margin: 14px 0;
+  font-size: 27px;
+  letter-spacing: -.7px;
+}
+
+.platform-card p {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.85;
+}
+
+.platform-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 25px;
+}
+
+.platform-tags span {
+  padding: 8px 10px;
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  color: #94d7e9;
+  font-size: 10px;
+  background: rgba(0,147,225,.05);
+}
+
+/* ATLAS SECTION */
+
+.atlas-section {
+  background: linear-gradient(180deg,#041322,#071a2b);
+}
+
+.atlas-layout {
+  display: grid;
+  grid-template-columns: 1.05fr .95fr;
+  align-items: center;
+  gap: 65px;
+}
+
+.atlas-copy h2 {
+  margin: 20px 0;
+  font-size: clamp(37px,4.6vw,63px);
+  letter-spacing: -2px;
+  line-height: 1.08;
+}
+
+.atlas-copy p {
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.9;
+}
+
+.atlas-features {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 13px;
+  margin: 30px 0;
+}
+
+.atlas-feature {
+  padding: 17px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: rgba(7,31,51,.8);
+}
+
+.atlas-feature span {
+  display: block;
+  color: var(--cyan);
+  font-size: 22px;
+  margin-bottom: 12px;
+}
+
+.atlas-feature strong {
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.atlas-visual {
+  position: relative;
+  min-height: 470px;
+  display: grid;
+  place-items: center;
+}
+
+.atlas-halo {
+  position: absolute;
+  width: 420px;
+  height: 420px;
+  border-radius: 50%;
+  background: radial-gradient(circle,rgba(0,180,255,.24),transparent 70%);
+  filter: blur(28px);
+}
+
+.atlas-circle {
+  position: relative;
+  width: min(390px,85vw);
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(65,213,255,.33);
+  border-radius: 50%;
+  box-shadow: inset 0 0 75px rgba(0,177,255,.045);
+  animation: levitate 7s ease-in-out infinite;
+}
+
+.atlas-circle::before,
+.atlas-circle::after {
+  content: "";
+  position: absolute;
+  inset: 38px;
+  border-radius: 50%;
+  border: 1px dashed rgba(44,215,255,.25);
+  animation: spin 45s linear infinite;
+}
+
+.atlas-circle::after {
+  inset: -18px;
+  border-style: solid;
+  border-color: rgba(70,215,255,.1);
+}
+
+.atlas-center {
+  width: 215px;
+  height: 215px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(62,219,255,.5);
+  border-radius: 33px;
+  background:
+    radial-gradient(circle at 30% 20%,rgba(48,196,255,.26),transparent 60%),
+    linear-gradient(145deg,#0a304e,#041321);
+  box-shadow: 0 0 70px rgba(0,176,255,.13);
+  transform: rotateX(5deg) rotateY(-9deg);
+}
+
+.atlas-center .symbol {
+  font-size: 77px;
+  font-style: italic;
+  font-weight: 900;
+  color: #59e4ff;
+  line-height: 1;
+}
+
+.atlas-center strong {
+  font-size: 28px;
+  letter-spacing: 5px;
+}
+
+.atlas-center small {
+  margin-top: 10px;
+  font-size: 9px;
+  color: #91aec2;
+  letter-spacing: 1.7px;
+}
+
+.visual-label {
+  position: absolute;
+  padding: 12px;
+  border: 1px solid rgba(76,220,255,.27);
+  border-radius: 9px;
+  background: rgba(5,24,42,.94);
+  color: #bcebf9;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+.label-top {
+  top: 30px;
+  right: -15px;
+}
+
+.label-left {
+  bottom: 95px;
+  left: -25px;
+}
+
+.label-bottom {
+  bottom: 25px;
+  right: 0;
+}
+
+/* TECHNOLOGY PRINCIPLES */
+
+.principles-section {
+  background: #030d19;
+}
+
+.values-grid {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 15px;
+}
+
+.value-card {
+  padding: 27px 23px;
+  background: #0a2035;
+  border: 1px solid var(--border);
+  border-radius: 15px;
+}
+
+.value-number {
+  color: var(--cyan);
+  font-weight: 800;
+  font-size: 12px;
+  letter-spacing: 2px;
+}
+
+.value-card h3 {
+  margin: 23px 0 13px;
+  font-size: 19px;
+}
+
+.value-card p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+/* DEVELOPMENT */
+
+.development-section {
+  background: #061526;
+}
+
+.development-grid {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 20px;
+}
+
+.development-card {
+  padding: 30px;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  background: #0a2035;
+}
+
+.development-card .phase {
+  font-size: 11px;
+  letter-spacing: 1.8px;
+  color: var(--cyan);
+  font-weight: 800;
+}
+
+.development-card h3 {
+  font-size: 23px;
+  margin: 21px 0 14px;
+}
+
+.development-card p {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.85;
+}
+
+.development-card small {
+  display: inline-block;
+  margin-top: 15px;
+  color: var(--cyan);
+  font-size: 10px;
+  letter-spacing: 1px;
+}
+
+/* TOKEN */
+
+.token-section {
+  background:
+    radial-gradient(circle at 20% 50%,rgba(0,150,255,.10),transparent 40%),
+    #030d19;
+}
+
+.token-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 70px;
+  align-items: center;
+}
+
+.token-copy h2 {
+  margin: 18px 0;
+  font-size: clamp(37px,4.8vw,63px);
+  letter-spacing: -2px;
+}
+
+.token-copy p {
+  color: var(--muted);
+  line-height: 1.85;
+}
+
+.token-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 29px;
+}
+
+.token-metrics {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 13px;
+}
+
+.token-metric {
+  padding: 25px;
+  min-height: 125px;
+  border: 1px solid var(--border);
+  border-radius: 15px;
+  background: #0a2035;
+}
+
+.token-metric span {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.token-metric strong {
+  display: block;
+  margin-top: 16px;
+  font-size: 26px;
+}
+
+.notice {
+  margin-top: 24px;
+  padding: 16px 20px;
+  border-left: 2px solid var(--cyan);
+  background: rgba(7,31,52,.45);
+  color: #91a9bd;
+  font-size: 12px;
+  line-height: 1.85;
+}
+
+/* COMMUNITY */
+
+.community-section {
+  padding: 110px 0;
+  text-align: center;
+  background:
+    radial-gradient(circle at 50% 45%,rgba(0,161,235,.15),transparent 52%),
+    #041220;
+}
+
+.community-section h2 {
+  max-width: 850px;
+  margin: 20px auto;
+  font-size: clamp(39px,5.7vw,76px);
+  line-height: 1.06;
+  letter-spacing: -3px;
+}
+
+.community-section p {
+  max-width: 680px;
+  margin: 0 auto 34px;
+  color: var(--muted);
+  line-height: 1.9;
+}
+
+.community-actions {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 13px;
+}
+
+/* FOOTER */
+
+.footer {
+  padding: 58px 0 27px;
+  border-top: 1px solid var(--border);
+  background: #020914;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr 1fr;
+  gap: 50px;
+}
+
+.footer-about p {
+  max-width: 350px;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.9;
+  margin-top: 21px;
+}
+
+.footer-column h4 {
+  margin: 0 0 20px;
+  font-size: 12px;
+  letter-spacing: 1px;
+}
+
+.footer-column a {
+  display: block;
+  margin: 12px 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.footer-column a:hover {
+  color: var(--cyan);
+}
+
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-top: 55px;
+  padding-top: 25px;
+  border-top: 1px solid var(--border);
+  color: #7790a5;
+  font-size: 11px;
+}
+
+/* ANIMATIONS */
+
+@keyframes levitate {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-13px); }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity .7s ease,transform .7s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* TABLET */
+
+@media(max-width:1100px) {
+  .navigation {
+    gap: 13px;
+  }
+  .navigation a {
+    font-size: 11px;
+  }
+  .atlas-layout {
+    gap: 30px;
+  }
+  .label-left {
+    left: 0;
+  }
+}
+
+/* MOBILE NAVIGATION */
+
+@media(max-width:900px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  .navigation {
+    display: none;
+    position: absolute;
+    top: 78px;
+    left: 0;
+    right: 0;
+    padding: 18px 24px;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    background: #061522;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .navigation.open {
+    display: flex;
+  }
+
+  .navigation a {
+    padding: 14px 10px;
+    font-size: 14px;
+  }
+
+  .navigation .buy-button {
+    text-align: center;
+    margin-top: 10px;
+  }
+
+  .mission-layout,
+  .atlas-layout,
+  .token-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .platform-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .values-grid,
+  .development-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .atlas-visual {
+    min-height: 460px;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* SMALL SCREENS */
+
+@media(max-width:600px) {
+  .container {
+    width: calc(100% - 34px);
+  }
+
+  .header {
+    height: 70px;
+  }
+
+  .navigation {
+    top: 70px;
+  }
+
+  .brand-text strong {
+    font-size: 15px;
+  }
+
+  .section {
+    padding: 75px 0;
+  }
+
+  .about-hero {
+    min-height: 0;
+    padding: 135px 0 83px;
+  }
+
+  .about-hero h1 {
+    font-size: clamp(48px,12vw,70px);
+    letter-spacing: -2.5px;
+  }
+
+  .about-hero p {
+    font-size: 15px;
+  }
+
+  .hero-orbit {
+    width: 310px;
+    height: 310px;
+  }
+
+  .hero-actions .button {
+    width: 100%;
+  }
+
+  .identity-items {
+    grid-template-columns: 1fr 1fr;
+    gap: 28px 13px;
+  }
+
+  .section-heading h2 {
+    letter-spacing: -1.5px;
+  }
+
+  .mission-panel {
+    padding: 24px;
+  }
+
+  .platform-grid,
+  .values-grid,
+  .development-grid,
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .platform-card {
+    min-height: 370px;
+  }
+
+  .atlas-features {
+    gap: 9px;
+  }
+
+  .atlas-feature {
+    padding: 13px;
+  }
+
+  .atlas-visual {
+    min-height: 330px;
+  }
+
+  .atlas-circle {
+    width: 270px;
+  }
+
+  .atlas-circle::before {
+    inset: 25px;
+  }
+
+  .atlas-center {
+    width: 155px;
+    height: 155px;
+    border-radius: 23px;
+  }
+
+  .atlas-center .symbol {
+    font-size: 55px;
+  }
+
+  .atlas-center strong {
+    font-size: 20px;
+  }
+
+  .atlas-center small {
+    font-size: 7px;
+  }
+
+  .visual-label {
+    padding: 9px;
+    font-size: 7px;
+  }
+
+  .label-top {
+    top: 12px;
+    right: 0;
+  }
+
+  .label-left {
+    bottom: 62px;
+  }
+
+  .label-bottom {
+    bottom: 0;
+  }
+
+  .token-layout {
+    gap: 35px;
+  }
+
+  .token-metrics {
+    gap: 10px;
+  }
+
+  .token-metric {
+    padding: 17px;
+    min-height: 110px;
+  }
+
+  .token-metric strong {
+    font-size: 21px;
+  }
+
+  .community-section {
+    padding: 80px 0;
+  }
+
+  .community-section h2 {
+    letter-spacing: -2px;
+  }
+
+  .community-actions .button {
+    flex: 1 1 140px;
+  }
+}
+
+@media(prefers-reduced-motion:reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,*::before,*::after {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
+</style>
 </head>
 
 <body>
 
-    <!-- =====================================================
-         BACKGROUND
-    ====================================================== -->
+<!-- HEADER -->
 
-    <div class="about-background">
+<header class="header">
+  <div class="container header-inner">
 
-        <div class="about-glow about-glow-one"></div>
-        <div class="about-glow about-glow-two"></div>
+    <a href="index.html" class="brand" aria-label="SNAO World Home">
+      <span class="brand-symbol">S</span>
+      <span class="brand-text">
+        <strong>SNAO</strong>
+        <small>WORLD</small>
+      </span>
+    </a>
+
+    <nav class="navigation" id="navigation" aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a href="index.html#platforms">Platforms</a>
+      <a href="index.html#atlas">ATLAS</a>
+      <a href="about.html" class="active" aria-current="page">About</a>
+      <a href="token.html">Token</a>
+      <a href="whitepaper.html">Whitepaper</a>
+      <a href="sale.html" class="buy-button">Public Sale</a>
+    </nav>
+
+    <button
+      class="menu-toggle"
+      id="menuToggle"
+      type="button"
+      aria-label="Toggle navigation"
+      aria-controls="navigation"
+      aria-expanded="false"
+    >☰</button>
+
+  </div>
+</header>
+
+<main>
+
+<!-- HERO -->
+
+<section class="about-hero" id="top">
+  <div class="hero-orbit" aria-hidden="true"></div>
+
+  <div class="container about-hero-content">
+
+    <span class="eyebrow">
+      About SNAO World
+    </span>
+
+    <h1>
+      Technology for
+      <span class="gradient-text">
+        a world beyond
+      </span>
+      boundaries.
+    </h1>
+
+    <p>
+      SNAO World is an evolving technology ecosystem
+      focused on building intelligent digital experiences,
+      enterprise software, data-driven research
+      and connected systems.
+
+      Our vision goes beyond a single product,
+      a single market or a single technology.
+    </p>
+
+    <div class="hero-actions">
+      <a href="#mission" class="button button-primary">
+        Discover Our Mission →
+      </a>
+
+      <a href="#platforms" class="button button-secondary">
+        Explore Our Platforms
+      </a>
+    </div>
+
+    <span class="hero-note">
+      Building enterprise intelligence,
+      digital innovation and market research.
+    </span>
+
+  </div>
+</section>
+
+<!-- IDENTITY -->
+
+<section class="identity-strip">
+  <div class="container identity-items">
+
+    <div class="identity-item">
+      <strong>ENTERPRISE</strong>
+      <span>BUSINESS INTELLIGENCE</span>
+    </div>
+
+    <div class="identity-item">
+      <strong>ARTIFICIAL INTELLIGENCE</strong>
+      <span>DATA & ANALYSIS</span>
+    </div>
+
+    <div class="identity-item">
+      <strong>DIGITAL EXPERIENCES</strong>
+      <span>MOBILE ECOSYSTEM</span>
+    </div>
+
+    <div class="identity-item">
+      <strong>BLOCKCHAIN</strong>
+      <span>CRYPTO RESEARCH</span>
+    </div>
+
+  </div>
+</section>
+
+<!-- MISSION -->
+
+<section class="section mission-section" id="mission">
+
+  <div class="container mission-layout">
+
+    <div class="mission-copy reveal">
+
+      <span class="eyebrow">
+        Our Mission
+      </span>
+
+      <h2>
+        Turn complexity
+        <span class="gradient-text">
+          into intelligence.
+        </span>
+      </h2>
+
+      <p>
+        Modern organizations and digital communities
+        operate within increasingly complex environments.
+
+        Information is fragmented.
+        Systems are disconnected.
+        Important decisions require more context.
+      </p>
+
+      <p>
+        Our mission is to develop technology that
+        connects information, simplifies analysis
+        and creates more accessible, useful
+        digital intelligence.
+      </p>
+
+      <p>
+        Through SNAO World ATLAS, SNAO Ocean
+        and Ocean Intelligence, we are building
+        products for different audiences
+        under one long-term vision.
+      </p>
 
     </div>
 
+    <div class="mission-panel reveal">
 
-    <!-- =====================================================
-         HEADER
-    ====================================================== -->
+      <span class="panel-label">
+        THE SNAO APPROACH
+      </span>
 
-    <header class="about-header">
+      <h3>
+        Build with purpose.
+      </h3>
 
-        <a
-            href="index.html"
-            class="about-logo"
-        >
-            SNAO
-        </a>
+      <div class="principle">
+        <span class="principle-number">01</span>
+        <div>
+          <strong>Meaningful Innovation</strong>
+          <p>
+            Develop technology around practical problems
+            instead of trends alone.
+          </p>
+        </div>
+      </div>
 
-        <nav>
+      <div class="principle">
+        <span class="principle-number">02</span>
+        <div>
+          <strong>Connected Intelligence</strong>
+          <p>
+            Bring relevant information and analytical
+            capabilities into coherent experiences.
+          </p>
+        </div>
+      </div>
 
-            <a href="index.html">
-                Home
-            </a>
+      <div class="principle">
+        <span class="principle-number">03</span>
+        <div>
+          <strong>Transparency</strong>
+          <p>
+            Clearly distinguish developed capabilities,
+            product demonstrations and future plans.
+          </p>
+        </div>
+      </div>
 
-            <a
-                href="about.html"
-                class="active"
-            >
-                About
-            </a>
+      <div class="principle">
+        <span class="principle-number">04</span>
+        <div>
+          <strong>Continuous Evolution</strong>
+          <p>
+            Test, improve and expand products
+            as development progresses.
+          </p>
+        </div>
+      </div>
 
-            <a href="terminal.html">
-                Ocean Terminal
-            </a>
+    </div>
 
-            <a href="token.html">
-    Token
-</a>
+  </div>
+</section>
 
-<a href="sale.html">
-    Public Sale
-</a>
+<!-- PLATFORMS -->
 
-<a href="whitepaper.html">
-    Whitepaper
-</a>
+<section class="section platforms-section" id="platforms">
 
-        </nav>
+  <div class="container">
 
-    </header>
+    <div class="section-heading reveal">
 
+      <span class="eyebrow">
+        The SNAO World Ecosystem
+      </span>
 
-    <!-- =====================================================
-         HERO
-    ====================================================== -->
+      <h2>
+        Different technologies.
+        <span class="gradient-text">
+          One connected vision.
+        </span>
+      </h2>
 
-    <section class="about-hero">
+      <p>
+        Our technology roadmap is organized around
+        three distinct platforms, each developed
+        for a specific audience and purpose.
+      </p>
 
-        <span class="about-badge">
-            ABOUT SNAO
+    </div>
+
+    <div class="platform-grid">
+
+      <!-- ATLAS -->
+
+      <article class="platform-card featured reveal">
+
+        <div class="platform-icon">◈</div>
+
+        <span class="platform-status">
+          ENTERPRISE · IN DEVELOPMENT
         </span>
 
-        <h1>
-            Ocean Intelligence
-            for a Smarter Crypto Future
-        </h1>
+        <h3>
+          SNAO World ATLAS
+        </h3>
 
         <p>
-            SNAO is building an evolving ecosystem designed to connect
-            market data, blockchain intelligence, artificial intelligence
-            and community participation in one clearer experience.
+          A business intelligence and operations
+          platform being developed to help
+          organizations understand information,
+          analyze financial performance,
+          identify risks and streamline workflows.
         </p>
 
-        <div class="about-hero-actions">
-
-            <a
-                href="#mission"
-                class="about-primary-button"
-            >
-                Discover Our Mission
-            </a>
-
-            <a
-                href="whitepaper.html"
-                class="about-secondary-button"
-            >
-                Read Whitepaper
-            </a>
-
+        <div class="platform-tags">
+          <span>Enterprise AI</span>
+          <span>Financial Intelligence</span>
+          <span>Security</span>
+          <span>Automation</span>
         </div>
 
-    </section>
+      </article>
 
+      <!-- OCEAN -->
 
-    <!-- =====================================================
-         MISSION
-    ====================================================== -->
+      <article class="platform-card reveal">
 
-    <section
-        class="about-section about-mission-section"
-        id="mission"
-    >
+        <div class="platform-icon">◉</div>
 
-        <div class="about-section-heading">
+        <span class="platform-status">
+          MOBILE · IN DEVELOPMENT
+        </span>
 
-            <span>
-                Our Mission
-            </span>
+        <h3>
+          SNAO Ocean
+        </h3>
 
-            <h2>
-                Make advanced crypto intelligence
-                more accessible and useful.
-            </h2>
+        <p>
+          An independent mobile application
+          envisioned for Android and iOS.
 
-            <p>
-                SNAO exists to organize market information, blockchain data,
-                artificial intelligence and community signals into one connected
-                ecosystem designed to help users understand the crypto market
-                more clearly.
-            </p>
+          Its planned experience combines
+          an immersive ocean environment,
+          community participation,
+          gamified activities and
+          an internal points system.
+        </p>
 
+        <div class="platform-tags">
+          <span>Mobile App</span>
+          <span>Gamification</span>
+          <span>Community</span>
+          <span>Sardinhas Points</span>
         </div>
 
+      </article>
 
-        <div class="about-mission-layout">
+      <!-- INTELLIGENCE -->
 
-            <article class="about-mission-main">
+      <article class="platform-card reveal">
 
-                <span>
-                    Mission Statement
-                </span>
+        <div class="platform-icon">≈</div>
 
-                <h3>
-                    Transform fragmented information
-                    into understandable intelligence.
-                </h3>
+        <span class="platform-status">
+          CRYPTO · DEVELOPMENT ROADMAP
+        </span>
 
-                <p>
-                    The crypto market produces enormous amounts of information
-                    every second. Prices, liquidity, large transactions,
-                    sentiment, news and blockchain activity are often separated
-                    across different platforms and tools.
-                </p>
+        <h3>
+          Ocean Intelligence
+        </h3>
 
-                <p>
-                    SNAO aims to progressively connect these signals and present
-                    them through accessible products, visual indicators and
-                    AI-assisted intelligence as the ecosystem develops.
-                </p>
+        <p>
+          A market intelligence initiative designed
+          to connect blockchain research,
+          large-wallet movements,
+          exchange flows, liquidity conditions
+          and risk analysis.
 
-            </article>
+          The objective is clearer market context,
+          not guaranteed price predictions.
+        </p>
 
-
-            <div class="about-mission-principles">
-
-                <article>
-
-                    <span>
-                        01
-                    </span>
-
-                    <strong>
-                        Accessibility
-                    </strong>
-
-                    <p>
-                        Build advanced tools that are easier to understand
-                        and accessible to a broader audience.
-                    </p>
-
-                </article>
-
-
-                <article>
-
-                    <span>
-                        02
-                    </span>
-
-                    <strong>
-                        Clarity
-                    </strong>
-
-                    <p>
-                        Reduce information overload by organizing data into
-                        clearer context, indicators and summaries.
-                    </p>
-
-                </article>
-
-
-                <article>
-
-                    <span>
-                        03
-                    </span>
-
-                    <strong>
-                        Connection
-                    </strong>
-
-                    <p>
-                        Connect market intelligence, AI, community participation
-                        and planned token utility inside one evolving ecosystem.
-                    </p>
-
-                </article>
-
-
-                <article>
-
-                    <span>
-                        04
-                    </span>
-
-                    <strong>
-                        Evolution
-                    </strong>
-
-                    <p>
-                        Develop progressively, adding products, integrations
-                        and intelligence layers as they become ready.
-                    </p>
-
-                </article>
-
-            </div>
-
+        <div class="platform-tags">
+          <span>Blockchain Research</span>
+          <span>Whale Activity</span>
+          <span>Market Risk</span>
+          <span>AI Research</span>
         </div>
 
-    </section>
+      </article>
 
+    </div>
 
-    <!-- =====================================================
-         VISION
-    ====================================================== -->
+  </div>
+</section>
 
-    <section
-        class="about-section about-vision-section"
-        id="vision"
-    >
+<!-- ATLAS -->
 
-        <div class="about-section-heading">
+<section class="section atlas-section" id="atlas">
 
-            <span>
-                Our Vision
-            </span>
+  <div class="container atlas-layout">
 
-            <h2>
-                Build a complete Ocean Intelligence
-                infrastructure for crypto.
-            </h2>
+    <div class="atlas-copy reveal">
 
-            <p>
-                The long-term vision extends beyond one website, one application
-                or one token. SNAO is being designed as a connected network of
-                intelligence products, community systems and ecosystem services.
-            </p>
+      <span class="eyebrow">
+        Our Enterprise Technology Vision
+      </span>
 
+      <h2>
+        Introducing
+        <span class="gradient-text">
+          SNAO World ATLAS.
+        </span>
+      </h2>
+
+      <p>
+        ATLAS is a dedicated enterprise software
+        initiative being developed to help
+        businesses manage complexity
+        through intelligent digital systems.
+      </p>
+
+      <p>
+        Its planned architecture brings together
+        business information, analytical tools,
+        operational visibility and security
+        intelligence within a unified environment.
+      </p>
+
+      <p>
+        ATLAS is separate from the SNAO Ocean
+        mobile experience. Its purpose is
+        enterprise productivity and intelligence,
+        not gamified mining.
+      </p>
+
+      <div class="atlas-features">
+
+        <div class="atlas-feature">
+          <span>◈</span>
+          <strong>
+            AI Business Intelligence
+          </strong>
         </div>
 
-
-        <div class="about-vision-map">
-
-            <div class="about-vision-core">
-
-                <span>
-                    SNAO
-                </span>
-
-                <strong>
-                    Ocean Intelligence
-                </strong>
-
-                <small>
-                    Evolving ecosystem
-                </small>
-
-            </div>
-
-
-            <article class="about-vision-node about-node-terminal">
-
-                <span>
-                    Product
-                </span>
-
-                <strong>
-                    Ocean Terminal
-                </strong>
-
-                <p>
-                    Public market data, experimental indicators
-                    and evolving intelligence tools.
-                </p>
-
-            </article>
-
-
-            <article class="about-vision-node about-node-ai">
-
-                <span>
-                    Planned Intelligence
-                </span>
-
-                <strong>
-                    Sardine AI
-                </strong>
-
-                <p>
-                    AI-assisted interpretation, summaries
-                    and future intelligence features.
-                </p>
-
-            </article>
-
-
-            <article class="about-vision-node about-node-marketplace">
-
-                <span>
-                    Future Economy
-                </span>
-
-                <strong>
-                    Marketplace
-                </strong>
-
-                <p>
-                    Planned premium tools, reports
-                    and future digital ecosystem products.
-                </p>
-
-            </article>
-
-
-            <article class="about-vision-node about-node-community">
-
-                <span>
-                    Participation
-                </span>
-
-                <strong>
-                    Community
-                </strong>
-
-                <p>
-                    Planned missions, rankings, reputation
-                    and ecosystem contribution systems.
-                </p>
-
-            </article>
-
-
-            <article class="about-vision-node about-node-token">
-
-                <span>
-                    Planned Utility
-                </span>
-
-                <strong>
-                    $SNAO Token
-                </strong>
-
-                <p>
-                    Planned ecosystem access, rewards, payments
-                    and future governance functionality.
-                </p>
-
-            </article>
-
-
-            <article class="about-vision-node about-node-api">
-
-                <span>
-                    Future Infrastructure
-                </span>
-
-                <strong>
-                    Developer APIs
-                </strong>
-
-                <p>
-                    Planned intelligence services for
-                    developers and future integrations.
-                </p>
-
-            </article>
-
+        <div class="atlas-feature">
+          <span>◇</span>
+          <strong>
+            Financial Analysis
+          </strong>
         </div>
 
-
-        <div class="about-vision-principles">
-
-            <article>
-
-                <span>
-                    Product First
-                </span>
-
-                <strong>
-                    Utility should grow from real products.
-                </strong>
-
-                <p>
-                    SNAO aims to develop useful services progressively before
-                    expanding into more complex economic or governance mechanisms.
-                </p>
-
-            </article>
-
-
-            <article>
-
-                <span>
-                    Intelligence First
-                </span>
-
-                <strong>
-                    Data must become understandable.
-                </strong>
-
-                <p>
-                    The ecosystem is designed to focus on interpretation and
-                    context rather than simply displaying more raw information.
-                </p>
-
-            </article>
-
-
-            <article>
-
-                <span>
-                    Sustainable Growth
-                </span>
-
-                <strong>
-                    Expansion should remain progressive.
-                </strong>
-
-                <p>
-                    New features, partnerships and token utilities are intended
-                    to be introduced progressively and communicated transparently.
-                </p>
-
-            </article>
-
+        <div class="atlas-feature">
+          <span>⬡</span>
+          <strong>
+            Security & Risk
+          </strong>
         </div>
 
-    </section>
-
-
-    <!-- =====================================================
-         WHY SNAO EXISTS
-    ====================================================== -->
-
-    <section
-        class="about-section about-why-section"
-        id="why-snao"
-    >
-
-        <div class="about-section-heading">
-
-            <span>
-                Why SNAO Exists
-            </span>
-
-            <h2>
-                The market is full of information,
-                but short on real understanding.
-            </h2>
-
-            <p>
-                Crypto users are surrounded by charts, transactions, news,
-                sentiment, influencers and signals. The challenge is not the
-                absence of data. The challenge is understanding what matters.
-            </p>
-
+        <div class="atlas-feature">
+          <span>↗</span>
+          <strong>
+            Intelligent Automation
+          </strong>
         </div>
 
+      </div>
 
-        <div class="about-why-layout">
+      <div class="notice">
+        ATLAS remains under development.
+        Features described here represent
+        development objectives and are not
+        claims of completed or released capabilities.
+      </div>
 
-            <div class="about-why-problems">
+    </div>
 
-                <article>
+    <div class="atlas-visual reveal" aria-label="ATLAS concept artwork">
 
-                    <span>
-                        01
-                    </span>
+      <div class="atlas-halo"></div>
 
-                    <div>
+      <div class="atlas-circle">
 
-                        <strong>
-                            Fragmented Information
-                        </strong>
-
-                        <p>
-                            Important market information is distributed across
-                            exchanges, blockchains, social platforms, news
-                            websites and specialized tools.
-                        </p>
-
-                    </div>
-
-                </article>
-
-
-                <article>
-
-                    <span>
-                        02
-                    </span>
-
-                    <div>
-
-                        <strong>
-                            Information Overload
-                        </strong>
-
-                        <p>
-                            More data does not always produce better decisions.
-                            Users often receive excessive information without
-                            enough context or prioritization.
-                        </p>
-
-                    </div>
-
-                </article>
-
-
-                <article>
-
-                    <span>
-                        03
-                    </span>
-
-                    <div>
-
-                        <strong>
-                            Unequal Access
-                        </strong>
-
-                        <p>
-                            Professional traders and larger market participants
-                            can have access to more specialized tools, infrastructure
-                            and market intelligence.
-                        </p>
-
-                    </div>
-
-                </article>
-
-
-                <article>
-
-                    <span>
-                        04
-                    </span>
-
-                    <div>
-
-                        <strong>
-                            Emotional Decisions
-                        </strong>
-
-                        <p>
-                            Fear, hype and urgency can influence users before
-                            they fully understand the surrounding market conditions.
-                        </p>
-
-                    </div>
-
-                </article>
-
-            </div>
-
-
-            <article class="about-why-solution">
-
-                <span>
-                    The SNAO Approach
-                </span>
-
-                <h3>
-                    One connected intelligence layer
-                    for the crypto ocean.
-                </h3>
-
-                <p>
-                    SNAO is being designed to connect market behavior,
-                    blockchain information, liquidity, sentiment and community
-                    participation into a more organized and understandable
-                    experience.
-                </p>
-
-                <div class="about-why-solution-list">
-
-                    <div>
-                        <i></i>
-                        <span>
-                            Organize relevant market signals
-                        </span>
-                    </div>
-
-                    <div>
-                        <i></i>
-                        <span>
-                            Add context to market activity
-                        </span>
-                    </div>
-
-                    <div>
-                        <i></i>
-                        <span>
-                            Simplify complex information
-                        </span>
-                    </div>
-
-                    <div>
-                        <i></i>
-                        <span>
-                            Connect products and planned utilities
-                        </span>
-                    </div>
-
-                    <div>
-                        <i></i>
-                        <span>
-                            Build community participation systems
-                        </span>
-                    </div>
-
-                </div>
-
-            </article>
-
+        <div class="atlas-center">
+          <span class="symbol">S</span>
+          <strong>ATLAS</strong>
+          <small>INTELLIGENCE OS</small>
         </div>
 
+        <span class="visual-label label-top">
+          INTELLIGENCE
+        </span>
 
-        <div class="about-why-statement">
+        <span class="visual-label label-left">
+          SECURITY
+        </span>
+
+        <span class="visual-label label-bottom">
+          AUTOMATION
+        </span>
+
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- CORE VALUES -->
+
+<section class="section principles-section" id="principles">
+
+  <div class="container">
 
-            <span>
-                The Ocean Principle
-            </span>
+    <div class="section-heading reveal">
+
+      <span class="eyebrow">
+        Our Principles
+      </span>
+
+      <h2>
+        Technology should
+        <span class="gradient-text">
+          create real value.
+        </span>
+      </h2>
+
+      <p>
+        Our product direction is guided
+        by clear priorities for responsible
+        and useful technological development.
+      </p>
+
+    </div>
+
+    <div class="values-grid">
 
-            <strong>
-                In the market, important movements can begin
-                before most participants understand what is happening.
-            </strong>
+      <article class="value-card reveal">
+        <span class="value-number">01</span>
+        <h3>Clarity</h3>
+        <p>
+          Transform complex information
+          into more understandable insights.
+        </p>
+      </article>
 
-            <p>
-                SNAO aims to provide more context around the ocean
-                as market conditions evolve.
-            </p>
+      <article class="value-card reveal">
+        <span class="value-number">02</span>
+        <h3>Practical Utility</h3>
+        <p>
+          Prioritize technology that
+          addresses identifiable needs.
+        </p>
+      </article>
+
+      <article class="value-card reveal">
+        <span class="value-number">03</span>
+        <h3>Security Awareness</h3>
+        <p>
+          Design with reliability,
+          responsible data handling
+          and risk awareness in mind.
+        </p>
+      </article>
 
-        </div>
+      <article class="value-card reveal">
+        <span class="value-number">04</span>
+        <h3>Long-Term Development</h3>
+        <p>
+          Expand capabilities progressively
+          through testing, improvement
+          and transparent communication.
+        </p>
+      </article>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- DEVELOPMENT -->
 
-    </section>
+<section class="section development-section" id="development">
 
+  <div class="container">
 
-    <!-- =====================================================
-         CONTINUES IN PART 02
-    ====================================================== -->
+    <div class="section-heading reveal">
+
+      <span class="eyebrow">
+        Building the Future
+      </span>
 
-        <!-- =====================================================
-         OCEAN INTELLIGENCE
-    ====================================================== -->
+      <h2>
+        Our development
+        <span class="gradient-text">
+          priorities.
+        </span>
+      </h2>
 
-    <section
-        class="about-section about-intelligence-section"
-        id="ocean-intelligence"
-    >
+      <p>
+        SNAO World is an evolving project.
+        Development priorities may change
+        as technology, user needs and
+        testing results evolve.
+      </p>
 
-        <div class="about-section-heading">
+    </div>
 
-            <span>
-                Ocean Intelligence
-            </span>
+    <div class="development-grid">
 
-            <h2>
-                Understanding the market
-                like an entire ocean.
-            </h2>
+      <article class="development-card reveal">
 
-            <p>
-                Crypto markets are complex ecosystems where millions of
-                participants, transactions and information sources interact.
-                SNAO uses the ocean as a framework for organizing these
-                different layers into a clearer intelligence experience.
-            </p>
+        <span class="phase">
+          PRIORITY 01
+        </span>
 
-        </div>
+        <h3>
+          Enterprise Technology
+        </h3>
 
+        <p>
+          Continue developing ATLAS
+          as a modular platform for
+          business intelligence,
+          financial analysis,
+          security insights and automation.
+        </p>
+
+        <small>
+          IN DEVELOPMENT
+        </small>
 
-        <div class="about-intelligence-grid">
+      </article>
 
-            <article>
+      <article class="development-card reveal">
 
-                <div class="about-intelligence-icon">
-                    🌊
-                </div>
+        <span class="phase">
+          PRIORITY 02
+        </span>
 
-                <h3>
-                    Ocean
-                </h3>
+        <h3>
+          SNAO Ocean Mobile
+        </h3>
 
-                <p>
-                    The broader crypto market, where liquidity, participants,
-                    transactions and trends form one connected environment.
-                </p>
+        <p>
+          Build a standalone mobile
+          environment for community activities,
+          gamification and digital participation
+          with original ocean-themed experiences.
+        </p>
 
-            </article>
+        <small>
+          IN DEVELOPMENT
+        </small>
 
+      </article>
 
-            <article>
+      <article class="development-card reveal">
 
-                <div class="about-intelligence-icon">
-                    🐋
-                </div>
+        <span class="phase">
+          PRIORITY 03
+        </span>
 
-                <h3>
-                    Whales
-                </h3>
+        <h3>
+          Ocean Intelligence
+        </h3>
 
-                <p>
-                    Large market participants whose activity can affect
-                    liquidity and broader market behavior. Verified whale
-                    intelligence remains part of SNAO's planned development.
-                </p>
+        <p>
+          Expand research concepts around
+          market data, blockchain flows,
+          risk conditions and future
+          AI-assisted analytical capabilities.
+        </p>
 
-            </article>
+        <small>
+          DEVELOPMENT ROADMAP
+        </small>
 
+      </article>
 
-            <article>
+    </div>
 
-                <div class="about-intelligence-icon">
-                    🐟
-                </div>
+    <div class="notice">
+      This roadmap describes intended development
+      priorities rather than guaranteed
+      release dates or product availability.
+    </div>
 
-                <h3>
-                    Sardines
-                </h3>
+  </div>
+</section>
 
-                <p>
-                    Individual ecosystem participants who can contribute
-                    through future community, reputation and participation
-                    systems.
-                </p>
+<!-- TOKEN -->
 
-            </article>
+<section class="section token-section" id="token">
 
+  <div class="container token-layout">
 
-            <article>
+    <div class="token-copy reveal">
 
-                <div class="about-intelligence-icon">
-                    🤖
-                </div>
+      <span class="eyebrow">
+        The SNAO Digital Ecosystem
+      </span>
 
-                <h3>
-                    Artificial Intelligence
-                </h3>
+      <h2>
+        The role of
+        <span class="gradient-text">
+          $SNAO.
+        </span>
+      </h2>
 
-                <p>
-                    Planned AI-assisted tools are intended to help organize,
-                    summarize and interpret complex market information.
-                </p>
+      <p>
+        $SNAO is the blockchain token
+        associated with the SNAO World ecosystem.
+      </p>
 
-            </article>
+      <p>
+        The project's long-term direction
+        prioritizes the development of products
+        and potential future digital utility.
+      </p>
 
+      <p>
+        Any future token integrations,
+        ecosystem rewards or access mechanisms
+        remain subject to development,
+        technical validation and
+        applicable legal requirements.
+      </p>
+
+      <div class="token-actions">
+
+        <a href="token.html" class="button button-primary">
+          Explore $SNAO →
+        </a>
+
+        <a href="sale.html" class="button button-secondary">
+          Public Sale
+        </a>
+
+        <a href="whitepaper.html" class="button button-secondary">
+          Whitepaper
+        </a>
+
+      </div>
+
+    </div>
+
+    <div class="token-metrics reveal">
+
+      <div class="token-metric">
+        <span>Total Token Supply</span>
+        <strong>200M</strong>
+      </div>
 
-            <article>
+      <div class="token-metric">
+        <span>Public Sale Allocation</span>
+        <strong>45M</strong>
+      </div>
 
-                <div class="about-intelligence-icon">
-                    📡
-                </div>
+      <div class="token-metric">
+        <span>Network</span>
+        <strong>BNB Chain</strong>
+      </div>
 
-                <h3>
-                    Signals
-                </h3>
+      <div class="token-metric">
+        <span>Symbol</span>
+        <strong>$SNAO</strong>
+      </div>
 
-                <p>
-                    Market data, liquidity, volume, sentiment, news and
-                    future blockchain intelligence can become connected
-                    layers of the SNAO experience.
-                </p>
+    </div>
+
+  </div>
+
+  <div class="container">
+    <div class="notice">
+      Cryptocurrency carries significant risks.
+      Token ownership does not guarantee returns,
+      future exchange listings or access to
+      products still under development.
+      Review current official documentation
+      before participating.
+    </div>
+  </div>
 
-            </article>
+</section>
 
+<!-- COMMUNITY -->
 
-            <article>
+<section class="community-section" id="community">
 
-                <div class="about-intelligence-icon">
-                    🧭
-                </div>
+  <div class="container">
 
-                <h3>
-                    Context
-                </h3>
+    <span class="eyebrow">
+      The SNAO World Community
+    </span>
 
-                <p>
-                    The objective is not to predict the future or guarantee
-                    outcomes, but to provide clearer information and context
-                    around changing market conditions.
-                </p>
+    <h2>
+      Innovation grows
+      <span class="gradient-text">
+        through connection.
+      </span>
+    </h2>
 
-            </article>
+    <p>
+      We welcome people interested in
+      intelligent software, enterprise technology,
+      blockchain research and the development
+      of useful digital products.
 
-        </div>
+      Follow the project and participate
+      in the SNAO World community.
+    </p>
 
-    </section>
+    <div class="community-actions">
 
+      <a
+        href="https://t.me/snaoofficial"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="button button-primary"
+      >
+        Join Telegram
+      </a>
 
-    <!-- =====================================================
-         FOUNDER VISION
-    ====================================================== -->
+      <a
+        href="https://x.com/SNAOOFFICIAL"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="button button-secondary"
+      >
+        Follow on X
+      </a>
 
-    <section
-        class="about-section about-founder-section"
-        id="founder-vision"
-    >
+      <a
+        href="https://www.instagram.com/snaoofficial/"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="button button-secondary"
+      >
+        Instagram
+      </a>
 
-        <div class="about-section-heading">
+    </div>
 
-            <span>
-                Founder Vision
-            </span>
+  </div>
+</section>
 
-            <h2>
-                Building one ecosystem,
-                one layer at a time.
-            </h2>
+</main>
 
-            <p>
-                SNAO was conceived as more than a token. The long-term
-                objective is to develop an Ocean Intelligence ecosystem
-                where products, artificial intelligence, community
-                participation and blockchain technology can progressively
-                evolve together.
-            </p>
+<!-- FOOTER -->
 
-        </div>
+<footer class="footer">
 
+  <div class="container">
 
-        <div class="about-timeline">
+    <div class="footer-grid">
 
-            <article>
+      <div class="footer-about">
 
-                <div class="timeline-dot"></div>
+        <a href="index.html" class="brand">
+          <span class="brand-symbol">S</span>
+          <span class="brand-text">
+            <strong>SNAO</strong>
+            <small>WORLD</small>
+          </span>
+        </a>
 
-                <div class="timeline-card">
+        <p>
+          Building an evolving technology ecosystem
+          for enterprise intelligence,
+          digital experiences and
+          crypto market research.
+        </p>
 
-                    <span>
-                        Phase 1
-                    </span>
+      </div>
 
-                    <h3>
-                        Foundation
-                    </h3>
+      <div class="footer-column">
 
-                    <p>
-                        Establish the SNAO identity, website, community
-                        infrastructure, token architecture and the first
-                        product interfaces.
-                    </p>
+        <h4>ECOSYSTEM</h4>
 
-                </div>
+        <a href="index.html#atlas">SNAO World ATLAS</a>
+        <a href="index.html#platforms">SNAO Ocean</a>
+        <a href="index.html#ocean">Ocean Intelligence</a>
+        <a href="index.html#roadmap">Roadmap</a>
+        <a href="about.html">About Us</a>
 
-            </article>
+      </div>
 
+      <div class="footer-column">
 
-            <article>
+        <h4>RESOURCES</h4>
 
-                <div class="timeline-dot"></div>
+        <a href="token.html">SNAO Token</a>
+        <a href="sale.html">Public Sale</a>
+        <a href="whitepaper.html">Whitepaper</a>
 
-                <div class="timeline-card">
+        <a
+          href="https://t.me/snaoofficial"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Telegram
+        </a>
 
-                    <span>
-                        Phase 2
-                    </span>
+        <a
+          href="https://x.com/SNAOOFFICIAL"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          X
+        </a>
 
-                    <h3>
-                        Ocean Intelligence
-                    </h3>
+      </div>
 
-                    <p>
-                        Progressively develop market dashboards, experimental
-                        indicators, AI-assisted features, blockchain intelligence
-                        and additional analytical tools.
-                    </p>
+    </div>
 
-                </div>
+    <div class="footer-bottom">
 
-            </article>
+      <span id="copyright">
+        © SNAO World. All rights reserved.
+      </span>
 
+      <span>
+        Intelligence Beyond Boundaries.
+      </span>
 
-            <article>
+    </div>
 
-                <div class="timeline-dot"></div>
+  </div>
 
-                <div class="timeline-card">
+</footer>
 
-                    <span>
-                        Phase 3
-                    </span>
+<!-- JAVASCRIPT -->
 
-                    <h3>
-                        Connected Ecosystem
-                    </h3>
+<script>
+"use strict";
 
-                    <p>
-                        Expand toward planned marketplace services, developer
-                        APIs, premium intelligence products, governance systems
-                        and potential ecosystem integrations.
-                    </p>
+/* MOBILE NAVIGATION */
 
-                </div>
+const menuToggle =
+  document.getElementById("menuToggle");
 
-            </article>
+const navigation =
+  document.getElementById("navigation");
 
-        </div>
+if (menuToggle && navigation) {
 
+  menuToggle.addEventListener("click", () => {
 
-        <div class="about-founder-quote">
+    const isOpen =
+      navigation.classList.toggle("open");
 
-            <span>
-                Vision Statement
-            </span>
+    menuToggle.setAttribute(
+      "aria-expanded",
+      String(isOpen)
+    );
 
-            <strong>
-                "Technology becomes truly valuable
-                when it transforms complexity
-                into clarity."
-            </strong>
+    menuToggle.textContent =
+      isOpen ? "✕" : "☰";
 
-        </div>
+  });
 
-    </section>
+  navigation.querySelectorAll("a").forEach(link => {
 
+    link.addEventListener("click", () => {
 
-    <!-- =====================================================
-         COMMUNITY FIRST
-    ====================================================== -->
+      navigation.classList.remove("open");
 
-    <section
-        class="about-section about-community-section"
-        id="community"
-    >
+      menuToggle.setAttribute(
+        "aria-expanded",
+        "false"
+      );
 
-        <div class="about-section-heading">
+      menuToggle.textContent = "☰";
 
-            <span>
-                Community First
-            </span>
+    });
 
-            <h2>
-                Intelligence can grow
-                stronger together.
-            </h2>
+  });
 
-            <p>
-                SNAO is being designed around the idea that a stronger
-                ecosystem can emerge when technology and community
-                participation develop together.
-            </p>
+}
 
-        </div>
+/* SCROLL REVEAL */
 
+const revealElements =
+  document.querySelectorAll(".reveal");
 
-        <div class="about-community-grid">
+const reducedMotion =
+  window.matchMedia(
+    "(prefers-reduced-motion: reduce)"
+  ).matches;
 
-            <article>
+if (
+  "IntersectionObserver" in window &&
+  !reducedMotion
+) {
 
-                <div class="community-number">
-                    01
-                </div>
+  const revealObserver =
+    new IntersectionObserver(entries => {
 
-                <h3>
-                    Participation
-                </h3>
+      entries.forEach(entry => {
 
-                <p>
-                    Planned participation systems can allow users to explore
-                    products, complete missions, test features and contribute
-                    feedback as the ecosystem develops.
-                </p>
+        if (entry.isIntersecting) {
 
-            </article>
+          entry.target.classList.add("visible");
 
+          revealObserver.unobserve(
+            entry.target
+          );
 
-            <article>
+        }
 
-                <div class="community-number">
-                    02
-                </div>
+      });
 
-                <h3>
-                    Reputation
-                </h3>
+    }, {
+      threshold: 0.12
+    });
 
-                <p>
-                    Future reputation systems are intended to recognize
-                    meaningful and consistent ecosystem participation over time.
-                </p>
+  revealElements.forEach(element => {
+    revealObserver.observe(element);
+  });
 
-            </article>
+} else {
 
+  revealElements.forEach(element => {
+    element.classList.add("visible");
+  });
 
-            <article>
+}
 
-                <div class="community-number">
-                    03
-                </div>
+/* COPYRIGHT */
 
-                <h3>
-                    Collaboration
-                </h3>
+const copyright =
+  document.getElementById("copyright");
 
-                <p>
-                    Community feedback can help identify useful features,
-                    improve products and influence the direction of future
-                    ecosystem development.
-                </p>
+if (copyright) {
 
-            </article>
+  copyright.textContent =
+    "© " +
+    new Date().getFullYear() +
+    " SNAO World. All rights reserved.";
 
-
-            <article>
-
-                <div class="community-number">
-                    04
-                </div>
-
-                <h3>
-                    Shared Ecosystem
-                </h3>
-
-                <p>
-                    SNAO aims to connect products, community participation
-                    and planned token utility within the same evolving
-                    ecosystem.
-                </p>
-
-            </article>
-
-        </div>
-
-
-        <div class="about-community-banner">
-
-            <span>
-                Ocean Intelligence is bigger than one product.
-            </span>
-
-            <strong>
-                The vision is to combine technology,
-                transparency and community participation
-                in one connected ecosystem.
-            </strong>
-
-        </div>
-
-    </section>
-
-
-    <!-- =====================================================
-         FUTURE ECOSYSTEM
-    ====================================================== -->
-
-    <section
-        class="about-section about-future-section"
-        id="future"
-    >
-
-        <div class="about-section-heading">
-
-            <span>
-                Evolving Ecosystem
-            </span>
-
-            <h2>
-                From a foundation
-                to an intelligence network.
-            </h2>
-
-            <p>
-                SNAO is being developed progressively. Some components already
-                provide public market information or interface previews, while
-                other intelligence and utility layers remain experimental,
-                in development or planned for future releases.
-            </p>
-
-        </div>
-
-
-        <div class="about-future-grid">
-
-            <!-- OCEAN TERMINAL -->
-
-            <article class="about-future-card">
-
-                <div class="about-future-top">
-
-                    <span>
-                        Preview
-                    </span>
-
-                    <small>
-                        01
-                    </small>
-
-                </div>
-
-                <h3>
-                    Ocean Terminal
-                </h3>
-
-                <p>
-                    The current Terminal combines selected third-party
-                    market data with experimental and demonstration SNAO
-                    intelligence interfaces.
-                </p>
-
-                <div class="about-future-tags">
-
-                    <span>
-                        Market Data
-                    </span>
-
-                    <span>
-                        Experimental Indicators
-                    </span>
-
-                    <span>
-                        Analytics
-                    </span>
-
-                </div>
-
-            </article>
-
-
-            <!-- MINI APP -->
-
-            <article class="about-future-card">
-
-                <div class="about-future-top">
-
-                    <span>
-                        Coming Soon
-                    </span>
-
-                    <small>
-                        02
-                    </small>
-
-                </div>
-
-                <h3>
-                    SNAO Mini App
-                </h3>
-
-                <p>
-                    A planned community access point designed around
-                    missions, participation, rankings, reputation and
-                    future ecosystem reward mechanics.
-                </p>
-
-                <div class="about-future-tags">
-
-                    <span>
-                        Missions
-                    </span>
-
-                    <span>
-                        Community
-                    </span>
-
-                    <span>
-                        Reputation
-                    </span>
-
-                </div>
-
-            </article>
-
-
-            <!-- SARDINE AI -->
-
-            <article class="about-future-card">
-
-                <div class="about-future-top">
-
-                    <span>
-                        Planned
-                    </span>
-
-                    <small>
-                        03
-                    </small>
-
-                </div>
-
-                <h3>
-                    Sardine AI
-                </h3>
-
-                <p>
-                    A planned AI-assisted intelligence layer intended to
-                    organize complex market information, generate summaries
-                    and provide additional context.
-                </p>
-
-                <div class="about-future-tags">
-
-                    <span>
-                        AI Analysis
-                    </span>
-
-                    <span>
-                        Summaries
-                    </span>
-
-                    <span>
-                        Context
-                    </span>
-
-                </div>
-
-            </article>
-
-
-            <!-- OCEAN PASSPORT -->
-
-            <article class="about-future-card">
-
-                <div class="about-future-top">
-
-                    <span>
-                        Future Layer
-                    </span>
-
-                    <small>
-                        04
-                    </small>
-
-                </div>
-
-                <h3>
-                    Ocean Passport
-                </h3>
-
-                <p>
-                    A proposed ecosystem identity layer designed to connect
-                    participation, reputation, achievements, access levels
-                    and user progress.
-                </p>
-
-                <div class="about-future-tags">
-
-                    <span>
-                        Identity
-                    </span>
-
-                    <span>
-                        Reputation
-                    </span>
-
-                    <span>
-                        Progress
-                    </span>
-
-                </div>
-
-            </article>
-
-
-            <!-- MARKETPLACE -->
-
-            <article class="about-future-card">
-
-                <div class="about-future-top">
-
-                    <span>
-                        Future Layer
-                    </span>
-
-                    <small>
-                        05
-                    </small>
-
-                </div>
-
-                <h3>
-                    SNAO Marketplace
-                </h3>
-
-                <p>
-                    A planned ecosystem layer for premium tools,
-                    intelligence reports, digital products and other
-                    future SNAO services.
-                </p>
-
-                <div class="about-future-tags">
-
-                    <span>
-                        Reports
-                    </span>
-
-                    <span>
-                        Tools
-                    </span>
-
-                    <span>
-                        Services
-                    </span>
-
-                </div>
-
-            </article>
-
-
-            <!-- DEVELOPER APIs -->
-
-            <article class="about-future-card">
-
-                <div class="about-future-top">
-
-                    <span>
-                        Future Infrastructure
-                    </span>
-
-                    <small>
-                        06
-                    </small>
-
-                </div>
-
-                <h3>
-                    Developer APIs
-                </h3>
-
-                <p>
-                    Planned infrastructure that may allow developers
-                    and ecosystem partners to connect with selected
-                    SNAO intelligence services in the future.
-                </p>
-
-                <div class="about-future-tags">
-
-                    <span>
-                        Integration
-                    </span>
-
-                    <span>
-                        Data
-                    </span>
-
-                    <span>
-                        Developers
-                    </span>
-
-                </div>
-
-            </article>
-
-        </div>
-
-
-        <!-- =================================================
-             FUTURE NOTICE
-        ================================================== -->
-
-        <div class="about-community-banner">
-
-            <span>
-                Development Notice
-            </span>
-
-            <strong>
-                Features described as planned, experimental,
-                preview, coming soon or future infrastructure
-                are not presented as completed products.
-            </strong>
-
-        </div>
-
-
-        <div class="about-future-cta">
-
-            <div>
-
-                <span>
-                    The ecosystem is still evolving.
-                </span>
-
-                <strong>
-                    Explore the SNAO vision
-                    and follow its development.
-                </strong>
-
-            </div>
-
-            <div class="about-future-actions">
-
-                <a
-                    href="whitepaper.html"
-                    class="about-primary-button"
-                >
-                    Read Whitepaper
-                </a>
-
-                <a
-                    href="token.html"
-                    class="about-secondary-button"
-                >
-                    Explore $SNAO
-                </a>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- =====================================================
-         FOOTER
-    ====================================================== -->
-
-    <footer class="about-footer">
-
-        <div class="about-footer-main">
-
-            <div class="about-footer-brand">
-
-                <a
-                    href="index.html"
-                    class="about-footer-logo"
-                >
-                    SNAO
-                </a>
-
-                <p>
-                    Ocean Intelligence for a smarter,
-                    more connected crypto ecosystem.
-                </p>
-
-                <div class="about-footer-socials">
-
-                    <a
-                        href="https://t.me/snaoofficial"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        Telegram
-                    </a>
-
-                    <a
-                        href="https://x.com/SNAOOFFICIAL"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        X
-                    </a>
-
-                    <a
-                        href="https://github.com/tiagogsa28-cmd/snao-website"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        GitHub
-                    </a>
-
-                </div>
-
-            </div>
-
-
-            <div class="about-footer-links">
-
-                <div>
-
-                    <strong>
-                        Explore
-                    </strong>
-
-                    <a href="index.html">
-                        Home
-                    </a>
-
-                    <a href="about.html">
-                        About
-                    </a>
-
-                    <a href="terminal.html">
-                        Ocean Terminal
-                    </a>
-
-                    <a href="token.html">
-    Token
-</a>
-
-<a href="sale.html">
-    Public Sale
-</a>
-
-                </div>
-
-
-                <div>
-
-                    <strong>
-                        Resources
-                    </strong>
-
-                    <a href="whitepaper.html">
-                        Whitepaper
-                    </a>
-
-                    <a href="whitepaper.html#roadmap">
-                        Roadmap
-                    </a>
-
-                    <a href="token.html#allocation">
-                        Tokenomics
-                    </a>
-
-                    <a href="token.html#vesting">
-                        Vesting
-                    </a>
-
-                </div>
-
-
-                <div>
-
-                    <strong>
-                        Community
-                    </strong>
-
-                    <a
-                        href="https://t.me/snaoofficial"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        Telegram
-                    </a>
-
-                    <a
-                        href="https://x.com/SNAOOFFICIAL"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        X
-                    </a>
-
-                    <a href="whitepaper.html">
-                        Project Documentation
-                    </a>
-
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <div class="about-footer-bottom">
-
-            <span>
-                © 2026 SNAO. All rights reserved.
-            </span>
-
-            <span>
-                Built for the Ocean Intelligence ecosystem.
-            </span>
-
-        </div>
-
-    </footer>
-
-
-    <!-- =====================================================
-         SCRIPT
-    ====================================================== -->
-
-    <script src="about.js"></script>
+}
+</script>
 
 </body>
-
 </html>
