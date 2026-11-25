@@ -1,6597 +1,2030 @@
+
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta charset="UTF-8">
+  <title>SNAO World | Intelligence Beyond Boundaries</title>
+  <meta name="description" content="Explore SNAO World ATLAS, SNAO Ocean, Ocean Intelligence and the $SNAO technology ecosystem.">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#030b16">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+  <link rel="canonical" href="https://snao.world/">
+  <link rel="icon" href="assets/favicon.png" type="image/png">
 
-    <title>
-        SNAO.world — Ocean Intelligence for Crypto
-    </title>
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="SNAO World — Intelligence Beyond Boundaries">
+  <meta property="og:description" content="Enterprise intelligence. Crypto research. One evolving technology ecosystem.">
+  <meta property="og:url" content="https://snao.world/">
+  <meta property="og:image" content="https://snao.world/assets/snao-preview.png">
 
-    <meta
-    name="description"
-    content="SNAO is building an Ocean Intelligence ecosystem combining artificial intelligence, blockchain analytics and community signals for the crypto market."
->
+  <style>
+    :root {
+      --bg: #030b16;
+      --bg2: #061423;
+      --surface: #091c30;
+      --surface2: #0c2237;
+      --line: rgba(105,195,235,.15);
+      --cyan: #35ddf7;
+      --cyan2: #04aaf0;
+      --text: #f1f8ff;
+      --muted: #93abc0;
+      --radius: 22px;
+      --max: 1220px;
+    }
 
-    <meta
-        name="keywords"
-        content="SNAO, Ocean Intelligence, crypto AI, whale tracking, smart money, blockchain analytics, market sentiment"
-    >
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
 
-    <meta name="author" content="SNAO">
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 90px;
+    }
 
-    <meta name="robots" content="index, follow">
+    body {
+      margin: 0;
+      color: var(--text);
+      background: var(--bg);
+      font-family: Inter, "Segoe UI", Arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
 
-    <link rel="canonical" href="https://snao.world">
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
 
-    <!-- Open Graph -->
+    button, input {
+      font: inherit;
+    }
 
-    <meta
-        property="og:title"
-        content="SNAO.world — Ocean Intelligence"
-    >
+    button {
+      cursor: pointer;
+    }
 
-    <meta
-    property="og:description"
-    content="Explore the SNAO vision for Ocean Intelligence, combining AI, blockchain analytics, market signals and community intelligence."
->
+    a:focus-visible,
+    button:focus-visible {
+      outline: 2px solid var(--cyan);
+      outline-offset: 4px;
+    }
 
-    <meta
-        property="og:type"
-        content="website"
-    >
+    ::selection {
+      background: var(--cyan);
+      color: #00111b;
+    }
 
-    <meta
-        property="og:url"
-        content="https://snao.world"
-    >
+    .container {
+      width: min(var(--max), calc(100% - 48px));
+      margin-inline: auto;
+    }
 
-    <meta
-        property="og:image"
-        content="https://snao.world/assets/snao-preview.png"
-    >
+    .gradient-text {
+      background: linear-gradient(100deg,#f2fbff,#52e9ff,#168deb);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
 
-    <!-- X / Twitter -->
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: #6de5fc;
+      text-transform: uppercase;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 2.5px;
+    }
 
-    <meta
-        name="twitter:card"
-        content="summary_large_image"
-    >
+    .eyebrow::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      background: var(--cyan);
+      border-radius: 50%;
+      box-shadow: 0 0 15px var(--cyan);
+    }
 
-    <meta
-        name="twitter:title"
-        content="SNAO.world — Ocean Intelligence"
-    >
+    .section {
+      padding: 110px 0;
+      position: relative;
+    }
 
-    <meta
-    name="twitter:description"
-    content="Discover SNAO — an Ocean Intelligence ecosystem being built for the crypto market."
->
+    .section-header {
+      max-width: 790px;
+      margin: 0 auto 52px;
+      text-align: center;
+    }
 
-    <meta
-        name="twitter:image"
-        content="https://snao.world/assets/snao-preview.png"
-    >
+    .section-header h2 {
+      margin: 20px 0;
+      font-size: clamp(34px,4.5vw,59px);
+      line-height: 1.09;
+      letter-spacing: -2px;
+    }
 
-    <!-- Favicon -->
+    .section-header p,
+    .section-lead {
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.85;
+    }
 
-    <link
-        rel="icon"
-        type="image/png"
-        href="assets/favicon.png"
-    >
+    .btn {
+      min-height: 50px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 14px 23px;
+      border-radius: 11px;
+      border: 1px solid transparent;
+      font-size: 13px;
+      font-weight: 800;
+      transition: .25s ease;
+    }
 
-    <link rel="stylesheet" href="style.css">
+    .btn-primary {
+      background: linear-gradient(110deg,#05ace8,#54e8fa);
+      color: #02121e;
+      box-shadow: 0 9px 30px rgba(0,187,245,.17);
+    }
 
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 38px rgba(0,187,245,.3);
+    }
+
+    .btn-outline {
+      border-color: rgba(101,209,255,.28);
+      background: rgba(8,27,44,.65);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--cyan);
+      background: var(--surface2);
+    }
+
+    /* HEADER */
+
+    .header {
+      height: 78px;
+      position: fixed;
+      z-index: 100;
+      inset: 0 0 auto;
+      background: rgba(3,11,22,.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .header-inner {
+      height: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 25px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-shrink: 0;
+    }
+
+    .brand-mark {
+      display: grid;
+      place-items: center;
+      width: 43px;
+      height: 43px;
+      border: 1px solid rgba(52,218,255,.45);
+      border-radius: 13px;
+      color: var(--cyan);
+      font-size: 30px;
+      font-weight: 900;
+      font-style: italic;
+      background: radial-gradient(circle,rgba(0,199,255,.21),transparent);
+    }
+
+    .brand-name strong {
+      display: block;
+      font-size: 17px;
+      letter-spacing: 3px;
+    }
+
+    .brand-name small {
+      display: block;
+      margin-top: 3px;
+      font-size: 9px;
+      letter-spacing: 3px;
+      color: var(--muted);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 23px;
+    }
+
+    .nav a {
+      font-size: 12px;
+      color: #b4c9dc;
+      transition: color .2s;
+    }
+
+    .nav a:hover {
+      color: var(--cyan);
+    }
+
+    .header-buy {
+      padding: 12px 18px;
+      border-radius: 9px;
+      color: #02121e !important;
+      background: var(--cyan);
+      font-weight: 800;
+    }
+
+    .menu-btn {
+      display: none;
+      border: 1px solid var(--line);
+      border-radius: 9px;
+      background: var(--surface);
+      color: var(--text);
+      padding: 10px 13px;
+      font-size: 22px;
+    }
+
+    /* HERO */
+
+    .hero {
+      min-height: 830px;
+      padding: 160px 0 110px;
+      position: relative;
+      isolation: isolate;
+      overflow: hidden;
+      background:
+        radial-gradient(ellipse at 74% 43%,rgba(0,151,239,.18),transparent 46%),
+        radial-gradient(ellipse at 15% 15%,rgba(12,78,143,.17),transparent 50%),
+        linear-gradient(140deg,#030915,#06182b 63%,#030b16);
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      opacity: .17;
+      background-image:
+        linear-gradient(rgba(95,178,230,.12) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(95,178,230,.12) 1px,transparent 1px);
+      background-size: 60px 60px;
+      mask-image: linear-gradient(to bottom,transparent,#000 30%,transparent);
+    }
+
+    .hero-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 65px;
+    }
+
+    .hero-copy h1 {
+      margin: 22px 0;
+      font-size: clamp(54px,6.8vw,90px);
+      letter-spacing: -5px;
+      line-height: .99;
+    }
+
+    .hero-copy h1 span {
+      display: block;
+    }
+
+    .hero-copy p {
+      max-width: 570px;
+      margin: 26px 0 34px;
+      color: #a2b8cb;
+      font-size: 17px;
+      line-height: 1.85;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 13px;
+    }
+
+    .hero-note {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      margin-top: 28px;
+      color: #7895a9;
+      font-size: 12px;
+      line-height: 1.6;
+    }
+
+    .hero-note::before {
+      content: "◈";
+      color: var(--cyan);
+    }
+
+    /* ATLAS VISUAL */
+
+    .atlas-stage {
+      position: relative;
+      min-height: 520px;
+      display: grid;
+      place-items: center;
+      perspective: 900px;
+    }
+
+    .atlas-glow {
+      position: absolute;
+      width: 450px;
+      height: 450px;
+      border-radius: 50%;
+      background: radial-gradient(circle,rgba(0,196,255,.22),transparent 68%);
+      filter: blur(25px);
+    }
+
+    .atlas-ring {
+      width: min(430px,85vw);
+      aspect-ratio: 1;
+      display: grid;
+      place-items: center;
+      position: relative;
+      border: 1px solid rgba(61,207,255,.32);
+      border-radius: 50%;
+      box-shadow:
+        0 0 80px rgba(0,179,255,.07),
+        inset 0 0 65px rgba(0,160,255,.05);
+      animation: float 7s ease-in-out infinite;
+    }
+
+    .atlas-ring::before,
+    .atlas-ring::after {
+      content: "";
+      position: absolute;
+      inset: 42px;
+      border: 1px dashed rgba(54,202,255,.28);
+      border-radius: 50%;
+      animation: rotate 50s linear infinite;
+    }
+
+    .atlas-ring::after {
+      inset: -25px;
+      border-style: solid;
+      border-color: rgba(45,205,255,.1);
+      transform: rotateX(67deg);
+      animation-duration: 35s;
+      animation-direction: reverse;
+    }
+
+    .atlas-core {
+      width: 230px;
+      height: 230px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      border-radius: 35px;
+      border: 1px solid rgba(67,216,255,.5);
+      background:
+        radial-gradient(circle at 35% 25%,rgba(46,189,255,.35),transparent 65%),
+        linear-gradient(145deg,#092f50,#04101d);
+      box-shadow:
+        0 0 70px rgba(0,176,255,.18),
+        inset 0 0 30px rgba(0,185,255,.1);
+      transform: rotateX(6deg) rotateY(-12deg);
+    }
+
+    .atlas-core .symbol {
+      font-size: 90px;
+      font-weight: 900;
+      font-style: italic;
+      line-height: 1;
+      background: linear-gradient(130deg,#e5ffff,#38ddff,#0067ff);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      text-shadow: 0 0 32px rgba(47,211,255,.3);
+    }
+
+    .atlas-core strong {
+      font-size: 30px;
+      letter-spacing: 6px;
+    }
+
+    .atlas-core small {
+      font-size: 9px;
+      letter-spacing: 2px;
+      color: var(--muted);
+      margin-top: 9px;
+    }
+
+    .orbit-label {
+      position: absolute;
+      padding: 12px 16px;
+      border: 1px solid rgba(79,211,255,.25);
+      border-radius: 10px;
+      background: rgba(5,25,42,.93);
+      color: #bdeafa;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      white-space: nowrap;
+      box-shadow: 0 10px 25px rgba(0,0,0,.2);
+    }
+
+    .orbit-one { top: 40px; right: -10px; }
+    .orbit-two { bottom: 105px; left: -50px; }
+    .orbit-three { bottom: 20px; right: 0; }
+
+    /* PRODUCT CARDS */
+
+    .products {
+      background:
+        radial-gradient(circle at 50% 0,rgba(0,153,240,.08),transparent 45%),
+        #04101c;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 20px;
+    }
+
+    .product-card {
+      position: relative;
+      min-height: 350px;
+      padding: 31px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: linear-gradient(145deg,#0a2137,#061322);
+      transition: transform .25s,border-color .25s;
+    }
+
+    .product-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(61,207,255,.43);
+    }
+
+    .product-card::after {
+      content: "";
+      position: absolute;
+      right: -70px;
+      bottom: -100px;
+      width: 230px;
+      height: 230px;
+      border-radius: 50%;
+      background: rgba(0,183,245,.06);
+      filter: blur(30px);
+    }
+
+    .product-icon {
+      width: 59px;
+      height: 59px;
+      display: grid;
+      place-items: center;
+      border-radius: 15px;
+      border: 1px solid rgba(82,213,255,.25);
+      background: rgba(20,153,210,.1);
+      color: var(--cyan);
+      font-size: 29px;
+    }
+
+    .product-card h3 {
+      margin: 28px 0 14px;
+      font-size: 25px;
+      letter-spacing: -.6px;
+    }
+
+    .product-card p {
+      color: #99b0c5;
+      font-size: 14px;
+      line-height: 1.85;
+    }
+
+    .product-state {
+      position: absolute;
+      bottom: 28px;
+      left: 31px;
+      font-size: 10px;
+      letter-spacing: 1.3px;
+      color: var(--cyan);
+      font-weight: 800;
+    }
+
+    /* TECHNOLOGY */
+
+    .technology {
+      background: linear-gradient(180deg,#030b16,#061525);
+    }
+
+    .tech-layout {
+      display: grid;
+      grid-template-columns: .95fr 1.05fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .tech-copy h2 {
+      font-size: clamp(35px,4vw,57px);
+      line-height: 1.1;
+      letter-spacing: -2px;
+      margin: 20px 0;
+    }
+
+    .tech-copy p {
+      color: var(--muted);
+      line-height: 1.85;
+    }
+
+    .feature-list {
+      display: grid;
+      gap: 13px;
+      margin-top: 30px;
+    }
+
+    .feature {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 17px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: rgba(11,34,54,.5);
+    }
+
+    .feature-icon {
+      color: var(--cyan);
+      font-size: 19px;
+      width: 28px;
+      flex-shrink: 0;
+    }
+
+    .feature strong {
+      display: block;
+      font-size: 13px;
+    }
+
+    .feature small {
+      display: block;
+      margin-top: 5px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    /* CONCEPT DASHBOARD */
+
+    .concept-window {
+      overflow: hidden;
+      border: 1px solid rgba(66,208,255,.28);
+      border-radius: 20px;
+      background: #071626;
+      box-shadow: 0 35px 100px rgba(0,0,0,.38);
+    }
+
+    .window-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 17px 20px;
+      border-bottom: 1px solid var(--line);
+      font-size: 11px;
+      letter-spacing: 1px;
+    }
+
+    .window-dots {
+      display: flex;
+      gap: 5px;
+    }
+
+    .window-dots span {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #31516b;
+    }
+
+    .window-dots span:first-child {
+      background: var(--cyan);
+    }
+
+    .concept-inner {
+      padding: 22px;
+    }
+
+    .concept-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 22px;
+    }
+
+    .concept-header strong {
+      font-size: 21px;
+    }
+
+    .concept-label {
+      color: var(--cyan);
+      font-size: 10px;
+      letter-spacing: 1px;
+    }
+
+    .demo-tag {
+      padding: 7px 10px;
+      border-radius: 7px;
+      background: rgba(42,188,229,.1);
+      border: 1px solid rgba(42,188,229,.24);
+      color: #79e5f7;
+      font-size: 10px;
+    }
+
+    .concept-metrics {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 9px;
+    }
+
+    .concept-metric {
+      padding: 16px 12px;
+      background: #0b243b;
+      border: 1px solid rgba(86,192,235,.12);
+      border-radius: 10px;
+    }
+
+    .concept-metric small {
+      display: block;
+      font-size: 10px;
+      color: var(--muted);
+    }
+
+    .concept-metric strong {
+      display: block;
+      margin-top: 10px;
+      color: var(--cyan);
+      font-size: 14px;
+    }
+
+    .concept-map {
+      position: relative;
+      height: 220px;
+      margin-top: 14px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background:
+        radial-gradient(ellipse at center,rgba(0,160,235,.16),transparent 75%),
+        repeating-linear-gradient(0deg,transparent,transparent 25px,rgba(95,177,220,.07) 26px),
+        repeating-linear-gradient(90deg,transparent,transparent 25px,rgba(95,177,220,.07) 26px);
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+    }
+
+    .concept-map::before {
+      content: "";
+      position: absolute;
+      width: 175px;
+      height: 175px;
+      border: 1px solid rgba(65,211,255,.3);
+      border-radius: 50%;
+      box-shadow: 0 0 35px rgba(15,178,255,.1);
+    }
+
+    .concept-map::after {
+      content: "";
+      position: absolute;
+      width: 95px;
+      height: 95px;
+      border: 1px dashed rgba(65,211,255,.35);
+      border-radius: 50%;
+    }
+
+    .map-center {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+    }
+
+    .map-center strong {
+      display: block;
+      color: var(--cyan);
+      font-size: 24px;
+      letter-spacing: 3px;
+    }
+
+    .map-center span {
+      display: block;
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 10px;
+    }
+
+    .concept-foot {
+      margin-top: 14px;
+      padding-top: 14px;
+      border-top: 1px solid var(--line);
+      color: #7992a6;
+      font-size: 11px;
+      line-height: 1.7;
+    }
+
+    /* SNAO TOKEN */
+
+    .token-section {
+      background: #04101c;
+    }
+
+    .token-shell {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 70px;
+      align-items: center;
+    }
+
+    .token-copy h2 {
+      margin: 18px 0;
+      font-size: clamp(36px,4.5vw,62px);
+      letter-spacing: -2px;
+    }
+
+    .token-copy p {
+      max-width: 550px;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    .token-stats {
+      display: grid;
+      grid-template-columns: repeat(2,1fr);
+      gap: 13px;
+    }
+
+    .token-stat {
+      min-height: 125px;
+      padding: 23px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: #092039;
+    }
+
+    .token-stat span {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .token-stat strong {
+      display: block;
+      margin-top: 15px;
+      font-size: 28px;
+      color: #edfaff;
+    }
+
+    .token-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 29px;
+    }
+
+    .disclaimer {
+      margin-top: 22px;
+      padding-left: 13px;
+      border-left: 2px solid var(--cyan);
+      color: #7890a4;
+      font-size: 12px;
+      line-height: 1.75;
+    }
+
+    /* ROADMAP */
+
+    .roadmap {
+      background: #030c18;
+    }
+
+    .roadmap-grid {
+      display: grid;
+      grid-template-columns: repeat(4,1fr);
+      gap: 15px;
+    }
+
+    .roadmap-item {
+      padding: 26px 22px;
+      background: #0a1d30;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+    }
+
+    .roadmap-step {
+      color: var(--cyan);
+      font-size: 11px;
+      letter-spacing: 2px;
+      font-weight: 800;
+    }
+
+    .roadmap-item h3 {
+      font-size: 18px;
+      margin: 16px 0 12px;
+    }
+
+    .roadmap-item p {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.75;
+    }
+
+    .roadmap-item small {
+      display: inline-block;
+      margin-top: 12px;
+      color: #68d9f1;
+      font-size: 10px;
+      letter-spacing: 1px;
+    }
+
+    /* COMMUNITY */
+
+    .community {
+      padding: 110px 0;
+      background:
+        radial-gradient(circle at 50% 50%,rgba(0,150,230,.13),transparent 52%),
+        #04101d;
+      text-align: center;
+    }
+
+    .community h2 {
+      font-size: clamp(37px,5vw,68px);
+      line-height: 1.08;
+      letter-spacing: -2px;
+      margin: 20px auto;
+    }
+
+    .community p {
+      max-width: 660px;
+      margin: 0 auto 30px;
+      line-height: 1.9;
+      color: var(--muted);
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 13px;
+    }
+
+    /* FAQ */
+
+    .faq {
+      background: #030c17;
+    }
+
+    .faq-wrap {
+      width: min(850px,100%);
+      margin: auto;
+    }
+
+    .faq details {
+      margin-bottom: 12px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: #091b2d;
+    }
+
+    .faq summary {
+      padding: 20px;
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    .faq details p {
+      margin: 0;
+      padding: 0 20px 20px;
+      color: var(--muted);
+      line-height: 1.8;
+      font-size: 13px;
+    }
+
+    /* FOOTER */
+
+    .footer {
+      padding: 55px 0 25px;
+      border-top: 1px solid var(--line);
+      background: #020914;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.6fr 1fr 1fr;
+      gap: 45px;
+    }
+
+    .footer-brand p {
+      max-width: 330px;
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.85;
+    }
+
+    .footer-column h4 {
+      margin: 0 0 19px;
+      font-size: 12px;
+      letter-spacing: 1px;
+    }
+
+    .footer-column a {
+      display: block;
+      color: var(--muted);
+      font-size: 13px;
+      margin: 11px 0;
+    }
+
+    .footer-column a:hover {
+      color: var(--cyan);
+    }
+
+    .footer-bottom {
+      margin-top: 52px;
+      padding-top: 22px;
+      border-top: 1px solid var(--line);
+      color: #668195;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 15px;
+      font-size: 11px;
+    }
+
+    /* ANIMATIONS */
+
+    @keyframes float {
+      0%,100% { transform: translateY(0); }
+      50% { transform: translateY(-14px); }
+    }
+
+    @keyframes rotate {
+      to { transform: rotate(360deg); }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity .7s ease,transform .7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* RESPONSIVE */
+
+    @media(max-width:1100px) {
+      .nav { gap: 14px; }
+      .nav a { font-size: 11px; }
+      .hero-layout { gap: 30px; }
+      .hero-copy h1 { font-size: 65px; }
+      .orbit-two { left: 0; }
+    }
+
+    @media(max-width:900px) {
+      .menu-btn { display: block; }
+
+      .nav {
+        display: none;
+        position: absolute;
+        top: 78px;
+        left: 0;
+        right: 0;
+        padding: 20px 24px;
+        background: #061522;
+        border-bottom: 1px solid var(--line);
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+      }
+
+      .nav.open { display: flex; }
+
+      .nav a {
+        padding: 13px 10px;
+        font-size: 14px;
+      }
+
+      .header-buy {
+        text-align: center;
+        margin-top: 10px;
+      }
+
+      .hero-layout,
+      .tech-layout,
+      .token-shell {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding-top: 135px;
+      }
+
+      .hero-copy {
+        text-align: center;
+      }
+
+      .hero-copy p {
+        margin-inline: auto;
+      }
+
+      .hero-actions,
+      .hero-note {
+        justify-content: center;
+      }
+
+      .atlas-stage {
+        min-height: 480px;
+      }
+
+      .product-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .roadmap-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media(max-width:600px) {
+      .container {
+        width: calc(100% - 34px);
+      }
+
+      .section {
+        padding: 75px 0;
+      }
+
+      .header {
+        height: 70px;
+      }
+
+      .nav {
+        top: 70px;
+      }
+
+      .brand-name strong {
+        font-size: 15px;
+      }
+
+      .hero {
+        padding: 115px 0 65px;
+        min-height: 0;
+      }
+
+      .hero-copy h1 {
+        font-size: clamp(48px,13vw,70px);
+        letter-spacing: -3px;
+      }
+
+      .hero-copy p {
+        font-size: 14px;
+      }
+
+      .hero-actions .btn {
+        width: 100%;
+      }
+
+      .atlas-stage {
+        min-height: 330px;
+      }
+
+      .atlas-ring {
+        width: 270px;
+      }
+
+      .atlas-ring::before {
+        inset: 27px;
+      }
+
+      .atlas-core {
+        width: 155px;
+        height: 155px;
+        border-radius: 25px;
+      }
+
+      .atlas-core .symbol {
+        font-size: 63px;
+      }
+
+      .atlas-core strong {
+        font-size: 21px;
+        letter-spacing: 4px;
+      }
+
+      .atlas-core small {
+        font-size: 7px;
+      }
+
+      .orbit-label {
+        font-size: 7px;
+        padding: 9px;
+      }
+
+      .orbit-one { right: 0; top: 15px; }
+      .orbit-two { left: 0; bottom: 52px; }
+      .orbit-three { right: 0; bottom: 0; }
+
+      .section-header h2 {
+        letter-spacing: -1px;
+      }
+
+      .product-grid,
+      .roadmap-grid,
+      .token-shell,
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .product-card {
+        min-height: 310px;
+      }
+
+      .concept-metrics {
+        grid-template-columns: 1fr;
+      }
+
+      .concept-metric {
+        min-height: 70px;
+      }
+
+      .concept-map {
+        height: 185px;
+      }
+
+      .token-stats {
+        gap: 9px;
+      }
+
+      .token-stat {
+        min-height: 105px;
+        padding: 17px;
+      }
+
+      .token-stat strong {
+        font-size: 22px;
+      }
+
+      .social-links .btn {
+        flex: 1 1 135px;
+      }
+    }
+
+    @media(prefers-reduced-motion:reduce) {
+      html { scroll-behavior: auto; }
+      *,*::before,*::after {
+        animation: none !important;
+        transition: none !important;
+      }
+      .reveal { opacity: 1; transform: none; }
+    }
+  </style>
 </head>
 
 <body>
 
-    <!-- =========================================
-         HEADER
-    ========================================== -->
+  <!-- HEADER -->
 
-    <header class="site-header">
+  <header class="header">
+    <div class="container header-inner">
 
-        <a class="brand" href="#home">
-            <span class="brand-symbol">◉</span>
+      <a href="#home" class="brand" aria-label="SNAO World home">
+        <div class="brand-mark">S</div>
+        <div class="brand-name">
+          <strong>SNAO</strong>
+          <small>WORLD</small>
+        </div>
+      </a>
 
-            <span class="brand-text">
-                <strong>SNAO</strong>
-                <small>Ocean Intelligence</small>
+      <nav class="nav" id="navigation" aria-label="Main navigation">
+        <a href="#home">Home</a>
+        <a href="#platforms">Platforms</a>
+        <a href="#atlas">ATLAS</a>
+        <a href="#token">Token</a>
+        <a href="#roadmap">Roadmap</a>
+        <a href="about.html">About</a>
+        <a href="whitepaper.html">Whitepaper</a>
+        <a href="#community">Community</a>
+        <a href="sale.html" class="header-buy">Public Sale</a>
+      </nav>
+
+      <button
+        id="menuToggle"
+        class="menu-btn"
+        type="button"
+        aria-label="Toggle navigation"
+        aria-controls="navigation"
+        aria-expanded="false"
+      >☰</button>
+
+    </div>
+  </header>
+
+  <main>
+
+    <!-- HERO -->
+
+    <section class="hero" id="home">
+      <div class="container hero-layout">
+
+        <div class="hero-copy">
+          <span class="eyebrow">
+            SNAO World Technology Ecosystem
+          </span>
+
+          <h1>
+            Intelligence
+            <span class="gradient-text">
+              Beyond
             </span>
-        </a>
+            Boundaries.
+          </h1>
 
-        <nav class="main-nav">
+          <p>
+            We are developing a connected technology ecosystem
+            spanning enterprise intelligence, digital security,
+            automation and crypto market research.
 
-    <a href="#home">
-        Home
-    </a>
+            Meet SNAO World ATLAS and discover our next chapter.
+          </p>
 
-            <a href="sale.html">
-    Public Sale
-</a>
+          <div class="hero-actions">
+            <a href="#atlas" class="btn btn-primary">
+              Discover ATLAS →
+            </a>
 
-    <a href="about.html">
-    About
-</a>
+            <a href="#platforms" class="btn btn-outline">
+              Explore Our Ecosystem
+            </a>
+          </div>
 
-    <a href="#features">
-        Intelligence
-    </a>
-
-    <a href="#terminal">
-        Terminal
-    </a>
-
-    <a href="#ecosystem">
-    Ecosystem
-</a>
-
-<a href="token.html">
-    Token
-</a>
-
-<a href="whitepaper.html">
-    Whitepaper
-</a>
-
-<a href="#roadmap">
-    Roadmap
-</a>
-
-<a href="#faq">
-    FAQ
-</a>
-
-    <span class="nav-launch-app" style="cursor: default; opacity: 0.65;">
-    App Coming Soon
-</span>
-
-</nav>
-
-        <a class="header-cta" href="sale.html">
-    Public Sale
-</a>
-
-        <button
-            class="menu-toggle"
-            type="button"
-            aria-label="Open navigation menu"
-            aria-expanded="false"
-        >
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
-
-    </header>
-
-
-    <main>
-
-        <!-- =========================================
-     SNAO PUBLIC SALE
-========================================== -->
-
-<section class="snao-public-sale" id="sale">
-
-    <div class="sale-glow sale-glow-one"></div>
-    <div class="sale-glow sale-glow-two"></div>
-
-    <div class="sale-shell">
-
-        <div class="sale-intro">
-
-            <span class="sale-status">
-    <i></i>
-    PUBLIC SALE • LIVE NOW
-</span>
-
-<h1>
-    The Ocean
-    <span>Is Moving.</span>
-</h1>
-
-<p class="sale-lead">
-    The SNAO Public Sale is now live on BNB Smart Chain
-    with progressive pricing across 1,800 lots.
-</p>
-
-            <div class="sale-countdown">
-
-                <div>
-                    <strong id="saleDays">--</strong>
-                    <span>Days</span>
-                </div>
-
-                <div>
-                    <strong id="saleHours">--</strong>
-                    <span>Hours</span>
-                </div>
-
-                <div>
-                    <strong id="saleMinutes">--</strong>
-                    <span>Minutes</span>
-                </div>
-
-                <div>
-                    <strong id="saleSeconds">--</strong>
-                    <span>Seconds</span>
-                </div>
-
-            </div>
-
-            <div class="sale-highlights">
-
-                <div>
-                    <span>Initial Price</span>
-                    <strong>$0.001</strong>
-                </div>
-
-                <div>
-                    <span>Public Allocation</span>
-                    <strong>45M SNAO</strong>
-                </div>
-
-                <div>
-                    <span>Soft Cap</span>
-                    <strong>$250K</strong>
-                </div>
-
-                <div>
-                    <span>Hard Cap</span>
-                    <strong>$5M</strong>
-                </div>
-
-            </div>
-
-            <div class="hero-exchange-preview">
-    <span class="exchange-preview-label">GLOBAL EXCHANGE AMBITION</span>
-
-    <div class="exchange-preview-names">
-        <strong>BINANCE</strong>
-        <span>•</span>
-        <strong>BITGET</strong>
-        <span>•</span>
-        <strong>BYBIT</strong>
-    </div>
-
-    <p>
-        Future listing targets as the SNAO ecosystem grows.
-        <a href="#exchange-ambition">View our exchange ambition →</a>
-    </p>
-</div>
-
+          <div class="hero-note">
+            SNAO World ATLAS is in development.
+            Initial release planned.
+          </div>
         </div>
 
+        <div class="atlas-stage" aria-label="ATLAS concept visualization">
+          <div class="atlas-glow"></div>
 
-        <div class="sale-panel">
-
-            <div class="sale-panel-header">
-
-                <span class="sale-label">
-    SNAO PUBLIC SALE
-</span>
-
-<h2>
-    $SNAO Public Sale Is Live
-</h2>
-                </div>
-
-                <span class="sale-network">
-    BNB SMART CHAIN
-</span>
-
+          <div class="atlas-ring">
+            <div class="atlas-core">
+              <div class="symbol">S</div>
+              <strong>ATLAS</strong>
+              <small>INTELLIGENCE OS</small>
             </div>
 
+            <span class="orbit-label orbit-one">
+              AI INTELLIGENCE
+            </span>
 
-            <div class="sale-progress-copy">
+            <span class="orbit-label orbit-two">
+              RISK ANALYSIS
+            </span>
 
-                <span>Sale Progress</span>
-
-                <strong id="saleProgressText">
-    SALE LIVE
-</strong>
-
-            </div>
-
-            <div class="sale-progress-track">
-                <div
-                    class="sale-progress-fill"
-                    id="saleProgressFill"
-                    style="width: 0%;"
-                ></div>
-            </div>
-
-
-            <div class="sale-data-grid">
-
-                <div>
-                    <span>Current Price</span>
-                    <strong id="saleCurrentPrice">
-                        $0.001
-                    </strong>
-                </div>
-
-                <div>
-                    <span>SNAO Sold</span>
-                    <strong id="saleTokensSold">
-                        0 / 45M
-                    </strong>
-                </div>
-
-                <div>
-                    <span>Raised</span>
-                    <strong id="saleRaised">
-                        $0
-                    </strong>
-                </div>
-
-                <div>
-                    <span>Payment</span>
-                    <strong>
-                        USDT
-                    </strong>
-                </div>
-
-            </div>
-
-
-            <div class="sale-buy-box">
-
-                <label for="saleUsdtAmount">
-                    You pay
-                </label>
-
-                <div class="sale-input-wrap">
-
-                    <input
-    id="saleUsdtAmount"
-    type="number"
-    min="0"
-    step="0.01"
-    placeholder="0.00"
-    inputmode="decimal"
->
-
-                    <span>
-                        USDT
-                    </span>
-
-                </div>
-
-                <div class="sale-conversion">
-
-                    <span>You receive</span>
-
-                    <strong id="saleReceiveAmount">
-                        -- SNAO
-                    </strong>
-
-                </div>
-
-                <a
-    class="sale-connect-button"
-    id="saleConnectWallet"
-    href="sale.html"
->
-    BUY SNAO NOW
-</a>
-
-            </div>
-
-
-            <div class="sale-security">
-
-    <span>◈</span>
-
-    <p>
-        Public Sale is live on BNB Smart Chain.
-        Purchases are completed through the official
-        SNAO sale page.
-    </p>
-
-</div>
-
+            <span class="orbit-label orbit-three">
+              AUTOMATION
+            </span>
+          </div>
         </div>
 
-    </div>
-
-
-    <div class="sale-footer-strip">
-
-        <span>
-            25,000 SNAO PER LOT
-        </span>
-
-        <i></i>
-
-        <span>
-            1,800 PROGRESSIVE LOTS
-        </span>
-
-        <i></i>
-
-        <span>
-            MAX 2.5M SNAO PER TRANSACTION
-        </span>
-
-        <i></i>
-
-        <span>
-            USDT PAYMENT
-        </span>
-
-    </div>
-
-</section>
-
-
-<style>
-
-.snao-public-sale {
-    position: relative;
-    overflow: hidden;
-    padding: 150px 6% 80px;
-    background:
-        radial-gradient(circle at 20% 20%, rgba(0, 210, 255, .13), transparent 35%),
-        radial-gradient(circle at 85% 40%, rgba(0, 119, 255, .12), transparent 32%),
-        linear-gradient(180deg, #020914 0%, #03111d 55%, #020914 100%);
-    color: #fff;
-}
-
-.sale-shell {
-    position: relative;
-    z-index: 2;
-    max-width: 1240px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1.05fr .95fr;
-    gap: 70px;
-    align-items: center;
-}
-
-.sale-status {
-    display: inline-flex;
-    align-items: center;
-    gap: 9px;
-    padding: 8px 13px;
-    border: 1px solid rgba(55, 220, 255, .25);
-    border-radius: 30px;
-    background: rgba(4, 27, 43, .7);
-    color: #78e8ff;
-    font-size: 12px;
-    letter-spacing: 1.5px;
-    font-weight: 700;
-}
-
-.sale-status i {
-    width: 7px;
-    height: 7px;
-    border-radius: 50%;
-    background: #33e5ff;
-    box-shadow: 0 0 14px #33e5ff;
-}
-
-.sale-intro h1 {
-    margin: 24px 0 18px;
-    font-size: clamp(52px, 7vw, 92px);
-    line-height: .9;
-    letter-spacing: -4px;
-}
-
-.sale-intro h1 span {
-    display: block;
-    color: #42dfff;
-}
-
-.sale-lead {
-    max-width: 610px;
-    color: #9db1c2;
-    font-size: 17px;
-    line-height: 1.75;
-}
-
-.sale-countdown {
-    display: flex;
-    gap: 12px;
-    margin-top: 34px;
-}
-
-.sale-countdown div {
-    min-width: 83px;
-    padding: 15px 12px;
-    text-align: center;
-    border: 1px solid rgba(92, 215, 255, .16);
-    background: rgba(5, 24, 39, .7);
-    border-radius: 12px;
-}
-
-.sale-countdown strong {
-    display: block;
-    color: #fff;
-    font-size: 25px;
-}
-
-.sale-countdown span {
-    color: #6f899e;
-    font-size: 10px;
-    text-transform: uppercase;
-    letter-spacing: 1.3px;
-}
-
-.sale-highlights {
-    margin-top: 35px;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    border-top: 1px solid rgba(255,255,255,.08);
-    padding-top: 25px;
-}
-
-.sale-highlights span,
-.sale-data-grid span {
-    display: block;
-    color: #6f899e;
-    font-size: 11px;
-    margin-bottom: 6px;
-}
-
-.sale-highlights strong {
-    font-size: 17px;
-}
-
-.sale-panel {
-    padding: 30px;
-    border-radius: 24px;
-    border: 1px solid rgba(68, 220, 255, .22);
-    background:
-        linear-gradient(145deg, rgba(8, 30, 47, .94), rgba(3, 15, 26, .96));
-    box-shadow:
-        0 30px 80px rgba(0,0,0,.35),
-        0 0 80px rgba(0, 183, 255, .07);
-    backdrop-filter: blur(18px);
-}
-
-.sale-panel-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-}
-
-.sale-label {
-    color: #46dcff;
-    font-size: 10px;
-    letter-spacing: 2px;
-}
-
-.sale-panel h2 {
-    margin: 6px 0 0;
-    font-size: 31px;
-}
-
-.sale-network {
-    padding: 7px 10px;
-    border-radius: 7px;
-    background: rgba(240, 185, 11, .1);
-    color: #f0b90b;
-    font-size: 10px;
-    font-weight: 700;
-}
-
-.sale-progress-copy {
-    margin-top: 30px;
-    display: flex;
-    justify-content: space-between;
-    color: #7890a3;
-    font-size: 12px;
-}
-
-.sale-progress-copy strong {
-    color: #d9f7ff;
-}
-
-.sale-progress-track {
-    height: 8px;
-    margin-top: 10px;
-    border-radius: 20px;
-    overflow: hidden;
-    background: rgba(255,255,255,.07);
-}
-
-.sale-progress-fill {
-    height: 100%;
-    border-radius: inherit;
-    background: linear-gradient(90deg, #00a9e8, #46e5ff);
-}
-
-.sale-data-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1px;
-    margin-top: 25px;
-    background: rgba(255,255,255,.07);
-    border: 1px solid rgba(255,255,255,.07);
-    border-radius: 14px;
-    overflow: hidden;
-}
-
-.sale-data-grid div {
-    padding: 17px;
-    background: #071827;
-}
-
-.sale-data-grid strong {
-    font-size: 15px;
-}
-
-.sale-buy-box {
-    margin-top: 25px;
-}
-
-.sale-buy-box label {
-    display: block;
-    margin-bottom: 8px;
-    color: #8298aa;
-    font-size: 12px;
-}
-
-.sale-input-wrap {
-    display: flex;
-    align-items: center;
-    border: 1px solid rgba(74, 215, 255, .18);
-    border-radius: 12px;
-    background: #04111d;
-}
-
-.sale-input-wrap input {
-    width: 100%;
-    padding: 17px;
-    border: 0;
-    outline: 0;
-    background: transparent;
-    color: #fff;
-    font-size: 19px;
-}
-
-.sale-input-wrap span {
-    padding-right: 17px;
-    color: #67dff9;
-    font-weight: 700;
-}
-
-.sale-conversion {
-    display: flex;
-    justify-content: space-between;
-    padding: 12px 2px 18px;
-    color: #71899d;
-    font-size: 12px;
-}
-
-.sale-conversion strong {
-    color: #fff;
-}
-
-.sale-connect-button {
-    display: block;
-    width: 100%;
-    padding: 17px;
-    border: 0;
-    border-radius: 12px;
-    background: linear-gradient(90deg, #0cb8e8, #53e4ff);
-    color: #021018;
-    font-weight: 800;
-    letter-spacing: .5px;
-    text-align: center;
-    text-decoration: none;
-    cursor: pointer;
-    opacity: 1;
-}
-
-.sale-security {
-    display: flex;
-    gap: 10px;
-    margin-top: 18px;
-    padding-top: 18px;
-    border-top: 1px solid rgba(255,255,255,.07);
-    color: #657e92;
-    font-size: 11px;
-    line-height: 1.55;
-}
-
-.sale-security p {
-    margin: 0;
-}
-
-.sale-security span {
-    color: #36d9fa;
-}
-
-.sale-footer-strip {
-    position: relative;
-    z-index: 2;
-    max-width: 1240px;
-    margin: 65px auto 0;
-    padding-top: 24px;
-    border-top: 1px solid rgba(255,255,255,.08);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
-    flex-wrap: wrap;
-    color: #607b90;
-    font-size: 10px;
-    letter-spacing: 1.3px;
-}
-
-.sale-footer-strip i {
-    width: 3px;
-    height: 3px;
-    border-radius: 50%;
-    background: #28dfff;
-}
-
-@media (max-width: 900px) {
-
-    .snao-public-sale {
-        padding: 120px 20px 60px;
-    }
-
-    .sale-shell {
-        grid-template-columns: 1fr;
-        gap: 45px;
-    }
-
-    .sale-intro h1 {
-        letter-spacing: -2px;
-    }
-
-    .sale-highlights {
-        grid-template-columns: 1fr 1fr;
-        gap: 20px;
-    }
-
-}
-
-@media (max-width: 520px) {
-
-    .sale-countdown {
-        gap: 6px;
-    }
-
-    .sale-countdown div {
-        min-width: 0;
-        flex: 1;
-        padding: 12px 5px;
-    }
-
-    .sale-countdown strong {
-        font-size: 20px;
-    }
-
-    .sale-panel {
-        padding: 21px;
-    }
-
-}
-
-    /* =========================================
-   PUBLIC SALE — ABOVE THE FOLD OPTIMIZATION
-========================================= */
-
-@media (min-width: 901px) {
-
-    .snao-public-sale {
-        min-height: calc(100vh - 88px);
-        padding: 105px 6% 32px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-    }
-
-    .sale-shell {
-        width: 100%;
-        gap: 58px;
-        align-items: center;
-    }
-
-    .sale-intro h1 {
-        margin: 18px 0 14px;
-        font-size: clamp(54px, 5.6vw, 78px);
-        line-height: .92;
-    }
-
-    .sale-lead {
-        margin: 0;
-        max-width: 590px;
-        font-size: 15px;
-        line-height: 1.6;
-    }
-
-    .sale-countdown {
-        margin-top: 24px;
-    }
-
-    .sale-countdown div {
-        min-width: 82px;
-        padding: 11px 10px;
-    }
-
-    .sale-countdown strong {
-        font-size: 23px;
-    }
-
-    .sale-highlights {
-        margin-top: 24px;
-        padding-top: 18px;
-    }
-
-    .sale-panel {
-        padding: 24px 30px;
-    }
-
-    .sale-panel h2 {
-        font-size: 29px;
-    }
-
-    .sale-progress-copy {
-        margin-top: 20px;
-    }
-
-    .sale-data-grid {
-        margin-top: 18px;
-    }
-
-    .sale-data-grid div {
-        padding: 13px 17px;
-    }
-
-    .sale-buy-box {
-        margin-top: 18px;
-    }
-
-    .sale-input-wrap input {
-        padding: 13px 17px;
-    }
-
-    .sale-conversion {
-        padding: 8px 2px 12px;
-    }
-
-    .sale-connect-button {
-        padding: 15px;
-    }
-
-    .sale-security {
-        margin-top: 13px;
-        padding-top: 13px;
-    }
-
-    .sale-footer-strip {
-        margin-top: 28px;
-        padding-top: 17px;
-    }
-
-}
-
-        /* =========================================
-   GLOBAL EXCHANGE AMBITION
-========================================= */
-
-.exchange-ambition {
-    position: relative;
-    overflow: hidden;
-    padding: 110px 6%;
-    background:
-        radial-gradient(circle at 50% 0%,
-        rgba(0, 207, 255, 0.10),
-        transparent 42%),
-        #020d18;
-    border-top: 1px solid rgba(80, 210, 255, 0.08);
-}
-
-.exchange-ambition-inner {
-    width: 100%;
-    max-width: 1180px;
-    margin: 0 auto;
-    text-align: center;
-}
-
-.exchange-ambition .section-tag {
-    display: inline-block;
-    margin-bottom: 20px;
-    color: #27d8ff;
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 0.18em;
-}
-
-.exchange-ambition h2 {
-    margin: 0 auto;
-    max-width: 760px;
-    color: #ffffff;
-    font-size: clamp(42px, 5vw, 68px);
-    line-height: 1;
-    letter-spacing: -0.04em;
-}
-
-.exchange-ambition h2 span {
-    display: block;
-    color: #27d8ff;
-}
-
-.exchange-intro {
-    max-width: 720px;
-    margin: 26px auto 0;
-    color: #9eb2c3;
-    font-size: 17px;
-    line-height: 1.7;
-}
-
-.exchange-targets {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 14px;
-    margin-top: 48px;
-}
-
-.exchange-target {
-    position: relative;
-    padding: 25px 18px;
-    border: 1px solid rgba(39, 216, 255, 0.20);
-    border-radius: 14px;
-    background: rgba(5, 23, 37, 0.76);
-    transition:
-        transform 0.25s ease,
-        border-color 0.25s ease,
-        background 0.25s ease;
-}
-
-.exchange-target:hover {
-    transform: translateY(-4px);
-    border-color: rgba(39, 216, 255, 0.55);
-    background: rgba(7, 31, 48, 0.94);
-}
-
-.exchange-target strong {
-    display: block;
-    color: #ffffff;
-    font-size: 20px;
-    letter-spacing: 0.04em;
-}
-
-.exchange-target span {
-    display: block;
-    margin-top: 7px;
-    color: #27d8ff;
-    font-size: 9px;
-    font-weight: 700;
-    letter-spacing: 0.18em;
-}
-
-.exchange-disclaimer {
-    max-width: 850px;
-    margin: 36px auto 0;
-    padding: 18px 22px;
-    border-top: 1px solid rgba(255,255,255,0.08);
-    color: #72899b;
-    font-size: 12px;
-    line-height: 1.7;
-}
-
-.exchange-disclaimer strong {
-    color: #a9bdcb;
-}
-
-/* Mobile */
-@media (max-width: 800px) {
-
-    .exchange-ambition {
-        padding: 80px 22px;
-    }
-
-    .exchange-targets {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .exchange-ambition h2 {
-        font-size: 42px;
-    }
-}
-
-@media (max-width: 520px) {
-
-    .exchange-targets {
-        grid-template-columns: 1fr;
-    }
-
-    .exchange-target {
-        padding: 20px 16px;
-    }
-}
-
-/* =========================================
-   HERO — EXCHANGE AMBITION PREVIEW
-========================================= */
-
-.hero-exchange-preview {
-    margin-top: 26px;
-    padding: 18px 20px;
-    border: 1px solid rgba(39, 216, 255, 0.18);
-    border-radius: 14px;
-    background:
-        linear-gradient(
-            135deg,
-            rgba(5, 25, 40, 0.82),
-            rgba(3, 15, 26, 0.92)
-        );
-    box-shadow:
-        0 15px 40px rgba(0, 0, 0, 0.20),
-        inset 0 0 25px rgba(39, 216, 255, 0.025);
-}
-
-.exchange-preview-label {
-    display: block;
-    margin-bottom: 12px;
-    color: #27d8ff;
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 0.18em;
-}
-
-.exchange-preview-names {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    flex-wrap: wrap;
-}
-
-.exchange-preview-names strong {
-    color: #ffffff;
-    font-size: 17px;
-    letter-spacing: 0.05em;
-}
-
-.exchange-preview-names span {
-    color: #27d8ff;
-    font-size: 10px;
-}
-
-.hero-exchange-preview p {
-    margin: 11px 0 0;
-    color: #71899d;
-    font-size: 11px;
-    line-height: 1.6;
-}
-
-.hero-exchange-preview a {
-    margin-left: 5px;
-    color: #27d8ff;
-    text-decoration: none;
-    font-weight: 600;
-}
-
-.hero-exchange-preview a:hover {
-    color: #ffffff;
-}
-
-/* Mobile */
-
-@media (max-width: 520px) {
-
-    .hero-exchange-preview {
-        margin-top: 22px;
-        padding: 16px;
-    }
-
-    .exchange-preview-names {
-        gap: 9px;
-    }
-
-    .exchange-preview-names strong {
-        font-size: 14px;
-    }
-
-    .hero-exchange-preview p {
-        font-size: 10px;
-    }
-}
-
-/* =========================================
-   FINAL DESKTOP LAYOUT FIX
-========================================= */
-
-@media (min-width: 901px) {
-
-    .hero.hero-cinematic {
-        min-height: 760px !important;
-        height: auto !important;
-        padding: 80px 5% 60px !important;
-        margin: 0 !important;
-        display: flex !important;
-        align-items: center !important;
-    }
-
-    .hero-cinematic-content {
-        min-height: 0 !important;
-        height: auto !important;
-        margin: 0 auto !important;
-        align-items: center !important;
-    }
-
-    .hero-intelligence-visual {
-        min-height: 600px !important;
-        height: 600px !important;
-        margin: 0 !important;
-    }
-
-    .hero-mini-dashboard {
-        bottom: 10px !important;
-    }
-
-    .ocean-activity-section {
-        margin-top: 0 !important;
-    }
-
-    .stats-section {
-        margin-top: 0 !important;
-    }
-}
-    
-</style>
-
-
-<script>
-
-(function () {
-
-    const saleStart =
-        new Date("2026-11-01T15:00:00Z").getTime();
-
-    function updateSaleCountdown() {
-
-        const now =
-            new Date().getTime();
-
-        let distance =
-            saleStart - now;
-
-        if (distance <= 0) {
-    distance = 0;
-
-    const button =
-        document.getElementById(
-            "saleConnectWallet"
-        );
-
-    const countdown =
-        document.querySelector(
-            ".sale-countdown"
-        );
-
-    if (button) {
-        button.textContent = "BUY SNAO NOW";
-        button.href = "sale.html";
-    }
-
-    if (countdown) {
-        countdown.style.display = "none";
-    }
-}
-
-        const days =
-            Math.floor(
-                distance /
-                (1000 * 60 * 60 * 24)
-            );
-
-        const hours =
-            Math.floor(
-                (distance %
-                (1000 * 60 * 60 * 24)) /
-                (1000 * 60 * 60)
-            );
-
-        const minutes =
-            Math.floor(
-                (distance %
-                (1000 * 60 * 60)) /
-                (1000 * 60)
-            );
-
-        const seconds =
-            Math.floor(
-                (distance %
-                (1000 * 60)) /
-                1000
-            );
-
-        const d =
-            document.getElementById(
-                "saleDays"
-            );
-
-        const h =
-            document.getElementById(
-                "saleHours"
-            );
-
-        const m =
-            document.getElementById(
-                "saleMinutes"
-            );
-
-        const s =
-            document.getElementById(
-                "saleSeconds"
-            );
-
-        if (d) d.textContent = days;
-        if (h) h.textContent =
-            String(hours).padStart(2, "0");
-        if (m) m.textContent =
-            String(minutes).padStart(2, "0");
-        if (s) s.textContent =
-            String(seconds).padStart(2, "0");
-
-    }
-
-    updateSaleCountdown();
-
-    setInterval(
-        updateSaleCountdown,
-        1000
-    );
-
-})();
-
-</script>
-
-        <!-- =========================================
-             HERO
-        ========================================== -->
-
-        <section class="hero hero-cinematic" id="home">
-
-    <!-- =========================================
-         OCEAN BACKGROUND
-    ========================================== -->
-
-    <div class="hero-ocean-scene" aria-hidden="true">
-
-        <div class="ocean-depth ocean-depth-back"></div>
-        <div class="ocean-depth ocean-depth-middle"></div>
-
-        <div class="ocean-light-ray light-ray-one"></div>
-        <div class="ocean-light-ray light-ray-two"></div>
-        <div class="ocean-light-ray light-ray-three"></div>
-
-        <div class="ocean-glow ocean-glow-one"></div>
-        <div class="ocean-glow ocean-glow-two"></div>
-
-        <div class="ocean-bubbles">
-            <span class="bubble bubble-1"></span>
-            <span class="bubble bubble-2"></span>
-            <span class="bubble bubble-3"></span>
-            <span class="bubble bubble-4"></span>
-            <span class="bubble bubble-5"></span>
-            <span class="bubble bubble-6"></span>
-            <span class="bubble bubble-7"></span>
-            <span class="bubble bubble-8"></span>
+      </div>
+    </section>
+
+    <!-- PLATFORMS -->
+
+    <section class="section products" id="platforms">
+      <div class="container">
+
+        <div class="section-header reveal">
+          <span class="eyebrow">Our Ecosystem</span>
+
+          <h2>
+            Three platforms.
+            <span class="gradient-text">One vision.</span>
+          </h2>
+
+          <p>
+            SNAO World is moving beyond a single crypto product.
+            Our roadmap brings together business technology,
+            digital experiences and market intelligence.
+          </p>
         </div>
 
-        <canvas
-            class="ocean-particle-canvas"
-            id="oceanParticleCanvas"
-        ></canvas>
+        <div class="product-grid">
 
-        <!-- Área reservada para baleias 3D realistas -->
-        <div
-            class="whale-3d-stage"
-            id="whale3dStage"
-        ></div>
+          <article class="product-card reveal">
+            <div class="product-icon">◈</div>
 
-    </div>
-
-
-    <!-- =========================================
-         HERO CONTENT
-    ========================================== -->
-
-    <div class="hero-cinematic-content">
-
-        <!-- Conteúdo esquerdo -->
-
-        <div class="hero-cinematic-copy">
-
-            <span class="eyebrow">
-    <i class="eyebrow-pulse"></i>
-    BUILT FOR THE CRYPTO OCEAN
-</span>
-
-            <h1>
-    Intelligence Before Hype.
-
-</h1>
+            <h3>SNAO World ATLAS</h3>
 
             <p>
-    AI-powered intelligence, on-chain data and market
-    signal concepts designed to help you understand
-    market movements and make more informed decisions.
-</p>
-
-            <div class="hero-actions">
-
-                <span
-    class="button button-primary"
-    style="cursor: default; opacity: 0.65;"
->
-    App Coming Soon
-</span>
-
-                <a
-                    class="button button-secondary"
-                    href="#features"
-                >
-                    Explore Intelligence
-                </a>
-
-            </div>
-
-            <div class="hero-trust">
-
-                <div class="trust-dot"></div>
-
-                <span>
-                    Building a more transparent crypto ocean.
-                </span>
-
-            </div>
-
-        </div>
-
-
-        <!-- =========================================
-             OCEAN INTELLIGENCE CORE
-        ========================================== -->
-
-        <div
-            class="hero-intelligence-visual"
-            aria-hidden="true"
-        >
-
-            <div class="core-energy-field"></div>
-
-            <div class="intelligence-orbit orbit-a">
-                <span class="orbit-node"></span>
-            </div>
-
-            <div class="intelligence-orbit orbit-b">
-                <span class="orbit-node"></span>
-            </div>
-
-            <div class="intelligence-orbit orbit-c">
-                <span class="orbit-node"></span>
-            </div>
-
-
-            <div class="intelligence-core">
-
-                <div class="core-inner-ring"></div>
-
-                <span>SNAO</span>
-
-                <strong>Ocean Core</strong>
-
-                <small>
-    Ocean Intelligence Preview
-</small>
-
-<div class="core-status">
-    <i></i>
-    Ecosystem Building
-</div>
-
-            </div>
-
-
-            <!-- Linhas de conexão -->
-
-            <div class="intelligence-line line-whale"></div>
-            <div class="intelligence-line line-ai"></div>
-            <div class="intelligence-line line-money"></div>
-            <div class="intelligence-line line-sentiment"></div>
-            <div class="intelligence-line line-liquidity"></div>
-            <div class="intelligence-line line-risk"></div>
-
-
-            <!-- Cards -->
-
-            <div class="intelligence-card card-whale">
-
-                <span class="card-symbol">◉</span>
-
-                <div>
-                    <strong>Whale Activity</strong>
-<small>Movement detection preview</small>
-                </div>
-
-            </div>
-
-            <div class="intelligence-card card-ai">
-
-                <span class="card-symbol">✦</span>
-
-                <div>
-                    <strong>AI Intelligence</strong>
-<small>Analysis preview</small>
-                </div>
-
-            </div>
-
-            <div class="intelligence-card card-money">
-
-                <span class="card-symbol">⌁</span>
-
-                <div>
-                    <strong>Smart Money</strong>
-<small>Capital flow preview</small>
-                </div>
-
-            </div>
-
-            <div class="intelligence-card card-sentiment">
-
-                <span class="card-symbol">↗</span>
-
-                <div>
-                    <strong>Market Sentiment</strong>
-<small>Sentiment analysis preview</small>
-                </div>
-
-            </div>
-
-            <div class="intelligence-card card-liquidity">
-
-                <span class="card-symbol">≈</span>
-
-                <div>
-                    <strong>Liquidity Flow</strong>
-<small>Liquidity analysis preview</small>
-                </div>
-
-            </div>
-
-            <div class="intelligence-card card-risk">
-
-                <span class="card-symbol">◇</span>
-
-                <div>
-                    <strong>Risk Monitor</strong>
-<small>Risk analysis preview</small>
-                </div>
-
-            </div>
-
-
-            <!-- Mini dashboard -->
-
-            <div class="hero-mini-dashboard">
-
-    <div class="dashboard-map">
-
-        <strong class="dashboard-title">
-            GLOBAL OCEAN FLOW
-        </strong>
-
-        <div class="map-grid"></div>
-
-        <div class="ocean-map-shape"></div>
-
-        <span class="map-dot map-dot-one"></span>
-        <span class="map-dot map-dot-two"></span>
-        <span class="map-dot map-dot-three"></span>
-        <span class="map-dot map-dot-four"></span>
-        <span class="map-dot map-dot-five"></span>
-
-    </div>
-
-    <div class="dashboard-side">
-
-        <div class="dashboard-metric">
-            <span>Whale Activity</span>
-<strong>Preview</strong>
-        </div>
-
-        <div class="dashboard-metric">
-            <span>Market Sentiment</span>
-<strong class="positive">Preview</strong>
-        </div>
-
-        <div class="dashboard-metric">
-            <span>Liquidity Flow</span>
-<strong class="active-status">Preview</strong>
-        </div>
-
-    </div>
-
-</div>
-
-        </div>
-
-    </div>
-
-</section>
-
-<!-- =========================================
-     LIVE OCEAN ACTIVITY
-========================================== -->
-
-<section class="ocean-activity-section" aria-labelledby="oceanActivityTitle">
-
-    <div class="ocean-activity-heading">
-
-        <span>
-    Ocean Activity
-</span>
-
-<h2 id="oceanActivityTitle">
-    The Ocean is moving.
-</h2>
-
-<p>
-    Community activity across the SNAO website.
-</p>
-
-    </div>
-
-    <div class="ocean-activity-grid">
-
-        <article class="ocean-activity-card">
-
-            <span class="ocean-activity-icon" aria-hidden="true">
-                ◉
+              Enterprise intelligence software designed to connect
+              business information, financial analysis, risk awareness,
+              security insights and operational automation.
+            </p>
+
+            <span class="product-state">
+              IN DEVELOPMENT · ENTERPRISE
             </span>
+          </article>
 
-            <div>
+          <article class="product-card reveal">
+            <div class="product-icon">◉</div>
 
+            <h3>SNAO Ocean</h3>
+
+            <p>
+              An independent mobile application planned for
+              Android and iOS, with community participation,
+              gamified activities, points and digital experiences.
+            </p>
+
+            <span class="product-state">
+              IN DEVELOPMENT · MOBILE
+            </span>
+          </article>
+
+          <article class="product-card reveal">
+            <div class="product-icon">≈</div>
+
+            <h3>Ocean Intelligence</h3>
+
+            <p>
+              Crypto intelligence concepts focused on
+              whale movements, capital flows, liquidity,
+              risk signals and AI-assisted market research.
+            </p>
+
+            <span class="product-state">
+              DEVELOPMENT ROADMAP · CRYPTO
+            </span>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ATLAS -->
+
+    <section class="section technology" id="atlas">
+      <div class="container tech-layout">
+
+        <div class="tech-copy reveal">
+
+          <span class="eyebrow">
+            Introducing SNAO World ATLAS
+          </span>
+
+          <h2>
+            A new perspective on
+            <span class="gradient-text">
+              enterprise intelligence.
+            </span>
+          </h2>
+
+          <p>
+            Businesses operate across disconnected information,
+            processes and systems.
+          </p>
+
+          <p>
+            ATLAS is being developed to bring a clearer,
+            more connected view of business operations
+            into a unified digital environment.
+          </p>
+
+          <div class="feature-list">
+
+            <div class="feature">
+              <div class="feature-icon">◈</div>
+              <div>
+                <strong>AI Business Intelligence</strong>
                 <small>
-                    Total Visitors
+                  Support for analyzing information,
+                  understanding patterns and improving decisions.
                 </small>
-
-                <strong id="oceanTotalVisitors">
-                    --
-                </strong>
-
-                <p>
-                    People who have entered the SNAO ecosystem.
-                </p>
-
+              </div>
             </div>
 
-        </article>
-
-        <article class="ocean-activity-card">
-
-            <span class="ocean-activity-icon ocean-online-icon" aria-hidden="true">
-                ●
-            </span>
-
-            <div>
-
+            <div class="feature">
+              <div class="feature-icon">◇</div>
+              <div>
+                <strong>Financial Intelligence</strong>
                 <small>
-                    Online Now
+                  Tools envisioned for financial visibility,
+                  reporting and business analysis.
                 </small>
-
-                <strong id="oceanOnlineNow">
-                    --
-                </strong>
-
-                <p>
-                    Visitors active during the last two minutes.
-                </p>
-
+              </div>
             </div>
 
-        </article>
-
-    </div>
-
-    <div class="ocean-activity-status">
-
-        <i aria-hidden="true"></i>
-
-        <span id="oceanActivityStatus">
-            Connecting to the Ocean...
-        </span>
-
-    </div>
-
-</section>
-
-
-        <!-- =========================================
-             STATS
-        ========================================== -->
-
-        <section class="stats-section" aria-label="SNAO statistics">
-
-            <div class="stats">
-
-                <div class="stat-item">
-    <strong>200M</strong>
-    <span>Fixed SNAO Supply</span>
-</div>
-
-                <div class="stat-item">
-                    <strong data-counter="500">500+</strong>
-                    <span>Target Assets</span>
-                </div>
-
-                <div class="stat-item">
-                    <strong>24/7</strong>
-                    <span>AI Monitoring Vision</span>
-                </div>
-
-                <div class="stat-item">
-    <strong>Global</strong>
-    <span>Community Vision</span>
-</div>
-
-            </div>
-
-        </section>
-
-
-        <!-- =========================================
-             WHY SNAO
-        ========================================== -->
-
-        <section class="section intelligence-section" id="features">
-
-    <div class="section-heading">
-
-        <span class="section-tag">
-            Ocean Intelligence Modules
-        </span>
-
-        <h2>
-    Intelligence designed for the market ahead.
-</h2>
-
-<p>
-    Six connected intelligence modules being developed to analyze
-    whale activity, capital flow, market sentiment and risk conditions.
-</p>
-
-    </div>
-
-
-    <div class="intelligence-modules-grid">
-
-        <article class="intelligence-module-card">
-
-            <div class="module-card-top">
-
-                <div class="module-card-icon">
-                    🐋
-                </div>
-
-                <span class="module-card-status status-live">
-    In Development
-</span>
-
-            </div>
-
-            <span class="module-card-number">
-                01
-            </span>
-
-            <h3>
-                Whale Intelligence
-            </h3>
-
-            <p>
-    Designed to monitor large wallet movements, unusual transactions
-    and potential market manipulation signals.
-</p>
-
-            <div class="module-card-footer">
-
-                <span>
-                    Large movement tracking
-                </span>
-
-                <a href="#dashboard">
-                    Explore
-                    <b>↗</b>
-                </a>
-
-            </div>
-
-        </article>
-
-
-        <article class="intelligence-module-card">
-
-            <div class="module-card-top">
-
-                <div class="module-card-icon">
-                    🧠
-                </div>
-
-                <span class="module-card-status status-online">
-    In Development
-</span>
-
-            </div>
-
-            <span class="module-card-number">
-                02
-            </span>
-
-            <h3>
-                Sardine AI
-            </h3>
-
-            <p>
-                Combine blockchain data, sentiment, liquidity and market
-                behavior through an artificial intelligence analysis layer.
-            </p>
-
-            <div class="module-card-footer">
-
-                <span>
-                    Intelligent analysis
-                </span>
-
-                <a href="#ecosystem">
-                    Explore
-                    <b>↗</b>
-                </a>
-
-            </div>
-
-        </article>
-
-
-        <article class="intelligence-module-card">
-
-            <div class="module-card-top">
-
-                <div class="module-card-icon">
-                    🌊
-                </div>
-
-                <span class="module-card-status status-active">
-    In Development
-</span>
-
-            </div>
-
-            <span class="module-card-number">
-                03
-            </span>
-
-            <h3>
-                Ocean Flow
-            </h3>
-
-            <p>
-                Visualize liquidity movement, capital concentration and
-                changing conditions across the crypto market.
-            </p>
-
-            <div class="module-card-footer">
-
-                <span>
-                    Liquidity visualization
-                </span>
-
-                <a href="#dashboard">
-                    Explore
-                    <b>↗</b>
-                </a>
-
-            </div>
-
-        </article>
-
-
-        <article class="intelligence-module-card">
-
-            <div class="module-card-top">
-
-                <div class="module-card-icon">
-                    📡
-                </div>
-
-                <span class="module-card-status status-monitoring">
-    In Development
-</span>
-
-            </div>
-
-            <span class="module-card-number">
-                04
-            </span>
-
-            <h3>
-                Smart Money
-            </h3>
-
-            <p>
-                Identify relevant capital flows and activity from experienced
-                wallets and high-impact market participants.
-            </p>
-
-            <div class="module-card-footer">
-
-                <span>
-                    Capital behavior signals
-                </span>
-
-                <a href="#ecosystem">
-                    Explore
-                    <b>↗</b>
-                </a>
-
-            </div>
-
-        </article>
-
-
-        <article class="intelligence-module-card">
-
-            <div class="module-card-top">
-
-                <div class="module-card-icon">
-                    📊
-                </div>
-
-                <span class="module-card-status status-positive">
-    In Development
-</span>
-
-            </div>
-
-            <span class="module-card-number">
-                05
-            </span>
-
-            <h3>
-                Market Sentiment
-            </h3>
-
-            <p>
-    Designed to analyze fear, optimism, community behavior and
-    market momentum across changing market conditions.
-</p>
-
-            <div class="module-card-footer">
-
-                <span>
-                    Behavioral intelligence
-                </span>
-
-                <a href="#dashboard">
-                    Explore
-                    <b>↗</b>
-                </a>
-
-            </div>
-
-        </article>
-
-
-        <article class="intelligence-module-card">
-
-            <div class="module-card-top">
-
-                <div class="module-card-icon">
-                    🛡️
-                </div>
-
-                <span class="module-card-status status-secure">
-    In Development
-</span>
-
-            </div>
-
-            <span class="module-card-number">
-                06
-            </span>
-
-            <h3>
-                Risk Shield
-            </h3>
-
-            <p>
-    Designed to identify abnormal conditions, elevated volatility
-    and potential market risk signals.
-</p>
-
-            <div class="module-card-footer">
-
-                <span>
-                    Risk condition monitoring
-                </span>
-
-                <a href="#dashboard">
-                    Explore
-                    <b>↗</b>
-                </a>
-
-            </div>
-
-        </article>
-
-    </div>
-
-</section>
-
-
-        <!-- =========================================
-             LIVE INTELLIGENCE
-        ========================================== -->
-
-        <section class="section dashboard-section" id="dashboard">
-
-    <div class="section-heading">
-
-        <span class="section-tag">
-    Ocean Intelligence Preview
-</span>
-
-        <h2>
-    A vision for understanding the crypto ocean.
-</h2>
-
-<p>
-    A concept interface designed to bring whale activity, liquidity,
-    sentiment and market risk into one connected intelligence experience.
-</p>
-
-    </div>
-
-    <div class="ocean-terminal">
-
-        <div class="ocean-terminal-header">
-
-            <div class="terminal-brand">
-
-                <span class="terminal-live-dot"></span>
-
-                <div>
-                    <strong>Ocean Intelligence System</strong>
-<small>Intelligence concept interface</small>
-                </div>
-
-            </div>
-
-            <div class="terminal-header-status">
-
-                <span>System Status</span>
-
-                <strong>
-    Preview
-</strong>
-
-            </div>
-
-        </div>
-
-        <div class="ocean-terminal-body">
-
-            <div class="terminal-overview">
-
-                <div class="overview-header">
-
-                    <div>
-                        <span>Ocean Status</span>
-                        <strong>Market conditions monitored</strong>
-                    </div>
-
-                    <span class="overview-status">
-    Demo
-</span>
-
-                </div>
-
-                <div class="overview-score">
-
-                    <div class="score-ring">
-
-                        <div class="score-ring-inner">
-                            <strong>74</strong>
-                            <span>Ocean Score</span>
-                        </div>
-
-                    </div>
-
-                    <div class="score-copy">
-
-                        <span>Demo condition</span>
-<strong>
-    Sample activity
-</strong>
-
-<p>
-    Illustrative whale, liquidity and risk signals
-    for interface demonstration purposes.
-</p>
-
-                    </div>
-
-                </div>
-
-                <div class="overview-flow">
-
-                    <div class="flow-header">
-
-    <span>Intelligence Flow</span>
-
-    <strong>Sample Data</strong>
-
-</div>
-
-                    <div class="flow-chart">
-
-                        <span style="--height: 34%"></span>
-                        <span style="--height: 52%"></span>
-                        <span style="--height: 43%"></span>
-                        <span style="--height: 72%"></span>
-                        <span style="--height: 58%"></span>
-                        <span style="--height: 81%"></span>
-                        <span style="--height: 66%"></span>
-                        <span style="--height: 88%"></span>
-                        <span style="--height: 74%"></span>
-                        <span style="--height: 92%"></span>
-                        <span style="--height: 79%"></span>
-                        <span style="--height: 85%"></span>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-            <div class="terminal-metrics">
-
-                <article class="ocean-metric-card">
-
-                    <div class="ocean-metric-top">
-
-                        <span class="ocean-metric-icon">🐋</span>
-
-                        <span class="ocean-metric-state state-high">
-    Demo
-</span>
-
-                    </div>
-
-                    <span class="ocean-metric-label">
-                        Whale Activity
-                    </span>
-
-                    <strong class="ocean-metric-value">
-                        87%
-                    </strong>
-
-                    <div class="ocean-metric-progress">
-                        <span style="--progress: 87%"></span>
-                    </div>
-
-                    <p>
-    Illustrative whale activity signal.
-</p>
-
-                </article>
-
-                <article class="ocean-metric-card">
-
-                    <div class="ocean-metric-top">
-
-                        <span class="ocean-metric-icon">💧</span>
-
-                        <span class="ocean-metric-state state-strong">
-    Demo
-</span>
-
-                    </div>
-
-                    <span class="ocean-metric-label">
-                        Liquidity Flow
-                    </span>
-
-                    <strong class="ocean-metric-value">
-                        74%
-                    </strong>
-
-                    <div class="ocean-metric-progress">
-                        <span style="--progress: 74%"></span>
-                    </div>
-
-                    <p>
-    Illustrative liquidity flow signal.
-</p>
-
-                </article>
-
-                <article class="ocean-metric-card">
-
-                    <div class="ocean-metric-top">
-
-                        <span class="ocean-metric-icon">🧠</span>
-
-                        <span class="ocean-metric-state state-positive">
-    Demo
-</span>
-
-                    </div>
-
-                    <span class="ocean-metric-label">
-                        Market Sentiment
-                    </span>
-
-                    <strong class="ocean-metric-value">
-                        62%
-                    </strong>
-
-                    <div class="ocean-metric-progress">
-                        <span style="--progress: 62%"></span>
-                    </div>
-
-                    <p>
-    Illustrative market sentiment signal.
-</p>
-
-                </article>
-
-                <article class="ocean-metric-card">
-
-                    <div class="ocean-metric-top">
-
-                        <span class="ocean-metric-icon">🛡️</span>
-
-                        <span class="ocean-metric-state state-moderate">
-    Demo
-</span>
-
-                    </div>
-
-                    <span class="ocean-metric-label">
-                        Market Risk
-                    </span>
-
-                    <strong class="ocean-metric-value">
-                        31%
-                    </strong>
-
-                    <div class="ocean-metric-progress risk-progress">
-                        <span style="--progress: 31%"></span>
-                    </div>
-
-                    <p>
-    Illustrative market risk signal.
-</p>
-
-                </article>
-
-            </div>
-
-        </div>
-
-        <div class="ocean-terminal-footer">
-
-            <span>
-                Demonstration data for interface presentation.
-            </span>
-
-            <span class="terminal-monitoring">
-    <i></i>
-    Interface demonstration
-</span>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-        <!-- =========================================
-             ECOSYSTEM NETWORK
-        ========================================== -->
-
-        <section class="section ecosystem-section" id="ecosystem">
-
-    <div class="section-heading">
-
-        <span class="section-tag">
-            Ocean Intelligence Network
-        </span>
-
-        <h2>
-            Everything connects to Sardine AI.
-        </h2>
-
-        <p>
-            A connected ecosystem where intelligence modules exchange signals,
-            strengthen analysis and build a clearer view of the crypto ocean.
-        </p>
-
-    </div>
-
-    <div class="ecosystem-network">
-
-        <div class="ecosystem-grid-background"></div>
-
-        <div class="ecosystem-connection connection-top"></div>
-        <div class="ecosystem-connection connection-left"></div>
-        <div class="ecosystem-connection connection-right"></div>
-        <div class="ecosystem-connection connection-bottom"></div>
-
-        <article class="ecosystem-node ecosystem-node-top">
-
-            <span class="ecosystem-node-number">01</span>
-
-            <div class="ecosystem-node-icon">
-                🐋
-            </div>
-
-            <h3>Whale Radar</h3>
-
-            <p>
-                Detect large wallet movements and unusual activity.
-            </p>
-
-            <span class="ecosystem-node-status">
-    In Development
-</span>
-
-        </article>
-
-        <article class="ecosystem-node ecosystem-node-left">
-
-            <span class="ecosystem-node-number">02</span>
-
-            <div class="ecosystem-node-icon">
-                🌊
-            </div>
-
-            <h3>Ocean Flow</h3>
-
-            <p>
-                Visualize liquidity concentration and capital movement.
-            </p>
-
-            <span class="ecosystem-node-status">
-    In Development
-</span>
-
-        </article>
-
-        <div class="ecosystem-core">
-
-            <div class="ecosystem-core-aura"></div>
-            <div class="ecosystem-core-ring ecosystem-core-ring-one"></div>
-            <div class="ecosystem-core-ring ecosystem-core-ring-two"></div>
-
-            <div class="ecosystem-core-content">
-
-                <span>SNAO</span>
-
-                <strong>Sardine AI</strong>
-
+            <div class="feature">
+              <div class="feature-icon">⬡</div>
+              <div>
+                <strong>Security & Risk Intelligence</strong>
                 <small>
-                    Ocean Intelligence Core
+                  Monitoring concepts for operational
+                  security and risk awareness.
                 </small>
-
-                <div class="ecosystem-core-status">
-                    <i></i>
-                    Ecosystem Building
-                </div>
-
+              </div>
             </div>
 
+            <div class="feature">
+              <div class="feature-icon">↗</div>
+              <div>
+                <strong>Business Automation</strong>
+                <small>
+                  Streamlining workflows and helping teams
+                  work more efficiently.
+                </small>
+              </div>
+            </div>
+
+          </div>
         </div>
 
-        <article class="ecosystem-node ecosystem-node-right">
+        <!-- ILLUSTRATIVE CONCEPT, NOT LIVE DATA -->
 
-            <span class="ecosystem-node-number">03</span>
+        <div class="concept-window reveal">
 
-            <div class="ecosystem-node-icon">
-                📡
+          <div class="window-top">
+            <strong>SNAO WORLD / ATLAS</strong>
+
+            <div class="window-dots">
+              <span></span>
+              <span></span>
+              <span></span>
             </div>
+          </div>
 
-            <h3>Smart Money</h3>
+          <div class="concept-inner">
 
-            <p>
-                Follow experienced wallets and high-impact capital behavior.
-            </p>
-
-            <span class="ecosystem-node-status">
-    In Development
-</span>
-
-        </article>
-
-        <article class="ecosystem-node ecosystem-node-bottom">
-
-            <span class="ecosystem-node-number">04</span>
-
-            <div class="ecosystem-node-icon">
-                📈
-            </div>
-
-            <h3>Market Sentiment</h3>
-
-            <p>
-                Analyze fear, optimism and changing investor behavior.
-            </p>
-
-            <span class="ecosystem-node-status">
-    In Development
-</span>
-
-        </article>
-
-    </div>
-
-</section>
-
-
-        <!-- =========================================
-             ROADMAP
-        ========================================== -->
-
-        <section class="section roadmap-section" id="roadmap">
-
-    <div class="section-heading">
-
-        <span class="section-tag">
-            SNAO Roadmap
-        </span>
-
-        <h2>
-            Building the future of Ocean Intelligence.
-        </h2>
-
-        <p>
-            A phased evolution from a community-powered Mini App
-            into a complete artificial intelligence ecosystem.
-        </p>
-
-    </div>
-
-    <div class="roadmap-timeline">
-
-        <div class="roadmap-line"></div>
-
-        <article class="roadmap-phase roadmap-phase-live">
-
-            <div class="roadmap-marker">
-                <span>01</span>
-            </div>
-
-            <div class="roadmap-phase-card">
-
-                <div class="roadmap-phase-top">
-
-                    <div>
-                        <span class="roadmap-phase-label">
-                            Foundation
-                        </span>
-
-                        <h3>
-                            Mini App & Community
-                        </h3>
-                    </div>
-
-                    <span class="roadmap-phase-status">
-    Coming Soon
-</span>
-
-                </div>
-
-                <p>
-                    Mining, missions, VIP, referrals, ranking,
-                    reputation and community growth.
-                </p>
-
-                <div class="roadmap-phase-progress">
-
-                    <span class="roadmap-progress-label">
-    In development
-</span>
-
-                    <div class="roadmap-progress-track">
-                        <span style="--roadmap-progress: 0%"></span>
-                    </div>
-
-                </div>
-
-            </div>
-
-        </article>
-
-        <article class="roadmap-phase roadmap-phase-building">
-
-            <div class="roadmap-marker">
-                <span>02</span>
-            </div>
-
-            <div class="roadmap-phase-card">
-
-                <div class="roadmap-phase-top">
-
-                    <div>
-                        <span class="roadmap-phase-label">
-                            Ocean Experience
-                        </span>
-
-                        <h3>
-                            Market Intelligence Tools
-                        </h3>
-                    </div>
-
-                    <span class="roadmap-phase-status status-building">
-    Planned
-</span>
-
-                </div>
-
-                <p>
-                    Flow Map, whale alerts, Ocean Status,
-                    liquidity visualization and market monitoring.
-                </p>
-
-                <div class="roadmap-phase-progress">
-
-                    <span class="roadmap-progress-label">
-    Future phase
-</span>
-
-<div class="roadmap-progress-track">
-    <span style="--roadmap-progress: 0%"></span>
-</div>
-
-                </div>
-
-            </div>
-
-       </article>
-
-        <article class="roadmap-phase roadmap-phase-next">
-
-            <div class="roadmap-marker">
-                <span>03</span>
-            </div>
-
-            <div class="roadmap-phase-card">
-
-                <div class="roadmap-phase-top">
-
-                    <div>
-                        <span class="roadmap-phase-label">
-                            Artificial Intelligence
-                        </span>
-
-                        <h3>
-                            Sardine AI
-                        </h3>
-                    </div>
-
-                    <span class="roadmap-phase-status status-next">
-    Planned
-</span>
-
-                </div>
-
-                <p>
-                    Sentiment, smart money, manipulation detection,
-                    asset analysis and intelligent alerts.
-                </p>
-
-                <div class="roadmap-phase-progress">
-
-                    <span class="roadmap-progress-label">
-    Planned
-</span>
-
-<div class="roadmap-progress-track">
-    <span style="--roadmap-progress: 0%"></span>
-</div>
-
-                </div>
-
-            </div>
-
-        </article>
-
-        <article class="roadmap-phase roadmap-phase-future">
-
-            <div class="roadmap-marker">
-                <span>04</span>
-            </div>
-
-            <div class="roadmap-phase-card">
-
-                <div class="roadmap-phase-top">
-
-                    <div>
-                        <span class="roadmap-phase-label">
-                            Global Ecosystem
-                        </span>
-
-                        <h3>
-                            SNAO.world Platform
-                        </h3>
-                    </div>
-
-                    <span class="roadmap-phase-status status-future">
-                        Future
-                    </span>
-
-                </div>
-
-                <p>
-                    Marketplace, APIs, Ocean Passport, premium tools,
-                    staking, governance and global expansion.
-                </p>
-
-                <div class="roadmap-phase-progress">
-
-                    <span class="roadmap-progress-label">
-    Planned
-</span>
-
-<div class="roadmap-progress-track">
-    <span style="--roadmap-progress: 0%"></span>
-</div>
-
-                </div>
-
-            </div>
-
-        </article>
-
-    </div>
-
-</section>
-
-        <!-- =========================
-     GLOBAL EXCHANGE AMBITION
-========================= -->
-
-<section class="section exchange-ambition" id="exchange-ambition">
-
-    <div class="exchange-ambition-inner">
-
-        <span class="section-tag">
-            GLOBAL EXCHANGE AMBITION
-        </span>
-
-        <h2>
-            Built to Go
-            <span>Beyond the Launch.</span>
-        </h2>
-
-        <p class="exchange-intro">
-            If the SNAO public sale reaches its key milestones,
-            the project intends to pursue listing opportunities
-            with leading global cryptocurrency exchanges.
-        </p>
-
-        <div class="exchange-targets">
-
-            <div class="exchange-target">
-                <strong>BINANCE</strong>
-                <span>LISTING TARGET</span>
-            </div>
-
-            <div class="exchange-target">
-                <strong>BITGET</strong>
-                <span>LISTING TARGET</span>
-            </div>
-
-            <div class="exchange-target">
-                <strong>BYBIT</strong>
-                <span>LISTING TARGET</span>
-            </div>
-
-            <div class="exchange-target">
-                <strong>OKX</strong>
-                <span>LISTING TARGET</span>
-            </div>
-
-            <div class="exchange-target">
-                <strong>GATE.IO</strong>
-                <span>LISTING TARGET</span>
-            </div>
-
-            <div class="exchange-target">
-                <strong>MEXC</strong>
-                <span>LISTING TARGET</span>
-            </div>
-
-        </div>
-
-        <div class="exchange-disclaimer">
-            <strong>Our ambition, not a guarantee.</strong>
-            Exchange names above represent future listing targets only.
-            No listing, partnership, approval or affiliation with any
-            exchange is confirmed unless officially announced.
-        </div>
-
-    </div>
-
-</section>
-
-
-        <!-- =========================================
-             PRODUCTS
-        ========================================== -->
-
-        <section class="section products-section" id="products">
-
-    <div class="section-heading">
-
-        <span class="section-tag">
-            SNAO Products
-        </span>
-
-        <h2>
-            Everything connected. One ecosystem.
-        </h2>
-
-        <p>
-            Explore the products and intelligence modules that form
-            the long-term SNAO ecosystem.
-        </p>
-
-    </div>
-
-    <div class="products-grid">
-
-        <article class="product-card product-card-featured">
-
-            <div class="product-card-top">
-
-                <div class="product-card-icon">
-                    📱
-                </div>
-
-                <span class="product-card-state product-state-coming">
-    Coming Soon
-</span>
-
-            </div>
-
-            <span class="product-card-number">01</span>
-
-            <h3>Mini App</h3>
-
-            <p>
-                Mining, VIP, missions, referrals, reputation
-                and community rewards inside Telegram.
-            </p>
-
-            <div class="product-card-footer">
-
-                <span>
-                    Core community product
+            <div class="concept-header">
+              <div>
+                <span class="concept-label">
+                  PRODUCT CONCEPT
                 </span>
+                <br><br>
+                <strong>Intelligence Overview</strong>
+              </div>
 
-                <span class="product-card-link" style="cursor: default; opacity: 0.65;">
-    Coming Soon
-</span>
+              <span class="demo-tag">
+                DESIGN PREVIEW
+              </span>
+            </div>
+
+            <div class="concept-metrics">
+
+              <div class="concept-metric">
+                <small>Business Intelligence</small>
+                <strong>ANALYTICS</strong>
+              </div>
+
+              <div class="concept-metric">
+                <small>Security Intelligence</small>
+                <strong>MONITORING</strong>
+              </div>
+
+              <div class="concept-metric">
+                <small>Operational Systems</small>
+                <strong>AUTOMATION</strong>
+              </div>
 
             </div>
 
-        </article>
-
-
-        <article class="product-card">
-
-            <div class="product-card-top">
-
-                <div class="product-card-icon">
-                    🧠
-                </div>
-
-                <span class="product-card-state product-state-building">
-                    Building
-                </span>
-
+            <div class="concept-map">
+              <div class="map-center">
+                <strong>ATLAS</strong>
+                <span>CONNECTED INTELLIGENCE</span>
+              </div>
             </div>
 
-            <span class="product-card-number">02</span>
+            <div class="concept-foot">
+              Illustrative design concept.
+              The interface does not represent live
+              operating metrics or released features.
+            </div>
 
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- OCEAN INTELLIGENCE -->
+
+    <section class="section products" id="ocean">
+      <div class="container">
+
+        <div class="section-header reveal">
+          <span class="eyebrow">
+            Crypto Research & Intelligence
+          </span>
+
+          <h2>
+            Understand the market
+            <span class="gradient-text">
+              beyond the noise.
+            </span>
+          </h2>
+
+          <p>
+            Ocean Intelligence is our planned research layer
+            for studying blockchain activity, market flows,
+            sentiment and emerging risks.
+          </p>
+        </div>
+
+        <div class="product-grid">
+
+          <article class="product-card reveal">
+            <div class="product-icon">◉</div>
+            <h3>Whale Intelligence</h3>
+            <p>
+              Research tools designed to identify
+              large wallet movements and unusual
+              on-chain activity.
+            </p>
+            <span class="product-state">
+              PLANNED FEATURE
+            </span>
+          </article>
+
+          <article class="product-card reveal">
+            <div class="product-icon">↗</div>
+            <h3>Market Flow</h3>
+            <p>
+              Explore capital movements, exchange activity
+              and liquidity conditions through connected
+              analysis tools.
+            </p>
+            <span class="product-state">
+              PLANNED FEATURE
+            </span>
+          </article>
+
+          <article class="product-card reveal">
+            <div class="product-icon">✧</div>
             <h3>Sardine AI</h3>
-
             <p>
-                Artificial intelligence for market behavior,
-                sentiment, whale activity and asset analysis.
+              An AI-assisted research concept combining
+              relevant market information and
+              blockchain data.
             </p>
-
-            <div class="product-card-footer">
-
-                <span>
-                    Intelligence engine
-                </span>
-
-                <a href="#ecosystem">
-                    Explore
-                    <b>↗</b>
-                </a>
-
-            </div>
-
-        </article>
-
-
-        <article class="product-card">
-
-            <div class="product-card-top">
-
-                <div class="product-card-icon">
-                    🌊
-                </div>
-
-                <span class="product-card-state product-state-building">
-                    Building
-                </span>
-
-            </div>
-
-            <span class="product-card-number">03</span>
-
-            <h3>Ocean Status</h3>
-
-            <p>
-    A visual intelligence layer for market conditions,
-    liquidity, activity and risk monitoring.
-</p>
-
-            <div class="product-card-footer">
-
-                <span>
-                    Market condition layer
-                </span>
-
-                <a href="#dashboard">
-                    Explore
-                    <b>↗</b>
-                </a>
-
-            </div>
-
-        </article>
-
-
-        <article class="product-card">
-
-            <div class="product-card-top">
-
-                <div class="product-card-icon">
-                    🐋
-                </div>
-
-                <span class="product-card-state product-state-next">
-                    Next
-                </span>
-
-            </div>
-
-            <span class="product-card-number">04</span>
-
-            <h3>Whale Radar</h3>
-
-            <p>
-    Designed to detect large wallet movements, unusual transfers
-    and potential manipulation signals.
-</p>
-
-            <div class="product-card-footer">
-
-                <span>
-                    Large movement detection
-                </span>
-
-                <a href="#ecosystem">
-                    Learn more
-                    <b>↗</b>
-                </a>
-
-            </div>
-
-        </article>
-
-
-        <article class="product-card">
-
-            <div class="product-card-top">
-
-                <div class="product-card-icon">
-                    📡
-                </div>
-
-                <span class="product-card-state product-state-next">
-                    Next
-                </span>
-
-            </div>
-
-            <span class="product-card-number">05</span>
-
-            <h3>Smart Money</h3>
-
-            <p>
-    Designed to identify relevant capital flows and activity
-    from experienced wallets and market participants.
-</p>
-
-            <div class="product-card-footer">
-
-                <span>
-                    Capital behavior signals
-                </span>
-
-                <a href="#ecosystem">
-                    Learn more
-                    <b>↗</b>
-                </a>
-
-            </div>
-
-        </article>
-
-
-        <article class="product-card">
-
-            <div class="product-card-top">
-
-                <div class="product-card-icon">
-                    🗺️
-                </div>
-
-                <span class="product-card-state product-state-next">
-                    Next
-                </span>
-
-            </div>
-
-            <span class="product-card-number">06</span>
-
-            <h3>Flow Map</h3>
-
-            <p>
-    Designed to visualize liquidity movement and capital concentration
-    across the crypto ocean.
-</p>
-
-            <div class="product-card-footer">
-
-                <span>
-                    Liquidity visualization
-                </span>
-
-                <a href="#ecosystem">
-                    Learn more
-                    <b>↗</b>
-                </a>
-
-            </div>
-
-        </article>
-
-
-        <article class="product-card">
-
-            <div class="product-card-top">
-
-                <div class="product-card-icon">
-                    🛡️
-                </div>
-
-                <span class="product-card-state product-state-future">
-                    Future
-                </span>
-
-            </div>
-
-            <span class="product-card-number">07</span>
-
-            <h3>Ocean Guardian</h3>
-
-            <p>
-    Planned risk intelligence for identifying manipulation signals,
-    abnormal activity and elevated market conditions.
-</p>
-
-            <div class="product-card-footer">
-
-                <span>
-                    Risk intelligence
-                </span>
-
-                <a href="whitepaper.html#roadmap">
-    Roadmap
-    <b>↗</b>
-</a>
-
-            </div>
-
-        </article>
-
-
-        <article class="product-card">
-
-            <div class="product-card-top">
-
-                <div class="product-card-icon">
-                    🪪
-                </div>
-
-                <span class="product-card-state product-state-future">
-                    Future
-                </span>
-
-            </div>
-
-            <span class="product-card-number">08</span>
-
-            <h3>Ocean Passport</h3>
-
-            <p>
-                Reputation, progress and user identity across
-                the complete SNAO ecosystem.
-            </p>
-
-            <div class="product-card-footer">
-
-                <span>
-                    Reputation layer
-                </span>
-
-                <a href="whitepaper.html#roadmap">
-    Roadmap
-    <b>↗</b>
-</a>
-
-            </div>
-
-        </article>
-
-
-        <article class="product-card">
-
-            <div class="product-card-top">
-
-                <div class="product-card-icon">
-                    🏪
-                </div>
-
-                <span class="product-card-state product-state-future">
-                    Future
-                </span>
-
-            </div>
-
-            <span class="product-card-number">09</span>
-
-            <h3>Marketplace</h3>
-
-            <p>
-                Premium intelligence tools, reports, digital products
-                and future ecosystem utilities.
-            </p>
-
-            <div class="product-card-footer">
-
-                <span>
-                    Premium utility layer
-                </span>
-
-                <a href="whitepaper.html#roadmap">
-                    Roadmap
-                    <b>↗</b>
-                </a>
-
-            </div>
-
-        </article>
-
-    </div>
-
-</section>
-
-<!-- =========================================
-     TOKEN QUICK NAVIGATION
-========================================== -->
-
-<section class="token-quick-nav" aria-label="SNAO token navigation">
-
-    <div class="token-quick-nav-inner">
-
-        <div class="token-quick-nav-copy">
-
-            <span>
-                SNAO Token Hub
+            <span class="product-state">
+              PLANNED FEATURE
             </span>
-
-            <strong>
-                Launch information, distribution and release schedule.
-            </strong>
+          </article>
 
         </div>
 
-        <nav class="token-quick-nav-links">
+      </div>
+    </section>
 
-            <section class="section snao-buy-section" id="buy-snao">
+    <!-- TOKEN -->
 
-            <a href="token.html#allocation">
-                Tokenomics
+    <section class="section token-section" id="token">
+      <div class="container token-shell">
+
+        <div class="token-copy reveal">
+          <span class="eyebrow">
+            The SNAO Token
+          </span>
+
+          <h2>
+            Meet
+            <span class="gradient-text">$SNAO.</span>
+          </h2>
+
+          <p>
+            $SNAO is the digital token associated
+            with the SNAO World ecosystem.
+          </p>
+
+          <p>
+            The project is being developed with
+            a long-term technology vision.
+            Future token utilities remain subject to
+            technical, economic and legal review.
+          </p>
+
+          <div class="token-links">
+            <a href="sale.html" class="btn btn-primary">
+              Explore Public Sale →
             </a>
 
-            <a href="token.html#vesting">
-                Vesting
+            <a href="token.html" class="btn btn-outline">
+              Token Details
             </a>
 
-            <a href="#faq">
-                FAQ
+            <a href="whitepaper.html" class="btn btn-outline">
+              Whitepaper
             </a>
-
-        </nav>
-
-    </div>
-
-</section>
-
-<!-- =========================================
-     GET SNAO
-========================================== -->
-
-<section class="section snao-buy-section" id="buy-snao">
-
-    <div class="snao-buy-background" aria-hidden="true">
-        <div class="snao-buy-glow snao-buy-glow-one"></div>
-        <div class="snao-buy-glow snao-buy-glow-two"></div>
-        <div class="snao-buy-grid"></div>
-    </div>
-
-
-    <div class="section-heading snao-buy-heading">
-
-        <span class="section-tag">
-            Get $SNAO
-        </span>
-
-        <h2>
-            Enter the Ocean Intelligence economy.
-        </h2>
-
-        <p>
-            $SNAO will connect community rewards, premium intelligence,
-            ecosystem utilities and the future Sardine AI platform.
-        </p>
-
-    </div>
-
-
-    <div class="snao-buy-layout">
-
-        <!-- =========================================
-             TOKEN PURCHASE PANEL
-        ========================================== -->
-
-        <div class="snao-purchase-panel">
-
-            <div class="snao-purchase-header">
-
-                <div class="snao-token-identity">
-
-                    <div class="snao-token-logo">
-                        S
-                    </div>
-
-                    <div>
-                        <span>Ocean Intelligence Token</span>
-                        <strong>$SNAO</strong>
-                    </div>
-
-                </div>
-
-                <span class="snao-coming-badge">
-                    Coming Soon
-                </span>
-
-            </div>
-
-
-            <div class="snao-token-price">
-
-    <span>Public Sale Initial Price</span>
-
-    <strong>
-        $0.001 / SNAO
-    </strong>
-
-    <small>
-    Public Sale is live now.
-    Price increases progressively across 1,800 lots.
-</small>
-
-</div>
-
-
-            <div class="snao-token-information">
-
-                <div class="snao-token-info-item">
-
-                    <span>Network</span>
-
-                    <strong>
-                        BNB Smart Chain
-                    </strong>
-
-                </div>
-
-                <div class="snao-token-info-item">
-
-                    <span>Total Supply</span>
-
-                    <strong>
-                        200,000,000 SNAO
-                    </strong>
-
-                </div>
-
-                <div class="snao-token-info-item">
-
-                    <span>Token Type</span>
-
-                    <strong>
-                        Utility Token
-                    </strong>
-
-                </div>
-
-                <div class="snao-token-info-item">
-
-                    <span>Trading Status</span>
-
-                    <strong class="snao-status-soon">
-                        Coming Soon
-                    </strong>
-
-                </div>
-
-            </div>
-
-
-            <div class="snao-contract-box">
-
-                <div>
-
-                    <span>
-                        Official Contract
-                    </span>
-
-                    <strong>
-                        Not released
-                    </strong>
-
-                </div>
-
-                <button
-                    class="snao-contract-button"
-                    type="button"
-                    disabled
-                    aria-disabled="true"
-                >
-                    Unavailable
-                </button>
-
-            </div>
-
-
-            <button
-                class="snao-buy-button"
-                type="button"
-                disabled
-                aria-disabled="true"
-            >
-
-                <span>
-                    Buy $SNAO
-                </span>
-
-                <small>
-                    Coming Soon
-                </small>
-
-            </button>
-
-
-            <div class="snao-official-links">
-
-                <span>
-                    Follow the official launch:
-                </span>
-
-                <div>
-
-                    <a
-                        href="https://t.me/snaoofficial"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        Telegram
-                        <b>↗</b>
-                    </a>
-
-                    <a
-                        href="https://x.com/SNAOOFFICIAL"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        X Official
-                        <b>↗</b>
-                    </a>
-
-                </div>
-
-            </div>
-
+          </div>
+
+          <div class="disclaimer">
+            Cryptoassets carry substantial risk.
+            Token ownership does not guarantee
+            income, appreciation or future exchange listings.
+            Confirm the current sale terms on the
+            official purchase page before participating.
+          </div>
         </div>
 
+        <div class="token-stats reveal">
 
-        <!-- =========================================
-             TOKEN STATUS PANEL
-        ========================================== -->
-
-        <aside class="snao-token-status-panel">
-
-            <div class="snao-status-header">
-
-                <div>
-
-                    <span>
-                        Token Status
-                    </span>
-
-                    <strong>
-                        Ecosystem preparation
-                    </strong>
-
-                </div>
-
-                <i></i>
-
-            </div>
-
-
-            <div class="snao-status-list">
-
-                <div class="snao-status-row">
-
-                    <span class="snao-status-icon">
-                        ◈
-                    </span>
-
-                    <div>
-                        <small>Network</small>
-                        <strong>BNB Smart Chain</strong>
-                    </div>
-
-                    <b class="snao-status-ready">
-                        Selected
-                    </b>
-
-                </div>
-
-
-                <div class="snao-status-row">
-
-                    <span class="snao-status-icon">
-                        ✦
-                    </span>
-
-                    <div>
-                        <small>Core Utility</small>
-                        <strong>Ocean Intelligence</strong>
-                    </div>
-
-                    <b class="snao-status-building">
-                        Building
-                    </b>
-
-                </div>
-
-
-                <div class="snao-status-row">
-
-                    <span class="snao-status-icon">
-                        ◉
-                    </span>
-
-                    <div>
-                        <small>Community Rewards</small>
-                        <strong>Mini App Ecosystem</strong>
-                    </div>
-
-                    <b>
-    Coming Soon
-</b>
-
-                </div>
-
-
-                <div class="snao-status-row">
-
-                    <span class="snao-status-icon">
-                        ⌁
-                    </span>
-
-                    <div>
-                        <small>Staking</small>
-                        <strong>Future Utility</strong>
-                    </div>
-
-                    <b class="snao-status-future">
-                        Future
-                    </b>
-
-                </div>
-
-
-                <div class="snao-status-row">
-
-                    <span class="snao-status-icon">
-                        ◇
-                    </span>
-
-                    <div>
-                        <small>Governance</small>
-                        <strong>Community Decisions</strong>
-                    </div>
-
-                    <b class="snao-status-future">
-                        Future
-                    </b>
-
-                </div>
-
-
-                <div class="snao-status-row">
-
-                    <span class="snao-status-icon">
-                        ▣
-                    </span>
-
-                    <div>
-                        <small>Marketplace</small>
-                        <strong>Premium Utilities</strong>
-                    </div>
-
-                    <b class="snao-status-future">
-                        Future
-                    </b>
-
-                </div>
-
-            </div>
-
-
-            <div class="snao-launch-progress">
-
-                <div class="snao-launch-progress-header">
-
-                    <span>
-                        Launch preparation
-                    </span>
-
-                    <strong>
-                        In progress
-                    </strong>
-
-                </div>
-
-                <div class="snao-launch-progress-track">
-                    <span></span>
-                </div>
-
-                <small>
-                    Contract, liquidity and launch conditions
-                    will be announced after final validation.
-                </small>
-
-            </div>
-
-        </aside>
-
-    </div>
-
-
-    <!-- =========================================
-         SECURITY NOTICE
-    ========================================== -->
-
-    <div class="snao-security-notice">
-
-        <div class="snao-security-icon">
-            !
-        </div>
-
-        <div>
-
-            <strong>
-    The official $SNAO contracts are live on BNB Smart Chain.
-</strong>
-
-<p>
-    Always verify SNAO contract addresses through SNAO.world
-    and official SNAO community channels before interacting
-    with any token or contract.
-</p>
-
-        </div>
-
-    </div>
-
-</section>
-
-<!-- =========================================
-     OCEAN TOKENOMICS
-========================================== -->
-
-<section class="section tokenomics-section" id="tokenomics">
-
-    <div class="section-heading">
-
-        <span class="section-tag">
-            Ocean Tokenomics
-        </span>
-
-        <h2>
-            Designed to power the entire SNAO ecosystem.
-        </h2>
-
-        <p>
-            A balanced token structure focused on community growth,
-            ecosystem utility, liquidity, development and long-term sustainability.
-        </p>
-
-    </div>
-
-
-    <div class="tokenomics-layout">
-
-        <!-- CÍRCULO CENTRAL -->
-
-        <div class="tokenomics-visual">
-
-            <div class="tokenomics-orbit tokenomics-orbit-one"></div>
-            <div class="tokenomics-orbit tokenomics-orbit-two"></div>
-
-            <div class="tokenomics-ring">
-
-                <div class="tokenomics-ring-center">
-
-                    <span>Total Supply</span>
-
-                    <strong>
-                        200M
-                    </strong>
-
-                    <small>
-                        SNAO
-                    </small>
-
-                </div>
-
-            </div>
-
-            <div class="tokenomics-core-glow"></div>
-
-        </div>
-
-
-        <!-- DISTRIBUIÇÃO -->
-
-        <div class="tokenomics-distribution">
-
-    <article class="tokenomics-item">
-
-        <div class="tokenomics-item-top">
-            <span class="tokenomics-color tokenomics-founder"></span>
-            <strong>Founder Allocation</strong>
-<b>13%</b>
-        </div>
-
-        <p>
-    Founder allocation subject to long-term vesting,
-    with no tokens unlocked at TGE.
-</p>
-
-        <div class="tokenomics-progress">
-            <span style="--tokenomics-width: 13%"></span>
-        </div>
-
-        <small>
-            26,000,000 SNAO
-        </small>
-
-        <div class="tokenomics-founder-detail">
-
-    <span>
-        0% unlocked at TGE
-    </span>
-
-    <span>
-        180-day cliff + 900-day linear vesting
-    </span>
-
-</div>
-
-    </article>
-
-
-    <article class="tokenomics-item">
-
-        <div class="tokenomics-item-top">
-            <span class="tokenomics-color tokenomics-public-sale"></span>
-            <strong>Public Sale</strong>
-            <b>22.5%</b>
-        </div>
-
-        <p>
-    Public allocation distributed through 1,800 progressive
-    lots of 25,000 SNAO, with buyer vesting based on sale phase.
-</p>
-
-        <div class="tokenomics-progress">
-            <span style="--tokenomics-width: 22.5%"></span>
-        </div>
-
-        <small>
-            45,000,000 SNAO
-        </small>
-
-    </article>
-
-
-    <article class="tokenomics-item">
-
-        <div class="tokenomics-item-top">
-            <span class="tokenomics-color tokenomics-liquidity"></span>
-            <strong>Liquidity & Market Making</strong>
-            <b>20%</b>
-        </div>
-
-        <p>
-    Dedicated to initial liquidity, long-term liquidity reserves
-    and market-making operations to support healthy market conditions.
-</p>
-
-        <div class="tokenomics-progress">
-            <span style="--tokenomics-width: 20%"></span>
-        </div>
-
-        <small>
-            40,000,000 SNAO
-        </small>
-
-    </article>
-
-
-    <article class="tokenomics-item">
-
-        <div class="tokenomics-item-top">
-            <span class="tokenomics-color tokenomics-development"></span>
-            <strong>Team & Development</strong>
-<b>7.5%</b>
-        </div>
-
-        <p>
-    Long-term allocation for the core team, engineering,
-    platform development, security and technical expansion.
-</p>
-
-        <div class="tokenomics-progress">
-            <span style="--tokenomics-width: 7.5%"></span>
-        </div>
-
-        <small>
-            15,000,000 SNAO
-        </small>
-
-    </article>
-
-
-    <article class="tokenomics-item">
-
-        <div class="tokenomics-item-top">
-            <span class="tokenomics-color tokenomics-ecosystem"></span>
-            <strong>Treasury</strong>
-<b>20%</b>
-        </div>
-
-        <p>
-    Long-term treasury for ecosystem development, operations,
-    strategic initiatives and sustainable project growth.
-</p>
-
-        <div class="tokenomics-progress">
-            <span style="--tokenomics-width: 20%"></span>
-        </div>
-
-        <small>
-            40,000,000 SNAO
-        </small>
-
-    </article>
-
-
-    <article class="tokenomics-item">
-
-        <div class="tokenomics-item-top">
-            <span class="tokenomics-color tokenomics-marketing"></span>
-            <strong>Partnerships & Ecosystem</strong>
-<b>5%</b>
-        </div>
-
-        <p>
-    Strategic partnerships, ecosystem integrations,
-    business development and long-term network expansion.
-</p>
-
-        <div class="tokenomics-progress">
-            <span style="--tokenomics-width: 5%"></span>
-        </div>
-
-        <small>
-            10,000,000 SNAO
-        </small>
-
-    </article>
-
-
-    <article class="tokenomics-item">
-
-        <div class="tokenomics-item-top">
-            <span class="tokenomics-color tokenomics-rewards"></span>
-            <strong>Community & Rewards</strong>
-<b>4%</b>
-        </div>
-
-        <p>
-    Community incentives, participation rewards,
-    ecosystem activities and long-term user engagement.
-</p>
-
-        <div class="tokenomics-progress">
-            <span style="--tokenomics-width: 4%"></span>
-        </div>
-
-        <small>
-            8,000,000 SNAO
-        </small>
-
-    </article>
-
-
-    <article class="tokenomics-item">
-
-        <div class="tokenomics-item-top">
-            <span class="tokenomics-color tokenomics-treasury"></span>
-            <strong>Unsold Sale Reserve</strong>
-            <b>2.5%</b>
-        </div>
-
-        <p>
-    Unsold public sale allocation locked for 24 months
-    and designated exclusively for token burning afterward.
-</p>
-
-        <div class="tokenomics-progress">
-            <span style="--tokenomics-width: 2.5%"></span>
-        </div>
-
-        <small>
-            5,000,000 SNAO
-        </small>
-
-    </article>
-
-            <article class="tokenomics-item">
-
-    <div class="tokenomics-item-top">
-        <span class="tokenomics-color tokenomics-treasury"></span>
-        <strong>Strategic Reserve</strong>
-        <b>5.5%</b>
-    </div>
-
-    <p>
-        Long-term reserve for strategic opportunities,
-        ecosystem resilience and future project requirements.
-    </p>
-
-    <div class="tokenomics-progress">
-        <span style="--tokenomics-width: 5.5%"></span>
-    </div>
-
-    <small>
-        11,000,000 SNAO
-    </small>
-
-</article>
-
-</div>
-
-    </div>
-
-
-    <!-- RESUMO -->
-
-    <div class="tokenomics-summary">
-
-        <div>
+          <div class="token-stat">
             <span>Total Supply</span>
-            <strong>200,000,000 SNAO</strong>
+            <strong>200M</strong>
+          </div>
+
+          <div class="token-stat">
+            <span>Public Sale Allocation</span>
+            <strong>45M</strong>
+          </div>
+
+          <div class="token-stat">
+            <span>Blockchain</span>
+            <strong>BNB Chain</strong>
+          </div>
+
+          <div class="token-stat">
+            <span>Initial Sale Price</span>
+            <strong>$0.001</strong>
+          </div>
+
         </div>
 
-        <div>
-            <span>Network</span>
-            <strong>BNB Smart Chain</strong>
+      </div>
+    </section>
+
+    <!-- ROADMAP -->
+
+    <section class="section roadmap" id="roadmap">
+      <div class="container">
+
+        <div class="section-header reveal">
+          <span class="eyebrow">
+            Development Roadmap
+          </span>
+
+          <h2>
+            Building with
+            <span class="gradient-text">
+              purpose.
+            </span>
+          </h2>
+
+          <p>
+            Our roadmap reflects development priorities,
+            not guaranteed delivery dates.
+            Milestones will be updated as products
+            are tested and released.
+          </p>
         </div>
 
-        <div>
-    <span>Public Sale Initial Price</span>
-    <strong>$0.001 / SNAO</strong>
-</div>
-        <div>
-            <span>Token Status</span>
-            <strong class="tokenomics-coming-soon">
-                Coming Soon
-            </strong>
+        <div class="roadmap-grid">
+
+          <article class="roadmap-item reveal">
+            <span class="roadmap-step">PHASE 01</span>
+            <h3>Foundations</h3>
+            <p>
+              Establish project infrastructure,
+              token architecture and core
+              SNAO World identity.
+            </p>
+            <small>FOUNDATION</small>
+          </article>
+
+          <article class="roadmap-item reveal">
+            <span class="roadmap-step">PHASE 02</span>
+            <h3>ATLAS Initial Release</h3>
+            <p>
+              Build, test and introduce initial
+              enterprise intelligence capabilities.
+            </p>
+            <small>IN DEVELOPMENT</small>
+          </article>
+
+          <article class="roadmap-item reveal">
+            <span class="roadmap-step">PHASE 03</span>
+            <h3>SNAO Ocean</h3>
+            <p>
+              Develop the independent mobile
+              application and community experience.
+            </p>
+            <small>IN DEVELOPMENT</small>
+          </article>
+
+          <article class="roadmap-item reveal">
+            <span class="roadmap-step">PHASE 04</span>
+            <h3>Ecosystem Expansion</h3>
+            <p>
+              Continue crypto intelligence development
+              and evaluate future exchange
+              listing opportunities.
+            </p>
+            <small>PLANNED</small>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+
+    <section class="section faq" id="faq">
+      <div class="container">
+
+        <div class="section-header">
+          <span class="eyebrow">Frequently Asked Questions</span>
+          <h2>Questions & Answers.</h2>
         </div>
 
-    </div>
+        <div class="faq-wrap">
 
+          <details>
+            <summary>What is SNAO World?</summary>
+            <p>
+              SNAO World is an evolving technology ecosystem
+              covering enterprise intelligence,
+              digital experiences and crypto research concepts.
+            </p>
+          </details>
 
-    <div class="tokenomics-notice">
+          <details>
+            <summary>What is SNAO World ATLAS?</summary>
+            <p>
+              ATLAS is an enterprise technology platform
+              currently in development, with planned tools
+              for business intelligence, risk awareness,
+              financial analysis and automation.
+            </p>
+          </details>
 
-    <strong>
-        Fixed supply. Transparent allocation. Long-term distribution.
-    </strong>
+          <details>
+            <summary>Is ATLAS already available?</summary>
+            <p>
+              ATLAS is in development.
+              Availability will be announced after
+              the initial release is ready and tested.
+            </p>
+          </details>
 
-    <p>
-        SNAO has a fixed maximum supply of 200,000,000 tokens.
-        Allocations are structured with vesting, liquidity reserves
-        and long-term ecosystem distribution.
-    </p>
+          <details>
+            <summary>What is SNAO Ocean?</summary>
+            <p>
+              SNAO Ocean is a planned independent mobile
+              application focused on community engagement,
+              activities and gamified experiences.
+            </p>
+          </details>
 
-</div>
+          <details>
+            <summary>Where can I learn about the token?</summary>
+            <p>
+              Visit the official Token, Whitepaper
+              and Public Sale pages to review project
+              information and current sale conditions.
+            </p>
+          </details>
 
-</section>
+          <details>
+            <summary>Are exchange listings guaranteed?</summary>
+            <p>
+              No. Future DEX and CEX listings depend on
+              development, technical requirements,
+              liquidity and agreements with
+              the respective platforms.
+            </p>
+          </details>
 
-<!-- =========================================
-     SNAO UTILITY & VALUE LOOP
-========================================== -->
+        </div>
 
-<section class="section utility-section" id="utility">
+      </div>
+    </section>
 
-    <div class="section-heading">
+    <!-- COMMUNITY -->
 
-        <span class="section-tag">
-            SNAO Utility
+    <section class="community" id="community">
+      <div class="container">
+
+        <span class="eyebrow">
+          Join Our Community
         </span>
 
         <h2>
-            More than a token. A complete economic ecosystem.
+          The next chapter
+          <span class="gradient-text">
+            starts here.
+          </span>
         </h2>
 
         <p>
-            SNAO is designed to connect premium intelligence, community
-            participation, platform services and long-term ecosystem utility.
+          Follow the development of SNAO World,
+          explore our technology vision and join
+          the conversation about the future
+          of intelligent systems.
         </p>
 
-    </div>
+        <div class="social-links">
 
+          <a
+            class="btn btn-primary"
+            href="https://t.me/snaoofficial"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Telegram Community
+          </a>
 
-    <div class="utility-layout">
+          <a
+            class="btn btn-outline"
+            href="https://x.com/SNAOOFFICIAL"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Follow on X
+          </a>
 
-        <!-- VALUE LOOP -->
-
-        <div class="utility-value-loop">
-
-            <div class="utility-loop-orbit utility-loop-orbit-one"></div>
-            <div class="utility-loop-orbit utility-loop-orbit-two"></div>
-
-            <article class="utility-loop-node utility-node-top">
-
-                <span class="utility-node-icon">
-                    🧠
-                </span>
-
-                <strong>
-                    Sardine AI
-                </strong>
-
-                <small>
-                    Premium intelligence
-                </small>
-
-            </article>
-
-
-            <article class="utility-loop-node utility-node-right">
-
-                <span class="utility-node-icon">
-                    🏪
-                </span>
-
-                <strong>
-                    Marketplace
-                </strong>
-
-                <small>
-                    Tools and reports
-                </small>
-
-            </article>
-
-
-            <article class="utility-loop-node utility-node-bottom">
-
-                <span class="utility-node-icon">
-                    ◈
-                </span>
-
-                <strong>
-                    Token Utility
-                </strong>
-
-                <small>
-                    Access and rewards
-                </small>
-
-            </article>
-
-
-            <article class="utility-loop-node utility-node-left">
-
-                <span class="utility-node-icon">
-                    📡
-                </span>
-
-                <strong>
-                    Data & APIs
-                </strong>
-
-                <small>
-                    Intelligence services
-                </small>
-
-            </article>
-
-
-            <div class="utility-loop-core">
-
-                <span>
-                    SNAO
-                </span>
-
-                <strong>
-                    Value Loop
-                </strong>
-
-                <small>
-                    Ecosystem economy
-                </small>
-
-                <div class="utility-loop-status">
-                    <i></i>
-                    Building
-                </div>
-
-            </div>
+          <a
+            class="btn btn-outline"
+            href="https://www.instagram.com/snaoofficial/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Instagram
+          </a>
 
         </div>
 
-
-        <!-- UTILITY CARDS -->
-
-        <div class="utility-modules">
-
-            <article class="utility-card">
-
-                <div class="utility-card-top">
-
-                    <span class="utility-card-icon">
-                        ✦
-                    </span>
-
-                    <span class="utility-card-state">
-                        Planned
-                    </span>
-
-                </div>
-
-                <h3>
-                    Premium Intelligence
-                </h3>
-
-                <p>
-                    Access advanced Sardine AI analysis, market reports,
-                    whale intelligence and risk monitoring.
-                </p>
-
-                <div class="utility-card-use">
-
-                    <span>Payment options</span>
-
-                    <strong>
-                        SNAO / USDT
-                    </strong>
-
-                </div>
-
-            </article>
-
-
-            <article class="utility-card">
-
-                <div class="utility-card-top">
-
-                    <span class="utility-card-icon">
-                        💎
-                    </span>
-
-                    <span class="utility-card-state">
-    Planned
-</span>
-
-                </div>
-
-                <h3>
-                    VIP Access
-                </h3>
-
-                <p>
-    Planned access to premium Mini App benefits, enhanced mining,
-    exclusive tools and intelligence features.
-</p>
-
-                <div class="utility-card-use">
-
-                    <span>Utility</span>
-
-                    <strong>
-                        Access levels
-                    </strong>
-
-                </div>
-
-            </article>
-
-
-            <article class="utility-card">
-
-                <div class="utility-card-top">
-
-                    <span class="utility-card-icon">
-                        🏪
-                    </span>
-
-                    <span class="utility-card-state">
-                        Future
-                    </span>
-
-                </div>
-
-                <h3>
-                    Marketplace
-                </h3>
-
-                <p>
-                    Purchase reports, indicators, automation tools,
-                    digital products and premium ecosystem services.
-                </p>
-
-                <div class="utility-card-use">
-
-                    <span>Platform revenue</span>
-
-                    <strong>
-                        Transaction fees
-                    </strong>
-
-                </div>
-
-            </article>
-
-
-            <article class="utility-card">
-
-                <div class="utility-card-top">
-
-                    <span class="utility-card-icon">
-                        ⚙
-                    </span>
-
-                    <span class="utility-card-state">
-                        Future
-                    </span>
-
-                </div>
-
-                <h3>
-                    Developer APIs
-                </h3>
-
-                <p>
-                    Provide professional access to Ocean Intelligence,
-                    alerts, market data and analytical infrastructure.
-                </p>
-
-                <div class="utility-card-use">
-
-                    <span>Business model</span>
-
-                    <strong>
-                        Monthly plans
-                    </strong>
-
-                </div>
-
-            </article>
-
-
-            <article class="utility-card">
-
-                <div class="utility-card-top">
-
-                    <span class="utility-card-icon">
-                        ⌁
-                    </span>
-
-                    <span class="utility-card-state">
-                        Future
-                    </span>
-
-                </div>
-
-                <h3>
-                    Staking
-                </h3>
-
-                <p>
-                    Lock SNAO to access selected benefits, ecosystem
-                    participation and future reward structures.
-                </p>
-
-                <div class="utility-card-use">
-
-                    <span>Token function</span>
-
-                    <strong>
-                        Long-term utility
-                    </strong>
-
-                </div>
-
-            </article>
-
-
-            <article class="utility-card">
-
-                <div class="utility-card-top">
-
-                    <span class="utility-card-icon">
-                        ◉
-                    </span>
-
-                    <span class="utility-card-state">
-                        Future
-                    </span>
-
-                </div>
-
-                <h3>
-                    Governance
-                </h3>
-
-                <p>
-                    Participate in selected ecosystem decisions,
-                    proposals and future community governance systems.
-                </p>
-
-                <div class="utility-card-use">
-
-                    <span>Participation</span>
-
-                    <strong>
-                        Community voting
-                    </strong>
-
-                </div>
-
-            </article>
-
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+
+  <footer class="footer">
+    <div class="container">
+
+      <div class="footer-grid">
+
+        <div class="footer-brand">
+          <a href="#home" class="brand">
+            <div class="brand-mark">S</div>
+            <div class="brand-name">
+              <strong>SNAO</strong>
+              <small>WORLD</small>
+            </div>
+          </a>
+
+          <p>
+            Building an evolving ecosystem
+            of technology, enterprise intelligence
+            and crypto research.
+          </p>
         </div>
 
-    </div>
-
-
-    <!-- REVENUE MODEL -->
-
-    <div class="utility-revenue-panel">
-
-        <div class="utility-revenue-heading">
-
-            <span>
-                Sustainable Revenue Model
-            </span>
-
-            <strong>
-                Multiple revenue sources. One connected ecosystem.
-            </strong>
-
-            <p>
-                The long-term objective is to build a sustainable technology
-                platform that generates revenue independently from token sales.
-            </p>
-
+        <div class="footer-column">
+          <h4>ECOSYSTEM</h4>
+          <a href="#atlas">SNAO World ATLAS</a>
+          <a href="#ocean">Ocean Intelligence</a>
+          <a href="#platforms">Our Platforms</a>
+          <a href="#roadmap">Roadmap</a>
+          <a href="about.html">About Us</a>
         </div>
 
-
-        <div class="utility-revenue-grid">
-
-            <div class="utility-revenue-item">
-
-                <span>01</span>
-
-                <div>
-                    <strong>
-                        AI Subscriptions
-                    </strong>
-
-                    <small>
-                        Monthly Sardine AI plans
-                    </small>
-                </div>
-
-            </div>
-
-
-            <div class="utility-revenue-item">
-
-                <span>02</span>
-
-                <div>
-                    <strong>
-                        VIP Memberships
-                    </strong>
-
-                    <small>
-                        Premium Mini App access
-                    </small>
-                </div>
-
-            </div>
-
-
-            <div class="utility-revenue-item">
-
-                <span>03</span>
-
-                <div>
-                    <strong>
-                        Marketplace Fees
-                    </strong>
-
-                    <small>
-                        Digital product transactions
-                    </small>
-                </div>
-
-            </div>
-
-
-            <div class="utility-revenue-item">
-
-                <span>04</span>
-
-                <div>
-                    <strong>
-                        API Plans
-                    </strong>
-
-                    <small>
-                        Professional data access
-                    </small>
-                </div>
-
-            </div>
-
-
-            <div class="utility-revenue-item">
-
-                <span>05</span>
-
-                <div>
-                    <strong>
-                        Partnerships
-                    </strong>
-
-                    <small>
-                        Ecosystem integrations
-                    </small>
-                </div>
-
-            </div>
-
-
-            <div class="utility-revenue-item">
-
-                <span>06</span>
-
-                <div>
-                    <strong>
-                        Advertising
-                    </strong>
-
-                    <small>
-                        Carefully selected campaigns
-                    </small>
-                </div>
-
-            </div>
-
+        <div class="footer-column">
+          <h4>RESOURCES</h4>
+          <a href="sale.html">Public Sale</a>
+          <a href="token.html">Token</a>
+          <a href="whitepaper.html">Whitepaper</a>
+          <a href="terminal.html">Terminal</a>
+          <a href="https://t.me/snaoofficial" target="_blank" rel="noopener noreferrer">
+            Telegram
+          </a>
         </div>
 
-    </div>
-
-
-    <div class="utility-notice">
-
-        <strong>
-            Planned ecosystem utilities.
-        </strong>
-
-        <p>
-            Final token functions, fees, staking rules, governance rights
-            and subscription conditions will be defined before activation.
-        </p>
-
-    </div>
-
-</section>
-
-<!-- =========================================
-     SNAO PUBLIC SALE
-========================================== -->
-
-<section class="section public-sale-section" id="public-sale">
-
-    <div class="section-heading">
-
-        <span class="section-tag">
-            SNAO Public Sale
-        </span>
-
-        <h2>
-    1,800 progressive lots. One transparent public sale.
-</h2>
-
-<p>
-    The SNAO Public Sale is now live, with
-    45,000,000 SNAO allocated across 1,800 progressive lots of 25,000 tokens,
-    with pricing increasing progressively throughout the sale.
-</p>
-
-    </div>
-
-
-    <div class="public-sale-layout">
-
-        <!-- =========================================
-             SALE OVERVIEW
-        ========================================== -->
-
-        <article class="sale-overview-panel">
-
-            <div class="sale-overview-header">
-
-                <div>
-
-                    <span>
-                        Public Sale Allocation
-                    </span>
-
-                    <strong>
-                        45,000,000 SNAO
-                    </strong>
-
-                </div>
-
-                <span class="sale-coming-badge">
-                    Coming Soon
-                </span>
-
-            </div>
-
-
-            <div class="sale-overview-stats">
-
-                <div>
-
-                    <span>
-                        Total allocation
-                    </span>
-
-                    <strong>
-                        22.5%
-                    </strong>
-
-                    <small>
-                        Of total supply
-                    </small>
-
-                </div>
-
-
-                <div>
-
-                    <span>
-    Progressive Lots
-</span>
-
-<strong>
-    1,800
-</strong>
-
-<small>
-    25,000 SNAO per lot
-</small>
-
-                </div>
-
-
-                <div>
-
-                    <span>
-                        Network
-                    </span>
-
-                    <strong>
-                        BNB
-                    </strong>
-
-                    <small>
-                        BNB Smart Chain
-                    </small>
-
-                </div>
-
-            </div>
-
-
-            <div class="sale-allocation-visual">
-
-                <div class="sale-allocation-header">
-
-                    <span>
-                        Public sale distribution
-                    </span>
-
-                    <strong>
-                        45M SNAO
-                    </strong>
-
-                </div>
-
-
-                <div class="sale-allocation-track">
-
-    <span
-        class="sale-track-round sale-track-round-one"
-        title="Lots 1–450"
-    ></span>
-
-    <span
-        class="sale-track-round sale-track-round-two"
-        title="Lots 451–900"
-    ></span>
-
-    <span
-        class="sale-track-round sale-track-round-three"
-        title="Lots 901–1350"
-    ></span>
-
-    <span
-        class="sale-track-round sale-track-round-four"
-        title="Lots 1351–1800"
-    ></span>
-
-</div>
-
-
-                <div class="sale-allocation-labels">
-
-    <span>Lots 1–450</span>
-    <span>451–900</span>
-    <span>901–1350</span>
-    <span>1351–1800</span>
-
-</div>
-
-            </div>
-
-
-            <div class="sale-overview-message">
-
-    <span class="sale-message-icon">
-        ◈
-    </span>
-
-    <div>
-
-        <strong>
-            Progressive pricing with phase-based vesting.
-        </strong>
-
-        <p>
-            SNAO is distributed across 1,800 progressive lots.
-            Buyer vesting conditions are determined by the sale phase
-            reached at the time of purchase.
-        </p>
-
-    </div>
-
-</div>
-
-        </article>
-
-
-        <!-- =========================================
-             SALE ROUNDS
-        ========================================== -->
-
-        <div class="sale-rounds-grid">
-
-    <article class="sale-round-card sale-round-featured">
-
-        <div class="sale-round-top">
-
-            <span class="sale-round-number">
-                01
-            </span>
-
-            <span class="sale-round-status">
-                Genesis Phase
-            </span>
-
-        </div>
-
-        <span class="sale-round-label">
-            Genesis Vesting
-        </span>
-
-        <strong class="sale-round-amount">
-            5% TGE
-        </strong>
-
-        <p>
-            Earliest public sale phase with the strongest
-            long-term vesting protection.
-        </p>
-
-        <div class="sale-round-information">
-
-            <div>
-                <span>Remaining Vesting</span>
-                <strong>24 Months</strong>
-            </div>
-
-            <div>
-    <span>Vesting Type</span>
-    <strong>Linear Release</strong>
-</div>
-
-        </div>
-
-    </article>
-
-
-    <article class="sale-round-card">
-
-        <div class="sale-round-top">
-
-            <span class="sale-round-number">
-                02
-            </span>
-
-            <span class="sale-round-status">
-                Early Phase
-            </span>
-
-        </div>
-
-        <span class="sale-round-label">
-            Early Vesting
-        </span>
-
-        <strong class="sale-round-amount">
-            10% TGE
-        </strong>
-
-        <p>
-            Progressive buyer release as the public sale
-            advances through its early stage.
-        </p>
-
-        <div class="sale-round-information">
-
-            <div>
-                <span>Remaining Vesting</span>
-                <strong>18 Months</strong>
-            </div>
-
-            <div>
-    <span>Vesting Type</span>
-    <strong>Linear Release</strong>
-</div>
-
-        </div>
-
-    </article>
-
-
-    <article class="sale-round-card">
-
-        <div class="sale-round-top">
-
-            <span class="sale-round-number">
-                03
-            </span>
-
-            <span class="sale-round-status">
-                Growth Phase
-            </span>
-
-        </div>
-
-        <span class="sale-round-label">
-            Growth Vesting
-        </span>
-
-        <strong class="sale-round-amount">
-            15% TGE
-        </strong>
-
-        <p>
-            Buyer vesting progressively adjusts as total
-            public sale participation increases.
-        </p>
-
-        <div class="sale-round-information">
-
-            <div>
-                <span>Remaining Vesting</span>
-                <strong>15 Months</strong>
-            </div>
-
-            <div>
-    <span>Vesting Type</span>
-    <strong>Linear Release</strong>
-</div>
-
-        </div>
-
-    </article>
-
-
-    <article class="sale-round-card">
-
-        <div class="sale-round-top">
-
-            <span class="sale-round-number">
-                04
-            </span>
-
-            <span class="sale-round-status">
-                Expansion Phase
-            </span>
-
-        </div>
-
-        <span class="sale-round-label">
-            Expansion Vesting
-        </span>
-
-        <strong class="sale-round-amount">
-            20% TGE
-        </strong>
-
-        <p>
-            Later public sale participants receive a higher
-            initial TGE release with controlled vesting.
-        </p>
-
-        <div class="sale-round-information">
-
-            <div>
-                <span>Remaining Vesting</span>
-                <strong>12 Months</strong>
-            </div>
-
-            <div>
-    <span>Vesting Type</span>
-    <strong>Linear Release</strong>
-</div>
-
-        </div>
-
-    </article>
-
-
-    <article class="sale-round-card">
-
-        <div class="sale-round-top">
-
-            <span class="sale-round-number">
-                05
-            </span>
-
-            <span class="sale-round-status">
-                Final Phase
-            </span>
-
-        </div>
-
-        <span class="sale-round-label">
-            Final Vesting
-        </span>
-
-        <strong class="sale-round-amount">
-            25% TGE
-        </strong>
-
-        <p>
-            Final public sale phase with the highest initial
-            release while preserving controlled distribution.
-        </p>
-
-        <div class="sale-round-information">
-
-            <div>
-                <span>Remaining Vesting</span>
-                <strong>9 Months</strong>
-            </div>
-
-            <div>
-    <span>Vesting Type</span>
-    <strong>Linear Release</strong>
-</div>
-
-        </div>
-
-    </article>
-
-</div>
-
-
-    <!-- =========================================
-         FUNDS USAGE
-    ========================================== -->
-
-    <div class="sale-funds-panel">
-
-    <div class="sale-funds-heading">
-
-        <span>
-            Use of Sale Proceeds
-        </span>
-
-        <strong>
-            Clear separation between founder and project proceeds.
-        </strong>
-
-        <p>
-            Funds raised through the SNAO Public Sale follow a defined
-            distribution between the founder and the project treasury.
-        </p>
-
-    </div>
-
-
-    <div class="sale-funds-grid">
-
-        <div class="sale-fund-item">
-
-            <span class="sale-fund-value">
-                75%
-            </span>
-
-            <div>
-                <strong>
-                    Project Treasury
-                </strong>
-
-                <small>
-                    Ecosystem development, operations, infrastructure,
-                    security, liquidity support, growth and partnerships
-                </small>
-            </div>
-
-        </div>
-
-
-        <div class="sale-fund-item">
-
-            <span class="sale-fund-value">
-                25%
-            </span>
-
-            <div>
-                <strong>
-                    Founder Proceeds
-                </strong>
-
-                <small>
-                    Founder share of funds raised through the Public Sale
-                </small>
-            </div>
-
-        </div>
-
-    </div>
-
-</div>
-
-
-    <div class="sale-security-notice">
-
-        <span class="sale-security-icon">
-            !
-        </span>
-
-        <div>
-
-            <strong>
-    Public Sale is live now.
-</strong>
-
-<p>
-    The SNAO Public Sale accepts USDT on BNB Smart Chain,
-    with progressive pricing across 1,800 lots of 25,000 SNAO
-    and a maximum purchase of 2,500,000 SNAO per transaction.
-    Purchases are completed through the official SNAO sale page.
-    Never send funds to unofficial wallets or private messages.
-</p>
-
-        </div>
-
-    </div>
-
-</section>
-
-<!-- =========================================
-     TOKEN RELEASE SCHEDULE
-========================================== -->
-
-<section class="section vesting-section" id="vesting">
-
-    <div class="section-heading">
-
-        <span class="section-tag">
-            Token Release Schedule
-        </span>
-
-        <h2>
-            Built for transparency and long-term stability.
-        </h2>
-
-        <p>
-            The SNAO release structure is designed to reduce sudden supply
-            pressure while keeping resources available for development,
-            liquidity, expansion and ecosystem growth.
-        </p>
-
-    </div>
-
-
-    <div class="vesting-layout">
-
-        <!-- =========================================
-             FOUNDER ALLOCATION
-        ========================================== -->
-
-        <article class="vesting-founder-card">
-
-    <div class="vesting-card-header">
-
-        <div>
-            <span class="vesting-card-label">
-                Founder Allocation
-            </span>
-
-            <h3>
-                26,000,000 SNAO
-            </h3>
-        </div>
-
-        <span class="vesting-percentage">
-            13%
-        </span>
-
-    </div>
-
-
-    <div class="founder-wallet-grid">
-
-        <div class="founder-wallet founder-wallet-unlocked">
-
-            <div class="wallet-status-line">
-                <span class="wallet-status-dot"></span>
-
-                <strong>
-                    Founder at TGE
-                </strong>
-            </div>
-
-            <span class="wallet-token-amount">
-                0 SNAO
-            </span>
-
-            <small>
-                0% unlocked at TGE
-            </small>
-
-            <p>
-    No founder tokens are unlocked at TGE,
-    reducing founder-related supply at launch.
-</p>
-
-            <span class="wallet-badge wallet-badge-locked">
-                Locked
-            </span>
-
-        </div>
-
-
-        <div class="founder-wallet founder-wallet-locked">
-
-            <div class="wallet-status-line">
-                <span class="wallet-status-dot"></span>
-
-                <strong>
-                    Long-Term Founder Allocation
-                </strong>
-            </div>
-
-            <span class="wallet-token-amount">
-                26,000,000 SNAO
-            </span>
-
-            <small>
-                13% of total supply
-            </small>
-
-            <p>
-                Entire founder allocation follows a long-term
-                vesting schedule aligned with the growth of SNAO.
-            </p>
-
-            <span class="wallet-badge wallet-badge-locked">
-                Vesting
-            </span>
-
-        </div>
-
-    </div>
-
-
-    <div class="founder-vesting-timeline">
-
-        <div class="vesting-timeline-header">
-
-            <span>
-                Founder release schedule
-            </span>
-
-            <strong>
-                36 months
-            </strong>
-
-        </div>
-
-
-        <div class="vesting-timeline-track">
-
-            <div class="vesting-cliff-block">
-                <span>
-                    180-day cliff
-                </span>
-            </div>
-
-            <div class="vesting-linear-block">
-                <span>
-                    900-day linear vesting
-                </span>
-            </div>
-
-        </div>
-
-
-        <div class="vesting-timeline-labels">
-            <span>TGE</span>
-            <span>Day 180</span>
-            <span>Day 1,080</span>
-        </div>
-
-    </div>
-
-</article>
-
-
-        <!-- =========================================
-             RELEASE OVERVIEW
-        ========================================== -->
-
-        <div class="vesting-overview">
-
-            <article class="vesting-release-card">
-
-                <div class="release-card-top">
-
-                    <span class="release-card-icon">
-                        ◈
-                    </span>
-
-                    <span class="release-card-status release-status-sale">
-                        Staged
-                    </span>
-
-                </div>
-
-                <span class="release-card-label">
-                    Public Sale
-                </span>
-
-                <strong>
-                    45,000,000 SNAO
-                </strong>
-
-                <p>
-                    Distributed through 1,800 progressive lots with buyer
-vesting determined by the applicable sale phase.
-                </p>
-
-            </article>
-
-
-            <article class="vesting-release-card">
-
-    <div class="release-card-top">
-
-        <span class="release-card-icon">
-            ◈
-        </span>
-
-        <span class="release-card-status release-status-building">
-            Liquidity Reserve
-        </span>
-
-    </div>
-
-    <span class="release-card-label">
-        Liquidity & Market Making
-    </span>
-
-    <strong>
-        40,000,000 SNAO
-    </strong>
-
-    <p>
-        10,000,000 SNAO reserved for initial liquidity and
-        30,000,000 SNAO reserved for long-term liquidity
-        and market-making operations.
-    </p>
-
-</article>
-
-
-            <article class="vesting-release-card">
-
-    <div class="release-card-top">
-
-        <span class="release-card-icon">
-            ★
-        </span>
-
-        <span class="release-card-status release-status-building">
-            Long-Term Vesting
-        </span>
-
-    </div>
-
-    <span class="release-card-label">
-        Team & Development
-    </span>
-
-    <strong>
-        15,000,000 SNAO
-    </strong>
-
-    <p>
-        0% unlocked at TGE. 360-day cliff followed by
-        1,080-day linear vesting.
-    </p>
-
-</article>
-
-
-            <article class="vesting-release-card">
-
-    <div class="release-card-top">
-
-        <span class="release-card-icon">
-            ◆
-        </span>
-
-        <span class="release-card-status release-status-building">
-            Controlled Release
-        </span>
-
-    </div>
-
-    <span class="release-card-label">
-        Ecosystem Allocations
-    </span>
-
-    <strong>
-        69,000,000 SNAO
-    </strong>
-
-    <p>
-        Treasury, partnerships, community rewards and strategic reserve
-        released through long-term allocation-specific vesting schedules.
-    </p>
-
-</article>
-        </div>
-
-    </div>
-
-
-    <!-- =========================================
-         CIRCULATING SUPPLY NOTICE
-    ========================================== -->
-
-    <div class="vesting-supply-panel">
-
-        <div class="vesting-supply-main">
-
-    <span>
-        Initial Circulating Supply
-    </span>
-
-    <strong>
-        Controlled at TGE
-    </strong>
-
-    <p>
-        Determined by sale participation, liquidity deployment
-        and vesting conditions at TGE.
-    </p>
-
-</div>
-
-
-        <div class="vesting-supply-stat">
-
-    <span>
-        Founder at TGE
-    </span>
-
-    <strong>
-        0 SNAO
-    </strong>
-
-    <small>
-        0% unlocked at TGE
-    </small>
-
-</div>
-
-
-        <div class="vesting-supply-stat">
-
-    <span>
-        Founder Allocation
-    </span>
-
-    <strong>
-        26,000,000 SNAO
-    </strong>
-
-    <small>
-        180-day cliff + 900-day linear vesting
-    </small>
-
-</div>
-
-    </div>
-
-
-    <div class="vesting-notice">
-
-    <strong>
-        Long-term vesting and controlled token release.
-    </strong>
-
-    <p>
-        SNAO allocations follow defined vesting schedules designed
-        to support controlled circulation and long-term ecosystem stability.
-        Contract addresses will be published after mainnet deployment.
-    </p>
-
-</div>
-
-</section>
-
-<!-- =========================================
-     OCEAN INTELLIGENCE TERMINAL
-========================================== -->
-
-<section
-    class="section ocean-command-section"
-    id="terminal"
->
-
-    <div
-        class="ocean-command-background"
-        aria-hidden="true"
-    >
-        <div class="command-grid-background"></div>
-        <div class="command-glow command-glow-one"></div>
-        <div class="command-glow command-glow-two"></div>
-    </div>
-
-
-    <div class="section-heading command-heading">
-
-        <span class="section-tag">
-            Ocean Intelligence Terminal
-        </span>
-
-        <h2>
-    A new way to understand the market.
-</h2>
-
-<p>
-    A concept command center being developed to connect market conditions,
-    whale activity, capital flow, sentiment, risk and artificial intelligence.
-</p>
-
-    </div>
-
-
-    <div class="ocean-command-terminal">
-
-        <!-- CABEÇALHO -->
-
-        <div class="command-terminal-header">
-
-            <div class="command-terminal-brand">
-
-                <div class="command-terminal-symbol">
-                    ◉
-                </div>
-
-                <div>
-                    <strong>
-                        SNAO Ocean Terminal
-                    </strong>
-
-                    <span>
-                        Intelligence demonstration interface
-                    </span>
-                </div>
-
-            </div>
-
-
-            <div class="command-terminal-status">
-
-                <span class="command-online-dot"></span>
-
-                <div>
-                    <small>Interface Status</small>
-<strong>Demo Preview</strong>
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <!-- BARRA SUPERIOR -->
-
-        <div class="command-market-strip">
-
-            <div class="market-strip-item">
-
-                <span>BTC</span>
-
-                <strong id="terminalBtcPrice">
-                    $68,420
-                </strong>
-
-                <small class="terminal-positive">
-    SAMPLE
-</small>
-
-            </div>
-
-            <div class="market-strip-item">
-
-                <span>ETH</span>
-
-                <strong id="terminalEthPrice">
-                    $3,780
-                </strong>
-
-                <small class="terminal-positive">
-    SAMPLE
-</small>
-
-            </div>
-
-            <div class="market-strip-item">
-
-                <span>BNB</span>
-
-                <strong id="terminalBnbPrice">
-                    $612
-                </strong>
-
-                <small class="terminal-negative">
-                    SAMPLE
-                </small>
-
-            </div>
-
-            <div class="market-strip-item">
-
-                <span>Total Market</span>
-
-                <strong>
-                    $2.51T
-                </strong>
-
-                <small class="terminal-positive">
-    SAMPLE
-</small>
-
-            </div>
-
-        </div>
-
-
-        <!-- CONTEÚDO PRINCIPAL -->
-
-        <div class="command-terminal-body">
-
-            <!-- COLUNA PRINCIPAL -->
-
-            <div class="command-main-column">
-
-                <article class="command-ocean-overview">
-
-                    <div class="command-card-heading">
-
-                        <div>
-                            <span>Ocean Status</span>
-
-                            <strong>
-                                Market intelligence overview
-                            </strong>
-                        </div>
-
-                        <span class="command-live-badge">
-    Demo Preview
-</span>
-
-                    </div>
-
-
-                    <div class="command-overview-content">
-
-                        <div class="command-ocean-score">
-
-                            <div class="command-score-ring">
-
-                                <div class="command-score-center">
-
-                                    <strong
-                                        id="terminalOceanScore"
-                                    >
-                                        74
-                                    </strong>
-
-                                    <span>
-                                        Ocean Score
-                                    </span>
-
-                                </div>
-
-                            </div>
-
-                        </div>
-
-
-                        <div class="command-ocean-analysis">
-
-    <span>
-        Sample market condition
-    </span>
-
-    <strong>
-        Demonstration scenario
-    </strong>
-
-    <p>
-        Illustrative liquidity, whale activity, sentiment
-        and risk signals for interface demonstration.
-    </p>
-
-    <div class="command-analysis-tags">
-
-        <span>
-            Liquidity Demo
+      </div>
+
+      <div class="footer-bottom">
+        <span id="copyright">
+          © SNAO World. All rights reserved.
         </span>
 
         <span>
-            Sentiment Demo
+          Intelligence Beyond Boundaries.
         </span>
-
-        <span>
-            Risk Demo
-        </span>
+      </div>
 
     </div>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="command-market-chart">
-
-                        <div class="command-chart-header">
-
-    <div>
-        <span>
-            Intelligence Flow
-        </span>
-
-        <strong>
-            Sample Data
-        </strong>
-    </div>
-
-    <span class="command-chart-change">
-        Demo
-    </span>
-
-</div>
-
-
-                        <div class="command-chart-area">
-
-                            <div class="command-chart-grid"></div>
-
-                            <svg
-                                class="command-line-chart"
-                                viewBox="0 0 800 240"
-                                preserveAspectRatio="none"
-                                aria-hidden="true"
-                            >
-
-                                <defs>
-
-                                    <linearGradient
-                                        id="commandChartFill"
-                                        x1="0"
-                                        x2="0"
-                                        y1="0"
-                                        y2="1"
-                                    >
-
-                                        <stop
-                                            offset="0%"
-                                            stop-color="#00cfff"
-                                            stop-opacity="0.34"
-                                        />
-
-                                        <stop
-                                            offset="100%"
-                                            stop-color="#00cfff"
-                                            stop-opacity="0"
-                                        />
-
-                                    </linearGradient>
-
-                                </defs>
-
-                                <path
-                                    class="command-chart-fill"
-                                    d="
-                                        M 0 190
-                                        C 70 175, 105 205, 165 165
-                                        C 225 125, 260 152, 320 115
-                                        C 390 72, 425 130, 480 93
-                                        C 550 45, 600 96, 660 58
-                                        C 720 23, 755 51, 800 28
-                                        L 800 240
-                                        L 0 240
-                                        Z
-                                    "
-                                ></path>
-
-                                <path
-                                    class="command-chart-line"
-                                    d="
-                                        M 0 190
-                                        C 70 175, 105 205, 165 165
-                                        C 225 125, 260 152, 320 115
-                                        C 390 72, 425 130, 480 93
-                                        C 550 45, 600 96, 660 58
-                                        C 720 23, 755 51, 800 28
-                                    "
-                                ></path>
-
-                            </svg>
-
-                        </div>
-
-                    </div>
-
-                </article>
-
-
-                <!-- SARDINE AI -->
-
-                <article class="command-ai-panel">
-
-                    <div class="command-card-heading">
-
-                        <div>
-                            <span>Sardine AI</span>
-
-                            <strong>
-                                Market intelligence summary
-                            </strong>
-                        </div>
-
-                        <span class="command-ai-state">
-    AI Preview
-</span>
-
-                    </div>
-
-
-                    <div class="command-ai-message">
-
-                        <div class="command-ai-avatar">
-                            AI
-                        </div>
-
-                        <div>
-
-                            <strong>
-                                Ocean Intelligence Summary
-                            </strong>
-
-                            <p id="terminalAiSummary">
-                                Smart money activity remains concentrated in
-                                large-cap assets. Liquidity conditions are improving,
-                                but short-term volatility may increase.
-                            </p>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="command-ai-prompts">
-
-                        <button
-                            type="button"
-                            data-terminal-prompt="market"
-                        >
-                            What happened today?
-                        </button>
-
-                        <button
-                            type="button"
-                            data-terminal-prompt="whales"
-                        >
-                            Analyze whale activity
-                        </button>
-
-                        <button
-                            type="button"
-                            data-terminal-prompt="risk"
-                        >
-                            Show market risk
-                        </button>
-
-                    </div>
-
-                </article>
-
-            </div>
-
-
-            <!-- COLUNA DE MÉTRICAS -->
-
-            <aside class="command-metrics-column">
-
-                <article class="command-metric-card">
-
-                    <div class="command-metric-top">
-
-                        <span class="command-metric-icon">
-                            ◈
-                        </span>
-
-                        <span class="command-metric-state state-neutral">
-    Demo
-</span>
-
-                    </div>
-
-                    <span class="command-metric-label">
-                        BTC Dominance
-                    </span>
-
-                    <strong class="command-metric-value">
-                        58.12%
-                    </strong>
-
-                    <div class="command-mini-progress">
-                        <span style="--command-progress: 58.12%"></span>
-                    </div>
-
-                    <small>
-    Illustrative dominance data for interface demonstration.
-</small>
-
-                </article>
-
-
-                <article class="command-metric-card">
-
-                    <div class="command-metric-top">
-
-                        <span class="command-metric-icon">
-                            ◉
-                        </span>
-
-                        <span class="command-metric-state state-greed">
-    Demo
-</span>
-
-                    </div>
-
-                    <span class="command-metric-label">
-                        Fear & Greed
-                    </span>
-
-                    <strong class="command-metric-value">
-                        72
-                    </strong>
-
-                    <div class="command-mini-progress">
-                        <span style="--command-progress: 72%"></span>
-                    </div>
-
-                    <small>
-    Illustrative sentiment data for interface demonstration.
-</small>>
-
-                </article>
-
-
-                <article class="command-metric-card">
-
-                    <div class="command-metric-top">
-
-                        <span class="command-metric-icon">
-                            🐋
-                        </span>
-
-                        <span class="command-metric-state state-high">
-    Demo
-</span>
-
-<span class="command-metric-label">
-    Whale Activity
-</span>
-
-<strong class="command-metric-value">
-    87%
-</strong>
-
-<div class="command-mini-progress">
-    <span style="--command-progress: 87%"></span>
-</div>
-
-<small>
-    Illustrative whale activity signal.
-</small>
-
-                </article>
-
-
-                <article class="command-metric-card">
-
-                    <div class="command-metric-top">
-
-                        <span class="command-metric-icon">
-                            ≈
-                        </span>
-
-                        <span class="command-metric-state state-positive">
-    Demo
-</span>
-
-                    </div>
-
-                    <span class="command-metric-label">
-                        Stablecoin Flow
-                    </span>
-
-                    <strong class="command-metric-value">
-    +$183M
-</strong>
-
-<div class="command-mini-progress">
-    <span style="--command-progress: 68%"></span>
-</div>
-
-<small>
-    Illustrative capital-flow signal for interface demonstration.
-</small>
-
-                </article>
-
-
-                <article class="command-metric-card">
-
-                    <div class="command-metric-top">
-
-                        <span class="command-metric-icon">
-                            ✦
-                        </span>
-
-                        <span class="command-metric-state state-ai">
-    Demo
-</span>
-
-<span class="command-metric-label">
-    Sample Narrative
-</span>
-
-<strong class="command-metric-value">
-    AI
-</strong>
-
-<div class="command-mini-progress">
-    <span style="--command-progress: 81%"></span>
-</div>
-
-<small>
-    Illustrative narrative signal for interface demonstration.
-</small>
-
-                </article>
-
-
-                <article class="command-metric-card">
-
-                    <div class="command-metric-top">
-
-                        <span class="command-metric-icon">
-                            ◇
-                        </span>
-
-                        <span class="command-metric-state state-risk">
-    Demo
-</span>
-
-<span class="command-metric-label">
-    Ocean Risk
-</span>
-
-<strong class="command-metric-value">
-    34%
-</strong>
-
-<div class="command-mini-progress command-risk-progress">
-    <span style="--command-progress: 34%"></span>
-</div>
-
-<small>
-    Illustrative market risk signal.
-</small>
-
-                </article>
-
-            </aside>
-
-        </div>
-
-
-        <!-- RODAPÉ DO TERMINAL -->
-
-        <div class="command-terminal-footer">
-
-            <span>
-                Demonstration data — real APIs will be connected later.
-            </span>
-
-            <div>
-    <i></i>
-    Interface demonstration only
-</div>
-
-        </div>
-
-    </div>
-
-</section>
-
-<!-- =========================================
-     SNAO FAQ
-========================================== -->
-
-<section class="section snao-faq-section" id="faq">
-
-    <div class="section-heading">
-
-        <span class="section-tag">
-            SNAO FAQ
-        </span>
-
-        <h2>
-            Understand the SNAO ecosystem.
-        </h2>
-
-        <p>
-            Learn how the Mini App, Ocean Intelligence, Sardine AI,
-            token utility and future ecosystem features will work.
-        </p>
-
-    </div>
-
-
-    <div class="snao-faq-layout">
-
-        <!-- PAINEL ESQUERDO -->
-
-        <aside class="snao-faq-intro">
-
-            <span class="snao-faq-intro-label">
-                Need clarity?
-            </span>
-
-            <h3>
-                Everything begins with transparent information.
-            </h3>
-
-            <p>
-                The SNAO ecosystem is being developed step by step.
-                Official information about the token, contract, trading,
-                utilities and platform development will always be published
-                through the official channels.
-            </p>
-
-            <div class="snao-faq-official-box">
-
-                <span>
-                    Official information
-                </span>
-
-                <strong>
-                    Verify before you trust.
-                </strong>
-
-                <div>
-
-                    <a
-                        href="https://t.me/snaoofficial"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        Telegram
-                        <b>↗</b>
-                    </a>
-
-                    <a
-                        href="https://x.com/SNAOOFFICIAL"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        X Official
-                        <b>↗</b>
-                    </a>
-
-                </div>
-
-            </div>
-
-        </aside>
-
-
-        <!-- PERGUNTAS -->
-
-        <div class="snao-faq-list">
-
-            <article class="snao-faq-item active">
-
-                <button
-                    class="snao-faq-question"
-                    type="button"
-                    aria-expanded="true"
-                >
-                    <span class="snao-faq-number">01</span>
-
-                    <strong>
-                        What is SNAO?
-                    </strong>
-
-                    <i></i>
-                </button>
-
-                <div class="snao-faq-answer">
-
-                    <p>
-                        SNAO is an Ocean Intelligence ecosystem designed to
-                        combine artificial intelligence, blockchain analytics,
-                        market signals and community participation in one
-                        connected crypto platform.
-                    </p>
-
-                </div>
-
-            </article>
-
-
-            <article class="snao-faq-item">
-
-                <button
-                    class="snao-faq-question"
-                    type="button"
-                    aria-expanded="false"
-                >
-                    <span class="snao-faq-number">02</span>
-
-                    <strong>
-                        What is Sardine AI?
-                    </strong>
-
-                    <i></i>
-                </button>
-
-                <div class="snao-faq-answer">
-
-                    <p>
-                        Sardine AI is the future intelligence engine of the
-                        ecosystem. It is planned to analyze market sentiment,
-                        whale movements, liquidity, smart money, asset behavior,
-                        risk conditions and important market events.
-                    </p>
-
-                </div>
-
-            </article>
-
-
-            <article class="snao-faq-item">
-
-                <button
-                    class="snao-faq-question"
-                    type="button"
-                    aria-expanded="false"
-                >
-                    <span class="snao-faq-number">03</span>
-
-                    <strong>
-                        How does the SNAO Mini App work?
-                    </strong>
-
-                    <i></i>
-                </button>
-
-                <div class="snao-faq-answer">
-
-    <p>
-        The SNAO Mini App is currently under development and will
-        bring mining, missions, referrals, rankings, VIP systems,
-        reputation and community rewards directly to Telegram.
-        Official access will be announced when the Mini App is ready.
-    </p>
-
-</div>
-
-            </article>
-
-
-            <article class="snao-faq-item">
-
-                <button
-                    class="snao-faq-question"
-                    type="button"
-                    aria-expanded="false"
-                >
-                    <span class="snao-faq-number">04</span>
-
-                    <strong>
-                        What will the SNAO token be used for?
-                    </strong>
-
-                    <i></i>
-                </button>
-
-                <div class="snao-faq-answer">
-
-                    <p>
-                        The token is planned to support premium intelligence,
-                        platform utilities, VIP access, marketplace payments,
-                        staking, governance, ecosystem rewards and future
-                        integrations across SNAO products.
-                    </p>
-
-                </div>
-
-            </article>
-
-
-            <article class="snao-faq-item">
-
-                <button
-                    class="snao-faq-question"
-                    type="button"
-                    aria-expanded="false"
-                >
-                    <span class="snao-faq-number">05</span>
-
-                    <strong>
-                        What is the total SNAO supply?
-                    </strong>
-
-                    <i></i>
-                </button>
-
-                <div class="snao-faq-answer">
-
-    <p>
-        SNAO has a fixed maximum supply of 200,000,000 tokens
-        on BNB Smart Chain, with no future minting. The supply
-        is allocated across the public sale, liquidity, treasury,
-        founder, team, partnerships, community rewards,
-        strategic reserve and unsold sale reserve, with
-        allocation-specific vesting and release conditions.
-    </p>
-
-</div>
-
-            </article>
-
-
-            <article class="snao-faq-item">
-
-                <button
-                    class="snao-faq-question"
-                    type="button"
-                    aria-expanded="false"
-                >
-                    <span class="snao-faq-number">06</span>
-
-                    <strong>
-                        When will SNAO trading begin?
-                    </strong>
-
-                    <i></i>
-                </button>
-
-                <div class="snao-faq-answer">
-
-    <p>
-    The SNAO Public Sale is live, with purchases made in USDT
-    on BNB Smart Chain through the official sale contract.
-    Public trading will begin only after the sale, TGE and
-    liquidity deployment. Verified trading information and
-    market links will be published through SNAO.world and
-    official community channels.
-</p>
-
-</div>
-
-            </article>
-
-
-            <article class="snao-faq-item">
-
-                <button
-                    class="snao-faq-question"
-                    type="button"
-                    aria-expanded="false"
-                >
-                    <span class="snao-faq-number">07</span>
-
-                    <strong>
-                        Will SNAO have staking and governance?
-                    </strong>
-
-                    <i></i>
-                </button>
-
-                <div class="snao-faq-answer">
-
-                    <p>
-                        Staking and governance are planned as future utilities.
-                        Their rules, rewards, eligibility and voting structure
-                        will be defined during the platform expansion phases.
-                    </p>
-
-                </div>
-
-            </article>
-
-
-            <article class="snao-faq-item">
-
-                <button
-                    class="snao-faq-question"
-                    type="button"
-                    aria-expanded="false"
-                >
-                    <span class="snao-faq-number">08</span>
-
-                    <strong>
-                        How can I avoid fake SNAO tokens?
-                    </strong>
-
-                    <i></i>
-                </button>
-
-                <div class="snao-faq-answer">
-
-                    <p>
-    Never trust unofficial contracts or private messages.
-    The official SNAO contracts are live on BNB Smart Chain.
-    Always verify contract addresses through SNAO.world and
-    official SNAO community channels.
-</p>
-
-                </div>
-
-            </article>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-        
-        <!-- =========================================
-             FINAL CTA
-        ========================================== -->
-
-        <section class="final-cta" id="community">
-
-    <div class="community-glow community-glow-one"></div>
-    <div class="community-glow community-glow-two"></div>
-
-    <div class="community-orbit community-orbit-one"></div>
-    <div class="community-orbit community-orbit-two"></div>
-
-    <div class="community-content">
-
-        <span class="section-tag">
-            Join the Ocean
-        </span>
-
-        <h2>
-            Don’t follow the market.
-            <span>Understand it.</span>
-        </h2>
-
-        <p>
-            Join the SNAO ecosystem, follow the Mini App launch and
-the development of a new Ocean Intelligence layer for crypto.
-        </p>
-
-        <div class="community-actions">
-
-            <div
-    class="community-primary-action"
-    style="cursor: default; opacity: 0.65;"
->
-    <span class="community-action-icon">◉</span>
-
-    <span class="community-action-copy">
-        <small>SNAO Mini App</small>
-        <strong>Coming Soon</strong>
-    </span>
-</div>
-
-            <a
-                class="community-secondary-action"
-                href="https://t.me/snaoofficial"
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-                <span class="community-action-icon">◉</span>
-
-                <span class="community-action-copy">
-                    <small>Join the community</small>
-                    <strong>Telegram Channel</strong>
-                </span>
-
-                <b>↗</b>
-            </a>
-
-        </div>
-
-        <div class="community-links">
-
-            <a
-                href="https://x.com/SNAOOFFICIAL"
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-                <span>X</span>
-
-                <div>
-                    <small>Follow updates</small>
-                    <strong>@SNAOOFFICIAL</strong>
-                </div>
-
-                <b>↗</b>
-            </a>
-
-            <a
-                href="https://t.me/snaoofficial"
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-                <span>➤</span>
-
-                <div>
-                    <small>Official community</small>
-                    <strong>SNAO Telegram</strong>
-                </div>
-
-                <b>↗</b>
-            </a>
-
-            <a
-                href="https://snao.world"
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-                <span>🌐</span>
-
-                <div>
-                    <small>Official platform</small>
-                    <strong>SNAO.world</strong>
-                </div>
-
-                <b>↗</b>
-            </a>
-
-        </div>
-
-        <div class="community-status">
-
-            <span>
-                <i></i>
-                Community ecosystem growing
-            </span>
-
-            <span>
-                Built for the future of Ocean Intelligence.
-            </span>
-
-        </div>
-
-    </div>
-
-</section>
-
-    </main>
-
-
-    <!-- =========================================
-         FOOTER
-    ========================================== -->
-
-    <!-- =========================================
-     PREMIUM FOOTER
-========================================== -->
-
-<footer class="site-footer premium-footer" id="footer">
-
-    <div class="footer-ocean-glow footer-ocean-glow-one"></div>
-    <div class="footer-ocean-glow footer-ocean-glow-two"></div>
-
-
-    <!-- =========================================
-         FOOTER TOP
-    ========================================== -->
-
-    <div class="premium-footer-top">
-
-        <div class="premium-footer-brand">
-
-            <a class="brand" href="#home">
-
-                <span class="brand-symbol">
-                    ◉
-                </span>
-
-                <span class="brand-text">
-                    <strong>SNAO</strong>
-                    <small>Ocean Intelligence</small>
-                </span>
-
-            </a>
-
-            <p>
-                An Ocean Intelligence ecosystem powered by artificial
-                intelligence, blockchain analytics, market data and
-                community participation.
-            </p>
-
-            <div class="premium-footer-status">
-
-    <span>
-        <i></i>
-        Ecosystem under development
-    </span>
-
-</div>
-
-            <div class="premium-footer-socials">
-
-                <a
-                    href="https://t.me/snaoofficial"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="SNAO Telegram Community"
-                >
-                    <span>➤</span>
-                    Telegram
-                </a>
-
-                <a
-                    href="https://x.com/SNAOOFFICIAL"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="SNAO Official X"
-                >
-                    <span>𝕏</span>
-                    X Official
-                </a>
-
-                <span class="footer-disabled-link">
-    ◉ Mini App — Soon
-</span>
-
-            </div>
-
-        </div>
-
-
-        <!-- ECOSYSTEM -->
-
-        <div class="premium-footer-column">
-
-            <h3>
-                Ecosystem
-            </h3>
-
-            <a href="#features">
-                Intelligence Modules
-            </a>
-
-            <a href="#dashboard">
-                Ocean Status
-            </a>
-
-            <a href="#ecosystem">
-                Sardine AI
-            </a>
-
-            <a href="terminal.html">
-    Terminal
-</a>
-
-            <a href="#products">
-                Products
-            </a>
-
-        </div>
-
-
-        <!-- TOKEN -->
-
-        <div class="premium-footer-column">
-
-            <h3>
-                SNAO Token
-            </h3>
-
-            <a href="token.html#buy">
-    Get $SNAO
-</a>
-
-<a href="token.html#allocation">
-    Tokenomics
-</a>
-
-<a href="token.html#vesting">
-    Release Schedule
-</a>
-
-<a href="whitepaper.html#roadmap">
-    Roadmap
-</a>
-
-<a href="terminal.html">
-    Ocean Terminal
-</a>
-
-<a href="token.html">
-    $SNAO Token
-</a>
-
-<a href="whitepaper.html">
-    Whitepaper
-</a>
-
-<span class="footer-disabled-link">
-    Contract — Coming Soon
-</span>
-
-        </div>
-
-
-        <!-- PROJECT -->
-
-        <div class="premium-footer-column">
-
-            <h3>
-                Project
-            </h3>
-
-            <a href="#home">
-                Home
-            </a>
-
-            <a href="#faq">
-                FAQ
-            </a>
-
-            <a href="#community">
-                Community
-            </a>
-
-            <span class="footer-disabled-link">
-    Mini App — Coming Soon
-</span>
-
-            <span class="footer-disabled-link">
-                Documentation — Soon
-            </span>
-
-        </div>
-
-
-        <!-- SECURITY -->
-
-        <div class="premium-footer-security">
-
-            <div class="footer-security-icon">
-                !
-            </div>
-
-            <span>
-                Security Notice
-            </span>
-
-            <strong>
-    The official SNAO contracts are live on BNB Smart Chain.
-</strong>
-<p>
-    Always verify contract addresses through SNAO.world and official
-    verified community channels. Never trust unofficial contracts,
-    direct messages or private purchase offers.
-</p>
-<a href="sale.html">
-    View Public Sale
-    <b>↗</b>
-</a>
-
-        </div>
-
-    </div>
-
-
-    <!-- =========================================
-         NEWSLETTER / UPDATES
-    ========================================== -->
-
-    <div class="premium-footer-updates">
-
-        <div>
-
-            <span>
-                Ocean Intelligence Updates
-            </span>
-
-            <strong>
-                Follow the evolution of SNAO.
-            </strong>
-
-            <p>
-                Receive launch announcements, ecosystem updates and
-                official security information through our channels.
-            </p>
-
-        </div>
-
-        <div class="premium-footer-update-actions">
-
-            <a
-                href="https://t.me/snaoofficial"
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-                Join Telegram
-                <b>↗</b>
-            </a>
-
-            <a
-                href="https://x.com/SNAOOFFICIAL"
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-                Follow on X
-                <b>↗</b>
-            </a>
-
-        </div>
-
-    </div>
-
-
-    <!-- =========================================
-         FOOTER BOTTOM
-    ========================================== -->
-
-    <div class="premium-footer-bottom">
-
-        <div>
-            <span>
-                © 2026 SNAO. All rights reserved.
-            </span>
-
-            <span>
-                Built for the future of Ocean Intelligence.
-            </span>
-        </div>
-
-        <div class="premium-footer-legal">
-
-            <button
-                type="button"
-                data-footer-modal="risk"
-            >
-                Risk Disclaimer
-            </button>
-
-            <button
-                type="button"
-                data-footer-modal="privacy"
-            >
-                Privacy
-            </button>
-
-            <button
-                type="button"
-                data-footer-modal="terms"
-            >
-                Terms
-            </button>
-
-        </div>
-
-    </div>
-
-</footer>
-
-
-<!-- =========================================
-     LEGAL MODAL
-========================================== -->
-
-<div
-    class="footer-legal-modal"
-    id="footerLegalModal"
-    aria-hidden="true"
->
-
-    <div class="footer-legal-backdrop"></div>
-
-    <div
-        class="footer-legal-dialog"
-        role="dialog"
-        aria-modal="true"
-        aria-labelledby="footerLegalTitle"
-    >
-
-        <button
-            class="footer-legal-close"
-            type="button"
-            aria-label="Close legal information"
-        >
-            ×
-        </button>
-
-        <span class="footer-legal-label">
-            SNAO Information
-        </span>
-
-        <h2 id="footerLegalTitle">
-            Risk Disclaimer
-        </h2>
-
-        <div
-            class="footer-legal-content"
-            id="footerLegalContent"
-        ></div>
-
-    </div>
-
-</div>
-
-
-    <div class="cursor-glow" aria-hidden="true"></div>
-
-    <script src="https://cdn.jsdelivr.net/npm/ethers@6.13.5/dist/ethers.umd.min.js"></script>
-<script src="script.js"></script>
+  </footer>
+
+  <!-- JAVASCRIPT -->
+
+  <script>
+    "use strict";
+
+    // MOBILE NAVIGATION
+
+    const menuToggle =
+      document.getElementById("menuToggle");
+
+    const navigation =
+      document.getElementById("navigation");
+
+    if (menuToggle && navigation) {
+      menuToggle.addEventListener("click", () => {
+        const isOpen =
+          navigation.classList.toggle("open");
+
+        menuToggle.setAttribute(
+          "aria-expanded",
+          String(isOpen)
+        );
+
+        menuToggle.textContent =
+          isOpen ? "✕" : "☰";
+      });
+
+      navigation.querySelectorAll("a").forEach(link => {
+        link.addEventListener("click", () => {
+          navigation.classList.remove("open");
+
+          menuToggle.setAttribute(
+            "aria-expanded",
+            "false"
+          );
+
+          menuToggle.textContent = "☰";
+        });
+      });
+    }
+
+    // REVEAL ANIMATIONS
+
+    const revealElements =
+      document.querySelectorAll(".reveal");
+
+    const reducedMotion =
+      window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+      ).matches;
+
+    if (
+      "IntersectionObserver" in window &&
+      !reducedMotion
+    ) {
+      const observer = new IntersectionObserver(
+        entries => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.12 }
+      );
+
+      revealElements.forEach(element => {
+        observer.observe(element);
+      });
+    } else {
+      revealElements.forEach(element => {
+        element.classList.add("visible");
+      });
+    }
+
+    // COPYRIGHT YEAR
+
+    const copyright =
+      document.getElementById("copyright");
+
+    if (copyright) {
+      copyright.textContent =
+        "© " +
+        new Date().getFullYear() +
+        " SNAO World. All rights reserved.";
+    }
+  </script>
 
 </body>
-
 </html>
