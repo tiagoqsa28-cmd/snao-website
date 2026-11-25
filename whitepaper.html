@@ -1,4002 +1,2371 @@
+
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#030b16">
+<meta name="robots" content="index, follow">
 
-<meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
->
+<title>SNAO World | Whitepaper & Ecosystem Documentation</title>
 
-<meta
-    name="description"
-    content="SNAO Whitepaper — Ocean Intelligence ecosystem, tokenomics, technology, products, security and long-term development vision."
->
+<meta name="description" content="Explore the SNAO World ecosystem, ATLAS enterprise technology, SNAO Ocean mobile platform, Ocean Intelligence, tokenomics, vesting and development roadmap.">
 
-<title>SNAO Whitepaper — Ocean Intelligence Ecosystem</title>
+<link rel="canonical" href="https://snao.world/whitepaper.html">
+<link rel="icon" href="assets/favicon.png" type="image/png">
 
-<link rel="stylesheet" href="style.css">
-<link rel="stylesheet" href="whitepaper.css">
+<meta property="og:type" content="website">
+<meta property="og:title" content="SNAO World — Ecosystem Whitepaper">
+<meta property="og:description" content="Technology vision, platform architecture, tokenomics and long-term development documentation.">
+<meta property="og:url" content="https://snao.world/whitepaper.html">
 
+<style>
+:root {
+  --bg:#030b16;
+  --bg2:#061524;
+  --panel:#091e32;
+  --panel2:#0c2941;
+  --cyan:#3bdff8;
+  --blue:#078cf0;
+  --text:#f1f9ff;
+  --muted:#94acc0;
+  --line:rgba(89,205,250,.16);
+}
+
+* {
+  box-sizing:border-box;
+}
+
+html {
+  scroll-behavior:smooth;
+  scroll-padding-top:100px;
+}
+
+body {
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  font-family:Inter,"Segoe UI",Arial,sans-serif;
+  -webkit-font-smoothing:antialiased;
+}
+
+a {
+  color:inherit;
+  text-decoration:none;
+}
+
+button {
+  font:inherit;
+  cursor:pointer;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline:2px solid var(--cyan);
+  outline-offset:4px;
+}
+
+.container {
+  width:min(1250px,calc(100% - 44px));
+  margin:auto;
+}
+
+.gradient {
+  background:linear-gradient(100deg,#fff,#48dfff,#168cf5);
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+}
+
+.tag {
+  display:inline-block;
+  color:var(--cyan);
+  font-size:11px;
+  font-weight:800;
+  letter-spacing:2px;
+  text-transform:uppercase;
+}
+
+.button {
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:46px;
+  padding:12px 20px;
+  border:1px solid transparent;
+  border-radius:9px;
+  font-size:12px;
+  font-weight:800;
+}
+
+.button-primary {
+  background:linear-gradient(100deg,#08b7ee,#5ce9fc);
+  color:#02131d;
+}
+
+.button-outline {
+  background:#092139;
+  border-color:var(--line);
+  color:white;
+}
+
+/* HEADER */
+
+.header {
+  position:fixed;
+  inset:0 0 auto;
+  z-index:100;
+  height:76px;
+  background:rgba(3,11,22,.92);
+  border-bottom:1px solid var(--line);
+  backdrop-filter:blur(18px);
+}
+
+.header-inner {
+  height:100%;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:25px;
+}
+
+.brand {
+  display:flex;
+  align-items:center;
+  gap:11px;
+  flex-shrink:0;
+}
+
+.brand-icon {
+  width:43px;
+  height:43px;
+  display:grid;
+  place-items:center;
+  color:var(--cyan);
+  background:radial-gradient(circle,rgba(0,195,255,.2),transparent);
+  border:1px solid rgba(60,215,255,.4);
+  border-radius:12px;
+  font-size:28px;
+  font-weight:900;
+  font-style:italic;
+}
+
+.brand strong {
+  display:block;
+  letter-spacing:3px;
+}
+
+.brand small {
+  display:block;
+  margin-top:4px;
+  color:var(--muted);
+  font-size:9px;
+  letter-spacing:2.5px;
+}
+
+.nav {
+  display:flex;
+  align-items:center;
+  gap:20px;
+}
+
+.nav a {
+  color:#b5c9da;
+  font-size:12px;
+}
+
+.nav a:hover,
+.nav a.active {
+  color:var(--cyan);
+}
+
+.nav .sale-link {
+  padding:12px 17px;
+  border-radius:8px;
+  background:var(--cyan);
+  color:#02131b;
+  font-weight:800;
+}
+
+.menu-toggle {
+  display:none;
+  padding:9px 13px;
+  border:1px solid var(--line);
+  border-radius:8px;
+  background:var(--panel);
+  color:white;
+  font-size:22px;
+}
+
+/* PAGE HERO */
+
+.page-hero {
+  position:relative;
+  padding:155px 0 90px;
+  overflow:hidden;
+  text-align:center;
+  background:
+    radial-gradient(ellipse at 50% 24%,rgba(0,145,250,.2),transparent 55%),
+    linear-gradient(180deg,#030a15,#071a2d,#030b16);
+}
+
+.page-hero::before {
+  content:"";
+  position:absolute;
+  inset:0;
+  opacity:.12;
+  background-image:
+    linear-gradient(rgba(78,200,255,.3) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(78,200,255,.3) 1px,transparent 1px);
+  background-size:65px 65px;
+  pointer-events:none;
+}
+
+.page-hero-content {
+  position:relative;
+  z-index:1;
+}
+
+.page-hero h1 {
+  font-size:clamp(50px,7vw,91px);
+  line-height:1;
+  letter-spacing:-4px;
+  margin:21px 0;
+}
+
+.page-hero p {
+  max-width:750px;
+  margin:0 auto 27px;
+  color:#abc0d0;
+  font-size:16px;
+  line-height:1.9;
+}
+
+.hero-links {
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:12px;
+}
+
+/* DOCUMENT LAYOUT */
+
+.document-layout {
+  display:grid;
+  grid-template-columns:245px minmax(0,1fr);
+  gap:55px;
+  align-items:start;
+  padding:65px 0 120px;
+}
+
+.sidebar {
+  position:sticky;
+  top:105px;
+  padding:22px 17px;
+  border:1px solid var(--line);
+  border-radius:16px;
+  background:#081a2b;
+  max-height:calc(100vh - 125px);
+  overflow-y:auto;
+}
+
+.sidebar h3 {
+  margin:0 0 19px;
+  padding:0 10px;
+  color:var(--cyan);
+  font-size:11px;
+  letter-spacing:1.8px;
+}
+
+.sidebar a {
+  display:block;
+  padding:11px;
+  border-radius:8px;
+  color:#94adc2;
+  font-size:12px;
+  line-height:1.5;
+}
+
+.sidebar a:hover,
+.sidebar a.active {
+  background:#102c45;
+  color:var(--cyan);
+}
+
+.document {
+  min-width:0;
+}
+
+.doc-section {
+  margin-bottom:25px;
+  padding:43px;
+  border:1px solid var(--line);
+  border-radius:20px;
+  background:linear-gradient(145deg,#091d30,#061524);
+  scroll-margin-top:95px;
+}
+
+.section-number {
+  color:var(--cyan);
+  font-size:11px;
+  font-weight:800;
+  letter-spacing:2px;
+}
+
+.doc-section h2 {
+  margin:15px 0 18px;
+  font-size:clamp(29px,3.8vw,45px);
+  letter-spacing:-1.5px;
+  line-height:1.14;
+}
+
+.doc-section h3 {
+  margin:30px 0 13px;
+  font-size:19px;
+  color:#e9faff;
+}
+
+.doc-section p {
+  color:var(--muted);
+  font-size:14px;
+  line-height:1.95;
+}
+
+.doc-section ul {
+  padding-left:22px;
+  color:var(--muted);
+  font-size:14px;
+  line-height:2;
+}
+
+.doc-section li {
+  padding-left:5px;
+}
+
+.doc-section strong {
+  color:#e8f7ff;
+}
+
+.callout {
+  margin:24px 0;
+  padding:23px;
+  border-left:3px solid var(--cyan);
+  background:rgba(0,157,235,.07);
+  border-radius:0 12px 12px 0;
+}
+
+.callout strong {
+  display:block;
+  margin-bottom:9px;
+  font-size:14px;
+}
+
+.callout p {
+  margin:0;
+}
+
+/* CARDS */
+
+.card-grid {
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:13px;
+  margin:26px 0;
+}
+
+.info-card {
+  padding:22px;
+  border:1px solid var(--line);
+  border-radius:12px;
+  background:#0c2941;
+}
+
+.info-card span {
+  color:var(--cyan);
+  font-size:10px;
+  font-weight:800;
+  letter-spacing:1.5px;
+}
+
+.info-card h3 {
+  margin:13px 0 9px;
+  font-size:18px;
+}
+
+.info-card p {
+  margin:0;
+  font-size:12px;
+}
+
+.platform-grid {
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:12px;
+  margin:25px 0;
+}
+
+.platform-card {
+  padding:20px;
+  border:1px solid var(--line);
+  border-radius:12px;
+  background:#0c2941;
+}
+
+.platform-card span {
+  color:var(--cyan);
+  font-size:10px;
+  font-weight:800;
+}
+
+.platform-card h3 {
+  font-size:17px;
+  margin:13px 0 10px;
+}
+
+.platform-card p {
+  font-size:12px;
+  margin:0;
+}
+
+/* TABLES */
+
+.table-wrap {
+  width:100%;
+  overflow-x:auto;
+  margin:25px 0;
+  border:1px solid var(--line);
+  border-radius:12px;
+}
+
+table {
+  border-collapse:collapse;
+  width:100%;
+  min-width:530px;
+  background:#081a2c;
+  font-size:12px;
+}
+
+th,td {
+  padding:15px 14px;
+  text-align:left;
+  border-bottom:1px solid var(--line);
+  vertical-align:top;
+}
+
+th {
+  background:#10304a;
+  color:#b6f0ff;
+  font-size:11px;
+  letter-spacing:.5px;
+}
+
+td {
+  color:#a9bfd0;
+  line-height:1.6;
+}
+
+tbody tr:last-child td {
+  border-bottom:0;
+}
+
+td strong {
+  color:#eefbff;
+}
+
+/* TOKEN METRICS */
+
+.metrics {
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:10px;
+  margin:25px 0;
+}
+
+.metric {
+  padding:21px 13px;
+  text-align:center;
+  background:#0c2941;
+  border:1px solid var(--line);
+  border-radius:12px;
+}
+
+.metric span {
+  display:block;
+  color:var(--muted);
+  font-size:10px;
+}
+
+.metric strong {
+  display:block;
+  margin-top:12px;
+  color:#e5faff;
+  font-size:20px;
+  overflow-wrap:anywhere;
+}
+
+/* ROADMAP */
+
+.roadmap-list {
+  display:grid;
+  gap:13px;
+  margin:25px 0;
+}
+
+.roadmap-item {
+  display:grid;
+  grid-template-columns:43px 1fr;
+  gap:16px;
+  padding:22px;
+  border:1px solid var(--line);
+  border-radius:13px;
+  background:#0c2941;
+}
+
+.roadmap-index {
+  width:39px;
+  height:39px;
+  display:grid;
+  place-items:center;
+  border:1px solid rgba(53,220,255,.32);
+  border-radius:50%;
+  color:var(--cyan);
+  font-size:12px;
+  font-weight:800;
+}
+
+.roadmap-item h3 {
+  margin:0 0 9px;
+  font-size:17px;
+}
+
+.roadmap-item p {
+  margin:0;
+  font-size:12px;
+}
+
+/* FOOTER */
+
+.footer {
+  padding:50px 0 25px;
+  border-top:1px solid var(--line);
+  background:#020914;
+}
+
+.footer-grid {
+  display:grid;
+  grid-template-columns:1.5fr 1fr 1fr;
+  gap:40px;
+}
+
+.footer-about p {
+  max-width:340px;
+  color:var(--muted);
+  font-size:13px;
+  line-height:1.85;
+}
+
+.footer-links h4 {
+  font-size:12px;
+  margin:0 0 18px;
+}
+
+.footer-links a {
+  display:block;
+  color:var(--muted);
+  margin:11px 0;
+  font-size:12px;
+}
+
+.footer-links a:hover {
+  color:var(--cyan);
+}
+
+.footer-bottom {
+  display:flex;
+  justify-content:space-between;
+  gap:15px;
+  flex-wrap:wrap;
+  margin-top:45px;
+  padding-top:23px;
+  border-top:1px solid var(--line);
+  color:#7490a4;
+  font-size:11px;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:1050px) {
+  .nav { gap:12px; }
+  .nav a { font-size:11px; }
+  .document-layout { gap:25px; }
+  .doc-section { padding:30px; }
+  .platform-grid { grid-template-columns:1fr; }
+}
+
+@media(max-width:900px) {
+  .menu-toggle { display:block; }
+
+  .nav {
+    display:none;
+    position:absolute;
+    top:76px;
+    left:0;
+    right:0;
+    padding:17px 24px;
+    flex-direction:column;
+    align-items:stretch;
+    gap:0;
+    background:#061524;
+    border-bottom:1px solid var(--line);
+  }
+
+  .nav.open {
+    display:flex;
+  }
+
+  .nav a {
+    padding:13px 10px;
+    font-size:14px;
+  }
+
+  .nav .sale-link {
+    text-align:center;
+    margin-top:10px;
+  }
+
+  .document-layout {
+    grid-template-columns:1fr;
+    padding-top:25px;
+  }
+
+  .sidebar {
+    position:static;
+    max-height:none;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:5px;
+  }
+
+  .sidebar h3 {
+    grid-column:1/-1;
+  }
+
+  .footer-grid {
+    grid-template-columns:1fr 1fr;
+  }
+}
+
+@media(max-width:600px) {
+  .container {
+    width:calc(100% - 30px);
+  }
+
+  .header {
+    height:70px;
+  }
+
+  .nav {
+    top:70px;
+  }
+
+  .page-hero {
+    padding:125px 0 65px;
+  }
+
+  .page-hero h1 {
+    font-size:clamp(45px,12vw,65px);
+    letter-spacing:-2px;
+  }
+
+  .page-hero p {
+    font-size:14px;
+  }
+
+  .hero-links .button {
+    width:100%;
+  }
+
+  .sidebar {
+    grid-template-columns:1fr 1fr;
+    padding:15px;
+  }
+
+  .sidebar a {
+    font-size:11px;
+    padding:9px;
+  }
+
+  .document-layout {
+    gap:23px;
+    padding-bottom:70px;
+  }
+
+  .doc-section {
+    padding:22px 18px;
+    margin-bottom:15px;
+  }
+
+  .doc-section h2 {
+    font-size:29px;
+  }
+
+  .doc-section p {
+    font-size:13px;
+  }
+
+  .card-grid,
+  .platform-grid,
+  .metrics,
+  .footer-grid {
+    grid-template-columns:1fr;
+  }
+
+  .metrics {
+    grid-template-columns:1fr 1fr;
+  }
+
+  .roadmap-item {
+    grid-template-columns:35px 1fr;
+    gap:12px;
+    padding:17px;
+  }
+}
+
+@media(prefers-reduced-motion:reduce) {
+  html { scroll-behavior:auto; }
+  *,*::before,*::after {
+    animation:none!important;
+    transition:none!important;
+  }
+}
+</style>
 </head>
 
+<body>
 
-<body class="whitepaper-page">
+<!-- HEADER -->
 
+<header class="header">
+  <div class="container header-inner">
 
-<!-- =========================================
-     HEADER
-========================================== -->
+    <a href="index.html" class="brand">
+      <span class="brand-icon">S</span>
+      <span>
+        <strong>SNAO</strong>
+        <small>WORLD</small>
+      </span>
+    </a>
 
-<header class="whitepaper-header">
+    <nav class="nav" id="navigation">
+      <a href="index.html">Home</a>
+      <a href="index.html#atlas">ATLAS</a>
+      <a href="about.html">About</a>
+      <a href="token.html">Token</a>
+      <a href="whitepaper.html" class="active">Whitepaper</a>
+      <a href="sale.html" class="sale-link">Public Sale</a>
+    </nav>
 
-<a href="index.html" class="logo">
-    <span>SNAO</span>
-</a>
+    <button
+      id="menuToggle"
+      class="menu-toggle"
+      type="button"
+      aria-label="Toggle navigation"
+      aria-controls="navigation"
+      aria-expanded="false"
+    >☰</button>
 
-<nav>
-
-<a href="index.html">
-    Home
-</a>
-
-<a href="terminal.html">
-    Terminal
-</a>
-
-<a href="token.html">
-    Token
-</a>
-
-<a href="sale.html">
-    Public Sale
-</a>
-
-<a
-    class="active"
-    href="whitepaper.html"
->
-    Whitepaper
-</a>
-
-</nav>
-
+  </div>
 </header>
 
+<!-- HERO -->
 
-<!-- =========================================
-     WHITEPAPER LAYOUT
-========================================== -->
+<section class="page-hero">
+  <div class="container page-hero-content">
 
-<div class="whitepaper-layout">
+    <span class="tag">
+      SNAO World · Ecosystem Documentation
+    </span>
 
+    <h1>
+      Intelligence
+      <span class="gradient">
+        Beyond Boundaries.
+      </span>
+    </h1>
 
-<!-- =========================================
-     SIDEBAR
-========================================== -->
+    <p>
+      Explore the technology vision, planned platforms,
+      development architecture, tokenomics and
+      long-term strategy of SNAO World.
+    </p>
 
-<aside class="whitepaper-sidebar">
+    <div class="hero-links">
+      <a href="#overview" class="button button-primary">
+        Explore Documentation →
+      </a>
 
-<h3>
-    CONTENTS
-</h3>
+      <a href="token.html" class="button button-outline">
+        Token Details
+      </a>
+    </div>
 
-<a href="#vision">
-    Vision
-</a>
-
-<a href="#problem">
-    Problem
-</a>
-
-<a href="#solution">
-    Solution
-</a>
-
-<a href="#architecture">
-    Architecture
-</a>
-
-<a href="#terminal">
-    Ocean Terminal
-</a>
-
-<a href="#sardineai">
-    Sardine AI
-</a>
-
-<a href="#marketplace">
-    Marketplace
-</a>
-
-<a href="#tokenomics">
-    Tokenomics
-</a>
-
-<a href="#roadmap">
-    Roadmap
-</a>
-
-<a href="#security">
-    Security
-</a>
-
-<a href="#future">
-    Future
-</a>
-
-</aside>
-
-
-<!-- =========================================
-     MAIN CONTENT
-========================================== -->
-
-<main class="whitepaper-content">
-
-
-<!-- =========================================
-     HERO
-========================================== -->
-
-<section class="hero">
-
-<span class="badge">
-    Version 1.0
-</span>
-
-<h1>
-    Ocean Intelligence
-    for the next generation
-    of crypto markets
-</h1>
-
-<p>
-    SNAO is building an ecosystem designed to connect
-    market intelligence, blockchain data, artificial
-    intelligence and community participation.
-</p>
-
+  </div>
 </section>
 
-
-<!-- =========================================
-     VISION
-========================================== -->
-
-<section
-    class="whitepaper-section"
-    id="vision"
->
-
-<span class="whitepaper-section-number">
-    01
-</span>
-
-
-<div class="whitepaper-section-heading">
-
-<span>
-    Vision
-</span>
-
-<h2>
-    Building intelligence infrastructure
-    for the crypto economy.
-</h2>
-
-<p>
-    SNAO is being developed as an Ocean Intelligence ecosystem
-    that connects artificial intelligence, market information,
-    blockchain data, analytical tools and community participation.
-</p>
-
-</div>
-
-
-<div class="whitepaper-vision-grid">
-
-
-<article>
-
-<span>
-    Intelligence
-</span>
-
-<strong>
-    Transform data into decisions.
-</strong>
-
-<p>
-    SNAO aims to organize fragmented market information
-    into understandable intelligence for everyday users.
-</p>
-
-</article>
-
-
-<article>
-
-<span>
-    Accessibility
-</span>
-
-<strong>
-    Advanced tools for more people.
-</strong>
-
-<p>
-    Market intelligence should not remain available only
-    to institutions, professional desks and expensive platforms.
-</p>
-
-</article>
-
-
-<article>
-
-<span>
-    Ecosystem
-</span>
-
-<strong>
-    Products connected by one economy.
-</strong>
-
-<p>
-    The Ocean Terminal, Sardine AI, Marketplace, rewards
-    and planned $SNAO utility are designed to operate
-    as parts of one connected ecosystem.
-</p>
-
-</article>
-
-
-</div>
-
-
-<div class="whitepaper-vision-statement">
-
-<span>
-    Core Vision
-</span>
-
-<blockquote>
-    The market produces enormous amounts of information.
-    SNAO exists to transform that information into accessible,
-    connected and useful intelligence.
-</blockquote>
-
-</div>
-
-
-<div class="whitepaper-pillars">
-
-
-<div>
-
-<strong>
-    AI
-</strong>
-
-<span>
-    Interpretation
-</span>
-
-</div>
-
-
-<i>
-    +
-</i>
-
-
-<div>
-
-<strong>
-    Data
-</strong>
-
-<span>
-    Market Signals
-</span>
-
-</div>
-
-
-<i>
-    +
-</i>
-
-
-<div>
-
-<strong>
-    Community
-</strong>
-
-<span>
-    Participation
-</span>
-
-</div>
-
-
-<i>
-    =
-</i>
-
-
-<div class="whitepaper-pillar-result">
-
-<strong>
-    Ocean Intelligence
-</strong>
-
-<span>
-    Connected Ecosystem
-</span>
-
-</div>
-
-
-</div>
-
-</section>
-
-
-<!-- =========================================
-     PROBLEM
-========================================== -->
-
-<section
-    class="whitepaper-section"
-    id="problem"
->
-
-<span class="whitepaper-section-number">
-    02
-</span>
-
-
-<div class="whitepaper-section-heading">
-
-<span>
-    The Problem
-</span>
-
-<h2>
-    Crypto information is abundant,
-    but useful intelligence is fragmented.
-</h2>
-
-<p>
-    Retail participants frequently receive information after
-    large market movements have already happened. The tools needed
-    to understand liquidity, whales, sentiment and risk are spread
-    across many different platforms.
-</p>
-
-</div>
-
-
-<div class="whitepaper-problem-list">
-
-
-<article>
-
-<span class="problem-index">
-    01
-</span>
-
-<div>
-
-<strong>
-    Information arrives too late
-</strong>
-
-<p>
-    Many users react only after prices, narratives
-    and large-wallet movements have already changed.
-</p>
-
-</div>
-
-</article>
-
-
-<article>
-
-<span class="problem-index">
-    02
-</span>
-
-<div>
-
-<strong>
-    Market tools are fragmented
-</strong>
-
-<p>
-    Price, sentiment, news, whale activity and on-chain
-    data often require separate platforms and subscriptions.
-</p>
-
-</div>
-
-</article>
-
-
-<article>
-
-<span class="problem-index">
-    03
-</span>
-
-<div>
-
-<strong>
-    Raw data is difficult to interpret
-</strong>
-
-<p>
-    Large amounts of information do not automatically
-    produce understanding, context or better decisions.
-</p>
-
-</div>
-
-</article>
-
-
-<article>
-
-<span class="problem-index">
-    04
-</span>
-
-<div>
-
-<strong>
-    Institutional advantages remain large
-</strong>
-
-<p>
-    Professional participants have access to faster data,
-    specialized analysts and expensive intelligence systems.
-</p>
-
-</div>
-
-</article>
-
-
-<article>
-
-<span class="problem-index">
-    05
-</span>
-
-<div>
-
-<strong>
-    Many tokens lack real utility
-</strong>
-
-<p>
-    Numerous projects depend almost entirely on speculation
-    without connecting their token to meaningful products.
-</p>
-
-</div>
-
-</article>
-
-
-</div>
-
-
-<div class="whitepaper-information-gap">
-
-
-<div>
-
-<span>
-    What the market produces
-</span>
-
-<strong>
-    Data
-</strong>
-
-<small>
-    Prices · Transactions · News · Sentiment
-</small>
-
-</div>
-
-
-<span class="information-gap-arrow">
-    →
-</span>
-
-
-<div class="information-gap-problem">
-
-<span>
-    The current gap
-</span>
-
-<strong>
-    Fragmentation
-</strong>
-
-<small>
-    Different tools · Delayed context · Complexity
-</small>
-
-</div>
-
-
-<span class="information-gap-arrow">
-    →
-</span>
-
-
-<div>
-
-<span>
-    What users need
-</span>
-
-<strong>
-    Intelligence
-</strong>
-
-<small>
-    Context · Signals · Risk · Understanding
-</small>
-
-</div>
-
-
-</div>
-
-</section>
-
-
-<!-- =========================================
-     SOLUTION
-========================================== -->
-
-<section
-    class="whitepaper-section"
-    id="solution"
->
-
-<span class="whitepaper-section-number">
-    03
-</span>
-
-
-<div class="whitepaper-section-heading">
-
-<span>
-    The Solution
-</span>
-
-<h2>
-    One ecosystem connecting data,
-    intelligence and participation.
-</h2>
-
-<p>
-    SNAO brings fragmented market information into one connected
-    environment. The ecosystem is designed to collect data,
-    interpret market conditions and present intelligence through
-    accessible products.
-</p>
-
-</div>
-
-
-<div class="whitepaper-solution-flow">
-
-
-<article>
-
-<span>
-    01
-</span>
-
-<div class="solution-flow-icon">
-    D
-</div>
-
-<strong>
-    Collect Data
-</strong>
-
-<p>
-    Market prices, volume, sentiment, liquidity,
-    narratives and blockchain activity.
-</p>
-
-</article>
-
-
-<i>
-    →
-</i>
-
-
-<article>
-
-<span>
-    02
-</span>
-
-<div class="solution-flow-icon">
-    AI
-</div>
-
-<strong>
-    Interpret Information
-</strong>
-
-<p>
-    Sardine AI is designed to organize raw information
-    into summaries, indicators, alerts and analytical context.
-</p>
-
-</article>
-
-
-<i>
-    →
-</i>
-
-
-<article>
-
-<span>
-    03
-</span>
-
-<div class="solution-flow-icon">
-    T
-</div>
-
-<strong>
-    Deliver Intelligence
-</strong>
-
-<p>
-    Users can access the Ocean Terminal, analytical dashboards
-    and progressively developed intelligence services.
-</p>
-
-</article>
-
-
-<i>
-    →
-</i>
-
-
-<article>
-
-<span>
-    04
-</span>
-
-<div class="solution-flow-icon">
-    S
-</div>
-
-<strong>
-    Connect Utility
-</strong>
-
-<p>
-    $SNAO is planned to connect premium access,
-    marketplace services, rewards and future participation.
-</p>
-
-</article>
-
-
-</div>
-
-
-<div class="whitepaper-solution-products">
-
-
-<article>
-
-<span>
-    Ocean Terminal
-</span>
-
-<strong>
-    Connected market intelligence.
-</strong>
-
-<p>
-    A central interface combining market data,
-    sentiment, whale activity, liquidity and risk.
-</p>
-
-</article>
-
-
-<article>
-
-<span>
-    Sardine AI
-</span>
-
-<strong>
-    Interpretation instead of information overload.
-</strong>
-
-<p>
-    Planned AI-assisted analysis is designed to transform
-    complex market activity into more understandable context.
-</p>
-
-</article>
-
-
-<article>
-
-<span>
-    Ocean Indicators
-</span>
-
-<strong>
-    Market-condition estimates.
-</strong>
-
-<p>
-    Ocean Score, Liquidity Pressure Index and Whale
-    Confidence Index are designed to organize multiple signals.
-</p>
-
-</article>
-
-
-<article>
-
-<span>
-    Marketplace
-</span>
-
-<strong>
-    A future economy for intelligence products.
-</strong>
-
-<p>
-    Planned premium reports, digital tools,
-    AI services and future ecosystem products.
-</p>
-
-</article>
-
-
-</div>
-
-
-<div class="whitepaper-solution-statement">
-
-<span>
-    SNAO Approach
-</span>
-
-<strong>
-    Data alone is not intelligence.
-</strong>
-
-<p>
-    The objective is not simply to display more information.
-    The objective is to connect information, identify relevant
-    patterns and make market conditions easier to understand.
-</p>
-
-</div>
-
-
-</section>
-
-
-<!-- =========================================
-     OCEAN ARCHITECTURE
-========================================== -->
-
-<section
-    class="whitepaper-section"
-    id="architecture"
->
-
-<span class="whitepaper-section-number">
-    04
-</span>
-
-
-<div class="whitepaper-section-heading">
-
-<span>
-    Ocean Architecture
-</span>
-
-<h2>
-    A modular infrastructure
-    designed to expand over time.
-</h2>
-
-<p>
-    The SNAO ecosystem is structured as connected layers.
-    Each layer performs a specific role while contributing
-    to one shared intelligence network.
-</p>
-
-</div>
-
-
-<div class="whitepaper-architecture">
-
-<div class="architecture-background-grid"></div>
-
-
-<article
-    class="architecture-layer architecture-user-layer"
->
-
-<span>
-    Layer 01
-</span>
-
-<strong>
-    Users & Community
-</strong>
-
-<p>
-    Traders, researchers, token holders,
-    contributors and ecosystem participants.
-</p>
-
-<div>
-
-<small>
-    Website
-</small>
-
-<small>
-    Telegram
-</small>
-
-<small>
-    Community
-</small>
-
-</div>
-
-</article>
-
-
-<div class="architecture-connector">
-    <i></i>
-</div>
-
-
-<article
-    class="architecture-layer architecture-product-layer"
->
-
-<span>
-    Layer 02
-</span>
-
-<strong>
-    Intelligence Products
-</strong>
-
-<p>
-    Interfaces through which users interact
-    with SNAO intelligence and planned services.
-</p>
-
-<div>
-
-<small>
-    Ocean Terminal
-</small>
-
-<small>
-    Sardine AI
-</small>
-
-<small>
-    Marketplace
-</small>
-
-<small>
-    Reports
-</small>
-
-</div>
-
-</article>
-
-
-<div class="architecture-connector">
-    <i></i>
-</div>
-
-
-<article
-    class="architecture-layer architecture-intelligence-layer"
->
-
-<span>
-    Layer 03
-</span>
-
-<strong>
-    Intelligence Engine
-</strong>
-
-<p>
-    Analytical logic, scoring systems,
-    summaries, alerts and future AI models.
-</p>
-
-<div>
-
-<small>
-    Ocean Score
-</small>
-
-<small>
-    Whale Intelligence
-</small>
-
-<small>
-    Liquidity Analysis
-</small>
-
-<small>
-    Risk Signals
-</small>
-
-</div>
-
-</article>
-
-
-<div class="architecture-connector">
-    <i></i>
-</div>
-
-
-<article
-    class="architecture-layer architecture-data-layer"
->
-
-<span>
-    Layer 04
-</span>
-
-<strong>
-    Data Infrastructure
-</strong>
-
-<p>
-    Public APIs, blockchain information,
-    market data and future proprietary datasets.
-</p>
-
-<div>
-
-<small>
-    Market APIs
-</small>
-
-<small>
-    On-Chain Data
-</small>
-
-<small>
-    News
-</small>
-
-<small>
-    Sentiment
-</small>
-
-</div>
-
-</article>
-
-
-<div class="architecture-connector">
-    <i></i>
-</div>
-
-
-<article
-    class="architecture-layer architecture-economy-layer"
->
-
-<span>
-    Layer 05
-</span>
-
-<strong>
-    Ecosystem Economy
-</strong>
-
-<p>
-    The planned economic layer connecting services,
-    access, rewards and long-term participation.
-</p>
-
-<div>
-
-<small>
-    $SNAO
-</small>
-
-<small>
-    Rewards
-</small>
-
-<small>
-    VIP
-</small>
-
-<small>
-    Future Governance
-</small>
-
-</div>
-
-</article>
-
-
-</div>
-
-
-<div class="whitepaper-architecture-principles">
-
-
-<article>
-
-<span>
-    Modular
-</span>
-
-<strong>
-    Products can evolve independently.
-</strong>
-
-<p>
-    New intelligence services can be added without
-    rebuilding the entire ecosystem.
-</p>
-
-</article>
-
-
-<article>
-
-<span>
-    Connected
-</span>
-
-<strong>
-    Data can flow across the ecosystem.
-</strong>
-
-<p>
-    Products are designed to share intelligence,
-    indicators and market context.
-</p>
-
-</article>
-
-
-<article>
-
-<span>
-    Expandable
-</span>
-
-<strong>
-    Infrastructure prepared for future integrations.
-</strong>
-
-<p>
-    Additional APIs, chains, AI models and services
-    may be integrated progressively.
-</p>
-
-</article>
-
-
-</div>
-
-</section>
-
-     <!-- =========================================
-     OCEAN TERMINAL
-========================================== -->
-
-<section
-    class="whitepaper-section"
-    id="terminal"
->
-
-<span class="whitepaper-section-number">
-    05
-</span>
-
-
-<div class="whitepaper-section-heading">
-
-<span>
-    Ocean Terminal
-</span>
-
-<h2>
-    A unified interface for
-    market intelligence.
-</h2>
-
-<p>
-    The Ocean Terminal is the main analytical interface
-    of the SNAO ecosystem. It is designed to progressively
-    combine market information, proprietary indicators,
-    whale monitoring, liquidity analysis and
-    AI-assisted interpretation.
-</p>
-
-</div>
-
-
-<div class="whitepaper-terminal-overview">
-
-
-<div class="terminal-overview-visual">
-
-
-<div class="terminal-overview-header">
-
-<span>
-    SNAO Ocean Terminal
-</span>
-
-<strong>
-    Market Intelligence Interface
-</strong>
-
-</div>
-
-
-<div class="terminal-overview-grid">
-
-
-<article>
-
-<span>
-    Ocean Score
-</span>
-
-<strong>
-    74
-</strong>
-
-<small>
-    Demonstration index
-</small>
-
-</article>
-
-
-<article>
-
-<span>
-    Liquidity Pressure
-</span>
-
-<strong>
-    76
-</strong>
-
-<small>
-    Demonstration estimate
-</small>
-
-</article>
-
-
-<article>
-
-<span>
-    Whale Confidence
-</span>
-
-<strong>
-    82
-</strong>
-
-<small>
-    Demonstration indicator
-</small>
-
-</article>
-
-
-<article>
-
-<span>
-    Market Sentiment
-</span>
-
-<strong>
-    Demo
-</strong>
-
-<small>
-    Interface preview
-</small>
-
-</article>
-
-
-</div>
-
-
-<div class="terminal-overview-chart">
-
-<div class="terminal-overview-chart-grid"></div>
-
-<svg
-    viewBox="0 0 900 280"
-    preserveAspectRatio="none"
-    aria-hidden="true"
->
-
-<defs>
-
-<linearGradient
-    id="whitepaperTerminalGradient"
-    x1="0"
-    x2="0"
-    y1="0"
-    y2="1"
->
-
-<stop
-    offset="0%"
-    stop-color="#00cfff"
-    stop-opacity="0.36"
-/>
-
-<stop
-    offset="100%"
-    stop-color="#00cfff"
-    stop-opacity="0"
-/>
-
-</linearGradient>
-
-</defs>
-
-
-<path
-    class="whitepaper-terminal-chart-area"
-    d="
-        M 0 240
-        C 90 235, 120 260, 190 210
-        C 270 150, 320 210, 390 150
-        C 470 90, 520 150, 600 100
-        C 680 50, 760 95, 830 45
-        C 855 28, 880 38, 900 20
-        L 900 280
-        L 0 280
-        Z
-    "
-></path>
-
-
-<path
-    class="whitepaper-terminal-chart-line"
-    d="
-        M 0 240
-        C 90 235, 120 260, 190 210
-        C 270 150, 320 210, 390 150
-        C 470 90, 520 150, 600 100
-        C 680 50, 760 95, 830 45
-        C 855 28, 880 38, 900 20
-    "
-></path>
-
-</svg>
-
-</div>
-
-
-</div>
-
-
-<aside class="terminal-overview-analysis">
-
-<span>
-    Product Role
-</span>
-
-<h3>
-    The central analytical interface of SNAO.
-</h3>
-
-<p>
-    The Terminal is designed to reduce fragmentation by
-    combining several types of market information in one place.
-    Its development objective is to present market data together
-    with indicators, summaries and analytical context.
-</p>
-
-
-<div class="terminal-overview-analysis-list">
-
-
-<div>
-
-<span>
-    Market Data
-</span>
-
-<strong>
-    Prices, market cap and sentiment
-</strong>
-
-</div>
-
-
-<div>
-
-<span>
-    Ocean Indicators
-</span>
-
-<strong>
-    Ocean Score, LPI and WCI
-</strong>
-
-</div>
-
-
-<div>
-
-<span>
-    Market Monitoring
-</span>
-
-<strong>
-    Whales, narratives and liquidity
-</strong>
-
-</div>
-
-
-<div>
-
-<span>
-    Interpretation
-</span>
-
-<strong>
-    Planned Sardine AI summaries
-</strong>
-
-</div>
-
-
-</div>
-
-
-<a href="terminal.html">
-    Explore Ocean Terminal
-    <span>↗</span>
-</a>
-
-</aside>
-
-
-</div>
-
-
-<div class="whitepaper-terminal-features">
-
-
-<article>
-
-<span>
-    Market Overview
-</span>
-
-<strong>
-    Global conditions in one interface.
-</strong>
-
-<p>
-    Market prices, capitalization, dominance, movers
-    and sentiment can provide a consolidated market snapshot.
-</p>
-
-</article>
-
-
-<article>
-
-<span>
-    Whale Intelligence
-</span>
-
-<strong>
-    Monitor large-wallet behavior.
-</strong>
-
-<p>
-    The interface currently includes demonstration data
-    while future development is intended to integrate
-    real large-wallet activity and analytical context.
-</p>
-
-</article>
-
-
-<article>
-
-<span>
-    Ocean Flow
-</span>
-
-<strong>
-    Visualize capital movement.
-</strong>
-
-<p>
-    Designed to present exchange flows, liquidity routes
-    and market participation through an interactive visual layer.
-</p>
-
-</article>
-
-
-<article>
-
-<span>
-    Search Intelligence
-</span>
-
-<strong>
-    Analyze selected assets.
-</strong>
-
-<p>
-    The intended experience combines selected market data
-    with SNAO analytical context and future intelligence tools.
-</p>
-
-</article>
-
-
-</div>
-
-
-<div class="whitepaper-marketplace-note">
-
-<span>
-    Data Notice
-</span>
-
-<strong>
-    Some Terminal indicators currently use demonstration data.
-</strong>
-
-<p>
-    Values displayed in previews are used to demonstrate the
-    interface and should not be interpreted as verified live
-    trading signals unless explicitly identified as live data.
-</p>
-
-</div>
-
-
-</section>
-
-
-<!-- =========================================
-     SARDINE AI
-========================================== -->
-
-<section
-    class="whitepaper-section"
-    id="sardineai"
->
-
-<span class="whitepaper-section-number">
-    06
-</span>
-
-
-<div class="whitepaper-section-heading">
-
-<span>
-    Sardine AI
-</span>
-
-<h2>
-    The interpretation layer
-    of Ocean Intelligence.
-</h2>
-
-<p>
-    Sardine AI is planned as the analytical intelligence layer
-    of SNAO. Its role is to organize market information, identify
-    relevant relationships and present understandable summaries.
-</p>
-
-</div>
-
-
-<div class="whitepaper-ai-layout">
-
-
-<div class="whitepaper-ai-engine">
-
-
-<div class="ai-engine-core">
-
-<span>
-    Sardine
-</span>
-
-<strong>
-    AI
-</strong>
-
-<small>
-    Intelligence Engine
-</small>
-
-</div>
-
-
-<div class="ai-engine-orbit ai-engine-orbit-one"></div>
-
-<div class="ai-engine-orbit ai-engine-orbit-two"></div>
-
-<div class="ai-engine-orbit ai-engine-orbit-three"></div>
-
-
-<article class="ai-engine-node ai-node-market">
-
-<span>
-    Market Data
-</span>
-
-<strong>
-    Prices · Volume
-</strong>
-
-</article>
-
-
-<article class="ai-engine-node ai-node-whales">
-
-<span>
-    Whale Activity
-</span>
-
-<strong>
-    Wallet Signals
-</strong>
-
-</article>
-
-
-<article class="ai-engine-node ai-node-sentiment">
-
-<span>
-    Sentiment
-</span>
-
-<strong>
-    Psychology
-</strong>
-
-</article>
-
-
-<article class="ai-engine-node ai-node-risk">
-
-<span>
-    Risk
-</span>
-
-<strong>
-    Volatility
-</strong>
-
-</article>
-
-
-</div>
-
-
-<aside class="whitepaper-ai-analysis">
-
-<span>
-    Intended Function
-</span>
-
-<h3>
-    Convert complexity into context.
-</h3>
-
-<p>
-    Sardine AI is intended to assist users by summarizing
-    complex market conditions. It is not designed to guarantee
-    outcomes or replace independent analysis.
-</p>
-
-
-<div class="whitepaper-ai-capabilities">
-
-
-<div>
-
-<span>
-    Summaries
-</span>
-
-<strong>
-    Explain market conditions
-</strong>
-
-</div>
-
-
-<div>
-
-<span>
-    Signals
-</span>
-
-<strong>
-    Highlight relevant changes
-</strong>
-
-</div>
-
-
-<div>
-
-<span>
-    Context
-</span>
-
-<strong>
-    Connect multiple data sources
-</strong>
-
-</div>
-
-
-<div>
-
-<span>
-    Personalization
-</span>
-
-<strong>
-    Future asset-specific analysis
-</strong>
-
-</div>
-
-
-</div>
-
-</aside>
-
-
-</div>
-
-
-<div class="whitepaper-ai-process">
-
-
-<article>
-
-<span>
-    01
-</span>
-
-<strong>
-    Receive Data
-</strong>
-
-<p>
-    Public market APIs, on-chain sources,
-    sentiment and news.
-</p>
-
-</article>
-
-
-<i>
-    →
-</i>
-
-
-<article>
-
-<span>
-    02
-</span>
-
-<strong>
-    Organize Signals
-</strong>
-
-<p>
-    Structure data according to market,
-    liquidity, whale and risk categories.
-</p>
-
-</article>
-
-
-<i>
-    →
-</i>
-
-
-<article>
-
-<span>
-    03
-</span>
-
-<strong>
-    Generate Context
-</strong>
-
-<p>
-    Produce summaries, explanations
-    and indicator interpretations.
-</p>
-
-</article>
-
-
-<i>
-    →
-</i>
-
-
-<article>
-
-<span>
-    04
-</span>
-
-<strong>
-    Deliver Intelligence
-</strong>
-
-<p>
-    Present results through the Terminal,
-    alerts and future premium services.
-</p>
-
-</article>
-
-
-</div>
-
-
-<div class="whitepaper-ai-guardrails">
-
-<span>
-    Important Limitation
-</span>
-
-<strong>
-    Sardine AI is an analytical assistant, not a profit guarantee.
-</strong>
-
-<p>
-    AI-generated interpretation may be incomplete, delayed
-    or incorrect. Users remain responsible for independent
-    research, risk management and financial decisions.
-</p>
-
-</div>
-
-
-</section>
-
-
-<!-- =========================================
-     MARKETPLACE
-========================================== -->
-
-<section
-    class="whitepaper-section"
-    id="marketplace"
->
-
-<span class="whitepaper-section-number">
-    07
-</span>
-
-
-<div class="whitepaper-section-heading">
-
-<span>
-    Intelligence Marketplace
-</span>
-
-<h2>
-    A future economy for
-    intelligence products and services.
-</h2>
-
-<p>
-    The SNAO Marketplace is planned as a future commercial
-    layer of the ecosystem. It may connect users with premium
-    reports, analytical tools, AI services and digital products.
-</p>
-
-</div>
-
-
-<div class="whitepaper-marketplace-overview">
-
-
-<div class="marketplace-overview-visual">
-
-
-<div class="marketplace-visual-header">
-
-<span>
-    SNAO Marketplace
-</span>
-
-<strong>
-    Intelligence Products
-</strong>
-
-<small>
-    Planned ecosystem module
-</small>
-
-</div>
-
-
-<div class="marketplace-product-grid">
-
-
-<article>
-
-<div class="marketplace-product-icon">
-    AI
-</div>
-
-<span>
-    Premium AI
-</span>
-
-<strong>
-    Asset Intelligence Report
-</strong>
-
-<p>
-    Planned AI-assisted analysis covering market conditions,
-    risk, sentiment and liquidity.
-</p>
-
-<small>
-    Coming Soon
-</small>
-
-</article>
-
-
-<article>
-
-<div class="marketplace-product-icon">
-    W
-</div>
-
-<span>
-    Whale Intelligence
-</span>
-
-<strong>
-    Large Wallet Report
-</strong>
-
-<p>
-    Planned specialized analysis of whale activity,
-    concentration and exchange behavior.
-</p>
-
-<small>
-    Coming Soon
-</small>
-
-</article>
-
-
-<article>
-
-<div class="marketplace-product-icon">
-    R
-</div>
-
-<span>
-    Risk Tools
-</span>
-
-<strong>
-    Market Risk Monitor
-</strong>
-
-<p>
-    Planned analytical tools focused on volatility,
-    liquidity pressure and market conditions.
-</p>
-
-<small>
-    Coming Soon
-</small>
-
-</article>
-
-
-<article>
-
-<div class="marketplace-product-icon">
-    D
-</div>
-
-<span>
-    Digital Products
-</span>
-
-<strong>
-    SNAO Ecosystem Services
-</strong>
-
-<p>
-    Future access to premium tools, reports,
-    integrations and selected digital products.
-</p>
-
-<small>
-    Future Phase
-</small>
-
-</article>
-
-
-</div>
-
-</div>
-
-
-<aside class="marketplace-overview-analysis">
-
-<span>
-    Marketplace Role
-</span>
-
-<h3>
-    Connect intelligence with utility.
-</h3>
-
-<p>
-    The Marketplace is intended to create a direct relationship
-    between SNAO products, premium access and planned
-    utility of the $SNAO token.
-</p>
-
-
-<div class="marketplace-role-list">
-
-
-<div>
-
-<span>
-    Access
-</span>
-
-<strong>
-    Premium reports and tools
-</strong>
-
-</div>
-
-
-<div>
-
-<span>
-    Payments
-</span>
-
-<strong>
-    Planned $SNAO utility
-</strong>
-
-</div>
-
-
-<div>
-
-<span>
-    Distribution
-</span>
-
-<strong>
-    Digital intelligence products
-</strong>
-
-</div>
-
-
-<div>
-
-<span>
-    Expansion
-</span>
-
-<strong>
-    Future third-party services
-</strong>
-
-</div>
-
-
-</div>
-
-</aside>
-
-
-</div>
-
-
-<div class="whitepaper-marketplace-flow">
-
-
-<article>
-
-<span>
-    01
-</span>
-
-<strong>
-    Intelligence Created
-</strong>
-
-<p>
-    Reports, tools and analytical services
-    may be produced inside the ecosystem.
-</p>
-
-</article>
-
-
-<i>
-    →
-</i>
-
-
-<article>
-
-<span>
-    02
-</span>
-
-<strong>
-    Marketplace Access
-</strong>
-
-<p>
-    Users will be able to explore available
-    intelligence products and premium services.
-</p>
-
-</article>
-
-
-<i>
-    →
-</i>
-
-
-<article>
-
-<span>
-    03
-</span>
-
-<strong>
-    $SNAO Utility
-</strong>
-
-<p>
-    The token is planned for selected payments,
-    access and ecosystem benefits.
-</p>
-
-</article>
-
-
-<i>
-    →
-</i>
-
-
-<article>
-
-<span>
-    04
-</span>
-
-<strong>
-    Ecosystem Growth
-</strong>
-
-<p>
-    Product usage may support development,
-    expansion and future services.
-</p>
-
-</article>
-
-
-</div>
-
-
-<div class="whitepaper-marketplace-note">
-
-<span>
-    Development Status
-</span>
-
-<strong>
-    The Marketplace is not currently active.
-</strong>
-
-<p>
-    Final products, prices, payment methods, eligibility
-    and marketplace rules will be published before
-    public availability.
-</p>
-
-</div>
-
-
-</section>
-
-
-<!-- =========================================
-     TOKENOMICS
-========================================== -->
-
-<section
-    class="whitepaper-section"
-    id="tokenomics"
->
-
-<span class="whitepaper-section-number">
-    08
-</span>
-
-
-<div class="whitepaper-section-heading">
-
-<span>
-    $SNAO Tokenomics
-</span>
-
-<h2>
-    A fixed-supply economic layer designed
-    for utility and long-term ecosystem growth.
-</h2>
-
-<p>
-    $SNAO is designed as the utility token of the ecosystem.
-    The maximum supply is fixed at 200,000,000 SNAO,
-    with no future minting planned.
-</p>
-
-</div>
-
-
-<!-- TOKEN METRICS -->
-
-<div class="whitepaper-tokenomics-metrics">
-
-
-<article>
-
-<span>
-    Maximum Supply
-</span>
-
-<strong>
-    200,000,000
-</strong>
-
-<small>
-    Fixed maximum supply
-</small>
-
-</article>
-
-
-<article>
-
-<span>
-    Public Sale
-</span>
-
-<strong>
-    45,000,000
-</strong>
-
-<small>
-    22.5% of maximum supply
-</small>
-
-</article>
-
-
-<article>
-
-<span>
-    Starting Sale Price
-</span>
-
-<strong>
-    $0.001
-</strong>
-
-<small>
-    First progressive sale lot
-</small>
-
-</article>
-
-
-<article>
-
-<span>
-    Network
-</span>
-
-<strong>
-    BNB Smart Chain
-</strong>
-
-<small>
-    Planned deployment network
-</small>
-
-</article>
-
-
-</div>
-
-
-<!-- TOKENOMICS DISTRIBUTION -->
-
-<div class="whitepaper-tokenomics-layout">
-
-
-<div class="whitepaper-tokenomics-chart">
-
-
-<div class="tokenomics-chart-ring">
-
-<div>
-
-<span>
-    Total Supply
-</span>
-
-<strong>
-    200M
-</strong>
-
-<small>
-    $SNAO
-</small>
-
-</div>
-
-</div>
-
-
-<div class="tokenomics-chart-legend">
-
-
-<div>
-<i class="tokenomics-founder"></i>
-<span>Founder</span>
-<strong>13%</strong>
-</div>
-
-
-<div>
-<i class="tokenomics-public"></i>
-<span>Public Sale</span>
-<strong>22.5%</strong>
-</div>
-
-
-<div>
-<i class="tokenomics-liquidity"></i>
-<span>Liquidity & Market Making</span>
-<strong>20%</strong>
-</div>
-
-
-<div>
-<i class="tokenomics-treasury"></i>
-<span>Treasury</span>
-<strong>20%</strong>
-</div>
-
-
-<div>
-<i class="tokenomics-marketing"></i>
-<span>Team & Development</span>
-<strong>7.5%</strong>
-</div>
-
-
-<div>
-<i class="tokenomics-partnerships"></i>
-<span>Partnerships & Ecosystem</span>
-<strong>5%</strong>
-</div>
-
-
-<div>
-<i class="tokenomics-advisors"></i>
-<span>Community & Rewards</span>
-<strong>4%</strong>
-</div>
-
-
-<div>
-<i class="tokenomics-advisors"></i>
-<span>Unsold Sale Reserve</span>
-<strong>2.5%</strong>
-</div>
-
-
-<div>
-<i class="tokenomics-advisors"></i>
-<span>Strategic Reserve</span>
-<strong>5.5%</strong>
-</div>
-
-
-</div>
-
-</div>
-
-
-<aside class="whitepaper-tokenomics-analysis">
-
-<span>
-    Token Design
-</span>
-
-<h3>
-    Controlled distribution and long-term alignment.
-</h3>
-
-<p>
-    The token structure separates public distribution,
-    liquidity, project reserves, development and
-    long-term ecosystem allocations.
-</p>
-
-
-<div class="tokenomics-analysis-list">
-
-
-<div>
-
-<span>
-    Founder
-</span>
-
-<strong>
-    26M · 13%
-</strong>
-
-</div>
-
-
-<div>
-
-<span>
-    Public Sale
-</span>
-
-<strong>
-    45M · 22.5%
-</strong>
-
-</div>
-
-
-<div>
-
-<span>
-    Liquidity
-</span>
-
-<strong>
-    40M · 20%
-</strong>
-
-</div>
-
-
-<div>
-
-<span>
-    Treasury
-</span>
-
-<strong>
-    40M · 20%
-</strong>
-
-</div>
-
-
-</div>
-
-
-<a href="token.html">
-    Explore Full Token Page
-    <span>↗</span>
-</a>
-
-</aside>
-
-
-</div>
-
-
-<!-- DETAILED ALLOCATION -->
-
-<div class="whitepaper-token-utility">
-
-
-<article>
-
-<span>
-    Founder
-</span>
-
-<strong>
-    26,000,000 · 13%
-</strong>
-
-</article>
-
-
-<article>
-
-<span>
-    Public Sale
-</span>
-
-<strong>
-    45,000,000 · 22.5%
-</strong>
-
-</article>
-
-
-<article>
-
-<span>
-    Liquidity & Market Making
-</span>
-
-<strong>
-    40,000,000 · 20%
-</strong>
-
-</article>
-
-
-<article>
-
-<span>
-    Treasury
-</span>
-
-<strong>
-    40,000,000 · 20%
-</strong>
-
-</article>
-
-
-<article>
-
-<span>
-    Team & Development
-</span>
-
-<strong>
-    15,000,000 · 7.5%
-</strong>
-
-</article>
-
-
-<article>
-
-<span>
-    Partnerships & Ecosystem
-</span>
-
-<strong>
-    10,000,000 · 5%
-</strong>
-
-</article>
-
-
-<article>
-
-<span>
-    Community & Rewards
-</span>
-
-<strong>
-    8,000,000 · 4%
-</strong>
-
-</article>
-
-
-<article>
-
-<span>
-    Unsold Sale Reserve
-</span>
-
-<strong>
-    5,000,000 · 2.5%
-</strong>
-
-</article>
-
-
-<article>
-
-<span>
-    Strategic Reserve
-</span>
-
-<strong>
-    11,000,000 · 5.5%
-</strong>
-
-</article>
-
-
-</div>
-
-
-<!-- SALE STRUCTURE -->
-
-<div class="whitepaper-vision-statement">
-
-<span>
-    Public Sale Structure
-</span>
-
-<blockquote>
-    45,000,000 SNAO are allocated to the public sale
-    through 1,800 progressive lots of 25,000 SNAO.
-    The first lot starts at $0.001 per SNAO.
-</blockquote>
-
-</div>
-
-
-<div class="whitepaper-tokenomics-metrics">
-
-
-<article>
-
-<span>
-    Sale Lots
-</span>
-
-<strong>
-    1,800
-</strong>
-
-<small>
-    25,000 SNAO per lot
-</small>
-
-</article>
-
-
-<article>
-
-<span>
-    Soft Cap
-</span>
-
-<strong>
-    $250,000
-</strong>
-
-<small>
-    Sale threshold
-</small>
-
-</article>
-
-
-<article>
-
-<span>
-    Hard Cap
-</span>
-
-<strong>
-    $5,000,000
-</strong>
-
-<small>
-    Maximum raise
-</small>
-
-</article>
-
-
-<article>
-
-<span>
-    Payment
-</span>
-
-<strong>
-    USDT
-</strong>
-
-<small>
-    BNB required for network gas
-</small>
-
-</article>
-
-
-</div>
-
-
-<!-- VESTING -->
-
-<div class="whitepaper-vision-statement">
-
-<span>
-    Founder Vesting
-</span>
-
-<blockquote>
-    The 26,000,000 SNAO founder allocation has 0% unlocked
-    at TGE, followed by a 180-day cliff and 900 days
-    of linear vesting.
-</blockquote>
-
-</div>
-
-
-<div class="whitepaper-token-utility">
-
-
-<article>
-
-<span>
-    Founder
-</span>
-
-<strong>
-    180-day cliff + 900-day linear
-</strong>
-
-</article>
-
-
-<article>
-
-<span>
-    Team & Development
-</span>
-
-<strong>
-    360-day cliff + 1,080-day linear
-</strong>
-
-</article>
-
-
-<article>
-
-<span>
-    Treasury
-</span>
-
-<strong>
-    48-month linear release
-</strong>
-
-</article>
-
-
-<article>
-
-<span>
-    Partnerships
-</span>
-
-<strong>
-    6-month cliff + 30-month linear
-</strong>
-
-</article>
-
-
-<article>
-
-<span>
-    Community
-</span>
-
-<strong>
-    36-month linear release
-</strong>
-
-</article>
-
-
-<article>
-
-<span>
-    Strategic Reserve
-</span>
-
-<strong>
-    12-month cliff + 36-month linear
-</strong>
-
-</article>
-
-
-<article>
-
-<span>
-    Unsold Sale Reserve
-</span>
-
-<strong>
-    24-month lock · burn-only afterward
-</strong>
-
-</article>
-
-
-</div>
-
-
-<!-- LIQUIDITY -->
-
-<div class="whitepaper-vision-statement">
-
-<span>
-    Liquidity Structure
-</span>
-
-<blockquote>
-    40,000,000 SNAO are allocated to liquidity and
-    market-making: 10,000,000 for initial liquidity
-    and 30,000,000 for controlled long-term liquidity
-    and market-making reserves.
-</blockquote>
-
-</div>
-
-
-<!-- UTILITY -->
-
-<div class="whitepaper-token-utility">
-
-
-<article>
-
-<span>
-    Premium Access
-</span>
-
-<strong>
-    Planned Sardine AI and intelligence services
-</strong>
-
-</article>
-
-
-<article>
-
-<span>
-    Marketplace
-</span>
-
-<strong>
-    Planned payments for selected products
-</strong>
-
-</article>
-
-
-<article>
-
-<span>
-    Rewards
-</span>
-
-<strong>
-    Planned ecosystem participation
-</strong>
-
-</article>
-
-
-<article>
-
-<span>
-    Future Governance
-</span>
-
-<strong>
-    Selected ecosystem decisions
-</strong>
-
-</article>
-
-
-<article>
-
-<span>
-    Future Staking
-</span>
-
-<strong>
-    Possible future participation utility
-</strong>
-
-</article>
-
-
-</div>
-
-
-<div class="whitepaper-tokenomics-warning">
-
-<span>
-    Token Information
-</span>
-
-<p>
-    The maximum supply and allocation model described above
-    represent the current SNAO economic structure. Sale execution,
-    TGE timing, exchange trading, liquidity deployment and
-    contract addresses remain subject to technical, security,
-    legal and operational readiness. No exchange listing,
-    token price or investment return is guaranteed.
-</p>
-
-</div>
-
-
-</section>
-
-     <!-- =========================================
-     ROADMAP
-========================================== -->
-
-<section
-    class="whitepaper-section"
-    id="roadmap"
->
-
-<span class="whitepaper-section-number">
-    09
-</span>
-
-
-<div class="whitepaper-section-heading">
-
-<span>
-    Development Roadmap
-</span>
-
-<h2>
-    A progressive path from foundation
-    to a global intelligence ecosystem.
-</h2>
-
-<p>
-    SNAO is designed to evolve through structured development phases.
-    Each phase expands the products, intelligence capabilities,
-    utility and economic infrastructure of the ecosystem.
-</p>
-
-</div>
-
-
-<div class="whitepaper-roadmap">
-
-
-<!-- PHASE 01 -->
-
-<article class="whitepaper-roadmap-phase completed">
-
-<div class="roadmap-phase-marker">
-    01
-</div>
-
-<div class="roadmap-phase-content">
-
-<span>
-    Phase 01
-</span>
-
-<h3>
-    Foundation
-</h3>
-
-<p>
-    Establish the initial SNAO infrastructure,
-    brand, website and technical foundations.
-</p>
-
-<div class="roadmap-phase-items">
-
-<small>
-    Official website
-</small>
-
-<small>
-    Project infrastructure
-</small>
-
-<small>
-    Community channels
-</small>
-
-<small>
-    Token architecture
-</small>
-
-<small>
-    Smart contract development
-</small>
-
-</div>
-
-<strong>
-    Foundation established
-</strong>
-
-</div>
-
-</article>
-
-
-<!-- PHASE 02 -->
-
-<article class="whitepaper-roadmap-phase active">
-
-<div class="roadmap-phase-marker">
-    02
-</div>
-
-<div class="roadmap-phase-content">
-
-<span>
-    Phase 02
-</span>
-
-<h3>
-    Ocean Intelligence
-</h3>
-
-<p>
-    Expand the ecosystem with market dashboards,
-    indicators and connected intelligence tools.
-</p>
-
-<div class="roadmap-phase-items">
-
-<small>
-    Ocean Terminal
-</small>
-
-<small>
-    Ocean Score
-</small>
-
-<small>
-    Liquidity Pressure Index
-</small>
-
-<small>
-    Whale Confidence Index
-</small>
-
-<small>
-    Market and sentiment interfaces
-</small>
-
-</div>
-
-<strong>
-    Current development phase
-</strong>
-
-</div>
-
-</article>
-
-
-<!-- PHASE 03 -->
-
-<article class="whitepaper-roadmap-phase">
-
-<div class="roadmap-phase-marker">
-    03
-</div>
-
-<div class="roadmap-phase-content">
-
-<span>
-    Phase 03
-</span>
-
-<h3>
-    Sardine AI Expansion
-</h3>
-
-<p>
-    Develop deeper AI-assisted interpretation,
-    asset analysis, alerts and personalized intelligence.
-</p>
-
-<div class="roadmap-phase-items">
-
-<small>
-    Natural-language analysis
-</small>
-
-<small>
-    Asset intelligence
-</small>
-
-<small>
-    Whale interpretation
-</small>
-
-<small>
-    Personalized alerts
-</small>
-
-<small>
-    Premium AI reports
-</small>
-
-</div>
-
-<strong>
-    Planned phase
-</strong>
-
-</div>
-
-</article>
-
-
-<!-- PHASE 04 -->
-
-<article class="whitepaper-roadmap-phase">
-
-<div class="roadmap-phase-marker">
-    04
-</div>
-
-<div class="roadmap-phase-content">
-
-<span>
-    Phase 04
-</span>
-
-<h3>
-    Marketplace & Token Utility
-</h3>
-
-<p>
-    Expand the commercial and economic layers
-    of the Ocean Intelligence ecosystem.
-</p>
-
-<div class="roadmap-phase-items">
-
-<small>
-    Intelligence Marketplace
-</small>
-
-<small>
-    Premium product access
-</small>
-
-<small>
-    Planned $SNAO utility
-</small>
-
-<small>
-    Digital reports
-</small>
-
-<small>
-    Ecosystem services
-</small>
-
-</div>
-
-<strong>
-    Future phase
-</strong>
-
-</div>
-
-</article>
-
-
-<!-- PHASE 05 -->
-
-<article class="whitepaper-roadmap-phase">
-
-<div class="roadmap-phase-marker">
-    05
-</div>
-
-<div class="roadmap-phase-content">
-
-<span>
-    Phase 05
-</span>
-
-<h3>
-    Participation & Governance
-</h3>
-
-<p>
-    Expand token participation, reputation systems
-    and selected ecosystem decision mechanisms.
-</p>
-
-<div class="roadmap-phase-items">
-
-<small>
-    Ocean Passport
-</small>
-
-<small>
-    Reputation and XP
-</small>
-
-<small>
-    Future staking
-</small>
-
-<small>
-    Selected governance
-</small>
-
-<small>
-    Contributor programs
-</small>
-
-</div>
-
-<strong>
-    Long-term phase
-</strong>
-
-</div>
-
-</article>
-
-
-<!-- PHASE 06 -->
-
-<article class="whitepaper-roadmap-phase">
-
-<div class="roadmap-phase-marker">
-    06
-</div>
-
-<div class="roadmap-phase-content">
-
-<span>
-    Phase 06
-</span>
-
-<h3>
-    Global Ocean Ecosystem
-</h3>
-
-<p>
-    The long-term vision is to develop SNAO into
-    a broader intelligence network with integrations,
-    APIs and global products.
-</p>
-
-<div class="roadmap-phase-items">
-
-<small>
-    Developer APIs
-</small>
-
-<small>
-    Additional blockchain integrations
-</small>
-
-<small>
-    Institutional tools
-</small>
-
-<small>
-    Strategic partnerships
-</small>
-
-<small>
-    Global expansion
-</small>
-
-</div>
-
-<strong>
-    Long-term vision
-</strong>
-
-</div>
-
-</article>
-
-
-</div>
-
-
-<div class="whitepaper-roadmap-note">
-
-<span>
-    Roadmap Principle
-</span>
-
-<strong>
-    Development quality takes priority over fixed dates.
-</strong>
-
-<p>
-    Phases may evolve according to technical requirements,
-    security reviews, available resources, market conditions
-    and the actual needs of the ecosystem.
-</p>
-
-</div>
-
-
-</section>
-
-
-<!-- =========================================
-     SECURITY
-========================================== -->
-
-<section
-    class="whitepaper-section"
-    id="security"
->
-
-<span class="whitepaper-section-number">
-    10
-</span>
-
-
-<div class="whitepaper-section-heading">
-
-<span>
-    Security & Transparency
-</span>
-
-<h2>
-    Trust must be built through
-    verification and transparency.
-</h2>
-
-<p>
-    SNAO intends to progressively implement technical,
-    operational and financial safeguards as the ecosystem
-    and token infrastructure mature.
-</p>
-
-</div>
-
-
-<div class="whitepaper-security-grid">
-
-
-<!-- CONTRACT -->
-
-<article>
-
-<div class="security-card-icon">
-    C
-</div>
-
-<span>
-    Smart Contract
-</span>
-
-<strong>
-    Publicly verifiable deployment
-</strong>
-
-<p>
-    Official mainnet contracts are intended to be publicly
-    verified and linked through official SNAO channels
-    following deployment.
-</p>
-
-<small>
-    Mainnet deployment pending
-</small>
-
-</article>
-
-
-<!-- SECURITY REVIEW -->
-
-<article>
-
-<div class="security-card-icon">
-    A
-</div>
-
-<span>
-    Security Review
-</span>
-
-<strong>
-    Contract testing and review
-</strong>
-
-<p>
-    Contracts are intended to undergo testing and security
-    review as the project progresses toward public
-    mainnet operation.
-</p>
-
-<small>
-    Pre-launch process
-</small>
-
-</article>
-
-
-<!-- LIQUIDITY -->
-
-<article>
-
-<div class="security-card-icon">
-    L
-</div>
-
-<span>
-    Liquidity
-</span>
-
-<strong>
-    Transparent liquidity structure
-</strong>
-
-<p>
-    Relevant liquidity wallets, pools and applicable
-    lock conditions are intended to be publicly
-    identifiable after deployment.
-</p>
-
-<small>
-    Deployment transparency
-</small>
-
-</article>
-
-
-<!-- TREASURY -->
-
-<article>
-
-<div class="security-card-icon">
-    T
-</div>
-
-<span>
-    Treasury
-</span>
-
-<strong>
-    Controlled ecosystem reserves
-</strong>
-
-<p>
-    Treasury and major project allocations are designed
-    to use defined release structures and controlled
-    wallet infrastructure.
-</p>
-
-<small>
-    Controlled structure
-</small>
-
-</article>
-
-
-<!-- VESTING -->
-
-<article>
-
-<div class="security-card-icon">
-    V
-</div>
-
-<span>
-    Vesting
-</span>
-
-<strong>
-    Controlled token unlocks
-</strong>
-
-<p>
-    Founder, team and other long-term allocations
-    are designed to follow defined locking,
-    cliff and vesting conditions.
-</p>
-
-<small>
-    Defined schedules
-</small>
-
-</article>
-
-
-<!-- DATA -->
-
-<article>
-
-<div class="security-card-icon">
-    D
-</div>
-
-<span>
-    Data Protection
-</span>
-
-<strong>
-    Secure platform infrastructure
-</strong>
-
-<p>
-    Future account, wallet and payment features
-    are intended to use appropriate authentication,
-    access controls and data safeguards.
-</p>
-
-<small>
-    Continuous development
-</small>
-
-</article>
-
-
-</div>
-
-
-<!-- SECURITY LAYERS -->
-
-<div class="whitepaper-security-layers">
-
-
-<div class="security-layer">
-
-<span>
-    Layer 01
-</span>
-
-<strong>
-    Technical Security
-</strong>
-
-<p>
-    Contract verification, code review,
-    API protection and infrastructure monitoring.
-</p>
-
-</div>
-
-
-<i>
-    +
-</i>
-
-
-<div class="security-layer">
-
-<span>
-    Layer 02
-</span>
-
-<strong>
-    Financial Transparency
-</strong>
-
-<p>
-    Allocation wallets, liquidity structure,
-    vesting and treasury visibility.
-</p>
-
-</div>
-
-
-<i>
-    +
-</i>
-
-
-<div class="security-layer">
-
-<span>
-    Layer 03
-</span>
-
-<strong>
-    User Protection
-</strong>
-
-<p>
-    Official links, scam warnings,
-    risk disclosures and secure access.
-</p>
-
-</div>
-
-
-</div>
-
-
-<div class="whitepaper-security-warning">
-
-<span>
-    Official Communication Rule
-</span>
-
-<strong>
-    Never trust contracts or payment instructions sent privately.
-</strong>
-
-<p>
-    Official token addresses, public sale information,
-    exchange-listing announcements and security information
-    will be published through SNAO.world and verified
-    official community channels.
-</p>
-
-</div>
-
-
-<div class="whitepaper-marketplace-note">
-
-<span>
-    Mainnet Status
-</span>
-
-<strong>
-    Do not use unverified contract addresses.
-</strong>
-
-<p>
-    Mainnet token, sale and supporting contract addresses
-    should only be considered official after they are
-    published through SNAO.world and independently
-    verifiable on the relevant blockchain explorer.
-</p>
-
-</div>
-
-
-</section>
-
-
-<!-- =========================================
-     FUTURE ECOSYSTEM
-========================================== -->
-
-<section
-    class="whitepaper-section"
-    id="future"
->
-
-<span class="whitepaper-section-number">
-    11
-</span>
-
-
-<div class="whitepaper-section-heading">
-
-<span>
-    Future Ecosystem
-</span>
-
-<h2>
-    The long-term vision extends
-    beyond a single product or token.
-</h2>
-
-<p>
-    SNAO is intended to grow into a broader Ocean Intelligence
-    infrastructure connecting users, data, AI, products,
-    developers and future professional services.
-</p>
-
-</div>
-
-
-<div class="whitepaper-future-map">
-
-
-<div class="future-map-core">
-
-<span>
-    SNAO
-</span>
-
-<strong>
-    Ocean Intelligence
-</strong>
-
-<small>
-    Global ecosystem vision
-</small>
-
-</div>
-
-
-<article class="future-map-node future-node-ai">
-
-<span>
-    Sardine AI
-</span>
-
-<strong>
-    Advanced intelligence models
-</strong>
-
-</article>
-
-
-<article class="future-map-node future-node-api">
-
-<span>
-    Developer APIs
-</span>
-
-<strong>
-    Intelligence infrastructure
-</strong>
-
-</article>
-
-
-<article class="future-map-node future-node-marketplace">
-
-<span>
-    Marketplace
-</span>
-
-<strong>
-    Digital products and services
-</strong>
-
-</article>
-
-
-<article class="future-map-node future-node-passport">
-
-<span>
-    Ocean Passport
-</span>
-
-<strong>
-    Reputation and identity
-</strong>
-
-</article>
-
-
-<article class="future-map-node future-node-institutional">
-
-<span>
-    Professional Tools
-</span>
-
-<strong>
-    Advanced intelligence services
-</strong>
-
-</article>
-
-
-<article class="future-map-node future-node-global">
-
-<span>
-    Global Network
-</span>
-
-<strong>
-    Future multi-chain expansion
-</strong>
-
-</article>
-
-
-</div>
-
-
-<div class="whitepaper-future-principles">
-
-
-<article>
-
-<span>
-    Product First
-</span>
-
-<strong>
-    Utility should grow from real products.
-</strong>
-
-<p>
-    Token utility should follow the development
-    and adoption of useful ecosystem services.
-</p>
-
-</article>
-
-
-<article>
-
-<span>
-    Intelligence First
-</span>
-
-<strong>
-    Data must become understandable.
-</strong>
-
-<p>
-    SNAO aims to focus on interpretation,
-    context and accessibility rather than
-    information overload.
-</p>
-
-</article>
-
-
-<article>
-
-<span>
-    Sustainable Growth
-</span>
-
-<strong>
-    Expansion should remain progressive.
-</strong>
-
-<p>
-    New features, partnerships and economic
-    mechanisms should be introduced carefully
-    and transparently.
-</p>
-
-</article>
-
-
-</div>
-
-
-<div class="whitepaper-final-statement">
-
-<span>
-    Final Perspective
-</span>
-
-<h3>
-    The ocean is larger than speculation.
-</h3>
-
-<p>
-    SNAO is being built as infrastructure for intelligence,
-    participation and future digital products. The objective
-    is to create an ecosystem with increasing utility,
-    transparency and analytical value.
-</p>
-
-
-<div class="whitepaper-final-actions">
-
-<a href="terminal.html">
-    Explore Ocean Terminal
-    <span>↗</span>
-</a>
-
-<a href="token.html">
-    Explore $SNAO Token
-</a>
-
-</div>
-
-
-</div>
-
-
-</section>
-
-
-<!-- =========================================
-     WHITEPAPER DISCLAIMER
-========================================== -->
-
-<section class="whitepaper-disclaimer">
-
-<span>
-    Important Notice
-</span>
-
-<p>
-    This Whitepaper describes the current vision, token structure
-    and planned development of SNAO. Certain products, features,
-    timelines, sale parameters and technical implementations may
-    change as development progresses and may be subject to technical,
-    security, legal and operational requirements.
-</p>
-
-<p>
-    Nothing in this document constitutes financial, investment,
-    legal or tax advice. $SNAO does not provide a guarantee of
-    profit, price appreciation, liquidity, exchange listing or
-    future performance. Digital assets involve substantial risk,
-    including the possible loss of value.
-</p>
-
-<p>
-    References to exchanges, future integrations, staking,
-    governance, marketplace functionality or other planned
-    ecosystem features describe objectives only unless
-    explicitly announced as operational through official
-    SNAO channels.
-</p>
-
-</section>
-
-
-<!-- =========================================
-     FOOTER
-========================================== -->
-
-<footer class="whitepaper-footer">
-
-
-<div>
-
-<strong>
-    SNAO
-</strong>
-
-<span>
-    Ocean Intelligence Ecosystem
-</span>
-
-</div>
-
-
-<nav>
-
-<a href="index.html">
-    Home
-</a>
-
-<a href="terminal.html">
-    Terminal
-</a>
-
-<a href="token.html">
-    Token
-</a>
-
-<a href="sale.html">
-    Public Sale
-</a>
-
-<a href="#vision">
-    Back to Top
-</a>
-
-</nav>
-
-
-<p>
-    © <span id="whitepaperCurrentYear"></span> SNAO.
-    All rights reserved.
-</p>
-
+<div class="container document-layout">
+
+  <!-- SIDEBAR -->
+
+  <aside class="sidebar" aria-label="Document contents">
+
+    <h3>CONTENTS</h3>
+
+    <a href="#overview">01 · Overview</a>
+    <a href="#vision">02 · Vision</a>
+    <a href="#problem">03 · Challenges</a>
+    <a href="#architecture">04 · Architecture</a>
+    <a href="#atlas">05 · ATLAS</a>
+    <a href="#ocean">06 · SNAO Ocean</a>
+    <a href="#intelligence">07 · Ocean Intelligence</a>
+    <a href="#tokenomics">08 · Tokenomics</a>
+    <a href="#vesting">09 · Vesting</a>
+    <a href="#utility">10 · Token Utility</a>
+    <a href="#roadmap">11 · Roadmap</a>
+    <a href="#security">12 · Security</a>
+    <a href="#risks">13 · Risks & Disclosures</a>
+
+  </aside>
+
+  <!-- MAIN DOCUMENT -->
+
+  <main class="document">
+
+    <!-- 01 OVERVIEW -->
+
+    <section class="doc-section" id="overview">
+
+      <span class="section-number">SECTION 01</span>
+
+      <h2>Executive Overview</h2>
+
+      <p>
+        SNAO World is an evolving technology ecosystem
+        developing enterprise intelligence software,
+        independent mobile digital experiences
+        and crypto market research tools.
+      </p>
+
+      <p>
+        The project initially focused on the
+        concept of Ocean Intelligence for
+        cryptocurrency participants.
+        Its broader development direction
+        now includes SNAO World ATLAS,
+        SNAO Ocean and Ocean Intelligence.
+      </p>
+
+      <div class="platform-grid">
+
+        <article class="platform-card">
+          <span>ENTERPRISE</span>
+          <h3>SNAO World ATLAS</h3>
+          <p>
+            Intelligent enterprise software
+            for business information,
+            financial analysis,
+            operational insights,
+            risk awareness and automation.
+          </p>
+        </article>
+
+        <article class="platform-card">
+          <span>MOBILE</span>
+          <h3>SNAO Ocean</h3>
+          <p>
+            Independent Android and iOS
+            application concept featuring
+            immersive digital experiences,
+            community activities and
+            an internal points system.
+          </p>
+        </article>
+
+        <article class="platform-card">
+          <span>CRYPTO INTELLIGENCE</span>
+          <h3>Ocean Intelligence</h3>
+          <p>
+            Research and analytical
+            technology focused on
+            blockchain activity,
+            liquidity, market behavior
+            and risk conditions.
+          </p>
+        </article>
+
+      </div>
+
+      <div class="callout">
+        <strong>Development Status</strong>
+        <p>
+          SNAO World is developing multiple products.
+          Features described as planned,
+          conceptual or in development
+          are not represented as
+          commercially available.
+        </p>
+      </div>
+
+    </section>
+
+    <!-- 02 VISION -->
+
+    <section class="doc-section" id="vision">
+
+      <span class="section-number">SECTION 02</span>
+
+      <h2>Vision & Mission</h2>
+
+      <p>
+        Our mission is to transform complex
+        information and disconnected systems
+        into clearer digital intelligence.
+      </p>
+
+      <p>
+        We aim to develop useful technology
+        for organizations, digital communities
+        and individuals who need
+        better ways to understand data,
+        manage processes and assess risk.
+      </p>
+
+      <div class="card-grid">
+
+        <article class="info-card">
+          <span>01 / INTELLIGENCE</span>
+          <h3>Data Into Understanding</h3>
+          <p>
+            Make important information
+            more accessible and useful
+            through connected analysis.
+          </p>
+        </article>
+
+        <article class="info-card">
+          <span>02 / UTILITY</span>
+          <h3>Product-Led Development</h3>
+          <p>
+            Prioritize practical technology
+            and measurable functionality
+            over unsupported promises.
+          </p>
+        </article>
+
+        <article class="info-card">
+          <span>03 / SECURITY</span>
+          <h3>Responsible Architecture</h3>
+          <p>
+            Incorporate technical safeguards,
+            access controls and
+            security reviews into development.
+          </p>
+        </article>
+
+        <article class="info-card">
+          <span>04 / EVOLUTION</span>
+          <h3>Progressive Expansion</h3>
+          <p>
+            Develop, test and improve
+            products before expanding
+            their capabilities.
+          </p>
+        </article>
+
+      </div>
+
+    </section>
+
+    <!-- 03 PROBLEM -->
+
+    <section class="doc-section" id="problem">
+
+      <span class="section-number">SECTION 03</span>
+
+      <h2>Challenges We Aim to Address</h2>
+
+      <h3>Enterprise Complexity</h3>
+
+      <p>
+        Organizations often use disconnected
+        software for finance, administration,
+        reporting, compliance,
+        operations and security.
+        Fragmentation can increase manual work
+        and reduce visibility.
+      </p>
+
+      <h3>Information Overload</h3>
+
+      <p>
+        Large volumes of data do not
+        automatically translate into
+        useful intelligence.
+        Users need context,
+        prioritization and clear explanations.
+      </p>
+
+      <h3>Unequal Access to Research</h3>
+
+      <p>
+        Advanced market analysis is
+        frequently distributed across
+        specialized tools, datasets
+        and expensive services.
+        Independent investors may lack
+        integrated information.
+      </p>
+
+      <h3>Disconnected Digital Communities</h3>
+
+      <p>
+        Community engagement systems
+        often lack meaningful progression,
+        transparent participation rules
+        and integrated digital experiences.
+      </p>
+
+      <div class="callout">
+        <strong>Our Approach</strong>
+        <p>
+          Develop specialized products
+          for distinct user needs
+          rather than presenting
+          one application as the solution
+          to every problem.
+        </p>
+      </div>
+
+    </section>
+
+    <!-- 04 ARCHITECTURE -->
+
+    <section class="doc-section" id="architecture">
+
+      <span class="section-number">SECTION 04</span>
+
+      <h2>Technology Architecture</h2>
+
+      <p>
+        SNAO World is planned as a modular
+        ecosystem with independently developed
+        products and shared engineering principles
+        where appropriate.
+      </p>
+
+      <div class="card-grid">
+
+        <article class="info-card">
+          <span>LAYER 01</span>
+          <h3>User Experience</h3>
+          <p>
+            Web and mobile interfaces,
+            dashboards and
+            accessible product workflows.
+          </p>
+        </article>
+
+        <article class="info-card">
+          <span>LAYER 02</span>
+          <h3>Application Services</h3>
+          <p>
+            Business logic,
+            authentication,
+            user management,
+            operational workflows
+            and service integrations.
+          </p>
+        </article>
+
+        <article class="info-card">
+          <span>LAYER 03</span>
+          <h3>Intelligence & Analysis</h3>
+          <p>
+            Analytical processing,
+            reporting,
+            AI-assisted interpretation
+            and risk assessment concepts.
+          </p>
+        </article>
+
+        <article class="info-card">
+          <span>LAYER 04</span>
+          <h3>Data Infrastructure</h3>
+          <p>
+            Authorized data sources,
+            databases, third-party APIs
+            and future integrations.
+          </p>
+        </article>
+
+        <article class="info-card">
+          <span>LAYER 05</span>
+          <h3>Security Controls</h3>
+          <p>
+            Access management,
+            monitoring, encryption
+            and protective system design.
+          </p>
+        </article>
+
+        <article class="info-card">
+          <span>LAYER 06</span>
+          <h3>Blockchain Integration</h3>
+          <p>
+            Token infrastructure,
+            supported network interactions
+            and future utility where justified.
+          </p>
+        </article>
+
+      </div>
+
+      <p>
+        The architecture above describes
+        design objectives, not a claim
+        that every layer has been deployed.
+        Each product may use a different
+        technical implementation.
+      </p>
+
+    </section>
+
+    <!-- 05 ATLAS -->
+
+    <section class="doc-section" id="atlas">
+
+      <span class="section-number">SECTION 05</span>
+
+      <h2>SNAO World ATLAS</h2>
+
+      <p>
+        ATLAS Intelligence OS is an enterprise
+        software initiative designed to
+        improve organizational visibility
+        and connect business information
+        within a structured digital environment.
+      </p>
+
+      <p>
+        The platform is being developed
+        as a dedicated enterprise product,
+        independent from the gamified
+        SNAO Ocean mobile application.
+      </p>
+
+      <h3>Planned Functional Areas</h3>
+
+      <div class="card-grid">
+
+        <article class="info-card">
+          <span>BUSINESS INTELLIGENCE</span>
+          <h3>Command Center</h3>
+          <p>
+            Unified operational visibility,
+            executive summaries,
+            connected indicators and
+            business information.
+          </p>
+        </article>
+
+        <article class="info-card">
+          <span>FINANCIAL INTELLIGENCE</span>
+          <h3>Financial Analysis</h3>
+          <p>
+            Financial reporting,
+            modeling, scenario assessment
+            and analytical support.
+          </p>
+        </article>
+
+        <article class="info-card">
+          <span>ACCOUNTING</span>
+          <h3>Accounting Workflows</h3>
+          <p>
+            Planned organization of
+            accounting information,
+            records and business processes.
+          </p>
+        </article>
+
+        <article class="info-card">
+          <span>SECURITY</span>
+          <h3>Sentinel & Guardian</h3>
+          <p>
+            Security monitoring,
+            risk detection,
+            protective workflows
+            and incident awareness concepts.
+          </p>
+        </article>
+
+        <article class="info-card">
+          <span>AUTOMATION</span>
+          <h3>Operational Systems</h3>
+          <p>
+            Workflow automation,
+            information management
+            and process coordination.
+          </p>
+        </article>
+
+        <article class="info-card">
+          <span>VISUAL INTELLIGENCE</span>
+          <h3>Spatial Interfaces</h3>
+          <p>
+            Future interactive visualizations
+            for organizational structures,
+            physical operations and
+            connected business assets.
+          </p>
+        </article>
+
+      </div>
+
+      <h3>Commercial Model</h3>
+
+      <p>
+        ATLAS is intended to follow
+        a software-as-a-service model
+        with an accessible basic offering
+        and potential paid subscription tiers.
+        Final features, pricing and
+        eligibility will be published
+        before commercial availability.
+      </p>
+
+      <div class="callout">
+        <strong>Important Distinction</strong>
+        <p>
+          ATLAS is enterprise software.
+          It is not a cryptocurrency mining
+          application, and the features
+          described above are development
+          objectives until released.
+        </p>
+      </div>
+
+    </section>
+
+    <!-- 06 OCEAN -->
+
+    <section class="doc-section" id="ocean">
+
+      <span class="section-number">SECTION 06</span>
+
+      <h2>SNAO Ocean Mobile Application</h2>
+
+      <p>
+        SNAO Ocean is a planned independent
+        mobile application for Android and iOS,
+        designed around an original
+        immersive ocean environment
+        and structured community participation.
+      </p>
+
+      <h3>Core Experience</h3>
+
+      <ul>
+        <li>Immersive ocean-themed user interface.</li>
+        <li>Account registration and user profiles.</li>
+        <li>Gamified participation sessions.</li>
+        <li>Community missions and eligible activities.</li>
+        <li>Referral and ranking systems.</li>
+        <li>Internal Sardinhas points.</li>
+        <li>Fraud prevention and anti-abuse controls.</li>
+      </ul>
+
+      <h3>Sardinhas Points</h3>
+
+      <p>
+        Sardinhas are planned as internal
+        application points, not
+        independent blockchain tokens.
+      </p>
+
+      <p>
+        The product concept includes
+        periodic eligibility reviews
+        and a potential 30-day
+        conversion cycle involving
+        eligible points and SNAO tokens.
+      </p>
+
+      <p>
+        Any conversion mechanism is
+        subject to final rules,
+        eligibility requirements,
+        token availability,
+        technical implementation,
+        anti-fraud validation
+        and applicable regulations.
+      </p>
+
+      <div class="callout">
+        <strong>Not Available Yet</strong>
+        <p>
+          Mining-style activities are
+          planned gamification mechanics.
+          They should not be interpreted
+          as blockchain consensus mining,
+          guaranteed token distribution
+          or guaranteed monetary rewards.
+        </p>
+      </div>
+
+    </section>
+
+    <!-- 07 INTELLIGENCE -->
+
+    <section class="doc-section" id="intelligence">
+
+      <span class="section-number">SECTION 07</span>
+
+      <h2>Ocean Intelligence</h2>
+
+      <p>
+        Ocean Intelligence represents
+        the project's crypto market
+        analysis and research direction.
+        Its goal is to make complex
+        market activity easier to interpret.
+      </p>
+
+      <h3>Planned Intelligence Modules</h3>
+
+      <div class="card-grid">
+
+        <article class="info-card">
+          <span>01 / WHALES</span>
+          <h3>Whale Intelligence</h3>
+          <p>
+            Large wallet movements,
+            unusual blockchain activity
+            and transaction monitoring.
+          </p>
+        </article>
+
+        <article class="info-card">
+          <span>02 / FLOWS</span>
+          <h3>Ocean Flow</h3>
+          <p>
+            Exchange activity,
+            capital movements,
+            liquidity concentration
+            and market participation.
+          </p>
+        </article>
+
+        <article class="info-card">
+          <span>03 / AI</span>
+          <h3>Sardine AI</h3>
+          <p>
+            AI-assisted analysis,
+            research summaries
+            and explanation of
+            relevant market conditions.
+          </p>
+        </article>
+
+        <article class="info-card">
+          <span>04 / RISK</span>
+          <h3>Risk Intelligence</h3>
+          <p>
+            Volatility,
+            liquidity conditions,
+            unusual activity
+            and risk-related indicators.
+          </p>
+        </article>
+
+        <article class="info-card">
+          <span>05 / POLICY</span>
+          <h3>Global Policy Radar</h3>
+          <p>
+            Research around regulatory,
+            economic and policy
+            developments affecting
+            digital asset markets.
+          </p>
+        </article>
+
+        <article class="info-card">
+          <span>06 / INDICATORS</span>
+          <h3>Ocean Indicators</h3>
+          <p>
+            Experimental research scores
+            and composite market indicators,
+            subject to validation.
+          </p>
+        </article>
+
+      </div>
+
+      <h3>Ocean Terminal</h3>
+
+      <p>
+        The existing Ocean Terminal
+        has been presented as a
+        market information and
+        experimental interface.
+        Some displayed indicators
+        have used demonstration data.
+      </p>
+
+      <p>
+        Such demonstration values
+        must not be interpreted as
+        verified live trading signals.
+        Future real-data integrations
+        will require additional
+        validation and monitoring.
+      </p>
+
+      <p>
+        <a href="terminal.html" class="button button-outline">
+          Explore Ocean Terminal →
+        </a>
+      </p>
+
+      <div class="callout">
+        <strong>Research, Not Prediction</strong>
+        <p>
+          Market intelligence cannot
+          guarantee future prices,
+          prevent losses or
+          eliminate uncertainty.
+        </p>
+      </div>
+
+    </section>
+
+    <!-- 08 TOKENOMICS -->
+
+    <section class="doc-section" id="tokenomics">
+
+      <span class="section-number">SECTION 08</span>
+
+      <h2>$SNAO Tokenomics</h2>
+
+      <p>
+        The SNAO token is designed
+        with a fixed maximum supply
+        of 200,000,000 units.
+        No future minting is planned.
+      </p>
+
+      <div class="metrics">
+
+        <div class="metric">
+          <span>Maximum Supply</span>
+          <strong>200M</strong>
+        </div>
+
+        <div class="metric">
+          <span>Public Sale</span>
+          <strong>45M</strong>
+        </div>
+
+        <div class="metric">
+          <span>Starting Price</span>
+          <strong>$0.001</strong>
+        </div>
+
+        <div class="metric">
+          <span>Network</span>
+          <strong>BNB Chain</strong>
+        </div>
+
+      </div>
+
+      <h3>Token Allocation</h3>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Allocation</th>
+              <th>Tokens</th>
+              <th>Share</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Founder</td>
+              <td>26,000,000</td>
+              <td>13%</td>
+            </tr>
+            <tr>
+              <td>Public Sale</td>
+              <td>45,000,000</td>
+              <td>22.5%</td>
+            </tr>
+            <tr>
+              <td>Liquidity & Market Making</td>
+              <td>40,000,000</td>
+              <td>20%</td>
+            </tr>
+            <tr>
+              <td>Treasury</td>
+              <td>40,000,000</td>
+              <td>20%</td>
+            </tr>
+            <tr>
+              <td>Team & Development</td>
+              <td>15,000,000</td>
+              <td>7.5%</td>
+            </tr>
+            <tr>
+              <td>Partnerships & Ecosystem</td>
+              <td>10,000,000</td>
+              <td>5%</td>
+            </tr>
+            <tr>
+              <td>Community & Rewards</td>
+              <td>8,000,000</td>
+              <td>4%</td>
+            </tr>
+            <tr>
+              <td>Unsold Sale Reserve</td>
+              <td>5,000,000</td>
+              <td>2.5%</td>
+            </tr>
+            <tr>
+              <td>Strategic Reserve</td>
+              <td>11,000,000</td>
+              <td>5.5%</td>
+            </tr>
+            <tr>
+              <td><strong>Total</strong></td>
+              <td><strong>200,000,000</strong></td>
+              <td><strong>100%</strong></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Public Sale Structure</h3>
+
+      <p>
+        The Public Sale allocation
+        is 45,000,000 SNAO,
+        organized into 1,800
+        progressive pricing lots
+        of 25,000 SNAO each.
+      </p>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Parameter</th>
+              <th>Stated Structure</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Starting Price</td>
+              <td>$0.001 per SNAO</td>
+            </tr>
+            <tr>
+              <td>Lot Size</td>
+              <td>25,000 SNAO</td>
+            </tr>
+            <tr>
+              <td>Number of Lots</td>
+              <td>1,800</td>
+            </tr>
+            <tr>
+              <td>Maximum Sale Allocation</td>
+              <td>45,000,000 SNAO</td>
+            </tr>
+            <tr>
+              <td>Soft Cap</td>
+              <td>$250,000</td>
+            </tr>
+            <tr>
+              <td>Hard Cap</td>
+              <td>$5,000,000</td>
+            </tr>
+            <tr>
+              <td>Payment Asset</td>
+              <td>USDT on BNB Smart Chain</td>
+            </tr>
+            <tr>
+              <td>Network Fees</td>
+              <td>BNB required for gas</td>
+            </tr>
+            <tr>
+              <td>Maximum Transaction Size</td>
+              <td>2,500,000 SNAO</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Liquidity Structure</h3>
+
+      <p>
+        The stated liquidity and
+        market-making allocation is
+        40,000,000 SNAO:
+        10,000,000 intended for initial
+        liquidity and 30,000,000
+        reserved for longer-term
+        liquidity and market-making.
+      </p>
+
+      <div class="callout">
+        <strong>Sale Information</strong>
+        <p>
+          This section describes the
+          published economic model,
+          not a real-time sale ledger.
+          Current prices, available
+          tokens and active contract
+          parameters must be verified
+          through the official sale
+          interface and applicable
+          on-chain contracts.
+        </p>
+      </div>
+
+      <p>
+        <a href="token.html" class="button button-outline">
+          View Token Page →
+        </a>
+      </p>
+
+    </section>
+
+    <!-- 09 VESTING -->
+
+    <section class="doc-section" id="vesting">
+
+      <span class="section-number">SECTION 09</span>
+
+      <h2>Vesting & Token Releases</h2>
+
+      <p>
+        The stated token distribution
+        includes allocation-specific
+        release schedules intended
+        to support long-term alignment.
+      </p>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Allocation</th>
+              <th>Stated Vesting Terms</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Founder</td>
+              <td>
+                0% at TGE;
+                180-day cliff followed
+                by 900-day linear vesting
+              </td>
+            </tr>
+            <tr>
+              <td>Team & Development</td>
+              <td>
+                360-day cliff followed
+                by 1,080-day linear vesting
+              </td>
+            </tr>
+            <tr>
+              <td>Treasury</td>
+              <td>
+                48-month linear release
+              </td>
+            </tr>
+            <tr>
+              <td>Partnerships</td>
+              <td>
+                6-month cliff followed
+                by 30-month linear release
+              </td>
+            </tr>
+            <tr>
+              <td>Community</td>
+              <td>
+                36-month linear release
+              </td>
+            </tr>
+            <tr>
+              <td>Strategic Reserve</td>
+              <td>
+                12-month cliff followed
+                by 36-month linear release
+              </td>
+            </tr>
+            <tr>
+              <td>Unsold Sale Reserve</td>
+              <td>
+                24-month lock;
+                burn-only thereafter
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Founder Allocation</h3>
+
+      <p>
+        The founder allocation
+        totals 26,000,000 SNAO.
+        Its stated plan provides
+        no initial unlock at TGE,
+        a 180-day cliff and
+        900 days of linear vesting,
+        reaching completion after
+        1,080 days.
+      </p>
+
+      <h3>Public Sale Vesting</h3>
+
+      <p>
+        Public Sale token release
+        conditions may depend on
+        the applicable sale
+        participation thresholds.
+        Buyers should review
+        the precise contract terms,
+        claiming rules and vesting
+        schedule before purchasing.
+      </p>
+
+      <div class="callout">
+        <strong>Verification Required</strong>
+        <p>
+          This document describes
+          intended token schedules.
+          Actual enforcement depends
+          on the deployed contracts
+          and their verified behavior.
+          Vesting does not guarantee
+          market stability or liquidity.
+        </p>
+      </div>
+
+    </section>
+
+    <!-- 10 UTILITY -->
+
+    <section class="doc-section" id="utility">
+
+      <span class="section-number">SECTION 10</span>
+
+      <h2>Planned Token Utility</h2>
+
+      <p>
+        SNAO World follows a
+        product-led development direction.
+        Token utility should emerge
+        from actual product functionality
+        rather than unsupported
+        economic promises.
+      </p>
+
+      <div class="card-grid">
+
+        <article class="info-card">
+          <span>RESEARCH</span>
+          <h3>Premium Intelligence</h3>
+          <p>
+            Potential access to
+            advanced research services
+            and intelligence tools.
+          </p>
+        </article>
+
+        <article class="info-card">
+          <span>MOBILE</span>
+          <h3>SNAO Ocean</h3>
+          <p>
+            Potential integration
+            with eligible app activities,
+            points and future
+            participation rules.
+          </p>
+        </article>
+
+        <article class="info-card">
+          <span>DIGITAL SERVICES</span>
+          <h3>Marketplace</h3>
+          <p>
+            Possible use for
+            selected reports,
+            tools and other
+            future digital services.
+          </p>
+        </article>
+
+        <article class="info-card">
+          <span>COMMUNITY</span>
+          <h3>Participation</h3>
+          <p>
+            Potential reward
+            and engagement systems
+            subject to defined
+            eligibility requirements.
+          </p>
+        </article>
+
+        <article class="info-card">
+          <span>LONG TERM</span>
+          <h3>Governance</h3>
+          <p>
+            Future consideration
+            of selected community
+            decision mechanisms.
+          </p>
+        </article>
+
+        <article class="info-card">
+          <span>FUTURE CONCEPT</span>
+          <h3>Staking</h3>
+          <p>
+            Possible future
+            participation features,
+            subject to technical,
+            economic and legal review.
+          </p>
+        </article>
+
+      </div>
+
+      <div class="callout">
+        <strong>Utility Is Not Guaranteed</strong>
+        <p>
+          Planned benefits,
+          staking, governance
+          and premium integrations
+          are not automatically
+          available to token holders.
+          Future implementation
+          will require further
+          development and disclosure.
+        </p>
+      </div>
+
+    </section>
+
+    <!-- 11 ROADMAP -->
+
+    <section class="doc-section" id="roadmap">
+
+      <span class="section-number">SECTION 11</span>
+
+      <h2>Development Roadmap</h2>
+
+      <p>
+        The roadmap has evolved
+        to reflect the broader
+        SNAO World technology strategy.
+      </p>
+
+      <div class="roadmap-list">
+
+        <article class="roadmap-item">
+          <span class="roadmap-index">01</span>
+          <div>
+            <h3>Project Foundations</h3>
+            <p>
+              Establish initial
+              brand identity,
+              website, community,
+              token architecture
+              and project infrastructure.
+            </p>
+          </div>
+        </article>
+
+        <article class="roadmap-item">
+          <span class="roadmap-index">02</span>
+          <div>
+            <h3>ATLAS Development</h3>
+            <p>
+              Continue enterprise
+              platform engineering,
+              financial and operational
+              modules, security concepts
+              and product testing.
+            </p>
+          </div>
+        </article>
+
+        <article class="roadmap-item">
+          <span class="roadmap-index">03</span>
+          <div>
+            <h3>SNAO Ocean Mobile</h3>
+            <p>
+              Develop the independent
+              application, original
+              ocean environment,
+              account systems,
+              missions and
+              anti-abuse mechanisms.
+            </p>
+          </div>
+        </article>
+
+        <article class="roadmap-item">
+          <span class="roadmap-index">04</span>
+          <div>
+            <h3>Ocean Intelligence Expansion</h3>
+            <p>
+              Improve research interfaces,
+              market-data connections,
+              analytical tools and
+              future AI-assisted
+              interpretation.
+            </p>
+          </div>
+        </article>
+
+        <article class="roadmap-item">
+          <span class="roadmap-index">05</span>
+          <div>
+            <h3>Token & Market Infrastructure</h3>
+            <p>
+              Complete applicable
+              sale requirements,
+              contract reviews,
+              liquidity preparations
+              and any eligible
+              future market access.
+            </p>
+          </div>
+        </article>
+
+        <article class="roadmap-item">
+          <span class="roadmap-index">06</span>
+          <div>
+            <h3>Long-Term Expansion</h3>
+            <p>
+              Evaluate advanced
+              enterprise capabilities,
+              APIs, additional
+              intelligence services
+              and international
+              growth opportunities.
+            </p>
+          </div>
+        </article>
+
+      </div>
+
+      <div class="callout">
+        <strong>Roadmap Disclaimer</strong>
+        <p>
+          These priorities are
+          subject to testing,
+          resources, compliance
+          requirements and
+          technical feasibility.
+          No release date is guaranteed.
+        </p>
+      </div>
+
+    </section>
+
+    <!-- 12 SECURITY -->
+
+    <section class="doc-section" id="security">
+
+      <span class="section-number">SECTION 12</span>
+
+      <h2>Security & Responsible Development</h2>
+
+      <p>
+        Security is a central
+        design consideration
+        across SNAO World products.
+        Different products require
+        different technical
+        and operational safeguards.
+      </p>
+
+      <h3>Intended Security Practices</h3>
+
+      <ul>
+        <li>
+          Authentication and access
+          management appropriate
+          to each application.
+        </li>
+        <li>
+          Data protection
+          and secure processing
+          where applicable.
+        </li>
+        <li>
+          Monitoring and
+          incident-response design.
+        </li>
+        <li>
+          Fraud prevention
+          for community
+          and reward systems.
+        </li>
+        <li>
+          Smart contract testing,
+          review and relevant
+          third-party assessments.
+        </li>
+        <li>
+          Transparent documentation
+          of significant technical risks.
+        </li>
+      </ul>
+
+      <h3>Smart Contract Security</h3>
+
+      <p>
+        Token, sale, vesting
+        and liquidity-related
+        contracts should be
+        assessed against their
+        intended requirements,
+        with attention to
+        authorization, custody,
+        transaction behavior
+        and user protections.
+      </p>
+
+      <p>
+        A planned independent audit
+        must not be represented
+        as completed until
+        its results are available
+        for verification.
+      </p>
+
+      <h3>Enterprise Data Protection</h3>
+
+      <p>
+        ATLAS is intended
+        for business environments
+        where access controls,
+        privacy, auditability
+        and system reliability
+        are important.
+        Specific protections
+        must be validated
+        before production use.
+      </p>
+
+      <div class="callout">
+        <strong>Official Sources Only</strong>
+        <p>
+          Never trust private
+          messages claiming to
+          provide privileged
+          sale access, wallet
+          recovery or unofficial
+          contract addresses.
+          Verify information
+          through official
+          SNAO World channels.
+        </p>
+      </div>
+
+    </section>
+
+    <!-- 13 RISKS -->
+
+    <section class="doc-section" id="risks">
+
+      <span class="section-number">SECTION 13</span>
+
+      <h2>Risks, Limitations & Disclosures</h2>
+
+      <h3>Development Risk</h3>
+
+      <p>
+        Products and features
+        described in this document
+        may be delayed, modified,
+        limited or discontinued
+        based on technical,
+        commercial or
+        regulatory factors.
+      </p>
+
+      <h3>Technology Risk</h3>
+
+      <p>
+        Software systems,
+        third-party integrations,
+        AI models and smart
+        contracts can contain
+        defects, vulnerabilities
+        or operational limitations.
+      </p>
+
+      <h3>Cryptoasset Risk</h3>
+
+      <p>
+        Cryptocurrency markets
+        are highly volatile.
+        Token prices, liquidity,
+        trading availability
+        and market access
+        are not guaranteed.
+      </p>
+
+      <h3>Market Intelligence Limitations</h3>
+
+      <p>
+        Market data may be
+        delayed, incomplete
+        or incorrect.
+        AI-assisted analysis
+        and experimental
+        indicators are not
+        guarantees of
+        future outcomes.
+      </p>
+
+      <h3>Regulatory Considerations</h3>
+
+      <p>
+        Digital asset regulations,
+        tax requirements,
+        consumer protections
+        and eligibility restrictions
+        differ by jurisdiction
+        and may evolve.
+      </p>
+
+      <h3>No Investment Guarantee</h3>
+
+      <p>
+        This document is
+        informational.
+        It does not constitute
+        personalized investment,
+        tax or legal advice,
+        nor a promise of
+        investment returns.
+      </p>
+
+      <div class="callout">
+        <strong>Documentation Status</strong>
+        <p>
+          This page is an updated
+          public ecosystem overview.
+          It does not independently
+          verify contract deployment,
+          active features, audits,
+          regulatory approvals
+          or completed partnerships.
+          Applicable contractual
+          terms and verified
+          technical documents
+          take precedence where relevant.
+        </p>
+      </div>
+
+      <h3>Official Resources</h3>
+
+      <p>
+        <a href="token.html" class="button button-outline">
+          Token Information
+        </a>
+        <a href="sale.html" class="button button-primary">
+          Official Public Sale
+        </a>
+      </p>
+
+    </section>
+
+  </main>
+
+</div>
+
+<!-- FOOTER -->
+
+<footer class="footer">
+
+  <div class="container">
+
+    <div class="footer-grid">
+
+      <div class="footer-about">
+
+        <a href="index.html" class="brand">
+          <span class="brand-icon">S</span>
+          <span>
+            <strong>SNAO</strong>
+            <small>WORLD</small>
+          </span>
+        </a>
+
+        <p>
+          Building an evolving
+          ecosystem for enterprise
+          intelligence, digital
+          participation and
+          crypto market research.
+        </p>
+
+      </div>
+
+      <div class="footer-links">
+        <h4>ECOSYSTEM</h4>
+        <a href="index.html#atlas">ATLAS</a>
+        <a href="index.html#platforms">SNAO Ocean</a>
+        <a href="index.html#ocean">Ocean Intelligence</a>
+        <a href="about.html">About SNAO World</a>
+      </div>
+
+      <div class="footer-links">
+        <h4>RESOURCES</h4>
+        <a href="token.html">Token</a>
+        <a href="sale.html">Public Sale</a>
+        <a href="#tokenomics">Tokenomics</a>
+        <a href="#vesting">Vesting</a>
+        <a href="#security">Security</a>
+        <a href="https://t.me/snaoofficial"
+           target="_blank"
+           rel="noopener noreferrer">
+          Telegram
+        </a>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+
+      <span id="copyright">
+        © SNAO World. All rights reserved.
+      </span>
+
+      <span>
+        Intelligence Beyond Boundaries.
+      </span>
+
+    </div>
+
+  </div>
 
 </footer>
 
+<script>
+"use strict";
 
-</main>
+/* MOBILE NAVIGATION */
 
-</div>
+const menuToggle =
+  document.getElementById("menuToggle");
 
+const navigation =
+  document.getElementById("navigation");
 
-<script src="whitepaper.js"></script>
+if (menuToggle && navigation) {
 
+  menuToggle.addEventListener("click", () => {
+
+    const open =
+      navigation.classList.toggle("open");
+
+    menuToggle.setAttribute(
+      "aria-expanded",
+      String(open)
+    );
+
+    menuToggle.textContent =
+      open ? "✕" : "☰";
+
+  });
+
+  navigation.querySelectorAll("a").forEach(link => {
+
+    link.addEventListener("click", () => {
+
+      navigation.classList.remove("open");
+
+      menuToggle.setAttribute(
+        "aria-expanded",
+        "false"
+      );
+
+      menuToggle.textContent = "☰";
+
+    });
+
+  });
+
+}
+
+/* ACTIVE DOCUMENT SECTION */
+
+const sections =
+  document.querySelectorAll(".doc-section");
+
+const sidebarLinks =
+  document.querySelectorAll(".sidebar a");
+
+if ("IntersectionObserver" in window) {
+
+  const sectionObserver =
+    new IntersectionObserver(entries => {
+
+      entries.forEach(entry => {
+
+        if (!entry.isIntersecting) return;
+
+        const id = entry.target.id;
+
+        sidebarLinks.forEach(link => {
+
+          link.classList.toggle(
+            "active",
+            link.getAttribute("href") === "#" + id
+          );
+
+        });
+
+      });
+
+    }, {
+      rootMargin: "-15% 0px -70% 0px"
+    });
+
+  sections.forEach(section => {
+    sectionObserver.observe(section);
+  });
+
+}
+
+/* COPYRIGHT */
+
+const copyright =
+  document.getElementById("copyright");
+
+if (copyright) {
+  copyright.textContent =
+    "© " +
+    new Date().getFullYear() +
+    " SNAO World. All rights reserved.";
+}
+</script>
 
 </body>
-
 </html>
