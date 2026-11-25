@@ -4,38 +4,42 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#020915">
+<meta name="theme-color" content="#020917">
 <meta name="robots" content="index, follow">
-<meta name="description" content="SNAO World is building ATLAS Intelligence OS, SNAO Ocean and Ocean Intelligence. Technology, enterprise intelligence and digital innovation beyond boundaries.">
 
-<title>SNAO World | Intelligence Beyond Boundaries</title>
+<title>SNAO World — Intelligence Beyond Boundaries</title>
 
-<link rel="canonical" href="https://snao.world/">
-<link rel="icon" type="image/png" href="assets/favicon.png">
+<meta name="description" content="Discover SNAO World, ATLAS Intelligence OS, SNAO Ocean and Ocean Intelligence. Explore the technology ecosystem and the official $SNAO Public Sale.">
+
+<link rel="canonical" href="https://www.snao.world/">
+<link rel="icon" href="assets/favicon.png" type="image/png">
 
 <meta property="og:type" content="website">
-<meta property="og:title" content="SNAO World — Intelligence Beyond Boundaries">
-<meta property="og:description" content="Discover ATLAS Intelligence OS, SNAO Ocean and the next generation of intelligent digital experiences.">
-<meta property="og:url" content="https://snao.world/">
+<meta property="og:title" content="SNAO World | Intelligence Beyond Boundaries">
+<meta property="og:description" content="Enterprise intelligence, immersive ocean technology and the $SNAO ecosystem.">
+<meta property="og:url" content="https://www.snao.world/">
 
 <style>
 /* =========================================================
-   SNAO WORLD — CINEMATIC HOMEPAGE
+   SNAO WORLD — OCEAN EXPERIENCE
    ========================================================= */
 
 :root {
-  --bg: #020915;
-  --bg-soft: #061426;
-  --bg-card: #0a2036;
-  --cyan: #48e7fb;
-  --cyan-light: #b3f8ff;
-  --blue: #138cf2;
-  --deep-blue: #0752ad;
-  --text: #f5fbff;
-  --muted: #94aec2;
-  --border: rgba(109,217,255,.17);
-  --glass: rgba(8,27,48,.74);
-  --max: 1280px;
+  --night: #020917;
+  --ocean: #04162a;
+  --deep: #061c33;
+  --glass: rgba(9,31,55,.72);
+  --cyan: #65edff;
+  --aqua: #16d7dd;
+  --blue: #318dff;
+  --violet: #aa79ff;
+  --gold: #ffcc7b;
+  --green: #55edba;
+  --coral: #ff7c9b;
+  --white: #f6fbff;
+  --muted: #9bb4ca;
+  --line: rgba(144,220,255,.17);
+  --max: 1320px;
 }
 
 *,
@@ -52,27 +56,15 @@ html {
 body {
   margin: 0;
   overflow-x: hidden;
-  background: var(--bg);
-  color: var(--text);
+  background: var(--night);
+  color: var(--white);
   font-family: Inter, "Segoe UI", Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
 }
 
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-  pointer-events: none;
-  opacity: .16;
-  background-image:
-    radial-gradient(rgba(126,214,255,.28) .7px,transparent .7px);
-  background-size: 28px 28px;
-}
-
 a {
-  text-decoration: none;
   color: inherit;
+  text-decoration: none;
 }
 
 button {
@@ -80,81 +72,78 @@ button {
   cursor: pointer;
 }
 
-button,
-a {
-  -webkit-tap-highlight-color: transparent;
-}
-
-button:focus-visible,
 a:focus-visible,
+button:focus-visible,
 summary:focus-visible {
   outline: 2px solid var(--cyan);
   outline-offset: 4px;
 }
 
 ::selection {
-  background: #40e4fa;
-  color: #03111c;
+  background: var(--cyan);
+  color: var(--night);
 }
 
 .container {
-  width: min(var(--max),calc(100% - 48px));
-  margin: 0 auto;
+  width: min(var(--max), calc(100% - 52px));
+  margin: auto;
 }
 
-.gradient {
-  color: transparent;
+.gradient-text {
   background: linear-gradient(
-    115deg,
-    #f8ffff 0%,
-    #83f3ff 29%,
-    #37d7ff 59%,
-    #388eff 100%
+    105deg,
+    #fff,
+    #7cf2ff 33%,
+    #3cafff 62%,
+    #b38cff
   );
-  -webkit-background-clip: text;
   background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.gold-text {
+  color: var(--gold);
 }
 
 .eyebrow {
   display: inline-flex;
   align-items: center;
-  gap: 12px;
+  gap: 11px;
   color: var(--cyan);
   font-size: 11px;
-  font-weight: 800;
-  letter-spacing: 2.5px;
+  font-weight: 850;
+  letter-spacing: 2.4px;
   text-transform: uppercase;
 }
 
 .eyebrow::before {
   content: "";
-  width: 21px;
-  height: 1px;
-  background: var(--cyan);
-  box-shadow: 0 0 14px var(--cyan);
+  width: 25px;
+  height: 2px;
+  background: linear-gradient(90deg,var(--cyan),transparent);
 }
 
 .section {
   position: relative;
-  padding: 115px 0;
+  padding: 120px 0;
 }
 
-.section-head {
-  max-width: 840px;
-  margin: 0 auto 58px;
+.section-heading {
+  max-width: 850px;
+  margin: 0 auto 54px;
   text-align: center;
 }
 
-.section-head h2 {
-  margin: 20px 0 23px;
-  font-size: clamp(39px,5.3vw,70px);
-  font-weight: 800;
+.section-heading h2 {
+  margin: 22px 0;
+  font-size: clamp(38px,5vw,70px);
   line-height: 1.07;
-  letter-spacing: -2.5px;
+  letter-spacing: -2.8px;
 }
 
-.section-head p {
-  max-width: 680px;
+.section-heading p {
+  max-width: 700px;
   margin: auto;
   color: var(--muted);
   font-size: 16px;
@@ -162,95 +151,94 @@ summary:focus-visible {
 }
 
 .btn {
-  position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 13px;
-  min-height: 54px;
-  padding: 16px 25px;
-  border-radius: 11px;
+  gap: 12px;
+  min-height: 57px;
+  padding: 16px 28px;
   border: 1px solid transparent;
-  font-size: 13px;
-  font-weight: 800;
-  letter-spacing: .15px;
+  border-radius: 13px;
+  font-size: 14px;
+  font-weight: 850;
   transition:
     transform .25s,
-    background .25s,
-    border-color .25s,
-    box-shadow .25s;
+    box-shadow .25s,
+    border-color .25s;
 }
 
-.btn-primary {
-  color: #02121c;
-  background: linear-gradient(115deg,#12b5ed,#68f1ff);
+.btn:hover {
+  transform: translateY(-3px);
+}
+
+.btn-buy {
+  background: linear-gradient(115deg,#ffdf91,#ffb65b);
+  color: #171006;
   box-shadow:
-    0 11px 35px rgba(0,180,255,.17),
-    inset 0 1px rgba(255,255,255,.4);
+    0 12px 40px rgba(255,180,68,.25),
+    inset 0 1px rgba(255,255,255,.5);
 }
 
-.btn-primary:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 16px 45px rgba(0,190,255,.3);
+.btn-buy:hover {
+  box-shadow: 0 15px 48px rgba(255,180,68,.37);
 }
 
-.btn-outline {
-  color: #eafaff;
-  border-color: rgba(109,221,255,.3);
-  background: rgba(8,33,55,.52);
-  backdrop-filter: blur(10px);
+.btn-cyan {
+  background: linear-gradient(110deg,#1ac2ef,#7bf3ff);
+  color: #031522;
+  box-shadow: 0 12px 35px rgba(0,206,255,.17);
 }
 
-.btn-outline:hover {
-  transform: translateY(-3px);
+.btn-glass {
+  border-color: rgba(135,225,255,.3);
+  background: rgba(10,35,60,.63);
+  color: white;
+  backdrop-filter: blur(14px);
+}
+
+.btn-glass:hover {
   border-color: var(--cyan);
-  background: rgba(11,49,73,.8);
-}
-
-.btn-arrow {
-  font-size: 17px;
-  font-weight: 400;
 }
 
 .glass {
+  border: 1px solid var(--line);
   background: linear-gradient(
     145deg,
-    rgba(15,48,76,.79),
-    rgba(5,19,37,.9)
+    rgba(15,49,79,.79),
+    rgba(4,18,38,.88)
   );
-  border: 1px solid var(--border);
-  backdrop-filter: blur(17px);
+  backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
   box-shadow:
-    0 22px 75px rgba(0,0,0,.2),
-    inset 0 1px rgba(186,236,255,.045);
+    0 25px 75px rgba(0,0,0,.25),
+    inset 0 1px rgba(255,255,255,.07);
 }
 
 /* =========================================================
-   NAVIGATION
+   HEADER
    ========================================================= */
 
 .header {
   position: fixed;
-  z-index: 1000;
   inset: 0 0 auto;
   height: 82px;
-  background: rgba(2,9,21,.79);
-  border-bottom: 1px solid rgba(87,205,255,.12);
+  z-index: 1000;
+  background: rgba(2,9,23,.76);
+  border-bottom: 1px solid rgba(120,220,255,.13);
   backdrop-filter: blur(22px);
-  -webkit-backdrop-filter: blur(22px);
-  transition: background .3s;
+  transition: background .25s;
 }
 
 .header.scrolled {
-  background: rgba(2,9,21,.96);
+  background: rgba(2,9,23,.96);
 }
 
 .header-inner {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   height: 100%;
-  gap: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 25px;
 }
 
 .brand {
@@ -260,215 +248,189 @@ summary:focus-visible {
   flex-shrink: 0;
 }
 
-.brand-emblem {
-  position: relative;
+.brand-icon {
   display: grid;
   place-items: center;
   width: 47px;
   height: 47px;
-  border-radius: 15px;
-  border: 1px solid rgba(77,222,255,.45);
+  border: 1px solid rgba(85,232,255,.52);
+  border-radius: 14px;
   background:
-    radial-gradient(circle at 30% 20%,rgba(72,231,251,.22),transparent 67%),
-    #08213b;
-  box-shadow: 0 0 26px rgba(0,165,255,.11);
+    radial-gradient(circle at 35% 20%,rgba(64,227,255,.24),transparent),
+    #08223a;
+  box-shadow: 0 0 30px rgba(0,193,255,.13);
 }
 
-.brand-emblem svg {
+.brand-icon svg {
   width: 30px;
   height: 30px;
   fill: none;
-  stroke: #6aeaff;
+  stroke: #71efff;
   stroke-width: 4;
   stroke-linecap: round;
   stroke-linejoin: round;
-  filter: drop-shadow(0 0 5px rgba(54,222,255,.45));
 }
 
 .brand-name strong {
   display: block;
-  font-size: 19px;
+  font-size: 18px;
   font-weight: 900;
   letter-spacing: 3.5px;
 }
 
 .brand-name small {
   display: block;
-  margin-top: 3px;
+  margin-top: 4px;
+  color: #a1bbce;
   font-size: 9px;
-  letter-spacing: 3.3px;
-  color: #9ab2c8;
+  letter-spacing: 3px;
 }
 
 .nav {
   display: flex;
   align-items: center;
-  gap: 25px;
+  gap: 24px;
 }
 
-.nav > a {
+.nav a {
+  color: #c2d4e2;
   font-size: 12px;
-  font-weight: 600;
-  color: #b5ccde;
+  font-weight: 650;
   transition: color .2s;
 }
 
-.nav > a:hover {
+.nav a:hover {
   color: var(--cyan);
 }
 
-.nav > a.nav-cta {
-  color: #02121c;
-  background: var(--cyan);
-  border-radius: 9px;
-  padding: 13px 18px;
-  font-weight: 800;
-}
-
-.nav > a.nav-cta:hover {
-  color: #02121c;
-  background: #92f4ff;
+.nav a.nav-buy {
+  color: #171006;
+  background: linear-gradient(110deg,#ffe19a,#ffbc64);
+  padding: 13px 21px;
+  border-radius: 10px;
+  font-weight: 900;
+  box-shadow: 0 0 25px rgba(255,190,94,.13);
 }
 
 .menu-toggle {
   display: none;
-  width: 45px;
-  height: 43px;
-  border: 1px solid var(--border);
+  width: 46px;
+  height: 44px;
+  border: 1px solid var(--line);
   border-radius: 10px;
   color: var(--cyan);
-  background: #082039;
+  background: #0a2742;
   font-size: 23px;
 }
 
 /* =========================================================
-   CINEMATIC HERO
+   CINEMATIC UNDERWATER HERO
    ========================================================= */
 
 .hero {
   position: relative;
-  min-height: 850px;
+  isolation: isolate;
+  min-height: 860px;
+  overflow: hidden;
   display: flex;
   align-items: center;
-  padding: 150px 0 110px;
-  overflow: hidden;
-  isolation: isolate;
+  padding: 145px 0 115px;
   background:
-    radial-gradient(
-      ellipse at 77% 42%,
-      rgba(6,120,213,.23),
-      transparent 45%
-    ),
-    radial-gradient(
-      ellipse at 20% 15%,
-      rgba(0,93,201,.13),
-      transparent 40%
-    ),
-    linear-gradient(120deg,#020713,#051a30 65%,#020916);
+    radial-gradient(ellipse at 72% 27%,rgba(12,126,196,.28),transparent 48%),
+    radial-gradient(ellipse at 20% 65%,rgba(4,81,148,.2),transparent 53%),
+    linear-gradient(180deg,#07335b 0%,#052541 39%,#021326 79%,#020917 100%);
+}
+
+#oceanCanvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -2;
+  pointer-events: none;
 }
 
 .hero::before {
   content: "";
   position: absolute;
-  z-index: -1;
   inset: 0;
+  z-index: -1;
+  pointer-events: none;
   background:
     linear-gradient(
-      145deg,
-      rgba(37,185,255,.055),
-      transparent 38%
-    ),
-    repeating-linear-gradient(
       90deg,
-      transparent 0 89px,
-      rgba(90,196,255,.025) 90px
+      rgba(1,11,24,.8) 0%,
+      rgba(2,16,32,.56) 43%,
+      rgba(1,17,36,.06) 100%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(2,12,27,.02),
+      rgba(2,9,23,.84)
     );
 }
 
 .hero::after {
   content: "";
   position: absolute;
-  left: 0;
-  right: 0;
-  bottom: -1px;
-  height: 165px;
-  background: linear-gradient(transparent,var(--bg));
-  pointer-events: none;
-}
-
-.hero-light {
-  position: absolute;
-  inset: -50% 5% auto auto;
-  width: 58vw;
-  height: 90vh;
-  background: linear-gradient(
-    165deg,
-    transparent 24%,
-    rgba(41,174,255,.055) 50%,
-    transparent 74%
-  );
-  transform: skewX(-17deg);
-  filter: blur(15px);
-  pointer-events: none;
-}
-
-.hero-particles {
-  position: absolute;
   inset: 0;
+  z-index: -1;
+  opacity: .45;
   pointer-events: none;
-  opacity: .36;
-  background-image:
-    radial-gradient(circle at 15% 26%,#65dfff 1px,transparent 2px),
-    radial-gradient(circle at 83% 15%,#73dfff 1px,transparent 2px),
-    radial-gradient(circle at 60% 78%,#73dfff 1px,transparent 2px),
-    radial-gradient(circle at 31% 64%,#73dfff 1px,transparent 2px);
-  background-size: 270px 230px;
-  animation: drift 24s linear infinite;
+  background:
+    repeating-linear-gradient(
+      110deg,
+      transparent 0 105px,
+      rgba(180,243,255,.055) 110px,
+      transparent 170px
+    );
+  mask-image: linear-gradient(#000,transparent 80%);
 }
 
 .hero-layout {
   position: relative;
-  z-index: 2;
   display: grid;
-  grid-template-columns: .97fr 1.03fr;
-  gap: 54px;
+  grid-template-columns: 1.03fr .97fr;
+  gap: 60px;
   align-items: center;
+  z-index: 2;
 }
 
 .hero-copy {
   position: relative;
-  z-index: 4;
+  z-index: 3;
 }
 
-.hero-kicker {
+.hero-pill {
   display: inline-flex;
   align-items: center;
   gap: 11px;
-  padding: 9px 13px;
-  border: 1px solid rgba(68,216,255,.22);
+  padding: 10px 15px;
+  border: 1px solid rgba(108,238,255,.32);
   border-radius: 100px;
-  color: #bcefff;
-  background: rgba(8,40,67,.62);
+  background: rgba(7,47,70,.63);
+  color: #bff8ff;
   font-size: 10px;
-  font-weight: 800;
-  letter-spacing: 1.8px;
+  font-weight: 850;
+  letter-spacing: 2px;
+  backdrop-filter: blur(12px);
 }
 
-.hero-kicker i {
-  width: 7px;
-  height: 7px;
+.hero-pill i {
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
-  background: #58e6ff;
-  box-shadow: 0 0 11px #2edaff;
+  background: var(--cyan);
+  box-shadow: 0 0 13px var(--cyan);
 }
 
 .hero h1 {
-  max-width: 740px;
-  margin: 27px 0;
-  font-size: clamp(59px,6.6vw,93px);
+  max-width: 760px;
+  margin: 25px 0;
+  font-size: clamp(65px,7.5vw,108px);
   font-weight: 900;
-  letter-spacing: -5.5px;
-  line-height: .98;
+  letter-spacing: -6px;
+  line-height: .96;
 }
 
 .hero h1 span {
@@ -476,737 +438,550 @@ summary:focus-visible {
 }
 
 .hero-description {
-  max-width: 580px;
-  color: #a3bbce;
+  max-width: 570px;
+  color: #c4d7e5;
   font-size: 17px;
   line-height: 1.85;
 }
 
 .hero-description strong {
-  color: #e3f9ff;
+  color: #f6fdff;
 }
 
 .hero-actions {
   display: flex;
+  align-items: center;
   flex-wrap: wrap;
-  gap: 12px;
-  margin-top: 34px;
+  gap: 13px;
+  margin-top: 35px;
 }
 
-.hero-bottom {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 26px;
-  margin-top: 47px;
+.hero-availability {
+  margin-top: 23px;
+  color: #add3df;
+  font-size: 12px;
 }
 
-.hero-bottom div {
-  display: flex;
-  flex-direction: column;
-  gap: 7px;
-  padding-left: 15px;
-  border-left: 1px solid rgba(76,212,255,.33);
+.hero-availability strong {
+  color: var(--gold);
 }
 
-.hero-bottom strong {
-  font-size: 13px;
-}
-
-.hero-bottom span {
-  color: #8da9bb;
+.hero-disclaimer {
+  margin-top: 35px;
   font-size: 11px;
+  color: #85a7be;
 }
 
 /* =========================================================
-   ATLAS HERO VISUAL
+   HERO VISUAL: ATLAS 3D GLASS COMMAND CENTER
    ========================================================= */
 
-.hero-visual {
+.hero-stage {
   position: relative;
-  min-height: 580px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  perspective: 1100px;
+  min-height: 570px;
+  perspective: 1300px;
+  display: grid;
+  place-items: center;
 }
 
-.hero-orbit {
+.stage-glow {
   position: absolute;
-  width: min(550px,46vw);
-  aspect-ratio: 1;
-  border: 1px solid rgba(69,211,255,.15);
+  width: 580px;
+  height: 580px;
   border-radius: 50%;
-  transform: rotateX(65deg) rotate(-20deg);
-  box-shadow: 0 0 70px rgba(0,145,255,.055);
+  background:
+    radial-gradient(circle,rgba(23,194,247,.26),transparent 66%);
+  filter: blur(24px);
 }
 
-.hero-orbit::before,
-.hero-orbit::after {
+.stage-ring {
+  position: absolute;
+  width: 540px;
+  height: 540px;
+  border-radius: 50%;
+  border: 1px solid rgba(132,235,255,.16);
+  transform: rotateX(66deg);
+}
+
+.stage-ring::after {
   content: "";
   position: absolute;
-  inset: 55px;
-  border: 1px dashed rgba(75,213,255,.2);
+  inset: 80px;
+  border: 1px dashed rgba(131,234,255,.24);
   border-radius: 50%;
+  animation: orbit 35s linear infinite;
 }
 
-.hero-orbit::after {
-  inset: 120px;
-  border-style: solid;
-  border-color: rgba(67,220,255,.19);
-}
-
-.command-shell {
-  width: min(590px,100%);
-  position: relative;
-  z-index: 2;
-  transform: rotateY(-9deg) rotateX(5deg);
-  filter: drop-shadow(0 35px 55px rgba(0,0,0,.4));
-  animation: commandFloat 8s ease-in-out infinite;
-}
-
-.command-window {
-  overflow: hidden;
-  border: 1px solid rgba(106,221,255,.37);
-  border-radius: 19px;
-  background:
-    linear-gradient(145deg,rgba(15,53,82,.95),rgba(4,18,34,.99));
-  box-shadow:
-    0 0 80px rgba(0,131,255,.13),
-    inset 0 1px rgba(181,240,255,.15);
-}
-
-.command-top {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 17px 20px;
-  border-bottom: 1px solid rgba(84,203,255,.17);
-  background: rgba(13,42,65,.78);
-}
-
-.command-title {
-  display: flex;
-  align-items: center;
-  gap: 11px;
-}
-
-.command-title .mini-logo {
-  width: 31px;
-  height: 31px;
-  display: grid;
-  place-items: center;
-  border-radius: 9px;
-  background: rgba(27,182,250,.16);
-  color: var(--cyan);
-  font-weight: 900;
-  font-size: 18px;
-}
-
-.command-title strong {
-  display: block;
-  font-size: 12px;
-  letter-spacing: 1.2px;
-}
-
-.command-title small {
-  display: block;
-  margin-top: 4px;
-  color: #7fabc7;
-  font-size: 8px;
-  letter-spacing: 1.4px;
-}
-
-.command-indicator {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  color: #84dfff;
-  font-size: 9px;
-  letter-spacing: 1px;
-}
-
-.command-indicator i {
-  width: 6px;
-  height: 6px;
-  background: #35e5ca;
-  border-radius: 50%;
-  box-shadow: 0 0 8px #35e5ca;
-}
-
-.command-body {
-  display: grid;
-  grid-template-columns: 59px 1fr;
-  min-height: 365px;
-}
-
-.command-sidebar {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 21px;
-  padding: 22px 10px;
-  border-right: 1px solid var(--border);
-  background: rgba(3,17,32,.48);
-}
-
-.command-sidebar span {
-  width: 29px;
-  height: 29px;
-  display: grid;
-  place-items: center;
-  color: #5c91b3;
-  border-radius: 8px;
-  font-size: 17px;
-}
-
-.command-sidebar span.active {
-  color: var(--cyan);
-  border: 1px solid rgba(67,216,255,.28);
-  background: rgba(37,175,255,.09);
-}
-
-.command-content {
-  min-width: 0;
-  padding: 22px;
-}
-
-.command-heading {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 15px;
-}
-
-.command-heading small {
-  display: block;
-  color: #6facc9;
-  font-size: 9px;
-  letter-spacing: 1.3px;
-}
-
-.command-heading h3 {
-  margin: 8px 0;
-  font-size: 20px;
-  letter-spacing: -.4px;
-}
-
-.command-heading .demo-pill {
-  display: inline-block;
-  padding: 8px 10px;
-  border: 1px solid rgba(62,210,255,.27);
-  border-radius: 6px;
-  color: #86dff2;
-  background: rgba(19,100,148,.14);
-  font-size: 9px;
-  white-space: nowrap;
-}
-
-.command-metrics {
-  display: grid;
-  grid-template-columns: repeat(3,1fr);
-  gap: 10px;
-  margin-top: 18px;
-}
-
-.command-metric {
-  padding: 13px;
-  border: 1px solid rgba(78,203,255,.15);
-  border-radius: 10px;
-  background: rgba(7,33,57,.73);
-}
-
-.command-metric small {
-  display: block;
-  color: #89a9bd;
-  font-size: 9px;
-}
-
-.command-metric strong {
-  display: block;
-  margin-top: 12px;
-  color: #e4faff;
-  font-size: 17px;
-}
-
-.command-metric em {
-  display: block;
-  margin-top: 6px;
-  color: #61d4ee;
-  font-size: 8px;
-  font-style: normal;
-}
-
-.command-chart {
-  position: relative;
-  overflow: hidden;
-  height: 164px;
-  margin-top: 13px;
-  border: 1px solid rgba(77,200,249,.13);
-  border-radius: 10px;
-  background:
-    linear-gradient(rgba(88,180,240,.09) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(88,180,240,.09) 1px,transparent 1px),
-    rgba(4,22,39,.75);
-  background-size: 100% 32px,43px 100%;
-}
-
-.command-chart svg {
-  width: 100%;
-  height: 100%;
-  overflow: visible;
-}
-
-.command-chart .chart-line {
-  fill: none;
-  stroke: #58dfff;
-  stroke-width: 3;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  filter: drop-shadow(0 0 6px rgba(48,224,255,.55));
-}
-
-.command-chart .chart-fill {
-  fill: url(#chartAreaGradient);
-}
-
-.command-chart-label {
-  position: absolute;
-  top: 11px;
-  left: 14px;
-  color: #80abc6;
-  font-size: 9px;
-  letter-spacing: 1px;
-}
-
-.command-footer {
-  display: flex;
-  justify-content: space-between;
-  padding: 12px 22px;
-  border-top: 1px solid var(--border);
-  color: #789fbc;
-  font-size: 9px;
-  letter-spacing: .8px;
-}
-
-.command-footer strong {
-  color: var(--cyan);
-  font-weight: 600;
-}
-
-.floating-tech {
-  position: absolute;
-  z-index: 4;
-  padding: 15px 18px;
-  border: 1px solid rgba(92,213,255,.35);
-  border-radius: 11px;
-  background: rgba(6,28,49,.92);
-  backdrop-filter: blur(14px);
-  box-shadow: 0 16px 50px rgba(0,0,0,.22);
-  animation: badgeFloat 7s ease-in-out infinite;
-}
-
-.floating-tech small {
-  display: block;
-  color: #85b1cc;
-  margin-bottom: 7px;
-  font-size: 9px;
-  letter-spacing: 1px;
-}
-
-.floating-tech strong {
-  color: #d9f9ff;
-  font-size: 12px;
-}
-
-.float-one {
-  top: 25px;
-  right: -25px;
-}
-
-.float-two {
-  left: -48px;
-  bottom: 70px;
-  animation-delay: -3s;
-}
-
-/* =========================================================
-   TRUST / POSITIONING STRIP
-   ========================================================= */
-
-.positioning-strip {
+.atlas-device {
   position: relative;
   z-index: 3;
-  padding: 29px 0;
-  background: #061626;
-  border-top: 1px solid rgba(85,209,255,.13);
-  border-bottom: 1px solid rgba(85,209,255,.13);
+  width: min(600px,100%);
+  transform: rotateY(-12deg) rotateX(6deg);
+  animation: deviceFloat 8s ease-in-out infinite;
 }
 
-.positioning-grid {
-  display: grid;
-  grid-template-columns: repeat(4,1fr);
-  gap: 24px;
+.atlas-frame {
+  overflow: hidden;
+  border: 1px solid rgba(151,236,255,.42);
+  border-radius: 22px;
+  background: rgba(5,25,48,.91);
+  box-shadow:
+    25px 38px 100px rgba(0,0,0,.48),
+    0 0 75px rgba(0,193,255,.14),
+    inset 0 1px rgba(255,255,255,.12);
+  backdrop-filter: blur(22px);
 }
 
-.positioning-item {
+.atlas-topbar {
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 14px;
+  justify-content: space-between;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--line);
+  background:
+    linear-gradient(90deg,rgba(24,92,126,.49),rgba(8,30,54,.75));
 }
 
-.positioning-item .position-icon {
-  display: grid;
-  place-items: center;
-  width: 40px;
-  height: 40px;
-  flex-shrink: 0;
-  border: 1px solid rgba(58,210,255,.22);
-  border-radius: 11px;
-  color: var(--cyan);
-  font-size: 19px;
-}
-
-.positioning-item strong {
+.atlas-top-brand strong {
   display: block;
-  font-size: 12px;
-  letter-spacing: .5px;
+  font-size: 13px;
+  letter-spacing: 1px;
 }
 
-.positioning-item small {
+.atlas-top-brand small {
   display: block;
   margin-top: 5px;
-  color: #7e9db4;
-  font-size: 10px;
-}
-
-/* =========================================================
-   INTRODUCTION
-   ========================================================= */
-
-.introduction {
-  overflow: hidden;
-  background:
-    radial-gradient(circle at 50% 0,rgba(0,133,215,.07),transparent 55%),
-    #030d19;
-}
-
-.intro-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 90px;
-  align-items: center;
-}
-
-.intro-visual {
-  position: relative;
-  min-height: 470px;
-  display: grid;
-  place-items: center;
-}
-
-.intro-rings {
-  position: relative;
-  width: min(410px,85vw);
-  aspect-ratio: 1;
-  border: 1px solid rgba(70,220,255,.23);
-  border-radius: 50%;
-  display: grid;
-  place-items: center;
-  background:
-    radial-gradient(circle,rgba(0,165,255,.1),transparent 65%);
-}
-
-.intro-rings::before {
-  content: "";
-  position: absolute;
-  inset: 42px;
-  border-radius: 50%;
-  border: 1px dashed rgba(90,225,255,.3);
-  animation: rotate 35s linear infinite;
-}
-
-.intro-rings::after {
-  content: "";
-  position: absolute;
-  inset: 100px;
-  border-radius: 50%;
-  border: 1px solid rgba(90,225,255,.25);
-}
-
-.intro-core {
-  position: relative;
-  z-index: 2;
-  width: 175px;
-  height: 175px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  border: 1px solid rgba(91,226,255,.5);
-  border-radius: 35px;
-  background:
-    radial-gradient(circle at 30% 20%,rgba(53,193,255,.25),transparent),
-    #08233d;
-  box-shadow: 0 0 65px rgba(0,178,255,.15);
-  transform: rotateX(10deg) rotateY(-12deg);
-}
-
-.intro-core strong {
-  font-size: 34px;
-  letter-spacing: 4px;
-}
-
-.intro-core span {
-  margin-top: 9px;
-  color: var(--cyan);
-  font-size: 10px;
-  letter-spacing: 2px;
-}
-
-.intro-node {
-  position: absolute;
-  z-index: 3;
-  display: grid;
-  place-items: center;
-  padding: 11px 15px;
-  border: 1px solid rgba(67,215,255,.33);
-  border-radius: 10px;
-  background: #09253e;
-  color: #c5f2ff;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 1px;
-  box-shadow: 0 10px 30px rgba(0,0,0,.2);
-}
-
-.intro-node.one {
-  top: 22px;
-  left: 35%;
-}
-
-.intro-node.two {
-  right: -13px;
-  top: 48%;
-}
-
-.intro-node.three {
-  left: -15px;
-  bottom: 50px;
-}
-
-.intro-copy h2 {
-  margin: 20px 0 25px;
-  font-size: clamp(42px,5vw,68px);
-  line-height: 1.08;
-  letter-spacing: -2.4px;
-}
-
-.intro-copy p {
-  color: var(--muted);
-  font-size: 15px;
-  line-height: 1.9;
-}
-
-.intro-points {
-  display: grid;
-  gap: 15px;
-  margin-top: 28px;
-}
-
-.intro-point {
-  display: flex;
-  align-items: center;
-  gap: 13px;
-  color: #d7edfa;
-  font-size: 13px;
-}
-
-.intro-point i {
-  display: grid;
-  place-items: center;
-  width: 25px;
-  height: 25px;
-  border-radius: 50%;
-  background: rgba(50,210,255,.1);
-  color: var(--cyan);
-  font-size: 13px;
-  font-style: normal;
-}
-
-/* =========================================================
-   ECOSYSTEM CARDS
-   ========================================================= */
-
-.platforms-section {
-  background: linear-gradient(180deg,#041222,#020a15);
-}
-
-.platform-grid {
-  display: grid;
-  grid-template-columns: repeat(3,minmax(0,1fr));
-  gap: 20px;
-}
-
-.platform-card {
-  position: relative;
-  overflow: hidden;
-  min-height: 490px;
-  padding: 32px 29px;
-  border: 1px solid var(--border);
-  border-radius: 22px;
-  background:
-    linear-gradient(165deg,#0c2e4b,#071a2d 55%,#041222);
-  transition: transform .35s,border-color .35s;
-}
-
-.platform-card:hover {
-  transform: translateY(-8px);
-  border-color: rgba(65,223,255,.55);
-}
-
-.platform-card.featured {
-  border-color: rgba(75,224,255,.42);
-  box-shadow: 0 0 80px rgba(0,185,255,.065);
-}
-
-.platform-card::before {
-  content: "";
-  position: absolute;
-  width: 300px;
-  height: 300px;
-  right: -110px;
-  top: -120px;
-  border-radius: 50%;
-  background: rgba(0,166,255,.14);
-  filter: blur(45px);
-}
-
-.platform-art {
-  position: relative;
-  height: 150px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 27px;
-  overflow: hidden;
-  border: 1px solid rgba(71,192,244,.11);
-  border-radius: 15px;
-  background:
-    radial-gradient(circle at center,rgba(0,167,255,.19),transparent 64%),
-    rgba(3,21,39,.45);
-}
-
-.platform-art::after {
-  content: "";
-  position: absolute;
-  width: 280px;
-  height: 130px;
-  border: 1px solid rgba(70,215,255,.13);
-  border-radius: 50%;
-  transform: rotateX(62deg);
-}
-
-.art-atlas {
-  display: grid;
-  place-items: center;
-  width: 107px;
-  height: 95px;
-  border: 1px solid rgba(77,222,255,.51);
-  border-radius: 20px;
-  background: linear-gradient(140deg,#12426b,#061728);
-  transform: rotateX(13deg) rotateY(-17deg);
-  box-shadow: 0 0 50px rgba(0,178,255,.17);
-}
-
-.art-atlas strong {
-  color: #aaf5ff;
-  font-size: 20px;
-  letter-spacing: 2px;
-}
-
-.art-atlas small {
-  color: var(--cyan);
+  color: #9ebfd0;
   font-size: 8px;
   letter-spacing: 1.6px;
 }
 
-.art-ocean {
-  width: 135px;
-  height: 135px;
+.atlas-preview-label {
+  padding: 8px 10px;
+  border-radius: 7px;
+  border: 1px solid rgba(124,229,255,.25);
+  color: #b0efff;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+.atlas-body {
+  display: grid;
+  grid-template-columns: 60px 1fr;
+  min-height: 385px;
+}
+
+.atlas-sidebar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 21px;
+  padding: 22px 8px;
+  border-right: 1px solid var(--line);
+  background: rgba(2,16,32,.48);
+}
+
+.atlas-sidebar span {
+  font-size: 18px;
+  color: #7197ac;
+}
+
+.atlas-sidebar span:first-child {
+  color: var(--cyan);
+}
+
+.atlas-content {
+  min-width: 0;
+  padding: 23px;
+}
+
+.atlas-title-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  align-items: center;
+}
+
+.atlas-title-row strong {
+  font-size: 18px;
+  letter-spacing: -.4px;
+}
+
+.atlas-title-row span {
+  color: #9df4c7;
+  font-size: 9px;
+  letter-spacing: 1px;
+}
+
+.atlas-metrics {
+  display: grid;
+  grid-template-columns: repeat(3,minmax(0,1fr));
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.atlas-metric {
+  padding: 15px 12px;
+  border: 1px solid rgba(111,212,255,.14);
+  border-radius: 11px;
+  background: rgba(8,39,67,.72);
+}
+
+.atlas-metric small {
+  color: #8fb3c9;
+  font-size: 9px;
+}
+
+.atlas-metric strong {
+  display: block;
+  margin-top: 12px;
+  font-size: 17px;
+}
+
+.atlas-metric em {
+  display: block;
+  margin-top: 6px;
+  color: var(--green);
+  font-size: 9px;
+  font-style: normal;
+}
+
+.atlas-metric:nth-child(2) em {
+  color: var(--gold);
+}
+
+.atlas-metric:nth-child(3) em {
+  color: var(--violet);
+}
+
+.atlas-chart {
+  position: relative;
+  height: 172px;
+  overflow: hidden;
+  margin-top: 14px;
+  border: 1px solid rgba(105,214,255,.15);
+  border-radius: 11px;
+  background:
+    linear-gradient(rgba(90,185,255,.08) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(90,185,255,.08) 1px,transparent 1px),
+    rgba(3,19,37,.73);
+  background-size: 100% 33px,46px 100%;
+}
+
+.atlas-chart svg {
+  width: 100%;
+  height: 100%;
+}
+
+.chart-line {
+  fill: none;
+  stroke: #65edff;
+  stroke-width: 3.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 800;
+  stroke-dashoffset: 800;
+  animation: drawLine 4s ease forwards;
+  filter: drop-shadow(0 0 6px rgba(62,234,255,.6));
+}
+
+.chart-area {
+  fill: url(#atlasChartGradient);
+}
+
+.chart-second-line {
+  fill: none;
+  stroke: #ad83ff;
+  stroke-width: 2;
+  opacity: .72;
+  stroke-dasharray: 5 8;
+  animation: dashMove 8s linear infinite;
+}
+
+.atlas-chart-label {
+  position: absolute;
+  top: 11px;
+  left: 13px;
+  font-size: 9px;
+  color: #82b9d2;
+  letter-spacing: 1px;
+}
+
+.atlas-footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  padding: 13px 21px;
+  border-top: 1px solid var(--line);
+  color: #7ba7bd;
+  font-size: 9px;
+  letter-spacing: 1px;
+}
+
+.atlas-footer strong {
+  color: var(--cyan);
+}
+
+.float-card {
+  position: absolute;
+  z-index: 5;
+  padding: 17px 20px;
+  border-radius: 12px;
+  border: 1px solid rgba(148,229,255,.36);
+  background: rgba(7,34,58,.88);
+  backdrop-filter: blur(17px);
+  box-shadow: 0 15px 50px rgba(0,0,0,.25);
+  animation: floatCard 6s ease-in-out infinite;
+}
+
+.float-card small {
+  display: block;
+  margin-bottom: 8px;
+  color: #9ec5d8;
+  font-size: 9px;
+  letter-spacing: 1px;
+}
+
+.float-card strong {
+  font-size: 12px;
+}
+
+.float-card.top {
+  top: 18px;
+  right: -22px;
+}
+
+.float-card.bottom {
+  bottom: 24px;
+  left: -32px;
+  animation-delay: -2.5s;
+}
+
+/* =========================================================
+   PUBLIC SALE STRIP
+   ========================================================= */
+
+.sale-strip {
+  position: relative;
+  z-index: 5;
+  padding: 30px 0;
+  background:
+    linear-gradient(100deg,rgba(64,38,89,.37),rgba(23,61,79,.33)),
+    #091b2d;
+  border-top: 1px solid rgba(255,206,123,.22);
+  border-bottom: 1px solid rgba(255,206,123,.2);
+}
+
+.sale-strip-inner {
+  display: grid;
+  grid-template-columns: 1.25fr .7fr .7fr auto;
+  align-items: center;
+  gap: 28px;
+}
+
+.sale-strip-title {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.sale-strip-icon {
+  width: 57px;
+  height: 57px;
+  flex-shrink: 0;
   display: grid;
   place-items: center;
-  border-radius: 50%;
+  border-radius: 16px;
+  background: rgba(255,198,108,.12);
+  border: 1px solid rgba(255,201,112,.3);
+  color: var(--gold);
+  font-size: 25px;
+}
+
+.sale-strip-title strong {
+  display: block;
+  font-size: 19px;
+}
+
+.sale-strip-title small {
+  display: block;
+  margin-top: 7px;
+  color: #b8c7d5;
+  font-size: 11px;
+}
+
+.sale-strip-stat span {
+  display: block;
+  color: #a6b9cc;
+  font-size: 11px;
+}
+
+.sale-strip-stat strong {
+  display: block;
+  margin-top: 9px;
+  color: #fff4dc;
+  font-size: 24px;
+}
+
+/* =========================================================
+   ECOSYSTEM
+   ========================================================= */
+
+.ecosystem {
   background:
-    radial-gradient(circle at 38% 27%,#20b8e0,#07517e 55%,#03182b 77%);
-  border: 1px solid rgba(110,239,255,.43);
-  box-shadow:
-    inset -15px -16px 32px rgba(1,12,33,.62),
-    0 0 45px rgba(0,195,255,.15);
+    radial-gradient(ellipse at 50% 0,rgba(21,134,239,.1),transparent 50%),
+    #030c1b;
 }
 
-.art-ocean svg {
-  width: 95px;
-  height: 70px;
-  filter: drop-shadow(0 0 7px rgba(110,240,255,.45));
+.ecosystem-grid {
+  display: grid;
+  grid-template-columns: repeat(3,minmax(0,1fr));
+  gap: 22px;
 }
 
-.art-radar {
-  width: 142px;
-  height: 142px;
+.ecosystem-card {
   position: relative;
-  border: 1px solid rgba(86,224,255,.5);
-  border-radius: 50%;
-  background:
-    repeating-radial-gradient(
-      circle,
-      transparent 0 24px,
-      rgba(80,219,255,.17) 25px 26px
-    ),
-    rgba(0,143,205,.075);
+  overflow: hidden;
+  min-height: 465px;
+  padding: 26px;
+  border: 1px solid var(--line);
+  border-radius: 23px;
+  background: linear-gradient(155deg,#10304e,#07192e 64%,#061125);
+  transition: transform .3s,border-color .3s;
 }
 
-.art-radar::before {
+.ecosystem-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(118,231,255,.5);
+}
+
+.ecosystem-card::after {
+  content: "";
+  position: absolute;
+  right: -110px;
+  top: -125px;
+  width: 270px;
+  height: 270px;
+  border-radius: 50%;
+  background: var(--card-glow);
+  filter: blur(45px);
+  opacity: .5;
+  pointer-events: none;
+}
+
+.ecosystem-art {
+  position: relative;
+  z-index: 1;
+  height: 182px;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  border-radius: 16px;
+  border: 1px solid rgba(131,221,255,.15);
+  background:
+    radial-gradient(circle at 50% 35%,var(--art-light),transparent 68%),
+    #051c32;
+}
+
+.ecosystem-art::before {
+  content: "";
+  position: absolute;
+  width: 260px;
+  height: 90px;
+  border: 1px solid rgba(119,226,255,.19);
+  border-radius: 50%;
+  transform: rotateX(65deg);
+}
+
+.ecosystem-art span {
+  position: relative;
+  z-index: 2;
+  font-size: 66px;
+  font-weight: 900;
+  line-height: 1;
+  color: #b9f5ff;
+  text-shadow: 0 0 30px rgba(86,228,255,.4);
+}
+
+.ecosystem-art.atlas-art span {
+  font-size: 29px;
+  letter-spacing: 4px;
+  padding: 28px;
+  border: 1px solid rgba(98,232,255,.4);
+  border-radius: 18px;
+  background: linear-gradient(140deg,#15517c,#07182b);
+  transform: rotateY(-15deg);
+  box-shadow: 12px 15px 35px rgba(0,0,0,.3);
+}
+
+.ecosystem-art.ocean-art {
+  background:
+    radial-gradient(circle at 50% 35%,rgba(4,207,194,.33),transparent 65%),
+    linear-gradient(#0d6788,#03253e);
+}
+
+.ecosystem-art.ocean-art svg {
+  position: relative;
+  z-index: 2;
+  width: 185px;
+  filter: drop-shadow(0 0 23px rgba(65,237,255,.3));
+  animation: swim 5s ease-in-out infinite;
+}
+
+.ecosystem-art.radar-art {
+  background:
+    radial-gradient(circle,rgba(133,91,236,.27),transparent 65%),
+    #09172b;
+}
+
+.radar {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  border: 1px solid rgba(188,155,255,.48);
+  border-radius: 50%;
+  background:
+    repeating-radial-gradient(circle,transparent 0 24px,rgba(170,128,255,.17) 25px 26px);
+}
+
+.radar::before {
   content: "";
   position: absolute;
   inset: 0;
   border-radius: 50%;
-  background: conic-gradient(
-    rgba(41,214,255,.45),
-    transparent 72deg,
-    transparent 360deg
-  );
-  animation: rotate 8s linear infinite;
+  background: conic-gradient(rgba(180,120,255,.44),transparent 80deg,transparent 360deg);
+  animation: orbit 6s linear infinite;
 }
 
-.art-radar::after {
+.radar::after {
   content: "";
   position: absolute;
+  left: 70%;
+  top: 30%;
   width: 9px;
   height: 9px;
-  top: 30%;
-  left: 67%;
+  background: #caa9ff;
   border-radius: 50%;
-  background: #61f2ff;
-  box-shadow: 0 0 17px #24d5ff;
+  box-shadow: 0 0 15px #aa79ff;
 }
 
 .card-status {
-  display: inline-block;
-  color: var(--cyan);
+  display: block;
+  margin-top: 27px;
+  color: var(--card-color);
   font-size: 10px;
-  font-weight: 800;
-  letter-spacing: 1.4px;
-  text-transform: uppercase;
+  font-weight: 850;
+  letter-spacing: 1.8px;
 }
 
-.platform-card h3 {
-  margin: 17px 0;
-  font-size: 28px;
-  letter-spacing: -.7px;
+.ecosystem-card h3 {
+  margin: 15px 0;
+  font-size: 29px;
+  letter-spacing: -.8px;
 }
 
-.platform-card p {
+.ecosystem-card p {
   color: var(--muted);
   font-size: 13px;
   line-height: 1.85;
@@ -1221,10 +996,9 @@ summary:focus-visible {
 
 .card-tags span {
   padding: 7px 10px;
-  border: 1px solid var(--border);
+  border: 1px solid var(--line);
   border-radius: 7px;
-  color: #8cd4e7;
-  background: rgba(21,132,186,.06);
+  color: #a9dcec;
   font-size: 10px;
 }
 
@@ -1233,226 +1007,214 @@ summary:focus-visible {
    ========================================================= */
 
 .atlas-section {
-  overflow: hidden;
   background:
-    radial-gradient(ellipse at 75% 50%,rgba(0,140,230,.10),transparent 49%),
-    #061526;
+    radial-gradient(ellipse at 75% 50%,rgba(121,66,215,.13),transparent 50%),
+    linear-gradient(180deg,#041527,#09162d);
 }
 
-.atlas-layout {
+.feature-layout {
   display: grid;
-  grid-template-columns: .93fr 1.07fr;
-  gap: 70px;
+  grid-template-columns: .9fr 1.1fr;
   align-items: center;
+  gap: 72px;
 }
 
-.atlas-copy h2 {
-  margin: 23px 0;
-  font-size: clamp(44px,5vw,72px);
-  line-height: 1.06;
-  letter-spacing: -3px;
+.feature-copy h2 {
+  margin: 22px 0;
+  font-size: clamp(43px,5vw,68px);
+  line-height: 1.07;
+  letter-spacing: -2.8px;
 }
 
-.atlas-copy p {
+.feature-copy p {
   color: var(--muted);
   font-size: 15px;
   line-height: 1.9;
 }
 
-.atlas-features {
+.feature-list {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 13px;
-  margin: 29px 0 32px;
+  margin: 30px 0;
 }
 
-.atlas-feature {
-  padding: 17px;
-  border: 1px solid var(--border);
+.feature-list div {
+  padding: 20px 17px;
+  border: 1px solid var(--line);
   border-radius: 12px;
-  background: rgba(11,38,60,.8);
+  background: rgba(12,38,68,.69);
 }
 
-.atlas-feature i {
+.feature-list b {
   display: block;
   margin-bottom: 12px;
-  color: var(--cyan);
+  color: var(--violet);
   font-size: 23px;
-  font-style: normal;
 }
 
-.atlas-feature strong {
+.feature-list strong {
   font-size: 12px;
 }
 
-.atlas-console {
-  position: relative;
-  padding: 22px;
-  border: 1px solid rgba(85,209,255,.3);
+.atlas-showcase {
+  padding: 24px;
+  border: 1px solid rgba(157,142,255,.34);
   border-radius: 22px;
-  background: linear-gradient(135deg,#0b2d48,#051324);
+  background:
+    linear-gradient(150deg,rgba(39,32,93,.61),rgba(8,30,56,.86));
   box-shadow:
-    0 35px 100px rgba(0,0,0,.35),
-    0 0 85px rgba(0,162,255,.065);
+    0 35px 90px rgba(0,0,0,.33),
+    0 0 75px rgba(147,97,255,.1);
 }
 
-.atlas-console::before {
-  content: "";
-  position: absolute;
-  inset: -16px;
-  z-index: -1;
-  border: 1px solid rgba(65,215,255,.08);
-  border-radius: 32px;
-}
-
-.console-header {
+.showcase-header {
   display: flex;
   justify-content: space-between;
+  gap: 15px;
   align-items: center;
-  gap: 16px;
-  padding: 4px 0 22px;
-  border-bottom: 1px solid var(--border);
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--line);
 }
 
-.console-header strong {
-  font-size: 14px;
+.showcase-header strong {
+  font-size: 15px;
   letter-spacing: 1px;
 }
 
-.console-header span {
-  color: var(--cyan);
+.showcase-header small {
+  color: #c4a7ff;
   font-size: 10px;
 }
 
-.console-layout {
+.showcase-metrics {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 14px;
-  padding-top: 17px;
+  margin-top: 18px;
 }
 
-.console-widget {
-  padding: 18px;
-  border: 1px solid var(--border);
+.showcase-box {
+  padding: 19px;
+  border: 1px solid var(--line);
   border-radius: 12px;
-  background: rgba(4,20,37,.62);
+  background: rgba(2,16,32,.58);
 }
 
-.console-widget.wide {
-  grid-column: 1/-1;
-}
-
-.console-widget small {
-  display: block;
-  color: #83aac3;
+.showcase-box small {
+  color: #9bb6cb;
   font-size: 10px;
 }
 
-.console-widget strong {
+.showcase-box strong {
   display: block;
-  margin-top: 13px;
-  font-size: 20px;
+  margin-top: 14px;
+  font-size: 21px;
 }
 
-.console-widget em {
+.showcase-box em {
   display: block;
   margin-top: 8px;
-  color: #55dce8;
+  color: var(--green);
   font-size: 10px;
   font-style: normal;
 }
 
-.console-bars {
+.showcase-bars {
   display: flex;
   align-items: flex-end;
-  gap: 9px;
-  height: 105px;
+  gap: 10px;
+  height: 165px;
   margin-top: 20px;
   padding-bottom: 8px;
-  border-bottom: 1px solid rgba(82,196,243,.25);
+  border-bottom: 1px solid rgba(112,212,255,.25);
 }
 
-.console-bars span {
+.showcase-bars span {
   flex: 1;
-  height: var(--height);
-  min-height: 10px;
+  min-height: 8px;
+  height: var(--bar-height);
   border-radius: 5px 5px 0 0;
-  background: linear-gradient(#4de5ff,#1269bd);
-  opacity: .77;
+  background: linear-gradient(
+    180deg,
+    var(--bar-color),
+    rgba(23,75,156,.55)
+  );
+  animation: barPulse 4s ease-in-out infinite alternate;
+  animation-delay: var(--delay);
 }
 
 /* =========================================================
-   OCEAN APP
+   OCEAN MOBILE EXPERIENCE
    ========================================================= */
 
-.ocean-section {
+.mobile-section {
   overflow: hidden;
   background:
-    radial-gradient(ellipse at 35% 55%,rgba(0,126,194,.13),transparent 45%),
-    linear-gradient(180deg,#020c19,#041a2b,#03101f);
+    radial-gradient(ellipse at 25% 50%,rgba(0,199,175,.17),transparent 48%),
+    linear-gradient(180deg,#041728,#03263e,#02111e);
 }
 
-.ocean-layout {
+.mobile-layout {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 95px;
   align-items: center;
 }
 
-.ocean-phone-stage {
+.phone-stage {
   position: relative;
-  min-height: 610px;
+  min-height: 620px;
   display: grid;
   place-items: center;
+  perspective: 1100px;
 }
 
-.ocean-phone-stage::before {
+.phone-stage::before {
   content: "";
   position: absolute;
-  width: 480px;
-  height: 480px;
+  width: 520px;
+  height: 520px;
   border-radius: 50%;
-  background: radial-gradient(circle,rgba(0,175,235,.22),transparent 70%);
-  filter: blur(35px);
+  background: radial-gradient(circle,rgba(30,231,190,.22),transparent 70%);
+  filter: blur(30px);
 }
 
 .phone {
   position: relative;
-  width: 280px;
-  height: 555px;
-  overflow: hidden;
-  padding: 14px;
-  border: 4px solid #16425d;
-  border-radius: 43px;
-  background: #020915;
+  width: 300px;
+  height: 590px;
+  padding: 12px;
+  border: 4px solid #1b536f;
+  border-radius: 46px;
+  background: #020917;
   box-shadow:
-    24px 35px 70px rgba(0,0,0,.45),
-    0 0 50px rgba(0,160,255,.11),
-    inset 0 0 0 2px #061f34;
-  transform: rotateY(-13deg) rotateZ(-4deg);
+    25px 40px 80px rgba(0,0,0,.45),
+    0 0 65px rgba(0,219,201,.18);
+  transform: rotateY(-14deg) rotateZ(-4deg);
 }
 
 .phone::before {
   content: "";
   position: absolute;
-  z-index: 8;
-  top: 11px;
+  z-index: 5;
+  top: 10px;
   left: 50%;
-  width: 85px;
-  height: 18px;
-  border-radius: 0 0 12px 12px;
   transform: translateX(-50%);
-  background: #020711;
+  width: 98px;
+  height: 19px;
+  background: #020917;
+  border-radius: 0 0 13px 13px;
 }
 
 .phone-screen {
   position: relative;
   height: 100%;
   overflow: hidden;
-  border-radius: 29px;
+  border-radius: 32px;
   background:
-    radial-gradient(circle at 50% 49%,rgba(15,139,185,.29),transparent 34%),
-    linear-gradient(180deg,#073455,#05638a 36%,#07314e 67%,#020e20);
+    radial-gradient(circle at 50% 43%,rgba(44,238,216,.33),transparent 42%),
+    linear-gradient(#086283,#08799a 35%,#064865 70%,#03172b);
 }
 
 .phone-screen::before {
@@ -1460,40 +1222,41 @@ summary:focus-visible {
   position: absolute;
   inset: 0;
   background: repeating-linear-gradient(
-    107deg,
-    transparent 0 58px,
-    rgba(126,229,255,.045) 60px,
-    transparent 115px
+    105deg,
+    transparent 0 60px,
+    rgba(194,255,249,.08) 65px,
+    transparent 125px
   );
 }
 
-.phone-header {
+.phone-top {
   position: relative;
   z-index: 2;
   display: flex;
   justify-content: space-between;
-  padding: 39px 15px 10px;
+  padding: 40px 17px 13px;
+}
+
+.phone-top strong {
   font-size: 12px;
-  font-weight: 800;
   letter-spacing: 2px;
 }
 
-.phone-header span:last-child {
-  color: #9af5ff;
+.phone-top small {
+  color: #ccfff6;
   font-size: 10px;
-  letter-spacing: .3px;
 }
 
 .phone-balance {
   position: relative;
   z-index: 2;
   text-align: center;
-  margin-top: 36px;
+  margin-top: 43px;
 }
 
 .phone-balance small {
   display: block;
-  color: #a6e4f5;
+  color: #b8f8ec;
   font-size: 10px;
   letter-spacing: 1px;
 }
@@ -1501,25 +1264,24 @@ summary:focus-visible {
 .phone-balance strong {
   display: block;
   margin: 10px 0;
-  color: #fff;
-  font-size: 33px;
-  text-shadow: 0 0 15px rgba(121,241,255,.3);
+  font-size: 38px;
+  text-shadow: 0 0 16px rgba(102,247,225,.48);
 }
 
 .phone-balance span {
+  color: #adfff0;
   font-size: 10px;
-  color: #86d5e7;
 }
 
 .phone-fish {
   position: absolute;
-  top: 215px;
+  top: 240px;
   left: 50%;
-  width: 190px;
-  height: 115px;
+  width: 210px;
+  height: 125px;
   transform: translateX(-50%);
-  filter: drop-shadow(0 0 25px rgba(35,221,255,.4));
   animation: fishFloat 5s ease-in-out infinite;
+  filter: drop-shadow(0 0 26px rgba(98,250,235,.45));
 }
 
 .phone-fish svg {
@@ -1527,89 +1289,88 @@ summary:focus-visible {
   height: 100%;
 }
 
-.phone-mine {
+.phone-circle {
   position: absolute;
-  z-index: 2;
-  top: 355px;
+  top: 390px;
   left: 50%;
+  width: 105px;
+  height: 105px;
   transform: translateX(-50%);
-  display: grid;
-  place-items: center;
-  width: 100px;
-  height: 100px;
-  border: 2px solid #7defff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  border: 2px solid #a0fff5;
   border-radius: 50%;
-  background:
-    radial-gradient(circle,#19b1d1,#07547f 64%,#042645);
+  background: radial-gradient(circle,#0fbbaa,#066c80 60%,#06334f);
   box-shadow:
-    0 0 24px rgba(73,229,255,.44),
-    inset 0 0 19px rgba(165,247,255,.2);
+    0 0 33px rgba(98,255,230,.39),
+    inset 0 0 25px rgba(160,255,248,.16);
 }
 
-.phone-mine strong {
+.phone-circle strong {
   font-size: 15px;
 }
 
-.phone-mine small {
-  font-size: 8px;
-  color: #c2f8ff;
-}
-
-.phone-bottom {
-  position: absolute;
-  z-index: 3;
-  bottom: 15px;
-  left: 13px;
-  right: 13px;
-  display: flex;
-  justify-content: space-around;
-  padding: 13px 6px;
-  border: 1px solid rgba(156,237,255,.17);
-  border-radius: 14px;
-  background: rgba(3,25,47,.78);
-}
-
-.phone-bottom span {
-  color: #a6dbea;
+.phone-circle small {
+  margin-top: 4px;
   font-size: 9px;
 }
 
-.ocean-copy h2 {
-  margin: 20px 0;
-  font-size: clamp(42px,5vw,66px);
-  line-height: 1.07;
-  letter-spacing: -2.5px;
+.phone-nav {
+  position: absolute;
+  bottom: 16px;
+  left: 14px;
+  right: 14px;
+  display: flex;
+  justify-content: space-around;
+  padding: 15px 7px;
+  border: 1px solid rgba(174,255,240,.25);
+  border-radius: 15px;
+  background: rgba(2,36,57,.83);
 }
 
-.ocean-copy p {
+.phone-nav span {
+  font-size: 9px;
+  color: #c5fff3;
+}
+
+.mobile-copy h2 {
+  margin: 20px 0;
+  font-size: clamp(43px,5vw,68px);
+  line-height: 1.07;
+  letter-spacing: -2.6px;
+}
+
+.mobile-copy p {
   color: var(--muted);
   font-size: 15px;
   line-height: 1.9;
 }
 
-.feature-checks {
+.check-list {
   display: grid;
   gap: 15px;
-  margin: 27px 0 32px;
+  margin: 29px 0 33px;
 }
 
-.feature-check {
+.check-list div {
   display: flex;
   align-items: center;
   gap: 13px;
-  color: #d5f0ff;
+  color: #d9f7f3;
   font-size: 13px;
 }
 
-.feature-check i {
+.check-list span {
   display: grid;
   place-items: center;
-  width: 25px;
-  height: 25px;
+  flex-shrink: 0;
+  width: 27px;
+  height: 27px;
   border-radius: 50%;
-  background: rgba(54,218,255,.11);
-  color: var(--cyan);
-  font-style: normal;
+  color: var(--green);
+  background: rgba(51,219,183,.12);
 }
 
 /* =========================================================
@@ -1617,47 +1378,47 @@ summary:focus-visible {
    ========================================================= */
 
 .intelligence-section {
-  background: #030d1a;
+  background:
+    radial-gradient(ellipse at 70% 0,rgba(139,95,226,.12),transparent 45%),
+    #040e1e;
 }
 
 .intelligence-grid {
   display: grid;
   grid-template-columns: repeat(3,minmax(0,1fr));
-  gap: 19px;
+  gap: 20px;
 }
 
 .intelligence-card {
-  position: relative;
-  min-height: 275px;
-  overflow: hidden;
+  min-height: 265px;
   padding: 30px;
-  border: 1px solid var(--border);
-  border-radius: 18px;
-  background: linear-gradient(145deg,#0b2740,#071728);
-  transition: border-color .3s,transform .3s;
+  border: 1px solid var(--line);
+  border-radius: 19px;
+  background: linear-gradient(145deg,#102942,#07182e);
+  transition: transform .3s,border-color .3s;
 }
 
 .intelligence-card:hover {
-  transform: translateY(-5px);
-  border-color: rgba(65,222,255,.48);
+  transform: translateY(-6px);
+  border-color: rgba(170,123,255,.5);
 }
 
 .intelligence-icon {
+  width: 61px;
+  height: 61px;
   display: grid;
   place-items: center;
-  width: 57px;
-  height: 57px;
-  border: 1px solid rgba(82,210,255,.28);
-  border-radius: 15px;
-  background: rgba(18,147,230,.11);
-  color: var(--cyan);
-  font-size: 26px;
-  font-weight: 700;
+  border-radius: 16px;
+  border: 1px solid rgba(167,130,255,.33);
+  background: rgba(160,97,255,.12);
+  color: #c5aaff;
+  font-size: 27px;
+  font-weight: 800;
 }
 
 .intelligence-card h3 {
-  margin: 23px 0 12px;
-  font-size: 21px;
+  margin: 24px 0 12px;
+  font-size: 22px;
 }
 
 .intelligence-card p {
@@ -1669,19 +1430,19 @@ summary:focus-visible {
 .intelligence-card small {
   display: inline-block;
   margin-top: 12px;
-  color: #65cde4;
+  color: #c9a9ff;
   font-size: 10px;
   letter-spacing: 1px;
 }
 
 /* =========================================================
-   TOKEN
+   TOKEN / PUBLIC SALE FEATURE
    ========================================================= */
 
 .token-section {
   background:
-    radial-gradient(circle at 14% 50%,rgba(0,158,235,.11),transparent 43%),
-    #061526;
+    radial-gradient(ellipse at 25% 50%,rgba(255,173,80,.12),transparent 43%),
+    linear-gradient(180deg,#071a2b,#100f24);
 }
 
 .token-layout {
@@ -1693,55 +1454,56 @@ summary:focus-visible {
 
 .token-copy h2 {
   margin: 22px 0;
-  font-size: clamp(43px,5.5vw,72px);
+  font-size: clamp(43px,5.3vw,72px);
+  line-height: 1.07;
   letter-spacing: -3px;
-  line-height: 1.05;
 }
 
 .token-copy p {
   color: var(--muted);
-  font-size: 15px;
   line-height: 1.85;
+  font-size: 15px;
 }
 
-.token-metrics {
+.token-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 29px;
+}
+
+.token-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 15px;
+  gap: 14px;
 }
 
 .token-metric {
-  padding: 28px;
-  border: 1px solid var(--border);
+  padding: 30px;
+  border: 1px solid rgba(255,203,125,.2);
   border-radius: 17px;
-  background: linear-gradient(145deg,#10314c,#071827);
+  background: linear-gradient(145deg,#1a2940,#0d1b33);
 }
 
 .token-metric small {
   display: block;
-  color: var(--muted);
+  color: #b6bdc9;
   font-size: 12px;
 }
 
 .token-metric strong {
   display: block;
   margin-top: 17px;
-  font-size: clamp(25px,3vw,37px);
-}
-
-.token-actions {
-  display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
-  margin-top: 30px;
+  color: #ffe6b4;
+  font-size: clamp(26px,3vw,37px);
 }
 
 .token-notice {
   margin-top: 25px;
-  padding: 15px 19px;
-  border-left: 2px solid var(--cyan);
-  background: rgba(4,27,46,.55);
-  color: #8baac0;
+  padding: 17px 19px;
+  border-left: 2px solid var(--gold);
+  color: #b0becb;
+  background: rgba(19,33,53,.69);
   font-size: 12px;
   line-height: 1.8;
 }
@@ -1751,7 +1513,7 @@ summary:focus-visible {
    ========================================================= */
 
 .roadmap-section {
-  background: #030c18;
+  background: #030c1a;
 }
 
 .roadmap-grid {
@@ -1761,48 +1523,28 @@ summary:focus-visible {
 }
 
 .roadmap-card {
-  position: relative;
-  min-height: 255px;
-  padding: 30px 25px;
-  border: 1px solid var(--border);
+  padding: 30px 24px;
+  border: 1px solid var(--line);
   border-radius: 17px;
-  background: #092137;
+  background: #0a2139;
 }
 
-.roadmap-card::before {
-  content: "";
-  position: absolute;
-  top: 37px;
-  right: -16px;
-  z-index: 1;
-  width: 16px;
-  height: 1px;
-  background: var(--cyan);
-  opacity: .35;
-}
-
-.roadmap-card:last-child::before {
-  display: none;
-}
-
-.roadmap-card .number {
-  display: block;
-  margin-bottom: 26px;
+.roadmap-card span {
   color: var(--cyan);
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 800;
   letter-spacing: 2px;
 }
 
 .roadmap-card h3 {
-  margin: 0 0 13px;
+  margin: 25px 0 13px;
   font-size: 20px;
 }
 
 .roadmap-card p {
   color: var(--muted);
   font-size: 12px;
-  line-height: 1.85;
+  line-height: 1.8;
 }
 
 /* =========================================================
@@ -1810,45 +1552,26 @@ summary:focus-visible {
    ========================================================= */
 
 .faq-section {
-  background: #051524;
+  background: #061729;
 }
 
 .faq-list {
-  max-width: 830px;
-  margin: 0 auto;
+  max-width: 850px;
+  margin: auto;
 }
 
 .faq-list details {
   margin-bottom: 12px;
-  border: 1px solid var(--border);
+  border: 1px solid var(--line);
   border-radius: 13px;
-  background: #092139;
+  background: #0b2842;
 }
 
 .faq-list summary {
-  position: relative;
-  padding: 21px 50px 21px 22px;
+  padding: 22px;
   cursor: pointer;
   font-size: 14px;
-  font-weight: 700;
-  list-style: none;
-}
-
-.faq-list summary::-webkit-details-marker {
-  display: none;
-}
-
-.faq-list summary::after {
-  content: "+";
-  position: absolute;
-  right: 22px;
-  color: var(--cyan);
-  font-size: 23px;
-  line-height: 15px;
-}
-
-.faq-list details[open] summary::after {
-  content: "−";
+  font-weight: 800;
 }
 
 .faq-list p {
@@ -1860,56 +1583,37 @@ summary:focus-visible {
 }
 
 /* =========================================================
-   FINAL CTA
+   COMMUNITY
    ========================================================= */
 
 .community-section {
-  position: relative;
-  overflow: hidden;
-  padding: 135px 0;
+  padding: 125px 0;
   text-align: center;
   background:
-    radial-gradient(ellipse at center,rgba(0,158,244,.16),transparent 58%),
-    #030c1a;
-}
-
-.community-section::before {
-  content: "";
-  position: absolute;
-  width: 700px;
-  height: 700px;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%,-50%);
-  border: 1px solid rgba(64,215,255,.10);
-  border-radius: 50%;
-  pointer-events: none;
+    radial-gradient(ellipse at center,rgba(65,125,235,.2),transparent 55%),
+    #030b19;
 }
 
 .community-section h2 {
-  position: relative;
-  max-width: 900px;
+  max-width: 950px;
   margin: 23px auto;
-  font-size: clamp(42px,6vw,82px);
-  line-height: 1.05;
-  letter-spacing: -3.5px;
+  font-size: clamp(43px,6vw,80px);
+  line-height: 1.06;
+  letter-spacing: -3px;
 }
 
 .community-section p {
-  position: relative;
-  max-width: 640px;
-  margin: 0 auto 35px;
+  max-width: 650px;
+  margin: 0 auto 34px;
   color: var(--muted);
-  font-size: 15px;
   line-height: 1.9;
 }
 
 .community-actions {
-  position: relative;
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   gap: 13px;
-  flex-wrap: wrap;
 }
 
 /* =========================================================
@@ -1918,36 +1622,35 @@ summary:focus-visible {
 
 .footer {
   padding: 65px 0 27px;
-  border-top: 1px solid var(--border);
-  background: #020914;
+  background: #020815;
+  border-top: 1px solid var(--line);
 }
 
 .footer-grid {
   display: grid;
   grid-template-columns: 1.6fr 1fr 1fr 1fr;
-  gap: 45px;
+  gap: 42px;
 }
 
-.footer-brand p {
-  max-width: 345px;
+.footer-about p {
+  max-width: 340px;
   margin-top: 22px;
   color: var(--muted);
   font-size: 13px;
-  line-height: 1.9;
+  line-height: 1.85;
 }
 
 .footer-column h4 {
-  margin: 0 0 24px;
+  margin: 0 0 23px;
   font-size: 12px;
   letter-spacing: 1px;
 }
 
 .footer-column a {
   display: block;
-  margin: 13px 0;
-  color: #8ea9bf;
+  margin: 12px 0;
+  color: #94adc1;
   font-size: 12px;
-  transition: color .2s;
 }
 
 .footer-column a:hover {
@@ -1959,38 +1662,53 @@ summary:focus-visible {
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 15px;
-  margin-top: 58px;
+  margin-top: 53px;
   padding-top: 24px;
-  border-top: 1px solid var(--border);
-  color: #7692a8;
+  border-top: 1px solid var(--line);
+  color: #7f97aa;
   font-size: 11px;
 }
 
 /* =========================================================
-   ANIMATION
+   MOBILE BUY BUTTON
    ========================================================= */
 
-@keyframes drift {
-  from { transform: translateY(0); }
-  to { transform: translateY(-230px); }
+.mobile-buy-bar {
+  display: none;
 }
 
-@keyframes rotate {
+/* =========================================================
+   ANIMATIONS
+   ========================================================= */
+
+@keyframes orbit {
   to { transform: rotate(360deg); }
 }
 
-@keyframes commandFloat {
+@keyframes deviceFloat {
   0%,100% {
-    transform: rotateY(-9deg) rotateX(5deg) translateY(0);
+    transform: rotateY(-12deg) rotateX(6deg) translateY(0);
   }
   50% {
-    transform: rotateY(-9deg) rotateX(5deg) translateY(-12px);
+    transform: rotateY(-12deg) rotateX(6deg) translateY(-14px);
   }
 }
 
-@keyframes badgeFloat {
+@keyframes floatCard {
   0%,100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
+  50% { transform: translateY(-13px); }
+}
+
+@keyframes drawLine {
+  to { stroke-dashoffset: 0; }
+}
+
+@keyframes dashMove {
+  to { stroke-dashoffset: -104; }
+}
+
+@keyframes barPulse {
+  to { height: calc(var(--bar-height) * .8); }
 }
 
 @keyframes fishFloat {
@@ -1998,12 +1716,15 @@ summary:focus-visible {
   50% { transform: translate(-50%,-13px); }
 }
 
+@keyframes swim {
+  0%,100% { transform: translateX(-7px); }
+  50% { transform: translateX(8px); }
+}
+
 .reveal {
   opacity: 0;
-  transform: translateY(25px);
-  transition:
-    opacity .8s ease,
-    transform .8s ease;
+  transform: translateY(24px);
+  transition: opacity .8s ease,transform .8s ease;
 }
 
 .reveal.visible {
@@ -2012,108 +1733,85 @@ summary:focus-visible {
 }
 
 /* =========================================================
-   TABLET
+   RESPONSIVE
    ========================================================= */
 
-@media(max-width:1150px) {
-  .nav { gap: 15px; }
-  .nav > a { font-size: 11px; }
+@media(max-width:1180px) {
+  .nav { gap: 14px; }
+  .nav a { font-size: 11px; }
   .hero-layout { gap: 25px; }
-  .hero h1 { font-size: 70px; }
-  .intro-grid { gap: 40px; }
-  .atlas-layout { gap: 35px; }
-  .ocean-layout { gap: 45px; }
-  .float-one { right: 0; }
-  .float-two { left: 0; }
+  .hero h1 { font-size: 75px; }
+  .feature-layout { gap: 35px; }
+  .mobile-layout { gap: 45px; }
+  .float-card.top { right: 0; }
+  .float-card.bottom { left: 0; }
 }
 
-/* =========================================================
-   MOBILE NAV
-   ========================================================= */
-
-@media(max-width:950px) {
-  .menu-toggle {
-    display: block;
-  }
+@media(max-width:980px) {
+  .menu-toggle { display: block; }
 
   .nav {
+    display: none;
     position: absolute;
     top: 82px;
     left: 0;
     right: 0;
-    display: none;
+    padding: 18px 25px;
     flex-direction: column;
     align-items: stretch;
     gap: 0;
-    padding: 18px 24px;
-    background: rgba(4,17,32,.98);
-    border-bottom: 1px solid var(--border);
+    background: rgba(3,16,32,.98);
+    border-bottom: 1px solid var(--line);
   }
 
-  .nav.open {
-    display: flex;
-  }
+  .nav.open { display: flex; }
 
-  .nav > a {
-    padding: 15px 10px;
+  .nav a {
+    padding: 14px 10px;
     font-size: 14px;
   }
 
-  .nav > a.nav-cta {
+  .nav a.nav-buy {
     margin-top: 10px;
     text-align: center;
   }
 
   .hero-layout,
-  .intro-grid,
-  .atlas-layout,
-  .ocean-layout,
+  .feature-layout,
+  .mobile-layout,
   .token-layout {
     grid-template-columns: 1fr;
   }
 
   .hero {
-    min-height: 0;
-    padding-top: 145px;
+    padding-top: 135px;
   }
 
   .hero-copy {
     text-align: center;
   }
 
-  .hero-copy h1,
   .hero-description {
-    margin-left: auto;
-    margin-right: auto;
+    margin-inline: auto;
   }
 
-  .hero-actions,
-  .hero-bottom {
+  .hero-actions {
     justify-content: center;
   }
 
-  .hero-visual {
-    margin-top: 15px;
+  .hero-stage {
+    min-height: 500px;
   }
 
-  .hero-orbit {
-    width: 520px;
+  .sale-strip-inner {
+    grid-template-columns: 1fr 1fr;
   }
 
-  .intro-visual {
-    order: 2;
-  }
-
-  .platform-grid {
+  .ecosystem-grid {
     grid-template-columns: repeat(2,1fr);
   }
 
-  .atlas-console {
-    max-width: 680px;
-    margin: auto;
-  }
-
-  .ocean-phone-stage {
+  .mobile-stage {
     order: 2;
   }
 
@@ -2125,22 +1823,14 @@ summary:focus-visible {
     grid-template-columns: repeat(2,1fr);
   }
 
-  .roadmap-card::before {
-    display: none;
-  }
-
   .footer-grid {
     grid-template-columns: 1fr 1fr;
   }
 }
 
-/* =========================================================
-   SMALL MOBILE
-   ========================================================= */
-
-@media(max-width:600px) {
+@media(max-width:650px) {
   .container {
-    width: calc(100% - 34px);
+    width: calc(100% - 32px);
   }
 
   .header {
@@ -2151,7 +1841,7 @@ summary:focus-visible {
     top: 72px;
   }
 
-  .brand-emblem {
+  .brand-icon {
     width: 42px;
     height: 42px;
   }
@@ -2164,31 +1854,37 @@ summary:focus-visible {
     padding: 80px 0;
   }
 
-  .section-head {
-    margin-bottom: 37px;
+  .section-heading {
+    margin-bottom: 36px;
   }
 
-  .section-head h2 {
-    font-size: 40px;
-    letter-spacing: -1.8px;
+  .section-heading h2 {
+    font-size: 39px;
+    letter-spacing: -1.6px;
   }
 
-  .section-head p {
+  .section-heading p {
     font-size: 14px;
   }
 
   .hero {
-    padding: 130px 0 65px;
+    min-height: auto;
+    padding: 118px 0 65px;
   }
 
-  .hero-kicker {
-    letter-spacing: 1px;
+  .hero::before {
+    background:
+      linear-gradient(180deg,rgba(2,12,25,.5),rgba(2,9,23,.82));
+  }
+
+  .hero-pill {
     font-size: 9px;
+    letter-spacing: 1px;
   }
 
   .hero h1 {
-    font-size: clamp(52px,13vw,72px);
-    letter-spacing: -3px;
+    font-size: clamp(53px,13vw,72px);
+    letter-spacing: -3.4px;
   }
 
   .hero-description {
@@ -2199,219 +1895,171 @@ summary:focus-visible {
     width: 100%;
   }
 
-  .hero-bottom {
-    gap: 15px;
+  .hero-stage {
+    min-height: 370px;
+    margin-top: 10px;
   }
 
-  .hero-bottom div {
-    width: calc(50% - 12px);
-    text-align: left;
-  }
-
-  .hero-visual {
-    min-height: 385px;
-  }
-
-  .command-shell {
+  .atlas-device {
     width: 100%;
     transform: none;
     animation: none;
   }
 
-  .command-window {
-    border-radius: 14px;
+  .atlas-frame {
+    border-radius: 15px;
   }
 
-  .command-top {
+  .atlas-topbar {
     padding: 13px;
   }
 
-  .command-title strong {
+  .atlas-top-brand strong {
     font-size: 10px;
   }
 
-  .command-title small {
+  .atlas-top-brand small {
     font-size: 7px;
   }
 
-  .command-indicator {
-    font-size: 8px;
+  .atlas-preview-label {
+    font-size: 7px;
   }
 
-  .command-body {
-    grid-template-columns: 37px 1fr;
-    min-height: 305px;
+  .atlas-body {
+    grid-template-columns: 36px 1fr;
+    min-height: 285px;
   }
 
-  .command-sidebar {
-    padding: 16px 4px;
+  .atlas-sidebar {
     gap: 18px;
+    padding: 15px 4px;
   }
 
-  .command-sidebar span {
-    font-size: 14px;
-    width: 25px;
-  }
-
-  .command-content {
-    padding: 12px;
-  }
-
-  .command-heading h3 {
-    font-size: 15px;
-  }
-
-  .command-metrics {
-    gap: 5px;
-  }
-
-  .command-metric {
-    padding: 9px 6px;
-  }
-
-  .command-metric small {
-    font-size: 7px;
-  }
-
-  .command-metric strong {
+  .atlas-sidebar span {
     font-size: 13px;
   }
 
-  .command-metric em {
-    font-size: 7px;
+  .atlas-content {
+    padding: 12px;
   }
 
-  .command-chart {
-    height: 130px;
-  }
-
-  .command-footer {
-    padding: 11px 12px;
-    font-size: 8px;
-  }
-
-  .floating-tech {
-    display: none;
-  }
-
-  .positioning-grid {
-    grid-template-columns: 1fr 1fr;
-    gap: 23px 10px;
-  }
-
-  .positioning-item {
-    justify-content: flex-start;
-    gap: 10px;
-  }
-
-  .positioning-item .position-icon {
-    width: 31px;
-    height: 31px;
-    font-size: 15px;
-  }
-
-  .positioning-item strong {
-    font-size: 10px;
-  }
-
-  .positioning-item small {
-    font-size: 9px;
-  }
-
-  .intro-visual {
-    min-height: 340px;
-  }
-
-  .intro-rings {
-    width: 300px;
-  }
-
-  .intro-rings::before {
-    inset: 30px;
-  }
-
-  .intro-rings::after {
-    inset: 74px;
-  }
-
-  .intro-core {
-    width: 132px;
-    height: 132px;
-    border-radius: 25px;
-  }
-
-  .intro-core strong {
-    font-size: 25px;
-  }
-
-  .intro-node {
-    font-size: 9px;
-    padding: 9px;
-  }
-
-  .intro-node.two {
-    right: 0;
-  }
-
-  .intro-node.three {
-    left: 0;
-  }
-
-  .intro-copy h2,
-  .atlas-copy h2,
-  .ocean-copy h2,
-  .token-copy h2 {
-    font-size: 42px;
-    letter-spacing: -1.8px;
-  }
-
-  .intro-copy p,
-  .atlas-copy p,
-  .ocean-copy p,
-  .token-copy p {
+  .atlas-title-row strong {
     font-size: 14px;
   }
 
-  .platform-grid,
+  .atlas-title-row span {
+    font-size: 7px;
+  }
+
+  .atlas-metrics {
+    gap: 5px;
+  }
+
+  .atlas-metric {
+    padding: 9px 6px;
+  }
+
+  .atlas-metric small {
+    font-size: 7px;
+  }
+
+  .atlas-metric strong {
+    font-size: 12px;
+  }
+
+  .atlas-metric em {
+    font-size: 7px;
+  }
+
+  .atlas-chart {
+    height: 125px;
+  }
+
+  .atlas-footer {
+    padding: 11px;
+    font-size: 8px;
+  }
+
+  .float-card {
+    display: none;
+  }
+
+  .sale-strip-inner {
+    grid-template-columns: 1fr 1fr;
+    gap: 24px 15px;
+  }
+
+  .sale-strip-title,
+  .sale-strip-action {
+    grid-column: 1/-1;
+  }
+
+  .sale-strip-title strong {
+    font-size: 17px;
+  }
+
+  .sale-strip-stat strong {
+    font-size: 21px;
+  }
+
+  .sale-strip-action .btn {
+    width: 100%;
+  }
+
+  .ecosystem-grid,
   .intelligence-grid,
   .roadmap-grid,
   .footer-grid {
     grid-template-columns: 1fr;
   }
 
-  .platform-card {
+  .ecosystem-card {
     min-height: 0;
   }
 
-  .atlas-features {
+  .feature-copy h2,
+  .mobile-copy h2,
+  .token-copy h2 {
+    font-size: 42px;
+    letter-spacing: -1.9px;
+  }
+
+  .feature-copy p,
+  .mobile-copy p,
+  .token-copy p {
+    font-size: 14px;
+  }
+
+  .feature-list {
     gap: 10px;
   }
 
-  .atlas-feature {
-    padding: 13px;
-  }
-
-  .atlas-console {
+  .feature-list div {
     padding: 14px;
   }
 
-  .console-widget {
+  .atlas-showcase {
+    padding: 15px;
+  }
+
+  .showcase-box {
     padding: 13px;
   }
 
-  .console-bars {
+  .showcase-bars {
     gap: 5px;
   }
 
-  .ocean-phone-stage {
-    min-height: 585px;
+  .phone-stage {
+    min-height: 615px;
   }
 
   .phone {
     transform: rotateZ(-3deg);
   }
 
-  .token-metrics {
+  .token-grid {
     gap: 10px;
   }
 
@@ -2420,27 +2068,66 @@ summary:focus-visible {
   }
 
   .token-metric strong {
-    font-size: 25px;
+    font-size: 26px;
   }
 
   .community-section {
-    padding: 95px 0;
+    padding: 90px 0;
   }
 
   .community-section h2 {
-    font-size: 46px;
+    font-size: 45px;
     letter-spacing: -2px;
   }
 
   .community-actions .btn {
     flex: 1 1 145px;
   }
+
+  .mobile-buy-bar {
+    position: fixed;
+    z-index: 900;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    padding: 11px 16px;
+    padding-bottom: max(11px,env(safe-area-inset-bottom));
+    border-top: 1px solid rgba(255,204,123,.3);
+    background: rgba(4,15,29,.97);
+    backdrop-filter: blur(18px);
+  }
+
+  .mobile-buy-bar span {
+    font-size: 11px;
+    font-weight: 800;
+  }
+
+  .mobile-buy-bar small {
+    display: block;
+    margin-top: 4px;
+    color: #a1b6ca;
+    font-size: 9px;
+    font-weight: 400;
+  }
+
+  .mobile-buy-bar .btn {
+    min-height: 44px;
+    padding: 11px 18px;
+    font-size: 12px;
+    white-space: nowrap;
+  }
+
+  .footer {
+    padding-bottom: 105px;
+  }
 }
 
 @media(prefers-reduced-motion:reduce) {
-  html {
-    scroll-behavior: auto;
-  }
+  html { scroll-behavior: auto; }
 
   *,*::before,*::after {
     animation: none !important;
@@ -2461,12 +2148,12 @@ summary:focus-visible {
      HEADER
      ======================================================= -->
 
-<header class="header" id="siteHeader">
+<header class="header" id="header">
   <div class="container header-inner">
 
     <a href="index.html" class="brand" aria-label="SNAO World Home">
 
-      <span class="brand-emblem" aria-hidden="true">
+      <span class="brand-icon" aria-hidden="true">
         <svg viewBox="0 0 48 48">
           <path d="M34 11C29 5 15 7 12 16C9 24 32 19 35 28C38 38 19 44 11 35"/>
           <path d="M9 28C16 23 23 25 28 27" opacity=".6"/>
@@ -2481,23 +2168,21 @@ summary:focus-visible {
     </a>
 
     <nav class="nav" id="navigation" aria-label="Main navigation">
-
       <a href="#home">Home</a>
-      <a href="#platforms">Ecosystem</a>
+      <a href="#ecosystem">Ecosystem</a>
       <a href="#atlas">ATLAS</a>
       <a href="#ocean">SNAO Ocean</a>
       <a href="#intelligence">Intelligence</a>
       <a href="about.html">About</a>
       <a href="token.html">Token</a>
       <a href="whitepaper.html">Whitepaper</a>
-      <a href="sale.html" class="nav-cta">Public Sale</a>
-
+      <a href="sale.html" class="nav-buy">BUY $SNAO →</a>
     </nav>
 
     <button
-      type="button"
       class="menu-toggle"
       id="menuToggle"
+      type="button"
       aria-label="Toggle navigation"
       aria-controls="navigation"
       aria-expanded="false"
@@ -2509,141 +2194,119 @@ summary:focus-visible {
 <main>
 
 <!-- =======================================================
-     HERO
+     HERO — 3D UNDERWATER SCENE
      ======================================================= -->
 
 <section class="hero" id="home">
 
-  <div class="hero-light" aria-hidden="true"></div>
-  <div class="hero-particles" aria-hidden="true"></div>
+  <canvas id="oceanCanvas" aria-hidden="true"></canvas>
 
   <div class="container hero-layout">
 
     <div class="hero-copy">
 
-      <span class="hero-kicker">
+      <span class="hero-pill">
         <i></i>
-        THE NEXT FRONTIER OF INTELLIGENCE
+        WELCOME TO THE SNAO WORLD
       </span>
 
       <h1>
-        Intelligence
-        <span class="gradient">Beyond</span>
-        Boundaries.
+        Beyond the
+        <span class="gradient-text">Surface.</span>
+        Beyond the
+        <span class="gradient-text">Future.</span>
       </h1>
 
       <p class="hero-description">
-        Welcome to <strong>SNAO World</strong>.
-
-        An evolving technology ecosystem
-        building intelligent enterprise software,
+        An evolving world of
+        <strong>intelligent enterprise technology</strong>,
         immersive digital experiences
-        and advanced market research.
+        and blockchain innovation.
+
+        Dive into SNAO World and discover
+        what we are building.
       </p>
 
       <div class="hero-actions">
 
-        <a href="#atlas" class="btn btn-primary">
-          Discover ATLAS
-          <span class="btn-arrow">↗</span>
+        <a href="sale.html" class="btn btn-buy">
+          BUY $SNAO NOW ↗
         </a>
 
-        <a href="#platforms" class="btn btn-outline">
-          Explore Our Ecosystem
-          <span class="btn-arrow">→</span>
+        <a href="#atlas" class="btn btn-glass">
+          Explore ATLAS →
         </a>
 
       </div>
 
-      <div class="hero-bottom">
-
-        <div>
-          <strong>ATLAS Intelligence OS</strong>
-          <span>Enterprise Technology</span>
-        </div>
-
-        <div>
-          <strong>SNAO Ocean</strong>
-          <span>Mobile Experiences</span>
-        </div>
-
-        <div>
-          <strong>Ocean Intelligence</strong>
-          <span>Market Research</span>
-        </div>
-
+      <div class="hero-availability">
+        <strong>Official $SNAO Public Sale</strong>
+        · BNB Smart Chain · USDT
       </div>
+
+      <p class="hero-disclaimer">
+        Review the current sale status,
+        terms and pricing before purchasing.
+      </p>
 
     </div>
 
-    <!-- ATLAS VISUALIZATION -->
+    <!-- ATLAS VISUAL -->
 
-    <div class="hero-visual">
+    <div class="hero-stage">
 
-      <div class="hero-orbit" aria-hidden="true"></div>
+      <div class="stage-glow"></div>
+      <div class="stage-ring"></div>
 
-      <div class="command-shell">
+      <div class="atlas-device">
 
-        <div class="command-window">
+        <div class="atlas-frame">
 
-          <div class="command-top">
+          <div class="atlas-topbar">
 
-            <div class="command-title">
-
-              <span class="mini-logo">S</span>
-
-              <div>
-                <strong>ATLAS INTELLIGENCE OS</strong>
-                <small>SNAO WORLD · COMMAND CENTER</small>
-              </div>
-
+            <div class="atlas-top-brand">
+              <strong>◈ ATLAS INTELLIGENCE OS</strong>
+              <small>SNAO WORLD · ENTERPRISE COMMAND CENTER</small>
             </div>
 
-            <div class="command-indicator">
-              <i></i>
-              CONCEPT
-            </div>
+            <span class="atlas-preview-label">
+              CONCEPT PREVIEW
+            </span>
 
           </div>
 
-          <div class="command-body">
+          <div class="atlas-body">
 
-            <div class="command-sidebar" aria-hidden="true">
-              <span class="active">◈</span>
+            <aside class="atlas-sidebar" aria-hidden="true">
+              <span>◈</span>
               <span>▤</span>
               <span>◇</span>
               <span>⌁</span>
               <span>⚙</span>
-            </div>
+            </aside>
 
-            <div class="command-content">
+            <div class="atlas-content">
 
-              <div class="command-heading">
-
-                <div>
-                  <small>ENTERPRISE INTELLIGENCE</small>
-                  <h3>Command Overview</h3>
-                </div>
-
-                <span class="demo-pill">DESIGN PREVIEW</span>
-
+              <div class="atlas-title-row">
+                <strong>Command Overview</strong>
+                <span>ATLAS / DEMO</span>
               </div>
 
-              <div class="command-metrics">
+              <div class="atlas-metrics">
 
-                <div class="command-metric">
+                <div class="atlas-metric">
                   <small>FINANCIAL</small>
                   <strong>Insights</strong>
-                  <em>Analysis module</em>
+                  <em>Analysis layer</em>
                 </div>
 
-                <div class="command-metric">
-                  <small>SECURITY</small>
-                  <strong>Guardian</strong>
-                  <em>Risk awareness</em>
+                <div class="atlas-metric">
+                  <small>GUARDIAN</small>
+                  <strong>Security</strong>
+                  <em>Risk monitoring</em>
                 </div>
 
-                <div class="command-metric">
+                <div class="atlas-metric">
                   <small>OPERATIONS</small>
                   <strong>Workflow</strong>
                   <em>Automation</em>
@@ -2651,33 +2314,38 @@ summary:focus-visible {
 
               </div>
 
-              <div class="command-chart">
+              <div class="atlas-chart">
 
-                <span class="command-chart-label">
-                  ANALYTICS · ILLUSTRATIVE
+                <span class="atlas-chart-label">
+                  BUSINESS INTELLIGENCE · ILLUSTRATIVE
                 </span>
 
                 <svg
-                  viewBox="0 0 500 160"
+                  viewBox="0 0 500 170"
                   preserveAspectRatio="none"
                   aria-hidden="true"
                 >
 
                   <defs>
-                    <linearGradient id="chartAreaGradient" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="0%" stop-color="#2bd5ff" stop-opacity=".38"/>
-                      <stop offset="100%" stop-color="#2bd5ff" stop-opacity="0"/>
+                    <linearGradient id="atlasChartGradient" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0%" stop-color="#38e6ff" stop-opacity=".36"/>
+                      <stop offset="100%" stop-color="#38e6ff" stop-opacity="0"/>
                     </linearGradient>
                   </defs>
 
                   <path
-                    class="chart-fill"
-                    d="M0 125 C40 105 60 130 95 95 S155 105 190 72 S245 98 283 58 S340 73 381 43 S450 56 500 16 L500 160 L0 160 Z"
+                    class="chart-area"
+                    d="M0 144 C40 131 65 152 103 111 S159 128 205 91 S262 104 306 63 S373 84 411 44 S470 55 500 19 L500 170 L0 170 Z"
                   />
 
                   <path
                     class="chart-line"
-                    d="M0 125 C40 105 60 130 95 95 S155 105 190 72 S245 98 283 58 S340 73 381 43 S450 56 500 16"
+                    d="M0 144 C40 131 65 152 103 111 S159 128 205 91 S262 104 306 63 S373 84 411 44 S470 55 500 19"
+                  />
+
+                  <path
+                    class="chart-second-line"
+                    d="M0 152 C60 141 90 133 127 139 S199 108 230 117 S300 91 344 101 S414 72 500 64"
                   />
 
                 </svg>
@@ -2688,23 +2356,23 @@ summary:focus-visible {
 
           </div>
 
-          <div class="command-footer">
-            <span>ATLAS · CONCEPT INTERFACE</span>
-            <strong>ENTERPRISE INTELLIGENCE</strong>
+          <div class="atlas-footer">
+            <span>ATLAS TECHNOLOGY VISION</span>
+            <strong>INTELLIGENCE BEYOND BOUNDARIES</strong>
           </div>
 
         </div>
 
       </div>
 
-      <div class="floating-tech float-one">
-        <small>INTELLIGENCE LAYER</small>
-        <strong>Unified Business Insights</strong>
+      <div class="float-card top">
+        <small>ENTERPRISE INTELLIGENCE</small>
+        <strong>Connected Business Systems</strong>
       </div>
 
-      <div class="floating-tech float-two">
+      <div class="float-card bottom">
         <small>ATLAS ARCHITECTURE</small>
-        <strong>Security · Finance · AI</strong>
+        <strong>Finance · Security · AI</strong>
       </div>
 
     </div>
@@ -2714,127 +2382,40 @@ summary:focus-visible {
 </section>
 
 <!-- =======================================================
-     POSITIONING
+     PUBLIC SALE — ABOVE THE FOLD FOLLOW-UP
      ======================================================= -->
 
-<section class="positioning-strip">
+<section class="sale-strip" id="public-sale">
 
-  <div class="container positioning-grid">
+  <div class="container sale-strip-inner">
 
-    <div class="positioning-item">
-      <span class="position-icon">◈</span>
+    <div class="sale-strip-title">
+
+      <div class="sale-strip-icon">◈</div>
+
       <div>
-        <strong>ENTERPRISE AI</strong>
-        <small>Business Intelligence</small>
-      </div>
-    </div>
-
-    <div class="positioning-item">
-      <span class="position-icon">◇</span>
-      <div>
-        <strong>DATA INTELLIGENCE</strong>
-        <small>Analytics & Research</small>
-      </div>
-    </div>
-
-    <div class="positioning-item">
-      <span class="position-icon">◉</span>
-      <div>
-        <strong>MOBILE INNOVATION</strong>
-        <small>Digital Experiences</small>
-      </div>
-    </div>
-
-    <div class="positioning-item">
-      <span class="position-icon">⬡</span>
-      <div>
-        <strong>BLOCKCHAIN</strong>
-        <small>Digital Ecosystem</small>
-      </div>
-    </div>
-
-  </div>
-
-</section>
-
-<!-- =======================================================
-     INTRODUCTION
-     ======================================================= -->
-
-<section class="section introduction" id="about">
-
-  <div class="container intro-grid">
-
-    <div class="intro-visual reveal">
-
-      <div class="intro-rings">
-
-        <div class="intro-core">
-          <strong>SNAO</strong>
-          <span>WORLD</span>
-        </div>
-
-        <span class="intro-node one">ENTERPRISE</span>
-        <span class="intro-node two">INTELLIGENCE</span>
-        <span class="intro-node three">INNOVATION</span>
-
+        <strong>$SNAO Public Sale</strong>
+        <small>
+          Explore the official token purchase interface.
+        </small>
       </div>
 
     </div>
 
-    <div class="intro-copy reveal">
+    <div class="sale-strip-stat">
+      <span>Total Supply</span>
+      <strong>200M</strong>
+    </div>
 
-      <span class="eyebrow">
-        Who We Are
-      </span>
+    <div class="sale-strip-stat">
+      <span>Public Sale Allocation</span>
+      <strong>45M</strong>
+    </div>
 
-      <h2>
-        Not just another
-        <span class="gradient">crypto project.</span>
-      </h2>
-
-      <p>
-        SNAO World is evolving into a broader
-        technology ecosystem with a focus
-        on practical intelligence,
-        digital infrastructure
-        and meaningful innovation.
-      </p>
-
-      <p>
-        Our product development combines
-        enterprise software,
-        data-driven analysis,
-        artificial intelligence,
-        immersive applications
-        and blockchain research.
-      </p>
-
-      <div class="intro-points">
-
-        <div class="intro-point">
-          <i>✓</i>
-          Independent technology platforms
-        </div>
-
-        <div class="intro-point">
-          <i>✓</i>
-          Product-led development strategy
-        </div>
-
-        <div class="intro-point">
-          <i>✓</i>
-          Long-term global technology vision
-        </div>
-
-      </div>
-
-      <div style="margin-top:32px">
-        <a href="about.html" class="btn btn-outline">
-          Discover SNAO World →
-        </a>
-      </div>
-
+    <div class="sale-strip-action">
+      <a href="sale.html" class="btn btn-buy">
+        BUY $SNAO ↗
+      </a>
     </div>
 
   </div>
@@ -2845,43 +2426,40 @@ summary:focus-visible {
      ECOSYSTEM
      ======================================================= -->
 
-<section class="section platforms-section" id="platforms">
+<section class="section ecosystem" id="ecosystem">
 
   <div class="container">
 
-    <div class="section-head reveal">
-
+    <div class="section-heading reveal">
       <span class="eyebrow">
         The SNAO World Ecosystem
       </span>
 
       <h2>
-        Three platforms.
-        <span class="gradient">
-          One ambitious vision.
+        Three worlds.
+        <span class="gradient-text">
+          One connected vision.
         </span>
       </h2>
 
       <p>
-        Technology designed for different
-        audiences, connected through
-        a shared commitment to innovation,
-        intelligence and useful products.
+        From enterprise intelligence
+        to immersive mobile experiences
+        and advanced market research,
+        SNAO World is building
+        technology for different audiences.
       </p>
-
     </div>
 
-    <div class="platform-grid">
+    <div class="ecosystem-grid">
 
-      <!-- ATLAS -->
+      <article
+        class="ecosystem-card reveal"
+        style="--card-color:#71eaff;--card-glow:#0d9fed;--art-light:rgba(25,155,245,.35)"
+      >
 
-      <article class="platform-card featured reveal">
-
-        <div class="platform-art">
-          <div class="art-atlas">
-            <strong>ATLAS</strong>
-            <small>INTELLIGENCE</small>
-          </div>
+        <div class="ecosystem-art atlas-art">
+          <span>ATLAS</span>
         </div>
 
         <span class="card-status">
@@ -2891,58 +2469,45 @@ summary:focus-visible {
         <h3>SNAO World ATLAS</h3>
 
         <p>
-          An enterprise intelligence
-          and business operations platform
-          being developed to connect
-          financial information,
-          analytical workflows,
-          security awareness
-          and organizational intelligence.
+          A premium enterprise platform
+          being developed for financial intelligence,
+          business operations,
+          security insights and
+          intelligent automation.
         </p>
 
         <div class="card-tags">
           <span>Enterprise AI</span>
           <span>Finance</span>
           <span>Security</span>
-          <span>Automation</span>
         </div>
 
       </article>
 
-      <!-- OCEAN -->
+      <article
+        class="ecosystem-card reveal"
+        style="--card-color:#58f2bc;--card-glow:#00caa8;--art-light:rgba(0,192,167,.3)"
+      >
 
-      <article class="platform-card reveal">
+        <div class="ecosystem-art ocean-art">
 
-        <div class="platform-art">
-
-          <div class="art-ocean">
-
-            <svg viewBox="0 0 140 100" aria-hidden="true">
-              <defs>
-                <linearGradient id="fishGradient" x1="0" x2="1">
-                  <stop offset="0" stop-color="#d0ffff"/>
-                  <stop offset=".55" stop-color="#5be8ff"/>
-                  <stop offset="1" stop-color="#0879b8"/>
-                </linearGradient>
-              </defs>
-              <path
-                fill="url(#fishGradient)"
-                d="M17 51 L0 25 L0 77 L17 54 C43 18 99 19 130 50 C98 83 43 82 17 51 Z"
-              />
-              <path
-                fill="#a6f9ff"
-                opacity=".8"
-                d="M58 32 L81 8 L88 35 Z"
-              />
-              <path
-                fill="#05618f"
-                opacity=".75"
-                d="M64 64 L91 85 L86 63 Z"
-              />
-              <circle cx="107" cy="44" r="4" fill="#002439"/>
-            </svg>
-
-          </div>
+          <svg viewBox="0 0 210 120" aria-hidden="true">
+            <defs>
+              <linearGradient id="oceanCardFish" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0%" stop-color="#deffff"/>
+                <stop offset="52%" stop-color="#62f2ff"/>
+                <stop offset="100%" stop-color="#047caa"/>
+              </linearGradient>
+            </defs>
+            <path
+              d="M38 60 L5 27 L5 96 L38 64 C77 15 162 24 202 61 C162 102 78 110 38 60Z"
+              fill="url(#oceanCardFish)"
+            />
+            <path d="M77 43L119 8L129 43Z" fill="#b8f9ff"/>
+            <path d="M94 79L131 112L135 78Z" fill="#087eae"/>
+            <circle cx="172" cy="56" r="6" fill="#05334e"/>
+            <circle cx="174" cy="54" r="2" fill="#fff"/>
+          </svg>
 
         </div>
 
@@ -2953,29 +2518,28 @@ summary:focus-visible {
         <h3>SNAO Ocean</h3>
 
         <p>
-          A standalone mobile application
-          envisioned for Android and iOS,
-          combining immersive ocean environments,
-          gamified participation,
-          community activities
+          An independent mobile experience
+          designed around immersive ocean environments,
+          gamified activities,
+          community missions
           and internal Sardinhas points.
         </p>
 
         <div class="card-tags">
-          <span>Mobile</span>
+          <span>Android & iOS</span>
           <span>Gamification</span>
           <span>Community</span>
-          <span>Rewards Concept</span>
         </div>
 
       </article>
 
-      <!-- INTELLIGENCE -->
+      <article
+        class="ecosystem-card reveal"
+        style="--card-color:#c39bff;--card-glow:#8a59ff;--art-light:rgba(151,83,255,.3)"
+      >
 
-      <article class="platform-card reveal">
-
-        <div class="platform-art">
-          <div class="art-radar"></div>
+        <div class="ecosystem-art radar-art">
+          <div class="radar"></div>
         </div>
 
         <span class="card-status">
@@ -2985,19 +2549,16 @@ summary:focus-visible {
         <h3>Ocean Intelligence</h3>
 
         <p>
-          A developing market intelligence
-          initiative focused on
-          blockchain research,
-          whale activity,
-          liquidity, exchange flows
-          and AI-assisted explanations
-          of market conditions.
+          An intelligence initiative
+          focused on blockchain research,
+          large-wallet behavior,
+          liquidity movements,
+          market risk and AI-assisted context.
         </p>
 
         <div class="card-tags">
-          <span>Whales</span>
+          <span>Whale Tracking</span>
           <span>Market Flows</span>
-          <span>Risk Analysis</span>
           <span>Sardine AI</span>
         </div>
 
@@ -3010,130 +2571,128 @@ summary:focus-visible {
 </section>
 
 <!-- =======================================================
-     ATLAS SPOTLIGHT
+     ATLAS
      ======================================================= -->
 
 <section class="section atlas-section" id="atlas">
 
-  <div class="container atlas-layout">
+  <div class="container feature-layout">
 
-    <div class="atlas-copy reveal">
+    <div class="feature-copy reveal">
 
       <span class="eyebrow">
-        SNAO World ATLAS
+        The Enterprise Technology Vision
       </span>
 
       <h2>
-        The future of
-        <span class="gradient">
-          enterprise intelligence.
+        Introducing
+        <span class="gradient-text">
+          ATLAS Intelligence OS.
         </span>
       </h2>
 
       <p>
-        ATLAS Intelligence OS is our
-        enterprise technology initiative,
-        being developed as a premium
-        digital environment for
-        connected business operations.
+        ATLAS is being developed
+        as a sophisticated enterprise environment
+        for organizations that need
+        connected information,
+        clearer analysis and
+        intelligent operational tools.
       </p>
 
       <p>
-        The planned platform combines
+        The development roadmap includes
         financial intelligence,
-        operational analysis,
-        organizational information,
-        security systems
-        and intelligent automation.
+        accounting workflows,
+        organizational insights,
+        security monitoring
+        and automation.
       </p>
 
-      <div class="atlas-features">
+      <div class="feature-list">
 
-        <div class="atlas-feature">
-          <i>◈</i>
-          <strong>Business Intelligence</strong>
+        <div>
+          <b>◈</b>
+          <strong>Financial Intelligence</strong>
         </div>
 
-        <div class="atlas-feature">
-          <i>◇</i>
-          <strong>Financial Analysis</strong>
+        <div>
+          <b>◇</b>
+          <strong>Business Analytics</strong>
         </div>
 
-        <div class="atlas-feature">
-          <i>⬡</i>
+        <div>
+          <b>⬡</b>
           <strong>Guardian & Sentinel</strong>
         </div>
 
-        <div class="atlas-feature">
-          <i>⌁</i>
+        <div>
+          <b>⌁</b>
           <strong>Workflow Automation</strong>
         </div>
 
       </div>
 
-      <a href="about.html#atlas" class="btn btn-primary">
-        Explore Our Vision →
+      <a href="about.html#atlas" class="btn btn-cyan">
+        Explore ATLAS Vision →
       </a>
 
-      <div class="token-notice">
-        ATLAS is under development.
-        The interface shown is illustrative.
-        Planned capabilities are not
-        represented as publicly released products.
-      </div>
+      <p style="font-size:12px;margin-top:22px">
+        ATLAS is in development.
+        Visuals represent concepts
+        rather than released functionality.
+      </p>
 
     </div>
 
-    <div class="atlas-console reveal">
+    <div class="atlas-showcase reveal">
 
-      <div class="console-header">
+      <div class="showcase-header">
         <strong>ATLAS / INTELLIGENCE OS</strong>
-        <span>CONCEPT DISPLAY</span>
+        <small>INTERFACE CONCEPT</small>
       </div>
 
-      <div class="console-layout">
+      <div class="showcase-metrics">
 
-        <div class="console-widget">
+        <div class="showcase-box">
           <small>FINANCIAL INTELLIGENCE</small>
           <strong>Analytics</strong>
-          <em>Modeling & reporting</em>
+          <em>Modeling & Reporting</em>
         </div>
 
-        <div class="console-widget">
+        <div class="showcase-box">
           <small>GUARDIAN SYSTEM</small>
           <strong>Security</strong>
-          <em>Monitoring concept</em>
+          <em>Risk Monitoring</em>
         </div>
 
-        <div class="console-widget wide">
-          <small>BUSINESS PERFORMANCE · ILLUSTRATION</small>
-          <strong>Intelligence Dashboard</strong>
+        <div class="showcase-box" style="grid-column:1/-1">
+          <small>BUSINESS INTELLIGENCE · ILLUSTRATIVE GRAPH</small>
+          <strong>Operational Dashboard</strong>
 
-          <div class="console-bars" aria-hidden="true">
-            <span style="--height:37%"></span>
-            <span style="--height:55%"></span>
-            <span style="--height:44%"></span>
-            <span style="--height:71%"></span>
-            <span style="--height:60%"></span>
-            <span style="--height:83%"></span>
-            <span style="--height:72%"></span>
-            <span style="--height:95%"></span>
-            <span style="--height:78%"></span>
-            <span style="--height:90%"></span>
+          <div class="showcase-bars" aria-hidden="true">
+            <span style="--bar-height:42%;--bar-color:#26d9fa;--delay:0s"></span>
+            <span style="--bar-height:60%;--bar-color:#55e8fb;--delay:-.4s"></span>
+            <span style="--bar-height:48%;--bar-color:#31a7fa;--delay:-.8s"></span>
+            <span style="--bar-height:74%;--bar-color:#aa79ff;--delay:-1.2s"></span>
+            <span style="--bar-height:65%;--bar-color:#9878ee;--delay:-1.6s"></span>
+            <span style="--bar-height:90%;--bar-color:#62ecc8;--delay:-2s"></span>
+            <span style="--bar-height:77%;--bar-color:#58dff6;--delay:-2.4s"></span>
+            <span style="--bar-height:100%;--bar-color:#ffce82;--delay:-2.8s"></span>
+            <span style="--bar-height:84%;--bar-color:#ba91ff;--delay:-3.2s"></span>
           </div>
-
         </div>
 
-        <div class="console-widget">
+        <div class="showcase-box">
           <small>OPERATIONS</small>
           <strong>Workflow</strong>
-          <em>Process intelligence</em>
+          <em>Process Automation</em>
         </div>
 
-        <div class="console-widget">
+        <div class="showcase-box">
           <small>INTELLIGENCE LAYER</small>
           <strong>AI Research</strong>
-          <em>Decision support</em>
+          <em>Decision Support</em>
         </div>
 
       </div>
@@ -3148,19 +2707,19 @@ summary:focus-visible {
      SNAO OCEAN
      ======================================================= -->
 
-<section class="section ocean-section" id="ocean">
+<section class="section mobile-section" id="ocean">
 
-  <div class="container ocean-layout">
+  <div class="container mobile-layout">
 
-    <div class="ocean-phone-stage reveal">
+    <div class="phone-stage reveal">
 
       <div class="phone">
 
         <div class="phone-screen">
 
-          <div class="phone-header">
-            <span>SNAO OCEAN</span>
-            <span>LVL 01</span>
+          <div class="phone-top">
+            <strong>SNAO OCEAN</strong>
+            <small>LVL 01</small>
           </div>
 
           <div class="phone-balance">
@@ -3173,31 +2732,32 @@ summary:focus-visible {
 
             <svg viewBox="0 0 210 120" aria-hidden="true">
               <defs>
-                <linearGradient id="oceanFish" x1="0" x2="1">
-                  <stop offset="0" stop-color="#c9ffff"/>
-                  <stop offset=".4" stop-color="#58ecff"/>
-                  <stop offset="1" stop-color="#0875b7"/>
+                <linearGradient id="phoneFishGradient" x1="0" x2="1">
+                  <stop offset="0" stop-color="#cffff7"/>
+                  <stop offset=".45" stop-color="#62fff1"/>
+                  <stop offset="1" stop-color="#0879aa"/>
                 </linearGradient>
               </defs>
+
               <path
-                d="M38 60 L5 27 L5 96 L38 64 C77 15 162 24 202 61 C162 102 78 110 38 60Z"
-                fill="url(#oceanFish)"
+                d="M38 60L5 27L5 96L38 64C77 15 162 24 202 61C162 102 78 110 38 60Z"
+                fill="url(#phoneFishGradient)"
               />
-              <path d="M77 43L119 8L129 43Z" fill="#b8f9ff"/>
-              <path d="M94 79L131 112L135 78Z" fill="#087eae"/>
-              <path d="M53 59L16 55" stroke="#e9ffff" stroke-width="2" opacity=".4"/>
+
+              <path d="M77 43L119 8L129 43Z" fill="#befff8"/>
+              <path d="M94 79L131 112L135 78Z" fill="#087c9f"/>
               <circle cx="172" cy="56" r="6" fill="#05334e"/>
               <circle cx="174" cy="54" r="2" fill="#fff"/>
             </svg>
 
           </div>
 
-          <div class="phone-mine">
+          <div class="phone-circle">
             <strong>OCEAN</strong>
             <small>MINING</small>
           </div>
 
-          <div class="phone-bottom">
+          <div class="phone-nav">
             <span>HOME</span>
             <span>MISSIONS</span>
             <span>RANKING</span>
@@ -3210,70 +2770,69 @@ summary:focus-visible {
 
     </div>
 
-    <div class="ocean-copy reveal">
+    <div class="mobile-copy reveal">
 
-      <span class="eyebrow">
-        Introducing SNAO Ocean
+      <span class="eyebrow" style="color:var(--green)">
+        The Ocean Awaits
       </span>
 
       <h2>
         Dive into
-        <span class="gradient">
-          a new digital world.
+        <span class="gradient-text">
+          SNAO Ocean.
         </span>
       </h2>
 
       <p>
         SNAO Ocean is being designed
-        as an independent mobile experience
-        inspired by the depth, beauty
-        and mystery of the ocean.
+        as an independent application
+        for Android and iOS,
+        combining an immersive underwater world
+        with community participation
+        and interactive digital experiences.
       </p>
 
       <p>
-        The app concept combines
-        interactive ocean environments,
-        gamified participation,
-        daily missions,
-        rankings and an internal
-        points system called Sardinhas.
+        Discover a planned ecosystem
+        of missions, rankings,
+        referrals and internal
+        Sardinhas points.
       </p>
 
-      <div class="feature-checks">
+      <div class="check-list">
 
-        <div class="feature-check">
-          <i>✓</i>
-          Independent Android & iOS experience
+        <div>
+          <span>✓</span>
+          Immersive ocean experience
         </div>
 
-        <div class="feature-check">
-          <i>✓</i>
-          Ocean-themed gamified participation
+        <div>
+          <span>✓</span>
+          Missions and community activities
         </div>
 
-        <div class="feature-check">
-          <i>✓</i>
-          Missions, referrals and ranking concepts
+        <div>
+          <span>✓</span>
+          Rankings and progression
         </div>
 
-        <div class="feature-check">
-          <i>✓</i>
+        <div>
+          <span>✓</span>
           Internal points and eligibility-based rewards
         </div>
 
       </div>
 
-      <a href="about.html#platforms" class="btn btn-outline">
+      <a href="about.html#platforms" class="btn btn-cyan">
         Discover SNAO Ocean →
       </a>
 
-      <div class="token-notice">
-        Visual concept only. Sardinhas are
-        intended as internal app points,
-        not independent blockchain tokens.
-        Reward rules remain subject
-        to development and eligibility.
-      </div>
+      <p style="font-size:12px;margin-top:22px">
+        Application in development.
+        Sardinhas are internal points,
+        not standalone crypto tokens.
+        The interface shown is illustrative.
+      </p>
 
     </div>
 
@@ -3289,25 +2848,25 @@ summary:focus-visible {
 
   <div class="container">
 
-    <div class="section-head reveal">
+    <div class="section-heading reveal">
 
-      <span class="eyebrow">
+      <span class="eyebrow" style="color:#c6a7ff">
         Ocean Intelligence
       </span>
 
       <h2>
-        Understand
-        <span class="gradient">
-          what moves the market.
+        See deeper.
+        <span class="gradient-text">
+          Understand more.
         </span>
       </h2>
 
       <p>
-        Our planned analytical ecosystem
-        aims to connect fragmented market signals,
-        blockchain data and research
-        into clearer intelligence
-        for individual market participants.
+        Crypto markets contain enormous
+        volumes of fragmented information.
+        Ocean Intelligence aims to make
+        market conditions, blockchain activity
+        and risk factors easier to understand.
       </p>
 
     </div>
@@ -3319,8 +2878,8 @@ summary:focus-visible {
         <h3>Whale Intelligence</h3>
         <p>
           Research large-wallet activity,
-          unusual transactions
-          and potential market implications.
+          concentration and unusual
+          blockchain movements.
         </p>
         <small>PLANNED MODULE</small>
       </article>
@@ -3329,9 +2888,9 @@ summary:focus-visible {
         <div class="intelligence-icon">≈</div>
         <h3>Ocean Flow</h3>
         <p>
-          Explore concepts for visualizing
-          exchange flows, liquidity movement
-          and market participation.
+          Explore concepts for monitoring
+          exchange activity,
+          liquidity and capital movements.
         </p>
         <small>DEVELOPMENT ROADMAP</small>
       </article>
@@ -3340,9 +2899,9 @@ summary:focus-visible {
         <div class="intelligence-icon">AI</div>
         <h3>Sardine AI</h3>
         <p>
-          AI-assisted explanations
-          and summaries intended
-          to make market information clearer.
+          Planned AI-assisted summaries
+          and market explanations
+          based on available information.
         </p>
         <small>PLANNED INTELLIGENCE</small>
       </article>
@@ -3351,7 +2910,7 @@ summary:focus-visible {
         <div class="intelligence-icon">◇</div>
         <h3>Market Risk</h3>
         <p>
-          Planned analysis of volatility,
+          Research volatility,
           liquidity pressure
           and changing market conditions.
         </p>
@@ -3362,9 +2921,9 @@ summary:focus-visible {
         <div class="intelligence-icon">⌁</div>
         <h3>Global Policy Radar</h3>
         <p>
-          Research regulatory and
-          macroeconomic developments
-          that may affect digital asset markets.
+          Planned research into
+          regulatory and macroeconomic
+          developments affecting digital assets.
         </p>
         <small>PLANNED MODULE</small>
       </article>
@@ -3373,18 +2932,17 @@ summary:focus-visible {
         <div class="intelligence-icon">▤</div>
         <h3>Ocean Terminal</h3>
         <p>
-          Explore the existing
-          market information interface,
-          including experimental
-          and demonstration features.
+          Explore the project's
+          existing market information
+          and experimental analytical interface.
         </p>
-        <small>EXPERIMENTAL INTERFACE</small>
+        <small>EXPERIMENTAL PRODUCT</small>
       </article>
 
     </div>
 
-    <div style="text-align:center;margin-top:35px">
-      <a href="terminal.html" class="btn btn-outline">
+    <div style="text-align:center;margin-top:40px">
+      <a href="terminal.html" class="btn btn-glass">
         Explore Ocean Terminal →
       </a>
     </div>
@@ -3394,7 +2952,7 @@ summary:focus-visible {
 </section>
 
 <!-- =======================================================
-     TOKEN
+     TOKEN / SALE
      ======================================================= -->
 
 <section class="section token-section" id="token">
@@ -3403,60 +2961,56 @@ summary:focus-visible {
 
     <div class="token-copy reveal">
 
-      <span class="eyebrow">
+      <span class="eyebrow" style="color:var(--gold)">
         The SNAO Digital Ecosystem
       </span>
 
       <h2>
-        Discover
-        <span class="gradient">
-          the $SNAO token.
+        Discover the
+        <span class="gold-text">
+          $SNAO Token.
         </span>
       </h2>
 
       <p>
-        $SNAO is the digital token
+        $SNAO is the blockchain token
         associated with the SNAO World ecosystem,
-        with a stated fixed supply
-        of 200 million tokens
-        on BNB Smart Chain.
+        with a stated fixed maximum supply
+        of 200 million tokens.
       </p>
 
       <p>
-        The token's long-term direction
-        focuses on potential future utility
-        within eligible ecosystem services.
-        Product development remains
-        the central priority.
+        Explore the progressive Public Sale,
+        tokenomics, allocation
+        and planned future digital utility.
       </p>
 
       <div class="token-actions">
 
-        <a href="sale.html" class="btn btn-primary">
-          Public Sale →
+        <a href="sale.html" class="btn btn-buy">
+          BUY $SNAO →
         </a>
 
-        <a href="token.html" class="btn btn-outline">
+        <a href="token.html" class="btn btn-glass">
           Tokenomics
         </a>
 
-        <a href="whitepaper.html" class="btn btn-outline">
+        <a href="whitepaper.html" class="btn btn-glass">
           Whitepaper
         </a>
 
       </div>
 
       <div class="token-notice">
-        Tokens and cryptocurrencies
-        involve significant risk.
-        No investment return,
-        future utility or
-        exchange listing is guaranteed.
+        The starting sale price describes
+        the first progressive pricing lot,
+        not necessarily the current price.
+        Cryptocurrency carries significant risk.
       </div>
 
     </div>
 
-    <div class="token-metrics reveal">
+    <div class="token-grid reveal">
 
       <div class="token-metric">
         <small>Total Supply</small>
@@ -3469,7 +3023,7 @@ summary:focus-visible {
       </div>
 
       <div class="token-metric">
-        <small>Initial Sale Price</small>
+        <small>Initial Lot Price</small>
         <strong>$0.001</strong>
       </div>
 
@@ -3492,25 +3046,25 @@ summary:focus-visible {
 
   <div class="container">
 
-    <div class="section-head reveal">
+    <div class="section-heading reveal">
 
       <span class="eyebrow">
         Development Roadmap
       </span>
 
       <h2>
-        Building tomorrow,
-        <span class="gradient">
-          one platform at a time.
+        Building tomorrow.
+        <span class="gradient-text">
+          One platform at a time.
         </span>
       </h2>
 
       <p>
-        Our roadmap outlines
-        the evolving development direction
-        of the SNAO World ecosystem.
-        Timing and scope remain subject
-        to technical validation.
+        Our roadmap reflects an evolving
+        development strategy.
+        Scope and release timing
+        remain subject to testing
+        and technical readiness.
       </p>
 
     </div>
@@ -3518,53 +3072,53 @@ summary:focus-visible {
     <div class="roadmap-grid">
 
       <article class="roadmap-card reveal">
-        <span class="number">01 / FOUNDATION</span>
+        <span>01 / FOUNDATION</span>
         <h3>Project Infrastructure</h3>
         <p>
-          Establish the SNAO identity,
-          website, token framework,
+          Brand identity, website,
+          initial product concepts,
           community channels
-          and initial product concepts.
+          and token framework.
         </p>
       </article>
 
       <article class="roadmap-card reveal">
-        <span class="number">02 / ENTERPRISE</span>
+        <span>02 / ENTERPRISE</span>
         <h3>ATLAS Development</h3>
         <p>
-          Develop business intelligence,
-          financial, operational
-          and security modules
-          for enterprise users.
+          Develop enterprise intelligence,
+          financial systems,
+          security concepts
+          and automation modules.
         </p>
       </article>
 
       <article class="roadmap-card reveal">
-        <span class="number">03 / DIGITAL</span>
+        <span>03 / MOBILE</span>
         <h3>SNAO Ocean</h3>
         <p>
-          Build the independent mobile
-          experience, participation
-          systems, app infrastructure
+          Build the independent mobile app,
+          ocean environment,
+          participation systems
           and anti-abuse controls.
         </p>
       </article>
 
       <article class="roadmap-card reveal">
-        <span class="number">04 / INTELLIGENCE</span>
-        <h3>Global Expansion</h3>
+        <span>04 / INTELLIGENCE</span>
+        <h3>Global Development</h3>
         <p>
-          Develop market research,
-          analytical infrastructure,
-          additional integrations
-          and future technology services.
+          Expand analytical research,
+          intelligence infrastructure,
+          integrations and
+          future technology services.
         </p>
       </article>
 
     </div>
 
     <div style="text-align:center;margin-top:38px">
-      <a href="whitepaper.html#roadmap" class="btn btn-outline">
+      <a href="whitepaper.html#roadmap" class="btn btn-glass">
         View Full Roadmap →
       </a>
     </div>
@@ -3581,19 +3135,12 @@ summary:focus-visible {
 
   <div class="container">
 
-    <div class="section-head reveal">
-
-      <span class="eyebrow">
-        Questions & Answers
-      </span>
-
+    <div class="section-heading reveal">
+      <span class="eyebrow">Frequently Asked Questions</span>
       <h2>
         Explore
-        <span class="gradient">
-          SNAO World.
-        </span>
+        <span class="gradient-text">SNAO World.</span>
       </h2>
-
     </div>
 
     <div class="faq-list">
@@ -3602,8 +3149,8 @@ summary:focus-visible {
         <summary>What is SNAO World?</summary>
         <p>
           SNAO World is an evolving
-          technology ecosystem focused on
-          enterprise intelligence,
+          technology ecosystem focused
+          on enterprise intelligence,
           digital applications,
           blockchain research
           and software innovation.
@@ -3614,11 +3161,11 @@ summary:focus-visible {
         <summary>What is ATLAS Intelligence OS?</summary>
         <p>
           ATLAS is an enterprise software
-          initiative under development,
+          platform under development,
           intended to connect business information,
           financial analysis,
           security awareness
-          and workflow intelligence.
+          and intelligent operational tools.
         </p>
       </details>
 
@@ -3632,34 +3179,33 @@ summary:focus-visible {
       </details>
 
       <details>
-        <summary>Are Sardinhas cryptocurrency tokens?</summary>
+        <summary>How can I access the SNAO Public Sale?</summary>
         <p>
-          No. Sardinhas are intended as
-          internal participation points
-          within the SNAO Ocean application.
-          Potential reward and conversion
-          mechanisms will depend on
-          defined eligibility rules.
+          Visit the official Public Sale page
+          at www.snao.world/sale.html.
+          Review current availability,
+          pricing, contracts and transaction
+          details before purchasing.
         </p>
       </details>
 
       <details>
-        <summary>Is the ATLAS platform already released?</summary>
+        <summary>What is the total token supply?</summary>
         <p>
-          ATLAS is in development.
-          Illustrations and concept
-          interfaces are not presented
-          as live production software.
+          The stated maximum supply
+          is 200,000,000 $SNAO,
+          with 45,000,000 allocated
+          to the Public Sale.
         </p>
       </details>
 
       <details>
-        <summary>Where can I find information about $SNAO?</summary>
+        <summary>Are the technology platforms already available?</summary>
         <p>
-          Visit the official Token,
-          Whitepaper and Public Sale pages
-          on snao.world to review
-          the published project information.
+          Several products remain in development.
+          Preview interfaces and planned capabilities
+          should not be interpreted as completed
+          production software.
         </p>
       </details>
 
@@ -3678,51 +3224,45 @@ summary:focus-visible {
   <div class="container">
 
     <span class="eyebrow">
-      The SNAO World Community
+      Join the SNAO World
     </span>
 
     <h2>
-      The future is built
-      <span class="gradient">
-        by those who create it.
+      The ocean is vast.
+      <span class="gradient-text">
+        The possibilities are limitless.
       </span>
     </h2>
 
     <p>
-      Follow the development of
-      ATLAS, SNAO Ocean and
-      Ocean Intelligence.
-      Join our community
-      and discover what comes next.
+      Follow the development of ATLAS,
+      SNAO Ocean and Ocean Intelligence.
+      Discover the SNAO World
+      technology ecosystem.
     </p>
 
     <div class="community-actions">
+
+      <a href="sale.html" class="btn btn-buy">
+        BUY $SNAO →
+      </a>
 
       <a
         href="https://t.me/snaoofficial"
         target="_blank"
         rel="noopener noreferrer"
-        class="btn btn-primary"
+        class="btn btn-cyan"
       >
-        Join Community →
+        Join Telegram
       </a>
 
       <a
         href="https://x.com/SNAOOFFICIAL"
         target="_blank"
         rel="noopener noreferrer"
-        class="btn btn-outline"
+        class="btn btn-glass"
       >
         Follow on X
-      </a>
-
-      <a
-        href="https://www.instagram.com/snaoofficial/"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="btn btn-outline"
-      >
-        Instagram
       </a>
 
     </div>
@@ -3743,64 +3283,52 @@ summary:focus-visible {
 
     <div class="footer-grid">
 
-      <div class="footer-brand">
+      <div class="footer-about">
 
         <a href="index.html" class="brand">
-
-          <span class="brand-emblem" aria-hidden="true">
+          <span class="brand-icon" aria-hidden="true">
             <svg viewBox="0 0 48 48">
               <path d="M34 11C29 5 15 7 12 16C9 24 32 19 35 28C38 38 19 44 11 35"/>
               <path d="M9 28C16 23 23 25 28 27" opacity=".6"/>
             </svg>
           </span>
-
           <span class="brand-name">
             <strong>SNAO</strong>
             <small>WORLD</small>
           </span>
-
         </a>
 
         <p>
           Intelligence Beyond Boundaries.
-          Developing enterprise technology,
-          intelligent digital experiences
-          and crypto research tools.
+          Building enterprise software,
+          immersive mobile technology
+          and crypto market research.
         </p>
 
       </div>
 
       <div class="footer-column">
-
         <h4>ECOSYSTEM</h4>
-
         <a href="#atlas">ATLAS Intelligence OS</a>
         <a href="#ocean">SNAO Ocean</a>
         <a href="#intelligence">Ocean Intelligence</a>
         <a href="#roadmap">Roadmap</a>
-
       </div>
 
       <div class="footer-column">
-
         <h4>RESOURCES</h4>
-
         <a href="about.html">About</a>
         <a href="token.html">Tokenomics</a>
         <a href="whitepaper.html">Whitepaper</a>
         <a href="sale.html">Public Sale</a>
         <a href="terminal.html">Ocean Terminal</a>
-
       </div>
 
       <div class="footer-column">
-
         <h4>COMMUNITY</h4>
-
         <a href="https://t.me/snaoofficial" target="_blank" rel="noopener noreferrer">Telegram</a>
         <a href="https://x.com/SNAOOFFICIAL" target="_blank" rel="noopener noreferrer">X</a>
         <a href="https://www.instagram.com/snaoofficial/" target="_blank" rel="noopener noreferrer">Instagram</a>
-
       </div>
 
     </div>
@@ -3821,8 +3349,23 @@ summary:focus-visible {
 
 </footer>
 
+<!-- MOBILE PURCHASE BAR -->
+
+<div class="mobile-buy-bar">
+
+  <div>
+    <span>$SNAO Public Sale</span>
+    <small>Official purchase page</small>
+  </div>
+
+  <a href="sale.html" class="btn btn-buy">
+    BUY $SNAO ↗
+  </a>
+
+</div>
+
 <!-- =======================================================
-     JAVASCRIPT
+     JAVASCRIPT — INTERACTIONS
      ======================================================= -->
 
 <script>
@@ -3830,16 +3373,11 @@ summary:focus-visible {
 
 /* HEADER */
 
-const siteHeader =
-  document.getElementById("siteHeader");
+const header = document.getElementById("header");
 
 function updateHeader() {
-  if (!siteHeader) return;
-
-  siteHeader.classList.toggle(
-    "scrolled",
-    window.scrollY > 20
-  );
+  if (!header) return;
+  header.classList.toggle("scrolled", window.scrollY > 25);
 }
 
 window.addEventListener(
@@ -3852,26 +3390,17 @@ updateHeader();
 
 /* MOBILE MENU */
 
-const menuToggle =
-  document.getElementById("menuToggle");
-
-const navigation =
-  document.getElementById("navigation");
+const menuToggle = document.getElementById("menuToggle");
+const navigation = document.getElementById("navigation");
 
 if (menuToggle && navigation) {
 
   menuToggle.addEventListener("click", () => {
 
-    const isOpen =
-      navigation.classList.toggle("open");
+    const open = navigation.classList.toggle("open");
 
-    menuToggle.setAttribute(
-      "aria-expanded",
-      String(isOpen)
-    );
-
-    menuToggle.textContent =
-      isOpen ? "✕" : "☰";
+    menuToggle.setAttribute("aria-expanded",String(open));
+    menuToggle.textContent = open ? "✕" : "☰";
 
   });
 
@@ -3880,12 +3409,7 @@ if (menuToggle && navigation) {
     link.addEventListener("click", () => {
 
       navigation.classList.remove("open");
-
-      menuToggle.setAttribute(
-        "aria-expanded",
-        "false"
-      );
-
+      menuToggle.setAttribute("aria-expanded","false");
       menuToggle.textContent = "☰";
 
     });
@@ -3894,63 +3418,636 @@ if (menuToggle && navigation) {
 
 }
 
-/* REVEAL ANIMATIONS */
+/* SCROLL ANIMATIONS */
 
-const revealElements =
-  document.querySelectorAll(".reveal");
+const reveals = document.querySelectorAll(".reveal");
 
-const prefersReducedMotion =
-  window.matchMedia(
-    "(prefers-reduced-motion: reduce)"
-  ).matches;
+const reducedMotion = window.matchMedia(
+  "(prefers-reduced-motion: reduce)"
+).matches;
 
-if (
-  "IntersectionObserver" in window &&
-  !prefersReducedMotion
-) {
+if ("IntersectionObserver" in window && !reducedMotion) {
 
-  const revealObserver =
-    new IntersectionObserver(entries => {
+  const observer = new IntersectionObserver(entries => {
 
-      entries.forEach(entry => {
+    entries.forEach(entry => {
 
-        if (entry.isIntersecting) {
+      if (!entry.isIntersecting) return;
 
-          entry.target.classList.add("visible");
+      entry.target.classList.add("visible");
+      observer.unobserve(entry.target);
 
-          revealObserver.unobserve(entry.target);
-
-        }
-
-      });
-
-    }, {
-      threshold: .09
     });
 
-  revealElements.forEach(element => {
-    revealObserver.observe(element);
-  });
+  }, { threshold: .09 });
+
+  reveals.forEach(element => observer.observe(element));
 
 } else {
 
-  revealElements.forEach(element => {
-    element.classList.add("visible");
-  });
+  reveals.forEach(element => element.classList.add("visible"));
 
 }
 
-/* CURRENT YEAR */
+/* COPYRIGHT */
 
-const copyright =
-  document.getElementById("copyright");
+const copyright = document.getElementById("copyright");
 
 if (copyright) {
   copyright.textContent =
-    "© " +
-    new Date().getFullYear() +
+    "© " + new Date().getFullYear() +
     " SNAO World. All rights reserved.";
 }
+</script>
+
+<!-- THREE.JS 3D ENGINE -->
+<!-- External library required only for the optional ocean scene. -->
+
+<script src="https://cdn.jsdelivr.net/npm/three@0.160.1/build/three.min.js"></script>
+
+<script>
+"use strict";
+
+/* =========================================================
+   OCEAN 3D SCENE — PROCEDURAL UNDERWATER WORLD
+
+   Everything below is decorative.
+   It does not handle wallets or purchases.
+   ========================================================= */
+
+(function initializeOceanScene() {
+
+  const canvas = document.getElementById("oceanCanvas");
+  const hero = document.querySelector(".hero");
+
+  if (!canvas || !hero || !window.THREE || reducedMotion) {
+    return;
+  }
+
+  const THREE = window.THREE;
+
+  let renderer;
+
+  try {
+    renderer = new THREE.WebGLRenderer({
+      canvas,
+      alpha: true,
+      antialias: true,
+      powerPreference: "high-performance"
+    });
+  } catch (error) {
+    console.warn("Ocean 3D unavailable:",error);
+    return;
+  }
+
+  renderer.setPixelRatio(
+    Math.min(window.devicePixelRatio || 1,1.7)
+  );
+
+  renderer.setSize(
+    hero.clientWidth,
+    hero.clientHeight,
+    false
+  );
+
+  renderer.outputColorSpace = THREE.SRGBColorSpace;
+  renderer.toneMapping = THREE.ACESFilmicToneMapping;
+  renderer.toneMappingExposure = 1.35;
+
+  const scene = new THREE.Scene();
+
+  scene.fog = new THREE.FogExp2(0x063858,.023);
+
+  const camera = new THREE.PerspectiveCamera(
+    49,
+    hero.clientWidth / hero.clientHeight,
+    .1,
+    160
+  );
+
+  camera.position.set(0,3,28);
+  camera.lookAt(0,1,-12);
+
+  /* LIGHTING */
+
+  scene.add(
+    new THREE.AmbientLight(0x4dc8eb,1.35)
+  );
+
+  const sunLight = new THREE.DirectionalLight(
+    0xa9f6ff,
+    3.1
+  );
+
+  sunLight.position.set(4,25,10);
+  scene.add(sunLight);
+
+  const cyanLight = new THREE.PointLight(
+    0x18dfff,
+    80,
+    35
+  );
+
+  cyanLight.position.set(10,1,-7);
+  scene.add(cyanLight);
+
+  const violetLight = new THREE.PointLight(
+    0x7751ee,
+    55,
+    32
+  );
+
+  violetLight.position.set(-11,-3,-15);
+  scene.add(violetLight);
+
+  /* FLOOR */
+
+  const floorGeometry = new THREE.PlaneGeometry(
+    180,
+    115,
+    80,
+    55
+  );
+
+  floorGeometry.rotateX(-Math.PI / 2);
+
+  const floorPositions =
+    floorGeometry.attributes.position;
+
+  for (let i = 0; i < floorPositions.count; i++) {
+
+    const x = floorPositions.getX(i);
+    const z = floorPositions.getZ(i);
+
+    const height =
+      Math.sin(x * .12) * .7 +
+      Math.cos(z * .2) * .45 +
+      Math.sin(x * .34 + z * .3) * .17;
+
+    floorPositions.setY(i,height);
+
+  }
+
+  floorGeometry.computeVertexNormals();
+
+  const floor = new THREE.Mesh(
+    floorGeometry,
+    new THREE.MeshStandardMaterial({
+      color: 0x06415a,
+      metalness: .25,
+      roughness: .65
+    })
+  );
+
+  floor.position.y = -12;
+  floor.position.z = -25;
+
+  scene.add(floor);
+
+  /* ROCKS */
+
+  function createRock(x,y,z,scale) {
+
+    const mesh = new THREE.Mesh(
+      new THREE.DodecahedronGeometry(1,1),
+      new THREE.MeshStandardMaterial({
+        color: 0x143e55,
+        roughness: .94,
+        flatShading: true
+      })
+    );
+
+    mesh.position.set(x,y,z);
+    mesh.scale.set(scale,scale * .55,scale * .9);
+
+    mesh.rotation.set(
+      Math.random(),
+      Math.random(),
+      Math.random()
+    );
+
+    scene.add(mesh);
+
+  }
+
+  for (let i = 0; i < 28; i++) {
+
+    createRock(
+      -35 + Math.random() * 70,
+      -11.5 + Math.random() * .6,
+      -43 + Math.random() * 37,
+      .8 + Math.random() * 3.5
+    );
+
+  }
+
+  /* CORAL BRANCHES */
+
+  const coralMaterials = [
+    new THREE.MeshStandardMaterial({
+      color: 0x35cfc8,
+      emissive: 0x0b7775,
+      emissiveIntensity: .35,
+      roughness: .6
+    }),
+    new THREE.MeshStandardMaterial({
+      color: 0xb16ee9,
+      emissive: 0x502580,
+      emissiveIntensity: .35
+    }),
+    new THREE.MeshStandardMaterial({
+      color: 0xff8c8d,
+      emissive: 0x893a43,
+      emissiveIntensity: .25
+    })
+  ];
+
+  function coralBranch(
+    origin,
+    direction,
+    length,
+    depth,
+    material,
+    group
+  ) {
+
+    if (depth <= 0) return;
+
+    const end = origin.clone().add(
+      direction.clone().normalize().multiplyScalar(length)
+    );
+
+    const vector = new THREE.Vector3().subVectors(end,origin);
+
+    const cylinder = new THREE.Mesh(
+      new THREE.CylinderGeometry(
+        .06 * depth,
+        .1 * depth,
+        vector.length(),
+        6
+      ),
+      material
+    );
+
+    cylinder.position.copy(origin).add(end).multiplyScalar(.5);
+
+    cylinder.quaternion.setFromUnitVectors(
+      new THREE.Vector3(0,1,0),
+      vector.clone().normalize()
+    );
+
+    group.add(cylinder);
+
+    if (depth > 1) {
+
+      for (let j = 0; j < 2; j++) {
+
+        const nextDirection = direction.clone().add(
+          new THREE.Vector3(
+            (Math.random() - .5) * 1.35,
+            .2 + Math.random() * .5,
+            (Math.random() - .5) * 1.25
+          )
+        ).normalize();
+
+        coralBranch(
+          end,
+          nextDirection,
+          length * (.65 + Math.random() * .14),
+          depth - 1,
+          material,
+          group
+        );
+
+      }
+
+    }
+
+  }
+
+  for (let i = 0; i < 17; i++) {
+
+    const group = new THREE.Group();
+
+    const material =
+      coralMaterials[i % coralMaterials.length];
+
+    coralBranch(
+      new THREE.Vector3(0,0,0),
+      new THREE.Vector3(
+        (Math.random() - .5) * .55,
+        1,
+        (Math.random() - .5) * .4
+      ),
+      .9 + Math.random() * 1.1,
+      3,
+      material,
+      group
+    );
+
+    group.position.set(
+      -34 + Math.random() * 68,
+      -11.3,
+      -37 + Math.random() * 28
+    );
+
+    scene.add(group);
+
+  }
+
+  /* FISH MODEL */
+
+  const fishMaterials = [
+    new THREE.MeshStandardMaterial({
+      color: 0x59eaff,
+      metalness: .42,
+      roughness: .27
+    }),
+    new THREE.MeshStandardMaterial({
+      color: 0x84c9e9,
+      metalness: .43,
+      roughness: .29
+    }),
+    new THREE.MeshStandardMaterial({
+      color: 0x4ae0cb,
+      metalness: .35,
+      roughness: .32
+    })
+  ];
+
+  const fishBodyGeometry =
+    new THREE.SphereGeometry(1,12,8);
+
+  const fishFinGeometry =
+    new THREE.ConeGeometry(.7,1.15,3);
+
+  const schools = [];
+
+  function createFish(scale,material) {
+
+    const fish = new THREE.Group();
+
+    const body = new THREE.Mesh(
+      fishBodyGeometry,
+      material
+    );
+
+    body.scale.set(1.2,.4,.34);
+    fish.add(body);
+
+    const tail = new THREE.Mesh(
+      fishFinGeometry,
+      material
+    );
+
+    tail.position.x = -1.25;
+    tail.rotation.z = Math.PI / 2;
+    tail.scale.set(.63,.75,.25);
+
+    fish.add(tail);
+
+    const topFin = new THREE.Mesh(
+      fishFinGeometry,
+      material
+    );
+
+    topFin.position.set(-.2,.35,0);
+    topFin.rotation.z = -.3;
+    topFin.scale.set(.37,.57,.18);
+
+    fish.add(topFin);
+
+    const eye = new THREE.Mesh(
+      new THREE.SphereGeometry(.065,8,8),
+      new THREE.MeshBasicMaterial({ color: 0x041b2c })
+    );
+
+    eye.position.set(.84,.1,.31);
+    fish.add(eye);
+
+    fish.scale.setScalar(scale);
+
+    return fish;
+
+  }
+
+  for (let schoolIndex = 0; schoolIndex < 3; schoolIndex++) {
+
+    const school = new THREE.Group();
+
+    const count =
+      schoolIndex === 0 ? 28 : 18;
+
+    for (let i = 0; i < count; i++) {
+
+      const fish = createFish(
+        .25 + Math.random() * .28,
+        fishMaterials[schoolIndex]
+      );
+
+      fish.position.set(
+        (Math.random() - .5) * 13,
+        (Math.random() - .5) * 5,
+        (Math.random() - .5) * 9
+      );
+
+      fish.userData.phase = Math.random() * Math.PI * 2;
+
+      school.add(fish);
+
+    }
+
+    school.position.set(
+      schoolIndex === 0 ? 10 : -18,
+      schoolIndex === 0 ? 5 : -1,
+      -15 - schoolIndex * 8
+    );
+
+    scene.add(school);
+
+    schools.push({
+      group: school,
+      speed: .38 + schoolIndex * .15,
+      offset: schoolIndex * 3
+    });
+
+  }
+
+  /* FLOATING PARTICLES */
+
+  const particleCount = 380;
+
+  const particlePositions =
+    new Float32Array(particleCount * 3);
+
+  for (let i = 0; i < particleCount; i++) {
+
+    particlePositions[i * 3] =
+      (Math.random() - .5) * 80;
+
+    particlePositions[i * 3 + 1] =
+      (Math.random() - .5) * 32;
+
+    particlePositions[i * 3 + 2] =
+      -55 + Math.random() * 80;
+
+  }
+
+  const particleGeometry = new THREE.BufferGeometry();
+
+  particleGeometry.setAttribute(
+    "position",
+    new THREE.BufferAttribute(particlePositions,3)
+  );
+
+  const particles = new THREE.Points(
+    particleGeometry,
+    new THREE.PointsMaterial({
+      color: 0xb4f7ff,
+      size: .12,
+      transparent: true,
+      opacity: .62,
+      depthWrite: false
+    })
+  );
+
+  scene.add(particles);
+
+  /* UNDERWATER LIGHT BEAMS */
+
+  const beamMaterial =
+    new THREE.MeshBasicMaterial({
+      color: 0x8fefff,
+      transparent: true,
+      opacity: .035,
+      depthWrite: false,
+      side: THREE.DoubleSide
+    });
+
+  for (let i = 0; i < 8; i++) {
+
+    const beam = new THREE.Mesh(
+      new THREE.ConeGeometry(
+        1.6 + Math.random() * 2,
+        38,
+        12,
+        1,
+        true
+      ),
+      beamMaterial.clone()
+    );
+
+    beam.position.set(
+      -27 + i * 8,
+      8,
+      -15 - Math.random() * 22
+    );
+
+    beam.rotation.z = .15 + Math.random() * .24;
+
+    scene.add(beam);
+
+  }
+
+  /* ANIMATION */
+
+  const clock = new THREE.Clock();
+
+  let pointerX = 0;
+  let pointerY = 0;
+  let running = true;
+  let animationId = 0;
+
+  window.addEventListener("pointermove",event => {
+
+    pointerX = event.clientX / window.innerWidth - .5;
+    pointerY = event.clientY / window.innerHeight - .5;
+
+  }, { passive: true });
+
+  function resizeOcean() {
+
+    const width = hero.clientWidth;
+    const height = hero.clientHeight;
+
+    if (!width || !height) return;
+
+    camera.aspect = width / height;
+    camera.updateProjectionMatrix();
+
+    renderer.setSize(width,height,false);
+
+  }
+
+  window.addEventListener("resize",resizeOcean);
+
+  document.addEventListener("visibilitychange",() => {
+
+    running = !document.hidden;
+
+    if (running && !animationId) {
+      animate();
+    }
+
+  });
+
+  function animate() {
+
+    if (!running) {
+      animationId = 0;
+      return;
+    }
+
+    animationId = requestAnimationFrame(animate);
+
+    const time = clock.getElapsedTime();
+
+    schools.forEach((item,index) => {
+
+      const school = item.group;
+
+      school.position.x =
+        Math.sin(time * .12 + item.offset) * 15;
+
+      school.position.y +=
+        Math.sin(time * .4 + index) * .002;
+
+      school.rotation.y =
+        Math.cos(time * .12 + item.offset) * .28;
+
+      school.children.forEach((fish,i) => {
+
+        fish.rotation.y =
+          Math.sin(time * 3 + fish.userData.phase) * .11;
+
+        fish.position.y +=
+          Math.sin(time * 2 + i) * .0009;
+
+      });
+
+    });
+
+    particles.rotation.y = time * .002;
+
+    const targetX = pointerX * 1.6;
+    const targetY = 3 - pointerY * .75;
+
+    camera.position.x +=
+      (targetX - camera.position.x) * .014;
+
+    camera.position.y +=
+      (targetY - camera.position.y) * .014;
+
+    camera.lookAt(0,1,-12);
+
+    renderer.render(scene,camera);
+
+  }
+
+  resizeOcean();
+  animate();
+
+})();
 </script>
 
 </body>
