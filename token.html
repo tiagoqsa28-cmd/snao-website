@@ -1,2309 +1,2582 @@
+
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#030b16">
+  <meta name="robots" content="index, follow">
 
-    <meta charset="UTF-8">
+  <title>$SNAO Token | SNAO World</title>
+  <meta name="description" content="Explore the SNAO token, its fixed supply, allocation, vesting structure, progressive Public Sale and planned ecosystem utility.">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+  <link rel="canonical" href="https://snao.world/token.html">
+  <link rel="icon" href="assets/favicon.png" type="image/png">
 
-    <title>
-        $SNAO Token — Ocean Intelligence
-    </title>
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="$SNAO Token — SNAO World">
+  <meta property="og:description" content="200 million fixed supply. Transparent token allocation. Explore the SNAO blockchain ecosystem.">
+  <meta property="og:url" content="https://snao.world/token.html">
+  <meta property="og:image" content="https://snao.world/assets/snao-preview.png">
 
-    <meta
-        name="description"
-        content="$SNAO is the utility token powering the SNAO Ocean Intelligence ecosystem, Sardine AI, premium tools, rewards and future governance."
-    >
+  <meta name="twitter:card" content="summary_large_image">
 
-    <meta property="og:title" content="$SNAO Token — Ocean Intelligence">
-<meta property="og:description" content="Official $SNAO Token page.">
-<meta property="og:type" content="website">
-<meta property="og:image" content="https://snao.world/assets/og-token.jpg">
-<meta property="og:url" content="https://snao.world/token.html">
+  <style>
+    :root {
+      --bg: #030b16;
+      --bg2: #061625;
+      --card: #0a2035;
+      --card2: #0c2941;
+      --cyan: #37def7;
+      --blue: #008afa;
+      --text: #f3f9ff;
+      --muted: #93abc0;
+      --border: rgba(90,205,255,.16);
+      --max: 1220px;
+    }
 
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="$SNAO Token">
-<meta name="twitter:description" content="Official $SNAO Token page">
-<meta name="twitter:image" content="https://snao.world/assets/og-token.jpg">
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
 
-    <link
-        rel="stylesheet"
-        href="style.css"
-    >
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 94px;
+    }
 
-    <link
-        rel="stylesheet"
-        href="token.css"
-    >
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: Inter, "Segoe UI", Arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
 
-    <link rel="icon" type="image/png" href="assets/favicon.png">
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
 
-    <link rel="canonical" href="https://snao.world/token.html">
+    button {
+      font: inherit;
+      cursor: pointer;
+    }
 
+    a:focus-visible,
+    button:focus-visible,
+    summary:focus-visible {
+      outline: 2px solid var(--cyan);
+      outline-offset: 4px;
+    }
+
+    ::selection {
+      color: #02111b;
+      background: var(--cyan);
+    }
+
+    .container {
+      width: min(var(--max), calc(100% - 48px));
+      margin: auto;
+    }
+
+    .gradient {
+      background: linear-gradient(100deg, #f1fdff, #49e5ff, #168ef5);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: #63def8;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--cyan);
+      box-shadow: 0 0 14px var(--cyan);
+    }
+
+    .section {
+      position: relative;
+      padding: 108px 0;
+    }
+
+    .section-heading {
+      max-width: 770px;
+      margin: 0 auto 49px;
+      text-align: center;
+    }
+
+    .section-heading h2 {
+      margin: 19px 0;
+      font-size: clamp(35px, 4.5vw, 61px);
+      letter-spacing: -2px;
+      line-height: 1.09;
+    }
+
+    .section-heading p {
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.85;
+    }
+
+    .btn {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      min-height: 51px;
+      padding: 14px 23px;
+      border: 1px solid transparent;
+      border-radius: 11px;
+      font-size: 13px;
+      font-weight: 800;
+      transition: transform .25s, background .25s, border-color .25s;
+    }
+
+    .btn-primary {
+      background: linear-gradient(110deg, #08b5e9, #55e8ff);
+      color: #02121c;
+      box-shadow: 0 10px 32px rgba(0,187,255,.18);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 40px rgba(0,187,255,.28);
+    }
+
+    .btn-secondary {
+      color: var(--text);
+      border-color: rgba(96,211,255,.28);
+      background: rgba(7,27,44,.76);
+    }
+
+    .btn-secondary:hover {
+      transform: translateY(-3px);
+      border-color: var(--cyan);
+    }
+
+    /* HEADER */
+
+    .header {
+      position: fixed;
+      z-index: 100;
+      inset: 0 0 auto;
+      height: 78px;
+      border-bottom: 1px solid var(--border);
+      background: rgba(3,11,22,.88);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+    }
+
+    .header-inner {
+      height: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-shrink: 0;
+    }
+
+    .brand-icon {
+      width: 43px;
+      height: 43px;
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(65,217,255,.43);
+      border-radius: 13px;
+      background: radial-gradient(circle,rgba(0,186,255,.25),transparent);
+      color: var(--cyan);
+      font-size: 29px;
+      font-weight: 900;
+      font-style: italic;
+    }
+
+    .brand-name strong {
+      display: block;
+      font-size: 17px;
+      letter-spacing: 3px;
+    }
+
+    .brand-name small {
+      display: block;
+      margin-top: 3px;
+      color: var(--muted);
+      font-size: 9px;
+      letter-spacing: 3px;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .nav a {
+      color: #b7cadc;
+      font-size: 12px;
+      transition: color .2s;
+    }
+
+    .nav a:hover,
+    .nav a.active {
+      color: var(--cyan);
+    }
+
+    .nav .nav-buy {
+      padding: 12px 18px;
+      border-radius: 9px;
+      background: var(--cyan);
+      color: #02111c;
+      font-weight: 800;
+    }
+
+    .menu-toggle {
+      display: none;
+      padding: 10px 13px;
+      border: 1px solid var(--border);
+      border-radius: 9px;
+      color: var(--text);
+      background: var(--card);
+      font-size: 22px;
+    }
+
+    /* HERO */
+
+    .hero {
+      position: relative;
+      min-height: 750px;
+      display: flex;
+      align-items: center;
+      padding: 155px 0 100px;
+      overflow: hidden;
+      isolation: isolate;
+      background:
+        radial-gradient(ellipse at 75% 45%,rgba(0,167,255,.2),transparent 46%),
+        radial-gradient(ellipse at 15% 12%,rgba(15,80,155,.16),transparent 40%),
+        linear-gradient(145deg,#030a15,#06172a,#030b16);
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      inset: 0;
+      opacity: .15;
+      background-image:
+        linear-gradient(rgba(90,195,245,.13) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(90,195,245,.13) 1px,transparent 1px);
+      background-size: 60px 60px;
+      mask-image: linear-gradient(to bottom,transparent,#000 30%,transparent);
+    }
+
+    .hero-layout {
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 55px;
+      align-items: center;
+    }
+
+    .hero-copy h1 {
+      margin: 24px 0;
+      font-size: clamp(58px,7.5vw,100px);
+      line-height: .96;
+      letter-spacing: -5px;
+    }
+
+    .hero-copy h1 span {
+      display: block;
+    }
+
+    .hero-copy p {
+      max-width: 580px;
+      margin: 27px 0 32px;
+      color: #a0b8ca;
+      font-size: 17px;
+      line-height: 1.85;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 13px;
+    }
+
+    .hero-note {
+      margin-top: 25px;
+      color: #809bb0;
+      font-size: 12px;
+      line-height: 1.75;
+    }
+
+    .hero-note strong {
+      color: #c7e8f5;
+    }
+
+    /* TOKEN ART */
+
+    .coin-stage {
+      min-height: 490px;
+      position: relative;
+      display: grid;
+      place-items: center;
+      perspective: 950px;
+    }
+
+    .coin-glow {
+      position: absolute;
+      width: 470px;
+      height: 470px;
+      border-radius: 50%;
+      background: radial-gradient(circle,rgba(0,190,255,.24),transparent 70%);
+      filter: blur(28px);
+    }
+
+    .coin-orbit {
+      position: relative;
+      width: min(420px,85vw);
+      aspect-ratio: 1;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      border: 1px solid rgba(67,214,255,.3);
+      animation: float 7s ease-in-out infinite;
+    }
+
+    .coin-orbit::before,
+    .coin-orbit::after {
+      content: "";
+      position: absolute;
+      inset: 40px;
+      border-radius: 50%;
+      border: 1px dashed rgba(66,213,255,.3);
+      animation: rotate 45s linear infinite;
+    }
+
+    .coin-orbit::after {
+      inset: -18px;
+      border-style: solid;
+      border-color: rgba(66,213,255,.09);
+    }
+
+    .coin {
+      width: 230px;
+      height: 230px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      border: 2px solid rgba(83,226,255,.65);
+      border-radius: 50%;
+      background:
+        radial-gradient(circle at 30% 25%,rgba(47,189,255,.4),transparent 58%),
+        linear-gradient(145deg,#0a385c,#041321);
+      box-shadow:
+        0 0 72px rgba(0,185,255,.17),
+        inset 0 0 35px rgba(0,194,255,.16);
+      transform: rotateX(8deg) rotateY(-13deg);
+    }
+
+    .coin::after {
+      content: "";
+      position: absolute;
+      inset: 9px;
+      border-radius: 50%;
+      border: 1px solid rgba(95,232,255,.23);
+    }
+
+    .coin-symbol {
+      color: #76eaff;
+      font-size: 90px;
+      font-weight: 900;
+      font-style: italic;
+      line-height: 1;
+      text-shadow: 0 0 28px rgba(0,203,255,.5);
+    }
+
+    .coin strong {
+      font-size: 24px;
+      letter-spacing: 4px;
+    }
+
+    .coin small {
+      margin-top: 8px;
+      color: #98c4d6;
+      font-size: 9px;
+      letter-spacing: 2px;
+    }
+
+    .floating-label {
+      position: absolute;
+      padding: 13px 17px;
+      border: 1px solid rgba(73,214,255,.26);
+      border-radius: 10px;
+      background: rgba(5,24,43,.94);
+      box-shadow: 0 12px 35px rgba(0,0,0,.26);
+    }
+
+    .floating-label span {
+      display: block;
+      color: var(--muted);
+      font-size: 10px;
+      margin-bottom: 7px;
+    }
+
+    .floating-label strong {
+      display: block;
+      font-size: 16px;
+    }
+
+    .label-a {
+      top: 32px;
+      right: -20px;
+    }
+
+    .label-b {
+      left: -30px;
+      bottom: 125px;
+    }
+
+    .label-c {
+      right: 0;
+      bottom: 22px;
+    }
+
+    /* METRICS */
+
+    .metrics-section {
+      padding: 0 0 75px;
+      background: #04101c;
+    }
+
+    .metrics-grid {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: repeat(5,1fr);
+      gap: 12px;
+    }
+
+    .metric {
+      padding: 23px 17px;
+      border: 1px solid var(--border);
+      border-radius: 15px;
+      background: #0a2035;
+    }
+
+    .metric span {
+      display: block;
+      color: var(--muted);
+      font-size: 11px;
+      line-height: 1.5;
+    }
+
+    .metric strong {
+      display: block;
+      margin-top: 13px;
+      color: #ecfbff;
+      font-size: clamp(18px,2vw,24px);
+    }
+
+    .metric small {
+      display: block;
+      margin-top: 8px;
+      color: #6f8ca2;
+      font-size: 10px;
+    }
+
+    /* SALE */
+
+    .sale-section {
+      background:
+        radial-gradient(circle at 15% 35%,rgba(0,160,255,.11),transparent 40%),
+        #04101c;
+    }
+
+    .sale-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 65px;
+      align-items: center;
+    }
+
+    .sale-copy h2 {
+      margin: 21px 0;
+      font-size: clamp(37px,4.7vw,61px);
+      letter-spacing: -2px;
+      line-height: 1.08;
+    }
+
+    .sale-copy p {
+      color: var(--muted);
+      line-height: 1.9;
+      font-size: 15px;
+    }
+
+    .sale-features {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 29px;
+    }
+
+    .sale-feature {
+      padding: 19px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: rgba(9,33,54,.7);
+    }
+
+    .sale-feature span {
+      display: block;
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    .sale-feature strong {
+      display: block;
+      margin-top: 11px;
+      font-size: 18px;
+    }
+
+    .sale-panel {
+      padding: 32px;
+      border: 1px solid rgba(69,218,255,.32);
+      border-radius: 22px;
+      background: linear-gradient(145deg,#0b2841,#061421);
+      box-shadow: 0 30px 90px rgba(0,0,0,.3);
+    }
+
+    .sale-panel-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+      align-items: flex-start;
+      padding-bottom: 23px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .sale-panel-top span {
+      display: block;
+      color: var(--cyan);
+      font-size: 10px;
+      letter-spacing: 1.5px;
+      font-weight: 800;
+    }
+
+    .sale-panel-top h3 {
+      margin: 9px 0 0;
+      font-size: 27px;
+    }
+
+    .network-pill {
+      padding: 9px 11px;
+      border-radius: 8px;
+      border: 1px solid rgba(240,185,11,.2);
+      background: rgba(240,185,11,.09);
+      color: #f0c45b;
+      white-space: nowrap;
+      font-size: 10px;
+      font-weight: 800;
+    }
+
+    .sale-panel-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 17px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 13px;
+    }
+
+    .sale-panel-row span {
+      color: var(--muted);
+    }
+
+    .sale-panel-row strong {
+      color: #eaf9ff;
+      text-align: right;
+    }
+
+    .sale-panel .btn {
+      display: flex;
+      width: 100%;
+      margin-top: 26px;
+    }
+
+    .sale-panel small {
+      display: block;
+      margin-top: 18px;
+      color: #7897ad;
+      font-size: 11px;
+      line-height: 1.8;
+      text-align: center;
+    }
+
+    /* TOKEN ALLOCATION */
+
+    .allocation-section {
+      background: linear-gradient(180deg,#061524,#030c18);
+    }
+
+    .allocation-layout {
+      display: grid;
+      grid-template-columns: .85fr 1.15fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .chart-area {
+      text-align: center;
+    }
+
+    .allocation-chart {
+      width: min(365px,85vw);
+      aspect-ratio: 1;
+      margin: auto;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: conic-gradient(
+        #45e3f8 0% 13%,
+        #008cf5 13% 35.5%,
+        #2b6cf0 35.5% 55.5%,
+        #1861a7 55.5% 75.5%,
+        #19b7b3 75.5% 83%,
+        #4a9aaa 83% 88%,
+        #93a7e9 88% 92%,
+        #b1c6d5 92% 94.5%,
+        #6d7dba 94.5% 100%
+      );
+      box-shadow: 0 0 80px rgba(0,169,255,.09);
+    }
+
+    .chart-center {
+      width: 75%;
+      aspect-ratio: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      border-radius: 50%;
+      background: #071827;
+      border: 1px solid rgba(80,195,245,.17);
+    }
+
+    .chart-center span {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .chart-center strong {
+      margin: 12px 0;
+      font-size: clamp(35px,5vw,55px);
+    }
+
+    .chart-center small {
+      color: var(--cyan);
+      letter-spacing: 2px;
+      font-size: 11px;
+    }
+
+    .chart-caption {
+      margin-top: 23px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .allocation-list {
+      display: grid;
+      gap: 9px;
+    }
+
+    .allocation-item {
+      display: grid;
+      grid-template-columns: 12px 1fr auto;
+      align-items: center;
+      gap: 14px;
+      padding: 15px 17px;
+      border: 1px solid var(--border);
+      border-radius: 11px;
+      background: rgba(10,31,51,.8);
+    }
+
+    .allocation-color {
+      width: 11px;
+      height: 11px;
+      border-radius: 3px;
+      background: var(--color);
+    }
+
+    .allocation-item strong {
+      display: block;
+      font-size: 13px;
+    }
+
+    .allocation-item small {
+      display: block;
+      margin-top: 5px;
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    .allocation-amount {
+      text-align: right;
+    }
+
+    .allocation-amount b {
+      display: block;
+      font-size: 15px;
+      color: var(--cyan);
+    }
+
+    .allocation-amount span {
+      display: block;
+      margin-top: 5px;
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    /* VESTING */
+
+    .vesting-section {
+      background: #030c18;
+    }
+
+    .vesting-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 38px;
+      align-items: start;
+    }
+
+    .vesting-card {
+      padding: 32px;
+      border: 1px solid var(--border);
+      border-radius: 19px;
+      background: #0a2035;
+    }
+
+    .vesting-card h3 {
+      margin: 12px 0 20px;
+      font-size: 28px;
+    }
+
+    .vesting-card p {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.85;
+    }
+
+    .vesting-stat {
+      padding: 16px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .vesting-stat span {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .vesting-stat strong {
+      color: var(--cyan);
+      font-size: 14px;
+      text-align: right;
+    }
+
+    .vesting-timeline {
+      display: grid;
+      gap: 15px;
+    }
+
+    .timeline-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 19px;
+      padding: 23px;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      background: #0a2035;
+    }
+
+    .timeline-number {
+      flex-shrink: 0;
+      width: 35px;
+      height: 35px;
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(56,213,255,.35);
+      border-radius: 50%;
+      color: var(--cyan);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .timeline-item strong {
+      font-size: 15px;
+    }
+
+    .timeline-item p {
+      margin: 8px 0 0;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.8;
+    }
+
+    /* UTILITY */
+
+    .utility-section {
+      background:
+        radial-gradient(circle at 50% 0,rgba(0,151,225,.08),transparent 40%),
+        #051422;
+    }
+
+    .utility-grid {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 18px;
+    }
+
+    .utility-card {
+      padding: 30px;
+      min-height: 260px;
+      border: 1px solid var(--border);
+      border-radius: 17px;
+      background: linear-gradient(145deg,#0c263e,#071827);
+    }
+
+    .utility-number {
+      color: var(--cyan);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 2px;
+    }
+
+    .utility-card h3 {
+      margin: 24px 0 12px;
+      font-size: 22px;
+    }
+
+    .utility-card p {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.8;
+    }
+
+    .utility-card small {
+      display: inline-block;
+      margin-top: 13px;
+      padding: 8px 10px;
+      background: rgba(0,155,215,.08);
+      border: 1px solid var(--border);
+      border-radius: 7px;
+      color: #70dcf4;
+      font-size: 10px;
+      letter-spacing: 1px;
+    }
+
+    /* HOW TO BUY */
+
+    .how-section {
+      background: #030d19;
+    }
+
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(4,1fr);
+      gap: 16px;
+    }
+
+    .step-card {
+      padding: 27px 22px;
+      border: 1px solid var(--border);
+      border-radius: 17px;
+      background: #0a2035;
+    }
+
+    .step-number {
+      color: var(--cyan);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 2px;
+    }
+
+    .step-card h3 {
+      margin: 21px 0 13px;
+      font-size: 18px;
+    }
+
+    .step-card p {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.8;
+    }
+
+    .how-action {
+      margin-top: 32px;
+      text-align: center;
+    }
+
+    .security-notice {
+      max-width: 790px;
+      margin: 30px auto 0;
+      padding: 17px 20px;
+      border-left: 2px solid var(--cyan);
+      color: #94adbf;
+      background: rgba(10,32,53,.65);
+      font-size: 12px;
+      line-height: 1.85;
+    }
+
+    /* MARKET ACCESS */
+
+    .market-section {
+      background: #051423;
+    }
+
+    .market-grid {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 19px;
+    }
+
+    .market-card {
+      padding: 30px;
+      border: 1px solid var(--border);
+      border-radius: 17px;
+      background: #0b243b;
+    }
+
+    .market-card span {
+      color: var(--cyan);
+      font-size: 11px;
+      letter-spacing: 1.5px;
+      font-weight: 800;
+    }
+
+    .market-card h3 {
+      margin: 20px 0 12px;
+      font-size: 23px;
+    }
+
+    .market-card p {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.85;
+    }
+
+    /* FAQ */
+
+    .faq-section {
+      background: #030c18;
+    }
+
+    .faq-wrap {
+      max-width: 850px;
+      margin: auto;
+    }
+
+    .faq-wrap details {
+      margin-bottom: 12px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: #0a2035;
+    }
+
+    .faq-wrap summary {
+      padding: 20px;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .faq-wrap details p {
+      margin: 0;
+      padding: 0 20px 21px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.85;
+    }
+
+    /* FINAL CTA */
+
+    .final-cta {
+      padding: 115px 0;
+      text-align: center;
+      background:
+        radial-gradient(circle at center,rgba(0,169,255,.17),transparent 58%),
+        #051525;
+    }
+
+    .final-cta h2 {
+      margin: 22px auto;
+      max-width: 850px;
+      font-size: clamp(39px,5.6vw,74px);
+      line-height: 1.08;
+      letter-spacing: -2px;
+    }
+
+    .final-cta p {
+      max-width: 670px;
+      margin: 0 auto 31px;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.85;
+    }
+
+    .final-actions {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 13px;
+    }
+
+    /* FOOTER */
+
+    .footer {
+      padding: 55px 0 25px;
+      border-top: 1px solid var(--border);
+      background: #020914;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.6fr 1fr 1fr;
+      gap: 45px;
+    }
+
+    .footer-about p {
+      max-width: 350px;
+      margin-top: 20px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.85;
+    }
+
+    .footer-column h4 {
+      margin: 0 0 19px;
+      font-size: 12px;
+      letter-spacing: 1px;
+    }
+
+    .footer-column a {
+      display: block;
+      margin: 11px 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .footer-column a:hover {
+      color: var(--cyan);
+    }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin-top: 50px;
+      padding-top: 22px;
+      border-top: 1px solid var(--border);
+      color: #7590a4;
+      font-size: 11px;
+      line-height: 1.75;
+    }
+
+    /* ANIMATIONS */
+
+    @keyframes float {
+      0%,100% { transform: translateY(0); }
+      50% { transform: translateY(-14px); }
+    }
+
+    @keyframes rotate {
+      to { transform: rotate(360deg); }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* RESPONSIVE */
+
+    @media (max-width: 1100px) {
+      .nav { gap: 13px; }
+      .nav a { font-size: 11px; }
+      .hero-layout { gap: 25px; }
+      .hero-copy h1 { font-size: 70px; }
+      .label-b { left: 0; }
+    }
+
+    @media (max-width: 900px) {
+      .menu-toggle { display: block; }
+
+      .nav {
+        display: none;
+        position: absolute;
+        top: 78px;
+        left: 0;
+        right: 0;
+        padding: 18px 24px;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        background: #061524;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .nav.open { display: flex; }
+
+      .nav a {
+        padding: 13px 10px;
+        font-size: 14px;
+      }
+
+      .nav .nav-buy {
+        text-align: center;
+        margin-top: 10px;
+      }
+
+      .hero-layout,
+      .sale-layout,
+      .allocation-layout,
+      .vesting-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding-top: 135px;
+      }
+
+      .hero-copy { text-align: center; }
+      .hero-copy p { margin-inline: auto; }
+      .hero-actions { justify-content: center; }
+
+      .metrics-grid {
+        grid-template-columns: repeat(3,1fr);
+      }
+
+      .allocation-layout {
+        gap: 45px;
+      }
+
+      .utility-grid,
+      .market-grid {
+        grid-template-columns: repeat(2,1fr);
+      }
+
+      .steps-grid {
+        grid-template-columns: repeat(2,1fr);
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        width: calc(100% - 34px);
+      }
+
+      .header {
+        height: 70px;
+      }
+
+      .nav {
+        top: 70px;
+      }
+
+      .section {
+        padding: 75px 0;
+      }
+
+      .hero {
+        min-height: auto;
+        padding: 125px 0 75px;
+      }
+
+      .hero-copy h1 {
+        font-size: clamp(55px,14vw,75px);
+        letter-spacing: -3px;
+      }
+
+      .hero-copy p {
+        font-size: 14px;
+      }
+
+      .hero-actions .btn {
+        width: 100%;
+      }
+
+      .coin-stage {
+        min-height: 335px;
+      }
+
+      .coin-orbit {
+        width: 275px;
+      }
+
+      .coin-orbit::before {
+        inset: 25px;
+      }
+
+      .coin {
+        width: 160px;
+        height: 160px;
+      }
+
+      .coin-symbol {
+        font-size: 58px;
+      }
+
+      .coin strong {
+        font-size: 18px;
+      }
+
+      .coin small {
+        font-size: 7px;
+      }
+
+      .floating-label {
+        padding: 9px 11px;
+      }
+
+      .floating-label span {
+        font-size: 8px;
+      }
+
+      .floating-label strong {
+        font-size: 11px;
+      }
+
+      .label-a { top: 12px; right: 0; }
+      .label-b { bottom: 60px; }
+      .label-c { bottom: 0; }
+
+      .metrics-grid {
+        grid-template-columns: repeat(2,1fr);
+      }
+
+      .metric {
+        padding: 18px 13px;
+      }
+
+      .metric strong {
+        font-size: 19px;
+        overflow-wrap: anywhere;
+      }
+
+      .sale-panel {
+        padding: 22px;
+      }
+
+      .sale-panel-top h3 {
+        font-size: 22px;
+      }
+
+      .sale-features,
+      .utility-grid,
+      .market-grid,
+      .steps-grid,
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .allocation-item {
+        gap: 9px;
+        padding: 13px;
+      }
+
+      .allocation-item strong {
+        font-size: 12px;
+      }
+
+      .allocation-item small {
+        font-size: 10px;
+      }
+
+      .allocation-amount b {
+        font-size: 13px;
+      }
+
+      .allocation-amount span {
+        font-size: 10px;
+      }
+
+      .vesting-card {
+        padding: 23px;
+      }
+
+      .section-heading h2 {
+        letter-spacing: -1px;
+      }
+
+      .final-cta {
+        padding: 85px 0;
+      }
+
+      .final-actions .btn {
+        width: 100%;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+
+      *, *::before, *::after {
+        animation: none !important;
+        transition: none !important;
+      }
+
+      .reveal {
+        opacity: 1;
+        transform: none;
+      }
+    }
+  </style>
 </head>
 
-<body class="token-page">
+<body>
 
-    <!-- =========================================
-         HEADER
-    ========================================== -->
+  <!-- HEADER -->
 
-    <header class="token-header">
+  <header class="header">
+    <div class="container header-inner">
 
-        <a
-            class="token-brand"
-            href="index.html"
-        >
+      <a href="index.html" class="brand" aria-label="SNAO World Home">
+        <span class="brand-icon">S</span>
+        <span class="brand-name">
+          <strong>SNAO</strong>
+          <small>WORLD</small>
+        </span>
+      </a>
 
-            <span class="token-brand-symbol">
-                ◉
-            </span>
+      <nav class="nav" id="navigation" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="index.html#platforms">Platforms</a>
+        <a href="index.html#atlas">ATLAS</a>
+        <a href="about.html">About</a>
+        <a href="token.html" class="active" aria-current="page">Token</a>
+        <a href="#allocation">Allocation</a>
+        <a href="#vesting">Vesting</a>
+        <a href="whitepaper.html">Whitepaper</a>
+        <a href="sale.html" class="nav-buy">Public Sale</a>
+      </nav>
 
-            <span class="token-brand-copy">
+      <button
+        class="menu-toggle"
+        id="menuToggle"
+        type="button"
+        aria-label="Toggle navigation"
+        aria-controls="navigation"
+        aria-expanded="false"
+      >☰</button>
 
-                <strong>
-                    SNAO
-                </strong>
+    </div>
+  </header>
 
-                <small>
-                    Ocean Intelligence
-                </small>
+  <main>
 
-            </span>
+    <!-- HERO -->
 
-        </a>
+    <section class="hero" id="top">
+      <div class="container hero-layout">
 
+        <div class="hero-copy">
+          <span class="eyebrow">
+            The SNAO World Digital Token
+          </span>
 
-        <nav class="token-navigation">
+          <h1>
+            Meet
+            <span class="gradient">$SNAO.</span>
+          </h1>
 
-            <a href="index.html">
-    Home
-</a>
+          <p>
+            A blockchain token associated with the evolving
+            SNAO World technology ecosystem.
 
-<a href="about.html">
-    About
-</a>
+            Explore its fixed supply, distribution framework,
+            progressive Public Sale and planned future
+            digital utility.
+          </p>
 
-<a href="terminal.html">
-    Terminal
-</a>
-
-<a class="active" href="token.html">
-    Token
-</a>
-
-            <a href="sale.html">
-    Public Sale
-</a>
-
-            <a href="#allocation">
-                Allocation
+          <div class="hero-actions">
+            <a href="sale.html" class="btn btn-primary">
+              Explore Public Sale →
             </a>
 
-            <a href="#utility">
-                Utility
+            <a href="#allocation" class="btn btn-secondary">
+              View Tokenomics
             </a>
+          </div>
 
-            <a href="#buy">
-                How to Buy
-            </a>
+          <p class="hero-note">
+            <strong>BNB Smart Chain.</strong>
+            Official purchase information is available
+            through the dedicated SNAO Public Sale page.
+          </p>
+        </div>
 
-        </nav>
+        <div class="coin-stage" aria-label="SNAO token illustration">
 
+          <div class="coin-glow"></div>
 
-        <div class="token-header-actions">
+          <div class="coin-orbit">
 
-            <span class="token-network-status">
+            <div class="coin">
+              <span class="coin-symbol">S</span>
+              <strong>SNAO</strong>
+              <small>BNB SMART CHAIN</small>
+            </div>
 
-                <i></i>
+            <div class="floating-label label-a">
+              <span>Fixed Supply</span>
+              <strong>200,000,000</strong>
+            </div>
 
-                BNB Smart Chain
+            <div class="floating-label label-b">
+              <span>Public Sale</span>
+              <strong>45M SNAO</strong>
+            </div>
 
-            </span>
+            <div class="floating-label label-c">
+              <span>Token Symbol</span>
+              <strong>$SNAO</strong>
+            </div>
 
-            <a
-                class="token-community-button"
-                href="https://t.me/snaoofficial"
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-                Join Community
-                <span>↗</span>
-            </a>
+          </div>
 
         </div>
 
+      </div>
+    </section>
 
-        <button
-            class="token-menu-button"
-            id="tokenMenuButton"
-            type="button"
-            aria-label="Open token menu"
-            aria-expanded="false"
-        >
+    <!-- TOKEN METRICS -->
 
-            <span></span>
-            <span></span>
-            <span></span>
+    <section class="metrics-section" id="tokenomics">
+      <div class="container metrics-grid">
 
-        </button>
+        <article class="metric">
+          <span>Total Supply</span>
+          <strong>200M</strong>
+          <small>Fixed supply</small>
+        </article>
 
-    </header>
+        <article class="metric">
+          <span>Public Sale</span>
+          <strong>45M</strong>
+          <small>22.5% of supply</small>
+        </article>
 
+        <article class="metric">
+          <span>Starting Price</span>
+          <strong>$0.001</strong>
+          <small>First progressive lot</small>
+        </article>
 
-    <!-- =========================================
-         MOBILE MENU
-    ========================================== -->
+        <article class="metric">
+          <span>Soft Cap</span>
+          <strong>$250K</strong>
+          <small>Sale target</small>
+        </article>
 
-    <div
-        class="token-mobile-menu"
-        id="tokenMobileMenu"
-    >
+        <article class="metric">
+          <span>Hard Cap</span>
+          <strong>$5M</strong>
+          <small>Maximum raise</small>
+        </article>
 
-        <a href="index.html">
-    Home
-</a>
+      </div>
+    </section>
 
-<a href="about.html">
-    About
-</a>
+    <!-- PUBLIC SALE -->
 
-<a href="terminal.html">
-    Terminal
-</a>
+    <section class="section sale-section" id="public-sale">
+      <div class="container sale-layout">
 
-<a href="token.html">
-    Token
-</a>
+        <div class="sale-copy reveal">
 
-        <a href="sale.html">
-    Public Sale
-</a>
+          <span class="eyebrow">
+            Progressive Public Sale
+          </span>
 
-        <a href="#allocation">
-            Allocation
-        </a>
+          <h2>
+            A structured path
+            <span class="gradient">
+              into the SNAO ecosystem.
+            </span>
+          </h2>
 
-        <a href="#utility">
-            Utility
-        </a>
+          <p>
+            The SNAO Public Sale uses a progressive
+            pricing structure organized into
+            1,800 lots of 25,000 tokens each.
+          </p>
 
-        <a href="#buy">
-            How to Buy
-        </a>
+          <p>
+            The initial lot price is $0.001 per SNAO.
+            Later lots follow the project's
+            progressive pricing mechanism.
+          </p>
 
-    </div>
+          <p>
+            Current pricing, availability and
+            purchase conditions must be confirmed
+            through the official sale interface.
+          </p>
 
+          <div class="sale-features">
 
-    <!-- =========================================
-         MAIN
-    ========================================== -->
-
-    <main>
-
-        <!-- =========================================
-             HERO
-        ========================================== -->
-
-        <section class="token-hero">
-
-            <div class="token-hero-background">
-
-                <div class="token-orbit token-orbit-one"></div>
-
-                <div class="token-orbit token-orbit-two"></div>
-
-                <div class="token-orbit token-orbit-three"></div>
-
-                <div class="token-particle token-particle-one"></div>
-
-                <div class="token-particle token-particle-two"></div>
-
-                <div class="token-particle token-particle-three"></div>
-
+            <div class="sale-feature">
+              <span>Lot Size</span>
+              <strong>25,000 SNAO</strong>
             </div>
 
-
-            <div class="token-hero-content">
-
-                <span class="token-hero-badge">
-
-                    <i></i>
-
-                    The Intelligence Economy Token
-
-                </span>
-
-
-                <h1>
-
-                    Powering the future of
-
-                    <span>
-                        Ocean Intelligence.
-                    </span>
-
-                </h1>
-
-
-                <p>
-                    $SNAO connects artificial intelligence, blockchain data,
-                    premium market tools, rewards and the growing SNAO ecosystem.
-                </p>
-
-
-                <div class="token-hero-actions">
-
-                    <a
-    class="token-primary-button"
-    href="sale.html"
->
-    View Public Sale
-    <span>↗</span>
-</a>
-
-                    <a
-                        class="token-secondary-button"
-                        href="#tokenomics"
-                    >
-                        Explore Tokenomics
-                    </a>
-
-                </div>
-
-
-                <div class="token-launch-note">
-
-                    <span>
-                        Contract
-                    </span>
-
-                    <strong>
-                        Coming Soon
-                    </strong>
-
-                    <button
-                        type="button"
-                        disabled
-                    >
-                        Copy Address
-                    </button>
-
-                </div>
-
+            <div class="sale-feature">
+              <span>Progressive Lots</span>
+              <strong>1,800</strong>
             </div>
 
-
-            <!-- TOKEN VISUAL -->
-
-            <div class="token-hero-visual">
-
-                <div class="token-visual-glow"></div>
-
-                <div class="token-visual-orbit orbit-large"></div>
-
-                <div class="token-visual-orbit orbit-medium"></div>
-
-                <div class="token-visual-orbit orbit-small"></div>
-
-
-                <div class="token-coin">
-
-                    <span>
-                        SNAO
-                    </span>
-
-                    <strong>
-                        $
-                    </strong>
-
-                    <small>
-                        Ocean Intelligence
-                    </small>
-
-                </div>
-
-
-                <article class="token-floating-card token-floating-card-one">
-
-                    <span>
-                        Total Supply
-                    </span>
-
-                    <strong>
-                        200M
-                    </strong>
-
-                </article>
-
-
-                <article class="token-floating-card token-floating-card-two">
-
-                    <span>
-                        Network
-                    </span>
-
-                    <strong>
-                        BNB Chain
-                    </strong>
-
-                </article>
-
-
-                <article class="token-floating-card token-floating-card-three">
-
-                    <span>
-                        Status
-                    </span>
-
-                    <strong>
-                        Pre-Launch
-                    </strong>
-
-                </article>
-
+            <div class="sale-feature">
+              <span>Maximum Sale</span>
+              <strong>45M SNAO</strong>
             </div>
 
-        </section>
-
-
-        <!-- =========================================
-             TOKEN METRICS
-        ========================================== -->
-
-        <section
-    class="token-metrics-section"
-    id="tokenomics"
->
-
-    <article class="token-metric-card">
-        <span>Total Supply</span>
-        <strong>200,000,000</strong>
-        <small>Fixed maximum supply</small>
-    </article>
-
-    <article class="token-metric-card">
-        <span>Public Sale</span>
-        <strong>45,000,000</strong>
-        <small>22.5% of total supply</small>
-    </article>
-
-    <article class="token-metric-card">
-        <span>Starting Sale Price</span>
-        <strong>$0.001</strong>
-        <small>First progressive sale lot</small>
-    </article>
-
-    <article class="token-metric-card">
-        <span>Soft Cap</span>
-        <strong>$250,000</strong>
-        <small>Public sale target</small>
-    </article>
-
-    <article class="token-metric-card">
-        <span>Hard Cap</span>
-        <strong>$5,000,000</strong>
-        <small>Maximum public sale raise</small>
-    </article>
-
-</section>
-
-
-        <!-- =========================================
-             TOKEN INTRODUCTION
-        ========================================== -->
-
-        <section class="token-introduction">
-
-            <div class="token-section-heading">
-
-                <span>
-                    The Role of $SNAO
-                </span>
-
-                <h2>
-                    More than a token.
-                    <br>
-                    The economic layer of the ecosystem.
-                </h2>
-
-                <p>
-                    $SNAO is designed to connect users, intelligence tools,
-                    premium services, marketplace access and future rewards
-                    inside one expanding Ocean Intelligence network.
-                </p>
-
+            <div class="sale-feature">
+              <span>Transaction Limit</span>
+              <strong>2.5M SNAO</strong>
             </div>
 
+          </div>
 
-            <div class="token-introduction-grid">
+        </div>
 
-                <article>
+        <div class="sale-panel reveal">
 
-                    <span>
-                        01
-                    </span>
-
-                    <strong>
-                        Access
-                    </strong>
-
-                    <p>
-                        Unlock premium Sardine AI tools, advanced reports
-                        and ecosystem features.
-                    </p>
-
-                </article>
-
-
-                <article>
-
-                    <span>
-                        02
-                    </span>
-
-                    <strong>
-                        Participation
-                    </strong>
-
-                    <p>
-                        Participate in missions, rewards, rankings and
-                        future community programs.
-                    </p>
-
-                </article>
-
-
-                <article>
-
-                    <span>
-                        03
-                    </span>
-
-                    <strong>
-                        Utility
-                    </strong>
-
-                    <p>
-                        Use $SNAO across the marketplace, VIP services
-                        and future platform integrations.
-                    </p>
-
-                </article>
-
+          <div class="sale-panel-top">
+            <div>
+              <span>OFFICIAL SNAO SALE</span>
+              <h3>Public Sale</h3>
             </div>
 
-        </section>
+            <span class="network-pill">
+              BNB CHAIN
+            </span>
+          </div>
 
+          <div class="sale-panel-row">
+            <span>Token</span>
+            <strong>$SNAO</strong>
+          </div>
 
-        <!-- =========================================
-     TOKEN ALLOCATION
-========================================== -->
+          <div class="sale-panel-row">
+            <span>Payment Token</span>
+            <strong>USDT</strong>
+          </div>
 
-<section
-    class="token-allocation-section"
-    id="allocation"
->
+          <div class="sale-panel-row">
+            <span>Initial Lot Price</span>
+            <strong>$0.001</strong>
+          </div>
 
-    <div class="token-section-heading">
+          <div class="sale-panel-row">
+            <span>Pricing Model</span>
+            <strong>Progressive Lots</strong>
+          </div>
 
-        <span>
-            Token Allocation
-        </span>
+          <div class="sale-panel-row">
+            <span>Purchase Interface</span>
+            <strong>Official Sale Page</strong>
+          </div>
 
-        <h2>
-            A structured distribution
-            <br>
-            designed for long-term growth.
-        </h2>
+          <a href="sale.html" class="btn btn-primary">
+            Open Official Purchase Page →
+          </a>
 
-        <p>
-            The $SNAO supply is divided across development, liquidity,
-            public distribution, ecosystem growth and long-term reserves.
-        </p>
+          <small>
+            Purchases, wallet connections and
+            transaction approvals take place
+            on the official sale page.
+            Always verify the website and
+            transaction details before signing.
+          </small>
 
-    </div>
+        </div>
 
+      </div>
+    </section>
 
-    <div class="token-allocation-layout">
+    <!-- ALLOCATION -->
 
-        <!-- GRÁFICO -->
+    <section class="section allocation-section" id="allocation">
 
-        <div class="token-allocation-chart-area">
+      <div class="container">
+
+        <div class="section-heading reveal">
+          <span class="eyebrow">
+            Token Distribution
+          </span>
+
+          <h2>
+            Transparent
+            <span class="gradient">
+              token allocation.
+            </span>
+          </h2>
+
+          <p>
+            The fixed supply of 200 million SNAO
+            is divided among nine allocation
+            categories covering public distribution,
+            liquidity, development and long-term reserves.
+          </p>
+        </div>
+
+        <div class="allocation-layout">
+
+          <div class="chart-area reveal">
 
             <div
-                class="token-allocation-chart"
-                id="tokenAllocationChart"
+              class="allocation-chart"
+              role="img"
+              aria-label="Token allocation chart: Founder 13%, Public Sale 22.5%, Liquidity 20%, Treasury 20%, Team and Development 7.5%, Partnerships 5%, Community 4%, Unsold Sale Reserve 2.5%, Strategic Reserve 5.5%."
             >
-
-                <div class="token-allocation-chart-center">
-
-                    <span>
-                        Total Supply
-                    </span>
-
-                    <strong>
-                        200M
-                    </strong>
-
-                    <small>
-                        $SNAO
-                    </small>
-
-                </div>
-
+              <div class="chart-center">
+                <span>Total Supply</span>
+                <strong>200M</strong>
+                <small>$SNAO</small>
+              </div>
             </div>
 
+            <p class="chart-caption">
+              Fixed maximum supply · 100% allocation
+            </p>
 
-            <div class="token-allocation-chart-note">
+          </div>
 
-                <i></i>
+          <div class="allocation-list reveal">
 
-                <span>
-                    Fixed maximum supply
-                </span>
-
+            <div class="allocation-item" style="--color:#45e3f8">
+              <span class="allocation-color"></span>
+              <div>
+                <strong>Founder</strong>
+                <small>Long-term founder allocation</small>
+              </div>
+              <div class="allocation-amount">
+                <b>13%</b>
+                <span>26,000,000</span>
+              </div>
             </div>
 
+            <div class="allocation-item" style="--color:#008cf5">
+              <span class="allocation-color"></span>
+              <div>
+                <strong>Public Sale</strong>
+                <small>Progressive public distribution</small>
+              </div>
+              <div class="allocation-amount">
+                <b>22.5%</b>
+                <span>45,000,000</span>
+              </div>
+            </div>
+
+            <div class="allocation-item" style="--color:#2b6cf0">
+              <span class="allocation-color"></span>
+              <div>
+                <strong>Liquidity & Market Making</strong>
+                <small>Initial and long-term market liquidity</small>
+              </div>
+              <div class="allocation-amount">
+                <b>20%</b>
+                <span>40,000,000</span>
+              </div>
+            </div>
+
+            <div class="allocation-item" style="--color:#1861a7">
+              <span class="allocation-color"></span>
+              <div>
+                <strong>Treasury</strong>
+                <small>Operations and ecosystem development</small>
+              </div>
+              <div class="allocation-amount">
+                <b>20%</b>
+                <span>40,000,000</span>
+              </div>
+            </div>
+
+            <div class="allocation-item" style="--color:#19b7b3">
+              <span class="allocation-color"></span>
+              <div>
+                <strong>Team & Development</strong>
+                <small>Long-term technical development</small>
+              </div>
+              <div class="allocation-amount">
+                <b>7.5%</b>
+                <span>15,000,000</span>
+              </div>
+            </div>
+
+            <div class="allocation-item" style="--color:#4a9aaa">
+              <span class="allocation-color"></span>
+              <div>
+                <strong>Partnerships & Ecosystem</strong>
+                <small>Integrations and ecosystem initiatives</small>
+              </div>
+              <div class="allocation-amount">
+                <b>5%</b>
+                <span>10,000,000</span>
+              </div>
+            </div>
+
+            <div class="allocation-item" style="--color:#93a7e9">
+              <span class="allocation-color"></span>
+              <div>
+                <strong>Community & Rewards</strong>
+                <small>Community participation programs</small>
+              </div>
+              <div class="allocation-amount">
+                <b>4%</b>
+                <span>8,000,000</span>
+              </div>
+            </div>
+
+            <div class="allocation-item" style="--color:#b1c6d5">
+              <span class="allocation-color"></span>
+              <div>
+                <strong>Unsold Sale Reserve</strong>
+                <small>24-month lock; burn-only thereafter</small>
+              </div>
+              <div class="allocation-amount">
+                <b>2.5%</b>
+                <span>5,000,000</span>
+              </div>
+            </div>
+
+            <div class="allocation-item" style="--color:#6d7dba">
+              <span class="allocation-color"></span>
+              <div>
+                <strong>Strategic Reserve</strong>
+                <small>Long-term strategic initiatives</small>
+              </div>
+              <div class="allocation-amount">
+                <b>5.5%</b>
+                <span>11,000,000</span>
+              </div>
+            </div>
+
+          </div>
+
         </div>
 
-
-        <!-- DISTRIBUIÇÃO -->
-
-        <div class="token-allocation-list">
-
-    <article
-        class="token-allocation-item active"
-        data-token-allocation="founder"
-    >
-        <span class="allocation-color allocation-founder"></span>
-
-        <div>
-            <strong>Founder</strong>
-            <small>Long-term founder allocation</small>
+        <div class="security-notice">
+          The allocation above reflects the distribution
+          described in the project's published token materials.
+          Vesting, custody and release conditions should be
+          confirmed against the final applicable contracts
+          and official documentation.
         </div>
 
-        <b>13%</b>
-        <em>26,000,000</em>
-    </article>
+      </div>
+    </section>
 
+    <!-- VESTING -->
 
-    <article
-        class="token-allocation-item"
-        data-token-allocation="public"
-    >
-        <span class="allocation-color allocation-public"></span>
+    <section class="section vesting-section" id="vesting">
 
-        <div>
-            <strong>Public Sale</strong>
-            <small>Progressive public token sale</small>
-        </div>
+      <div class="container">
 
-        <b>22.5%</b>
-        <em>45,000,000</em>
-    </article>
+        <div class="section-heading reveal">
+          <span class="eyebrow">
+            Vesting & Circulation
+          </span>
 
-
-    <article
-        class="token-allocation-item"
-        data-token-allocation="liquidity"
-    >
-        <span class="allocation-color allocation-liquidity"></span>
-
-        <div>
-            <strong>Liquidity & Market Making</strong>
-            <small>Initial liquidity and long-term market support</small>
-        </div>
-
-        <b>20%</b>
-        <em>40,000,000</em>
-    </article>
-
-
-    <article
-        class="token-allocation-item"
-        data-token-allocation="treasury"
-    >
-        <span class="allocation-color allocation-treasury"></span>
-
-        <div>
-            <strong>Treasury</strong>
-            <small>Operations and long-term ecosystem development</small>
-        </div>
-
-        <b>20%</b>
-        <em>40,000,000</em>
-    </article>
-
-
-    <article
-        class="token-allocation-item"
-        data-token-allocation="team"
-    >
-        <span class="allocation-color allocation-marketing"></span>
-
-        <div>
-            <strong>Team & Development</strong>
-            <small>Long-term team and development allocation</small>
-        </div>
-
-        <b>7.5%</b>
-        <em>15,000,000</em>
-    </article>
-
-
-    <article
-        class="token-allocation-item"
-        data-token-allocation="partnerships"
-    >
-        <span class="allocation-color allocation-partnerships"></span>
-
-        <div>
-            <strong>Partnerships & Ecosystem</strong>
-            <small>Integrations and ecosystem development</small>
-        </div>
-
-        <b>5%</b>
-        <em>10,000,000</em>
-    </article>
-
-
-    <article
-        class="token-allocation-item"
-        data-token-allocation="community"
-    >
-        <span class="allocation-color allocation-advisors"></span>
-
-        <div>
-            <strong>Community & Rewards</strong>
-            <small>Community participation and ecosystem rewards</small>
-        </div>
-
-        <b>4%</b>
-        <em>8,000,000</em>
-    </article>
-
-
-    <article
-        class="token-allocation-item"
-        data-token-allocation="unsold"
-    >
-        <span class="allocation-color allocation-advisors"></span>
-
-        <div>
-            <strong>Unsold Sale Reserve</strong>
-            <small>Locked for 24 months, then burn-only</small>
-        </div>
-
-        <b>2.5%</b>
-        <em>5,000,000</em>
-    </article>
-
-
-    <article
-        class="token-allocation-item"
-        data-token-allocation="strategic"
-    >
-        <span class="allocation-color allocation-advisors"></span>
-
-        <div>
-            <strong>Strategic Reserve</strong>
-            <small>Long-term strategic ecosystem reserve</small>
-        </div>
-
-        <b>5.5%</b>
-        <em>11,000,000</em>
-    </article>
-
-</div>
-
-
-        <!-- EXPLICAÇÃO -->
-
-        <aside class="token-allocation-analysis">
-
-            <span>
-                Allocation Detail
+          <h2>
+            Designed for
+            <span class="gradient">
+              long-term alignment.
             </span>
-
-            <h3 id="allocationDetailTitle">
-    Founder
-</h3>
-
-<strong id="allocationDetailPercentage">
-    13% · 26,000,000 $SNAO
-</strong>
-
-<p id="allocationDetailText">
-    Founder allocation subject to long-term vesting,
-    with no tokens unlocked at TGE.
-</p>
-
-
-            <div class="token-allocation-detail-stats">
-
-                <div>
-
-                    <span>
-                        Initial Unlock
-                    </span>
-
-                    <strong id="allocationInitialUnlock">
-    0% at TGE
-</strong>
-
-                </div>
-
-
-                <div>
-
-                    <span>
-                        Vesting
-                    </span>
-
-                    <strong id="allocationVesting">
-    180-day cliff + 900-day linear
-</strong>
-
-                </div>
-
-
-                <div>
-
-                    <span>
-                        Purpose
-                    </span>
-
-                    <strong id="allocationPurpose">
-                        Development
-                    </strong>
-
-                </div>
-
-            </div>
-
-        </aside>
-
-    </div>
-
-</section>
-
-
-<!-- =========================================
-     SUPPLY TRANSPARENCY
-========================================== -->
-
-<section class="token-supply-transparency">
-
-    <div>
-        <span>
-            Founder Allocation
-        </span>
-
-        <strong>
-            26,000,000 $SNAO
-        </strong>
-
-        <p>
-            0% unlocked at TGE, followed by a 180-day cliff
-            and 900-day linear vesting schedule.
-        </p>
-    </div>
-
-
-    <div>
-        <span>
-            Public Sale Allocation
-        </span>
-
-        <strong>
-            45,000,000 $SNAO
-        </strong>
-
-        <p>
-            Distributed through 1,800 progressive lots
-            of 25,000 SNAO.
-        </p>
-    </div>
-
-
-    <div>
-        <span>
-            Liquidity & Market Making
-        </span>
-
-        <strong>
-            40,000,000 $SNAO
-        </strong>
-
-        <p>
-            10,000,000 SNAO reserved for initial liquidity
-            and 30,000,000 SNAO for long-term liquidity
-            and market-making operations.
-        </p>
-    </div>
-
-</section>
-
-
-<!-- =========================================
-     VESTING & UNLOCK SCHEDULE
-========================================== -->
-
-<section
-    class="token-vesting-section"
-    id="vesting"
->
-
-    <div class="token-section-heading">
-
-        <span>
-            Vesting & Unlock Schedule
-        </span>
-
-        <h2>
-            Long-term alignment.
-            <br>
-            Controlled token circulation.
-        </h2>
-
-        <p>
-            Vesting rules are designed to reduce sudden supply pressure,
-            protect liquidity and align major allocations with the long-term
-            growth of the SNAO ecosystem.
-        </p>
-
-    </div>
-
-
-    <div class="token-vesting-layout">
-
-        <!-- TIMELINE -->
-
-        <div class="token-vesting-timeline">
-
-            <article
-                class="token-vesting-step active"
-                data-vesting-step="launch"
-            >
-
-                <span class="vesting-step-number">
-                    01
-                </span>
-
-                <div>
-
-                    <small>
-    TGE
-</small>
-
-<strong>
-    Founder Unlock
-</strong>
-
-<p>
-    0% of the founder allocation is unlocked at TGE.
-</p>
-
-                </div>
-
-            </article>
-
-
-            <article
-                class="token-vesting-step"
-                data-vesting-step="cliff"
-            >
-
-                <span class="vesting-step-number">
-                    02
-                </span>
-
-                <div>
-
-                    <small>
-    First 180 Days
-</small>
-
-<strong>
-    Founder Cliff
-</strong>
-
-<p>
-    The entire 26,000,000 SNAO founder allocation
-    remains locked during the 180-day cliff.
-</p>
-
-                </div>
-
-            </article>
-
-
-            <article
-                class="token-vesting-step"
-                data-vesting-step="unlock"
-            >
-
-                <span class="vesting-step-number">
-                    03
-                </span>
-
-                <div>
-
-                    <small>
-    After Day 180
-</small>
-
-<strong>
-    Linear Vesting Begins
-</strong>
-
-<p>
-    The founder allocation begins a 900-day
-    linear vesting period after the cliff.
-</p>
-
-                </div>
-
-            </article>
-
-
-            <article
-                class="token-vesting-step"
-                data-vesting-step="maturity"
-            >
-
-                <span class="vesting-step-number">
-                    04
-                </span>
-
-                <div>
-
-                    <small>
-    Day 1,080
-</small>
-
-<strong>
-    Founder Vesting Complete
-</strong>
-
-<p>
-    The founder vesting schedule reaches completion
-    1,080 days after TGE.
-</p>
-
-                </div>
-
-            </article>
-
+          </h2>
+
+          <p>
+            Scheduled token releases are intended
+            to support a more structured distribution
+            over time. Vesting does not eliminate
+            market volatility or investment risk.
+          </p>
         </div>
 
+        <div class="vesting-layout">
 
-        <!-- VISUAL -->
+          <div class="vesting-card reveal">
 
-        <div class="token-vesting-visual">
+            <span class="eyebrow">Founder Allocation</span>
 
-            <div class="vesting-visual-grid"></div>
+            <h3>26,000,000 $SNAO</h3>
 
-            <div class="vesting-visual-line">
+            <p>
+              The founder allocation follows
+              a long-term vesting schedule,
+              with no founder tokens scheduled
+              for immediate release at TGE.
+            </p>
 
-                <span style="--vesting-position: 0%"></span>
-
+            <div class="vesting-stat">
+              <span>Initial Unlock</span>
+              <strong>0% at TGE</strong>
             </div>
 
-
-            <div class="vesting-visual-markers">
-
-                <div>
-    <i></i>
-    <span>TGE</span>
-    <strong>0% Founder</strong>
-</div>
-
-<div>
-    <i></i>
-    <span>Day 180</span>
-    <strong>Cliff Ends</strong>
-</div>
-
-<div>
-    <i></i>
-    <span>900 Days</span>
-    <strong>Linear Vesting</strong>
-</div>
-
-<div>
-    <i></i>
-    <span>Day 1,080</span>
-    <strong>Complete</strong>
-</div>
-
+            <div class="vesting-stat">
+              <span>Cliff Period</span>
+              <strong>180 Days</strong>
             </div>
 
+            <div class="vesting-stat">
+              <span>Linear Vesting</span>
+              <strong>900 Days</strong>
+            </div>
 
-            <div class="vesting-visual-card">
+            <div class="vesting-stat">
+              <span>Full Vesting Duration</span>
+              <strong>1,080 Days</strong>
+            </div>
 
-                <span>
-                    Founder Allocation
-                </span>
+            <p>
+              These figures describe the intended
+              allocation schedule and do not
+              independently verify deployment
+              of vesting contracts.
+            </p>
 
-                <strong>
-    26,000,000 $SNAO
-</strong>
+          </div>
 
+          <div class="vesting-timeline reveal">
+
+            <article class="timeline-item">
+              <span class="timeline-number">01</span>
+              <div>
+                <strong>Token Generation Event</strong>
                 <p>
-                    Designed for long-term alignment with controlled access
-                    and gradual release.
+                  No founder allocation is scheduled
+                  for release at TGE.
                 </p>
+              </div>
+            </article>
 
-            </div>
+            <article class="timeline-item">
+              <span class="timeline-number">02</span>
+              <div>
+                <strong>180-Day Founder Cliff</strong>
+                <p>
+                  The founder allocation remains
+                  locked throughout the initial
+                  cliff period.
+                </p>
+              </div>
+            </article>
+
+            <article class="timeline-item">
+              <span class="timeline-number">03</span>
+              <div>
+                <strong>900-Day Linear Release</strong>
+                <p>
+                  Gradual vesting is scheduled
+                  to begin after the founder cliff.
+                </p>
+              </div>
+            </article>
+
+            <article class="timeline-item">
+              <span class="timeline-number">04</span>
+              <div>
+                <strong>Vesting Completion</strong>
+                <p>
+                  The full founder schedule
+                  reaches its planned completion
+                  1,080 days after TGE.
+                </p>
+              </div>
+            </article>
+
+          </div>
 
         </div>
 
+        <div class="security-notice">
+          Additional allocations may have distinct
+          vesting and release conditions.
+          The Public Sale also uses allocation-specific
+          release rules described in the applicable
+          sale documentation. Consult the official
+          Whitepaper for those details.
+        </div>
 
-        <!-- DETAILS -->
+      </div>
+    </section>
 
-        <aside class="token-vesting-analysis">
+    <!-- UTILITY -->
 
-            <span>
-                Vesting Detail
+    <section class="section utility-section" id="utility">
+
+      <div class="container">
+
+        <div class="section-heading reveal">
+
+          <span class="eyebrow">
+            Future Token Utility
+          </span>
+
+          <h2>
+            Technology first.
+            <span class="gradient">
+              Utility through products.
             </span>
-
-            <h3 id="vestingDetailTitle">
-                Controlled Initial Circulation
-            </h3>
-
-            <strong id="vestingDetailPeriod">
-                Launch Phase
-            </strong>
-
-            <p id="vestingDetailText">
-                Initial circulation remains limited to support liquidity,
-                public access and essential market operations without releasing
-                the majority of long-term allocations.
-            </p>
-
-
-            <div class="token-vesting-stats">
-
-                <div>
-
-                    <span>
-                        Release Type
-                    </span>
-
-                    <strong id="vestingReleaseType">
-                        Controlled
-                    </strong>
-
-                </div>
-
-
-                <div>
-
-                    <span>
-                        Supply Impact
-                    </span>
-
-                    <strong id="vestingSupplyImpact">
-                        Limited
-                    </strong>
-
-                </div>
-
-
-                <div>
-
-                    <span>
-                        Primary Goal
-                    </span>
-
-                    <strong id="vestingPrimaryGoal">
-                        Market Stability
-                    </strong>
-
-                </div>
-
-            </div>
-
-        </aside>
-
-    </div>
-
-
-    <div class="token-vesting-note">
-
-        <span>
-            Important
-        </span>
-
-        <p>
-    SNAO allocations follow defined vesting schedules designed
-    to support controlled token circulation and long-term ecosystem alignment.
-    Contract addresses will be published after mainnet deployment.
-</p>
-
-    </div>
-
-</section>
-
-
-<!-- =========================================
-     TOKEN UTILITY
-========================================== -->
-
-<section
-    class="token-utility-section"
-    id="utility"
->
-
-    <div class="token-section-heading">
-
-        <span>
-            Token Utility
-        </span>
-
-        <h2>
-            One token.
-            <br>
-            Multiple layers of utility.
-        </h2>
-
-        <p>
-            $SNAO is designed to connect users with premium intelligence,
-            ecosystem services, rewards, marketplace access and future governance.
-        </p>
-
-    </div>
-
-
-    <div class="token-utility-grid">
-
-        <article class="token-utility-card">
-
-            <span class="token-utility-number">
-                01
-            </span>
-
-            <div class="token-utility-icon">
-                AI
-            </div>
-
-            <strong>
-                Sardine AI Premium
-            </strong>
-
-            <p>
-                Access advanced AI summaries, market analysis, asset intelligence
-                and premium reports.
-            </p>
-
-            <small>
-    Ecosystem utility
-</small>
-
-        </article>
-
-
-        <article class="token-utility-card">
-
-            <span class="token-utility-number">
-                02
-            </span>
-
-            <div class="token-utility-icon">
-                VIP
-            </div>
-
-            <strong>
-                VIP Ecosystem Access
-            </strong>
-
-            <p>
-                Unlock premium mining levels, enhanced rewards and exclusive
-                ecosystem features.
-            </p>
-
-            <small>
-    Planned utility
-</small>
-
-        </article>
-
-
-        <article class="token-utility-card">
-
-            <span class="token-utility-number">
-                03
-            </span>
-
-            <div class="token-utility-icon">
-                M
-            </div>
-
-            <strong>
-                Marketplace Payments
-            </strong>
-
-            <p>
-                Use $SNAO for reports, tools, premium AI services and future
-                digital products.
-            </p>
-
-            <small>
-                Planned utility
-            </small>
-
-        </article>
-
-
-        <article class="token-utility-card">
-
-            <span class="token-utility-number">
-                04
-            </span>
-
-            <div class="token-utility-icon">
-                R
-            </div>
-
-            <strong>
-                Rewards & Missions
-            </strong>
-
-            <p>
-                Receive ecosystem rewards through missions, rankings,
-                participation and referral systems.
-            </p>
-
-            <small>
-                Ecosystem utility
-            </small>
-
-        </article>
-
-
-        <article class="token-utility-card">
-
-            <span class="token-utility-number">
-                05
-            </span>
-
-            <div class="token-utility-icon">
-                G
-            </div>
-
-            <strong>
-                Future Governance
-            </strong>
-
-            <p>
-                Participate in selected ecosystem decisions, proposals
-                and future community voting.
-            </p>
-
-            <small>
-                Future phase
-            </small>
-
-        </article>
-
-
-        <article class="token-utility-card">
-
-            <span class="token-utility-number">
-                06
-            </span>
-
-            <div class="token-utility-icon">
-                S
-            </div>
-
-            <strong>
-                Future Staking
-            </strong>
-
-            <p>
-                Lock tokens to support the ecosystem and access future
-                participation benefits.
-            </p>
-
-            <small>
-                Future phase
-            </small>
-
-        </article>
-
-    </div>
-
-
-    <div class="token-utility-loop">
-
-        <div class="token-utility-loop-center">
-
-            <span>
-                $SNAO
-            </span>
-
-            <strong>
-                Utility Loop
-            </strong>
-
-            <small>
-                Access · Use · Reward · Growth
-            </small>
+          </h2>
+
+          <p>
+            The SNAO ecosystem is being developed
+            around distinct software products.
+            Potential token integrations will be evaluated
+            as those products mature.
+          </p>
 
         </div>
 
+        <div class="utility-grid">
 
-        <div class="token-utility-loop-item utility-loop-one">
-
-            <span>
-                Access
-            </span>
-
-            <strong>
-                Premium Intelligence
-            </strong>
-
-        </div>
-
-
-        <div class="token-utility-loop-item utility-loop-two">
-
-            <span>
-                Use
-            </span>
-
-            <strong>
-                Ecosystem Products
-            </strong>
-
-        </div>
-
-
-        <div class="token-utility-loop-item utility-loop-three">
-
-            <span>
-                Reward
-            </span>
-
-            <strong>
-                Participation
-            </strong>
-
-        </div>
-
-
-        <div class="token-utility-loop-item utility-loop-four">
-
-            <span>
-                Growth
-            </span>
-
-            <strong>
-                Network Expansion
-            </strong>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =========================================
-     HOW TO BUY
-========================================== -->
-
-<section
-    class="token-buy-section"
-    id="buy"
->
-
-    <div class="token-section-heading">
-
-        <span>
-            How to Buy
-        </span>
-
-        <h2>
-            A simple path into
-            <br>
-            the SNAO ecosystem.
-        </h2>
-
-        <p>
-    The SNAO Public Sale is scheduled to open November 1, 2026
-    on BNB Smart Chain, with USDT as the payment token.
-</p>
-
-    </div>
-
-
-    <div class="token-buy-status">
-
-        <div>
-
-            <span>
-                Current Status
-            </span>
-
-            <strong>
-    Public Sale · November 1, 2026
-</strong>
-
+          <article class="utility-card reveal">
+            <span class="utility-number">01</span>
+            <h3>Ocean Intelligence Access</h3>
             <p>
-                Do not purchase tokens from unofficial contracts,
-                websites or private messages.
+              Potential access to selected market
+              research tools, advanced analysis
+              and premium intelligence services.
             </p>
+            <small>PLANNED UTILITY</small>
+          </article>
+
+          <article class="utility-card reveal">
+            <span class="utility-number">02</span>
+            <h3>SNAO Ocean Ecosystem</h3>
+            <p>
+              Potential integration with eligible
+              activities and community features
+              in the independent SNAO Ocean app.
+            </p>
+            <small>IN DEVELOPMENT</small>
+          </article>
+
+          <article class="utility-card reveal">
+            <span class="utility-number">03</span>
+            <h3>Digital Services</h3>
+            <p>
+              Possible use in future digital tools,
+              reports and ecosystem services
+              where technically and legally appropriate.
+            </p>
+            <small>FUTURE EVALUATION</small>
+          </article>
+
+          <article class="utility-card reveal">
+            <span class="utility-number">04</span>
+            <h3>Community Programs</h3>
+            <p>
+              Potential participation mechanisms
+              associated with missions,
+              engagement and community initiatives.
+            </p>
+            <small>PLANNED UTILITY</small>
+          </article>
+
+          <article class="utility-card reveal">
+            <span class="utility-number">05</span>
+            <h3>Future Governance</h3>
+            <p>
+              Possible governance mechanisms
+              may be considered after technical,
+              legal and operational evaluation.
+            </p>
+            <small>FUTURE CONCEPT</small>
+          </article>
+
+          <article class="utility-card reveal">
+            <span class="utility-number">06</span>
+            <h3>Additional Integrations</h3>
+            <p>
+              Future integrations will depend
+              on actual product requirements,
+              development progress and
+              sustainable ecosystem design.
+            </p>
+            <small>UNDER EVALUATION</small>
+          </article>
 
         </div>
 
-        <span class="token-buy-status-badge">
-            Pre-Launch
-        </span>
+        <div class="security-notice">
+          None of the proposed utility features above
+          should be interpreted as already operational,
+          guaranteed or automatically available
+          to token holders.
 
-    </div>
+          SNAO World ATLAS is being developed
+          as a separate enterprise software product;
+          its business features do not depend
+          on token mining or gamified rewards.
+        </div>
 
+      </div>
+    </section>
 
-    <div class="token-buy-steps">
+    <!-- HOW TO BUY -->
 
-        <article>
+    <section class="section how-section" id="buy">
 
-            <span class="token-buy-step-number">
-                01
+      <div class="container">
+
+        <div class="section-heading reveal">
+          <span class="eyebrow">
+            Official Purchase Guide
+          </span>
+
+          <h2>
+            How to explore
+            <span class="gradient">
+              the SNAO Public Sale.
             </span>
+          </h2>
 
-            <div class="token-buy-step-icon">
-                W
-            </div>
+          <p>
+            Use the official SNAO World purchase
+            page to review current sale conditions,
+            supported wallets and transaction details.
+          </p>
+        </div>
 
-            <strong>
-                Prepare a Wallet
-            </strong>
+        <div class="steps-grid">
 
+          <article class="step-card reveal">
+            <span class="step-number">STEP 01</span>
+            <h3>Prepare Your Wallet</h3>
             <p>
-                Use a compatible wallet connected to BNB Smart Chain.
+              Use a compatible self-custody wallet,
+              such as MetaMask or Trust Wallet.
+              Protect your recovery phrase.
             </p>
+          </article>
 
-            <small>
-                MetaMask or Trust Wallet
-            </small>
-
-        </article>
-
-
-        <article>
-
-            <span class="token-buy-step-number">
-                02
-            </span>
-
-            <div class="token-buy-step-icon">
-                B
-            </div>
-
-            <strong>
-    Prepare USDT & BNB
-</strong>
-
-<p>
-    Use USDT for the SNAO purchase and keep a small amount
-    of BNB available for BNB Smart Chain network fees.
-</p>
-
-<small>
-    USDT payment · BNB gas
-</small>
-
-        </article>
-
-
-        <article>
-
-            <span class="token-buy-step-number">
-                03
-            </span>
-
-            <div class="token-buy-step-icon">
-                ↔
-            </div>
-
-            <strong>
-    Connect and Purchase
-</strong>
-
+          <article class="step-card reveal">
+            <span class="step-number">STEP 02</span>
+            <h3>Select BNB Smart Chain</h3>
             <p>
-                Connect through the official SNAO purchase interface.
+              Connect to the correct network
+              and confirm that you have
+              the supported USDT asset
+              and sufficient BNB for gas.
             </p>
+          </article>
 
-            <small>
-                Official link only
-            </small>
-
-        </article>
-
-
-        <article>
-
-            <span class="token-buy-step-number">
-                04
-            </span>
-
-            <div class="token-buy-step-icon">
-                S
-            </div>
-
-            <strong>
-                Join the Ocean
-            </strong>
-
+          <article class="step-card reveal">
+            <span class="step-number">STEP 03</span>
+            <h3>Visit the Official Sale</h3>
             <p>
-                Hold $SNAO and access future ecosystem utility.
+              Open the official Public Sale page.
+              Review the current token price,
+              terms and purchase instructions.
             </p>
+          </article>
 
-            <small>
-                Access · Utility · Growth
-            </small>
-
-        </article>
-
-    </div>
-
-
-    <div class="token-buy-interface">
-
-        <div class="token-buy-interface-left">
-
-            <span>
-                Official Purchase Interface
-            </span>
-
-            <h3>
-                $SNAO public access is not active yet.
-            </h3>
-
+          <article class="step-card reveal">
+            <span class="step-number">STEP 04</span>
+            <h3>Review the Transaction</h3>
             <p>
-                The purchase button will be activated only after the
-                official contract, liquidity pool and security checks
-                have been completed.
+              Confirm the receiving contract,
+              token amount, wallet permissions
+              and transaction details before
+              approving anything.
             </p>
-
-
-            <div class="token-buy-contract-preview">
-
-                <span>
-                    Official Contract
-                </span>
-
-                <strong>
-                    Coming Soon
-                </strong>
-
-                <button
-                    type="button"
-                    disabled
-                >
-                    Copy Contract
-                </button>
-
-            </div>
+          </article>
 
         </div>
 
+        <div class="how-action">
+          <a href="sale.html" class="btn btn-primary">
+            Open SNAO Public Sale →
+          </a>
+        </div>
 
-        <aside class="token-buy-card">
+        <div class="security-notice">
+          Never send funds to wallet addresses
+          supplied through private messages.
+          Never share your seed phrase.
+          SNAO purchases must be reviewed
+          through the project's official interface.
+        </div>
 
-            <div class="token-buy-card-heading">
+      </div>
+    </section>
 
-                <span>
-                    Buy $SNAO
-                </span>
+    <!-- MARKET ACCESS -->
 
-                <strong>
-                    Coming Soon
-                </strong>
+    <section class="section market-section" id="market-access">
 
-            </div>
+      <div class="container">
 
+        <div class="section-heading reveal">
 
-            <label>
-                You Pay
-
-                <div>
-
-                    <input
-                        type="text"
-                        value="0.00"
-                        disabled
-                    >
-
-                    <span>
-    USDT
-</span>
-
-                </div>
-
-            </label>
-
-
-            <span class="token-buy-swap-arrow">
-                ↓
-            </span>
-
-
-            <label>
-                You Receive
-
-                <div>
-
-                    <input
-                        type="text"
-                        value="0"
-                        disabled
-                    >
-
-                    <span>
-                        SNAO
-                    </span>
-
-                </div>
-
-            </label>
-
-
-            <button
-                class="token-buy-disabled-button"
-                type="button"
-                disabled
-            >
-                Public Sale Coming Soon
-            </button>
-
-
-            <small>
-                Never send funds to an address shared through
-                private messages.
-            </small>
-
-        </aside>
-
-    </div>
-
-</section>
-
-
-<!-- =========================================
-     FUTURE LISTINGS
-========================================== -->
-
-<section class="token-listings-section">
-
-    <div class="token-section-heading">
-
-        <span>
+          <span class="eyebrow">
             Future Market Access
-        </span>
+          </span>
 
-        <h2>
-            Built for progressive
-            <br>
-            market expansion.
-        </h2>
-
-        <p>
-            Listing plans depend on liquidity, community growth,
-            exchange requirements and project development.
-        </p>
-
-    </div>
-
-
-    <div class="token-listings-grid">
-
-        <article>
-
-            <span>
-                DEX
+          <h2>
+            A progressive
+            <span class="gradient">
+              expansion strategy.
             </span>
-
-            <strong>
-                First Access
-            </strong>
-
-            <small>
-                Coming Soon
-            </small>
-
-        </article>
-
-
-        <article>
-
-            <span>
-                Bitget
-            </span>
-
-            <strong>
-                Future Target
-            </strong>
-
-            <small>
-                Not Confirmed
-            </small>
-
-        </article>
-
-
-        <article>
-
-            <span>
-                MEXC
-            </span>
-
-            <strong>
-                Future Target
-            </strong>
-
-            <small>
-                Not Confirmed
-            </small>
-
-        </article>
-
-
-        <article>
-
-            <span>
-                Binance
-            </span>
-
-            <strong>
-                Long-Term Goal
-            </strong>
-
-            <small>
-                No Guarantee
-            </small>
-
-        </article>
-
-    </div>
-
-</section>
-
-
-<!-- =========================================
-     TOKEN FAQ
-========================================== -->
-
-<section
-    class="token-faq-section"
-    id="faq"
->
-
-    <div class="token-section-heading">
-
-        <span>
-            Token FAQ
-        </span>
-
-        <h2>
-            Clear answers about
-            <br>
-            the $SNAO token.
-        </h2>
-
-        <p>
-            Important information about supply, launch, utility,
-            vesting and future ecosystem development.
-        </p>
-
-    </div>
-
-
-    <div class="token-faq-list">
-
-        <article class="token-faq-item">
-
-            <button
-                class="token-faq-question"
-                type="button"
-                aria-expanded="false"
-            >
-
-                <span>
-                    What is $SNAO?
-                </span>
-
-                <i>
-                    +
-                </i>
-
-            </button>
-
-            <div class="token-faq-answer">
-
-                <p>
-                    $SNAO is the utility token designed to power the
-                    SNAO Ocean Intelligence ecosystem, including premium
-                    AI tools, marketplace access, rewards and future services.
-                </p>
-
-            </div>
-
-        </article>
-
-
-        <article class="token-faq-item">
-
-            <button
-                class="token-faq-question"
-                type="button"
-                aria-expanded="false"
-            >
-
-                <span>
-                    What is the total supply?
-                </span>
-
-                <i>
-                    +
-                </i>
-
-            </button>
-
-            <div class="token-faq-answer">
-
-                <p>
-    The maximum supply is fixed at 200,000,000 $SNAO.
-    No future minting is planned.
-</p>
-
-            </div>
-
-        </article>
-
-
-        <article class="token-faq-item">
-
-            <button
-                class="token-faq-question"
-                type="button"
-                aria-expanded="false"
-            >
-
-                <span>
-                    When will the token launch?
-                </span>
-
-                <i>
-                    +
-                </i>
-
-            </button>
-
-            <div class="token-faq-answer">
-
-                <p>
-    The SNAO Public Sale is scheduled to open November 1, 2026.
-    TGE and market trading will follow the successful completion
-    of the sale and the required launch preparations.
-</p>
-
-            </div>
-
-        </article>
-
-
-        <article class="token-faq-item">
-
-            <button
-                class="token-faq-question"
-                type="button"
-                aria-expanded="false"
-            >
-
-                <span>
-                    Where will I be able to buy $SNAO?
-                </span>
-
-                <i>
-                    +
-                </i>
-
-            </button>
-
-            <div class="token-faq-answer">
-
-                <p>
-                    The first official purchase method will be published
-                    through SNAO.world. No exchange listing is confirmed
-                    until an official announcement is made.
-                </p>
-
-            </div>
-
-        </article>
-
-
-        <article class="token-faq-item">
-
-            <button
-                class="token-faq-question"
-                type="button"
-                aria-expanded="false"
-            >
-
-                <span>
-                    What is the utility of the token?
-                </span>
-
-                <i>
-                    +
-                </i>
-
-            </button>
-
-            <div class="token-faq-answer">
-
-                <p>
-                    Planned utilities include Sardine AI premium access,
-                    VIP features, marketplace payments, rewards, missions,
-                    future governance and possible future staking.
-                </p>
-
-            </div>
-
-        </article>
-
-
-        <article class="token-faq-item">
-
-            <button
-                class="token-faq-question"
-                type="button"
-                aria-expanded="false"
-            >
-
-                <span>
-                    Is the founder allocation unlocked?
-                </span>
-
-                <i>
-                    +
-                </i>
-
-            </button>
-
-            <div class="token-faq-answer">
-
-                <p>
-    No founder tokens are unlocked at TGE. The 26,000,000 SNAO
-    founder allocation follows a 180-day cliff followed by
-    900 days of linear vesting.
-</p>
-
-            </div>
-
-        </article>
-
-
-        <article class="token-faq-item">
-
-            <button
-                class="token-faq-question"
-                type="button"
-                aria-expanded="false"
-            >
-
-                <span>
-                    Is staking already available?
-                </span>
-
-                <i>
-                    +
-                </i>
-
-            </button>
-
-            <div class="token-faq-answer">
-
-                <p>
-                    No. Staking is presented as a possible future utility.
-                    Its rules, rewards and technical structure have not
-                    yet been finalized.
-                </p>
-
-            </div>
-
-        </article>
-
-
-        <article class="token-faq-item">
-
-            <button
-                class="token-faq-question"
-                type="button"
-                aria-expanded="false"
-            >
-
-                <span>
-                    Is $SNAO an investment guarantee?
-                </span>
-
-                <i>
-                    +
-                </i>
-
-            </button>
-
-            <div class="token-faq-answer">
-
-                <p>
-                    No. Cryptocurrency involves significant risk.
-                    Nothing on this page represents guaranteed profit,
-                    financial advice or a promise of future market value.
-                </p>
-
-            </div>
-
-        </article>
-
-    </div>
-
-</section>
-
-
-<!-- =========================================
-     FINAL TOKEN CTA
-========================================== -->
-
-<section class="token-final-cta">
-
-    <div class="token-final-cta-glow"></div>
-
-    <div class="token-final-cta-content">
-
-        <span>
-            Enter the Ocean Intelligence Economy
-        </span>
-
-        <h2>
-            The ecosystem is being built.
-            <br>
-            The token is coming.
-        </h2>
-
-        <p>
-            Explore the SNAO Terminal, follow project development
-            and join the community before the official token launch.
-        </p>
-
-
-        <div class="token-final-cta-actions">
-
-            <a
-                class="token-primary-button"
-                href="terminal.html"
-            >
-                Explore Terminal
-                <span>↗</span>
-            </a>
-
-            <a
-                class="token-secondary-button"
-                href="https://t.me/snaoofficial"
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-                Join Community
-            </a>
+          </h2>
+
+          <p>
+            Exchange access is a future development
+            objective, subject to technical readiness,
+            liquidity, regulatory requirements
+            and independent exchange decisions.
+          </p>
 
         </div>
 
-    </div>
+        <div class="market-grid">
 
-</section>
-
-
-<!-- =========================================
-     FOOTER
-========================================== -->
-
-<footer class="token-footer">
-
-    <div class="token-footer-main">
-
-        <div class="token-footer-brand">
-
-            <a
-                class="token-brand"
-                href="index.html"
-            >
-
-                <span class="token-brand-symbol">
-                    ◉
-                </span>
-
-                <span class="token-brand-copy">
-
-                    <strong>
-                        SNAO
-                    </strong>
-
-                    <small>
-                        Ocean Intelligence
-                    </small>
-
-                </span>
-
-            </a>
-
+          <article class="market-card reveal">
+            <span>DECENTRALIZED MARKETS</span>
+            <h3>DEX Liquidity</h3>
             <p>
-                Building an intelligence ecosystem that connects
-                artificial intelligence, blockchain data and community.
+              Evaluate decentralized exchange
+              liquidity and trading infrastructure
+              after the required launch preparations.
             </p>
+          </article>
+
+          <article class="market-card reveal">
+            <span>CENTRALIZED MARKETS</span>
+            <h3>CEX Applications</h3>
+            <p>
+              Potential applications to centralized
+              exchanges will depend on project
+              readiness and each platform's
+              independent listing process.
+            </p>
+          </article>
+
+          <article class="market-card reveal">
+            <span>TRANSPARENCY</span>
+            <h3>Official Announcements</h3>
+            <p>
+              Any confirmed listing, partnership
+              or trading availability should be
+              announced through official
+              SNAO World channels.
+            </p>
+          </article>
 
         </div>
 
+        <div class="security-notice">
+          No exchange listing or partnership
+          is guaranteed by the existence
+          of this roadmap.
+          References to exchange strategies
+          are not claims of approval.
+        </div>
 
-        <div class="token-footer-links">
+      </div>
+    </section>
 
-            <div>
+    <!-- FAQ -->
 
-                <span>
-                    Ecosystem
-                </span>
+    <section class="section faq-section" id="faq">
 
-                <a href="index.html">
-                    Website
-                </a>
+      <div class="container">
 
-                <a href="terminal.html">
-                    Ocean Terminal
-                </a>
+        <div class="section-heading">
+          <span class="eyebrow">
+            Frequently Asked Questions
+          </span>
 
-                <a href="token.html">
-                    $SNAO Token
-                </a>
+          <h2>
+            Understand
+            <span class="gradient">$SNAO.</span>
+          </h2>
+        </div>
 
-                <a href="index.html#products">
-                    Products
-                </a>
+        <div class="faq-wrap">
 
-            </div>
+          <details>
+            <summary>What is $SNAO?</summary>
+            <p>
+              $SNAO is the blockchain token associated
+              with the SNAO World ecosystem,
+              which includes enterprise software,
+              mobile experiences and crypto
+              intelligence initiatives.
+            </p>
+          </details>
 
+          <details>
+            <summary>What is the total supply?</summary>
+            <p>
+              The stated fixed maximum supply is
+              200,000,000 SNAO.
+              No additional minting is planned.
+            </p>
+          </details>
 
-            <div>
+          <details>
+            <summary>How many tokens are allocated to the Public Sale?</summary>
+            <p>
+              The Public Sale allocation is
+              45,000,000 SNAO, equivalent to
+              22.5% of the total supply.
+            </p>
+          </details>
 
-                <span>
-                    Token
-                </span>
+          <details>
+            <summary>How does progressive pricing work?</summary>
+            <p>
+              The sale is structured into
+              1,800 lots of 25,000 SNAO,
+              beginning at $0.001 per token.
+              Refer to the official sale page
+              for the current applicable price.
+            </p>
+          </details>
 
-                <a href="#tokenomics">
-                    Metrics
-                </a>
+          <details>
+            <summary>Where can I buy SNAO?</summary>
+            <p>
+              Official purchase information
+              is available at snao.world/sale.html.
+              Always verify the website and
+              transaction details.
+            </p>
+          </details>
 
-                <a href="#allocation">
-                    Allocation
-                </a>
+          <details>
+            <summary>Are future token utilities already available?</summary>
+            <p>
+              Not necessarily. Features described
+              as planned or under development
+              are not completed services.
+              Availability depends on actual
+              development and release.
+            </p>
+          </details>
 
-                <a href="#vesting">
-                    Vesting
-                </a>
+          <details>
+            <summary>Does ATLAS require SNAO tokens?</summary>
+            <p>
+              ATLAS is being developed as
+              a separate enterprise software product.
+              No mandatory token requirement
+              is established by this page.
+            </p>
+          </details>
 
-                <a href="#utility">
-                    Utility
-                </a>
+          <details>
+            <summary>Is the founder allocation immediately unlocked?</summary>
+            <p>
+              Under the stated founder vesting plan,
+              0% unlocks at TGE.
+              A 180-day cliff is followed by
+              900 days of linear vesting.
+            </p>
+          </details>
 
-            </div>
+          <details>
+            <summary>Are exchange listings guaranteed?</summary>
+            <p>
+              No. Listings depend on independent
+              exchange decisions, project readiness,
+              technical and liquidity requirements.
+            </p>
+          </details>
 
-
-            <div>
-
-                <span>
-                    Resources
-                </span>
-
-                <a href="#buy">
-    How to Buy
-</a>
-
-<a href="#faq">
-    FAQ
-</a>
-
-<a href="whitepaper.html">
-    Whitepaper
-</a>
-
-            </div>
-
-
-            <div>
-
-                <span>
-                    Community
-                </span>
-
-                <a
-                    href="https://t.me/snaoofficial"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    Telegram
-                </a>
-
-                <a
-    href="https://x.com/SNAOOFFICIAL"
-    target="_blank"
-    rel="noopener noreferrer"
->
-    X
-</a>
-
-<a
-    href="https://github.com/tiagogsa28-cmd/snao-website"
-    target="_blank"
-    rel="noopener noreferrer"
->
-    GitHub
-</a>
-
-            </div>
+          <details>
+            <summary>Is SNAO a guaranteed investment?</summary>
+            <p>
+              No. Cryptocurrency can be highly volatile.
+              Token ownership does not guarantee
+              profit, liquidity, a future market price
+              or access to unreleased products.
+            </p>
+          </details>
 
         </div>
 
-    </div>
+      </div>
+    </section>
 
+    <!-- FINAL CTA -->
 
-    <div class="token-footer-bottom">
+    <section class="final-cta">
 
-        <span>
-            © <span id="tokenCurrentYear"></span> SNAO.
-            All rights reserved.
+      <div class="container">
+
+        <span class="eyebrow">
+          Discover SNAO World
         </span>
 
+        <h2>
+          More than a token.
+          <span class="gradient">
+            An evolving technology vision.
+          </span>
+        </h2>
+
         <p>
-            Cryptocurrency involves risk. Nothing on this website
-            constitutes financial advice.
+          Explore the SNAO World ecosystem,
+          discover our development roadmap
+          and follow the next steps of
+          ATLAS, SNAO Ocean and Ocean Intelligence.
         </p>
+
+        <div class="final-actions">
+
+          <a href="sale.html" class="btn btn-primary">
+            Public Sale →
+          </a>
+
+          <a href="whitepaper.html" class="btn btn-secondary">
+            Read Whitepaper
+          </a>
+
+          <a
+            href="https://t.me/snaoofficial"
+            class="btn btn-secondary"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Join Community
+          </a>
+
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+
+  <footer class="footer">
+
+    <div class="container">
+
+      <div class="footer-grid">
+
+        <div class="footer-about">
+
+          <a href="index.html" class="brand">
+            <span class="brand-icon">S</span>
+            <span class="brand-name">
+              <strong>SNAO</strong>
+              <small>WORLD</small>
+            </span>
+          </a>
+
+          <p>
+            Building an evolving ecosystem
+            of enterprise intelligence,
+            mobile digital experiences
+            and crypto market research.
+          </p>
+
+        </div>
+
+        <div class="footer-column">
+
+          <h4>ECOSYSTEM</h4>
+
+          <a href="index.html#atlas">SNAO World ATLAS</a>
+          <a href="index.html#platforms">SNAO Ocean</a>
+          <a href="index.html#ocean">Ocean Intelligence</a>
+          <a href="about.html">About</a>
+          <a href="index.html#roadmap">Roadmap</a>
+
+        </div>
+
+        <div class="footer-column">
+
+          <h4>RESOURCES</h4>
+
+          <a href="sale.html">Public Sale</a>
+          <a href="whitepaper.html">Whitepaper</a>
+          <a href="#allocation">Token Allocation</a>
+          <a href="#vesting">Vesting</a>
+          <a href="#faq">FAQ</a>
+          <a href="https://x.com/SNAOOFFICIAL" target="_blank" rel="noopener noreferrer">X</a>
+          <a href="https://www.instagram.com/snaoofficial/" target="_blank" rel="noopener noreferrer">Instagram</a>
+
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+
+        <span id="copyright">
+          © SNAO World. All rights reserved.
+        </span>
+
+        <span>
+          Cryptocurrency involves risk.
+          Nothing on this page constitutes
+          financial advice or guaranteed returns.
+        </span>
+
+      </div>
 
     </div>
 
-</footer>
+  </footer>
 
-    </main>
+  <!-- JAVASCRIPT -->
 
+  <script>
+    "use strict";
 
-    <script src="token.js"></script>
+    // MOBILE MENU
+
+    const menuToggle =
+      document.getElementById("menuToggle");
+
+    const navigation =
+      document.getElementById("navigation");
+
+    if (menuToggle && navigation) {
+
+      menuToggle.addEventListener("click", () => {
+
+        const isOpen =
+          navigation.classList.toggle("open");
+
+        menuToggle.setAttribute(
+          "aria-expanded",
+          String(isOpen)
+        );
+
+        menuToggle.textContent =
+          isOpen ? "✕" : "☰";
+
+      });
+
+      navigation.querySelectorAll("a").forEach(link => {
+
+        link.addEventListener("click", () => {
+
+          navigation.classList.remove("open");
+
+          menuToggle.setAttribute(
+            "aria-expanded",
+            "false"
+          );
+
+          menuToggle.textContent = "☰";
+
+        });
+
+      });
+
+    }
+
+    // SCROLL REVEAL
+
+    const revealElements =
+      document.querySelectorAll(".reveal");
+
+    const reducedMotion =
+      window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+      ).matches;
+
+    if (
+      "IntersectionObserver" in window &&
+      !reducedMotion
+    ) {
+
+      const observer =
+        new IntersectionObserver(entries => {
+
+          entries.forEach(entry => {
+
+            if (entry.isIntersecting) {
+
+              entry.target.classList.add("visible");
+
+              observer.unobserve(entry.target);
+
+            }
+
+          });
+
+        }, {
+          threshold: 0.12
+        });
+
+      revealElements.forEach(element => {
+        observer.observe(element);
+      });
+
+    } else {
+
+      revealElements.forEach(element => {
+        element.classList.add("visible");
+      });
+
+    }
+
+    // COPYRIGHT YEAR
+
+    const copyright =
+      document.getElementById("copyright");
+
+    if (copyright) {
+
+      copyright.textContent =
+        "© " +
+        new Date().getFullYear() +
+        " SNAO World. All rights reserved.";
+
+    }
+  </script>
 
 </body>
-
 </html>
