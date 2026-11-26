@@ -1993,72 +1993,174 @@ button:focus-visible{
      SNAO OCEAN
 ====================================================== -->
 
-<section class="section ocean-section" id="ocean">
+
+<section class="snao-ocean-showcase" id="ocean" aria-label="SNAO Ocean application concept">
+  <style>
+    .snao-ocean-showcase {
+      position: relative;
+      overflow: hidden;
+      background: #021426;
+    }
+
+    .snao-ocean-artwork {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .snao-ocean-cta-hitarea {
+      position: absolute;
+      z-index: 2;
+      left: 3.3%;
+      top: 68.5%;
+      width: 20.5%;
+      height: 9.5%;
+      border-radius: 12px;
+      cursor: pointer;
+    }
+
+    .snao-ocean-cta-hitarea:focus-visible {
+      outline: 3px solid #ffd582;
+      outline-offset: 3px;
+    }
+
+    .snao-ocean-mobile {
+      display: none;
+    }
+
+    @media(max-width: 760px) {
+      .snao-ocean-showcase {
+        min-height: 690px;
+      }
+
+      .snao-ocean-artwork,
+      .snao-ocean-cta-hitarea {
+        display: none;
+      }
+
+      .snao-ocean-mobile {
+        display: flex;
+        min-height: 690px;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 45px 22px 300px;
+
+        background-image:
+          linear-gradient(
+            to bottom,
+            #021426 0%,
+            #021426e8 32%,
+            #021426a5 60%,
+            #02142630 100%
+          ),
+          url("SNAO Ocean_ Um Novo Mundo Submerso.png");
+
+        background-size: cover;
+        background-position: 70% center;
+      }
+
+      .snao-ocean-mobile .mobile-eyebrow {
+        margin: 0 0 16px;
+        color: #6ceeff;
+        font: 800 11px/1.4 Inter, Arial, sans-serif;
+        letter-spacing: 2px;
+      }
+
+      .snao-ocean-mobile h2 {
+        margin: 0 0 18px;
+        color: #fff;
+        font: 600 clamp(48px,12vw,66px)/.98
+          "Cormorant Garamond", Georgia, serif;
+      }
+
+      .snao-ocean-mobile h2 span {
+        display: block;
+        color: #ffd582;
+      }
+
+      .snao-ocean-mobile p {
+        max-width: 520px;
+        color: #e8f5fc;
+        font: 400 13px/1.8 Inter, Arial, sans-serif;
+      }
+
+      .snao-ocean-mobile .mobile-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin: 12px 0 23px;
+      }
+
+      .snao-ocean-mobile .mobile-tags span {
+        padding: 8px 10px;
+        color: #eafaff;
+        border-radius: 20px;
+        border: 1px solid #61e9ff99;
+        background: #023d54ba;
+        font: 600 10px Inter, Arial, sans-serif;
+      }
+
+      .snao-ocean-mobile .btn {
+        position: relative;
+        z-index: 3;
+      }
+
+      .snao-ocean-mobile .mobile-disclaimer {
+        font-size: 10px;
+        opacity: .85;
+      }
+    }
+  </style>
 
   <img
-    src="https://images.unsplash.com/photo-1708649290066-5f617003b93f?auto=format&amp;fit=crop&amp;w=1920&amp;q=85"
-    alt=""
-    loading="lazy">
+    class="snao-ocean-artwork"
+    src="SNAO Ocean_ Um Novo Mundo Submerso.png"
+    alt="SNAO Ocean concept with underwater scenery, sardines and a futuristic mobile application"
+    loading="lazy"
+    width="1650"
+    height="928"
+  >
 
-  <div class="container">
+  <a
+    class="snao-ocean-cta-hitarea"
+    href="about.html#platforms"
+    aria-label="Discover SNAO Ocean"
+    title="Discover SNAO Ocean"
+  ></a>
 
-    <div class="ocean-copy">
+  <div class="snao-ocean-mobile">
+    <div class="mobile-eyebrow">SNAO OCEAN</div>
 
-      <span class="eyebrow">
-        SNAO OCEAN
-      </span>
+    <h2>
+      A new world
+      <span>beneath the surface.</span>
+    </h2>
 
-      <h2 class="section-title">
+    <p>
+      SNAO Ocean is being developed as an independent
+      Android and iOS application featuring immersive
+      ocean experiences, missions, community activities
+      and internal Sardinhas points.
+    </p>
 
-        A new world
-
-        <span class="gold-text">
-          beneath the surface.
-        </span>
-
-      </h2>
-
-      <p>
-
-        SNAO Ocean is being developed as an independent
-        Android and iOS application with immersive ocean
-        environments, missions, community participation
-        and internal Sardinhas points.
-
-      </p>
-
-      <div class="pills">
-
-        <span>Android & iOS</span>
-
-        <span>Ocean Experience</span>
-
-        <span>Community Missions</span>
-
-        <span>Sardinhas Points</span>
-
-      </div>
-
-      <a href="about.html#platforms"
-         class="btn btn-blue">
-
-        Discover SNAO Ocean →
-
-      </a>
-
-      <p class="concept-note"
-         style="margin-top:19px">
-
-        Application in development.
-        Product imagery is conceptual.
-
-      </p>
-
+    <div class="mobile-tags">
+      <span>Android &amp; iOS</span>
+      <span>Ocean Experience</span>
+      <span>Community Missions</span>
+      <span>Sardinhas Points</span>
     </div>
 
-  </div>
+    <a class="btn btn-blue" href="about.html#platforms">
+      Discover SNAO Ocean →
+    </a>
 
+    <p class="mobile-disclaimer">
+      Application in development.
+      Product imagery is conceptual.
+    </p>
+  </div>
 </section>
+
 
 <!-- ======================================================
      OCEAN INTELLIGENCE
