@@ -3,2395 +3,2623 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#021426">
-<meta name="description" content="SNAO World — ATLAS Intelligence OS, SNAO Ocean, Ocean Intelligence and the official $SNAO Public Sale.">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#021629">
+
 <title>SNAO World | A New Depth of Intelligence</title>
 
+<meta name="description" content="SNAO World — ATLAS Intelligence OS, SNAO Ocean, Ocean Intelligence and the official $SNAO Public Sale.">
+
 <link rel="canonical" href="https://www.snao.world/">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://images.unsplash.com">
+
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
 <style>
+
+/* ======================================================
+   SNAO WORLD — PREMIUM OCEAN ECOSYSTEM
+
+   COMPLETE INDEX.HTML
+
+   New: cinematic ATLAS dashboard image.
+   Preserved: background, hero text, public sale,
+   ecosystem cards and other sections.
+====================================================== */
+
 :root{
- --bg:#021426;
- --cyan:#65eaff;
- --gold:#ffd582;
- --green:#63f1b6;
- --muted:#bad4e4;
- --line:#6bdfff55;
- --sans:"Inter",Arial,sans-serif;
- --serif:"Cormorant Garamond",Georgia,serif;
+  --bg:#021426;
+  --navy:#06172c;
+  --cyan:#67eaff;
+  --blue:#248eff;
+  --purple:#a47aff;
+  --gold:#ffd58a;
+  --green:#65f3b8;
+  --white:#f7fbff;
+  --muted:#bcd2e2;
+  --line:#71dfff55;
+  --sans:"Inter",Arial,sans-serif;
+  --serif:"Cormorant Garamond",Georgia,serif;
 }
 
-*{box-sizing:border-box}
+*{
+  box-sizing:border-box;
+}
 
 html{
- scroll-behavior:smooth;
- scroll-padding-top:85px;
+  scroll-behavior:smooth;
+  scroll-padding-top:85px;
 }
 
 body{
- margin:0;
- background:var(--bg);
- color:#f7fbff;
- font-family:var(--sans);
- overflow-x:hidden;
- -webkit-font-smoothing:antialiased;
+  margin:0;
+  background:var(--bg);
+  color:var(--white);
+  font-family:var(--sans);
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
 }
 
-a{color:inherit;text-decoration:none}
-button{font:inherit;cursor:pointer}
-img{display:block}
+a{
+  color:inherit;
+  text-decoration:none;
+}
+
+button{
+  font:inherit;
+  cursor:pointer;
+}
+
+img{
+  display:block;
+}
 
 a:focus-visible,
 button:focus-visible{
- outline:2px solid var(--gold);
- outline-offset:4px;
+  outline:2px solid var(--gold);
+  outline-offset:4px;
 }
 
 .container{
- width:min(1510px,calc(100% - 76px));
- margin:auto;
+  width:min(1510px,calc(100% - 76px));
+  margin:auto;
 }
 
 .gold-text{
- display:inline-block;
- background:linear-gradient(
- 180deg,
- #fff8dd,
- #ffe6ab 35%,
- #ffd081 70%,
- #bd8036
- );
- -webkit-background-clip:text;
- background-clip:text;
- color:transparent;
-}
-
-.btn{
- display:inline-flex;
- align-items:center;
- justify-content:center;
- gap:9px;
- min-height:50px;
- padding:12px 23px;
- border-radius:11px;
- border:1px solid transparent;
- font:800 13px var(--sans);
- white-space:nowrap;
- transition:transform .2s,filter .2s;
-}
-
-.btn:hover{
- transform:translateY(-2px);
- filter:brightness(1.08);
-}
-
-.btn-gold{
- color:#241504;
- background:linear-gradient(
- #fff2c2,
- #ffdb8c 48%,
- #f0ac3d
- );
- border-color:#ffebaf;
- box-shadow:
- 0 0 17px #ffc75c74,
- 0 8px 23px #c081325a;
-}
-
-.btn-blue{
- color:white;
- background:linear-gradient(125deg,#0d3969,#0879a7);
- border-color:#87e7ffb7;
- box-shadow:0 0 16px #0ccfff51;
-}
-
-/* =========================================
-   NAVIGATION — SAME VISUAL STYLE
-========================================= */
-
-.site-header{
- position:absolute;
- top:10px;
- left:0;
- right:0;
- z-index:100;
-}
-
-.nav-shell{
- width:min(1540px,calc(100% - 64px));
- height:61px;
- margin:auto;
- padding:7px 15px 7px 24px;
- display:flex;
- align-items:center;
- justify-content:space-between;
- gap:20px;
- border:1px solid #72e7ff78;
- border-radius:21px;
- background:linear-gradient(
- 105deg,
- #031527f7,
- #06192ef3,
- #031426f7
- );
- box-shadow:0 13px 34px #0014269a;
- backdrop-filter:blur(15px);
-}
-
-.brand{
- display:flex;
- align-items:center;
- gap:12px;
- flex-shrink:0;
-}
-
-.brand-orb{
- width:41px;
- height:41px;
- display:grid;
- place-items:center;
- border-radius:50%;
- border:1px solid #b0faff;
- background:radial-gradient(
- circle at 28% 20%,
- #baffff,
- #0696c5 41%,
- #073967 75%
- );
- box-shadow:0 0 17px #29e0ff88;
- font-size:29px;
- font-weight:900;
- font-style:italic;
-}
-
-.brand-name{
- font-size:23px;
- font-weight:850;
- letter-spacing:-.6px;
-}
-
-.nav{
- display:flex;
- align-items:center;
- gap:23px;
-}
-
-.nav a{
- font-size:12px;
- font-weight:650;
- white-space:nowrap;
-}
-
-.nav a:hover{color:var(--cyan)}
-
-.nav a.active{
- position:relative;
- color:#ffe1a0;
-}
-
-.nav a.active:after{
- content:"";
- position:absolute;
- bottom:-12px;
- left:0;
- right:0;
- height:2px;
- background:#ffd583;
- box-shadow:0 0 9px #ffd583;
-}
-
-.nav .nav-buy{
- padding:11px 19px;
- border:1px solid #ffe8aa;
- border-radius:9px;
- background:linear-gradient(#fff0bb,#f3b651);
- color:#241606;
- font-weight:900;
- box-shadow:0 0 14px #ffc45c72;
-}
-
-.menu-button{display:none}
-
-/* =========================================
-   OCEAN BACKGROUND
-   PRESERVED
-========================================= */
-
-.ocean-world{
- position:relative;
- isolation:isolate;
- overflow:hidden;
- padding:103px 0 37px;
- background:radial-gradient(
- ellipse at 54% 20%,
- #0a7bac,
- #032e4c 62%,
- #021426
- );
-}
-
-.ocean-photo{
- position:absolute;
- inset:0;
- z-index:-4;
- width:100%;
- height:100%;
- object-fit:cover;
- object-position:center 41%;
- filter:contrast(1.16) saturate(1.34) brightness(.94);
-}
-
-.ocean-world:before{
- content:"";
- position:absolute;
- inset:0;
- z-index:-3;
- background:
- linear-gradient(
- 90deg,
- #021729da,
- #05294091 46%,
- #03283b20 82%
- ),
- linear-gradient(0deg,#021426ba,transparent 45%);
-}
-
-.ocean-world:after{
- content:"";
- position:absolute;
- inset:0;
- z-index:-2;
- pointer-events:none;
- background:
- radial-gradient(
- ellipse at 49% 0%,
- #aff7ff25,
- transparent 37%
- ),
- repeating-linear-gradient(
- 109deg,
- transparent 0 155px,
- #dbf8ff06 165px,
- transparent 192px
- );
-}
-
-.ambient-glow{
- position:absolute;
- inset:0;
- z-index:-1;
- pointer-events:none;
- background:
- radial-gradient(
- ellipse at 84% 41%,
- #8859ff18,
- transparent 38%
- ),
- radial-gradient(
- ellipse at 13% 76%,
- #07eaff19,
- transparent 39%
- );
-}
-
-/* =========================================
-   HERO TEXT
-========================================= */
-
-.hero{
- display:grid;
- grid-template-columns:minmax(0,1fr) minmax(0,1fr);
- gap:8px;
- align-items:center;
- min-height:365px;
-}
-
-.hero-copy{
- position:relative;
- z-index:4;
- padding:10px 0;
-}
-
-.hero-label{
- display:flex;
- align-items:center;
- gap:14px;
- color:#dff5ff;
- font-size:10px;
- font-weight:750;
- letter-spacing:2.5px;
-}
-
-.hero-label:after{
- content:"";
- width:30px;
- height:1px;
- background:#b7efff91;
-}
-
-.hero h1{
- margin:18px 0;
- padding-bottom:.14em;
- font-family:var(--serif);
- font-weight:600;
- font-size:clamp(60px,5.9vw,94px);
- line-height:1;
- letter-spacing:-1.6px;
- text-shadow:0 3px 16px #0016279d;
-}
-
-.hero h1 span{
- display:block;
- line-height:1.02;
- padding-bottom:.07em;
-}
-
-.hero-description{
- max-width:555px;
- color:#e6f3fe;
- font-size:14px;
- line-height:1.85;
- text-shadow:0 2px 8px #00192b;
-}
-
-.hero-actions{
- display:flex;
- gap:13px;
- flex-wrap:wrap;
- margin-top:23px;
-}
-
-.hero-meta{
- display:flex;
- align-items:center;
- flex-wrap:wrap;
- gap:10px;
- margin-top:19px;
- color:#e0eef7;
- font-size:11px;
-}
-
-.hero-meta strong{color:#ffe0a0}
-
-/* =========================================
-   MAIN ATLAS 3D DASHBOARD
-   SAME STRUCTURE AS PREVIOUS VERSION
-========================================= */
-
-.atlas-stage{
- position:relative;
- width:min(100%,630px);
- justify-self:center;
- margin-left:-12px;
- margin-right:20px;
- perspective:1800px;
- perspective-origin:50% 50%;
- isolation:isolate;
- z-index:3;
-}
-
-.atlas-stage:before{
- content:"";
- position:absolute;
- inset:15% 4%;
- z-index:-2;
- border-radius:20px;
- background:linear-gradient(120deg,#31f5ff,#208aff 51%,#b66cff);
- filter:blur(29px);
- opacity:.38;
- pointer-events:none;
-}
-
-.atlas-object{
- position:relative;
- width:100%;
- transform-style:preserve-3d;
- transform-origin:center;
- transform:rotateX(8deg) rotateY(-12deg) rotateZ(-.5deg);
- transition:transform .5s ease;
-}
-
-.atlas-stage:hover .atlas-object{
- transform:rotateX(7deg) rotateY(-10deg) rotateZ(-.5deg) translateY(-2px);
-}
-
-.atlas-object:before{
- content:"";
- position:absolute;
- inset:-3px;
- z-index:-1;
- border-radius:20px;
- background:linear-gradient(
- 130deg,
- #c9ffff,
- #4cf1ff 24%,
- #248bff 47%,
- #9572ff 76%,
- #d28bff
- );
- box-shadow:
- 0 0 7px #5bf4ffba,
- 0 0 17px #36d0ff78,
- 0 0 27px #9477ff50,
- 11px 16px 32px #0012268c;
-}
-
-.atlas-panel{
- position:relative;
- overflow:hidden;
- width:100%;
- aspect-ratio:1.85/1;
- border:1px solid #9cddff73;
- border-radius:17px;
- background:linear-gradient(135deg,#0b2b49,#05162d 63%,#111637);
- box-shadow:inset 0 1px #e3ffff26,0 10px 25px #0012248e;
- display:flex;
- flex-direction:column;
-}
-
-.atlas-top{
- flex:0 0 34px;
- display:flex;
- align-items:center;
- justify-content:space-between;
- gap:8px;
- padding:5px 11px;
- background:linear-gradient(105deg,#103a5d,#081a34);
- border-bottom:1px solid #7fe1ff46;
-}
-
-.atlas-brand{
- display:flex;
- align-items:center;
- gap:7px;
-}
-
-.atlas-brand svg{
- width:19px;
- height:19px;
- color:#92b9ff;
-}
-
-.atlas-brand strong{
- font-size:11px;
- font-weight:800;
- white-space:nowrap;
-}
-
-.atlas-top small{
- color:#b8d6e5;
- font-size:7px;
- font-weight:700;
- white-space:nowrap;
-}
-
-.atlas-app{
- flex:1;
- min-height:0;
- display:grid;
- grid-template-columns:78px minmax(0,1fr);
-}
-
-.atlas-menu{
- display:flex;
- flex-direction:column;
- gap:2px;
- padding:7px 4px;
- background:#04172af2;
- border-right:1px solid #76dbff38;
-}
-
-.atlas-menu span{
- display:flex;
- align-items:center;
- gap:5px;
- padding:5px 4px;
- border-radius:5px;
- color:#c9deee;
- font-size:7px;
- font-weight:650;
- white-space:nowrap;
-}
-
-.atlas-menu svg{
- width:11px;
- height:11px;
- flex-shrink:0;
- color:#b3d7f0;
-}
-
-.atlas-menu span:first-child{
- color:white;
- background:linear-gradient(120deg,#207ed0,#154383);
- border:1px solid #87e3ffc2;
- border-radius:4px;
-}
-
-.atlas-main{
- display:flex;
- flex-direction:column;
- gap:6px;
- min-width:0;
- min-height:0;
- padding:7px;
-}
-
-.atlas-kpis{
- flex:0 0 48px;
- display:grid;
- grid-template-columns:repeat(4,minmax(0,1fr));
- gap:5px;
-}
-
-.atlas-kpi{
- min-width:0;
- padding:6px;
- overflow:hidden;
- border-radius:6px;
- border:1px solid #78d5ff48;
- background:linear-gradient(140deg,#123955,#082139);
-}
-
-.kpi-label{
- display:flex;
- align-items:center;
- gap:4px;
- font-size:7px;
- color:#c5dce9;
- font-weight:650;
- white-space:nowrap;
-}
-
-.kpi-label svg{
- width:10px;
- height:10px;
- color:#70eaff;
-}
-
-.atlas-kpi strong{
- display:block;
- margin-top:5px;
- color:#f8fdff;
- font-size:10px;
- font-weight:850;
- white-space:nowrap;
-}
-
-.atlas-kpi em{
- display:block;
- margin-top:3px;
- color:#76f3b8;
- font-size:7px;
- font-style:normal;
-}
-
-.sentiment-meter{
- height:4px;
- margin-top:5px;
- overflow:hidden;
- border-radius:20px;
- background:#164560;
-}
-
-.sentiment-meter span{
- display:block;
- width:64%;
- height:100%;
- background:linear-gradient(90deg,#2e9fff,#6becc8,#ffcf74);
-}
-
-.atlas-body-grid{
- flex:1;
- min-height:0;
- display:grid;
- grid-template-columns:1.82fr .86fr;
- gap:6px;
-}
-
-.market-chart,
-.market-mini{
- min-width:0;
- min-height:0;
- overflow:hidden;
- border-radius:7px;
- border:1px solid #75d1ff45;
- background:#061b32;
-}
-
-.market-chart{
- display:flex;
- flex-direction:column;
-}
-
-.market-toolbar{
- flex:0 0 29px;
- display:flex;
- align-items:center;
- justify-content:space-between;
- gap:5px;
- padding:5px 7px;
- border-bottom:1px solid #70dfff29;
-}
-
-.market-toolbar-title{
- display:flex;
- align-items:center;
- gap:5px;
- font-size:9px;
- font-weight:800;
-}
-
-.market-toolbar-title svg{
- width:12px;
- height:12px;
- color:#67efff;
-}
-
-.time-pills{
- display:flex;
- gap:3px;
-}
-
-.time-pills span{
- padding:2px 4px;
- border-radius:3px;
- background:#133653;
- color:#c6e2ed;
- font-size:6px;
-}
-
-.time-pills .selected{
- color:white;
- background:#2379cd;
-}
-
-.market-screen{
- flex:1;
- min-height:0;
- background:
- linear-gradient(#6cbbff15 1px,transparent 1px),
- linear-gradient(90deg,#6cbbff15 1px,transparent 1px),
- #061b32;
- background-size:100% 22px,30px 100%;
-}
-
-.market-screen svg{
- display:block;
- width:100%;
- height:100%;
-}
-
-.market-screen .line1{
- fill:none;
- stroke:#4efde0;
- stroke-width:2;
-}
-
-.market-screen .line2{
- fill:none;
- stroke:#c187ff;
- stroke-width:2;
-}
-
-.market-side{
- display:flex;
- flex-direction:column;
- gap:6px;
- min-height:0;
-}
-
-.market-mini{
- flex:1;
- display:flex;
- flex-direction:column;
- justify-content:center;
- padding:6px 7px;
- background:linear-gradient(145deg,#0b3755,#07203a);
-}
-
-.mini-title{
- display:flex;
- align-items:center;
- gap:5px;
- font-size:8px;
- font-weight:800;
-}
-
-.mini-title svg{
- width:13px;
- height:13px;
- color:#69f0ff;
-}
-
-.market-mini small{
- margin-top:3px;
- color:#a8d2e0;
- font-size:7px;
-}
-
-.market-mini strong{
- margin-top:4px;
- color:#70f3b9;
- font-size:10px;
- font-weight:850;
-}
-
-.market-mini em{
- margin-top:2px;
- color:#b0e0d7;
- font-size:6px;
- font-style:normal;
-}
-
-.mini-chart{
- display:block;
- width:100%;
- height:18px;
- margin-top:3px;
-}
-
-.atlas-module-title{
- font-size:7px;
- color:#b8d7e6;
- font-weight:700;
-}
-
-.atlas-modules{
- flex:0 0 34px;
- display:grid;
- grid-template-columns:repeat(4,minmax(0,1fr));
- gap:5px;
-}
-
-.atlas-module{
- min-width:0;
- display:flex;
- align-items:center;
- gap:5px;
- padding:4px 5px;
- border:1px solid #73d6ff44;
- border-radius:6px;
- background:linear-gradient(135deg,#143c62,#09203d);
-}
-
-.atlas-module svg{
- width:14px;
- height:14px;
- color:#76ebff;
- flex-shrink:0;
-}
-
-.atlas-module strong{
- display:block;
- font-size:7px;
- white-space:nowrap;
-}
-
-.atlas-module small{
- display:block;
- margin-top:3px;
- font-size:6px;
- color:#abd9e9;
-}
-
-.atlas-disclosure{
- flex:0 0 18px;
- padding:4px 10px;
- border-top:1px solid #6be0ff27;
- color:#a5c7d8;
- font-size:7px;
-}
-
-/* =========================================
-   PUBLIC SALE — PRESERVED
-========================================= */
-
-.sale-banner{
- position:relative;
- margin:18px 0 20px;
- padding:14px 21px;
- border-radius:18px;
- border:1px solid #80f0ffc0;
- background:linear-gradient(105deg,#0a4860cc,#0a2d4ccc 49%,#252145cf);
- box-shadow:0 0 20px #17dbff46,inset 0 1px #cefcff37;
- backdrop-filter:blur(12px);
-}
-
-.sale-grid{
- display:grid;
- grid-template-columns:1.4fr .55fr .7fr auto;
- gap:18px;
- align-items:center;
-}
-
-.sale-title{
- display:flex;
- align-items:center;
- gap:14px;
-}
-
-.sale-title strong{
- font-size:25px;
- white-space:nowrap;
-}
-
-.sale-pill{
- padding:8px 11px;
- border-radius:7px;
- background:linear-gradient(#fff0bb,#efb547);
- color:#241705;
- font-size:9px;
- font-weight:900;
-}
-
-.sale-stat small{
- display:block;
- color:#cfe2ee;
- font-size:10px;
-}
-
-.sale-stat strong{
- display:block;
- margin-top:5px;
- color:var(--gold);
- font-size:26px;
-}
-
-.sale-action .btn{
- min-width:165px;
-}
-
-/* =========================================
-   NEW REFERENCE ART CARDS
-
-   Uses three actual crops from your
-   approved cinematic reference.
-
-   NO fake CSS globe.
-   NO cartoon fish.
-   NO simplified CSS smartphone.
-========================================= */
-
-.ecosystem-grid{
- display:grid;
- grid-template-columns:repeat(3,minmax(0,1fr));
- gap:18px;
- align-items:stretch;
-}
-
-.reference-card{
- position:relative;
- display:block;
- min-width:0;
- aspect-ratio:510/248;
- border-radius:17px;
- overflow:hidden;
- isolation:isolate;
- background:linear-gradient(135deg,#10385b,#04172a);
- border:1px solid #6eefff9c;
- box-shadow:
- 0 0 19px #25dcff30,
- 0 14px 28px #0007;
- transition:
- transform .25s ease,
- box-shadow .25s ease;
-}
-
-.reference-card img{
- width:100%;
- height:100%;
- object-fit:fill;
-}
-
-.reference-card:after{
- content:"";
- position:absolute;
- inset:0;
- border-radius:17px;
- pointer-events:none;
- box-shadow:inset 0 0 0 1px #ffffff13;
-}
-
-.reference-card:hover{
- transform:translateY(-4px);
- box-shadow:
- 0 0 24px #42dfff68,
- 0 18px 35px #0009;
-}
-
-.reference-card:focus-visible{
- outline:3px solid #ffe2a0;
- outline-offset:3px;
-}
-
-/* =========================================
-   LOWER SITE SECTIONS
-========================================= */
-
-.section{
- padding:84px 0;
-}
-
-.lower{
- background:linear-gradient(#031629,#061a2e);
+  display:inline-block;
+
+  background:linear-gradient(
+    180deg,
+    #fff8df 0%,
+    #ffe9b4 30%,
+    #ffd080 68%,
+    #bd8133 100%
+  );
+
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
 }
 
 .eyebrow{
- color:#a1f2ff;
- font-size:10px;
- font-weight:800;
- letter-spacing:2.5px;
+  color:#a1f2ff;
+  font-size:10px;
+  font-weight:800;
+  letter-spacing:2.5px;
+  text-transform:uppercase;
+}
+
+.section{
+  padding:84px 0;
 }
 
 .section-title{
- font:600 clamp(46px,5vw,74px)/1.08 var(--serif);
- margin:18px 0 22px;
- padding-bottom:.08em;
+  font-family:var(--serif);
+  font-weight:600;
+  font-size:clamp(46px,5vw,74px);
+  line-height:1.08;
+  margin:18px 0 22px;
+  padding-bottom:.08em;
 }
 
 .section-description{
- color:var(--muted);
- font-size:14px;
- line-height:1.85;
+  color:var(--muted);
+  font-size:14px;
+  line-height:1.85;
+}
+
+/* ======================================================
+   BUTTONS
+====================================================== */
+
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+
+  min-height:50px;
+  padding:12px 23px;
+
+  border-radius:11px;
+  border:1px solid transparent;
+
+  font:800 13px var(--sans);
+  white-space:nowrap;
+
+  transition:
+    transform .2s ease,
+    filter .2s ease,
+    box-shadow .2s ease;
+}
+
+.btn:hover{
+  transform:translateY(-2px);
+  filter:brightness(1.08);
+}
+
+.btn-gold{
+  color:#211603;
+
+  background:linear-gradient(
+    180deg,
+    #fff3c5,
+    #ffda89 48%,
+    #efa938
+  );
+
+  border-color:#ffecb1;
+
+  box-shadow:
+    0 0 15px #ffc55c69,
+    0 7px 22px #bb782f55,
+    inset 0 1px #fff9e8;
+}
+
+.btn-blue{
+  color:#fff;
+
+  background:linear-gradient(
+    120deg,
+    #0d3766,
+    #087da9
+  );
+
+  border-color:#82e6ffba;
+
+  box-shadow:
+    0 0 16px #19caff4c,
+    inset 0 1px #b5eeff30;
+}
+
+.btn-outline{
+  color:#ffe3a8;
+  background:#041b30e6;
+  border-color:#ffde9ba8;
+}
+
+/* ======================================================
+   HEADER
+====================================================== */
+
+.site-header{
+  position:absolute;
+  top:10px;
+  left:0;
+  right:0;
+  z-index:100;
+}
+
+.nav-shell{
+  width:min(1540px,calc(100% - 64px));
+  height:61px;
+
+  margin:auto;
+  padding:7px 15px 7px 24px;
+
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+
+  border-radius:21px;
+  border:1px solid #70e6ff78;
+
+  background:linear-gradient(
+    105deg,
+    #031527f7,
+    #06192ef3,
+    #031426f7
+  );
+
+  box-shadow:
+    0 13px 34px #0014269a,
+    inset 0 1px #d0faff24;
+
+  backdrop-filter:blur(15px);
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  flex-shrink:0;
+}
+
+.brand-orb{
+  width:41px;
+  height:41px;
+
+  display:grid;
+  place-items:center;
+
+  border-radius:50%;
+  border:1px solid #b1f9ff;
+
+  background:radial-gradient(
+    circle at 28% 20%,
+    #baffff,
+    #0696c5 41%,
+    #073967 75%
+  );
+
+  box-shadow:0 0 17px #29e0ff88;
+
+  font-size:29px;
+  font-weight:900;
+  font-style:italic;
+  color:white;
+}
+
+.brand-name{
+  font-size:23px;
+  font-weight:850;
+  letter-spacing:-.6px;
+}
+
+.nav{
+  display:flex;
+  align-items:center;
+  gap:23px;
+}
+
+.nav a{
+  font-size:12px;
+  font-weight:650;
+  white-space:nowrap;
+}
+
+.nav a:hover{
+  color:var(--cyan);
+}
+
+.nav a.active{
+  color:#ffe1a0;
+  position:relative;
+}
+
+.nav a.active:after{
+  content:"";
+  position:absolute;
+  bottom:-12px;
+  left:0;
+  right:0;
+  height:2px;
+  background:#ffd583;
+  box-shadow:0 0 9px #ffd583;
+}
+
+.nav .nav-buy{
+  padding:11px 19px;
+
+  border:1px solid #ffe8aa;
+  border-radius:9px;
+
+  background:linear-gradient(
+    #fff0bb,
+    #f3b651
+  );
+
+  color:#241606;
+  font-weight:900;
+
+  box-shadow:0 0 14px #ffc45c72;
+}
+
+.menu-button{
+  display:none;
+}
+
+/* ======================================================
+   OCEAN BACKGROUND
+====================================================== */
+
+.ocean-world{
+  position:relative;
+  isolation:isolate;
+  overflow:hidden;
+
+  padding:103px 0 37px;
+
+  background:radial-gradient(
+    ellipse at 54% 20%,
+    #0a7bac,
+    #032e4c 62%,
+    #021426
+  );
+}
+
+.ocean-photo{
+  position:absolute;
+  inset:0;
+  z-index:-4;
+
+  width:100%;
+  height:100%;
+
+  object-fit:cover;
+  object-position:center 41%;
+
+  filter:
+    contrast(1.16)
+    saturate(1.34)
+    brightness(.94);
+}
+
+.ocean-world:before{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:-3;
+
+  background:
+    linear-gradient(
+      90deg,
+      #021729da,
+      #05294091 46%,
+      #03283b20 82%
+    ),
+    linear-gradient(
+      0deg,
+      #021426ba,
+      transparent 45%
+    );
+}
+
+.ocean-world:after{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:-2;
+  pointer-events:none;
+
+  background:
+    radial-gradient(
+      ellipse at 49% 0%,
+      #aff7ff25,
+      transparent 37%
+    ),
+    repeating-linear-gradient(
+      109deg,
+      transparent 0 155px,
+      #dbf8ff06 165px,
+      transparent 192px
+    );
+}
+
+.ambient-glow{
+  position:absolute;
+  inset:0;
+  z-index:-1;
+  pointer-events:none;
+
+  background:
+    radial-gradient(
+      ellipse at 84% 41%,
+      #8859ff18,
+      transparent 38%
+    ),
+    radial-gradient(
+      ellipse at 13% 76%,
+      #07eaff19,
+      transparent 39%
+    );
+}
+
+/* ======================================================
+   HERO
+====================================================== */
+
+.hero{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+  gap:8px;
+  align-items:center;
+  min-height:365px;
+}
+
+.hero-copy{
+  position:relative;
+  z-index:4;
+  padding:10px 0;
+}
+
+.hero-label{
+  display:flex;
+  align-items:center;
+  gap:14px;
+
+  color:#dff5ff;
+  font-size:10px;
+  font-weight:750;
+  letter-spacing:2.5px;
+}
+
+.hero-label:after{
+  content:"";
+  width:30px;
+  height:1px;
+  background:#b7efff91;
+}
+
+.hero h1{
+  margin:18px 0;
+  padding-bottom:.14em;
+
+  font-family:var(--serif);
+  font-weight:600;
+  font-size:clamp(60px,5.9vw,94px);
+  line-height:1;
+  letter-spacing:-1.6px;
+
+  text-shadow:0 3px 16px #0016279d;
+}
+
+.hero h1 span{
+  display:block;
+  line-height:1.02;
+  padding-bottom:.07em;
+}
+
+.hero-description{
+  max-width:555px;
+
+  color:#e6f3fe;
+  font-size:14px;
+  line-height:1.85;
+
+  text-shadow:0 2px 8px #00192b;
+}
+
+.hero-actions{
+  display:flex;
+  gap:13px;
+  flex-wrap:wrap;
+  margin-top:23px;
+}
+
+.hero-meta{
+  display:flex;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:10px;
+
+  margin-top:19px;
+
+  font-size:11px;
+  color:#e0eef7;
+}
+
+.hero-meta strong{
+  color:#ffe0a0;
+}
+
+/* ======================================================
+   NEW CINEMATIC ATLAS IMAGE
+
+   REPLACES THE OLD HTML / SVG DASHBOARD
+
+   No extra CSS rotation is applied:
+   the 3D inclination is already in the image.
+   This preserves clarity and sharpness.
+====================================================== */
+
+.atlas-stage{
+  position:relative;
+
+  width:min(100%,690px);
+  justify-self:center;
+
+  margin-left:-14px;
+  margin-right:5px;
+
+  z-index:3;
+
+  isolation:isolate;
+}
+
+.atlas-stage:before{
+  content:"";
+
+  position:absolute;
+  inset:14% 6%;
+
+  z-index:-1;
+  pointer-events:none;
+
+  background:linear-gradient(
+    130deg,
+    #31dfff,
+    #167dff 51%,
+    #9b5fff
+  );
+
+  filter:blur(42px);
+  opacity:.31;
+}
+
+/* Wide visual artwork viewport */
+
+.atlas-image-frame{
+  position:relative;
+
+  width:100%;
+  aspect-ratio:1.62 / 1;
+
+  overflow:hidden;
+  border-radius:20px;
+
+  background:
+    radial-gradient(
+      ellipse at 50% 45%,
+      #0b4a72,
+      #071b3b 66%,
+      #031627
+    );
+
+  border:1px solid #73dcff4a;
+
+  box-shadow:
+    0 0 25px #33dbff25,
+    0 18px 42px #00162982;
+
+  transition:
+    transform .3s ease,
+    box-shadow .3s ease;
+}
+
+.atlas-image-frame:hover{
+  transform:translateY(-3px);
+
+  box-shadow:
+    0 0 30px #33dbff55,
+    0 22px 45px #001629a5;
+}
+
+/* Image containing the entire 3D ATLAS panel */
+
+.atlas-dashboard-image{
+  display:block;
+
+  width:100%;
+  height:100%;
+
+  object-fit:cover;
+  object-position:center;
+
+  border-radius:18px;
+
+  filter:
+    contrast(1.06)
+    saturate(1.08);
+
+  image-rendering:auto;
+}
+
+/* A delicate lighting layer, not a strong overlay */
+
+.atlas-image-frame:after{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:2;
+  pointer-events:none;
+
+  border-radius:20px;
+
+  background:linear-gradient(
+    135deg,
+    #adfbff0d,
+    transparent 38%,
+    #9a7cff06
+  );
+}
+
+/* Fallback only when image cannot load */
+
+.atlas-image-fallback{
+  display:none;
+
+  position:absolute;
+  inset:0;
+  z-index:4;
+
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+  gap:12px;
+
+  padding:30px;
+  text-align:center;
+
+  background:linear-gradient(
+    145deg,
+    #0a3155,
+    #071931
+  );
+}
+
+.atlas-image-fallback strong{
+  font-size:20px;
+  color:white;
+}
+
+.atlas-image-fallback span{
+  font-size:12px;
+  color:#bcddec;
+  line-height:1.8;
+}
+
+.atlas-image-frame.image-failed
+.atlas-image-fallback{
+  display:flex;
+}
+
+.atlas-image-frame.image-failed
+.atlas-dashboard-image{
+  visibility:hidden;
+}
+
+/* Optional small development notice below */
+
+.atlas-preview-caption{
+  position:relative;
+  margin-top:6px;
+
+  text-align:center;
+
+  color:#b5d0df;
+  font-size:9px;
+  line-height:1.5;
+  text-shadow:0 1px 5px #001a2b;
+}
+
+/* ======================================================
+   PUBLIC SALE BANNER
+====================================================== */
+
+.sale-banner{
+  position:relative;
+
+  margin:18px 0 20px;
+  padding:14px 21px;
+
+  border-radius:18px;
+  border:1px solid #80f0ffc0;
+
+  background:linear-gradient(
+    105deg,
+    #0a4860cc,
+    #0a2d4ccc 49%,
+    #252145cf
+  );
+
+  box-shadow:
+    0 0 20px #17dbff46,
+    inset 0 1px #cefcff37;
+
+  backdrop-filter:blur(12px);
+}
+
+.sale-banner:after{
+  content:"";
+
+  position:absolute;
+  left:4%;
+  right:4%;
+  bottom:0;
+
+  height:1px;
+
+  background:linear-gradient(
+    90deg,
+    transparent,
+    #53edff,
+    #a479ff,
+    transparent
+  );
+
+  box-shadow:0 0 11px #48e6ff;
+}
+
+.sale-grid{
+  display:grid;
+  grid-template-columns:1.4fr .55fr .7fr auto;
+  gap:18px;
+  align-items:center;
+}
+
+.sale-title{
+  display:flex;
+  align-items:center;
+  gap:14px;
+}
+
+.sale-title strong{
+  font-size:25px;
+  white-space:nowrap;
+}
+
+.sale-pill{
+  padding:8px 11px;
+
+  border-radius:7px;
+
+  background:linear-gradient(
+    #fff0bb,
+    #efb547
+  );
+
+  color:#241705;
+
+  font-size:9px;
+  font-weight:900;
+  white-space:nowrap;
+}
+
+.sale-stat small{
+  display:block;
+  color:#cfe2ee;
+  font-size:10px;
+}
+
+.sale-stat strong{
+  display:block;
+  margin-top:5px;
+
+  color:var(--gold);
+  font-size:26px;
+}
+
+.sale-action .btn{
+  min-width:165px;
+}
+
+/* ======================================================
+   THREE PREMIUM REFERENCE CARDS
+
+   The files are already in the GitHub repository.
+====================================================== */
+
+.ecosystem-grid{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:18px;
+  align-items:stretch;
+}
+
+.reference-card{
+  position:relative;
+  display:block;
+
+  min-width:0;
+  aspect-ratio:510 / 248;
+
+  border-radius:17px;
+  overflow:hidden;
+  isolation:isolate;
+
+  background:linear-gradient(
+    135deg,
+    #10385b,
+    #04172a
+  );
+
+  border:1px solid #6eefff9c;
+
+  box-shadow:
+    0 0 19px #25dcff30,
+    0 14px 28px #0007;
+
+  transition:
+    transform .25s ease,
+    box-shadow .25s ease;
+}
+
+.reference-card img{
+  width:100%;
+  height:100%;
+  object-fit:fill;
+}
+
+.reference-card:after{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:17px;
+  pointer-events:none;
+  box-shadow:inset 0 0 0 1px #ffffff13;
+}
+
+.reference-card:hover{
+  transform:translateY(-4px);
+
+  box-shadow:
+    0 0 24px #42dfff68,
+    0 18px 35px #0009;
+}
+
+/* ======================================================
+   ATLAS LOWER SECTION
+====================================================== */
+
+.lower{
+  background:linear-gradient(
+    #031629,
+    #061a2e
+  );
 }
 
 .feature-grid{
- display:grid;
- grid-template-columns:1fr 1fr;
- align-items:center;
- gap:55px;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  align-items:center;
+  gap:55px;
 }
 
 .feature-copy p{
- color:var(--muted);
- font-size:14px;
- line-height:1.85;
+  color:var(--muted);
+  font-size:14px;
+  line-height:1.85;
 }
 
 .feature-tags{
- display:grid;
- grid-template-columns:1fr 1fr;
- gap:10px;
- margin:24px 0;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+  margin:24px 0;
 }
 
 .feature-tags span{
- padding:16px;
- border-radius:10px;
- background:#10334d;
- border:1px solid var(--line);
- font-size:12px;
- font-weight:700;
+  padding:16px;
+  border-radius:10px;
+
+  background:#10334d;
+  border:1px solid var(--line);
+
+  font-size:12px;
+  font-weight:700;
 }
 
 .feature-visual{
- padding:24px;
- border-radius:18px;
- border:1px solid #79e8ff89;
- background:linear-gradient(145deg,#122e55,#101c3c);
+  padding:24px;
+  border-radius:18px;
+
+  border:1px solid #79e8ff89;
+
+  background:linear-gradient(
+    145deg,
+    #122e55,
+    #101c3c
+  );
+
+  box-shadow:0 0 28px #458fff27;
 }
 
 .feature-visual h3{
- font-size:15px;
- margin:0;
+  margin:0;
+  font-size:15px;
 }
 
 .bar-chart{
- display:flex;
- align-items:end;
- gap:9px;
- height:195px;
- margin:24px 0 10px;
- border-bottom:1px solid var(--line);
+  display:flex;
+  align-items:end;
+  gap:9px;
+
+  height:195px;
+
+  margin:24px 0 10px;
+
+  border-bottom:1px solid var(--line);
 }
 
 .bar-chart span{
- flex:1;
- height:var(--h);
- border-radius:5px 5px 0 0;
- background:linear-gradient(var(--c),#154b85);
+  flex:1;
+  height:var(--h);
+
+  border-radius:5px 5px 0 0;
+
+  background:linear-gradient(
+    var(--c),
+    #154b85
+  );
 }
 
 .concept-note{
- color:#a7c5d8;
- font-size:11px;
- line-height:1.7;
+  color:#a7c5d8;
+  font-size:11px;
+  line-height:1.7;
 }
 
+/* ======================================================
+   SNAO OCEAN
+====================================================== */
+
 .ocean-section{
- position:relative;
- isolation:isolate;
- overflow:hidden;
- background:#06354c;
+  position:relative;
+  isolation:isolate;
+  overflow:hidden;
+
+  background:#06354c;
 }
 
 .ocean-section>img{
- position:absolute;
- inset:0;
- z-index:-2;
- width:100%;
- height:100%;
- object-fit:cover;
+  position:absolute;
+  inset:0;
+  z-index:-2;
+
+  width:100%;
+  height:100%;
+  object-fit:cover;
+
+  filter:
+    contrast(1.1)
+    saturate(1.25);
 }
 
 .ocean-section:before{
- content:"";
- position:absolute;
- inset:0;
- z-index:-1;
- background:linear-gradient(90deg,#031629f3,#052b43cc 57%,#063d5560);
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:-1;
+
+  background:linear-gradient(
+    90deg,
+    #031629f3,
+    #052b43cc 57%,
+    #063d5560
+  );
 }
 
 .ocean-copy{
- max-width:620px;
+  max-width:620px;
 }
 
 .ocean-copy p{
- color:#d9ecf6;
- font-size:14px;
- line-height:1.9;
+  color:#d9ecf6;
+  font-size:14px;
+  line-height:1.9;
 }
 
 .pills{
- display:flex;
- flex-wrap:wrap;
- gap:9px;
- margin:23px 0;
+  display:flex;
+  flex-wrap:wrap;
+  gap:9px;
+  margin:23px 0;
 }
 
 .pills span{
- padding:9px 13px;
- border:1px solid #76e9df83;
- border-radius:50px;
- background:#075869b5;
- font-size:11px;
+  padding:9px 13px;
+  border-radius:50px;
+
+  border:1px solid #76e9df83;
+  background:#075869b5;
+
+  font-size:11px;
 }
 
+/* ======================================================
+   OCEAN INTELLIGENCE
+====================================================== */
+
 .intelligence-grid{
- display:grid;
- grid-template-columns:repeat(3,1fr);
- gap:16px;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:16px;
 }
 
 .intelligence-card{
- padding:25px;
- border-radius:14px;
- border:1px solid var(--line);
- background:linear-gradient(145deg,#112d49,#071b30);
+  padding:25px;
+  border-radius:14px;
+
+  border:1px solid var(--line);
+
+  background:linear-gradient(
+    145deg,
+    #112d49,
+    #071b30
+  );
 }
 
 .intelligence-card b{
- color:#a47aff;
- font-size:26px;
+  color:var(--purple);
+  font-size:26px;
 }
 
 .intelligence-card h3{
- font-size:19px;
- margin:16px 0 10px;
+  font-size:19px;
+  margin:16px 0 10px;
 }
 
 .intelligence-card p{
- color:var(--muted);
- font-size:12px;
- line-height:1.85;
+  color:var(--muted);
+  font-size:12px;
+  line-height:1.85;
 }
 
 .intelligence-card small{
- color:#d0afff;
- font-size:9px;
+  color:#d0afff;
+  font-size:9px;
 }
 
+/* ======================================================
+   TOKEN
+====================================================== */
+
 .token-section{
- background:linear-gradient(110deg,#20233e,#103047,#241d37);
+  background:linear-gradient(
+    110deg,
+    #20233e,
+    #103047,
+    #241d37
+  );
 }
 
 .token-metrics{
- display:grid;
- grid-template-columns:1fr 1fr;
- gap:12px;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
 }
 
 .token-metric{
- padding:23px;
- border-radius:12px;
- border:1px solid #ffe0a065;
- background:#0d223ccc;
+  padding:23px;
+  border-radius:12px;
+
+  border:1px solid #ffe0a065;
+  background:#0d223ccc;
 }
 
 .token-metric small{
- color:#c3d4e1;
- font-size:11px;
+  color:#c3d4e1;
+  font-size:11px;
 }
 
 .token-metric strong{
- display:block;
- margin-top:12px;
- color:var(--gold);
- font-size:29px;
+  display:block;
+  margin-top:12px;
+
+  color:var(--gold);
+  font-size:29px;
 }
 
+/* ======================================================
+   FINAL CTA
+====================================================== */
+
 .final-cta{
- text-align:center;
- background:#041626;
+  text-align:center;
+
+  background:
+    radial-gradient(
+      ellipse at center,
+      #125b7e40,
+      transparent 65%
+    ),
+    #041626;
 }
 
 .final-cta .section-title{
- max-width:850px;
- margin:15px auto 22px;
+  max-width:850px;
+  margin:15px auto 22px;
 }
 
 .final-cta .section-description{
- max-width:650px;
- margin:0 auto 26px;
+  max-width:650px;
+  margin:0 auto 26px;
 }
 
 .final-actions{
- display:flex;
- justify-content:center;
- flex-wrap:wrap;
- gap:12px;
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:12px;
 }
 
+/* ======================================================
+   FOOTER
+====================================================== */
+
 .footer{
- padding:50px 0 25px;
- background:#020d1c;
- border-top:1px solid var(--line);
+  padding:50px 0 25px;
+
+  background:#020d1c;
+  border-top:1px solid var(--line);
 }
 
 .footer-grid{
- display:grid;
- grid-template-columns:1.5fr 1fr 1fr;
- gap:35px;
+  display:grid;
+  grid-template-columns:1.5fr 1fr 1fr;
+  gap:35px;
 }
 
 .footer h4{
- margin:0 0 17px;
- font-size:12px;
+  margin:0 0 17px;
+  font-size:12px;
 }
 
 .footer p{
- max-width:380px;
- color:#a4c0d0;
- font-size:12px;
- line-height:1.85;
+  max-width:380px;
+
+  color:#a4c0d0;
+  font-size:12px;
+  line-height:1.85;
 }
 
 .footer-link{
- display:block;
- margin:12px 0;
- color:#bbd1e0;
- font-size:12px;
+  display:block;
+  margin:12px 0;
+
+  color:#bbd1e0;
+  font-size:12px;
+}
+
+.footer-link:hover{
+  color:var(--cyan);
 }
 
 .footer-bottom{
- margin-top:42px;
- padding-top:22px;
- border-top:1px solid var(--line);
- color:#8ba9bd;
- font-size:11px;
+  margin-top:42px;
+  padding-top:22px;
+
+  border-top:1px solid var(--line);
+
+  color:#8ba9bd;
+  font-size:11px;
 }
 
-.mobile-buy{display:none}
+.mobile-buy{
+  display:none;
+}
 
-/* =========================================
-   RESPONSIVE
-========================================= */
+/* ======================================================
+   RESPONSIVE — TABLET
+====================================================== */
 
 @media(max-width:1200px){
- .nav{gap:13px}
- .nav a{font-size:11px}
- .atlas-stage{
-  width:min(100%,600px);
-  margin-left:0;
-  margin-right:0;
- }
- .sale-title strong{font-size:21px}
+
+  .nav{
+    gap:13px;
+  }
+
+  .nav a{
+    font-size:11px;
+  }
+
+  .atlas-stage{
+    width:min(100%,640px);
+    margin-left:0;
+    margin-right:0;
+  }
+
+  .sale-title strong{
+    font-size:21px;
+  }
+
 }
 
 @media(max-width:980px){
 
- .site-header{top:0}
+  .site-header{
+    top:0;
+  }
 
- .nav-shell{
-  width:100%;
-  height:70px;
-  padding:0 20px;
-  border-radius:0;
- }
+  .nav-shell{
+    width:100%;
+    height:70px;
+    padding:0 20px;
+    border-radius:0;
+  }
 
- .menu-button{
-  display:block;
-  width:44px;
-  height:43px;
-  border-radius:9px;
-  border:1px solid var(--line);
-  background:#0a2d47;
-  color:white;
-  font-size:23px;
- }
+  .menu-button{
+    display:block;
 
- .nav{
-  display:none;
-  position:absolute;
-  top:70px;
-  left:0;
-  right:0;
-  padding:15px 21px;
-  flex-direction:column;
-  align-items:stretch;
-  gap:0;
-  background:#031629fa;
- }
+    width:44px;
+    height:43px;
 
- .nav.open{display:flex}
+    border-radius:9px;
+    border:1px solid var(--line);
 
- .nav a{
-  padding:13px 11px;
-  font-size:14px;
- }
+    background:#0a2d47;
+    color:white;
+    font-size:23px;
+  }
 
- .nav a.active:after{display:none}
+  .nav{
+    display:none;
 
- .nav .nav-buy{
-  margin-top:8px;
-  text-align:center;
- }
+    position:absolute;
+    top:70px;
+    left:0;
+    right:0;
 
- .hero{
-  grid-template-columns:1fr;
-  gap:23px;
- }
+    padding:15px 21px;
 
- .atlas-stage{
-  width:min(100%,630px);
-  margin:0 auto;
- }
+    flex-direction:column;
+    align-items:stretch;
+    gap:0;
 
- .sale-grid{
-  grid-template-columns:1fr 1fr;
- }
+    background:#031629fa;
+    border-bottom:1px solid var(--line);
+  }
 
- .sale-title,
- .sale-action{
-  grid-column:1/-1;
- }
+  .nav.open{
+    display:flex;
+  }
 
- .ecosystem-grid{
-  grid-template-columns:repeat(2,minmax(0,1fr));
- }
+  .nav a{
+    padding:13px 11px;
+    font-size:14px;
+  }
 
- .feature-grid{grid-template-columns:1fr}
- .intelligence-grid{grid-template-columns:repeat(2,1fr)}
+  .nav a.active:after{
+    display:none;
+  }
+
+  .nav .nav-buy{
+    margin-top:8px;
+    text-align:center;
+  }
+
+  .hero{
+    grid-template-columns:1fr;
+    gap:23px;
+  }
+
+  .atlas-stage{
+    width:min(100%,680px);
+    margin:0 auto;
+  }
+
+  .sale-grid{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .sale-title,
+  .sale-action{
+    grid-column:1/-1;
+  }
+
+  .ecosystem-grid{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+
+  .feature-grid{
+    grid-template-columns:1fr;
+  }
+
+  .intelligence-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
 }
+
+/* ======================================================
+   RESPONSIVE — MOBILE
+====================================================== */
 
 @media(max-width:650px){
 
- .container{
-  width:calc(100% - 32px);
- }
+  .container{
+    width:calc(100% - 32px);
+  }
 
- .brand-name{font-size:19px}
+  .brand-name{
+    font-size:19px;
+  }
 
- .brand-orb{
-  width:35px;
-  height:35px;
-  font-size:25px;
- }
+  .brand-orb{
+    width:35px;
+    height:35px;
+    font-size:25px;
+  }
 
- .ocean-world{
-  padding:92px 0 26px;
- }
+  .ocean-world{
+    padding:92px 0 26px;
+  }
 
- .hero-label{
-  font-size:8px;
-  letter-spacing:1.5px;
- }
+  .hero{
+    min-height:0;
+  }
 
- .hero h1{
-  font-size:clamp(51px,12.2vw,75px);
-  line-height:1.02;
- }
+  .hero-label{
+    font-size:8px;
+    letter-spacing:1.5px;
+  }
 
- .hero-description{font-size:13px}
- .hero-actions .btn{flex:1}
+  .hero h1{
+    font-size:clamp(51px,12.2vw,75px);
+    line-height:1.02;
+    letter-spacing:-1px;
+  }
 
- .atlas-stage{
-  width:100%;
-  perspective:none;
-  margin:0;
- }
+  .hero-description{
+    font-size:13px;
+  }
 
- .atlas-object,
- .atlas-stage:hover .atlas-object{
-  transform:none;
- }
+  .hero-actions .btn{
+    flex:1;
+  }
 
- .atlas-panel{
-  aspect-ratio:auto;
-  min-height:315px;
- }
+  .atlas-stage{
+    width:100%;
+    margin:0 auto;
+  }
 
- .atlas-top{
-  flex-basis:29px;
-  padding:5px 7px;
- }
+  .atlas-image-frame{
+    aspect-ratio:1.5/1;
+    border-radius:13px;
+  }
 
- .atlas-brand strong{font-size:9px}
- .atlas-top small{font-size:6px}
+  .atlas-dashboard-image{
+    border-radius:12px;
+  }
 
- .atlas-app{
-  grid-template-columns:30px minmax(0,1fr);
- }
+  .atlas-preview-caption{
+    font-size:8px;
+  }
 
- .atlas-menu{padding:5px 2px}
+  .sale-banner{
+    padding:13px;
+    margin:16px 0;
+  }
 
- .atlas-menu span{
-  justify-content:center;
-  padding:5px 0;
-  font-size:0;
- }
+  .sale-grid{
+    gap:15px;
+  }
 
- .atlas-menu svg{
-  width:14px;
-  height:14px;
- }
+  .sale-title{
+    gap:10px;
+  }
 
- .atlas-main{
-  padding:5px;
-  gap:5px;
- }
+  .sale-title strong{
+    font-size:18px;
+  }
 
- .atlas-kpis{
-  gap:3px;
-  flex-basis:48px;
- }
+  .sale-pill{
+    font-size:8px;
+    padding:7px;
+  }
 
- .atlas-kpi{padding:5px 3px}
+  .sale-stat strong{
+    font-size:23px;
+  }
 
- .kpi-label{
-  font-size:5px;
-  gap:2px;
- }
+  .sale-action .btn{
+    width:100%;
+  }
 
- .kpi-label svg{
-  width:8px;
-  height:8px;
- }
+  .ecosystem-grid{
+    grid-template-columns:1fr;
+    gap:15px;
+  }
 
- .atlas-kpi strong{
-  font-size:7px;
-  white-space:normal;
- }
+  .reference-card{
+    aspect-ratio:510/248;
+  }
 
- .atlas-kpi em{font-size:5px}
- .atlas-body-grid{gap:4px}
+  .intelligence-grid,
+  .footer-grid{
+    grid-template-columns:1fr;
+  }
 
- .market-toolbar{
-  padding:5px;
-  flex-basis:24px;
- }
+  .section{
+    padding:65px 0;
+  }
 
- .market-toolbar-title{font-size:7px}
- .market-toolbar-title svg{width:9px;height:9px}
- .time-pills span{font-size:5px;padding:2px}
- .market-mini{padding:4px}
- .mini-title{font-size:6px}
- .mini-title svg{width:9px;height:9px}
- .market-mini small{font-size:5px}
- .market-mini strong{font-size:7px}
- .market-mini em{font-size:5px}
- .mini-chart{height:12px}
- .atlas-module-title{font-size:6px}
- .atlas-modules{gap:3px;flex-basis:29px}
- .atlas-module{gap:2px;padding:3px}
- .atlas-module svg{display:none}
- .atlas-module strong{font-size:6px}
- .atlas-module small{font-size:5px}
- .atlas-disclosure{font-size:6px}
+  .section-title{
+    font-size:54px;
+  }
 
- .sale-grid{gap:15px}
- .sale-title{gap:10px}
- .sale-title strong{font-size:18px}
- .sale-pill{font-size:8px;padding:7px}
- .sale-stat strong{font-size:23px}
- .sale-action .btn{width:100%}
+  .token-metrics{
+    gap:9px;
+  }
 
- .ecosystem-grid{
-  grid-template-columns:1fr;
-  gap:15px;
- }
+  .token-metric{
+    padding:16px;
+  }
 
- .reference-card{
-  aspect-ratio:510/248;
- }
+  .token-metric strong{
+    font-size:24px;
+  }
 
- .intelligence-grid,
- .footer-grid{
-  grid-template-columns:1fr;
- }
+  .mobile-buy{
+    position:fixed;
+    bottom:0;
+    left:0;
+    right:0;
+    z-index:150;
 
- .section{padding:65px 0}
- .section-title{font-size:54px}
- .token-metric{padding:16px}
- .token-metric strong{font-size:24px}
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
 
- .mobile-buy{
-  position:fixed;
-  bottom:0;
-  left:0;
-  right:0;
-  z-index:150;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:12px;
-  padding:10px 15px;
-  padding-bottom:max(10px,env(safe-area-inset-bottom));
-  background:#031523f7;
-  border-top:1px solid #ffd48a7a;
-  backdrop-filter:blur(15px);
- }
+    padding:10px 15px;
+    padding-bottom:max(10px,env(safe-area-inset-bottom));
 
- .mobile-buy strong{font-size:12px}
+    background:#031523f7;
+    border-top:1px solid #ffd48a7a;
+    backdrop-filter:blur(15px);
+  }
 
- .mobile-buy small{
-  display:block;
-  margin-top:4px;
-  color:#b4cedf;
-  font-size:9px;
- }
+  .mobile-buy strong{
+    font-size:12px;
+  }
 
- .mobile-buy .btn{
-  padding:10px 13px;
-  font-size:11px;
- }
+  .mobile-buy small{
+    display:block;
+    margin-top:4px;
 
- .footer{padding-bottom:108px}
+    color:#b4cedf;
+    font-size:9px;
+  }
+
+  .mobile-buy .btn{
+    padding:10px 13px;
+    font-size:11px;
+  }
+
+  .footer{
+    padding-bottom:108px;
+  }
+
 }
 
 @media(prefers-reduced-motion:reduce){
- html{scroll-behavior:auto}
 
- *,*:before,*:after{
-  animation:none!important;
-  transition:none!important;
- }
+  html{
+    scroll-behavior:auto;
+  }
+
+  *,
+  *:before,
+  *:after{
+    animation:none!important;
+    transition:none!important;
+  }
+
 }
+
 </style>
 </head>
 
 <body>
 
-<!-- ICONS -->
-
-<svg xmlns="http://www.w3.org/2000/svg"
- style="position:absolute;width:0;height:0;overflow:hidden"
- aria-hidden="true">
-
- <symbol id="i-home" viewBox="0 0 24 24">
-  <path d="M3 10.5 12 3l9 7.5V21H7v-9h10v9"
-   fill="none" stroke="currentColor" stroke-width="1.8"/>
- </symbol>
-
- <symbol id="i-chart" viewBox="0 0 24 24">
-  <path d="M3 20V4M3 20h18M6 16l5-5 4 3 6-9"
-   fill="none" stroke="currentColor" stroke-width="2"/>
- </symbol>
-
- <symbol id="i-flow" viewBox="0 0 24 24">
-  <path d="M2 13c5-10 10 10 15-1 2-4 4-4 5-4"
-   fill="none" stroke="currentColor" stroke-width="2"/>
- </symbol>
-
- <symbol id="i-shield" viewBox="0 0 24 24">
-  <path d="M12 2 21 6v6c0 6-4.3 9-9 10-4.7-1-9-4-9-10V6z"
-   fill="none" stroke="currentColor" stroke-width="1.8"/>
- </symbol>
-
- <symbol id="i-brain" viewBox="0 0 24 24">
-  <circle cx="12" cy="12" r="9"
-   fill="none" stroke="currentColor" stroke-width="1.6"/>
-  <path d="M8 9c2-3 6-3 8 0m-8 6c2 3 6 3 8 0"
-   fill="none" stroke="currentColor" stroke-width="1.6"/>
- </symbol>
-
- <symbol id="i-globe" viewBox="0 0 24 24">
-  <circle cx="12" cy="12" r="9"
-   fill="none" stroke="currentColor" stroke-width="1.7"/>
-  <path d="M3 12h18M12 3c6 5 6 13 0 18M12 3c-6 5-6 13 0 18"
-   fill="none" stroke="currentColor" stroke-width="1.4"/>
- </symbol>
-
- <symbol id="i-target" viewBox="0 0 24 24">
-  <circle cx="12" cy="12" r="9"
-   fill="none" stroke="currentColor" stroke-width="1.7"/>
-  <circle cx="12" cy="12" r="4"
-   fill="none" stroke="currentColor" stroke-width="1.7"/>
- </symbol>
-
- <symbol id="i-settings" viewBox="0 0 24 24">
-  <circle cx="12" cy="12" r="5"
-   fill="none" stroke="currentColor" stroke-width="2"/>
-  <path d="M12 2v4m0 12v4M2 12h4m12 0h4"
-   fill="none" stroke="currentColor" stroke-width="1.7"/>
- </symbol>
-
- <symbol id="i-activity" viewBox="0 0 24 24">
-  <path d="M2 12h4l3-7 5 14 3-7h5"
-   fill="none" stroke="currentColor" stroke-width="2"/>
- </symbol>
-
- <symbol id="i-bars" viewBox="0 0 24 24">
-  <path d="M5 21V13M12 21V3M19 21V9"
-   stroke="currentColor" stroke-width="3"/>
- </symbol>
-
- <symbol id="i-atlas" viewBox="0 0 32 32">
-  <path d="M16 2 30 28h-8L16 15 10 28H2Z"
-   fill="currentColor"/>
-  <path d="M11 23h10l3 5H8Z" fill="#69edff"/>
- </symbol>
-</svg>
-
-<!-- NAVIGATION -->
+<!-- ======================================================
+     HEADER
+====================================================== -->
 
 <header class="site-header">
- <div class="nav-shell">
 
-  <a href="index.html" class="brand" aria-label="SNAO World Home">
-   <span class="brand-orb">S</span>
-   <span class="brand-name">SNAO World</span>
-  </a>
+  <div class="nav-shell">
 
-  <nav class="nav" id="navigation" aria-label="Main navigation">
-   <a href="#home" class="active">Home</a>
-   <a href="#ecosystem">Ecosystem</a>
-   <a href="#atlas">ATLAS</a>
-   <a href="#ocean">SNAO Ocean</a>
-   <a href="#intelligence">Intelligence</a>
-   <a href="about.html">About</a>
-   <a href="token.html">Token</a>
-   <a href="whitepaper.html">Whitepaper ↗</a>
-   <a href="sale.html" class="nav-buy">🛒 BUY $SNAO</a>
-  </nav>
+    <a href="index.html"
+       class="brand"
+       aria-label="SNAO World Home">
 
-  <button type="button" id="menuButton" class="menu-button"
-   aria-controls="navigation" aria-expanded="false"
-   aria-label="Toggle navigation">☰</button>
+      <span class="brand-orb">S</span>
 
- </div>
+      <span class="brand-name">
+        SNAO World
+      </span>
+
+    </a>
+
+    <nav class="nav"
+         id="navigation"
+         aria-label="Main navigation">
+
+      <a href="#home" class="active">
+        Home
+      </a>
+
+      <a href="#ecosystem">
+        Ecosystem
+      </a>
+
+      <a href="#atlas">
+        ATLAS
+      </a>
+
+      <a href="#ocean">
+        SNAO Ocean
+      </a>
+
+      <a href="#intelligence">
+        Intelligence
+      </a>
+
+      <a href="about.html">
+        About
+      </a>
+
+      <a href="token.html">
+        Token
+      </a>
+
+      <a href="whitepaper.html">
+        Whitepaper ↗
+      </a>
+
+      <a href="sale.html" class="nav-buy">
+        🛒 BUY $SNAO
+      </a>
+
+    </nav>
+
+    <button
+      type="button"
+      id="menuButton"
+      class="menu-button"
+      aria-controls="navigation"
+      aria-expanded="false"
+      aria-label="Toggle navigation">
+
+      ☰
+
+    </button>
+
+  </div>
+
 </header>
 
 <main>
 
-<!-- HOME / UNDERWATER BACKGROUND -->
+<!-- ======================================================
+     HERO — OCEAN
+====================================================== -->
 
 <section class="ocean-world" id="home">
 
- <img class="ocean-photo"
-  src="https://images.unsplash.com/photo-1682687981907-170c006e3744?auto=format&amp;fit=crop&amp;w=1920&amp;q=85"
-  alt=""
-  fetchpriority="high">
+  <!-- ORIGINAL OCEAN BACKGROUND -->
 
- <div class="ambient-glow" aria-hidden="true"></div>
+  <img
+    class="ocean-photo"
+    src="https://images.unsplash.com/photo-1682687981907-170c006e3744?auto=format&amp;fit=crop&amp;w=1920&amp;q=85"
+    alt=""
+    fetchpriority="high">
 
- <div class="container">
+  <div class="ambient-glow"
+       aria-hidden="true"></div>
 
-  <div class="hero">
+  <div class="container">
 
-   <!-- TITLE AND BUTTONS -->
+    <div class="hero">
 
-   <div class="hero-copy">
+      <!-- LEFT — ORIGINAL TEXT -->
 
-    <div class="hero-label">
-     THE CRYPTO INTELLIGENCE ECOSYSTEM
-    </div>
+      <div class="hero-copy">
 
-    <h1>
-     A New Depth of
-     <span class="gold-text">Intelligence.</span>
-    </h1>
+        <div class="hero-label">
+          THE CRYPTO INTELLIGENCE ECOSYSTEM
+        </div>
 
-    <p class="hero-description">
-     SNAO World unites ATLAS Intelligence OS,
-     Ocean Intelligence and SNAO Ocean
-     into one crypto-tech ecosystem.
-    </p>
+        <h1>
 
-    <div class="hero-actions">
-     <a href="sale.html" class="btn btn-gold">
-      🛒 BUY $SNAO NOW →
-     </a>
+          A New Depth of
 
-     <a href="#atlas" class="btn btn-blue">
-      ▶ Discover ATLAS
-     </a>
-    </div>
+          <span class="gold-text">
+            Intelligence.
+          </span>
 
-    <div class="hero-meta">
-     <strong>◈ Official Public Sale</strong>
-     <span>•</span>
-     <span>BNB Smart Chain</span>
-     <span>•</span>
-     <span>USDT</span>
-    </div>
+        </h1>
 
-   </div>
+        <p class="hero-description">
 
-   <!-- MAIN ATLAS PANEL -->
+          SNAO World unites ATLAS Intelligence OS,
+          Ocean Intelligence and SNAO Ocean
+          into one crypto-tech ecosystem.
 
-   <div class="atlas-stage">
-    <div class="atlas-object">
-     <div class="atlas-panel">
+        </p>
 
-      <div class="atlas-top">
+        <div class="hero-actions">
 
-       <div class="atlas-brand">
-        <svg viewBox="0 0 32 32" aria-hidden="true">
-         <use href="#i-atlas"/>
-        </svg>
-        <strong>ATLAS Intelligence OS</strong>
-       </div>
+          <a href="sale.html"
+             class="btn btn-gold">
 
-       <small>SNAO WORLD · CONCEPT PREVIEW</small>
+            🛒 BUY $SNAO NOW →
+
+          </a>
+
+          <a href="#atlas"
+             class="btn btn-blue">
+
+            ▶ Discover ATLAS
+
+          </a>
+
+        </div>
+
+        <div class="hero-meta">
+
+          <strong>
+            ◈ Official Public Sale
+          </strong>
+
+          <span>•</span>
+
+          <span>
+            BNB Smart Chain
+          </span>
+
+          <span>•</span>
+
+          <span>USDT</span>
+
+        </div>
 
       </div>
 
-      <div class="atlas-app">
+      <!-- ===========================================
+           NEW ATLAS 3D ARTWORK
 
-       <aside class="atlas-menu"
-        aria-label="Illustrative ATLAS navigation">
+           Only this portion was replaced.
+      ============================================ -->
 
-        <span><svg><use href="#i-home"/></svg>Dashboard</span>
-        <span><svg><use href="#i-chart"/></svg>Market</span>
-        <span><svg><use href="#i-flow"/></svg>Whale Flow</span>
-        <span><svg><use href="#i-brain"/></svg>Intelligence</span>
-        <span><svg><use href="#i-target"/></svg>Risk Analysis</span>
-        <span><svg><use href="#i-shield"/></svg>Security</span>
-        <span><svg><use href="#i-settings"/></svg>Workflow</span>
-        <span><svg><use href="#i-globe"/></svg>Enterprise</span>
+      <div class="atlas-stage">
 
-       </aside>
+        <div class="atlas-image-frame"
+             id="atlasImageFrame">
 
-       <div class="atlas-main">
+          <img
+            id="atlasDashboardImage"
+            class="atlas-dashboard-image"
+            src="atlas-dashboard.webp"
+            alt="ATLAS Intelligence OS cinematic 3D concept dashboard showing market intelligence, whale flow, risk analysis, security and workflow modules."
+            width="1536"
+            height="1024"
+            fetchpriority="high">
 
-        <div class="atlas-kpis">
+          <div class="atlas-image-fallback">
 
-         <div class="atlas-kpi">
-          <span class="kpi-label">
-           <svg><use href="#i-globe"/></svg>
-           Market Cap
-          </span>
-          <strong>Market Data</strong>
-          <em>Preview</em>
-         </div>
+            <strong>
+              ATLAS Intelligence OS
+            </strong>
 
-         <div class="atlas-kpi">
-          <span class="kpi-label">
-           <svg><use href="#i-bars"/></svg>
-           24h Volume
-          </span>
-          <strong>Analytics</strong>
-          <em>Preview</em>
-         </div>
+            <span>
+              Enterprise Intelligence · Market Research
+              · Security · Automation
+            </span>
 
-         <div class="atlas-kpi">
-          <span class="kpi-label">
-           <svg><use href="#i-target"/></svg>
-           BTC Dominance
-          </span>
-          <strong>Tracking</strong>
-          <em>Preview</em>
-         </div>
+            <a href="#atlas"
+               class="btn btn-blue">
 
-         <div class="atlas-kpi">
-          <span class="kpi-label">
-           <svg><use href="#i-activity"/></svg>
-           Sentiment
-          </span>
-          <strong>Risk Radar</strong>
-          <div class="sentiment-meter"><span></span></div>
-         </div>
+              Explore ATLAS →
+
+            </a>
+
+          </div>
 
         </div>
 
-        <div class="atlas-body-grid">
+        <div class="atlas-preview-caption">
 
-         <div class="market-chart">
-
-          <div class="market-toolbar">
-
-           <span class="market-toolbar-title">
-            <svg><use href="#i-chart"/></svg>
-            Market Intelligence
-           </span>
-
-           <div class="time-pills">
-            <span>1H</span>
-            <span>4H</span>
-            <span class="selected">1D</span>
-            <span>1W</span>
-           </div>
-
-          </div>
-
-          <div class="market-screen">
-
-           <svg viewBox="0 0 460 120"
-            preserveAspectRatio="none"
-            role="img"
-            aria-label="Illustrative market chart">
-
-            <g id="candleLayer"></g>
-
-            <path class="line1"
-             d="M0 102 C32 101 48 84 76 91 S119 68 147 77 S190 58 221 68 S262 41 291 49 S339 27 369 37 S415 16 460 8"/>
-
-            <path class="line2"
-             d="M0 108 C35 106 58 95 84 100 S132 82 161 88 S204 73 234 78 S288 59 317 63 S371 47 405 49 S438 33 460 27"/>
-
-           </svg>
-
-          </div>
-
-         </div>
-
-         <div class="market-side">
-
-          <div class="market-mini">
-           <div class="mini-title">
-            <svg><use href="#i-flow"/></svg>
-            Whale Flow
-           </div>
-           <small>Large Wallet Activity</small>
-           <strong>Flow Analysis</strong>
-           <em>On-chain research</em>
-           <svg class="mini-chart" viewBox="0 0 160 35"
-            preserveAspectRatio="none" aria-hidden="true">
-            <path d="M0 29 Q20 27 38 17 T76 18 T119 12 T160 3"
-             stroke="#55f5ba" stroke-width="3" fill="none"/>
-           </svg>
-          </div>
-
-          <div class="market-mini">
-           <div class="mini-title">
-            <svg><use href="#i-shield"/></svg>
-            Risk Analysis
-           </div>
-           <small>Market Conditions</small>
-           <strong>Risk Research</strong>
-           <em>Illustrative view</em>
-           <svg class="mini-chart" viewBox="0 0 160 35"
-            preserveAspectRatio="none" aria-hidden="true">
-            <path d="M0 28 Q22 11 43 21 T85 18 T132 10 T160 7"
-             stroke="#80ddff" stroke-width="3" fill="none"/>
-           </svg>
-          </div>
-
-         </div>
+          ATLAS concept visualization ·
+          Market indicators shown in the artwork are illustrative
 
         </div>
-
-        <div class="atlas-module-title">
-         INTELLIGENCE MODULES · CONCEPT
-        </div>
-
-        <div class="atlas-modules">
-
-         <div class="atlas-module">
-          <svg><use href="#i-brain"/></svg>
-          <div>
-           <strong>Market AI</strong>
-           <small>Risk insights</small>
-          </div>
-         </div>
-
-         <div class="atlas-module">
-          <svg><use href="#i-flow"/></svg>
-          <div>
-           <strong>On-chain</strong>
-           <small>Research</small>
-          </div>
-         </div>
-
-         <div class="atlas-module">
-          <svg><use href="#i-shield"/></svg>
-          <div>
-           <strong>Security</strong>
-           <small>Guardian</small>
-          </div>
-         </div>
-
-         <div class="atlas-module">
-          <svg><use href="#i-chart"/></svg>
-          <div>
-           <strong>Workflow</strong>
-           <small>Automation</small>
-          </div>
-         </div>
-
-        </div>
-
-       </div>
 
       </div>
 
-      <div class="atlas-disclosure">
-       Design preview · Indicators and charts are illustrative
+    </div>
+
+    <!-- ==============================================
+         PUBLIC SALE BANNER — UNCHANGED
+    =============================================== -->
+
+    <div class="sale-banner" id="public-sale">
+
+      <div class="sale-grid">
+
+        <div class="sale-title">
+
+          <span class="sale-pill">
+            PUBLIC SALE
+          </span>
+
+          <strong>
+            $SNAO Public Sale
+          </strong>
+
+        </div>
+
+        <div class="sale-stat">
+
+          <small>
+            Total Supply
+          </small>
+
+          <strong>
+            200M
+          </strong>
+
+        </div>
+
+        <div class="sale-stat">
+
+          <small>
+            Public Sale Allocation
+          </small>
+
+          <strong>
+            45M
+          </strong>
+
+        </div>
+
+        <div class="sale-action">
+
+          <a href="sale.html"
+             class="btn btn-gold">
+
+            🛒 BUY $SNAO →
+
+          </a>
+
+        </div>
+
       </div>
 
-     </div>
     </div>
-   </div>
+
+    <!-- ==============================================
+         THREE PREMIUM CARDS — UNCHANGED
+    =============================================== -->
+
+    <div class="ecosystem-grid" id="ecosystem">
+
+      <!-- ATLAS -->
+
+      <a
+        class="reference-card"
+        href="#atlas"
+        aria-label="Explore ATLAS Intelligence OS">
+
+        <img
+          src="atlas-card.webp"
+          alt="ATLAS Intelligence OS futuristic enterprise command center with holographic globe"
+          width="510"
+          height="248"
+          loading="eager">
+
+      </a>
+
+      <!-- SNAO OCEAN -->
+
+      <a
+        class="reference-card"
+        href="#ocean"
+        aria-label="Explore SNAO Ocean">
+
+        <img
+          src="ocean-card.webp"
+          alt="SNAO Ocean premium smartphone within a cinematic underwater ecosystem"
+          width="503"
+          height="248"
+          loading="eager">
+
+      </a>
+
+      <!-- OCEAN INTELLIGENCE -->
+
+      <a
+        class="reference-card"
+        href="#intelligence"
+        aria-label="Explore Ocean Intelligence">
+
+        <img
+          src="intelligence-card.webp"
+          alt="Ocean Intelligence holographic whale with market research and radar technology"
+          width="510"
+          height="248"
+          loading="eager">
+
+      </a>
+
+    </div>
 
   </div>
-
-  <!-- PUBLIC SALE BANNER -->
-
-  <div class="sale-banner" id="public-sale">
-
-   <div class="sale-grid">
-
-    <div class="sale-title">
-     <span class="sale-pill">PUBLIC SALE</span>
-     <strong>$SNAO Public Sale</strong>
-    </div>
-
-    <div class="sale-stat">
-     <small>Total Supply</small>
-     <strong>200M</strong>
-    </div>
-
-    <div class="sale-stat">
-     <small>Public Sale Allocation</small>
-     <strong>45M</strong>
-    </div>
-
-    <div class="sale-action">
-     <a href="sale.html" class="btn btn-gold">
-      🛒 BUY $SNAO →
-     </a>
-    </div>
-
-   </div>
-
-  </div>
-
-  <!-- =====================================
-       THREE PREMIUM CARDS
-       EXACT APPROVED REFERENCE CROPS
-  ====================================== -->
-
-  <div class="ecosystem-grid" id="ecosystem">
-
-   <!-- ATLAS: REAL REFERENCE ART -->
-
-   <a class="reference-card"
-    href="#atlas"
-    aria-label="Explore SNAO World ATLAS Intelligence OS">
-
-    <img
-     src="atlas-card.webp"
-     alt="SNAO World ATLAS futuristic command center, holographic globe and enterprise intelligence"
-     width="510"
-     height="248"
-     loading="eager">
-
-   </a>
-
-   <!-- SNAO OCEAN: REAL REFERENCE ART -->
-
-   <a class="reference-card"
-    href="#ocean"
-    aria-label="Explore SNAO Ocean">
-
-    <img
-     src="ocean-card.webp"
-     alt="SNAO Ocean cinematic underwater scene with a premium smartphone"
-     width="503"
-     height="248"
-     loading="eager">
-
-   </a>
-
-   <!-- INTELLIGENCE: REAL REFERENCE ART -->
-
-   <a class="reference-card"
-    href="#intelligence"
-    aria-label="Explore Ocean Intelligence">
-
-    <img
-     src="intelligence-card.webp"
-     alt="Ocean Intelligence digital whale hologram, radar and market intelligence dashboard"
-     width="510"
-     height="248"
-     loading="eager">
-
-   </a>
-
-  </div>
-
- </div>
 
 </section>
 
-<!-- ATLAS SECTION -->
+<!-- ======================================================
+     ATLAS SECTION
+====================================================== -->
 
 <section class="section lower" id="atlas">
- <div class="container feature-grid">
 
-  <div class="feature-copy">
+  <div class="container feature-grid">
 
-   <span class="eyebrow">ATLAS INTELLIGENCE OS</span>
+    <div class="feature-copy">
 
-   <h2 class="section-title">
-    Intelligence for a
-    <span class="gold-text">new enterprise era.</span>
-   </h2>
+      <span class="eyebrow">
+        ATLAS INTELLIGENCE OS
+      </span>
 
-   <p>
-    ATLAS is being developed as a premium enterprise
-    environment for financial intelligence, accounting,
-    organizational insights, security
-    and intelligent automation.
-   </p>
+      <h2 class="section-title">
 
-   <div class="feature-tags">
-    <span>◈ Financial Intelligence</span>
-    <span>◇ Business Analytics</span>
-    <span>⬡ Guardian & Sentinel</span>
-    <span>⌁ Workflow Automation</span>
-   </div>
+        Intelligence for a
 
-   <a href="about.html#atlas" class="btn btn-blue">
-    Explore ATLAS Vision →
-   </a>
+        <span class="gold-text">
+          new enterprise era.
+        </span>
+
+      </h2>
+
+      <p>
+
+        ATLAS is being developed as a premium
+        enterprise environment for financial intelligence,
+        accounting, organizational insights,
+        security and intelligent automation.
+
+      </p>
+
+      <div class="feature-tags">
+
+        <span>
+          ◈ Financial Intelligence
+        </span>
+
+        <span>
+          ◇ Business Analytics
+        </span>
+
+        <span>
+          ⬡ Guardian & Sentinel
+        </span>
+
+        <span>
+          ⌁ Workflow Automation
+        </span>
+
+      </div>
+
+      <a href="about.html#atlas"
+         class="btn btn-blue">
+
+        Explore ATLAS Vision →
+
+      </a>
+
+    </div>
+
+    <div class="feature-visual">
+
+      <h3>
+        ATLAS / ENTERPRISE INTELLIGENCE
+      </h3>
+
+      <div class="bar-chart"
+           aria-label="Illustrative analytics chart">
+
+        <span style="--h:34%;--c:#55e3ff"></span>
+        <span style="--h:51%;--c:#3caaff"></span>
+        <span style="--h:46%;--c:#4c8eff"></span>
+        <span style="--h:70%;--c:#ab7fff"></span>
+        <span style="--h:60%;--c:#8d77f0"></span>
+        <span style="--h:82%;--c:#58e0c0"></span>
+        <span style="--h:74%;--c:#55bbff"></span>
+        <span style="--h:96%;--c:#ffd27c"></span>
+        <span style="--h:83%;--c:#b99aff"></span>
+
+      </div>
+
+      <p class="concept-note">
+        Concept visualization · No live enterprise data
+      </p>
+
+    </div>
 
   </div>
 
-  <div class="feature-visual">
-
-   <h3>ATLAS / ENTERPRISE INTELLIGENCE</h3>
-
-   <div class="bar-chart" aria-label="Illustrative analytics chart">
-    <span style="--h:34%;--c:#55e3ff"></span>
-    <span style="--h:51%;--c:#3caaff"></span>
-    <span style="--h:46%;--c:#4c8eff"></span>
-    <span style="--h:70%;--c:#ab7fff"></span>
-    <span style="--h:60%;--c:#8d77f0"></span>
-    <span style="--h:82%;--c:#58e0c0"></span>
-    <span style="--h:74%;--c:#55bbff"></span>
-    <span style="--h:96%;--c:#ffd27c"></span>
-    <span style="--h:83%;--c:#b99aff"></span>
-   </div>
-
-   <p class="concept-note">
-    Concept visualization · No live enterprise data
-   </p>
-
-  </div>
-
- </div>
 </section>
 
-<!-- SNAO OCEAN SECTION -->
+<!-- ======================================================
+     SNAO OCEAN
+====================================================== -->
 
 <section class="section ocean-section" id="ocean">
 
- <img
-  src="https://images.unsplash.com/photo-1708649290066-5f617003b93f?auto=format&amp;fit=crop&amp;w=1920&amp;q=85"
-  alt=""
-  loading="lazy">
+  <img
+    src="https://images.unsplash.com/photo-1708649290066-5f617003b93f?auto=format&amp;fit=crop&amp;w=1920&amp;q=85"
+    alt=""
+    loading="lazy">
 
- <div class="container">
+  <div class="container">
 
-  <div class="ocean-copy">
+    <div class="ocean-copy">
 
-   <span class="eyebrow">SNAO OCEAN</span>
+      <span class="eyebrow">
+        SNAO OCEAN
+      </span>
 
-   <h2 class="section-title">
-    A new world
-    <span class="gold-text">beneath the surface.</span>
-   </h2>
+      <h2 class="section-title">
 
-   <p>
-    SNAO Ocean is being developed as an independent
-    Android and iOS application with immersive
-    ocean environments, missions,
-    community participation and internal Sardinhas points.
-   </p>
+        A new world
 
-   <div class="pills">
-    <span>Android & iOS</span>
-    <span>Ocean Experience</span>
-    <span>Community Missions</span>
-    <span>Sardinhas Points</span>
-   </div>
+        <span class="gold-text">
+          beneath the surface.
+        </span>
 
-   <a href="about.html#platforms" class="btn btn-blue">
-    Discover SNAO Ocean →
-   </a>
+      </h2>
 
-   <p class="concept-note" style="margin-top:19px">
-    Application in development.
-    Product imagery is conceptual.
-   </p>
+      <p>
+
+        SNAO Ocean is being developed as an independent
+        Android and iOS application with immersive ocean
+        environments, missions, community participation
+        and internal Sardinhas points.
+
+      </p>
+
+      <div class="pills">
+
+        <span>Android & iOS</span>
+
+        <span>Ocean Experience</span>
+
+        <span>Community Missions</span>
+
+        <span>Sardinhas Points</span>
+
+      </div>
+
+      <a href="about.html#platforms"
+         class="btn btn-blue">
+
+        Discover SNAO Ocean →
+
+      </a>
+
+      <p class="concept-note"
+         style="margin-top:19px">
+
+        Application in development.
+        Product imagery is conceptual.
+
+      </p>
+
+    </div>
 
   </div>
 
- </div>
-
 </section>
 
-<!-- OCEAN INTELLIGENCE SECTION -->
+<!-- ======================================================
+     OCEAN INTELLIGENCE
+====================================================== -->
 
 <section class="section lower" id="intelligence">
 
- <div class="container">
+  <div class="container">
 
-  <div style="text-align:center;max-width:790px;margin:0 auto 35px">
+    <div style="text-align:center;max-width:790px;margin:0 auto 35px">
 
-   <span class="eyebrow">OCEAN INTELLIGENCE</span>
+      <span class="eyebrow">
+        OCEAN INTELLIGENCE
+      </span>
 
-   <h2 class="section-title">
-    Read the market.
-    <span class="gold-text">Understand the risk.</span>
-   </h2>
+      <h2 class="section-title">
 
-   <p class="section-description">
-    Planned intelligence research for whale movements,
-    exchange flows, liquidity, volatility and market risk.
-   </p>
+        Read the market.
+
+        <span class="gold-text">
+          Understand the risk.
+        </span>
+
+      </h2>
+
+      <p class="section-description">
+
+        Planned intelligence research for whale movements,
+        exchange flows, liquidity, volatility and market risk.
+
+      </p>
+
+    </div>
+
+    <div class="intelligence-grid">
+
+      <article class="intelligence-card">
+
+        <b>◉</b>
+
+        <h3>
+          Whale Intelligence
+        </h3>
+
+        <p>
+          Research significant wallet activity
+          and blockchain movements.
+        </p>
+
+        <small>
+          PLANNED MODULE
+        </small>
+
+      </article>
+
+      <article class="intelligence-card">
+
+        <b>≈</b>
+
+        <h3>
+          Ocean Flow
+        </h3>
+
+        <p>
+          Explore liquidity, exchange activity
+          and capital flows.
+        </p>
+
+        <small>
+          ROADMAP
+        </small>
+
+      </article>
+
+      <article class="intelligence-card">
+
+        <b>AI</b>
+
+        <h3>
+          Sardine AI
+        </h3>
+
+        <p>
+          Planned AI-assisted market analysis
+          and contextual explanations.
+        </p>
+
+        <small>
+          IN DEVELOPMENT
+        </small>
+
+      </article>
+
+      <article class="intelligence-card">
+
+        <b>◇</b>
+
+        <h3>
+          Market Risk
+        </h3>
+
+        <p>
+          Research volatility, liquidity pressure
+          and market conditions.
+        </p>
+
+        <small>
+          RESEARCH
+        </small>
+
+      </article>
+
+      <article class="intelligence-card">
+
+        <b>⌁</b>
+
+        <h3>
+          Global Policy Radar
+        </h3>
+
+        <p>
+          Explore macroeconomic and regulatory developments.
+        </p>
+
+        <small>
+          PLANNED MODULE
+        </small>
+
+      </article>
+
+      <article class="intelligence-card">
+
+        <b>▤</b>
+
+        <h3>
+          Ocean Terminal
+        </h3>
+
+        <p>
+          Discover the experimental
+          market information interface.
+        </p>
+
+        <small>
+          EXPERIMENTAL
+        </small>
+
+      </article>
+
+    </div>
+
+    <div style="text-align:center;margin-top:30px">
+
+      <a href="terminal.html"
+         class="btn btn-blue">
+
+        Explore Ocean Terminal →
+
+      </a>
+
+    </div>
 
   </div>
-
-  <div class="intelligence-grid">
-
-   <article class="intelligence-card">
-    <b>◉</b>
-    <h3>Whale Intelligence</h3>
-    <p>Research significant wallet activity and blockchain movements.</p>
-    <small>PLANNED MODULE</small>
-   </article>
-
-   <article class="intelligence-card">
-    <b>≈</b>
-    <h3>Ocean Flow</h3>
-    <p>Explore liquidity, exchange activity and capital flows.</p>
-    <small>ROADMAP</small>
-   </article>
-
-   <article class="intelligence-card">
-    <b>AI</b>
-    <h3>Sardine AI</h3>
-    <p>Planned AI-assisted market analysis and contextual explanations.</p>
-    <small>IN DEVELOPMENT</small>
-   </article>
-
-   <article class="intelligence-card">
-    <b>◇</b>
-    <h3>Market Risk</h3>
-    <p>Research volatility, liquidity pressure and market conditions.</p>
-    <small>RESEARCH</small>
-   </article>
-
-   <article class="intelligence-card">
-    <b>⌁</b>
-    <h3>Global Policy Radar</h3>
-    <p>Explore macroeconomic and regulatory developments.</p>
-    <small>PLANNED MODULE</small>
-   </article>
-
-   <article class="intelligence-card">
-    <b>▤</b>
-    <h3>Ocean Terminal</h3>
-    <p>Discover the experimental market information interface.</p>
-    <small>EXPERIMENTAL</small>
-   </article>
-
-  </div>
-
-  <div style="text-align:center;margin-top:30px">
-   <a href="terminal.html" class="btn btn-blue">
-    Explore Ocean Terminal →
-   </a>
-  </div>
-
- </div>
 
 </section>
 
-<!-- TOKEN SECTION -->
+<!-- ======================================================
+     TOKEN SECTION
+====================================================== -->
 
 <section class="section token-section" id="token">
 
- <div class="container feature-grid">
+  <div class="container feature-grid">
 
-  <div class="feature-copy">
+    <div class="feature-copy">
 
-   <span class="eyebrow" style="color:var(--gold)">
-    THE SNAO DIGITAL ECOSYSTEM
-   </span>
+      <span class="eyebrow"
+            style="color:var(--gold)">
 
-   <h2 class="section-title">
-    Discover the
-    <span class="gold-text">$SNAO Token.</span>
-   </h2>
+        THE SNAO DIGITAL ECOSYSTEM
 
-   <p>
-    Review the fixed token supply,
-    Public Sale allocation and progressive pricing structure.
-   </p>
+      </span>
 
-   <div style="display:flex;gap:11px;flex-wrap:wrap;margin-top:25px">
+      <h2 class="section-title">
 
-    <a href="sale.html" class="btn btn-gold">
-     BUY $SNAO NOW →
-    </a>
+        Discover the
 
-    <a href="token.html" class="btn btn-blue">
-     Tokenomics
-    </a>
+        <span class="gold-text">
+          $SNAO Token.
+        </span>
 
-    <a href="whitepaper.html" class="btn btn-blue">
-     Whitepaper
-    </a>
+      </h2>
 
-   </div>
+      <p>
 
-   <p class="concept-note" style="margin-top:19px">
-    Initial lot pricing may differ from current progressive
-    sale pricing. Cryptoassets involve substantial risk.
-   </p>
+        Review the fixed token supply,
+        Public Sale allocation and
+        progressive pricing structure.
+
+      </p>
+
+      <div style="display:flex;gap:11px;flex-wrap:wrap;margin-top:25px">
+
+        <a href="sale.html"
+           class="btn btn-gold">
+
+          BUY $SNAO NOW →
+
+        </a>
+
+        <a href="token.html"
+           class="btn btn-blue">
+
+          Tokenomics
+
+        </a>
+
+        <a href="whitepaper.html"
+           class="btn btn-outline">
+
+          Whitepaper
+
+        </a>
+
+      </div>
+
+      <p class="concept-note"
+         style="margin-top:19px">
+
+        Initial lot pricing may differ from
+        current progressive sale pricing.
+        Cryptoassets involve substantial risk.
+
+      </p>
+
+    </div>
+
+    <div class="token-metrics">
+
+      <div class="token-metric">
+
+        <small>
+          Total Supply
+        </small>
+
+        <strong>200M</strong>
+
+      </div>
+
+      <div class="token-metric">
+
+        <small>
+          Public Sale Allocation
+        </small>
+
+        <strong>45M</strong>
+
+      </div>
+
+      <div class="token-metric">
+
+        <small>
+          Initial Lot Price
+        </small>
+
+        <strong>$0.001</strong>
+
+      </div>
+
+      <div class="token-metric">
+
+        <small>
+          Network
+        </small>
+
+        <strong>BNB Chain</strong>
+
+      </div>
+
+    </div>
 
   </div>
-
-  <div class="token-metrics">
-
-   <div class="token-metric">
-    <small>Total Supply</small>
-    <strong>200M</strong>
-   </div>
-
-   <div class="token-metric">
-    <small>Public Sale Allocation</small>
-    <strong>45M</strong>
-   </div>
-
-   <div class="token-metric">
-    <small>Initial Lot Price</small>
-    <strong>$0.001</strong>
-   </div>
-
-   <div class="token-metric">
-    <small>Network</small>
-    <strong>BNB Chain</strong>
-   </div>
-
-  </div>
-
- </div>
 
 </section>
 
-<!-- FINAL CALL TO ACTION -->
+<!-- ======================================================
+     FINAL CALL TO ACTION
+====================================================== -->
 
 <section class="section final-cta">
 
- <div class="container">
+  <div class="container">
 
-  <span class="eyebrow">INTELLIGENCE BEYOND BOUNDARIES</span>
+    <span class="eyebrow">
+      INTELLIGENCE BEYOND BOUNDARIES
+    </span>
 
-  <h2 class="section-title">
-   Discover the next chapter
-   <span class="gold-text">of SNAO World.</span>
-  </h2>
+    <h2 class="section-title">
 
-  <p class="section-description">
-   Explore our developing technology ecosystem
-   and review the official $SNAO Public Sale.
-  </p>
+      Discover the next chapter
 
-  <div class="final-actions">
+      <span class="gold-text">
+        of SNAO World.
+      </span>
 
-   <a href="sale.html" class="btn btn-gold">
-    BUY $SNAO →
-   </a>
+    </h2>
 
-   <a href="about.html" class="btn btn-blue">
-    Discover SNAO World →
-   </a>
+    <p class="section-description">
+
+      Explore our developing technology ecosystem
+      and review the official $SNAO Public Sale.
+
+    </p>
+
+    <div class="final-actions">
+
+      <a href="sale.html"
+         class="btn btn-gold">
+
+        BUY $SNAO →
+
+      </a>
+
+      <a href="about.html"
+         class="btn btn-blue">
+
+        Discover SNAO World →
+
+      </a>
+
+    </div>
 
   </div>
-
- </div>
 
 </section>
 
 </main>
 
-<!-- FOOTER -->
+<!-- ======================================================
+     FOOTER
+====================================================== -->
 
 <footer class="footer">
 
- <div class="container">
+  <div class="container">
 
-  <div class="footer-grid">
+    <div class="footer-grid">
 
-   <div>
-    <a href="index.html" class="brand">
-     <span class="brand-orb">S</span>
-     <span class="brand-name">SNAO World</span>
-    </a>
+      <div>
 
-    <p>
-     Intelligence Beyond Boundaries.
-     Enterprise technology, ocean experiences
-     and crypto market intelligence research.
-    </p>
-   </div>
+        <a href="index.html"
+           class="brand">
 
-   <div>
-    <h4>ECOSYSTEM</h4>
-    <a href="#atlas" class="footer-link">ATLAS Intelligence OS</a>
-    <a href="#ocean" class="footer-link">SNAO Ocean</a>
-    <a href="#intelligence" class="footer-link">Ocean Intelligence</a>
-    <a href="about.html" class="footer-link">About</a>
-   </div>
+          <span class="brand-orb">S</span>
 
-   <div>
-    <h4>RESOURCES</h4>
-    <a href="sale.html" class="footer-link">Public Sale</a>
-    <a href="token.html" class="footer-link">Tokenomics</a>
-    <a href="whitepaper.html" class="footer-link">Whitepaper</a>
-    <a href="terminal.html" class="footer-link">Ocean Terminal</a>
-   </div>
+          <span class="brand-name">
+            SNAO World
+          </span>
+
+        </a>
+
+        <p>
+
+          Intelligence Beyond Boundaries.
+          Enterprise technology, ocean experiences
+          and crypto market intelligence research.
+
+        </p>
+
+      </div>
+
+      <div>
+
+        <h4>
+          ECOSYSTEM
+        </h4>
+
+        <a href="#atlas"
+           class="footer-link">
+          ATLAS Intelligence OS
+        </a>
+
+        <a href="#ocean"
+           class="footer-link">
+          SNAO Ocean
+        </a>
+
+        <a href="#intelligence"
+           class="footer-link">
+          Ocean Intelligence
+        </a>
+
+        <a href="about.html"
+           class="footer-link">
+          About
+        </a>
+
+      </div>
+
+      <div>
+
+        <h4>
+          RESOURCES
+        </h4>
+
+        <a href="sale.html"
+           class="footer-link">
+          Public Sale
+        </a>
+
+        <a href="token.html"
+           class="footer-link">
+          Tokenomics
+        </a>
+
+        <a href="whitepaper.html"
+           class="footer-link">
+          Whitepaper
+        </a>
+
+        <a href="terminal.html"
+           class="footer-link">
+          Ocean Terminal
+        </a>
+
+      </div>
+
+    </div>
+
+    <div class="footer-bottom"
+         id="copyright">
+
+      © SNAO World. All rights reserved.
+
+    </div>
 
   </div>
-
-  <div class="footer-bottom" id="copyright">
-   © SNAO World. All rights reserved.
-  </div>
-
- </div>
 
 </footer>
 
-<!-- MOBILE SALE BUTTON -->
+<!-- ======================================================
+     MOBILE PURCHASE BUTTON
+====================================================== -->
 
 <div class="mobile-buy">
 
- <div>
-  <strong>$SNAO Public Sale</strong>
-  <small>Official purchase page</small>
- </div>
+  <div>
 
- <a href="sale.html" class="btn btn-gold">
-  BUY $SNAO →
- </a>
+    <strong>
+      $SNAO Public Sale
+    </strong>
+
+    <small>
+      Official purchase page
+    </small>
+
+  </div>
+
+  <a href="sale.html"
+     class="btn btn-gold">
+
+    BUY $SNAO →
+
+  </a>
 
 </div>
+
+<!-- ======================================================
+     JAVASCRIPT
+====================================================== -->
 
 <script>
 "use strict";
 
-/* MOBILE MENU */
+/* ==========================================
+   MOBILE MENU
+========================================== */
 
-const menuButton=document.getElementById("menuButton");
-const navigation=document.getElementById("navigation");
+const menuButton =
+  document.getElementById("menuButton");
+
+const navigation =
+  document.getElementById("navigation");
 
 if(menuButton && navigation){
 
- menuButton.addEventListener("click",()=>{
-  const open=navigation.classList.toggle("open");
-  menuButton.textContent=open?"✕":"☰";
-  menuButton.setAttribute("aria-expanded",String(open));
- });
+  menuButton.addEventListener("click",()=>{
 
- navigation.querySelectorAll("a").forEach(link=>{
-  link.addEventListener("click",()=>{
-   navigation.classList.remove("open");
-   menuButton.textContent="☰";
-   menuButton.setAttribute("aria-expanded","false");
+    const isOpen =
+      navigation.classList.toggle("open");
+
+    menuButton.textContent =
+      isOpen ? "✕" : "☰";
+
+    menuButton.setAttribute(
+      "aria-expanded",
+      String(isOpen)
+    );
+
   });
- });
+
+  navigation.querySelectorAll("a").forEach(link=>{
+
+    link.addEventListener("click",()=>{
+
+      navigation.classList.remove("open");
+
+      menuButton.textContent="☰";
+
+      menuButton.setAttribute(
+        "aria-expanded",
+        "false"
+      );
+
+    });
+
+  });
 
 }
 
-/* ILLUSTRATIVE MARKET CANDLES */
+/* ==========================================
+   ATLAS IMAGE FALLBACK PATHS
 
-const candleLayer=document.getElementById("candleLayer");
+   First successful image will be displayed.
+   All candidate files must reside alongside
+   index.html in the GitHub repository.
 
-if(candleLayer){
+   Names include the original generated PNG
+   and common renamed variants.
+========================================== */
 
- const NS="http://www.w3.org/2000/svg";
- let previous=98;
+const atlasDashboardImage =
+  document.getElementById("atlasDashboardImage");
 
- for(let i=0;i<38;i++){
+const atlasImageFrame =
+  document.getElementById("atlasImageFrame");
 
-  const trend=i*1.34;
-  const wave=Math.sin(i*.76)*10+Math.cos(i*.31)*6;
-  const close=96-trend-wave;
-  const open=previous;
-  const x=7+i*11.8;
-  const high=Math.max(4,Math.min(open,close)-4.5);
-  const low=Math.min(104,Math.max(open,close)+4.5);
-  const color=close<open?"#42f2d2":"#e079db";
+const atlasImageCandidates = [
 
-  const wick=document.createElementNS(NS,"line");
+  "atlas-dashboard.webp",
 
-  wick.setAttribute("x1",x);
-  wick.setAttribute("x2",x);
-  wick.setAttribute("y1",high);
-  wick.setAttribute("y2",low);
-  wick.setAttribute("stroke",color);
-  wick.setAttribute("stroke-width","1.5");
+  "atlas-dashboard.png",
 
-  candleLayer.appendChild(wick);
+  "painel_neon_de_inteligência_cripto.png",
 
-  const candle=document.createElementNS(NS,"rect");
+  "painel_neon_de_inteligencia_cripto.png",
 
-  candle.setAttribute("x",x-3);
-  candle.setAttribute("y",Math.max(3,Math.min(open,close)));
-  candle.setAttribute("width","6");
-  candle.setAttribute("height",Math.max(2,Math.abs(open-close)));
-  candle.setAttribute("rx","1");
-  candle.setAttribute("fill",color);
+  "painel_neon_de_inteligência_cripto.webp",
 
-  candleLayer.appendChild(candle);
+  "painel_neon_de_inteligencia_cripto.webp",
 
-  const volumeHeight=5+(i*7)%15;
-  const volume=document.createElementNS(NS,"rect");
+  "painel-atlas.png",
 
-  volume.setAttribute("x",x-3);
-  volume.setAttribute("y",120-volumeHeight);
-  volume.setAttribute("width","6");
-  volume.setAttribute("height",volumeHeight);
-  volume.setAttribute("fill",color);
-  volume.setAttribute("opacity",".4");
+  "painel-atlas.webp"
 
-  candleLayer.appendChild(volume);
+];
 
-  previous=close;
+if(atlasDashboardImage && atlasImageFrame){
 
- }
+  let candidateIndex = 0;
+
+  const loadCandidate = ()=>{
+
+    if(candidateIndex >= atlasImageCandidates.length){
+
+      atlasImageFrame.classList.add(
+        "image-failed"
+      );
+
+      return;
+
+    }
+
+    const fileName =
+      atlasImageCandidates[candidateIndex++];
+
+    atlasDashboardImage.src =
+      encodeURI(fileName);
+
+  };
+
+  atlasDashboardImage.addEventListener(
+    "error",
+    loadCandidate
+  );
+
+  if(atlasDashboardImage.complete &&
+     atlasDashboardImage.naturalWidth === 0){
+
+    loadCandidate();
+
+  }
 
 }
 
-/* COPYRIGHT */
+/* ==========================================
+   COPYRIGHT
+========================================== */
 
-const copyright=document.getElementById("copyright");
+const copyright =
+  document.getElementById("copyright");
 
 if(copyright){
- copyright.textContent=
-  "© "+new Date().getFullYear()+
-  " SNAO World. All rights reserved.";
+
+  copyright.textContent =
+    "© " +
+    new Date().getFullYear() +
+    " SNAO World. All rights reserved.";
+
 }
+
 </script>
 
 </body>
