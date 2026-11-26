@@ -1504,6 +1504,33 @@ button:focus-visible{
 
 }
 
+   
+/* Remove a caixa externa do painel ATLAS */
+
+.atlas-stage::before,
+.atlas-image-frame::after {
+  display: none !important;
+}
+
+.atlas-image-frame {
+  background: transparent !important;
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  overflow: visible !important;
+}
+
+.atlas-dashboard-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+
 </style>
 </head>
 
