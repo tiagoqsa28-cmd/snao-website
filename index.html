@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,120 +14,220 @@
 
 <style>
 :root{
- --bg:#021426;--cyan:#65efff;--blue:#20b7f5;
- --purple:#ad88ff;--gold:#ffd383;--green:#65e6b3;
- --white:#f7fcff;--muted:#b5ccdc;--line:#70dcff48;
+ --bg:#021426;
+ --cyan:#65efff;
+ --blue:#20b7f5;
+ --purple:#ad88ff;
+ --gold:#ffd383;
+ --green:#65e6b3;
+ --white:#f7fcff;
+ --muted:#b5ccdc;
+ --line:#70dcff48;
  --sans:"Inter",Arial,sans-serif;
  --serif:"Cormorant Garamond",Georgia,serif;
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:90px}
 body{
- margin:0;background:var(--bg);color:var(--white);
- font-family:var(--sans);overflow-x:hidden;
+ margin:0;
+ background:var(--bg);
+ color:var(--white);
+ font-family:var(--sans);
+ overflow-x:hidden;
  -webkit-font-smoothing:antialiased;
+ text-rendering:optimizeLegibility;
 }
 a{color:inherit;text-decoration:none}
 button{font:inherit;cursor:pointer}
 a:focus-visible,button:focus-visible{
- outline:2px solid var(--gold);outline-offset:4px;
+ outline:2px solid var(--gold);
+ outline-offset:4px;
 }
-.container{width:min(1520px,calc(100% - 70px));margin:auto}
+.container{
+ width:min(1520px,calc(100% - 70px));
+ margin:auto;
+}
 .gradient-gold{
- background:linear-gradient(180deg,#fff2c6,#ffd589 50%,#c8903c);
- -webkit-background-clip:text;background-clip:text;color:transparent;
+ background:linear-gradient(180deg,#fff4cf,#ffd789 48%,#cb9036);
+ -webkit-background-clip:text;
+ background-clip:text;
+ color:transparent;
 }
 .eyebrow{
- font-size:10px;font-weight:800;letter-spacing:2.6px;
- color:#99edff;text-transform:uppercase;
+ font-size:10px;
+ font-weight:800;
+ letter-spacing:2.6px;
+ color:#99edff;
+ text-transform:uppercase;
 }
 .btn{
- display:inline-flex;justify-content:center;align-items:center;gap:11px;
- min-height:49px;padding:12px 23px;border:1px solid transparent;
- border-radius:11px;font:800 13px var(--sans);
- transition:transform .25s,box-shadow .25s;
+ display:inline-flex;
+ justify-content:center;
+ align-items:center;
+ gap:11px;
+ min-height:49px;
+ padding:12px 23px;
+ border:1px solid transparent;
+ border-radius:11px;
+ font:800 13px var(--sans);
+ transition:transform .25s,box-shadow .25s,filter .25s;
 }
-.btn:hover{transform:translateY(-3px)}
+.btn:hover{
+ transform:translateY(-3px);
+ filter:brightness(1.03);
+}
 .btn-gold{
- color:#231605;background:linear-gradient(#fff0ba,#ffd27d 57%,#efae3b);
+ color:#231605;
+ background:linear-gradient(#fff0ba,#ffd27d 57%,#efae3b);
  border-color:#ffecae;
  box-shadow:0 0 15px #ffc75b6e,0 8px 26px #d9943c47;
 }
 .btn-blue{
- color:white;background:linear-gradient(120deg,#0d345e,#087ea9);
- border-color:#7de6ffaa;box-shadow:0 0 18px #20c6ff41;
+ color:white;
+ background:linear-gradient(120deg,#0d345e,#087ea9);
+ border-color:#7de6ffaa;
+ box-shadow:0 0 18px #20c6ff41;
 }
 .btn-outline{
- color:#ffe1a0;background:#041c30c9;border-color:#ffdc93b5;
+ color:#ffe1a0;
+ background:#041c30c9;
+ border-color:#ffdc93b5;
 }
 .section{padding:83px 0}
 .section-heading{
- max-width:790px;text-align:center;margin:0 auto 35px;
+ max-width:790px;
+ text-align:center;
+ margin:0 auto 35px;
 }
 .section-heading h2{
  font:600 clamp(44px,5vw,73px)/1 var(--serif);
- margin:16px 0;letter-spacing:-1px;
+ margin:16px 0;
+ letter-spacing:-1px;
 }
 .section-heading p{
- font-size:14px;color:var(--muted);line-height:1.85;
+ font-size:14px;
+ color:var(--muted);
+ line-height:1.85;
 }
 
 /* HEADER */
 
-.site-header{position:absolute;top:10px;left:0;right:0;z-index:200}
+.site-header{
+ position:absolute;
+ top:10px;
+ left:0;
+ right:0;
+ z-index:200;
+}
 .nav-shell{
- width:min(1540px,calc(100% - 64px));height:61px;margin:auto;
- display:flex;align-items:center;justify-content:space-between;gap:20px;
- padding:7px 15px 7px 24px;border-radius:22px;
+ width:min(1540px,calc(100% - 64px));
+ height:61px;
+ margin:auto;
+ display:flex;
+ align-items:center;
+ justify-content:space-between;
+ gap:20px;
+ padding:7px 15px 7px 24px;
+ border-radius:22px;
  background:linear-gradient(90deg,#031527ee,#061a2eeb,#031426f2);
  border:1px solid #6bdcff62;
  box-shadow:0 15px 38px #0012258c,inset 0 1px #c0f5ff15;
  backdrop-filter:blur(18px);
 }
-.brand{display:flex;align-items:center;gap:12px;flex-shrink:0}
+.brand{
+ display:flex;
+ align-items:center;
+ gap:12px;
+ flex-shrink:0;
+}
 .brand-orb{
- width:40px;height:40px;display:grid;place-items:center;
- border-radius:50%;font-size:29px;font-weight:900;font-style:italic;
- color:#e3feff;border:1px solid #83f4ff;
+ width:40px;
+ height:40px;
+ display:grid;
+ place-items:center;
+ border-radius:50%;
+ font-size:29px;
+ font-weight:900;
+ font-style:italic;
+ color:#e3feff;
+ border:1px solid #83f4ff;
  background:radial-gradient(circle at 30% 20%,#9af8ff,#087ba9 42%,#092353 78%);
  box-shadow:0 0 20px #27dcff75;
 }
-.brand-name{font-size:23px;font-weight:800;letter-spacing:-.7px}
-.nav{display:flex;align-items:center;gap:25px}
-.nav a{font-size:12px;font-weight:650;white-space:nowrap}
+.brand-name{
+ font-size:23px;
+ font-weight:800;
+ letter-spacing:-.7px;
+}
+.nav{
+ display:flex;
+ align-items:center;
+ gap:25px;
+}
+.nav a{
+ font-size:12px;
+ font-weight:650;
+ white-space:nowrap;
+}
 .nav a:hover{color:var(--cyan)}
-.nav a.active{color:#ffe09b;position:relative}
+.nav a.active{
+ color:#ffe09b;
+ position:relative;
+}
 .nav a.active:after{
- content:"";position:absolute;bottom:-12px;left:0;right:0;
- height:2px;background:var(--gold);box-shadow:0 0 8px var(--gold);
+ content:"";
+ position:absolute;
+ bottom:-12px;
+ left:0;
+ right:0;
+ height:2px;
+ background:var(--gold);
+ box-shadow:0 0 8px var(--gold);
 }
 .nav .nav-buy{
- padding:11px 19px;border-radius:9px;font-weight:900;
- background:linear-gradient(#ffe7a8,#edb14e);color:#211503;
- border:1px solid #ffe4a1;box-shadow:0 0 13px #ffba4277;
+ padding:11px 19px;
+ border-radius:9px;
+ font-weight:900;
+ background:linear-gradient(#ffe7a8,#edb14e);
+ color:#211503;
+ border:1px solid #ffe4a1;
+ box-shadow:0 0 13px #ffba4277;
 }
 .menu-button{display:none}
 
-/* OCEAN BACKGROUND — UNCHANGED */
+/* OCEAN BACKGROUND */
 
 .ocean-world{
- position:relative;isolation:isolate;overflow:hidden;
+ position:relative;
+ isolation:isolate;
+ overflow:hidden;
  padding:95px 0 35px;
  background:radial-gradient(ellipse at 50% 19%,#087aad,#032d4c 62%,#021427);
 }
 .ocean-photo{
- position:absolute;inset:0;width:100%;height:100%;
- z-index:-4;object-fit:cover;object-position:center 41%;
+ position:absolute;
+ inset:0;
+ width:100%;
+ height:100%;
+ z-index:-4;
+ object-fit:cover;
+ object-position:center 41%;
  filter:saturate(1.28) contrast(1.1) brightness(.91);
 }
 .ocean-world:before{
- content:"";position:absolute;inset:0;z-index:-3;
+ content:"";
+ position:absolute;
+ inset:0;
+ z-index:-3;
  background:
   linear-gradient(90deg,#021a2dd4,#02243a99 44%,#062e452f),
   linear-gradient(0deg,#021426df,transparent 48%);
 }
 .ocean-world:after{
- content:"";position:absolute;inset:0;z-index:-2;
+ content:"";
+ position:absolute;
+ inset:0;
+ z-index:-2;
  pointer-events:none;
  background:
   radial-gradient(ellipse at 48% 0%,#99f8ff2d,transparent 37%),
@@ -136,7 +235,10 @@ a:focus-visible,button:focus-visible{
  mask-image:linear-gradient(#000,transparent 75%);
 }
 .ambient-glow{
- position:absolute;inset:0;pointer-events:none;z-index:-1;
+ position:absolute;
+ inset:0;
+ pointer-events:none;
+ z-index:-1;
  background:
   radial-gradient(ellipse at 87% 41%,#7552ff24,transparent 36%),
   radial-gradient(ellipse at 13% 78%,#04e9ff22,transparent 38%);
@@ -146,125 +248,164 @@ a:focus-visible,button:focus-visible{
 
 .hero{
  display:grid;
- grid-template-columns:minmax(0,1fr) minmax(0,1fr);
- min-height:365px;align-items:center;gap:32px;
+ grid-template-columns:minmax(0,1.02fr) minmax(0,.98fr);
+ min-height:365px;
+ align-items:center;
+ gap:18px;
 }
-.hero-copy{position:relative;z-index:3;padding:14px 0}
+.hero-copy{
+ position:relative;
+ z-index:3;
+ padding:14px 0 14px 0;
+}
 .hero-label{
- display:flex;align-items:center;gap:15px;
- font-size:10px;font-weight:700;letter-spacing:2.7px;color:#d4f1ff;
+ display:flex;
+ align-items:center;
+ gap:15px;
+ font-size:10px;
+ font-weight:700;
+ letter-spacing:2.7px;
+ color:#d4f1ff;
 }
 .hero-label:after{
- content:"";width:29px;height:1px;background:#a8f2ff8e;
+ content:"";
+ width:29px;
+ height:1px;
+ background:#a8f2ff8e;
 }
 .hero h1{
- margin:19px 0 20px;font-family:var(--serif);
- font-size:clamp(60px,5.9vw,94px);font-weight:600;
- letter-spacing:-1.5px;line-height:.84;
+ margin:18px 0 18px;
+ font-family:var(--serif);
+ font-size:clamp(60px,5.9vw,94px);
+ font-weight:600;
+ letter-spacing:-1.5px;
+ line-height:.96;
  text-shadow:0 4px 22px #001326b8;
+ overflow:visible;
+ padding-bottom:12px;
 }
-.hero h1 span{display:block;margin-top:9px}
+.hero h1 span{
+ display:block;
+ margin-top:6px;
+ line-height:.98;
+ padding-bottom:.05em;
+}
 .hero-description{
- max-width:555px;color:#e3f2f9;font-size:14px;line-height:1.75;
+ max-width:555px;
+ color:#e3f2f9;
+ font-size:14px;
+ line-height:1.75;
  text-shadow:0 2px 12px #001b2d;
 }
-.hero-actions{display:flex;gap:13px;flex-wrap:wrap;margin-top:23px}
+.hero-actions{
+ display:flex;
+ gap:13px;
+ flex-wrap:wrap;
+ margin-top:23px;
+}
 .hero-meta{
- display:flex;align-items:center;gap:10px;flex-wrap:wrap;
- margin-top:19px;font-size:11px;color:#d4edf6;
+ display:flex;
+ align-items:center;
+ gap:10px;
+ flex-wrap:wrap;
+ margin-top:19px;
+ font-size:11px;
+ color:#d4edf6;
 }
 .hero-meta strong{color:#ffe0a0}
 
-/* =============================================
-   NEW: COMPACT ATLAS WITH MULTICOLOR 3D GLOW
-   ============================================= */
+/* PANEL WRAPPER */
 
 .atlas-stage{
- width:min(100%,560px);
- justify-self:end;
+ width:min(100%,570px);
+ justify-self:start;
+ margin-left:-34px;
+ margin-right:48px;
  position:relative;
  min-width:0;
- padding:5px;
- transform:perspective(1100px) rotateY(-7deg) rotateX(3deg) rotateZ(-1deg);
- transform-origin:center;
- animation:atlasHover 8s ease-in-out infinite;
+ will-change:transform;
 }
 
-/* OUTER LIGHT DIFFUSION */
+/* TILT WRAPPER ONLY */
+.atlas-tilt{
+ position:relative;
+ transform:perspective(1400px) rotateY(-2.2deg) rotateX(.8deg) rotateZ(-.15deg);
+ transform-origin:center;
+}
 
-.atlas-stage:before{
+/* OUTER GLOW */
+.atlas-tilt:before{
  content:"";
  position:absolute;
- inset:-9px;
+ inset:-10px;
  border-radius:24px;
  z-index:-2;
  pointer-events:none;
- background:conic-gradient(
-  from 210deg,
-  #8c5dff,
-  #3b9dff,
-  #5df4ff,
-  #18dbeb,
-  #526bff,
-  #b96aff,
-  #8c5dff
- );
- opacity:.65;
- filter:blur(18px);
+ background:
+  conic-gradient(
+   from 210deg,
+   #8c5dff,
+   #329dff,
+   #66f6ff,
+   #26dff2,
+   #5b70ff,
+   #bf7cff,
+   #8c5dff
+  );
+ opacity:.58;
+ filter:blur(16px);
 }
 
-/* SHARP NEON RIM */
-
-.atlas-stage:after{
+/* SHARP RIM */
+.atlas-tilt:after{
  content:"";
  position:absolute;
- inset:2px;
+ inset:1px;
  border-radius:20px;
  z-index:-1;
  pointer-events:none;
  background:linear-gradient(
-  125deg,
-  #b2ffff 0%,
-  #43dafa 25%,
-  #257dd4 49%,
-  #a56eff 79%,
-  #cb82ff 100%
+  130deg,
+  #b5ffff 0%,
+  #43dafa 24%,
+  #257dd4 48%,
+  #8f6eff 77%,
+  #c37dff 100%
  );
  box-shadow:
-  0 0 11px #4feeff99,
-  0 0 30px #299bff55,
-  0 0 36px #ae6aff4d;
+  0 0 10px #4feeff8d,
+  0 0 28px #2c98ff48,
+  0 0 36px #a96eff42;
 }
 
 .atlas-panel{
  position:relative;
  overflow:hidden;
- border-radius:16px;
+ border-radius:18px;
  background:linear-gradient(145deg,#092441f8,#04132efb 68%,#11143bfa);
- border:1px solid #b2efff47;
+ border:1px solid #b2efff42;
  box-shadow:
   inset 0 1px 0 #d9ffff26,
-  inset 0 0 25px #176dba19,
-  12px 20px 42px #0009;
+  inset 0 0 18px #176dba17,
+  10px 18px 36px #0008;
+ -webkit-font-smoothing:antialiased;
+ backface-visibility:hidden;
+ transform:translateZ(0);
 }
 
-/* UPPER GLASS REFLECTION */
-
+/* REFLECTION */
 .atlas-panel:before{
  content:"";
  position:absolute;
- left:-28%;top:-55%;
- width:95%;height:110%;
+ left:-28%;
+ top:-55%;
+ width:95%;
+ height:110%;
  pointer-events:none;
  z-index:5;
- opacity:.14;
+ opacity:.12;
  transform:rotate(-22deg);
- background:linear-gradient(
-  90deg,
-  transparent,
-  #b9faff44,
-  transparent
- );
+ background:linear-gradient(90deg,transparent,#b9faff44,transparent);
 }
 
 .atlas-top{
@@ -272,33 +413,35 @@ a:focus-visible,button:focus-visible{
  justify-content:space-between;
  align-items:center;
  gap:9px;
- padding:10px 12px;
+ padding:11px 13px;
  background:linear-gradient(105deg,#10375b,#081a31);
- border-bottom:1px solid #74d8ff3d;
+ border-bottom:1px solid #74d8ff33;
 }
 .atlas-top strong{
  font-size:11px;
- letter-spacing:.05px;
+ letter-spacing:.02em;
 }
 .atlas-top small{
  font-size:7px;
- color:#a9cbdf;
+ color:#b1cade;
 }
+
 .atlas-app{
  display:grid;
- grid-template-columns:68px minmax(0,1fr);
+ grid-template-columns:70px minmax(0,1fr);
 }
+
 .atlas-menu{
  padding:8px 4px;
  background:#051729ed;
- border-right:1px solid #75dfff29;
+ border-right:1px solid #75dfff24;
  display:grid;
  align-content:start;
- gap:2px;
+ gap:3px;
 }
 .atlas-menu span{
  font-size:7px;
- color:#bad4e5;
+ color:#d2e1ea;
  padding:7px 4px;
  border-radius:5px;
  white-space:nowrap;
@@ -307,12 +450,14 @@ a:focus-visible,button:focus-visible{
  background:linear-gradient(120deg,#1779bc,#133b77);
  border:1px solid #6ce6ff77;
  color:white;
- box-shadow:0 0 10px #1c94ef50;
+ box-shadow:0 0 8px #1c94ef40;
 }
+
 .atlas-main{
  padding:8px;
  min-width:0;
 }
+
 .atlas-kpis{
  display:grid;
  grid-template-columns:repeat(4,minmax(0,1fr));
@@ -320,20 +465,22 @@ a:focus-visible,button:focus-visible{
 }
 .atlas-kpi{
  min-width:0;
- padding:8px 5px;
+ padding:8px 6px;
  border-radius:6px;
- border:1px solid #62cfff31;
+ border:1px solid #62cfff28;
  background:linear-gradient(145deg,#123955,#081f39);
 }
 .atlas-kpi small{
  display:block;
  font-size:6px;
- color:#a7c8d9;
+ color:#b4cfde;
+ letter-spacing:.04em;
 }
 .atlas-kpi strong{
  display:block;
  font-size:10px;
  margin-top:6px;
+ color:#f7fbff;
  overflow-wrap:anywhere;
 }
 .atlas-kpi em{
@@ -343,15 +490,17 @@ a:focus-visible,button:focus-visible{
  color:var(--green);
  margin-top:4px;
 }
+
 .atlas-body-grid{
  display:grid;
  grid-template-columns:1.65fr .85fr;
  gap:6px;
  margin-top:7px;
 }
-.market-chart,.market-mini{
+.market-chart,
+.market-mini{
  background:#05192d;
- border:1px solid #72d4ff35;
+ border:1px solid #72d4ff2c;
  border-radius:7px;
  overflow:hidden;
  min-width:0;
@@ -362,26 +511,40 @@ a:focus-visible,button:focus-visible{
  justify-content:space-between;
  align-items:center;
  gap:5px;
- border-bottom:1px solid #6bdeff27;
+ border-bottom:1px solid #6bdeff20;
 }
-.market-toolbar strong{font-size:8px}
-.market-toolbar small{font-size:6px;color:#9ccedf}
+.market-toolbar strong{
+ font-size:8px;
+ color:#f3fbff;
+}
+.market-toolbar small{
+ font-size:6px;
+ color:#9ccedf;
+}
 .market-screen{
  position:relative;
- height:103px;
+ height:110px;
  background:
   linear-gradient(#62b6e813 1px,transparent 1px),
   linear-gradient(90deg,#62b6e813 1px,transparent 1px),
   #061a30;
  background-size:100% 23px,30px 100%;
 }
-.market-screen svg{width:100%;height:100%}
+.market-screen svg{
+ width:100%;
+ height:100%;
+ display:block;
+}
 .market-screen .line1{
- stroke:#39ffdc;stroke-width:2;fill:none;
- filter:drop-shadow(0 0 3px #00e8eb);
+ stroke:#39ffdc;
+ stroke-width:2;
+ fill:none;
+ filter:drop-shadow(0 0 2px #00e8eb);
 }
 .market-screen .line2{
- stroke:#b57bff;stroke-width:2;fill:none;
+ stroke:#b57bff;
+ stroke-width:2;
+ fill:none;
 }
 .market-side{
  display:flex;
@@ -394,7 +557,11 @@ a:focus-visible,button:focus-visible{
  padding:7px;
  background:linear-gradient(145deg,#0a3352,#061e39);
 }
-.market-mini small{display:block;font-size:7px;color:#a3d6e8}
+.market-mini small{
+ display:block;
+ font-size:7px;
+ color:#a9d8e8;
+}
 .market-mini strong{
  display:block;
  font-size:11px;
@@ -407,11 +574,15 @@ a:focus-visible,button:focus-visible{
  color:#c0e4e6;
  font-style:normal;
 }
-.market-mini svg{width:100%;height:19px}
+.market-mini svg{
+ width:100%;
+ height:19px;
+ display:block;
+}
 .atlas-module-title{
  display:block;
  font-size:7px;
- color:#a8ccdf;
+ color:#b0d1e2;
  margin:7px 0 5px;
 }
 .atlas-modules{
@@ -423,7 +594,7 @@ a:focus-visible,button:focus-visible{
  padding:7px 5px;
  min-width:0;
  border-radius:6px;
- border:1px solid #75d6ff3a;
+ border:1px solid #75d6ff32;
  background:linear-gradient(135deg,#143a62,#0a1f3c);
 }
 .atlas-module strong{
@@ -432,11 +603,12 @@ a:focus-visible,button:focus-visible{
  text-overflow:ellipsis;
  white-space:nowrap;
  font-size:7px;
+ color:#f4fbff;
 }
 .atlas-module small{
  display:block;
  font-size:6px;
- color:#93d9e8;
+ color:#9bdceb;
  margin-top:4px;
 }
 .atlas-module:nth-child(1){border-color:#a679ff84}
@@ -444,67 +616,105 @@ a:focus-visible,button:focus-visible{
 .atlas-module:nth-child(4){border-color:#7d91ff7c}
 .atlas-disclosure{
  padding:6px 10px;
- border-top:1px solid #71d6ff26;
+ border-top:1px solid #71d6ff20;
  font-size:7px;
- color:#9bbfd4;
+ color:#a8c4d4;
 }
 
-/* SALE STRIP — UNCHANGED */
+/* PUBLIC SALE */
 
 .sale-banner{
- position:relative;margin:16px 0 19px;
- padding:13px 20px;border-radius:17px;
+ position:relative;
+ margin:16px 0 19px;
+ padding:13px 20px;
+ border-radius:17px;
  background:linear-gradient(110deg,#094b64cc,#0a2b4dca,#201f47c3);
  border:1px solid #77eeffae;
  box-shadow:0 0 24px #00d7f933,inset 0 1px #ccfaff36;
  backdrop-filter:blur(15px);
 }
 .sale-grid{
- display:grid;grid-template-columns:1.4fr .55fr .7fr auto;
- align-items:center;gap:18px;
+ display:grid;
+ grid-template-columns:1.4fr .55fr .7fr auto;
+ align-items:center;
+ gap:18px;
 }
-.sale-title{display:flex;align-items:center;gap:16px}
-.sale-title strong{font-size:25px;white-space:nowrap}
+.sale-title{
+ display:flex;
+ align-items:center;
+ gap:16px;
+}
+.sale-title strong{
+ font-size:25px;
+ white-space:nowrap;
+}
 .sale-pill{
- padding:8px 11px;border-radius:7px;white-space:nowrap;
+ padding:8px 11px;
+ border-radius:7px;
+ white-space:nowrap;
  background:linear-gradient(#ffe9b1,#f0b948);
- color:#241703;font-weight:900;font-size:9px;
+ color:#241703;
+ font-weight:900;
+ font-size:9px;
 }
-.sale-stat small{display:block;font-size:9px;color:#c0d8e5}
+.sale-stat small{
+ display:block;
+ font-size:9px;
+ color:#c0d8e5;
+}
 .sale-stat strong{
- display:block;color:var(--gold);font-size:26px;margin-top:4px;
+ display:block;
+ color:var(--gold);
+ font-size:26px;
+ margin-top:4px;
 }
 .sale-action .btn{min-width:165px}
 
-/* THREE CARDS — KEEP SAME STRUCTURE */
+/* THREE CARDS */
 
 .ecosystem-grid{
- display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:17px;
+ display:grid;
+ grid-template-columns:repeat(3,minmax(0,1fr));
+ gap:17px;
 }
 .eco-card{
- position:relative;isolation:isolate;
- min-height:226px;overflow:hidden;
- border-radius:17px;border:1px solid #79eaffc1;
+ position:relative;
+ isolation:isolate;
+ min-height:226px;
+ overflow:hidden;
+ border-radius:17px;
+ border:1px solid #79eaffc1;
  background:#06243a;
  box-shadow:0 0 20px #00d9ff25,0 14px 35px #00172f99;
  transition:transform .25s,border-color .25s;
 }
 .eco-card:hover{
- transform:translateY(-5px);border-color:#aaf4ff;
+ transform:translateY(-5px);
+ border-color:#aaf4ff;
 }
 .eco-photo{
- position:absolute;inset:0;width:100%;height:100%;
- object-fit:cover;z-index:-4;
+ position:absolute;
+ inset:0;
+ width:100%;
+ height:100%;
+ object-fit:cover;
+ z-index:-4;
  filter:saturate(1.35) contrast(1.1);
 }
 .eco-card:before{
- content:"";position:absolute;inset:0;z-index:-3;
+ content:"";
+ position:absolute;
+ inset:0;
+ z-index:-3;
  background:
   linear-gradient(90deg,#031629f0 0%,#05223cc9 46%,#09254242),
   linear-gradient(0deg,#03152adb,transparent 75%);
 }
 .eco-card:after{
- content:"";position:absolute;inset:0;z-index:-1;
+ content:"";
+ position:absolute;
+ inset:0;
+ z-index:-1;
  pointer-events:none;
  background:linear-gradient(130deg,#7ceaff0b,transparent 47%,#8e63ff15);
 }
@@ -515,59 +725,122 @@ a:focus-visible,button:focus-visible{
  background:linear-gradient(90deg,#031629f0,#08253bd9 55%,#12325456);
 }
 .eco-content{
- display:flex;flex-direction:column;align-items:flex-start;
- position:relative;z-index:3;padding:19px 21px;
- min-height:226px;height:100%;
+ display:flex;
+ flex-direction:column;
+ align-items:flex-start;
+ position:relative;
+ z-index:3;
+ padding:19px 21px;
+ min-height:226px;
+ height:100%;
 }
-.eco-heading{display:flex;align-items:center;gap:9px;margin-bottom:13px}
-.eco-heading svg{width:27px;height:27px;flex-shrink:0}
-.eco-heading h3{font-size:20px;margin:0;letter-spacing:-.5px}
+.eco-heading{
+ display:flex;
+ align-items:center;
+ gap:9px;
+ margin-bottom:13px;
+}
+.eco-heading svg{
+ width:27px;
+ height:27px;
+ flex-shrink:0;
+}
+.eco-heading h3{
+ font-size:20px;
+ margin:0;
+ letter-spacing:-.5px;
+}
 .eco-content h4{
- font-size:13px;margin:0 0 9px;
- line-height:1.5;font-weight:600;
+ font-size:13px;
+ margin:0 0 9px;
+ line-height:1.5;
+ font-weight:600;
 }
 .eco-content p{
- font-size:10px;line-height:1.7;color:#d7edf6;
- max-width:240px;margin:0 0 14px;
+ font-size:10px;
+ line-height:1.7;
+ color:#d7edf6;
+ max-width:240px;
+ margin:0 0 14px;
 }
 .eco-content a{
- margin-top:auto;padding:8px 15px;border-radius:40px;
- font-size:10px;font-weight:750;color:#ffe2a0;
- background:#031629d9;border:1px solid #ffdd99ae;
+ margin-top:auto;
+ padding:8px 15px;
+ border-radius:40px;
+ font-size:10px;
+ font-weight:750;
+ color:#ffe2a0;
+ background:#031629d9;
+ border:1px solid #ffdd99ae;
  box-shadow:0 0 12px #ffc77c15;
 }
 .card-holo{
- position:absolute;right:13px;bottom:9px;width:41%;
- height:68%;z-index:-2;pointer-events:none;opacity:.66;
+ position:absolute;
+ right:13px;
+ bottom:9px;
+ width:41%;
+ height:68%;
+ z-index:-2;
+ pointer-events:none;
+ opacity:.66;
  transform:perspective(500px) rotateY(-16deg) rotateX(7deg);
- border:1px solid #72dfff80;border-radius:12px;
+ border:1px solid #72dfff80;
+ border-radius:12px;
  box-shadow:0 0 26px #1de7ff55,inset 0 0 25px #2996ff2b;
  background:linear-gradient(135deg,#0d74b238,#27236e4d);
 }
 .card-holo:before{
- content:"";position:absolute;inset:13%;border-radius:50%;
- border:1px solid #8dfaff7b;box-shadow:0 0 22px #41e7ff;
+ content:"";
+ position:absolute;
+ inset:13%;
+ border-radius:50%;
+ border:1px solid #8dfaff7b;
+ box-shadow:0 0 22px #41e7ff;
 }
 .card-holo:after{
- content:"";position:absolute;inset:27%;
- border-radius:50%;border:1px dashed #91d8ff8a;
+ content:"";
+ position:absolute;
+ inset:27%;
+ border-radius:50%;
+ border:1px dashed #91d8ff8a;
 }
 .card-phone{
- position:absolute;right:13px;bottom:-15px;z-index:-2;
- width:27%;height:80%;border-radius:18px;
+ position:absolute;
+ right:13px;
+ bottom:-15px;
+ z-index:-2;
+ width:27%;
+ height:80%;
+ border-radius:18px;
  border:3px solid #76dfff;
  background:linear-gradient(145deg,#0b6688,#063452 55%,#04182d);
  box-shadow:0 0 24px #3bdbff99,10px 12px 35px #001327;
- transform:rotate(12deg);display:grid;place-items:center;
+ transform:rotate(12deg);
+ display:grid;
+ place-items:center;
 }
 .card-phone:before{
- content:"";position:absolute;top:5px;left:31%;right:31%;
- height:5px;border-radius:0 0 6px 6px;background:#041628;
+ content:"";
+ position:absolute;
+ top:5px;
+ left:31%;
+ right:31%;
+ height:5px;
+ border-radius:0 0 6px 6px;
+ background:#041628;
 }
-.card-phone svg{width:64%;filter:drop-shadow(0 0 14px #39edff)}
+.card-phone svg{
+ width:64%;
+ filter:drop-shadow(0 0 14px #39edff);
+}
 .card-radar{
- position:absolute;right:-17px;top:10px;z-index:-2;
- width:45%;aspect-ratio:1;border-radius:50%;
+ position:absolute;
+ right:-17px;
+ top:10px;
+ z-index:-2;
+ width:45%;
+ aspect-ratio:1;
+ border-radius:50%;
  border:1px solid #61e3ff92;
  box-shadow:0 0 32px #36ceff5c,inset 0 0 24px #3ecfff21;
  background:
@@ -575,124 +848,207 @@ a:focus-visible,button:focus-visible{
   conic-gradient(#36dafa5b,transparent 80deg,transparent);
 }
 .card-radar:after{
- content:"";position:absolute;left:64%;top:26%;
- width:8px;height:8px;border-radius:50%;
- background:#8cf9e8;box-shadow:0 0 13px #8cf9e8;
+ content:"";
+ position:absolute;
+ left:64%;
+ top:26%;
+ width:8px;
+ height:8px;
+ border-radius:50%;
+ background:#8cf9e8;
+ box-shadow:0 0 13px #8cf9e8;
 }
 
 /* OTHER SECTIONS */
 
 .lower{background:linear-gradient(#03162a,#061a2d)}
 .feature-grid{
- display:grid;grid-template-columns:1fr 1fr;gap:55px;align-items:center;
+ display:grid;
+ grid-template-columns:1fr 1fr;
+ gap:55px;
+ align-items:center;
 }
 .feature-copy h2{
- font:600 clamp(48px,5vw,76px)/1 var(--serif);margin:18px 0;
+ font:600 clamp(48px,5vw,76px)/1 var(--serif);
+ margin:18px 0;
 }
-.feature-copy p{font-size:14px;color:var(--muted);line-height:1.85}
+.feature-copy p{
+ font-size:14px;
+ color:var(--muted);
+ line-height:1.85;
+}
 .feature-tags{
- display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:24px 0;
+ display:grid;
+ grid-template-columns:1fr 1fr;
+ gap:10px;
+ margin:24px 0;
 }
 .feature-tags span{
- border-radius:10px;padding:16px;background:#0d304b;
- border:1px solid var(--line);font-size:12px;font-weight:700;
+ border-radius:10px;
+ padding:16px;
+ background:#0d304b;
+ border:1px solid var(--line);
+ font-size:12px;
+ font-weight:700;
 }
 .feature-visual{
- padding:24px;border:1px solid #78dfff76;border-radius:18px;
+ padding:24px;
+ border:1px solid #78dfff76;
+ border-radius:18px;
  background:linear-gradient(140deg,#112d55,#101a38);
  box-shadow:0 0 35px #4c8bff24;
 }
-.feature-visual h3{font-size:15px;margin:0}
+.feature-visual h3{
+ font-size:15px;
+ margin:0;
+}
 .bar-chart{
- height:195px;display:flex;gap:9px;align-items:end;
- border-bottom:1px solid var(--line);margin:25px 0 10px;
+ height:195px;
+ display:flex;
+ gap:9px;
+ align-items:end;
+ border-bottom:1px solid var(--line);
+ margin:25px 0 10px;
 }
 .bar-chart span{
- flex:1;height:var(--h);border-radius:5px 5px 0 0;
+ flex:1;
+ height:var(--h);
+ border-radius:5px 5px 0 0;
  background:linear-gradient(var(--c),#154a82);
  animation:barPulse 4s ease-in-out infinite alternate;
  animation-delay:var(--d);
 }
-.concept-note{font-size:11px;color:#9ebed2}
+.concept-note{
+ font-size:11px;
+ color:#9ebed2;
+}
 .ocean-section{
- position:relative;isolation:isolate;overflow:hidden;background:#06334c;
+ position:relative;
+ isolation:isolate;
+ overflow:hidden;
+ background:#06334c;
 }
 .ocean-section>img{
- position:absolute;inset:0;width:100%;height:100%;
- object-fit:cover;z-index:-2;
+ position:absolute;
+ inset:0;
+ width:100%;
+ height:100%;
+ object-fit:cover;
+ z-index:-2;
 }
 .ocean-section:before{
- content:"";position:absolute;inset:0;z-index:-1;
+ content:"";
+ position:absolute;
+ inset:0;
+ z-index:-1;
  background:linear-gradient(90deg,#021629f5,#052c43cd 57%,#063c5260);
 }
 .ocean-copy{max-width:620px}
 .ocean-copy h2{
- font:600 clamp(49px,5vw,78px)/1 var(--serif);margin:17px 0;
+ font:600 clamp(49px,5vw,78px)/1 var(--serif);
+ margin:17px 0;
 }
-.ocean-copy p{font-size:14px;line-height:1.85;color:#daedf4}
-.pills{display:flex;flex-wrap:wrap;gap:9px;margin:23px 0}
+.ocean-copy p{
+ font-size:14px;
+ line-height:1.85;
+ color:#daedf4;
+}
+.pills{
+ display:flex;
+ flex-wrap:wrap;
+ gap:9px;
+ margin:23px 0;
+}
 .pills span{
- padding:9px 13px;border:1px solid #6fe8de88;
- border-radius:50px;background:#075869aa;font-size:11px;
+ padding:9px 13px;
+ border:1px solid #6fe8de88;
+ border-radius:50px;
+ background:#075869aa;
+ font-size:11px;
 }
 .intelligence-grid{
- display:grid;grid-template-columns:repeat(3,1fr);gap:16px;
+ display:grid;
+ grid-template-columns:repeat(3,1fr);
+ gap:16px;
 }
 .intelligence-card{
- padding:25px;border-radius:14px;
+ padding:25px;
+ border-radius:14px;
  background:linear-gradient(145deg,#112d49,#071c31);
  border:1px solid var(--line);
 }
-.intelligence-card b{font-size:26px;color:var(--purple)}
-.intelligence-card h3{font-size:19px;margin:16px 0 10px}
-.intelligence-card p{
- color:var(--muted);font-size:12px;line-height:1.8;
+.intelligence-card b{
+ font-size:26px;
+ color:var(--purple);
 }
-.intelligence-card small{font-size:9px;color:#c8a5ff}
+.intelligence-card h3{
+ font-size:19px;
+ margin:16px 0 10px;
+}
+.intelligence-card p{
+ color:var(--muted);
+ font-size:12px;
+ line-height:1.8;
+}
+.intelligence-card small{
+ font-size:9px;
+ color:#c8a5ff;
+}
 .token-section{
  background:linear-gradient(110deg,#1e2340,#103047,#241e36);
 }
-.token-metrics{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.token-metric{
- padding:23px;border:1px solid #ffda9b5f;
- border-radius:12px;background:#0d223cc5;
+.token-metrics{
+ display:grid;
+ grid-template-columns:1fr 1fr;
+ gap:12px;
 }
-.token-metric small{font-size:11px;color:#b4c8d7}
+.token-metric{
+ padding:23px;
+ border:1px solid #ffda9b5f;
+ border-radius:12px;
+ background:#0d223cc5;
+}
+.token-metric small{
+ font-size:11px;
+ color:#b4c8d7;
+}
 .token-metric strong{
- display:block;margin-top:12px;font-size:29px;color:var(--gold);
+ display:block;
+ margin-top:12px;
+ font-size:29px;
+ color:var(--gold);
 }
 .footer{
- padding:50px 0 25px;background:#020d1c;
+ padding:50px 0 25px;
+ background:#020d1c;
  border-top:1px solid var(--line);
 }
 .footer-grid{
- display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:35px;
+ display:grid;
+ grid-template-columns:1.5fr 1fr 1fr;
+ gap:35px;
 }
 .footer h4{font-size:12px}
-.footer p{font-size:12px;line-height:1.8;color:#9ebacb}
+.footer p{
+ font-size:12px;
+ line-height:1.8;
+ color:#9ebacb;
+}
 .footer-link{
- display:block;margin:12px 0;font-size:12px;color:#a7c3d7;
+ display:block;
+ margin:12px 0;
+ font-size:12px;
+ color:#a7c3d7;
 }
 .footer-bottom{
- margin-top:42px;padding-top:22px;border-top:1px solid var(--line);
- font-size:11px;color:#8ca5b8;
+ margin-top:42px;
+ padding-top:22px;
+ border-top:1px solid var(--line);
+ font-size:11px;
+ color:#8ca5b8;
 }
 .mobile-buy{display:none}
 
-/* NEW SUBTLE 3D MOTION */
-
-@keyframes atlasHover{
- 0%,100%{
-  transform:perspective(1100px)
-    rotateY(-7deg) rotateX(3deg) rotateZ(-1deg)
-    translateY(0);
- }
- 50%{
-  transform:perspective(1100px)
-    rotateY(-7deg) rotateX(3deg) rotateZ(-1deg)
-    translateY(-6px);
- }
-}
 @keyframes barPulse{
  to{height:calc(var(--h) * .78)}
 }
@@ -702,35 +1058,67 @@ a:focus-visible,button:focus-visible{
 @media(max-width:1180px){
  .nav{gap:14px}
  .nav a{font-size:11px}
- .hero{grid-template-columns:.95fr 1.05fr}
- .atlas-stage{width:min(100%,530px)}
+ .hero{grid-template-columns:.98fr 1.02fr}
+ .atlas-stage{
+  width:min(100%,540px);
+  margin-left:-14px;
+  margin-right:20px;
+ }
  .sale-title strong{font-size:20px}
  .eco-heading h3{font-size:17px}
 }
 @media(max-width:980px){
  .site-header{top:0}
  .nav-shell{
-  width:100%;height:70px;border-radius:0;padding:0 20px;
+  width:100%;
+  height:70px;
+  border-radius:0;
+  padding:0 20px;
  }
  .menu-button{
-  display:block;width:43px;height:42px;
-  border-radius:9px;border:1px solid var(--line);
-  background:#092c44;color:white;font-size:23px;
+  display:block;
+  width:43px;
+  height:42px;
+  border-radius:9px;
+  border:1px solid var(--line);
+  background:#092c44;
+  color:white;
+  font-size:23px;
  }
  .nav{
-  display:none;position:absolute;top:70px;left:0;right:0;
-  flex-direction:column;align-items:stretch;gap:0;
-  background:#031529f8;padding:14px 21px;
+  display:none;
+  position:absolute;
+  top:70px;
+  left:0;
+  right:0;
+  flex-direction:column;
+  align-items:stretch;
+  gap:0;
+  background:#031529f8;
+  padding:14px 21px;
   border-bottom:1px solid var(--line);
  }
  .nav.open{display:flex}
- .nav a{padding:12px;font-size:14px}
+ .nav a{
+  padding:12px;
+  font-size:14px;
+ }
  .nav a.active:after{display:none}
- .nav .nav-buy{text-align:center;margin-top:8px}
- .hero{grid-template-columns:1fr;gap:25px}
+ .nav .nav-buy{
+  text-align:center;
+  margin-top:8px;
+ }
+ .hero{
+  grid-template-columns:1fr;
+  gap:25px;
+ }
  .atlas-stage{
-  width:min(100%,560px);justify-self:center;
-  transform:none;animation:none;
+  width:min(100%,560px);
+  justify-self:center;
+  margin:0 auto;
+ }
+ .atlas-tilt{
+  transform:none;
  }
  .sale-grid{grid-template-columns:1fr 1fr}
  .sale-title,.sale-action{grid-column:1/-1}
@@ -741,23 +1129,51 @@ a:focus-visible,button:focus-visible{
 @media(max-width:650px){
  .container{width:calc(100% - 32px)}
  .brand-name{font-size:19px}
- .brand-orb{width:35px;height:35px;font-size:25px}
+ .brand-orb{
+  width:35px;
+  height:35px;
+  font-size:25px;
+ }
  .ocean-world{padding:92px 0 27px}
  .hero{min-height:0}
- .hero h1{font-size:clamp(55px,12.5vw,78px);line-height:.92}
- .hero-label{font-size:8px;letter-spacing:1.5px}
+ .hero h1{
+  font-size:clamp(55px,12.5vw,78px);
+  line-height:.98;
+  padding-bottom:10px;
+ }
+ .hero-label{
+  font-size:8px;
+  letter-spacing:1.5px;
+ }
  .hero-description{font-size:13px}
  .hero-actions .btn{flex:1}
- .atlas-stage{width:100%;max-width:480px;padding:4px}
- .atlas-app{grid-template-columns:35px minmax(0,1fr)}
- .atlas-menu{padding:7px 2px}
- .atlas-menu span{
-  font-size:0;width:28px;height:24px;
-  display:grid;place-items:center;padding:0;
+ .atlas-stage{
+  width:100%;
+  max-width:480px;
  }
- .atlas-menu span:before{content:"◇";font-size:12px}
+ .atlas-app{
+  grid-template-columns:35px minmax(0,1fr);
+ }
+ .atlas-menu{
+  padding:7px 2px;
+ }
+ .atlas-menu span{
+  font-size:0;
+  width:28px;
+  height:24px;
+  display:grid;
+  place-items:center;
+  padding:0;
+ }
+ .atlas-menu span:before{
+  content:"◇";
+  font-size:12px;
+ }
  .atlas-main{padding:6px}
- .atlas-kpis{grid-template-columns:1fr 1fr;gap:4px}
+ .atlas-kpis{
+  grid-template-columns:1fr 1fr;
+  gap:4px;
+ }
  .atlas-kpi{padding:6px}
  .atlas-body-grid{grid-template-columns:1fr}
  .market-screen{height:112px}
@@ -765,11 +1181,17 @@ a:focus-visible,button:focus-visible{
  .atlas-modules{grid-template-columns:1fr 1fr}
  .atlas-top strong{font-size:10px}
  .atlas-top small{font-size:7px}
- .sale-banner{padding:12px;margin:17px 0}
+ .sale-banner{
+  padding:12px;
+  margin:17px 0;
+ }
  .sale-grid{gap:16px}
  .sale-title{gap:10px}
  .sale-title strong{font-size:18px}
- .sale-pill{padding:7px;font-size:8px}
+ .sale-pill{
+  padding:7px;
+  font-size:8px;
+ }
  .sale-stat strong{font-size:23px}
  .sale-action .btn{width:100%}
  .ecosystem-grid,.intelligence-grid,.footer-grid{grid-template-columns:1fr}
@@ -783,35 +1205,47 @@ a:focus-visible,button:focus-visible{
  .token-metric{padding:16px}
  .token-metric strong{font-size:24px}
  .mobile-buy{
-  position:fixed;bottom:0;left:0;right:0;z-index:150;
-  display:flex;align-items:center;justify-content:space-between;
-  gap:12px;padding:10px 15px;
+  position:fixed;
+  bottom:0;
+  left:0;
+  right:0;
+  z-index:150;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  padding:10px 15px;
   padding-bottom:max(10px,env(safe-area-inset-bottom));
-  background:#031523f6;border-top:1px solid #ffcb7977;
+  background:#031523f6;
+  border-top:1px solid #ffcb7977;
   backdrop-filter:blur(17px);
  }
  .mobile-buy strong{font-size:12px}
  .mobile-buy small{
-  display:block;font-size:9px;color:#a6c0d2;margin-top:4px;
+  display:block;
+  font-size:9px;
+  color:#a6c0d2;
+  margin-top:4px;
  }
  .mobile-buy .btn{
-  font-size:11px;padding:10px 13px;white-space:nowrap;
+  font-size:11px;
+  padding:10px 13px;
+  white-space:nowrap;
  }
  .footer{padding-bottom:105px}
 }
 @media(prefers-reduced-motion:reduce){
  html{scroll-behavior:auto}
  *,*:before,*:after{
-  animation:none!important;transition:none!important;
+  animation:none!important;
+  transition:none!important;
  }
- .atlas-stage{transform:none}
+ .atlas-tilt{transform:none!important}
 }
 </style>
 </head>
 
 <body>
-
-<!-- HEADER -->
 
 <header class="site-header">
  <div class="nav-shell">
@@ -846,21 +1280,17 @@ a:focus-visible,button:focus-visible{
 
 <main>
 
-<!-- SAME OCEAN BACKGROUND -->
-
 <section class="ocean-world" id="home">
 
  <img
   class="ocean-photo"
-  src="https://images.unsplash.com/photo-1682687981907-170c006e3744?auto=format&amp;fit=crop&amp;w=1920&amp;q=85"
+  src="https://images.unsplash.com/photo-1682687981907-170c006e3744?auto=format&fit=crop&w=1920&q=85"
   alt=""
   fetchpriority="high">
 
  <div class="ambient-glow" aria-hidden="true"></div>
 
  <div class="container">
-
-  <!-- HERO -->
 
   <div class="hero">
 
@@ -900,170 +1330,151 @@ a:focus-visible,button:focus-visible{
 
    </div>
 
-   <!-- SMALLER ATLAS + 3D NEON RIM -->
-
    <div class="atlas-stage">
+    <div class="atlas-tilt">
+     <div class="atlas-panel">
 
-    <div class="atlas-panel">
+      <div class="atlas-top">
+       <strong>◈ ATLAS Intelligence OS</strong>
+       <small>SNAO WORLD · DESIGN CONCEPT</small>
+      </div>
 
-     <div class="atlas-top">
-      <strong>◈ ATLAS Intelligence OS</strong>
-      <small>SNAO WORLD · DESIGN CONCEPT</small>
-     </div>
+      <div class="atlas-app">
 
-     <div class="atlas-app">
+       <aside class="atlas-menu" aria-label="Illustrative ATLAS navigation">
+        <span>⌂ Dashboard</span>
+        <span>◇ Market</span>
+        <span>≈ Whale Flow</span>
+        <span>◉ Intelligence</span>
+        <span>⬡ Risk Analysis</span>
+        <span>♢ Security</span>
+        <span>⌁ Workflow</span>
+        <span>▣ Enterprise</span>
+       </aside>
 
-      <aside class="atlas-menu" aria-label="Illustrative ATLAS navigation">
-       <span>⌂ Dashboard</span>
-       <span>◇ Market</span>
-       <span>≈ Whale Flow</span>
-       <span>◉ Intelligence</span>
-       <span>⬡ Risk Analysis</span>
-       <span>♢ Security</span>
-       <span>⌁ Workflow</span>
-       <span>▣ Enterprise</span>
-      </aside>
+       <div class="atlas-main">
 
-      <div class="atlas-main">
-
-       <div class="atlas-kpis">
-
-        <div class="atlas-kpi">
-         <small>MARKET</small>
-         <strong>Research</strong>
-         <em>Intelligence</em>
-        </div>
-
-        <div class="atlas-kpi">
-         <small>BLOCKCHAIN</small>
-         <strong>Flows</strong>
-         <em>On-chain</em>
-        </div>
-
-        <div class="atlas-kpi">
-         <small>SECURITY</small>
-         <strong>Guardian</strong>
-         <em>Risk</em>
-        </div>
-
-        <div class="atlas-kpi">
-         <small>OPERATIONS</small>
-         <strong>Workflow</strong>
-         <em>Automation</em>
-        </div>
-
-       </div>
-
-       <div class="atlas-body-grid">
-
-        <div class="market-chart">
-
-         <div class="market-toolbar">
-          <strong>Market Intelligence</strong>
-          <small>ILLUSTRATIVE</small>
+        <div class="atlas-kpis">
+         <div class="atlas-kpi">
+          <small>MARKET</small>
+          <strong>Research</strong>
+          <em>Intelligence</em>
          </div>
 
-         <div class="market-screen">
-
-          <svg
-           viewBox="0 0 460 140"
-           preserveAspectRatio="none"
-           role="img"
-           aria-label="Demonstration candlestick chart">
-
-           <g id="candleLayer"></g>
-
-           <path class="line1"
-            d="M0 111 C40 113 58 99 83 100
-            S126 78 151 86 S198 65 224 73
-            S266 52 299 57 S342 40 371 43
-            S414 22 460 12"/>
-
-           <path class="line2"
-            d="M0 120 C44 115 62 107 94 110
-            S144 96 173 98 S224 84 258 88
-            S316 67 348 70 S411 52 460 34"/>
-
-          </svg>
-
+         <div class="atlas-kpi">
+          <small>BLOCKCHAIN</small>
+          <strong>Flows</strong>
+          <em>On-chain</em>
          </div>
 
-        </div>
-
-        <div class="market-side">
-
-         <div class="market-mini">
-          <small>BLOCKCHAIN RESEARCH</small>
-          <strong>Whale Flow</strong>
-          <em>Large Wallet Activity</em>
-          <svg viewBox="0 0 160 35" aria-hidden="true">
-           <path
-            d="M0 29 Q25 26 42 17 T85 18 T130 11 T160 4"
-            stroke="#55edb9" stroke-width="3" fill="none"/>
-          </svg>
-         </div>
-
-         <div class="market-mini">
-          <small>RISK INTELLIGENCE</small>
+         <div class="atlas-kpi">
+          <small>SECURITY</small>
           <strong>Guardian</strong>
-          <em>Monitoring Concept</em>
-          <svg viewBox="0 0 160 35" aria-hidden="true">
-           <path
-            d="M0 28 Q24 13 49 23 T99 18 T160 5"
-            stroke="#8ae8ff" stroke-width="3" fill="none"/>
-          </svg>
+          <em>Risk</em>
          </div>
 
+         <div class="atlas-kpi">
+          <small>OPERATIONS</small>
+          <strong>Workflow</strong>
+          <em>Automation</em>
+         </div>
+        </div>
+
+        <div class="atlas-body-grid">
+
+         <div class="market-chart">
+          <div class="market-toolbar">
+           <strong>Market Intelligence</strong>
+           <small>ILLUSTRATIVE</small>
+          </div>
+
+          <div class="market-screen">
+           <svg
+            viewBox="0 0 460 140"
+            preserveAspectRatio="none"
+            role="img"
+            aria-label="Demonstration candlestick chart">
+            <g id="candleLayer"></g>
+
+            <path class="line1"
+             d="M0 111 C40 113 58 99 83 100
+             S126 78 151 86 S198 65 224 73
+             S266 52 299 57 S342 40 371 43
+             S414 22 460 12"/>
+
+            <path class="line2"
+             d="M0 120 C44 115 62 107 94 110
+             S144 96 173 98 S224 84 258 88
+             S316 67 348 70 S411 52 460 34"/>
+           </svg>
+          </div>
+         </div>
+
+         <div class="market-side">
+
+          <div class="market-mini">
+           <small>BLOCKCHAIN RESEARCH</small>
+           <strong>Whale Flow</strong>
+           <em>Large Wallet Activity</em>
+           <svg viewBox="0 0 160 35" aria-hidden="true">
+            <path
+             d="M0 29 Q25 26 42 17 T85 18 T130 11 T160 4"
+             stroke="#55edb9" stroke-width="3" fill="none"/>
+           </svg>
+          </div>
+
+          <div class="market-mini">
+           <small>RISK INTELLIGENCE</small>
+           <strong>Guardian</strong>
+           <em>Monitoring Concept</em>
+           <svg viewBox="0 0 160 35" aria-hidden="true">
+            <path
+             d="M0 28 Q24 13 49 23 T99 18 T160 5"
+             stroke="#8ae8ff" stroke-width="3" fill="none"/>
+           </svg>
+          </div>
+
+         </div>
+        </div>
+
+        <span class="atlas-module-title">INTELLIGENCE MODULES · CONCEPT</span>
+
+        <div class="atlas-modules">
+         <div class="atlas-module">
+          <strong>◈ Market AI</strong>
+          <small>Insights</small>
+         </div>
+
+         <div class="atlas-module">
+          <strong>◇ On-chain</strong>
+          <small>Research</small>
+         </div>
+
+         <div class="atlas-module">
+          <strong>⬡ Security</strong>
+          <small>Guardian</small>
+         </div>
+
+         <div class="atlas-module">
+          <strong>⌁ Workflow</strong>
+          <small>Automation</small>
+         </div>
         </div>
 
        </div>
+      </div>
 
-       <span class="atlas-module-title">
-        INTELLIGENCE MODULES · CONCEPT
-       </span>
-
-       <div class="atlas-modules">
-
-        <div class="atlas-module">
-         <strong>◈ Market AI</strong>
-         <small>Insights</small>
-        </div>
-
-        <div class="atlas-module">
-         <strong>◇ On-chain</strong>
-         <small>Research</small>
-        </div>
-
-        <div class="atlas-module">
-         <strong>⬡ Security</strong>
-         <small>Guardian</small>
-        </div>
-
-        <div class="atlas-module">
-         <strong>⌁ Workflow</strong>
-         <small>Automation</small>
-        </div>
-
-       </div>
-
+      <div class="atlas-disclosure">
+       Illustrative concept · No live market or enterprise data
       </div>
 
      </div>
-
-     <div class="atlas-disclosure">
-      Illustrative concept · No live market or enterprise data
-     </div>
-
     </div>
-
    </div>
 
   </div>
 
-  <!-- PUBLIC SALE -->
-
   <div class="sale-banner" id="public-sale">
-
    <div class="sale-grid">
 
     <div class="sale-title">
@@ -1088,35 +1499,25 @@ a:focus-visible,button:focus-visible{
     </div>
 
    </div>
-
   </div>
-
-  <!-- THREE EXISTING ECOSYSTEM CARDS -->
 
   <div class="ecosystem-grid" id="ecosystem">
 
-   <!-- ATLAS CARD -->
-
    <article class="eco-card">
-
     <img
      class="eco-photo"
-     src="https://images.unsplash.com/photo-1682687981907-170c006e3744?auto=format&amp;fit=crop&amp;w=900&amp;q=82"
+     src="https://images.unsplash.com/photo-1682687981907-170c006e3744?auto=format&fit=crop&w=900&q=82"
      alt="" loading="lazy">
 
     <div class="card-holo" aria-hidden="true"></div>
 
     <div class="eco-content">
-
      <div class="eco-heading">
-
       <svg viewBox="0 0 30 30" aria-hidden="true">
        <path d="M15 2 L28 25 H22 L15 13 L8 25 H2 Z" fill="#8b9fff"/>
        <path d="M11 21 H19 L22 26 H8 Z" fill="#62efff"/>
       </svg>
-
       <h3>SNAO World ATLAS</h3>
-
      </div>
 
      <h4>Enterprise Intelligence OS</h4>
@@ -1128,43 +1529,31 @@ a:focus-visible,button:focus-visible{
      </p>
 
      <a href="#atlas">Explore ATLAS →</a>
-
     </div>
-
    </article>
 
-   <!-- SNAO OCEAN CARD -->
-
    <article class="eco-card">
-
     <img
      class="eco-photo"
-     src="https://images.unsplash.com/photo-1708649290066-5f617003b93f?auto=format&amp;fit=crop&amp;w=900&amp;q=82"
+     src="https://images.unsplash.com/photo-1708649290066-5f617003b93f?auto=format&fit=crop&w=900&q=82"
      alt="" loading="lazy">
 
     <div class="card-phone" aria-hidden="true">
      <svg viewBox="0 0 100 100">
-      <circle cx="50" cy="50" r="35"
-       fill="none" stroke="#8ef9ff" stroke-width="3" opacity=".8"/>
-      <path d="M20 50 Q49 22 78 50 Q49 78 20 50Z"
-       fill="#6ae9ff"/>
+      <circle cx="50" cy="50" r="35" fill="none" stroke="#8ef9ff" stroke-width="3" opacity=".8"/>
+      <path d="M20 50 Q49 22 78 50 Q49 78 20 50Z" fill="#6ae9ff"/>
       <path d="M24 50 L8 32 L8 68Z" fill="#b4faff"/>
       <circle cx="65" cy="46" r="3" fill="#04283a"/>
      </svg>
     </div>
 
     <div class="eco-content">
-
      <div class="eco-heading">
-
       <svg viewBox="0 0 30 30" aria-hidden="true">
        <path d="M2 16 Q15 1 28 15 Q15 28 2 16Z" fill="#47e6ef"/>
-       <path d="M5 17 Q15 11 27 15"
-        stroke="#00283f" stroke-width="3" fill="none"/>
+       <path d="M5 17 Q15 11 27 15" stroke="#00283f" stroke-width="3" fill="none"/>
       </svg>
-
       <h3>SNAO Ocean</h3>
-
      </div>
 
      <h4>The Ocean Experience</h4>
@@ -1176,38 +1565,26 @@ a:focus-visible,button:focus-visible{
      </p>
 
      <a href="#ocean">Explore SNAO Ocean →</a>
-
     </div>
-
    </article>
 
-   <!-- OCEAN INTELLIGENCE CARD -->
-
    <article class="eco-card">
-
     <img
      class="eco-photo"
-     src="https://images.unsplash.com/photo-1644913054793-4bd434e7881c?auto=format&amp;fit=crop&amp;w=900&amp;q=82"
+     src="https://images.unsplash.com/photo-1644913054793-4bd434e7881c?auto=format&fit=crop&w=900&q=82"
      alt="" loading="lazy">
 
     <div class="card-radar" aria-hidden="true"></div>
 
     <div class="eco-content">
-
      <div class="eco-heading">
-
       <svg viewBox="0 0 30 30" aria-hidden="true">
-       <circle cx="15" cy="15" r="12"
-        fill="none" stroke="#65f3de" stroke-width="2"/>
-       <circle cx="15" cy="15" r="7"
-        fill="none" stroke="#65f3de" stroke-width="1.5"/>
+       <circle cx="15" cy="15" r="12" fill="none" stroke="#65f3de" stroke-width="2"/>
+       <circle cx="15" cy="15" r="7" fill="none" stroke="#65f3de" stroke-width="1.5"/>
        <circle cx="15" cy="15" r="2" fill="#65f3de"/>
-       <path d="M15 15 L23 7"
-        stroke="#65f3de" stroke-width="2"/>
+       <path d="M15 15 L23 7" stroke="#65f3de" stroke-width="2"/>
       </svg>
-
       <h3>Ocean Intelligence</h3>
-
      </div>
 
      <h4>Crypto Market Intelligence</h4>
@@ -1219,25 +1596,17 @@ a:focus-visible,button:focus-visible{
      </p>
 
      <a href="#intelligence">Explore Intelligence →</a>
-
     </div>
-
    </article>
 
   </div>
-
  </div>
-
 </section>
 
-<!-- ATLAS DETAILS -->
-
 <section class="section lower" id="atlas">
-
  <div class="container feature-grid">
 
   <div class="feature-copy">
-
    <span class="eyebrow">ATLAS INTELLIGENCE OS</span>
 
    <h2>
@@ -1262,11 +1631,9 @@ a:focus-visible,button:focus-visible{
    <a href="about.html#atlas" class="btn btn-blue">
     Explore ATLAS Vision →
    </a>
-
   </div>
 
   <div class="feature-visual">
-
    <h3>ATLAS / ENTERPRISE INTELLIGENCE</h3>
 
    <div class="bar-chart" aria-label="Illustrative analytics chart">
@@ -1284,23 +1651,18 @@ a:focus-visible,button:focus-visible{
    <p class="concept-note">
     Concept visualization · No live enterprise data
    </p>
-
   </div>
 
  </div>
-
 </section>
 
-<!-- SNAO OCEAN -->
-
 <section class="section ocean-section" id="ocean">
-
  <img
-  src="https://images.unsplash.com/photo-1708649290066-5f617003b93f?auto=format&amp;fit=crop&amp;w=1920&amp;q=85"
-  alt="" loading="lazy">
+  src="https://images.unsplash.com/photo-1708649290066-5f617003b93f?auto=format&fit=crop&w=1920&q=85"
+  alt=""
+  loading="lazy">
 
  <div class="container">
-
   <div class="ocean-copy">
 
    <span class="eyebrow">SNAO OCEAN</span>
@@ -1334,19 +1696,13 @@ a:focus-visible,button:focus-visible{
    </p>
 
   </div>
-
  </div>
-
 </section>
 
-<!-- OCEAN INTELLIGENCE -->
-
 <section class="section lower" id="intelligence">
-
  <div class="container">
 
   <div class="section-heading">
-
    <span class="eyebrow">OCEAN INTELLIGENCE</span>
 
    <h2>
@@ -1358,7 +1714,6 @@ a:focus-visible,button:focus-visible{
     Planned intelligence research for whale movements,
     exchange flows, liquidity, volatility and market risk.
    </p>
-
   </div>
 
   <div class="intelligence-grid">
@@ -1414,13 +1769,9 @@ a:focus-visible,button:focus-visible{
   </div>
 
  </div>
-
 </section>
 
-<!-- TOKEN -->
-
 <section class="section token-section" id="token">
-
  <div class="container feature-grid">
 
   <div class="feature-copy">
@@ -1441,19 +1792,15 @@ a:focus-visible,button:focus-visible{
    </p>
 
    <div style="display:flex;gap:11px;flex-wrap:wrap;margin-top:25px">
-
     <a href="sale.html" class="btn btn-gold">
      BUY $SNAO NOW →
     </a>
-
     <a href="token.html" class="btn btn-blue">
      Tokenomics
     </a>
-
     <a href="whitepaper.html" class="btn btn-outline">
      Whitepaper
     </a>
-
    </div>
 
    <p class="concept-note" style="margin-top:18px">
@@ -1464,7 +1811,6 @@ a:focus-visible,button:focus-visible{
   </div>
 
   <div class="token-metrics">
-
    <div class="token-metric">
     <small>Total Supply</small>
     <strong>200M</strong>
@@ -1484,23 +1830,17 @@ a:focus-visible,button:focus-visible{
     <small>Network</small>
     <strong>BNB Chain</strong>
    </div>
-
   </div>
 
  </div>
-
 </section>
 
-<!-- FOOTER -->
-
 <footer class="footer">
-
  <div class="container">
 
   <div class="footer-grid">
 
    <div>
-
     <a href="index.html" class="brand">
      <span class="brand-orb">S</span>
      <span class="brand-name">SNAO World</span>
@@ -1511,7 +1851,6 @@ a:focus-visible,button:focus-visible{
      Enterprise technology, ocean experiences
      and crypto market intelligence research.
     </p>
-
    </div>
 
    <div>
@@ -1528,11 +1867,7 @@ a:focus-visible,button:focus-visible{
     <a class="footer-link" href="token.html">Tokenomics</a>
     <a class="footer-link" href="whitepaper.html">Whitepaper</a>
     <a class="footer-link" href="terminal.html">Ocean Terminal</a>
-    <a
-     class="footer-link"
-     href="https://x.com/SNAOOFFICIAL"
-     target="_blank"
-     rel="noopener noreferrer">X</a>
+    <a class="footer-link" href="https://x.com/SNAOOFFICIAL" target="_blank" rel="noopener noreferrer">X</a>
    </div>
 
   </div>
@@ -1542,13 +1877,9 @@ a:focus-visible,button:focus-visible{
   </div>
 
  </div>
-
 </footer>
 
-<!-- MOBILE BUY BUTTON -->
-
 <div class="mobile-buy">
-
  <div>
   <strong>$SNAO Public Sale</strong>
   <small>Official purchase page</small>
@@ -1557,22 +1888,17 @@ a:focus-visible,button:focus-visible{
  <a href="sale.html" class="btn btn-gold">
   BUY $SNAO →
  </a>
-
 </div>
 
 <script>
 "use strict";
 
-/* MOBILE NAVIGATION */
-
 const menuButton=document.getElementById("menuButton");
 const navigation=document.getElementById("navigation");
 
 if(menuButton && navigation){
-
  menuButton.addEventListener("click",()=>{
   const open=navigation.classList.toggle("open");
-
   menuButton.textContent=open?"✕":"☰";
   menuButton.setAttribute("aria-expanded",String(open));
  });
@@ -1584,21 +1910,16 @@ if(menuButton && navigation){
    menuButton.setAttribute("aria-expanded","false");
   });
  });
-
 }
-
-/* DEMONSTRATION CANDLESTICK CHART */
 
 const candleLayer=document.getElementById("candleLayer");
 
 if(candleLayer){
-
  const NS="http://www.w3.org/2000/svg";
  const count=36;
  let previous=106;
 
  for(let i=0;i<count;i++){
-
   const trend=i*1.45;
   const wave=Math.sin(i*.7)*9+Math.cos(i*.3)*6;
   const close=103-trend-wave;
@@ -1642,17 +1963,11 @@ if(candleLayer){
 
   previous=close;
  }
-
 }
 
-/* COPYRIGHT */
-
 const copyright=document.getElementById("copyright");
-
 if(copyright){
- copyright.textContent=
-  "© "+new Date().getFullYear()+
-  " SNAO World. All rights reserved.";
+ copyright.textContent="© "+new Date().getFullYear()+" SNAO World. All rights reserved.";
 }
 </script>
 
