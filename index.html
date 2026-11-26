@@ -6,2953 +6,2045 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#021426">
 <meta name="description" content="SNAO World — ATLAS Intelligence OS, SNAO Ocean, Ocean Intelligence and the official $SNAO Public Sale.">
-<meta property="og:title" content="SNAO World | A New Depth of Intelligence">
-<meta property="og:description" content="Discover the evolving SNAO World intelligence ecosystem.">
-<meta property="og:type" content="website">
 <title>SNAO World | A New Depth of Intelligence</title>
 
 <link rel="canonical" href="https://www.snao.world/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://images.unsplash.com">
-
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
 <style>
 :root{
-  --bg:#021426;
-  --navy:#06172c;
-  --cyan:#67eaff;
-  --blue:#248eff;
-  --purple:#a47aff;
-  --gold:#ffd58a;
-  --green:#65f3b8;
-  --white:#f7fbff;
-  --muted:#bcd2e2;
-  --line:#71dfff55;
-  --sans:"Inter",Arial,sans-serif;
-  --serif:"Cormorant Garamond",Georgia,serif;
+ --bg:#021426;
+ --cyan:#65eaff;
+ --gold:#ffd582;
+ --green:#63f1b6;
+ --muted:#bad4e4;
+ --line:#6bdfff55;
+ --sans:"Inter",Arial,sans-serif;
+ --serif:"Cormorant Garamond",Georgia,serif;
 }
 
 *{box-sizing:border-box}
 
 html{
-  scroll-behavior:smooth;
-  scroll-padding-top:95px;
+ scroll-behavior:smooth;
+ scroll-padding-top:85px;
 }
 
 body{
-  margin:0;
-  background:var(--bg);
-  color:var(--white);
-  font-family:var(--sans);
-  overflow-x:hidden;
-  -webkit-font-smoothing:antialiased;
-  text-rendering:optimizeLegibility;
+ margin:0;
+ background:var(--bg);
+ color:#f7fbff;
+ font-family:var(--sans);
+ overflow-x:hidden;
+ -webkit-font-smoothing:antialiased;
 }
 
-a{
-  text-decoration:none;
-  color:inherit;
-}
-
-button{
-  font:inherit;
-  cursor:pointer;
-}
+a{color:inherit;text-decoration:none}
+button{font:inherit;cursor:pointer}
+img{display:block}
 
 a:focus-visible,
 button:focus-visible{
-  outline:2px solid var(--gold);
-  outline-offset:4px;
+ outline:2px solid var(--gold);
+ outline-offset:4px;
 }
 
 .container{
-  width:min(1510px,calc(100% - 76px));
-  margin:auto;
+ width:min(1510px,calc(100% - 76px));
+ margin:auto;
 }
 
 .gold-text{
-  display:inline-block;
-  background:linear-gradient(
-    180deg,#fff8df,#ffe9b4 30%,#ffd080 68%,#bd8133
-  );
-  -webkit-background-clip:text;
-  background-clip:text;
-  color:transparent;
+ display:inline-block;
+ background:linear-gradient(
+ 180deg,
+ #fff8dd,
+ #ffe6ab 35%,
+ #ffd081 70%,
+ #bd8036
+ );
+ -webkit-background-clip:text;
+ background-clip:text;
+ color:transparent;
 }
-
-.eyebrow{
-  color:#a1f2ff;
-  font-size:10px;
-  font-weight:800;
-  letter-spacing:2.5px;
-  text-transform:uppercase;
-}
-
-.section{padding:84px 0}
-
-.section-title{
-  font-family:var(--serif);
-  font-weight:600;
-  font-size:clamp(46px,5vw,74px);
-  line-height:1.08;
-  margin:18px 0 22px;
-  padding-bottom:.08em;
-}
-
-.section-description{
-  color:var(--muted);
-  font-size:14px;
-  line-height:1.85;
-}
-
-/* BUTTONS */
 
 .btn{
-  display:inline-flex;
-  justify-content:center;
-  align-items:center;
-  gap:10px;
-  min-height:50px;
-  padding:12px 23px;
-  border-radius:11px;
-  border:1px solid transparent;
-  font:800 13px var(--sans);
-  white-space:nowrap;
-  transition:transform .2s ease,filter .2s ease;
+ display:inline-flex;
+ align-items:center;
+ justify-content:center;
+ gap:9px;
+ min-height:50px;
+ padding:12px 23px;
+ border-radius:11px;
+ border:1px solid transparent;
+ font:800 13px var(--sans);
+ white-space:nowrap;
+ transition:transform .2s,filter .2s;
 }
 
 .btn:hover{
-  transform:translateY(-2px);
-  filter:brightness(1.07);
+ transform:translateY(-2px);
+ filter:brightness(1.08);
 }
 
 .btn-gold{
-  color:#211603;
-  background:linear-gradient(#fff3c5,#ffda89 48%,#efa938);
-  border-color:#ffecb1;
-  box-shadow:0 0 15px #ffc55c69,0 7px 22px #bb782f55;
+ color:#241504;
+ background:linear-gradient(
+ #fff2c2,
+ #ffdb8c 48%,
+ #f0ac3d
+ );
+ border-color:#ffebaf;
+ box-shadow:
+ 0 0 17px #ffc75c74,
+ 0 8px 23px #c081325a;
 }
 
 .btn-blue{
-  color:white;
-  background:linear-gradient(120deg,#0d3766,#087da9);
-  border-color:#82e6ffba;
-  box-shadow:0 0 16px #19caff4c;
+ color:white;
+ background:linear-gradient(125deg,#0d3969,#0879a7);
+ border-color:#87e7ffb7;
+ box-shadow:0 0 16px #0ccfff51;
 }
 
-.btn-outline{
-  color:#ffe3a8;
-  background:#041b30e6;
-  border-color:#ffde9ba8;
-}
-
-/* NAVIGATION */
+/* =========================================
+   NAVIGATION — SAME VISUAL STYLE
+========================================= */
 
 .site-header{
-  position:absolute;
-  top:10px;
-  left:0;
-  right:0;
-  z-index:100;
+ position:absolute;
+ top:10px;
+ left:0;
+ right:0;
+ z-index:100;
 }
 
 .nav-shell{
-  width:min(1540px,calc(100% - 64px));
-  height:61px;
-  margin:auto;
-  padding:7px 15px 7px 24px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:20px;
-  border-radius:21px;
-  border:1px solid #70e6ff78;
-  background:linear-gradient(105deg,#031527f7,#06192ef3,#031426f7);
-  box-shadow:0 13px 34px #0014269a,inset 0 1px #d0faff24;
-  backdrop-filter:blur(15px);
+ width:min(1540px,calc(100% - 64px));
+ height:61px;
+ margin:auto;
+ padding:7px 15px 7px 24px;
+ display:flex;
+ align-items:center;
+ justify-content:space-between;
+ gap:20px;
+ border:1px solid #72e7ff78;
+ border-radius:21px;
+ background:linear-gradient(
+ 105deg,
+ #031527f7,
+ #06192ef3,
+ #031426f7
+ );
+ box-shadow:0 13px 34px #0014269a;
+ backdrop-filter:blur(15px);
 }
 
 .brand{
-  display:flex;
-  align-items:center;
-  gap:12px;
-  flex-shrink:0;
+ display:flex;
+ align-items:center;
+ gap:12px;
+ flex-shrink:0;
 }
 
 .brand-orb{
-  width:41px;
-  height:41px;
-  display:grid;
-  place-items:center;
-  border-radius:50%;
-  border:1px solid #b1f9ff;
-  background:radial-gradient(circle at 28% 20%,#baffff,#0696c5 41%,#073967 75%);
-  box-shadow:0 0 17px #29e0ff88;
-  font-size:29px;
-  font-weight:900;
-  font-style:italic;
-  color:white;
+ width:41px;
+ height:41px;
+ display:grid;
+ place-items:center;
+ border-radius:50%;
+ border:1px solid #b0faff;
+ background:radial-gradient(
+ circle at 28% 20%,
+ #baffff,
+ #0696c5 41%,
+ #073967 75%
+ );
+ box-shadow:0 0 17px #29e0ff88;
+ font-size:29px;
+ font-weight:900;
+ font-style:italic;
 }
 
 .brand-name{
-  font-size:23px;
-  font-weight:850;
-  letter-spacing:-.6px;
+ font-size:23px;
+ font-weight:850;
+ letter-spacing:-.6px;
 }
 
 .nav{
-  display:flex;
-  align-items:center;
-  gap:23px;
+ display:flex;
+ align-items:center;
+ gap:23px;
 }
 
 .nav a{
-  font-size:12px;
-  font-weight:650;
-  white-space:nowrap;
+ font-size:12px;
+ font-weight:650;
+ white-space:nowrap;
 }
 
 .nav a:hover{color:var(--cyan)}
 
 .nav a.active{
-  color:#ffe1a0;
-  position:relative;
+ position:relative;
+ color:#ffe1a0;
 }
 
 .nav a.active:after{
-  content:"";
-  position:absolute;
-  bottom:-12px;
-  left:0;
-  right:0;
-  height:2px;
-  background:#ffd583;
-  box-shadow:0 0 9px #ffd583;
+ content:"";
+ position:absolute;
+ bottom:-12px;
+ left:0;
+ right:0;
+ height:2px;
+ background:#ffd583;
+ box-shadow:0 0 9px #ffd583;
 }
 
 .nav .nav-buy{
-  padding:11px 19px;
-  border:1px solid #ffe8aa;
-  border-radius:9px;
-  background:linear-gradient(#fff0bb,#f3b651);
-  color:#241606;
-  font-weight:900;
-  box-shadow:0 0 14px #ffc45c72;
+ padding:11px 19px;
+ border:1px solid #ffe8aa;
+ border-radius:9px;
+ background:linear-gradient(#fff0bb,#f3b651);
+ color:#241606;
+ font-weight:900;
+ box-shadow:0 0 14px #ffc45c72;
 }
 
 .menu-button{display:none}
 
-/* OCEAN BACKGROUND — UNCHANGED */
+/* =========================================
+   OCEAN BACKGROUND
+   PRESERVED
+========================================= */
 
 .ocean-world{
-  position:relative;
-  isolation:isolate;
-  overflow:hidden;
-  padding:103px 0 37px;
-  background:radial-gradient(ellipse at 54% 20%,#0a7bac,#032e4c 62%,#021426);
+ position:relative;
+ isolation:isolate;
+ overflow:hidden;
+ padding:103px 0 37px;
+ background:radial-gradient(
+ ellipse at 54% 20%,
+ #0a7bac,
+ #032e4c 62%,
+ #021426
+ );
 }
 
 .ocean-photo{
-  position:absolute;
-  inset:0;
-  z-index:-4;
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  object-position:center 41%;
-  filter:contrast(1.16) saturate(1.34) brightness(.94);
+ position:absolute;
+ inset:0;
+ z-index:-4;
+ width:100%;
+ height:100%;
+ object-fit:cover;
+ object-position:center 41%;
+ filter:contrast(1.16) saturate(1.34) brightness(.94);
 }
 
 .ocean-world:before{
-  content:"";
-  position:absolute;
-  inset:0;
-  z-index:-3;
-  background:
-    linear-gradient(90deg,#021729da,#05294091 46%,#03283b20 82%),
-    linear-gradient(0deg,#021426ba,transparent 45%);
+ content:"";
+ position:absolute;
+ inset:0;
+ z-index:-3;
+ background:
+ linear-gradient(
+ 90deg,
+ #021729da,
+ #05294091 46%,
+ #03283b20 82%
+ ),
+ linear-gradient(0deg,#021426ba,transparent 45%);
 }
 
 .ocean-world:after{
-  content:"";
-  position:absolute;
-  inset:0;
-  z-index:-2;
-  pointer-events:none;
-  background:
-    radial-gradient(ellipse at 49% 0%,#aff7ff25,transparent 37%),
-    repeating-linear-gradient(109deg,transparent 0 155px,#dbf8ff06 165px,transparent 192px);
+ content:"";
+ position:absolute;
+ inset:0;
+ z-index:-2;
+ pointer-events:none;
+ background:
+ radial-gradient(
+ ellipse at 49% 0%,
+ #aff7ff25,
+ transparent 37%
+ ),
+ repeating-linear-gradient(
+ 109deg,
+ transparent 0 155px,
+ #dbf8ff06 165px,
+ transparent 192px
+ );
 }
 
 .ambient-glow{
-  position:absolute;
-  inset:0;
-  z-index:-1;
-  pointer-events:none;
-  background:
-    radial-gradient(ellipse at 84% 41%,#8859ff18,transparent 38%),
-    radial-gradient(ellipse at 13% 76%,#07eaff19,transparent 39%);
+ position:absolute;
+ inset:0;
+ z-index:-1;
+ pointer-events:none;
+ background:
+ radial-gradient(
+ ellipse at 84% 41%,
+ #8859ff18,
+ transparent 38%
+ ),
+ radial-gradient(
+ ellipse at 13% 76%,
+ #07eaff19,
+ transparent 39%
+ );
 }
 
-/* HERO — UNCHANGED */
+/* =========================================
+   HERO TEXT
+========================================= */
 
 .hero{
-  display:grid;
-  grid-template-columns:minmax(0,1fr) minmax(0,1fr);
-  gap:8px;
-  align-items:center;
-  min-height:365px;
+ display:grid;
+ grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+ gap:8px;
+ align-items:center;
+ min-height:365px;
 }
 
 .hero-copy{
-  position:relative;
-  z-index:4;
-  padding:10px 0;
+ position:relative;
+ z-index:4;
+ padding:10px 0;
 }
 
 .hero-label{
-  display:flex;
-  align-items:center;
-  gap:14px;
-  color:#dff5ff;
-  font-size:10px;
-  font-weight:750;
-  letter-spacing:2.5px;
+ display:flex;
+ align-items:center;
+ gap:14px;
+ color:#dff5ff;
+ font-size:10px;
+ font-weight:750;
+ letter-spacing:2.5px;
 }
 
 .hero-label:after{
-  content:"";
-  width:30px;
-  height:1px;
-  background:#b7efff91;
+ content:"";
+ width:30px;
+ height:1px;
+ background:#b7efff91;
 }
 
 .hero h1{
-  margin:18px 0;
-  padding-bottom:.14em;
-  font-family:var(--serif);
-  font-weight:600;
-  font-size:clamp(60px,5.9vw,94px);
-  line-height:1;
-  letter-spacing:-1.6px;
-  text-shadow:0 3px 16px #0016279d;
+ margin:18px 0;
+ padding-bottom:.14em;
+ font-family:var(--serif);
+ font-weight:600;
+ font-size:clamp(60px,5.9vw,94px);
+ line-height:1;
+ letter-spacing:-1.6px;
+ text-shadow:0 3px 16px #0016279d;
 }
 
 .hero h1 span{
-  display:block;
-  line-height:1.02;
-  padding-bottom:.07em;
+ display:block;
+ line-height:1.02;
+ padding-bottom:.07em;
 }
 
 .hero-description{
-  max-width:555px;
-  color:#e6f3fe;
-  font-size:14px;
-  line-height:1.85;
-  text-shadow:0 2px 8px #00192b;
+ max-width:555px;
+ color:#e6f3fe;
+ font-size:14px;
+ line-height:1.85;
+ text-shadow:0 2px 8px #00192b;
 }
 
 .hero-actions{
-  display:flex;
-  gap:13px;
-  flex-wrap:wrap;
-  margin-top:23px;
+ display:flex;
+ gap:13px;
+ flex-wrap:wrap;
+ margin-top:23px;
 }
 
 .hero-meta{
-  display:flex;
-  align-items:center;
-  flex-wrap:wrap;
-  gap:10px;
-  margin-top:19px;
-  font-size:11px;
-  color:#e0eef7;
+ display:flex;
+ align-items:center;
+ flex-wrap:wrap;
+ gap:10px;
+ margin-top:19px;
+ color:#e0eef7;
+ font-size:11px;
 }
 
 .hero-meta strong{color:#ffe0a0}
 
-/* ATLAS MAIN DISPLAY — UNCHANGED */
+/* =========================================
+   MAIN ATLAS 3D DASHBOARD
+   SAME STRUCTURE AS PREVIOUS VERSION
+========================================= */
 
 .atlas-stage{
-  position:relative;
-  width:min(100%,630px);
-  justify-self:center;
-  margin-left:-12px;
-  margin-right:20px;
-  perspective:1800px;
-  perspective-origin:50% 50%;
-  isolation:isolate;
-  z-index:3;
+ position:relative;
+ width:min(100%,630px);
+ justify-self:center;
+ margin-left:-12px;
+ margin-right:20px;
+ perspective:1800px;
+ perspective-origin:50% 50%;
+ isolation:isolate;
+ z-index:3;
 }
 
 .atlas-stage:before{
-  content:"";
-  position:absolute;
-  inset:15% 4%;
-  z-index:-2;
-  pointer-events:none;
-  border-radius:20px;
-  background:linear-gradient(120deg,#31f5ff,#208aff 51%,#b66cff);
-  filter:blur(29px);
-  opacity:.38;
+ content:"";
+ position:absolute;
+ inset:15% 4%;
+ z-index:-2;
+ border-radius:20px;
+ background:linear-gradient(120deg,#31f5ff,#208aff 51%,#b66cff);
+ filter:blur(29px);
+ opacity:.38;
+ pointer-events:none;
 }
 
 .atlas-object{
-  position:relative;
-  width:100%;
-  transform-style:preserve-3d;
-  transform-origin:center;
-  transform:rotateX(8deg) rotateY(-12deg) rotateZ(-.5deg);
-  transition:transform .5s ease;
+ position:relative;
+ width:100%;
+ transform-style:preserve-3d;
+ transform-origin:center;
+ transform:rotateX(8deg) rotateY(-12deg) rotateZ(-.5deg);
+ transition:transform .5s ease;
 }
 
 .atlas-stage:hover .atlas-object{
-  transform:rotateX(7deg) rotateY(-10deg) rotateZ(-.5deg) translateY(-2px);
+ transform:rotateX(7deg) rotateY(-10deg) rotateZ(-.5deg) translateY(-2px);
 }
 
 .atlas-object:before{
-  content:"";
-  position:absolute;
-  inset:-3px;
-  z-index:-1;
-  border-radius:20px;
-  background:linear-gradient(130deg,#c9ffff,#4cf1ff 24%,#248bff 47%,#9572ff 76%,#d28bff);
-  box-shadow:0 0 7px #5bf4ffba,0 0 17px #36d0ff78,0 0 27px #9477ff50,11px 16px 32px #0012268c;
-}
-
-.atlas-object:after{
-  content:"";
-  position:absolute;
-  bottom:-8px;
-  left:3%;
-  right:1%;
-  height:12px;
-  z-index:-2;
-  border-radius:0 0 15px 15px;
-  background:linear-gradient(90deg,#25dfff,#123d8a 48%,#8459df 82%,#cb89ff);
-  transform:rotateX(-48deg);
-  transform-origin:top;
-  box-shadow:0 5px 20px #5355db70;
+ content:"";
+ position:absolute;
+ inset:-3px;
+ z-index:-1;
+ border-radius:20px;
+ background:linear-gradient(
+ 130deg,
+ #c9ffff,
+ #4cf1ff 24%,
+ #248bff 47%,
+ #9572ff 76%,
+ #d28bff
+ );
+ box-shadow:
+ 0 0 7px #5bf4ffba,
+ 0 0 17px #36d0ff78,
+ 0 0 27px #9477ff50,
+ 11px 16px 32px #0012268c;
 }
 
 .atlas-panel{
-  position:relative;
-  overflow:hidden;
-  width:100%;
-  aspect-ratio:1.85/1;
-  border:1px solid #9cddff73;
-  border-radius:17px;
-  background:linear-gradient(135deg,#0b2b49,#05162d 63%,#111637);
-  box-shadow:inset 0 1px #e3ffff26,inset 0 0 17px #237eff16,0 10px 25px #0012248e;
-  display:flex;
-  flex-direction:column;
-}
-
-.atlas-panel:before{
-  content:"";
-  position:absolute;
-  top:0;
-  left:0;
-  right:0;
-  height:1px;
-  background:linear-gradient(90deg,#8effff,#348dff,#aa8bff);
-  z-index:5;
-  pointer-events:none;
+ position:relative;
+ overflow:hidden;
+ width:100%;
+ aspect-ratio:1.85/1;
+ border:1px solid #9cddff73;
+ border-radius:17px;
+ background:linear-gradient(135deg,#0b2b49,#05162d 63%,#111637);
+ box-shadow:inset 0 1px #e3ffff26,0 10px 25px #0012248e;
+ display:flex;
+ flex-direction:column;
 }
 
 .atlas-top{
-  flex:0 0 34px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:8px;
-  padding:5px 11px;
-  background:linear-gradient(105deg,#103a5d,#081a34);
-  border-bottom:1px solid #7fe1ff46;
+ flex:0 0 34px;
+ display:flex;
+ align-items:center;
+ justify-content:space-between;
+ gap:8px;
+ padding:5px 11px;
+ background:linear-gradient(105deg,#103a5d,#081a34);
+ border-bottom:1px solid #7fe1ff46;
 }
 
 .atlas-brand{
-  display:flex;
-  align-items:center;
-  gap:7px;
-  min-width:0;
+ display:flex;
+ align-items:center;
+ gap:7px;
 }
 
 .atlas-brand svg{
-  width:19px;
-  height:19px;
-  color:#92b9ff;
-  flex-shrink:0;
+ width:19px;
+ height:19px;
+ color:#92b9ff;
 }
 
 .atlas-brand strong{
-  font-size:11px;
-  font-weight:800;
-  white-space:nowrap;
+ font-size:11px;
+ font-weight:800;
+ white-space:nowrap;
 }
 
 .atlas-top small{
-  color:#b8d6e5;
-  font-size:7px;
-  font-weight:700;
-  white-space:nowrap;
+ color:#b8d6e5;
+ font-size:7px;
+ font-weight:700;
+ white-space:nowrap;
 }
 
 .atlas-app{
-  min-height:0;
-  flex:1;
-  display:grid;
-  grid-template-columns:78px minmax(0,1fr);
+ flex:1;
+ min-height:0;
+ display:grid;
+ grid-template-columns:78px minmax(0,1fr);
 }
 
 .atlas-menu{
-  display:flex;
-  flex-direction:column;
-  gap:2px;
-  padding:7px 4px;
-  background:#04172af2;
-  border-right:1px solid #76dbff38;
+ display:flex;
+ flex-direction:column;
+ gap:2px;
+ padding:7px 4px;
+ background:#04172af2;
+ border-right:1px solid #76dbff38;
 }
 
 .atlas-menu span{
-  display:flex;
-  align-items:center;
-  gap:5px;
-  padding:5px 4px;
-  border-radius:5px;
-  color:#c9deee;
-  font-size:7px;
-  font-weight:650;
-  white-space:nowrap;
+ display:flex;
+ align-items:center;
+ gap:5px;
+ padding:5px 4px;
+ border-radius:5px;
+ color:#c9deee;
+ font-size:7px;
+ font-weight:650;
+ white-space:nowrap;
 }
 
 .atlas-menu svg{
-  width:11px;
-  height:11px;
-  flex-shrink:0;
-  color:#b3d7f0;
+ width:11px;
+ height:11px;
+ flex-shrink:0;
+ color:#b3d7f0;
 }
 
 .atlas-menu span:first-child{
-  color:white;
-  background:linear-gradient(120deg,#207ed0,#154383);
-  border:1px solid #87e3ffc2;
-  box-shadow:0 0 9px #168fff4d;
+ color:white;
+ background:linear-gradient(120deg,#207ed0,#154383);
+ border:1px solid #87e3ffc2;
+ border-radius:4px;
 }
 
 .atlas-main{
-  display:flex;
-  flex-direction:column;
-  gap:6px;
-  min-width:0;
-  min-height:0;
-  padding:7px;
+ display:flex;
+ flex-direction:column;
+ gap:6px;
+ min-width:0;
+ min-height:0;
+ padding:7px;
 }
 
 .atlas-kpis{
-  flex:0 0 48px;
-  display:grid;
-  grid-template-columns:repeat(4,minmax(0,1fr));
-  gap:5px;
+ flex:0 0 48px;
+ display:grid;
+ grid-template-columns:repeat(4,minmax(0,1fr));
+ gap:5px;
 }
 
 .atlas-kpi{
-  min-width:0;
-  padding:6px;
-  overflow:hidden;
-  border-radius:6px;
-  border:1px solid #78d5ff48;
-  background:linear-gradient(140deg,#123955,#082139);
+ min-width:0;
+ padding:6px;
+ overflow:hidden;
+ border-radius:6px;
+ border:1px solid #78d5ff48;
+ background:linear-gradient(140deg,#123955,#082139);
 }
 
 .kpi-label{
-  display:flex;
-  align-items:center;
-  gap:4px;
-  font-size:7px;
-  color:#c5dce9;
-  font-weight:650;
-  white-space:nowrap;
+ display:flex;
+ align-items:center;
+ gap:4px;
+ font-size:7px;
+ color:#c5dce9;
+ font-weight:650;
+ white-space:nowrap;
 }
 
 .kpi-label svg{
-  width:10px;
-  height:10px;
-  color:#70eaff;
-  flex-shrink:0;
+ width:10px;
+ height:10px;
+ color:#70eaff;
 }
 
 .atlas-kpi strong{
-  display:block;
-  margin-top:5px;
-  color:#f8fdff;
-  font-size:10px;
-  font-weight:850;
-  white-space:nowrap;
+ display:block;
+ margin-top:5px;
+ color:#f8fdff;
+ font-size:10px;
+ font-weight:850;
+ white-space:nowrap;
 }
 
 .atlas-kpi em{
-  display:block;
-  margin-top:3px;
-  color:#76f3b8;
-  font-size:7px;
-  font-style:normal;
-  font-weight:650;
+ display:block;
+ margin-top:3px;
+ color:#76f3b8;
+ font-size:7px;
+ font-style:normal;
 }
 
 .sentiment-meter{
-  display:block;
-  height:4px;
-  margin-top:5px;
-  overflow:hidden;
-  border-radius:20px;
-  background:#164560;
+ height:4px;
+ margin-top:5px;
+ overflow:hidden;
+ border-radius:20px;
+ background:#164560;
 }
 
 .sentiment-meter span{
-  display:block;
-  width:64%;
-  height:100%;
-  border-radius:20px;
-  background:linear-gradient(90deg,#2e9fff,#6becc8,#ffcf74);
+ display:block;
+ width:64%;
+ height:100%;
+ background:linear-gradient(90deg,#2e9fff,#6becc8,#ffcf74);
 }
 
 .atlas-body-grid{
-  flex:1;
-  min-height:0;
-  display:grid;
-  grid-template-columns:1.82fr .86fr;
-  gap:6px;
+ flex:1;
+ min-height:0;
+ display:grid;
+ grid-template-columns:1.82fr .86fr;
+ gap:6px;
 }
 
-.market-chart,.market-mini{
-  min-width:0;
-  min-height:0;
-  overflow:hidden;
-  border-radius:7px;
-  border:1px solid #75d1ff45;
-  background:#061b32;
+.market-chart,
+.market-mini{
+ min-width:0;
+ min-height:0;
+ overflow:hidden;
+ border-radius:7px;
+ border:1px solid #75d1ff45;
+ background:#061b32;
 }
 
 .market-chart{
-  display:flex;
-  flex-direction:column;
+ display:flex;
+ flex-direction:column;
 }
 
 .market-toolbar{
-  flex:0 0 29px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:5px;
-  padding:5px 7px;
-  border-bottom:1px solid #70dfff29;
+ flex:0 0 29px;
+ display:flex;
+ align-items:center;
+ justify-content:space-between;
+ gap:5px;
+ padding:5px 7px;
+ border-bottom:1px solid #70dfff29;
 }
 
 .market-toolbar-title{
-  display:flex;
-  align-items:center;
-  gap:5px;
-  font-size:9px;
-  font-weight:800;
-  white-space:nowrap;
+ display:flex;
+ align-items:center;
+ gap:5px;
+ font-size:9px;
+ font-weight:800;
 }
 
 .market-toolbar-title svg{
-  width:12px;
-  height:12px;
-  color:#67efff;
+ width:12px;
+ height:12px;
+ color:#67efff;
 }
 
-.time-pills{display:flex;align-items:center;gap:3px}
+.time-pills{
+ display:flex;
+ gap:3px;
+}
 
 .time-pills span{
-  padding:2px 4px;
-  border-radius:3px;
-  background:#133653;
-  color:#c6e2ed;
-  font-size:6px;
+ padding:2px 4px;
+ border-radius:3px;
+ background:#133653;
+ color:#c6e2ed;
+ font-size:6px;
 }
 
 .time-pills .selected{
-  color:white;
-  background:#2379cd;
+ color:white;
+ background:#2379cd;
 }
 
 .market-screen{
-  position:relative;
-  flex:1;
-  min-height:0;
-  background:
-    linear-gradient(#6cbbff15 1px,transparent 1px),
-    linear-gradient(90deg,#6cbbff15 1px,transparent 1px),
-    #061b32;
-  background-size:100% 22px,30px 100%;
+ flex:1;
+ min-height:0;
+ background:
+ linear-gradient(#6cbbff15 1px,transparent 1px),
+ linear-gradient(90deg,#6cbbff15 1px,transparent 1px),
+ #061b32;
+ background-size:100% 22px,30px 100%;
 }
 
 .market-screen svg{
-  display:block;
-  width:100%;
-  height:100%;
+ display:block;
+ width:100%;
+ height:100%;
 }
 
 .market-screen .line1{
-  fill:none;
-  stroke:#4efde0;
-  stroke-width:2;
+ fill:none;
+ stroke:#4efde0;
+ stroke-width:2;
 }
 
 .market-screen .line2{
-  fill:none;
-  stroke:#c187ff;
-  stroke-width:2;
+ fill:none;
+ stroke:#c187ff;
+ stroke-width:2;
 }
 
 .market-side{
-  min-height:0;
-  display:flex;
-  flex-direction:column;
-  gap:6px;
+ display:flex;
+ flex-direction:column;
+ gap:6px;
+ min-height:0;
 }
 
 .market-mini{
-  flex:1;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  padding:6px 7px;
-  background:linear-gradient(145deg,#0b3755,#07203a);
+ flex:1;
+ display:flex;
+ flex-direction:column;
+ justify-content:center;
+ padding:6px 7px;
+ background:linear-gradient(145deg,#0b3755,#07203a);
 }
 
 .mini-title{
-  display:flex;
-  align-items:center;
-  gap:5px;
-  color:#effaff;
-  font-size:8px;
-  font-weight:800;
+ display:flex;
+ align-items:center;
+ gap:5px;
+ font-size:8px;
+ font-weight:800;
 }
 
 .mini-title svg{
-  width:13px;
-  height:13px;
-  flex-shrink:0;
-  color:#69f0ff;
+ width:13px;
+ height:13px;
+ color:#69f0ff;
 }
 
 .market-mini small{
-  display:block;
-  margin-top:3px;
-  color:#a8d2e0;
-  font-size:7px;
+ margin-top:3px;
+ color:#a8d2e0;
+ font-size:7px;
 }
 
 .market-mini strong{
-  display:block;
-  margin-top:4px;
-  color:#70f3b9;
-  font-size:10px;
-  font-weight:850;
+ margin-top:4px;
+ color:#70f3b9;
+ font-size:10px;
+ font-weight:850;
 }
 
 .market-mini em{
-  display:block;
-  margin-top:2px;
-  color:#b0e0d7;
-  font-size:6px;
-  font-style:normal;
+ margin-top:2px;
+ color:#b0e0d7;
+ font-size:6px;
+ font-style:normal;
 }
 
-.market-mini svg.mini-chart{
-  display:block;
-  width:100%;
-  height:18px;
-  margin-top:3px;
+.mini-chart{
+ display:block;
+ width:100%;
+ height:18px;
+ margin-top:3px;
 }
 
 .atlas-module-title{
-  flex:0 0 auto;
-  color:#b8d7e6;
-  font-size:7px;
-  font-weight:700;
+ font-size:7px;
+ color:#b8d7e6;
+ font-weight:700;
 }
 
 .atlas-modules{
-  flex:0 0 34px;
-  display:grid;
-  grid-template-columns:repeat(4,minmax(0,1fr));
-  gap:5px;
+ flex:0 0 34px;
+ display:grid;
+ grid-template-columns:repeat(4,minmax(0,1fr));
+ gap:5px;
 }
 
 .atlas-module{
-  min-width:0;
-  display:flex;
-  align-items:center;
-  gap:5px;
-  padding:4px 5px;
-  border:1px solid #73d6ff44;
-  border-radius:6px;
-  background:linear-gradient(135deg,#143c62,#09203d);
+ min-width:0;
+ display:flex;
+ align-items:center;
+ gap:5px;
+ padding:4px 5px;
+ border:1px solid #73d6ff44;
+ border-radius:6px;
+ background:linear-gradient(135deg,#143c62,#09203d);
 }
 
 .atlas-module svg{
-  width:14px;
-  height:14px;
-  flex-shrink:0;
-  color:#76ebff;
+ width:14px;
+ height:14px;
+ color:#76ebff;
+ flex-shrink:0;
 }
 
 .atlas-module strong{
-  display:block;
-  font-size:7px;
-  color:white;
-  white-space:nowrap;
-  overflow:hidden;
-  text-overflow:ellipsis;
+ display:block;
+ font-size:7px;
+ white-space:nowrap;
 }
 
 .atlas-module small{
-  display:block;
-  margin-top:3px;
-  color:#abd9e9;
-  font-size:6px;
-  white-space:nowrap;
+ display:block;
+ margin-top:3px;
+ font-size:6px;
+ color:#abd9e9;
 }
-
-.atlas-module:nth-child(1){border-color:#a985ff82}
-.atlas-module:nth-child(1) svg{color:#ae89ff}
-.atlas-module:nth-child(3){border-color:#5becc183}
-.atlas-module:nth-child(3) svg{color:#5ceac1}
-.atlas-module:nth-child(4){border-color:#8a96ff83}
-.atlas-module:nth-child(4) svg{color:#8a96ff}
 
 .atlas-disclosure{
-  flex:0 0 18px;
-  padding:4px 10px;
-  border-top:1px solid #6be0ff27;
-  color:#a5c7d8;
-  font-size:7px;
-  line-height:1.3;
+ flex:0 0 18px;
+ padding:4px 10px;
+ border-top:1px solid #6be0ff27;
+ color:#a5c7d8;
+ font-size:7px;
 }
 
-/* PUBLIC SALE — UNCHANGED */
+/* =========================================
+   PUBLIC SALE — PRESERVED
+========================================= */
 
 .sale-banner{
-  position:relative;
-  margin:18px 0 20px;
-  padding:14px 21px;
-  border-radius:18px;
-  border:1px solid #80f0ffc0;
-  background:linear-gradient(105deg,#0a4860cc,#0a2d4ccc 49%,#252145cf);
-  box-shadow:0 0 20px #17dbff46,inset 0 1px #cefcff37;
-  backdrop-filter:blur(12px);
-}
-
-.sale-banner:after{
-  content:"";
-  position:absolute;
-  left:4%;
-  right:4%;
-  bottom:0;
-  height:1px;
-  background:linear-gradient(90deg,transparent,#53edff,#a479ff,transparent);
-  box-shadow:0 0 11px #48e6ff;
+ position:relative;
+ margin:18px 0 20px;
+ padding:14px 21px;
+ border-radius:18px;
+ border:1px solid #80f0ffc0;
+ background:linear-gradient(105deg,#0a4860cc,#0a2d4ccc 49%,#252145cf);
+ box-shadow:0 0 20px #17dbff46,inset 0 1px #cefcff37;
+ backdrop-filter:blur(12px);
 }
 
 .sale-grid{
-  display:grid;
-  grid-template-columns:1.4fr .55fr .7fr auto;
-  gap:18px;
-  align-items:center;
+ display:grid;
+ grid-template-columns:1.4fr .55fr .7fr auto;
+ gap:18px;
+ align-items:center;
 }
 
 .sale-title{
-  display:flex;
-  align-items:center;
-  gap:14px;
+ display:flex;
+ align-items:center;
+ gap:14px;
 }
 
 .sale-title strong{
-  font-size:25px;
-  white-space:nowrap;
+ font-size:25px;
+ white-space:nowrap;
 }
 
 .sale-pill{
-  padding:8px 11px;
-  border-radius:7px;
-  background:linear-gradient(#fff0bb,#efb547);
-  color:#241705;
-  font-size:9px;
-  font-weight:900;
-  white-space:nowrap;
+ padding:8px 11px;
+ border-radius:7px;
+ background:linear-gradient(#fff0bb,#efb547);
+ color:#241705;
+ font-size:9px;
+ font-weight:900;
 }
 
 .sale-stat small{
-  display:block;
-  color:#cfe2ee;
-  font-size:10px;
+ display:block;
+ color:#cfe2ee;
+ font-size:10px;
 }
 
 .sale-stat strong{
-  display:block;
-  margin-top:5px;
-  color:var(--gold);
-  font-size:26px;
+ display:block;
+ margin-top:5px;
+ color:var(--gold);
+ font-size:26px;
 }
 
-.sale-action .btn{min-width:165px}
+.sale-action .btn{
+ min-width:165px;
+}
 
-/* ========================================
-   NEW THREE PREMIUM ECOSYSTEM CARDS
-   ONLY SECTION VISUALLY REDESIGNED
-======================================== */
+/* =========================================
+   NEW REFERENCE ART CARDS
+
+   Uses three actual crops from your
+   approved cinematic reference.
+
+   NO fake CSS globe.
+   NO cartoon fish.
+   NO simplified CSS smartphone.
+========================================= */
 
 .ecosystem-grid{
-  display:grid;
-  grid-template-columns:repeat(3,minmax(0,1fr));
-  gap:18px;
+ display:grid;
+ grid-template-columns:repeat(3,minmax(0,1fr));
+ gap:18px;
+ align-items:stretch;
 }
 
-.eco-card{
-  --accent:#65eaff;
-
-  position:relative;
-  isolation:isolate;
-  min-height:248px;
-  overflow:hidden;
-  border-radius:20px;
-  border:1px solid #70edffad;
-
-  background:#041a30;
-
-  box-shadow:
-    0 0 0 1px #57dfff13 inset,
-    0 0 23px #21d2ff2b,
-    0 18px 43px #00101ec9;
-
-  transition:
-    transform .28s ease,
-    box-shadow .28s ease,
-    border-color .28s ease;
+.reference-card{
+ position:relative;
+ display:block;
+ min-width:0;
+ aspect-ratio:510/248;
+ border-radius:17px;
+ overflow:hidden;
+ isolation:isolate;
+ background:linear-gradient(135deg,#10385b,#04172a);
+ border:1px solid #6eefff9c;
+ box-shadow:
+ 0 0 19px #25dcff30,
+ 0 14px 28px #0007;
+ transition:
+ transform .25s ease,
+ box-shadow .25s ease;
 }
 
-.eco-card:hover{
-  transform:translateY(-5px);
-  border-color:#c0faff;
-  box-shadow:
-    0 0 0 1px #96f2ff39 inset,
-    0 0 32px #20dfff6b,
-    0 23px 50px #000b;
+.reference-card img{
+ width:100%;
+ height:100%;
+ object-fit:fill;
 }
 
-.eco-card.ocean-card{
-  --accent:#62f3dc;
-  border-color:#64efe0ac;
+.reference-card:after{
+ content:"";
+ position:absolute;
+ inset:0;
+ border-radius:17px;
+ pointer-events:none;
+ box-shadow:inset 0 0 0 1px #ffffff13;
 }
 
-.eco-card.intel-card{
-  --accent:#a68bff;
-  border-color:#a68bff9c;
+.reference-card:hover{
+ transform:translateY(-4px);
+ box-shadow:
+ 0 0 24px #42dfff68,
+ 0 18px 35px #0009;
 }
 
-/* High-resolution photographic layer */
-
-.eco-photo{
-  position:absolute;
-  inset:0;
-  width:100%;
-  height:100%;
-  z-index:-5;
-
-  object-fit:cover;
-  object-position:center;
-
-  filter:
-    saturate(1.24)
-    contrast(1.12)
-    brightness(.92);
-
-  transition:transform .5s ease;
+.reference-card:focus-visible{
+ outline:3px solid #ffe2a0;
+ outline-offset:3px;
 }
 
-.eco-card:hover .eco-photo{
-  transform:scale(1.055);
+/* =========================================
+   LOWER SITE SECTIONS
+========================================= */
+
+.section{
+ padding:84px 0;
 }
-
-/* Dark left area: text remains readable */
-
-.eco-card:before{
-  content:"";
-  position:absolute;
-  inset:0;
-  z-index:-4;
-
-  background:
-    linear-gradient(
-      90deg,
-      #031527fc 0%,
-      #04172ded 39%,
-      #052e47aa 68%,
-      #052c4352 100%
-    ),
-    linear-gradient(
-      0deg,
-      #04172ccc 0%,
-      transparent 63%
-    );
-}
-
-/* Glass highlight */
-
-.eco-card:after{
-  content:"";
-  position:absolute;
-  inset:0;
-  z-index:-3;
-  pointer-events:none;
-
-  background:
-    linear-gradient(
-      145deg,
-      #9af8ff14,
-      transparent 40%,
-      #a77aff13 93%
-    ),
-    radial-gradient(
-      circle at 85% 15%,
-      #5bceff26,
-      transparent 36%
-    );
-}
-
-.eco-neon-edge{
-  position:absolute;
-  inset:0;
-  z-index:5;
-  border-radius:20px;
-  pointer-events:none;
-
-  box-shadow:
-    inset 0 1px 0 #d1fcff60,
-    inset 0 0 18px #31cfff17;
-}
-
-.eco-neon-edge:after{
-  content:"";
-  position:absolute;
-  left:10%;
-  right:10%;
-  bottom:0;
-  height:1px;
-
-  background:linear-gradient(
-    90deg,
-    transparent,
-    var(--accent),
-    #b77dff,
-    transparent
-  );
-
-  box-shadow:0 0 14px var(--accent);
-}
-
-/* Card information */
-
-.eco-content{
-  position:relative;
-  z-index:4;
-
-  min-height:248px;
-  padding:23px 23px 20px;
-
-  display:flex;
-  flex-direction:column;
-  align-items:flex-start;
-}
-
-.eco-heading{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  margin-bottom:13px;
-}
-
-.eco-heading svg{
-  width:28px;
-  height:28px;
-  flex-shrink:0;
-  filter:drop-shadow(0 0 8px #6bdfff55);
-}
-
-.eco-heading h3{
-  margin:0;
-  font-size:20px;
-  font-weight:800;
-  letter-spacing:-.55px;
-  color:#f9fdff;
-  white-space:nowrap;
-}
-
-.eco-content h4{
-  position:relative;
-  z-index:3;
-  max-width:63%;
-  margin:0 0 11px;
-
-  color:#fff;
-  font-size:13px;
-  font-weight:650;
-  line-height:1.55;
-}
-
-.eco-content p{
-  position:relative;
-  z-index:3;
-  max-width:62%;
-  margin:0 0 16px;
-
-  color:#d5e8f5;
-  font-size:10px;
-  font-weight:500;
-  line-height:1.78;
-  text-shadow:0 2px 6px #001424;
-}
-
-.eco-content>a{
-  position:relative;
-  z-index:6;
-  margin-top:auto;
-
-  display:inline-flex;
-  justify-content:center;
-  align-items:center;
-  gap:8px;
-
-  padding:9px 15px;
-  border-radius:30px;
-
-  color:#ffe1a4;
-  background:#03192bea;
-
-  border:1px solid #ffe19dae;
-  box-shadow:0 0 12px #f5bb5620;
-
-  font-size:10px;
-  font-weight:800;
-
-  transition:background .2s,transform .2s;
-}
-
-.eco-content>a:hover{
-  transform:translateX(2px);
-  background:#153249;
-}
-
-/* ========================================
-   CARD 1 — ATLAS INTELLIGENCE
-
-   Holographic globe / trading command room.
-======================================== */
-
-.atlas-card .eco-photo{
-  object-position:68% center;
-}
-
-.atlas-world{
-  position:absolute;
-  z-index:-2;
-  right:2%;
-  top:18%;
-
-  width:46%;
-  aspect-ratio:1;
-
-  border-radius:50%;
-  border:1px solid #7beeff91;
-
-  background:
-    radial-gradient(
-      circle at 32% 28%,
-      #b7ffffb3,
-      #35b9eb50 18%,
-      transparent 47%
-    ),
-    radial-gradient(
-      ellipse at 55% 48%,
-      transparent 35%,
-      #18d5ff54 54%,
-      #0b5cce18 64%,
-      transparent 70%
-    );
-
-  box-shadow:
-    0 0 20px #27cbff91,
-    inset 0 0 30px #28dfff5b,
-    0 0 42px #476fff38;
-
-  transform:rotate(-17deg);
-}
-
-.atlas-world:before{
-  content:"";
-  position:absolute;
-  inset:11%;
-  border-radius:50%;
-
-  background:
-    repeating-radial-gradient(
-      ellipse at center,
-      transparent 0 17px,
-      #9afaff50 18px 19px
-    );
-
-  border:1px solid #a4faff8c;
-  opacity:.8;
-}
-
-.atlas-world:after{
-  content:"";
-  position:absolute;
-  left:-15%;
-  right:-15%;
-  top:42%;
-  height:15%;
-
-  border:1px solid #61f0ff9c;
-  border-radius:50%;
-
-  box-shadow:0 0 15px #62f3ff;
-  transform:rotate(-25deg);
-}
-
-.atlas-hud{
-  position:absolute;
-  z-index:-2;
-
-  right:2%;
-  bottom:8%;
-
-  width:40%;
-  height:31%;
-
-  border:1px solid #72dfff70;
-  border-radius:10px;
-
-  background:
-    linear-gradient(#63baff1a 1px,transparent 1px),
-    linear-gradient(90deg,#63baff1a 1px,transparent 1px),
-    #061e3ca8;
-
-  background-size:100% 17px,22px 100%;
-
-  box-shadow:0 0 19px #26ccff45;
-  transform:perspective(550px) rotateY(-16deg);
-}
-
-.atlas-hud svg{
-  width:100%;
-  height:100%;
-  display:block;
-}
-
-/* ========================================
-   CARD 2 — SNAO OCEAN
-
-   Premium three-dimensional smartphone.
-======================================== */
-
-.ocean-card .eco-photo{
-  object-position:75% center;
-}
-
-.ocean-card:before{
-  background:
-    linear-gradient(
-      90deg,
-      #03182cf9,
-      #05344bdb 48%,
-      #0467795e
-    ),
-    linear-gradient(
-      0deg,
-      #031827a8,
-      transparent 65%
-    );
-}
-
-.ocean-phone{
-  position:absolute;
-  z-index:-2;
-
-  right:9%;
-  top:9%;
-
-  width:30%;
-  height:87%;
-
-  border-radius:20px;
-  border:3px solid #9af2ff;
-
-  background:
-    radial-gradient(
-      ellipse at 50% 66%,
-      #16c9db67,
-      transparent 55%
-    ),
-    linear-gradient(
-      145deg,
-      #0e7599,
-      #042947 53%,
-      #02132b
-    );
-
-  box-shadow:
-    7px 9px 0 #02203d,
-    11px 14px 0 #06233c,
-    0 0 24px #2be6ff9c,
-    inset 0 0 27px #31cfff39;
-
-  transform:
-    perspective(500px)
-    rotateY(-17deg)
-    rotateZ(10deg);
-
-  overflow:hidden;
-}
-
-.ocean-phone:before{
-  content:"";
-  position:absolute;
-  top:5px;
-  left:30%;
-  width:40%;
-  height:7px;
-
-  border-radius:0 0 8px 8px;
-  background:#031425;
-}
-
-.ocean-phone:after{
-  content:"";
-  position:absolute;
-  inset:9px;
-  border-radius:12px;
-  border:1px solid #c3f8ff31;
-  pointer-events:none;
-}
-
-.phone-logo{
-  position:absolute;
-  top:15%;
-  left:0;
-  right:0;
-
-  text-align:center;
-  font-size:10px;
-  font-weight:850;
-  letter-spacing:1.4px;
-  color:white;
-}
-
-.phone-ocean{
-  position:absolute;
-  top:33%;
-  left:17%;
-  width:66%;
-  aspect-ratio:1;
-
-  border-radius:50%;
-  border:1px solid #81faff;
-
-  box-shadow:
-    0 0 16px #44f3ff,
-    inset 0 0 15px #0bc9ff65;
-
-  background:radial-gradient(
-    circle,
-    #168eaf80,
-    #043a5a62 70%
-  );
-
-  display:grid;
-  place-items:center;
-}
-
-.phone-ocean svg{
-  width:70%;
-  height:70%;
-  filter:drop-shadow(0 0 7px #3fefff);
-}
-
-.phone-caption{
-  position:absolute;
-  bottom:10%;
-  left:0;
-  right:0;
-
-  text-align:center;
-  font-size:9px;
-  color:#abf7ff;
-  letter-spacing:2px;
-  font-weight:800;
-}
-
-.ocean-bubble{
-  position:absolute;
-  z-index:-2;
-
-  width:13px;
-  height:13px;
-
-  border-radius:50%;
-  border:1px solid #a4faff9e;
-
-  background:radial-gradient(
-    circle at 30% 24%,
-    #e5ffff93,
-    #17b9e526,
-    transparent
-  );
-
-  box-shadow:0 0 12px #3bd8ff68;
-  animation:bubbleFloat 5s ease-in-out infinite alternate;
-}
-
-.bubble-1{right:7%;top:10%}
-.bubble-2{right:42%;bottom:10%;width:8px;height:8px;animation-delay:-1s}
-.bubble-3{right:3%;bottom:25%;width:9px;height:9px;animation-delay:-2s}
-
-/* ========================================
-   CARD 3 — OCEAN INTELLIGENCE
-
-   Holographic market intelligence + whale.
-======================================== */
-
-.intel-card .eco-photo{
-  object-position:65% center;
-}
-
-.intel-card:before{
-  background:
-    linear-gradient(
-      90deg,
-      #031526fc,
-      #061936e9 41%,
-      #15336d7a 76%,
-      #12295753
-    );
-}
-
-.intel-orbit{
-  position:absolute;
-  z-index:-2;
-
-  right:2%;
-  top:9%;
-
-  width:49%;
-  aspect-ratio:1;
-
-  border-radius:50%;
-
-  border:1px solid #4ceaff8d;
-
-  background:
-    repeating-radial-gradient(
-      circle,
-      transparent 0 21px,
-      #45ddff3f 22px 23px
-    ),
-    conic-gradient(
-      #49e8ff40 0deg,
-      transparent 95deg,
-      transparent 270deg,
-      #ab70ff30
-    );
-
-  box-shadow:
-    0 0 25px #1fc9ff61,
-    inset 0 0 19px #32e6ff24;
-}
-
-.intel-orbit:before{
-  content:"";
-  position:absolute;
-  inset:12%;
-  border-radius:50%;
-  border:1px dashed #6ceaff9d;
-}
-
-.intel-orbit:after{
-  content:"";
-  position:absolute;
-  top:21%;
-  left:68%;
-
-  width:9px;
-  height:9px;
-  border-radius:50%;
-
-  background:#7bffe2;
-  box-shadow:0 0 16px #63ffe7;
-}
-
-.intel-whale{
-  position:absolute;
-  z-index:-1;
-
-  right:1%;
-  top:26%;
-
-  width:53%;
-  height:48%;
-
-  opacity:.89;
-  filter:
-    drop-shadow(0 0 9px #33dfff)
-    drop-shadow(0 0 17px #3a8fff);
-}
-
-.intel-whale svg{
-  display:block;
-  width:100%;
-  height:100%;
-  transform:rotate(-9deg);
-}
-
-.intel-graph{
-  position:absolute;
-  z-index:-1;
-
-  right:5%;
-  bottom:8%;
-
-  width:42%;
-  height:23%;
-
-  opacity:.9;
-}
-
-.intel-graph svg{
-  width:100%;
-  height:100%;
-}
-
-/* CARD ANIMATIONS */
-
-@keyframes bubbleFloat{
-  to{transform:translateY(-13px)}
-}
-
-/* LOWER SECTIONS — UNCHANGED */
 
 .lower{
-  background:linear-gradient(#031629,#061a2e);
+ background:linear-gradient(#031629,#061a2e);
+}
+
+.eyebrow{
+ color:#a1f2ff;
+ font-size:10px;
+ font-weight:800;
+ letter-spacing:2.5px;
+}
+
+.section-title{
+ font:600 clamp(46px,5vw,74px)/1.08 var(--serif);
+ margin:18px 0 22px;
+ padding-bottom:.08em;
+}
+
+.section-description{
+ color:var(--muted);
+ font-size:14px;
+ line-height:1.85;
 }
 
 .feature-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  align-items:center;
-  gap:55px;
+ display:grid;
+ grid-template-columns:1fr 1fr;
+ align-items:center;
+ gap:55px;
 }
 
 .feature-copy p{
-  color:var(--muted);
-  font-size:14px;
-  line-height:1.85;
+ color:var(--muted);
+ font-size:14px;
+ line-height:1.85;
 }
 
 .feature-tags{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:10px;
-  margin:24px 0;
+ display:grid;
+ grid-template-columns:1fr 1fr;
+ gap:10px;
+ margin:24px 0;
 }
 
 .feature-tags span{
-  padding:16px;
-  border-radius:10px;
-  background:#10334d;
-  border:1px solid var(--line);
-  font-size:12px;
-  font-weight:700;
+ padding:16px;
+ border-radius:10px;
+ background:#10334d;
+ border:1px solid var(--line);
+ font-size:12px;
+ font-weight:700;
 }
 
 .feature-visual{
-  padding:24px;
-  border-radius:18px;
-  border:1px solid #79e8ff89;
-  background:linear-gradient(145deg,#122e55,#101c3c);
-  box-shadow:0 0 28px #458fff27;
+ padding:24px;
+ border-radius:18px;
+ border:1px solid #79e8ff89;
+ background:linear-gradient(145deg,#122e55,#101c3c);
 }
 
 .feature-visual h3{
-  margin:0;
-  font-size:15px;
+ font-size:15px;
+ margin:0;
 }
 
 .bar-chart{
-  display:flex;
-  align-items:end;
-  gap:9px;
-  height:195px;
-  margin:24px 0 10px;
-  border-bottom:1px solid var(--line);
+ display:flex;
+ align-items:end;
+ gap:9px;
+ height:195px;
+ margin:24px 0 10px;
+ border-bottom:1px solid var(--line);
 }
 
 .bar-chart span{
-  flex:1;
-  height:var(--h);
-  border-radius:5px 5px 0 0;
-  background:linear-gradient(var(--c),#154b85);
-  animation:barPulse 5s ease-in-out infinite alternate;
-  animation-delay:var(--d);
+ flex:1;
+ height:var(--h);
+ border-radius:5px 5px 0 0;
+ background:linear-gradient(var(--c),#154b85);
 }
 
 .concept-note{
-  color:#a7c5d8;
-  font-size:11px;
-  line-height:1.7;
+ color:#a7c5d8;
+ font-size:11px;
+ line-height:1.7;
 }
 
 .ocean-section{
-  position:relative;
-  isolation:isolate;
-  overflow:hidden;
-  background:#06354c;
+ position:relative;
+ isolation:isolate;
+ overflow:hidden;
+ background:#06354c;
 }
 
 .ocean-section>img{
-  position:absolute;
-  inset:0;
-  z-index:-2;
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  filter:contrast(1.1) saturate(1.25);
+ position:absolute;
+ inset:0;
+ z-index:-2;
+ width:100%;
+ height:100%;
+ object-fit:cover;
 }
 
 .ocean-section:before{
-  content:"";
-  position:absolute;
-  inset:0;
-  z-index:-1;
-  background:linear-gradient(90deg,#031629f3,#052b43cc 57%,#063d5560);
+ content:"";
+ position:absolute;
+ inset:0;
+ z-index:-1;
+ background:linear-gradient(90deg,#031629f3,#052b43cc 57%,#063d5560);
 }
 
-.ocean-copy{max-width:620px}
+.ocean-copy{
+ max-width:620px;
+}
 
 .ocean-copy p{
-  color:#d9ecf6;
-  font-size:14px;
-  line-height:1.9;
+ color:#d9ecf6;
+ font-size:14px;
+ line-height:1.9;
 }
 
 .pills{
-  display:flex;
-  flex-wrap:wrap;
-  gap:9px;
-  margin:23px 0;
+ display:flex;
+ flex-wrap:wrap;
+ gap:9px;
+ margin:23px 0;
 }
 
 .pills span{
-  padding:9px 13px;
-  border-radius:50px;
-  border:1px solid #76e9df83;
-  background:#075869b5;
-  font-size:11px;
+ padding:9px 13px;
+ border:1px solid #76e9df83;
+ border-radius:50px;
+ background:#075869b5;
+ font-size:11px;
 }
 
 .intelligence-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:16px;
+ display:grid;
+ grid-template-columns:repeat(3,1fr);
+ gap:16px;
 }
 
 .intelligence-card{
-  padding:25px;
-  border-radius:14px;
-  border:1px solid var(--line);
-  background:linear-gradient(145deg,#112d49,#071b30);
+ padding:25px;
+ border-radius:14px;
+ border:1px solid var(--line);
+ background:linear-gradient(145deg,#112d49,#071b30);
 }
 
 .intelligence-card b{
-  color:var(--purple);
-  font-size:26px;
+ color:#a47aff;
+ font-size:26px;
 }
 
 .intelligence-card h3{
-  font-size:19px;
-  margin:16px 0 10px;
+ font-size:19px;
+ margin:16px 0 10px;
 }
 
 .intelligence-card p{
-  color:var(--muted);
-  font-size:12px;
-  line-height:1.85;
+ color:var(--muted);
+ font-size:12px;
+ line-height:1.85;
 }
 
 .intelligence-card small{
-  color:#d0afff;
-  font-size:9px;
+ color:#d0afff;
+ font-size:9px;
 }
 
 .token-section{
-  background:linear-gradient(110deg,#20233e,#103047,#241d37);
+ background:linear-gradient(110deg,#20233e,#103047,#241d37);
 }
 
 .token-metrics{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:12px;
+ display:grid;
+ grid-template-columns:1fr 1fr;
+ gap:12px;
 }
 
 .token-metric{
-  padding:23px;
-  border-radius:12px;
-  border:1px solid #ffe0a065;
-  background:#0d223ccc;
+ padding:23px;
+ border-radius:12px;
+ border:1px solid #ffe0a065;
+ background:#0d223ccc;
 }
 
 .token-metric small{
-  color:#c3d4e1;
-  font-size:11px;
+ color:#c3d4e1;
+ font-size:11px;
 }
 
 .token-metric strong{
-  display:block;
-  margin-top:12px;
-  color:var(--gold);
-  font-size:29px;
+ display:block;
+ margin-top:12px;
+ color:var(--gold);
+ font-size:29px;
 }
 
 .final-cta{
-  text-align:center;
-  background:radial-gradient(ellipse at center,#125b7e40,transparent 65%),#041626;
+ text-align:center;
+ background:#041626;
 }
 
 .final-cta .section-title{
-  max-width:850px;
-  margin:15px auto 22px;
+ max-width:850px;
+ margin:15px auto 22px;
 }
 
 .final-cta .section-description{
-  max-width:650px;
-  margin:0 auto 26px;
+ max-width:650px;
+ margin:0 auto 26px;
 }
 
 .final-actions{
-  display:flex;
-  justify-content:center;
-  flex-wrap:wrap;
-  gap:12px;
+ display:flex;
+ justify-content:center;
+ flex-wrap:wrap;
+ gap:12px;
 }
 
 .footer{
-  padding:50px 0 25px;
-  background:#020d1c;
-  border-top:1px solid var(--line);
+ padding:50px 0 25px;
+ background:#020d1c;
+ border-top:1px solid var(--line);
 }
 
 .footer-grid{
-  display:grid;
-  grid-template-columns:1.5fr 1fr 1fr;
-  gap:35px;
+ display:grid;
+ grid-template-columns:1.5fr 1fr 1fr;
+ gap:35px;
 }
 
 .footer h4{
-  margin:0 0 17px;
-  font-size:12px;
+ margin:0 0 17px;
+ font-size:12px;
 }
 
 .footer p{
-  max-width:380px;
-  color:#a4c0d0;
-  font-size:12px;
-  line-height:1.85;
+ max-width:380px;
+ color:#a4c0d0;
+ font-size:12px;
+ line-height:1.85;
 }
 
 .footer-link{
-  display:block;
-  margin:12px 0;
-  color:#bbd1e0;
-  font-size:12px;
+ display:block;
+ margin:12px 0;
+ color:#bbd1e0;
+ font-size:12px;
 }
 
-.footer-link:hover{color:var(--cyan)}
-
 .footer-bottom{
-  margin-top:42px;
-  padding-top:22px;
-  border-top:1px solid var(--line);
-  color:#8ba9bd;
-  font-size:11px;
+ margin-top:42px;
+ padding-top:22px;
+ border-top:1px solid var(--line);
+ color:#8ba9bd;
+ font-size:11px;
 }
 
 .mobile-buy{display:none}
 
-@keyframes barPulse{
-  to{height:calc(var(--h) * .82)}
-}
-
-/* RESPONSIVE */
+/* =========================================
+   RESPONSIVE
+========================================= */
 
 @media(max-width:1200px){
-  .nav{gap:13px}
-  .nav a{font-size:11px}
-  .atlas-stage{
-    width:min(100%,600px);
-    margin-left:0;
-    margin-right:0;
-  }
-  .sale-title strong{font-size:21px}
-  .eco-heading h3{font-size:17px}
-  .eco-content{padding:20px 16px}
+ .nav{gap:13px}
+ .nav a{font-size:11px}
+ .atlas-stage{
+  width:min(100%,600px);
+  margin-left:0;
+  margin-right:0;
+ }
+ .sale-title strong{font-size:21px}
 }
 
 @media(max-width:980px){
-  .site-header{top:0}
 
-  .nav-shell{
-    width:100%;
-    height:70px;
-    padding:0 20px;
-    border-radius:0;
-  }
+ .site-header{top:0}
 
-  .menu-button{
-    display:block;
-    width:44px;
-    height:43px;
-    border-radius:9px;
-    border:1px solid var(--line);
-    background:#0a2d47;
-    color:white;
-    font-size:23px;
-  }
+ .nav-shell{
+  width:100%;
+  height:70px;
+  padding:0 20px;
+  border-radius:0;
+ }
 
-  .nav{
-    display:none;
-    position:absolute;
-    top:70px;
-    left:0;
-    right:0;
-    padding:15px 21px;
-    flex-direction:column;
-    align-items:stretch;
-    gap:0;
-    background:#031629fa;
-    border-bottom:1px solid var(--line);
-  }
+ .menu-button{
+  display:block;
+  width:44px;
+  height:43px;
+  border-radius:9px;
+  border:1px solid var(--line);
+  background:#0a2d47;
+  color:white;
+  font-size:23px;
+ }
 
-  .nav.open{display:flex}
+ .nav{
+  display:none;
+  position:absolute;
+  top:70px;
+  left:0;
+  right:0;
+  padding:15px 21px;
+  flex-direction:column;
+  align-items:stretch;
+  gap:0;
+  background:#031629fa;
+ }
 
-  .nav a{
-    padding:13px 11px;
-    font-size:14px;
-  }
+ .nav.open{display:flex}
 
-  .nav a.active:after{display:none}
+ .nav a{
+  padding:13px 11px;
+  font-size:14px;
+ }
 
-  .nav .nav-buy{
-    margin-top:8px;
-    text-align:center;
-  }
+ .nav a.active:after{display:none}
 
-  .hero{
-    grid-template-columns:1fr;
-    gap:23px;
-  }
+ .nav .nav-buy{
+  margin-top:8px;
+  text-align:center;
+ }
 
-  .atlas-stage{
-    width:min(100%,630px);
-    margin:0 auto;
-    justify-self:center;
-  }
+ .hero{
+  grid-template-columns:1fr;
+  gap:23px;
+ }
 
-  .sale-grid{
-    grid-template-columns:1fr 1fr;
-  }
+ .atlas-stage{
+  width:min(100%,630px);
+  margin:0 auto;
+ }
 
-  .sale-title,.sale-action{
-    grid-column:1/-1;
-  }
+ .sale-grid{
+  grid-template-columns:1fr 1fr;
+ }
 
-  .ecosystem-grid{
-    grid-template-columns:repeat(2,minmax(0,1fr));
-  }
+ .sale-title,
+ .sale-action{
+  grid-column:1/-1;
+ }
 
-  .feature-grid{
-    grid-template-columns:1fr;
-  }
+ .ecosystem-grid{
+  grid-template-columns:repeat(2,minmax(0,1fr));
+ }
 
-  .intelligence-grid{
-    grid-template-columns:repeat(2,1fr);
-  }
+ .feature-grid{grid-template-columns:1fr}
+ .intelligence-grid{grid-template-columns:repeat(2,1fr)}
 }
 
 @media(max-width:650px){
 
-  .container{
-    width:calc(100% - 32px);
-  }
+ .container{
+  width:calc(100% - 32px);
+ }
 
-  .brand-name{font-size:19px}
+ .brand-name{font-size:19px}
 
-  .brand-orb{
-    width:35px;
-    height:35px;
-    font-size:25px;
-  }
+ .brand-orb{
+  width:35px;
+  height:35px;
+  font-size:25px;
+ }
 
-  .ocean-world{padding:92px 0 26px}
+ .ocean-world{
+  padding:92px 0 26px;
+ }
 
-  .hero{min-height:0}
+ .hero-label{
+  font-size:8px;
+  letter-spacing:1.5px;
+ }
 
-  .hero-label{
-    font-size:8px;
-    letter-spacing:1.5px;
-  }
+ .hero h1{
+  font-size:clamp(51px,12.2vw,75px);
+  line-height:1.02;
+ }
 
-  .hero h1{
-    font-size:clamp(51px,12.2vw,75px);
-    line-height:1.02;
-    letter-spacing:-1px;
-  }
+ .hero-description{font-size:13px}
+ .hero-actions .btn{flex:1}
 
-  .hero-description{font-size:13px}
+ .atlas-stage{
+  width:100%;
+  perspective:none;
+  margin:0;
+ }
 
-  .hero-actions .btn{flex:1}
+ .atlas-object,
+ .atlas-stage:hover .atlas-object{
+  transform:none;
+ }
 
-  .atlas-stage{
-    width:100%;
-    perspective:none;
-    margin:0;
-  }
+ .atlas-panel{
+  aspect-ratio:auto;
+  min-height:315px;
+ }
 
-  .atlas-object,
-  .atlas-stage:hover .atlas-object{
-    transform:none;
-  }
+ .atlas-top{
+  flex-basis:29px;
+  padding:5px 7px;
+ }
 
-  .atlas-panel{
-    aspect-ratio:auto;
-    min-height:315px;
-  }
+ .atlas-brand strong{font-size:9px}
+ .atlas-top small{font-size:6px}
 
-  .atlas-top{
-    flex-basis:29px;
-    padding:5px 7px;
-  }
+ .atlas-app{
+  grid-template-columns:30px minmax(0,1fr);
+ }
 
-  .atlas-brand strong{font-size:9px}
-  .atlas-top small{font-size:6px}
+ .atlas-menu{padding:5px 2px}
 
-  .atlas-app{
-    grid-template-columns:30px minmax(0,1fr);
-  }
+ .atlas-menu span{
+  justify-content:center;
+  padding:5px 0;
+  font-size:0;
+ }
 
-  .atlas-menu{padding:5px 2px}
+ .atlas-menu svg{
+  width:14px;
+  height:14px;
+ }
 
-  .atlas-menu span{
-    justify-content:center;
-    padding:5px 0;
-    font-size:0;
-  }
+ .atlas-main{
+  padding:5px;
+  gap:5px;
+ }
 
-  .atlas-menu svg{
-    width:14px;
-    height:14px;
-  }
+ .atlas-kpis{
+  gap:3px;
+  flex-basis:48px;
+ }
 
-  .atlas-main{
-    padding:5px;
-    gap:5px;
-  }
+ .atlas-kpi{padding:5px 3px}
 
-  .atlas-kpis{
-    gap:3px;
-    flex-basis:48px;
-  }
+ .kpi-label{
+  font-size:5px;
+  gap:2px;
+ }
 
-  .atlas-kpi{padding:5px 3px}
+ .kpi-label svg{
+  width:8px;
+  height:8px;
+ }
 
-  .kpi-label{
-    font-size:5px;
-    gap:2px;
-  }
+ .atlas-kpi strong{
+  font-size:7px;
+  white-space:normal;
+ }
 
-  .kpi-label svg{
-    width:8px;
-    height:8px;
-  }
+ .atlas-kpi em{font-size:5px}
+ .atlas-body-grid{gap:4px}
 
-  .atlas-kpi strong{
-    font-size:7px;
-    white-space:normal;
-  }
+ .market-toolbar{
+  padding:5px;
+  flex-basis:24px;
+ }
 
-  .atlas-kpi em{font-size:5px}
+ .market-toolbar-title{font-size:7px}
+ .market-toolbar-title svg{width:9px;height:9px}
+ .time-pills span{font-size:5px;padding:2px}
+ .market-mini{padding:4px}
+ .mini-title{font-size:6px}
+ .mini-title svg{width:9px;height:9px}
+ .market-mini small{font-size:5px}
+ .market-mini strong{font-size:7px}
+ .market-mini em{font-size:5px}
+ .mini-chart{height:12px}
+ .atlas-module-title{font-size:6px}
+ .atlas-modules{gap:3px;flex-basis:29px}
+ .atlas-module{gap:2px;padding:3px}
+ .atlas-module svg{display:none}
+ .atlas-module strong{font-size:6px}
+ .atlas-module small{font-size:5px}
+ .atlas-disclosure{font-size:6px}
 
-  .atlas-body-grid{gap:4px}
+ .sale-grid{gap:15px}
+ .sale-title{gap:10px}
+ .sale-title strong{font-size:18px}
+ .sale-pill{font-size:8px;padding:7px}
+ .sale-stat strong{font-size:23px}
+ .sale-action .btn{width:100%}
 
-  .market-toolbar{
-    padding:5px;
-    flex-basis:24px;
-  }
+ .ecosystem-grid{
+  grid-template-columns:1fr;
+  gap:15px;
+ }
 
-  .market-toolbar-title{font-size:7px}
+ .reference-card{
+  aspect-ratio:510/248;
+ }
 
-  .market-toolbar-title svg{
-    width:9px;
-    height:9px;
-  }
+ .intelligence-grid,
+ .footer-grid{
+  grid-template-columns:1fr;
+ }
 
-  .time-pills{gap:2px}
+ .section{padding:65px 0}
+ .section-title{font-size:54px}
+ .token-metric{padding:16px}
+ .token-metric strong{font-size:24px}
 
-  .time-pills span{
-    font-size:5px;
-    padding:2px 3px;
-  }
+ .mobile-buy{
+  position:fixed;
+  bottom:0;
+  left:0;
+  right:0;
+  z-index:150;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  padding:10px 15px;
+  padding-bottom:max(10px,env(safe-area-inset-bottom));
+  background:#031523f7;
+  border-top:1px solid #ffd48a7a;
+  backdrop-filter:blur(15px);
+ }
 
-  .market-mini{padding:4px}
+ .mobile-buy strong{font-size:12px}
 
-  .mini-title{
-    font-size:6px;
-    gap:2px;
-  }
+ .mobile-buy small{
+  display:block;
+  margin-top:4px;
+  color:#b4cedf;
+  font-size:9px;
+ }
 
-  .mini-title svg{
-    width:9px;
-    height:9px;
-  }
+ .mobile-buy .btn{
+  padding:10px 13px;
+  font-size:11px;
+ }
 
-  .market-mini small{font-size:5px}
-  .market-mini strong{font-size:7px}
-  .market-mini em{font-size:5px}
-  .market-mini svg.mini-chart{height:12px}
-  .atlas-module-title{font-size:6px}
-
-  .atlas-modules{
-    gap:3px;
-    flex-basis:29px;
-  }
-
-  .atlas-module{
-    gap:2px;
-    padding:3px;
-  }
-
-  .atlas-module svg{display:none}
-  .atlas-module strong{font-size:6px}
-  .atlas-module small{font-size:5px}
-  .atlas-disclosure{font-size:6px}
-
-  .sale-banner{
-    padding:13px;
-    margin:16px 0;
-  }
-
-  .sale-grid{gap:15px}
-  .sale-title{gap:10px}
-  .sale-title strong{font-size:18px}
-
-  .sale-pill{
-    font-size:8px;
-    padding:7px;
-  }
-
-  .sale-stat strong{font-size:23px}
-  .sale-action .btn{width:100%}
-
-  /* PREMIUM CARDS ON MOBILE */
-
-  .ecosystem-grid{
-    grid-template-columns:1fr;
-    gap:14px;
-  }
-
-  .eco-card,
-  .eco-content{
-    min-height:243px;
-  }
-
-  .eco-heading h3{font-size:19px}
-
-  .eco-content h4{
-    max-width:65%;
-  }
-
-  .eco-content p{
-    max-width:64%;
-  }
-
-  .intelligence-grid,
-  .footer-grid{
-    grid-template-columns:1fr;
-  }
-
-  .section{padding:65px 0}
-  .section-title{font-size:54px}
-  .token-metrics{gap:9px}
-  .token-metric{padding:16px}
-  .token-metric strong{font-size:24px}
-
-  .mobile-buy{
-    position:fixed;
-    bottom:0;
-    left:0;
-    right:0;
-    z-index:150;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:12px;
-    padding:10px 15px;
-    padding-bottom:max(10px,env(safe-area-inset-bottom));
-    background:#031523f7;
-    border-top:1px solid #ffd48a7a;
-    backdrop-filter:blur(15px);
-  }
-
-  .mobile-buy strong{font-size:12px}
-
-  .mobile-buy small{
-    display:block;
-    margin-top:4px;
-    color:#b4cedf;
-    font-size:9px;
-  }
-
-  .mobile-buy .btn{
-    padding:10px 13px;
-    font-size:11px;
-  }
-
-  .footer{padding-bottom:108px}
+ .footer{padding-bottom:108px}
 }
 
 @media(prefers-reduced-motion:reduce){
-  html{scroll-behavior:auto}
-  *,*:before,*:after{
-    animation:none!important;
-    transition:none!important;
-  }
+ html{scroll-behavior:auto}
+
+ *,*:before,*:after{
+  animation:none!important;
+  transition:none!important;
+ }
 }
 </style>
 </head>
 
 <body>
 
-<!-- SVG ICON LIBRARY -->
+<!-- ICONS -->
 
 <svg xmlns="http://www.w3.org/2000/svg"
-  style="position:absolute;width:0;height:0;overflow:hidden"
-  aria-hidden="true">
+ style="position:absolute;width:0;height:0;overflow:hidden"
+ aria-hidden="true">
 
-  <symbol id="icon-home" viewBox="0 0 24 24">
-    <path d="M3 10.5 12 3l9 7.5V21H7v-9h10v9"
-      fill="none" stroke="currentColor" stroke-width="1.8"/>
-  </symbol>
+ <symbol id="i-home" viewBox="0 0 24 24">
+  <path d="M3 10.5 12 3l9 7.5V21H7v-9h10v9"
+   fill="none" stroke="currentColor" stroke-width="1.8"/>
+ </symbol>
 
-  <symbol id="icon-chart" viewBox="0 0 24 24">
-    <path d="M3 20V4M3 20h18M6 16l5-5 4 3 6-9"
-      fill="none" stroke="currentColor" stroke-width="2"/>
-  </symbol>
+ <symbol id="i-chart" viewBox="0 0 24 24">
+  <path d="M3 20V4M3 20h18M6 16l5-5 4 3 6-9"
+   fill="none" stroke="currentColor" stroke-width="2"/>
+ </symbol>
 
-  <symbol id="icon-flow" viewBox="0 0 24 24">
-    <path d="M2 13c5-10 10 10 15-1 2-4 4-4 5-4"
-      fill="none" stroke="currentColor" stroke-width="2"/>
-  </symbol>
+ <symbol id="i-flow" viewBox="0 0 24 24">
+  <path d="M2 13c5-10 10 10 15-1 2-4 4-4 5-4"
+   fill="none" stroke="currentColor" stroke-width="2"/>
+ </symbol>
 
-  <symbol id="icon-shield" viewBox="0 0 24 24">
-    <path d="M12 2 21 6v6c0 6-4.3 9-9 10-4.7-1-9-4-9-10V6z"
-      fill="none" stroke="currentColor" stroke-width="1.8"/>
-    <path d="m8 12 3 3 5-6"
-      fill="none" stroke="currentColor" stroke-width="2"/>
-  </symbol>
+ <symbol id="i-shield" viewBox="0 0 24 24">
+  <path d="M12 2 21 6v6c0 6-4.3 9-9 10-4.7-1-9-4-9-10V6z"
+   fill="none" stroke="currentColor" stroke-width="1.8"/>
+ </symbol>
 
-  <symbol id="icon-layers" viewBox="0 0 24 24">
-    <path d="m12 2 10 6-10 6L2 8zm-10 11 10 6 10-6M2 18l10 5 10-5"
-      fill="none" stroke="currentColor" stroke-width="1.6"/>
-  </symbol>
+ <symbol id="i-brain" viewBox="0 0 24 24">
+  <circle cx="12" cy="12" r="9"
+   fill="none" stroke="currentColor" stroke-width="1.6"/>
+  <path d="M8 9c2-3 6-3 8 0m-8 6c2 3 6 3 8 0"
+   fill="none" stroke="currentColor" stroke-width="1.6"/>
+ </symbol>
 
-  <symbol id="icon-globe" viewBox="0 0 24 24">
-    <circle cx="12" cy="12" r="9"
-      fill="none" stroke="currentColor" stroke-width="1.7"/>
-    <path d="M3 12h18M12 3c6 5 6 13 0 18M12 3c-6 5-6 13 0 18"
-      fill="none" stroke="currentColor" stroke-width="1.4"/>
-  </symbol>
+ <symbol id="i-globe" viewBox="0 0 24 24">
+  <circle cx="12" cy="12" r="9"
+   fill="none" stroke="currentColor" stroke-width="1.7"/>
+  <path d="M3 12h18M12 3c6 5 6 13 0 18M12 3c-6 5-6 13 0 18"
+   fill="none" stroke="currentColor" stroke-width="1.4"/>
+ </symbol>
 
-  <symbol id="icon-target" viewBox="0 0 24 24">
-    <circle cx="12" cy="12" r="9"
-      fill="none" stroke="currentColor" stroke-width="1.7"/>
-    <circle cx="12" cy="12" r="5"
-      fill="none" stroke="currentColor" stroke-width="1.7"/>
-    <circle cx="12" cy="12" r="1.5" fill="currentColor"/>
-  </symbol>
+ <symbol id="i-target" viewBox="0 0 24 24">
+  <circle cx="12" cy="12" r="9"
+   fill="none" stroke="currentColor" stroke-width="1.7"/>
+  <circle cx="12" cy="12" r="4"
+   fill="none" stroke="currentColor" stroke-width="1.7"/>
+ </symbol>
 
-  <symbol id="icon-settings" viewBox="0 0 24 24">
-    <circle cx="12" cy="12" r="5"
-      fill="none" stroke="currentColor" stroke-width="2"/>
-    <path d="M12 2v4m0 12v4M2 12h4m12 0h4M5 5l3 3m8 8 3 3M19 5l-3 3m-8 8-3 3"
-      fill="none" stroke="currentColor" stroke-width="1.7"/>
-  </symbol>
+ <symbol id="i-settings" viewBox="0 0 24 24">
+  <circle cx="12" cy="12" r="5"
+   fill="none" stroke="currentColor" stroke-width="2"/>
+  <path d="M12 2v4m0 12v4M2 12h4m12 0h4"
+   fill="none" stroke="currentColor" stroke-width="1.7"/>
+ </symbol>
 
-  <symbol id="icon-activity" viewBox="0 0 24 24">
-    <path d="M2 12h4l3-7 5 14 3-7h5"
-      fill="none" stroke="currentColor" stroke-width="2"/>
-  </symbol>
+ <symbol id="i-activity" viewBox="0 0 24 24">
+  <path d="M2 12h4l3-7 5 14 3-7h5"
+   fill="none" stroke="currentColor" stroke-width="2"/>
+ </symbol>
 
-  <symbol id="icon-brain" viewBox="0 0 24 24">
-    <path d="M12 6C8 1 3 5 4 10c-3 4 0 9 5 9 1 2 3 2 3-1V6zm0 0c4-5 9-1 8 4 3 4 0 9-5 9-1 2-3 2-3-1"
-      fill="none" stroke="currentColor" stroke-width="1.6"/>
-  </symbol>
+ <symbol id="i-bars" viewBox="0 0 24 24">
+  <path d="M5 21V13M12 21V3M19 21V9"
+   stroke="currentColor" stroke-width="3"/>
+ </symbol>
 
-  <symbol id="icon-bars" viewBox="0 0 24 24">
-    <path d="M5 21V13M12 21V3M19 21V9"
-      stroke="currentColor" stroke-width="3"/>
-  </symbol>
-
-  <symbol id="icon-atlas" viewBox="0 0 32 32">
-    <path d="M16 2 30 28h-8L16 15 10 28H2Z"
-      fill="currentColor"/>
-    <path d="M11 23h10l3 5H8Z"
-      fill="#69edff"/>
-  </symbol>
+ <symbol id="i-atlas" viewBox="0 0 32 32">
+  <path d="M16 2 30 28h-8L16 15 10 28H2Z"
+   fill="currentColor"/>
+  <path d="M11 23h10l3 5H8Z" fill="#69edff"/>
+ </symbol>
 </svg>
 
-<!-- HEADER -->
+<!-- NAVIGATION -->
 
 <header class="site-header">
-  <div class="nav-shell">
+ <div class="nav-shell">
 
-    <a href="index.html" class="brand" aria-label="SNAO World Home">
-      <span class="brand-orb">S</span>
-      <span class="brand-name">SNAO World</span>
-    </a>
+  <a href="index.html" class="brand" aria-label="SNAO World Home">
+   <span class="brand-orb">S</span>
+   <span class="brand-name">SNAO World</span>
+  </a>
 
-    <nav class="nav" id="navigation" aria-label="Main navigation">
-      <a href="#home" class="active">Home</a>
-      <a href="#ecosystem">Ecosystem</a>
-      <a href="#atlas">ATLAS</a>
-      <a href="#ocean">SNAO Ocean</a>
-      <a href="#intelligence">Intelligence</a>
-      <a href="about.html">About</a>
-      <a href="token.html">Token</a>
-      <a href="whitepaper.html">Whitepaper ↗</a>
-      <a href="sale.html" class="nav-buy">🛒 BUY $SNAO</a>
-    </nav>
+  <nav class="nav" id="navigation" aria-label="Main navigation">
+   <a href="#home" class="active">Home</a>
+   <a href="#ecosystem">Ecosystem</a>
+   <a href="#atlas">ATLAS</a>
+   <a href="#ocean">SNAO Ocean</a>
+   <a href="#intelligence">Intelligence</a>
+   <a href="about.html">About</a>
+   <a href="token.html">Token</a>
+   <a href="whitepaper.html">Whitepaper ↗</a>
+   <a href="sale.html" class="nav-buy">🛒 BUY $SNAO</a>
+  </nav>
 
-    <button type="button"
-      id="menuButton"
-      class="menu-button"
-      aria-controls="navigation"
-      aria-expanded="false"
-      aria-label="Toggle navigation">☰</button>
+  <button type="button" id="menuButton" class="menu-button"
+   aria-controls="navigation" aria-expanded="false"
+   aria-label="Toggle navigation">☰</button>
 
-  </div>
+ </div>
 </header>
 
 <main>
 
-<!-- OCEAN HERO -->
+<!-- HOME / UNDERWATER BACKGROUND -->
 
 <section class="ocean-world" id="home">
 
-  <img class="ocean-photo"
-    src="https://images.unsplash.com/photo-1682687981907-170c006e3744?auto=format&amp;fit=crop&amp;w=1920&amp;q=85"
-    alt=""
-    fetchpriority="high">
+ <img class="ocean-photo"
+  src="https://images.unsplash.com/photo-1682687981907-170c006e3744?auto=format&amp;fit=crop&amp;w=1920&amp;q=85"
+  alt=""
+  fetchpriority="high">
 
-  <div class="ambient-glow" aria-hidden="true"></div>
+ <div class="ambient-glow" aria-hidden="true"></div>
 
-  <div class="container">
+ <div class="container">
 
-    <div class="hero">
+  <div class="hero">
 
-      <!-- LEFT TEXT — UNCHANGED -->
+   <!-- TITLE AND BUTTONS -->
 
-      <div class="hero-copy">
+   <div class="hero-copy">
 
-        <div class="hero-label">
-          THE CRYPTO INTELLIGENCE ECOSYSTEM
-        </div>
+    <div class="hero-label">
+     THE CRYPTO INTELLIGENCE ECOSYSTEM
+    </div>
 
-        <h1>
-          A New Depth of
-          <span class="gold-text">Intelligence.</span>
-        </h1>
+    <h1>
+     A New Depth of
+     <span class="gold-text">Intelligence.</span>
+    </h1>
 
-        <p class="hero-description">
-          SNAO World unites ATLAS Intelligence OS,
-          Ocean Intelligence and SNAO Ocean
-          into one crypto-tech ecosystem.
-        </p>
+    <p class="hero-description">
+     SNAO World unites ATLAS Intelligence OS,
+     Ocean Intelligence and SNAO Ocean
+     into one crypto-tech ecosystem.
+    </p>
 
-        <div class="hero-actions">
-          <a href="sale.html" class="btn btn-gold">
-            🛒 BUY $SNAO NOW →
-          </a>
-          <a href="#atlas" class="btn btn-blue">
-            ▶ Discover ATLAS
-          </a>
-        </div>
+    <div class="hero-actions">
+     <a href="sale.html" class="btn btn-gold">
+      🛒 BUY $SNAO NOW →
+     </a>
 
-        <div class="hero-meta">
-          <strong>◈ Official Public Sale</strong>
-          <span>•</span>
-          <span>BNB Smart Chain</span>
-          <span>•</span>
-          <span>USDT</span>
-        </div>
+     <a href="#atlas" class="btn btn-blue">
+      ▶ Discover ATLAS
+     </a>
+    </div>
+
+    <div class="hero-meta">
+     <strong>◈ Official Public Sale</strong>
+     <span>•</span>
+     <span>BNB Smart Chain</span>
+     <span>•</span>
+     <span>USDT</span>
+    </div>
+
+   </div>
+
+   <!-- MAIN ATLAS PANEL -->
+
+   <div class="atlas-stage">
+    <div class="atlas-object">
+     <div class="atlas-panel">
+
+      <div class="atlas-top">
+
+       <div class="atlas-brand">
+        <svg viewBox="0 0 32 32" aria-hidden="true">
+         <use href="#i-atlas"/>
+        </svg>
+        <strong>ATLAS Intelligence OS</strong>
+       </div>
+
+       <small>SNAO WORLD · CONCEPT PREVIEW</small>
 
       </div>
 
-      <!-- MAIN ATLAS PANEL — UNCHANGED -->
+      <div class="atlas-app">
 
-      <div class="atlas-stage">
+       <aside class="atlas-menu"
+        aria-label="Illustrative ATLAS navigation">
 
-        <div class="atlas-object">
+        <span><svg><use href="#i-home"/></svg>Dashboard</span>
+        <span><svg><use href="#i-chart"/></svg>Market</span>
+        <span><svg><use href="#i-flow"/></svg>Whale Flow</span>
+        <span><svg><use href="#i-brain"/></svg>Intelligence</span>
+        <span><svg><use href="#i-target"/></svg>Risk Analysis</span>
+        <span><svg><use href="#i-shield"/></svg>Security</span>
+        <span><svg><use href="#i-settings"/></svg>Workflow</span>
+        <span><svg><use href="#i-globe"/></svg>Enterprise</span>
 
-          <div class="atlas-panel">
+       </aside>
 
-            <div class="atlas-top">
-              <div class="atlas-brand">
-                <svg viewBox="0 0 32 32" aria-hidden="true">
-                  <use href="#icon-atlas"/>
-                </svg>
-                <strong>ATLAS Intelligence OS</strong>
-              </div>
+       <div class="atlas-main">
 
-              <small>SNAO WORLD · CONCEPT PREVIEW</small>
-            </div>
+        <div class="atlas-kpis">
 
-            <div class="atlas-app">
+         <div class="atlas-kpi">
+          <span class="kpi-label">
+           <svg><use href="#i-globe"/></svg>
+           Market Cap
+          </span>
+          <strong>Market Data</strong>
+          <em>Preview</em>
+         </div>
 
-              <aside class="atlas-menu"
-                aria-label="Illustrative ATLAS navigation">
+         <div class="atlas-kpi">
+          <span class="kpi-label">
+           <svg><use href="#i-bars"/></svg>
+           24h Volume
+          </span>
+          <strong>Analytics</strong>
+          <em>Preview</em>
+         </div>
 
-                <span><svg><use href="#icon-home"/></svg>Dashboard</span>
-                <span><svg><use href="#icon-chart"/></svg>Market</span>
-                <span><svg><use href="#icon-flow"/></svg>Whale Flow</span>
-                <span><svg><use href="#icon-brain"/></svg>Intelligence</span>
-                <span><svg><use href="#icon-target"/></svg>Risk Analysis</span>
-                <span><svg><use href="#icon-shield"/></svg>Security</span>
-                <span><svg><use href="#icon-settings"/></svg>Workflow</span>
-                <span><svg><use href="#icon-globe"/></svg>Enterprise</span>
+         <div class="atlas-kpi">
+          <span class="kpi-label">
+           <svg><use href="#i-target"/></svg>
+           BTC Dominance
+          </span>
+          <strong>Tracking</strong>
+          <em>Preview</em>
+         </div>
 
-              </aside>
+         <div class="atlas-kpi">
+          <span class="kpi-label">
+           <svg><use href="#i-activity"/></svg>
+           Sentiment
+          </span>
+          <strong>Risk Radar</strong>
+          <div class="sentiment-meter"><span></span></div>
+         </div>
 
-              <div class="atlas-main">
+        </div>
 
-                <div class="atlas-kpis">
+        <div class="atlas-body-grid">
 
-                  <div class="atlas-kpi">
-                    <span class="kpi-label">
-                      <svg><use href="#icon-globe"/></svg>
-                      Market Cap
-                    </span>
-                    <strong>Market Data</strong>
-                    <em>Preview</em>
-                  </div>
+         <div class="market-chart">
 
-                  <div class="atlas-kpi">
-                    <span class="kpi-label">
-                      <svg><use href="#icon-bars"/></svg>
-                      24h Volume
-                    </span>
-                    <strong>Analytics</strong>
-                    <em>Preview</em>
-                  </div>
+          <div class="market-toolbar">
 
-                  <div class="atlas-kpi">
-                    <span class="kpi-label">
-                      <svg><use href="#icon-target"/></svg>
-                      BTC Dominance
-                    </span>
-                    <strong>Tracking</strong>
-                    <em>Preview</em>
-                  </div>
+           <span class="market-toolbar-title">
+            <svg><use href="#i-chart"/></svg>
+            Market Intelligence
+           </span>
 
-                  <div class="atlas-kpi">
-                    <span class="kpi-label">
-                      <svg><use href="#icon-activity"/></svg>
-                      Sentiment
-                    </span>
-                    <strong>Risk Radar</strong>
-                    <div class="sentiment-meter"><span></span></div>
-                  </div>
-
-                </div>
-
-                <div class="atlas-body-grid">
-
-                  <div class="market-chart">
-
-                    <div class="market-toolbar">
-
-                      <span class="market-toolbar-title">
-                        <svg><use href="#icon-chart"/></svg>
-                        Market Intelligence
-                      </span>
-
-                      <div class="time-pills">
-                        <span>1H</span>
-                        <span>4H</span>
-                        <span class="selected">1D</span>
-                        <span>1W</span>
-                      </div>
-
-                    </div>
-
-                    <div class="market-screen">
-
-                      <svg viewBox="0 0 460 120"
-                        preserveAspectRatio="none"
-                        role="img"
-                        aria-label="Illustrative candlestick chart">
-
-                        <g id="candleLayer"></g>
-
-                        <path class="line1"
-                          d="M0 102 C32 101 48 84 76 91 S119 68 147 77 S190 58 221 68 S262 41 291 49 S339 27 369 37 S415 16 460 8"/>
-
-                        <path class="line2"
-                          d="M0 108 C35 106 58 95 84 100 S132 82 161 88 S204 73 234 78 S288 59 317 63 S371 47 405 49 S438 33 460 27"/>
-
-                      </svg>
-
-                    </div>
-
-                  </div>
-
-                  <div class="market-side">
-
-                    <div class="market-mini">
-
-                      <div class="mini-title">
-                        <svg><use href="#icon-flow"/></svg>
-                        Whale Flow
-                      </div>
-
-                      <small>Large Wallet Activity</small>
-                      <strong>Flow Analysis</strong>
-                      <em>On-chain research</em>
-
-                      <svg class="mini-chart"
-                        viewBox="0 0 160 35"
-                        preserveAspectRatio="none"
-                        aria-hidden="true">
-                        <path
-                          d="M0 29 Q20 27 38 17 T76 18 T119 12 T160 3"
-                          stroke="#55f5ba"
-                          stroke-width="3"
-                          fill="none"/>
-                      </svg>
-
-                    </div>
-
-                    <div class="market-mini">
-
-                      <div class="mini-title">
-                        <svg><use href="#icon-shield"/></svg>
-                        Risk Analysis
-                      </div>
-
-                      <small>Market Conditions</small>
-                      <strong>Risk Research</strong>
-                      <em>Illustrative view</em>
-
-                      <svg class="mini-chart"
-                        viewBox="0 0 160 35"
-                        preserveAspectRatio="none"
-                        aria-hidden="true">
-                        <path
-                          d="M0 28 Q22 11 43 21 T85 18 T132 10 T160 7"
-                          stroke="#80ddff"
-                          stroke-width="3"
-                          fill="none"/>
-                      </svg>
-
-                    </div>
-
-                  </div>
-
-                </div>
-
-                <div class="atlas-module-title">
-                  INTELLIGENCE MODULES · CONCEPT
-                </div>
-
-                <div class="atlas-modules">
-
-                  <div class="atlas-module">
-                    <svg><use href="#icon-brain"/></svg>
-                    <div>
-                      <strong>Market AI</strong>
-                      <small>Risk insights</small>
-                    </div>
-                  </div>
-
-                  <div class="atlas-module">
-                    <svg><use href="#icon-flow"/></svg>
-                    <div>
-                      <strong>On-chain</strong>
-                      <small>Research</small>
-                    </div>
-                  </div>
-
-                  <div class="atlas-module">
-                    <svg><use href="#icon-shield"/></svg>
-                    <div>
-                      <strong>Security</strong>
-                      <small>Guardian</small>
-                    </div>
-                  </div>
-
-                  <div class="atlas-module">
-                    <svg><use href="#icon-layers"/></svg>
-                    <div>
-                      <strong>Workflow</strong>
-                      <small>Automation</small>
-                    </div>
-                  </div>
-
-                </div>
-
-              </div>
-
-            </div>
-
-            <div class="atlas-disclosure">
-              Design preview · Indicators and charts are illustrative
-            </div>
+           <div class="time-pills">
+            <span>1H</span>
+            <span>4H</span>
+            <span class="selected">1D</span>
+            <span>1W</span>
+           </div>
 
           </div>
 
+          <div class="market-screen">
+
+           <svg viewBox="0 0 460 120"
+            preserveAspectRatio="none"
+            role="img"
+            aria-label="Illustrative market chart">
+
+            <g id="candleLayer"></g>
+
+            <path class="line1"
+             d="M0 102 C32 101 48 84 76 91 S119 68 147 77 S190 58 221 68 S262 41 291 49 S339 27 369 37 S415 16 460 8"/>
+
+            <path class="line2"
+             d="M0 108 C35 106 58 95 84 100 S132 82 161 88 S204 73 234 78 S288 59 317 63 S371 47 405 49 S438 33 460 27"/>
+
+           </svg>
+
+          </div>
+
+         </div>
+
+         <div class="market-side">
+
+          <div class="market-mini">
+           <div class="mini-title">
+            <svg><use href="#i-flow"/></svg>
+            Whale Flow
+           </div>
+           <small>Large Wallet Activity</small>
+           <strong>Flow Analysis</strong>
+           <em>On-chain research</em>
+           <svg class="mini-chart" viewBox="0 0 160 35"
+            preserveAspectRatio="none" aria-hidden="true">
+            <path d="M0 29 Q20 27 38 17 T76 18 T119 12 T160 3"
+             stroke="#55f5ba" stroke-width="3" fill="none"/>
+           </svg>
+          </div>
+
+          <div class="market-mini">
+           <div class="mini-title">
+            <svg><use href="#i-shield"/></svg>
+            Risk Analysis
+           </div>
+           <small>Market Conditions</small>
+           <strong>Risk Research</strong>
+           <em>Illustrative view</em>
+           <svg class="mini-chart" viewBox="0 0 160 35"
+            preserveAspectRatio="none" aria-hidden="true">
+            <path d="M0 28 Q22 11 43 21 T85 18 T132 10 T160 7"
+             stroke="#80ddff" stroke-width="3" fill="none"/>
+           </svg>
+          </div>
+
+         </div>
+
         </div>
+
+        <div class="atlas-module-title">
+         INTELLIGENCE MODULES · CONCEPT
+        </div>
+
+        <div class="atlas-modules">
+
+         <div class="atlas-module">
+          <svg><use href="#i-brain"/></svg>
+          <div>
+           <strong>Market AI</strong>
+           <small>Risk insights</small>
+          </div>
+         </div>
+
+         <div class="atlas-module">
+          <svg><use href="#i-flow"/></svg>
+          <div>
+           <strong>On-chain</strong>
+           <small>Research</small>
+          </div>
+         </div>
+
+         <div class="atlas-module">
+          <svg><use href="#i-shield"/></svg>
+          <div>
+           <strong>Security</strong>
+           <small>Guardian</small>
+          </div>
+         </div>
+
+         <div class="atlas-module">
+          <svg><use href="#i-chart"/></svg>
+          <div>
+           <strong>Workflow</strong>
+           <small>Automation</small>
+          </div>
+         </div>
+
+        </div>
+
+       </div>
 
       </div>
 
-    </div>
-
-    <!-- PUBLIC SALE — UNCHANGED -->
-
-    <div class="sale-banner" id="public-sale">
-
-      <div class="sale-grid">
-
-        <div class="sale-title">
-          <span class="sale-pill">PUBLIC SALE</span>
-          <strong>$SNAO Public Sale</strong>
-        </div>
-
-        <div class="sale-stat">
-          <small>Total Supply</small>
-          <strong>200M</strong>
-        </div>
-
-        <div class="sale-stat">
-          <small>Public Sale Allocation</small>
-          <strong>45M</strong>
-        </div>
-
-        <div class="sale-action">
-          <a href="sale.html" class="btn btn-gold">
-            🛒 BUY $SNAO →
-          </a>
-        </div>
-
+      <div class="atlas-disclosure">
+       Design preview · Indicators and charts are illustrative
       </div>
 
+     </div>
     </div>
-
-    <!-- ====================================
-         THREE NEW PREMIUM ECOSYSTEM CARDS
-    ==================================== -->
-
-    <div class="ecosystem-grid" id="ecosystem">
-
-      <!-- 1. ATLAS COMMAND CENTER -->
-
-      <article class="eco-card atlas-card">
-
-        <img class="eco-photo"
-          src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&amp;fit=crop&amp;w=1100&amp;q=88"
-          alt=""
-          loading="lazy">
-
-        <div class="atlas-world" aria-hidden="true"></div>
-
-        <div class="atlas-hud" aria-hidden="true">
-          <svg viewBox="0 0 180 90" preserveAspectRatio="none">
-
-            <path d="M6 76 L31 63 L51 69 L77 46 L103 55 L129 32 L151 38 L174 16"
-              stroke="#52ffdf" stroke-width="2.5" fill="none"/>
-
-            <path d="M6 83 L31 76 L51 77 L77 63 L103 68 L129 53 L151 57 L174 41"
-              stroke="#b889ff" stroke-width="2" fill="none"/>
-
-            <circle cx="174" cy="16" r="4" fill="#73ffed"/>
-
-          </svg>
-        </div>
-
-        <div class="eco-neon-edge" aria-hidden="true"></div>
-
-        <div class="eco-content">
-
-          <div class="eco-heading">
-
-            <svg viewBox="0 0 32 32" aria-hidden="true">
-              <use href="#icon-atlas"/>
-            </svg>
-
-            <h3>SNAO World ATLAS</h3>
-
-          </div>
-
-          <h4>Enterprise Intelligence OS</h4>
-
-          <p>
-            Premium enterprise technology combining
-            financial intelligence, business operations,
-            security and AI research.
-          </p>
-
-          <a href="#atlas">Explore ATLAS →</a>
-
-        </div>
-
-      </article>
-
-      <!-- 2. SNAO OCEAN 3D PHONE -->
-
-      <article class="eco-card ocean-card">
-
-        <img class="eco-photo"
-          src="https://images.unsplash.com/photo-1708649290066-5f617003b93f?auto=format&amp;fit=crop&amp;w=1100&amp;q=88"
-          alt=""
-          loading="lazy">
-
-        <div class="ocean-phone" aria-hidden="true">
-
-          <span class="phone-logo">SNAO OCEAN</span>
-
-          <div class="phone-ocean">
-
-            <svg viewBox="0 0 100 100">
-
-              <path
-                d="M19 51 Q48 20 79 49 Q51 79 19 51Z"
-                fill="#65efff"/>
-
-              <path
-                d="M21 51 L4 32 L4 68Z"
-                fill="#b5ffff"/>
-
-              <circle cx="64" cy="46" r="4" fill="#06334d"/>
-
-              <path
-                d="M41 47 Q51 52 68 52"
-                stroke="#c5ffff"
-                stroke-width="2"
-                fill="none"/>
-
-            </svg>
-
-          </div>
-
-          <span class="phone-caption">OCEAN WORLD</span>
-
-        </div>
-
-        <div class="ocean-bubble bubble-1" aria-hidden="true"></div>
-        <div class="ocean-bubble bubble-2" aria-hidden="true"></div>
-        <div class="ocean-bubble bubble-3" aria-hidden="true"></div>
-
-        <div class="eco-neon-edge" aria-hidden="true"></div>
-
-        <div class="eco-content">
-
-          <div class="eco-heading">
-
-            <svg viewBox="0 0 30 30" aria-hidden="true">
-
-              <path
-                d="M2 16 Q15 1 28 15 Q15 28 2 16Z"
-                fill="#47e6ef"/>
-
-              <path
-                d="M5 17 Q15 11 27 15"
-                stroke="#00283f"
-                stroke-width="3"
-                fill="none"/>
-
-            </svg>
-
-            <h3>SNAO Ocean</h3>
-
-          </div>
-
-          <h4>The Ocean Experience</h4>
-
-          <p>
-            A standalone mobile app in development
-            featuring immersive ocean experiences,
-            missions, rankings and Sardinhas points.
-          </p>
-
-          <a href="#ocean">Explore SNAO Ocean →</a>
-
-        </div>
-
-      </article>
-
-      <!-- 3. OCEAN INTELLIGENCE -->
-
-      <article class="eco-card intel-card">
-
-        <img class="eco-photo"
-          src="https://images.unsplash.com/photo-1644913054793-4bd434e7881c?auto=format&amp;fit=crop&amp;w=1100&amp;q=88"
-          alt=""
-          loading="lazy">
-
-        <div class="intel-orbit" aria-hidden="true"></div>
-
-        <div class="intel-whale" aria-hidden="true">
-
-          <svg viewBox="0 0 300 160">
-
-            <defs>
-              <linearGradient id="whaleGlow" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0%" stop-color="#c3ffff"/>
-                <stop offset="50%" stop-color="#48dfff"/>
-                <stop offset="100%" stop-color="#756dff"/>
-              </linearGradient>
-            </defs>
-
-            <path
-              d="M18 90
-                 C62 64 95 54 154 61
-                 C185 63 215 50 243 29
-                 C239 52 228 70 215 82
-                 C236 99 257 112 283 103
-                 C274 121 252 129 229 123
-                 C205 117 190 101 175 99
-                 C152 113 136 128 104 130
-                 C78 132 54 113 18 90Z"
-              fill="url(#whaleGlow)"
-              fill-opacity=".36"
-              stroke="#81f5ff"
-              stroke-width="2.5"/>
-
-            <path
-              d="M99 74
-                 C131 69 164 75 193 76
-                 C183 86 154 88 127 87
-                 C118 94 109 105 91 111"
-              fill="none"
-              stroke="#aefaff"
-              stroke-width="2"
-              opacity=".9"/>
-
-            <path
-              d="M125 94 L108 151 L157 111"
-              fill="#53dcff"
-              fill-opacity=".28"
-              stroke="#81edff"
-              stroke-width="2"/>
-
-            <circle cx="51" cy="87" r="3"
-              fill="#e9ffff"/>
-
-          </svg>
-
-        </div>
-
-        <div class="intel-graph" aria-hidden="true">
-
-          <svg viewBox="0 0 160 65" preserveAspectRatio="none">
-
-            <path d="M4 59 L23 48 L38 53 L57 34 L75 39 L94 25 L113 31 L135 15 L157 7"
-              stroke="#5affec"
-              stroke-width="2"
-              fill="none"/>
-
-            <g fill="#3bceff" opacity=".5">
-              <rect x="7" y="49" width="7" height="13"/>
-              <rect x="23" y="42" width="7" height="20"/>
-              <rect x="39" y="47" width="7" height="15"/>
-              <rect x="55" y="35" width="7" height="27"/>
-              <rect x="71" y="40" width="7" height="22"/>
-              <rect x="87" y="25" width="7" height="37"/>
-              <rect x="103" y="31" width="7" height="31"/>
-              <rect x="119" y="21" width="7" height="41"/>
-              <rect x="135" y="12" width="7" height="50"/>
-            </g>
-
-          </svg>
-
-        </div>
-
-        <div class="eco-neon-edge" aria-hidden="true"></div>
-
-        <div class="eco-content">
-
-          <div class="eco-heading">
-
-            <svg viewBox="0 0 30 30" aria-hidden="true">
-
-              <circle cx="15" cy="15" r="12"
-                fill="none" stroke="#65f3de" stroke-width="2"/>
-
-              <circle cx="15" cy="15" r="7"
-                fill="none" stroke="#65f3de" stroke-width="1.5"/>
-
-              <circle cx="15" cy="15" r="2"
-                fill="#65f3de"/>
-
-              <path d="M15 15 L23 7"
-                stroke="#65f3de" stroke-width="2"/>
-
-            </svg>
-
-            <h3>Ocean Intelligence</h3>
-
-          </div>
-
-          <h4>Crypto Market Intelligence</h4>
-
-          <p>
-            Developing research into whale activity,
-            blockchain flows, liquidity,
-            volatility and market risk.
-          </p>
-
-          <a href="#intelligence">Explore Intelligence →</a>
-
-        </div>
-
-      </article>
-
-    </div>
+   </div>
 
   </div>
+
+  <!-- PUBLIC SALE BANNER -->
+
+  <div class="sale-banner" id="public-sale">
+
+   <div class="sale-grid">
+
+    <div class="sale-title">
+     <span class="sale-pill">PUBLIC SALE</span>
+     <strong>$SNAO Public Sale</strong>
+    </div>
+
+    <div class="sale-stat">
+     <small>Total Supply</small>
+     <strong>200M</strong>
+    </div>
+
+    <div class="sale-stat">
+     <small>Public Sale Allocation</small>
+     <strong>45M</strong>
+    </div>
+
+    <div class="sale-action">
+     <a href="sale.html" class="btn btn-gold">
+      🛒 BUY $SNAO →
+     </a>
+    </div>
+
+   </div>
+
+  </div>
+
+  <!-- =====================================
+       THREE PREMIUM CARDS
+       EXACT APPROVED REFERENCE CROPS
+  ====================================== -->
+
+  <div class="ecosystem-grid" id="ecosystem">
+
+   <!-- ATLAS: REAL REFERENCE ART -->
+
+   <a class="reference-card"
+    href="#atlas"
+    aria-label="Explore SNAO World ATLAS Intelligence OS">
+
+    <img
+     src="atlas-card.webp"
+     alt="SNAO World ATLAS futuristic command center, holographic globe and enterprise intelligence"
+     width="510"
+     height="248"
+     loading="eager">
+
+   </a>
+
+   <!-- SNAO OCEAN: REAL REFERENCE ART -->
+
+   <a class="reference-card"
+    href="#ocean"
+    aria-label="Explore SNAO Ocean">
+
+    <img
+     src="ocean-card.webp"
+     alt="SNAO Ocean cinematic underwater scene with a premium smartphone"
+     width="503"
+     height="248"
+     loading="eager">
+
+   </a>
+
+   <!-- INTELLIGENCE: REAL REFERENCE ART -->
+
+   <a class="reference-card"
+    href="#intelligence"
+    aria-label="Explore Ocean Intelligence">
+
+    <img
+     src="intelligence-card.webp"
+     alt="Ocean Intelligence digital whale hologram, radar and market intelligence dashboard"
+     width="510"
+     height="248"
+     loading="eager">
+
+   </a>
+
+  </div>
+
+ </div>
 
 </section>
 
 <!-- ATLAS SECTION -->
 
 <section class="section lower" id="atlas">
+ <div class="container feature-grid">
 
-  <div class="container feature-grid">
+  <div class="feature-copy">
 
-    <div class="feature-copy">
+   <span class="eyebrow">ATLAS INTELLIGENCE OS</span>
 
-      <span class="eyebrow">ATLAS INTELLIGENCE OS</span>
+   <h2 class="section-title">
+    Intelligence for a
+    <span class="gold-text">new enterprise era.</span>
+   </h2>
 
-      <h2 class="section-title">
-        Intelligence for a
-        <span class="gold-text">new enterprise era.</span>
-      </h2>
+   <p>
+    ATLAS is being developed as a premium enterprise
+    environment for financial intelligence, accounting,
+    organizational insights, security
+    and intelligent automation.
+   </p>
 
-      <p>
-        ATLAS is being developed as a premium enterprise
-        environment for financial intelligence, accounting,
-        organizational insights, security
-        and intelligent automation.
-      </p>
+   <div class="feature-tags">
+    <span>◈ Financial Intelligence</span>
+    <span>◇ Business Analytics</span>
+    <span>⬡ Guardian & Sentinel</span>
+    <span>⌁ Workflow Automation</span>
+   </div>
 
-      <div class="feature-tags">
-        <span>◈ Financial Intelligence</span>
-        <span>◇ Business Analytics</span>
-        <span>⬡ Guardian & Sentinel</span>
-        <span>⌁ Workflow Automation</span>
-      </div>
-
-      <a href="about.html#atlas" class="btn btn-blue">
-        Explore ATLAS Vision →
-      </a>
-
-    </div>
-
-    <div class="feature-visual">
-
-      <h3>ATLAS / ENTERPRISE INTELLIGENCE</h3>
-
-      <div class="bar-chart" aria-label="Illustrative analytics chart">
-        <span style="--h:34%;--c:#55e3ff;--d:0s"></span>
-        <span style="--h:51%;--c:#3caaff;--d:-.3s"></span>
-        <span style="--h:46%;--c:#4c8eff;--d:-.6s"></span>
-        <span style="--h:70%;--c:#ab7fff;--d:-.9s"></span>
-        <span style="--h:60%;--c:#8d77f0;--d:-1.2s"></span>
-        <span style="--h:82%;--c:#58e0c0;--d:-1.5s"></span>
-        <span style="--h:74%;--c:#55bbff;--d:-1.8s"></span>
-        <span style="--h:96%;--c:#ffd27c;--d:-2.1s"></span>
-        <span style="--h:83%;--c:#b99aff;--d:-2.4s"></span>
-      </div>
-
-      <p class="concept-note">
-        Concept visualization · No live enterprise data
-      </p>
-
-    </div>
+   <a href="about.html#atlas" class="btn btn-blue">
+    Explore ATLAS Vision →
+   </a>
 
   </div>
 
+  <div class="feature-visual">
+
+   <h3>ATLAS / ENTERPRISE INTELLIGENCE</h3>
+
+   <div class="bar-chart" aria-label="Illustrative analytics chart">
+    <span style="--h:34%;--c:#55e3ff"></span>
+    <span style="--h:51%;--c:#3caaff"></span>
+    <span style="--h:46%;--c:#4c8eff"></span>
+    <span style="--h:70%;--c:#ab7fff"></span>
+    <span style="--h:60%;--c:#8d77f0"></span>
+    <span style="--h:82%;--c:#58e0c0"></span>
+    <span style="--h:74%;--c:#55bbff"></span>
+    <span style="--h:96%;--c:#ffd27c"></span>
+    <span style="--h:83%;--c:#b99aff"></span>
+   </div>
+
+   <p class="concept-note">
+    Concept visualization · No live enterprise data
+   </p>
+
+  </div>
+
+ </div>
 </section>
 
 <!-- SNAO OCEAN SECTION -->
 
 <section class="section ocean-section" id="ocean">
 
-  <img
-    src="https://images.unsplash.com/photo-1708649290066-5f617003b93f?auto=format&amp;fit=crop&amp;w=1920&amp;q=85"
-    alt=""
-    loading="lazy">
+ <img
+  src="https://images.unsplash.com/photo-1708649290066-5f617003b93f?auto=format&amp;fit=crop&amp;w=1920&amp;q=85"
+  alt=""
+  loading="lazy">
 
-  <div class="container">
+ <div class="container">
 
-    <div class="ocean-copy">
+  <div class="ocean-copy">
 
-      <span class="eyebrow">SNAO OCEAN</span>
+   <span class="eyebrow">SNAO OCEAN</span>
 
-      <h2 class="section-title">
-        A new world
-        <span class="gold-text">beneath the surface.</span>
-      </h2>
+   <h2 class="section-title">
+    A new world
+    <span class="gold-text">beneath the surface.</span>
+   </h2>
 
-      <p>
-        SNAO Ocean is being developed as an independent
-        Android and iOS application with immersive
-        ocean environments, missions, community
-        participation and internal Sardinhas points.
-      </p>
+   <p>
+    SNAO Ocean is being developed as an independent
+    Android and iOS application with immersive
+    ocean environments, missions,
+    community participation and internal Sardinhas points.
+   </p>
 
-      <div class="pills">
-        <span>Android & iOS</span>
-        <span>Ocean Experience</span>
-        <span>Community Missions</span>
-        <span>Sardinhas Points</span>
-      </div>
+   <div class="pills">
+    <span>Android & iOS</span>
+    <span>Ocean Experience</span>
+    <span>Community Missions</span>
+    <span>Sardinhas Points</span>
+   </div>
 
-      <a href="about.html#platforms" class="btn btn-blue">
-        Discover SNAO Ocean →
-      </a>
+   <a href="about.html#platforms" class="btn btn-blue">
+    Discover SNAO Ocean →
+   </a>
 
-      <p class="concept-note" style="margin-top:19px">
-        Application in development.
-        Photography and concept graphics are illustrative.
-      </p>
-
-    </div>
+   <p class="concept-note" style="margin-top:19px">
+    Application in development.
+    Product imagery is conceptual.
+   </p>
 
   </div>
+
+ </div>
 
 </section>
 
@@ -2960,77 +2052,77 @@ button:focus-visible{
 
 <section class="section lower" id="intelligence">
 
-  <div class="container">
+ <div class="container">
 
-    <div style="text-align:center;max-width:790px;margin:0 auto 35px">
+  <div style="text-align:center;max-width:790px;margin:0 auto 35px">
 
-      <span class="eyebrow">OCEAN INTELLIGENCE</span>
+   <span class="eyebrow">OCEAN INTELLIGENCE</span>
 
-      <h2 class="section-title">
-        Read the market.
-        <span class="gold-text">Understand the risk.</span>
-      </h2>
+   <h2 class="section-title">
+    Read the market.
+    <span class="gold-text">Understand the risk.</span>
+   </h2>
 
-      <p class="section-description">
-        Planned intelligence research for whale movements,
-        exchange flows, liquidity, volatility and market risk.
-      </p>
-
-    </div>
-
-    <div class="intelligence-grid">
-
-      <article class="intelligence-card">
-        <b>◉</b>
-        <h3>Whale Intelligence</h3>
-        <p>Research significant wallet activity and blockchain movements.</p>
-        <small>PLANNED MODULE</small>
-      </article>
-
-      <article class="intelligence-card">
-        <b>≈</b>
-        <h3>Ocean Flow</h3>
-        <p>Explore liquidity, exchange activity and capital flows.</p>
-        <small>ROADMAP</small>
-      </article>
-
-      <article class="intelligence-card">
-        <b>AI</b>
-        <h3>Sardine AI</h3>
-        <p>Planned AI-assisted market analysis and contextual explanations.</p>
-        <small>IN DEVELOPMENT</small>
-      </article>
-
-      <article class="intelligence-card">
-        <b>◇</b>
-        <h3>Market Risk</h3>
-        <p>Research volatility, liquidity pressure and market conditions.</p>
-        <small>RESEARCH</small>
-      </article>
-
-      <article class="intelligence-card">
-        <b>⌁</b>
-        <h3>Global Policy Radar</h3>
-        <p>Explore macroeconomic and regulatory developments.</p>
-        <small>PLANNED MODULE</small>
-      </article>
-
-      <article class="intelligence-card">
-        <b>▤</b>
-        <h3>Ocean Terminal</h3>
-        <p>Discover the experimental market information interface.</p>
-        <small>EXPERIMENTAL</small>
-      </article>
-
-    </div>
-
-    <div style="text-align:center;margin-top:30px">
-      <a href="terminal.html" class="btn btn-blue">
-        Explore Ocean Terminal →
-      </a>
-    </div>
+   <p class="section-description">
+    Planned intelligence research for whale movements,
+    exchange flows, liquidity, volatility and market risk.
+   </p>
 
   </div>
+
+  <div class="intelligence-grid">
+
+   <article class="intelligence-card">
+    <b>◉</b>
+    <h3>Whale Intelligence</h3>
+    <p>Research significant wallet activity and blockchain movements.</p>
+    <small>PLANNED MODULE</small>
+   </article>
+
+   <article class="intelligence-card">
+    <b>≈</b>
+    <h3>Ocean Flow</h3>
+    <p>Explore liquidity, exchange activity and capital flows.</p>
+    <small>ROADMAP</small>
+   </article>
+
+   <article class="intelligence-card">
+    <b>AI</b>
+    <h3>Sardine AI</h3>
+    <p>Planned AI-assisted market analysis and contextual explanations.</p>
+    <small>IN DEVELOPMENT</small>
+   </article>
+
+   <article class="intelligence-card">
+    <b>◇</b>
+    <h3>Market Risk</h3>
+    <p>Research volatility, liquidity pressure and market conditions.</p>
+    <small>RESEARCH</small>
+   </article>
+
+   <article class="intelligence-card">
+    <b>⌁</b>
+    <h3>Global Policy Radar</h3>
+    <p>Explore macroeconomic and regulatory developments.</p>
+    <small>PLANNED MODULE</small>
+   </article>
+
+   <article class="intelligence-card">
+    <b>▤</b>
+    <h3>Ocean Terminal</h3>
+    <p>Discover the experimental market information interface.</p>
+    <small>EXPERIMENTAL</small>
+   </article>
+
+  </div>
+
+  <div style="text-align:center;margin-top:30px">
+   <a href="terminal.html" class="btn btn-blue">
+    Explore Ocean Terminal →
+   </a>
+  </div>
+
+ </div>
 
 </section>
 
@@ -3038,106 +2130,106 @@ button:focus-visible{
 
 <section class="section token-section" id="token">
 
-  <div class="container feature-grid">
+ <div class="container feature-grid">
 
-    <div class="feature-copy">
+  <div class="feature-copy">
 
-      <span class="eyebrow" style="color:var(--gold)">
-        THE SNAO DIGITAL ECOSYSTEM
-      </span>
+   <span class="eyebrow" style="color:var(--gold)">
+    THE SNAO DIGITAL ECOSYSTEM
+   </span>
 
-      <h2 class="section-title">
-        Discover the
-        <span class="gold-text">$SNAO Token.</span>
-      </h2>
+   <h2 class="section-title">
+    Discover the
+    <span class="gold-text">$SNAO Token.</span>
+   </h2>
 
-      <p>
-        Review the fixed token supply,
-        Public Sale allocation and progressive pricing structure.
-      </p>
+   <p>
+    Review the fixed token supply,
+    Public Sale allocation and progressive pricing structure.
+   </p>
 
-      <div style="display:flex;gap:11px;flex-wrap:wrap;margin-top:25px">
+   <div style="display:flex;gap:11px;flex-wrap:wrap;margin-top:25px">
 
-        <a href="sale.html" class="btn btn-gold">
-          BUY $SNAO NOW →
-        </a>
+    <a href="sale.html" class="btn btn-gold">
+     BUY $SNAO NOW →
+    </a>
 
-        <a href="token.html" class="btn btn-blue">
-          Tokenomics
-        </a>
+    <a href="token.html" class="btn btn-blue">
+     Tokenomics
+    </a>
 
-        <a href="whitepaper.html" class="btn btn-outline">
-          Whitepaper
-        </a>
+    <a href="whitepaper.html" class="btn btn-blue">
+     Whitepaper
+    </a>
 
-      </div>
+   </div>
 
-      <p class="concept-note" style="margin-top:19px">
-        Initial lot pricing may differ from current progressive
-        sale pricing. Cryptoassets involve substantial risk.
-      </p>
-
-    </div>
-
-    <div class="token-metrics">
-
-      <div class="token-metric">
-        <small>Total Supply</small>
-        <strong>200M</strong>
-      </div>
-
-      <div class="token-metric">
-        <small>Public Sale Allocation</small>
-        <strong>45M</strong>
-      </div>
-
-      <div class="token-metric">
-        <small>Initial Lot Price</small>
-        <strong>$0.001</strong>
-      </div>
-
-      <div class="token-metric">
-        <small>Network</small>
-        <strong>BNB Chain</strong>
-      </div>
-
-    </div>
+   <p class="concept-note" style="margin-top:19px">
+    Initial lot pricing may differ from current progressive
+    sale pricing. Cryptoassets involve substantial risk.
+   </p>
 
   </div>
+
+  <div class="token-metrics">
+
+   <div class="token-metric">
+    <small>Total Supply</small>
+    <strong>200M</strong>
+   </div>
+
+   <div class="token-metric">
+    <small>Public Sale Allocation</small>
+    <strong>45M</strong>
+   </div>
+
+   <div class="token-metric">
+    <small>Initial Lot Price</small>
+    <strong>$0.001</strong>
+   </div>
+
+   <div class="token-metric">
+    <small>Network</small>
+    <strong>BNB Chain</strong>
+   </div>
+
+  </div>
+
+ </div>
 
 </section>
 
-<!-- FINAL CTA -->
+<!-- FINAL CALL TO ACTION -->
 
 <section class="section final-cta">
 
-  <div class="container">
+ <div class="container">
 
-    <span class="eyebrow">INTELLIGENCE BEYOND BOUNDARIES</span>
+  <span class="eyebrow">INTELLIGENCE BEYOND BOUNDARIES</span>
 
-    <h2 class="section-title">
-      Discover the next chapter
-      <span class="gold-text">of SNAO World.</span>
-    </h2>
+  <h2 class="section-title">
+   Discover the next chapter
+   <span class="gold-text">of SNAO World.</span>
+  </h2>
 
-    <p class="section-description">
-      Explore our developing technology ecosystem
-      and review the official $SNAO Public Sale.
-    </p>
+  <p class="section-description">
+   Explore our developing technology ecosystem
+   and review the official $SNAO Public Sale.
+  </p>
 
-    <div class="final-actions">
+  <div class="final-actions">
 
-      <a href="sale.html" class="btn btn-gold">
-        BUY $SNAO →
-      </a>
+   <a href="sale.html" class="btn btn-gold">
+    BUY $SNAO →
+   </a>
 
-      <a href="about.html" class="btn btn-blue">
-        Discover SNAO World →
-      </a>
-
-    </div>
+   <a href="about.html" class="btn btn-blue">
+    Discover SNAO World →
+   </a>
 
   </div>
+
+ </div>
 
 </section>
 
@@ -3147,172 +2239,147 @@ button:focus-visible{
 
 <footer class="footer">
 
-  <div class="container">
+ <div class="container">
 
-    <div class="footer-grid">
+  <div class="footer-grid">
 
-      <div>
+   <div>
+    <a href="index.html" class="brand">
+     <span class="brand-orb">S</span>
+     <span class="brand-name">SNAO World</span>
+    </a>
 
-        <a href="index.html" class="brand">
-          <span class="brand-orb">S</span>
-          <span class="brand-name">SNAO World</span>
-        </a>
+    <p>
+     Intelligence Beyond Boundaries.
+     Enterprise technology, ocean experiences
+     and crypto market intelligence research.
+    </p>
+   </div>
 
-        <p>
-          Intelligence Beyond Boundaries.
-          Enterprise technology, ocean experiences
-          and crypto market intelligence research.
-        </p>
+   <div>
+    <h4>ECOSYSTEM</h4>
+    <a href="#atlas" class="footer-link">ATLAS Intelligence OS</a>
+    <a href="#ocean" class="footer-link">SNAO Ocean</a>
+    <a href="#intelligence" class="footer-link">Ocean Intelligence</a>
+    <a href="about.html" class="footer-link">About</a>
+   </div>
 
-      </div>
-
-      <div>
-
-        <h4>ECOSYSTEM</h4>
-
-        <a href="#atlas" class="footer-link">
-          ATLAS Intelligence OS
-        </a>
-
-        <a href="#ocean" class="footer-link">
-          SNAO Ocean
-        </a>
-
-        <a href="#intelligence" class="footer-link">
-          Ocean Intelligence
-        </a>
-
-        <a href="about.html" class="footer-link">
-          About
-        </a>
-
-      </div>
-
-      <div>
-
-        <h4>RESOURCES</h4>
-
-        <a href="sale.html" class="footer-link">
-          Public Sale
-        </a>
-
-        <a href="token.html" class="footer-link">
-          Tokenomics
-        </a>
-
-        <a href="whitepaper.html" class="footer-link">
-          Whitepaper
-        </a>
-
-        <a href="terminal.html" class="footer-link">
-          Ocean Terminal
-        </a>
-
-      </div>
-
-    </div>
-
-    <div class="footer-bottom" id="copyright">
-      © SNAO World. All rights reserved.
-    </div>
+   <div>
+    <h4>RESOURCES</h4>
+    <a href="sale.html" class="footer-link">Public Sale</a>
+    <a href="token.html" class="footer-link">Tokenomics</a>
+    <a href="whitepaper.html" class="footer-link">Whitepaper</a>
+    <a href="terminal.html" class="footer-link">Ocean Terminal</a>
+   </div>
 
   </div>
+
+  <div class="footer-bottom" id="copyright">
+   © SNAO World. All rights reserved.
+  </div>
+
+ </div>
 
 </footer>
 
-<!-- MOBILE BUY BAR -->
+<!-- MOBILE SALE BUTTON -->
 
 <div class="mobile-buy">
 
-  <div>
-    <strong>$SNAO Public Sale</strong>
-    <small>Official purchase page</small>
-  </div>
+ <div>
+  <strong>$SNAO Public Sale</strong>
+  <small>Official purchase page</small>
+ </div>
 
-  <a href="sale.html" class="btn btn-gold">
-    BUY $SNAO →
-  </a>
+ <a href="sale.html" class="btn btn-gold">
+  BUY $SNAO →
+ </a>
 
 </div>
 
 <script>
 "use strict";
 
-/* MOBILE NAVIGATION */
+/* MOBILE MENU */
 
 const menuButton=document.getElementById("menuButton");
 const navigation=document.getElementById("navigation");
 
 if(menuButton && navigation){
 
-  menuButton.addEventListener("click",()=>{
-    const isOpen=navigation.classList.toggle("open");
-    menuButton.textContent=isOpen?"✕":"☰";
-    menuButton.setAttribute("aria-expanded",String(isOpen));
-  });
+ menuButton.addEventListener("click",()=>{
+  const open=navigation.classList.toggle("open");
+  menuButton.textContent=open?"✕":"☰";
+  menuButton.setAttribute("aria-expanded",String(open));
+ });
 
-  navigation.querySelectorAll("a").forEach(link=>{
-    link.addEventListener("click",()=>{
-      navigation.classList.remove("open");
-      menuButton.textContent="☰";
-      menuButton.setAttribute("aria-expanded","false");
-    });
+ navigation.querySelectorAll("a").forEach(link=>{
+  link.addEventListener("click",()=>{
+   navigation.classList.remove("open");
+   menuButton.textContent="☰";
+   menuButton.setAttribute("aria-expanded","false");
   });
+ });
 
 }
 
-/* STATIC DEMONSTRATION MARKET CHART */
+/* ILLUSTRATIVE MARKET CANDLES */
 
 const candleLayer=document.getElementById("candleLayer");
 
 if(candleLayer){
 
-  const NS="http://www.w3.org/2000/svg";
-  let previous=98;
+ const NS="http://www.w3.org/2000/svg";
+ let previous=98;
 
-  for(let i=0;i<38;i++){
+ for(let i=0;i<38;i++){
 
-    const trend=i*1.34;
-    const wave=Math.sin(i*.76)*10+Math.cos(i*.31)*6;
-    const close=96-trend-wave;
-    const open=previous;
-    const x=7+i*11.8;
+  const trend=i*1.34;
+  const wave=Math.sin(i*.76)*10+Math.cos(i*.31)*6;
+  const close=96-trend-wave;
+  const open=previous;
+  const x=7+i*11.8;
+  const high=Math.max(4,Math.min(open,close)-4.5);
+  const low=Math.min(104,Math.max(open,close)+4.5);
+  const color=close<open?"#42f2d2":"#e079db";
 
-    const high=Math.max(4,Math.min(open,close)-4.5);
-    const low=Math.min(104,Math.max(open,close)+4.5);
-    const color=close<open?"#42f2d2":"#e079db";
+  const wick=document.createElementNS(NS,"line");
 
-    const wick=document.createElementNS(NS,"line");
-    wick.setAttribute("x1",x);
-    wick.setAttribute("x2",x);
-    wick.setAttribute("y1",high);
-    wick.setAttribute("y2",low);
-    wick.setAttribute("stroke",color);
-    wick.setAttribute("stroke-width","1.5");
-    candleLayer.appendChild(wick);
+  wick.setAttribute("x1",x);
+  wick.setAttribute("x2",x);
+  wick.setAttribute("y1",high);
+  wick.setAttribute("y2",low);
+  wick.setAttribute("stroke",color);
+  wick.setAttribute("stroke-width","1.5");
 
-    const candle=document.createElementNS(NS,"rect");
-    candle.setAttribute("x",x-3);
-    candle.setAttribute("y",Math.max(3,Math.min(open,close)));
-    candle.setAttribute("width","6");
-    candle.setAttribute("height",Math.max(2,Math.abs(open-close)));
-    candle.setAttribute("rx","1");
-    candle.setAttribute("fill",color);
-    candleLayer.appendChild(candle);
+  candleLayer.appendChild(wick);
 
-    const volumeHeight=5+(i*7)%15;
-    const volume=document.createElementNS(NS,"rect");
-    volume.setAttribute("x",x-3);
-    volume.setAttribute("y",120-volumeHeight);
-    volume.setAttribute("width","6");
-    volume.setAttribute("height",volumeHeight);
-    volume.setAttribute("fill",color);
-    volume.setAttribute("opacity",".4");
-    candleLayer.appendChild(volume);
+  const candle=document.createElementNS(NS,"rect");
 
-    previous=close;
+  candle.setAttribute("x",x-3);
+  candle.setAttribute("y",Math.max(3,Math.min(open,close)));
+  candle.setAttribute("width","6");
+  candle.setAttribute("height",Math.max(2,Math.abs(open-close)));
+  candle.setAttribute("rx","1");
+  candle.setAttribute("fill",color);
 
-  }
+  candleLayer.appendChild(candle);
+
+  const volumeHeight=5+(i*7)%15;
+  const volume=document.createElementNS(NS,"rect");
+
+  volume.setAttribute("x",x-3);
+  volume.setAttribute("y",120-volumeHeight);
+  volume.setAttribute("width","6");
+  volume.setAttribute("height",volumeHeight);
+  volume.setAttribute("fill",color);
+  volume.setAttribute("opacity",".4");
+
+  candleLayer.appendChild(volume);
+
+  previous=close;
+
+ }
 
 }
 
@@ -3321,9 +2388,9 @@ if(candleLayer){
 const copyright=document.getElementById("copyright");
 
 if(copyright){
-  copyright.textContent=
-    "© "+new Date().getFullYear()+
-    " SNAO World. All rights reserved.";
+ copyright.textContent=
+  "© "+new Date().getFullYear()+
+  " SNAO World. All rights reserved.";
 }
 </script>
 
